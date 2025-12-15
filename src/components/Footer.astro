@@ -1,0 +1,47 @@
+---
+const socialLinks = [
+  {
+    name: 'LinkedIn',
+    icon: '💼',
+    url: 'https://linkedin.com/in/vittorio',
+    color: 'from-blue-600 to-blue-700',
+  },
+  {
+    name: 'GitHub',
+    icon: '🐙',
+    url: 'https://github.com/vittorio',
+    color: 'from-gray-800 to-gray-900',
+  },
+  {
+    name: 'Resume',
+    icon: '📄',
+    url: '/resume.pdf',
+    color: 'from-indigo-600 to-indigo-700',
+  },
+];
+---
+
+<footer class="py-20 px-4 bg-gray-100">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-4 text-gray-900">Let's Connect</h2>
+    <p class="text-lg text-gray-600 mb-12">
+      Interested in collaborating or learning more about my work in UX design and design systems?
+    </p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {socialLinks.map((link) => (
+        <a
+          href={link.url}
+          target={link.url.startsWith('http') ? '_blank' : undefined}
+          rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+          class="group block p-6 rounded-xl bg-gradient-to-br {link.color} text-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+        >
+          <div class="text-4xl mb-3">{link.icon}</div>
+          <div class="text-lg font-semibold">{link.name}</div>
+        </a>
+      ))}
+    </div>
+  </div>
+</footer>
+
+

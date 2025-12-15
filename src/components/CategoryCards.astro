@@ -1,0 +1,50 @@
+---
+const categories = [
+  {
+    id: 'user-centered-design',
+    title: 'User-Centered Design',
+    icon: '👤',
+    description: 'Applying NN/g usability heuristics to create intuitive, accessible interfaces',
+    link: '/user-centered-design',
+    color: 'from-blue-500 to-blue-600',
+  },
+  {
+    id: 'design-systems',
+    title: 'Design Systems',
+    icon: '🎨',
+    description: 'Building scalable, maintainable component libraries with clear documentation',
+    link: '/design-systems',
+    color: 'from-purple-500 to-purple-600',
+  },
+  {
+    id: 'hax-principles',
+    title: 'HAX Principles',
+    icon: '🤖',
+    description: 'Designing transparent, predictable AI experiences following Microsoft HAX guidelines',
+    link: '/hax-principles',
+    color: 'from-green-500 to-green-600',
+  },
+];
+---
+
+<section class="py-20 px-4 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {categories.map((category) => (
+        <a
+          href={category.link}
+          class="group block p-8 rounded-2xl bg-gradient-to-br {category.color} text-white hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+        >
+          <div class="text-5xl mb-4">{category.icon}</div>
+          <h2 class="text-2xl font-bold mb-3">{category.title}</h2>
+          <p class="text-gray-100 leading-relaxed">{category.description}</p>
+          <div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity">
+            <span class="text-sm font-semibold">Explore →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+
