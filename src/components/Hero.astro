@@ -1,13 +1,15 @@
 ---
+import WaveBackground from './WaveBackground.astro';
 ---
 
-<section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-tone-neutral-01 via-tone-neutral-02 to-tone-neutral-01 text-white px-400">
-  <div class="max-w-4xl mx-auto text-center">
-    <mds-text typography="h1" class="mb-600">
+<section class="min-h-screen flex items-end justify-center px-400 relative overflow-hidden">
+  <WaveBackground />
+  <div class="max-w-screen-desktop mx-auto px-600 py-1200 relative z-10">
+    <mds-text typography="h1" class="vittori-o">
       Vittori<span class="inline-block animate-cursor-blink">o</span>
     </mds-text>
     <mds-text typography="detail" class="mb-400">
-      design system architect / senior UX designer
+      Design System Architect / Senior UX Designer
     </mds-text>
     <mds-text typography="detail" class="max-w-2xl mx-auto">
       Crafting scalable human-centered experiences<br />

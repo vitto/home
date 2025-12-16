@@ -33,8 +33,8 @@ const categories = [
   <div class="max-w-6xl mx-auto">
     <div class="grid grid-cols-1 tablet:grid-cols-3 gap-800">
       {categories.map((category) => (
-        <a href={category.link} class="block group no-underline">
-          <mds-card class={`${category.color} text-tone-neutral-03 hover:-translate-y-200 shadow-sm-sharp transition-cosmetic`}>
+        <a href={category.link} class="block group no-underline" data-category-id={category.id}>
+          <mds-card class={`${category.color} text-tone-neutral-03 group-hover:-translate-y-200 shadow-sm-sharp transition-cosmetic`}>
             <mds-card-content class="p-600">
               <mds-icon name={category.icon}></mds-icon>
               <mds-text typography="h2" class="mb-300">{category.title}</mds-text>
