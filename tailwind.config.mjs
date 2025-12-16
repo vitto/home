@@ -1,10 +1,13 @@
+import magmaPreset from '@maggioli-design-system/styles';
+
 /** @type {import('tailwindcss').Config} */
 export default {
+  presets: [magmaPreset],
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       animation: {
-        'cursor-blink': 'blink 1s step-end infinite',
+        'cursor-blink': 'blink 2s step-end infinite',
       },
       keyframes: {
         blink: {

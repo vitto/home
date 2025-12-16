@@ -1,76 +1,88 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Design Systems - Vittorio's Portfolio">
-  <section class="min-h-screen py-20 px-4 bg-white">
+  <section class="min-h-screen py-2000 px-400 bg-white">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-5xl font-bold mb-6 text-gray-900">Design Systems</h1>
-      <p class="text-xl text-gray-600 mb-12 leading-relaxed">
+      <h1 class="text-5xl font-bold mb-600 text-tone-neutral-01">Design Systems</h1>
+      <p class="text-xl text-tone-neutral-06 mb-1200 leading-relaxed">
         Building scalable, maintainable component libraries with clear documentation
       </p>
       
-      <div class="prose prose-lg max-w-none">
-        <p class="text-gray-700 mb-8">
+      <div class="prose prose-lg">
+        <p class="text-tone-neutral-05 mb-800">
           Design systems are the foundation of consistent, scalable user experiences.
           I specialize in creating comprehensive design systems that enable teams to
           build better products faster.
         </p>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div class="bg-purple-50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">Design Tokens</h3>
-            <p class="text-gray-700">
-              Centralized design decisions stored as data, ensuring consistency across platforms and tools.
-            </p>
-          </div>
+        <div class="grid grid-cols-1 tablet:grid-cols-2 gap-600 mb-800">
+          <mds-card class="bg-label-violet-10">
+            <mds-card-content>
+              <h3 class="text-xl font-semibold mb-300 text-tone-neutral-01">Design Tokens</h3>
+              <p class="text-tone-neutral-05">
+                Centralized design decisions stored as data, ensuring consistency across platforms and tools.
+              </p>
+            </mds-card-content>
+          </mds-card>
           
-          <div class="bg-purple-50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">Accessibility</h3>
-            <p class="text-gray-700">
-              WCAG-compliant components that work for everyone, regardless of ability or device.
-            </p>
-          </div>
+          <mds-card class="bg-label-violet-10">
+            <mds-card-content>
+              <h3 class="text-xl font-semibold mb-300 text-tone-neutral-01">Accessibility</h3>
+              <p class="text-tone-neutral-05">
+                WCAG-compliant components that work for everyone, regardless of ability or device.
+              </p>
+            </mds-card-content>
+          </mds-card>
           
-          <div class="bg-purple-50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">Motion Design</h3>
-            <p class="text-gray-700">
-              Thoughtful animations that enhance usability and provide meaningful feedback.
-            </p>
-          </div>
+          <mds-card class="bg-label-violet-10">
+            <mds-card-content>
+              <h3 class="text-xl font-semibold mb-300 text-tone-neutral-01">Motion Design</h3>
+              <p class="text-tone-neutral-05">
+                Thoughtful animations that enhance usability and provide meaningful feedback.
+              </p>
+            </mds-card-content>
+          </mds-card>
           
-          <div class="bg-purple-50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">Design Language</h3>
-            <p class="text-gray-700">
-              Cohesive visual and interaction patterns that create a unified brand experience.
-            </p>
-          </div>
+          <mds-card class="bg-label-violet-10">
+            <mds-card-content>
+              <h3 class="text-xl font-semibold mb-300 text-tone-neutral-01">Design Language</h3>
+              <p class="text-tone-neutral-05">
+                Cohesive visual and interaction patterns that create a unified brand experience.
+              </p>
+            </mds-card-content>
+          </mds-card>
         </div>
         
-        <div class="bg-gray-50 p-6 rounded-lg mb-8">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-900">Featured Projects</h2>
-          <ul class="space-y-4 text-gray-700">
-            <li>
-              <strong>Magma Design System</strong> - A comprehensive design system built with StencilJS,
-              exported as Web Components, React, and Angular components.
-              <a href="https://magma.maggiolicloud.it/storybook/?path=/docs/common-tests--docs" target="_blank" rel="noopener noreferrer" class="text-purple-600 hover:underline ml-2">
-                View Storybook →
-              </a>
-            </li>
-            <li>
-              <strong>Maggioli Design System Styles</strong> - Core styling and design tokens
-              for the Maggioli ecosystem.
-            </li>
-            <li>
-              <strong>Iconsauce</strong> - SVG icon library system similar to Tailwind,
-              combining icons from different libraries into a single CSS file.
-            </li>
-          </ul>
-        </div>
+        <mds-card class="bg-tone-neutral-09 mb-800">
+          <mds-card-content>
+            <h2 class="text-2xl font-semibold mb-400 text-tone-neutral-01">Featured Projects</h2>
+            <ul class="space-y-400 text-tone-neutral-05">
+              <li>
+                <strong>Magma Design System</strong> - A comprehensive design system built with StencilJS,
+                exported as Web Components, React, and Angular components.
+                <a href="https://magma.maggiolicloud.it/storybook/?path=/docs/common-tests--docs" target="_blank" rel="noopener noreferrer" class="text-label-violet-04 hover:underline ml-200">
+                  View Storybook →
+                </a>
+              </li>
+              <li>
+                <strong>Maggioli Design System Styles</strong> - Core styling and design tokens
+                for the Maggioli ecosystem.
+              </li>
+              <li>
+                <strong>Iconsauce</strong> - SVG icon library system similar to Tailwind,
+                combining icons from different libraries into a single CSS file.
+              </li>
+            </ul>
+          </mds-card-content>
+        </mds-card>
       </div>
       
-      <div class="mt-12">
-        <a href="/" class="text-purple-600 hover:underline">← Back to Home</a>
+      <div class="mt-1200">
+        <a href={baseUrl} class="text-label-violet-04 hover:underline">← Back to Home</a>
       </div>
     </div>
   </section>

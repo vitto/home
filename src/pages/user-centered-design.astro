@@ -1,46 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <Layout title="User-Centered Design - Vittorio's Portfolio">
-  <section class="min-h-screen py-20 px-4 bg-white">
+  <section class="min-h-screen py-2000 px-400 bg-white">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-5xl font-bold mb-6 text-gray-900">User-Centered Design</h1>
-      <p class="text-xl text-gray-600 mb-12 leading-relaxed">
+      <h1 class="text-5xl font-bold mb-600 text-tone-neutral-01">User-Centered Design</h1>
+      <p class="text-xl text-tone-neutral-06 mb-1200 leading-relaxed">
         Applying NN/g usability heuristics to create intuitive, accessible interfaces
       </p>
       
-      <div class="prose prose-lg max-w-none">
-        <p class="text-gray-700 mb-8">
+      <div class="prose prose-lg">
+        <p class="text-tone-neutral-05 mb-800">
           Based on Nielsen Norman Group's ten usability heuristics, I apply proven principles
           to create interfaces that are intuitive, accessible, and user-friendly.
         </p>
         
-        <div class="bg-blue-50 p-6 rounded-lg mb-8">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-900">Key Principles</h2>
-          <ul class="list-disc list-inside space-y-2 text-gray-700">
-            <li>Visibility of system status</li>
-            <li>Match between system and the real world</li>
-            <li>User control and freedom</li>
-            <li>Consistency and standards</li>
-            <li>Error prevention</li>
-            <li>Recognition rather than recall</li>
-            <li>Flexibility and efficiency of use</li>
-            <li>Aesthetic and minimalist design</li>
-            <li>Help users recognize, diagnose, and recover from errors</li>
-            <li>Help and documentation</li>
-          </ul>
-        </div>
+        <mds-card class="bg-label-blue-10 mb-800">
+          <mds-card-content>
+            <h2 class="text-2xl font-semibold mb-400 text-tone-neutral-01">Key Principles</h2>
+            <ul class="list-disc list-inside space-y-200 text-tone-neutral-05">
+              <li>Visibility of system status</li>
+              <li>Match between system and the real world</li>
+              <li>User control and freedom</li>
+              <li>Consistency and standards</li>
+              <li>Error prevention</li>
+              <li>Recognition rather than recall</li>
+              <li>Flexibility and efficiency of use</li>
+              <li>Aesthetic and minimalist design</li>
+              <li>Help users recognize, diagnose, and recover from errors</li>
+              <li>Help and documentation</li>
+            </ul>
+          </mds-card-content>
+        </mds-card>
         
-        <p class="text-gray-600">
-          <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">
+        <p class="text-tone-neutral-06">
+          <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank" rel="noopener noreferrer" class="text-label-blue-04 hover:underline">
             Learn more about NN/g usability heuristics →
           </a>
         </p>
       </div>
       
-      <div class="mt-12">
-        <a href="/" class="text-blue-600 hover:underline">← Back to Home</a>
+      <div class="mt-1200">
+        <a href={baseUrl} class="text-label-blue-04 hover:underline">← Back to Home</a>
       </div>
     </div>
   </section>
