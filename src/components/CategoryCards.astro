@@ -5,7 +5,7 @@ const categories = [
   {
     id: 'user-centered-design',
     title: 'User-Centered Design',
-    icon: '👤',
+    icon: 'mi/baseline/person',
     description: 'Applying NN/g usability heuristics to create intuitive, accessible interfaces',
     link: `${baseUrl}user-centered-design`,
     color: 'from-label-blue-05 to-label-blue-04',
@@ -13,7 +13,7 @@ const categories = [
   {
     id: 'design-systems',
     title: 'Design Systems',
-    icon: '🎨',
+    icon: 'mi/baseline/palette',
     description: 'Building scalable, maintainable component libraries with clear documentation',
     link: `${baseUrl}design-systems`,
     color: 'from-label-violet-05 to-label-violet-04',
@@ -21,7 +21,7 @@ const categories = [
   {
     id: 'hax-principles',
     title: 'HAX Principles',
-    icon: '🤖',
+    icon: 'mi/baseline/close',
     description: 'Designing transparent, predictable AI experiences following Microsoft HAX guidelines',
     link: `${baseUrl}hax-principles`,
     color: 'from-label-green-05 to-label-green-04',
@@ -33,12 +33,12 @@ const categories = [
   <div class="max-w-6xl mx-auto">
     <div class="grid grid-cols-1 tablet:grid-cols-3 gap-800">
       {categories.map((category) => (
-        <a href={category.link} class="block group">
-          <mds-card class="{category.color} text-tone-neutral-03 hover:-translate-y-200">
-            <mds-card-content>
-              <div class="text-5xl mb-400">{category.icon}</div>
-              <h2 class="text-2xl font-bold mb-300">{category.title} XXX</h2>
-              <p class="text-tone-neutral-03 leading-relaxed">{category.description}</p>
+        <a href={category.link} class="block group no-underline">
+          <mds-card class={`${category.color} text-tone-neutral-03 hover:-translate-y-200 shadow-sm-sharp transition-cosmetic`}>
+            <mds-card-content class="p-600">
+              <mds-icon name={category.icon}></mds-icon>
+              <mds-text typography="h2" class="mb-300">{category.title}</mds-text>
+              <mds-text typography="detail" class="leading-relaxed">{category.description}</mds-text>
               <div class="mt-600 opacity-0 group-hover:opacity-100 transition-opacity">
                 <span class="text-sm font-semibold">Explore →</span>
               </div>

@@ -22,10 +22,11 @@ const { title = 'Vittorio - Design System Architect & Senior UX Designer', descr
       (async () => {
         const { defineCustomElements } = await import('@maggioli-design-system/magma/loader');
         defineCustomElements();
+        window.sessionStorage.setItem('mdsIconSvgPath', 'public/icons/');
       })();
     </script>
   </head>
-  <body class="bg-tone-neutral-10 text-tone-neutral-01 antialiased">
+  <body class="bg-tone-neutral text-tone-neutral-01 antialiased">
     <slot />
   </body>
 </html>

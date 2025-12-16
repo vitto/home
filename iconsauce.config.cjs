@@ -1,7 +1,6 @@
 module.exports = {
   content: [
-    './src/**/*.{js,json,ts,tsx,html}',
-    './node_modules/@maggioli-design-system/**/*.{ts,tsx,js}',
+    './src/**/*.{astro,js,json,ts,tsx,html}',
   ],
   plugin: [
     require('@iconsauce/material-icons'),

@@ -3,7 +3,10 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
+    "predev": "npm run icons",
     "dev": "astro dev",
+    "icons": "iconsauce --config ./iconsauce.config.cjs --output-svg ./public/icons/",
+    "prestart": "npm run icons",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
