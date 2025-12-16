@@ -1,0 +1,10 @@
+node_modules/
+dist/
+build/
+public/
+.output/
+.astro/
+*.log
+*.lock
+package-lock.json
+.git/
