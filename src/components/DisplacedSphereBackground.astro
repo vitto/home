@@ -30,14 +30,25 @@ const {
   defaultColor = '#ff1493',
   sphereRadius = 1.3,
   sphereDetail = 400,
-  zoomLevel = 0.5, // Lower values = more zoom (0.6 = 60% of base distance)
-  sphereVerticalPosition = 0.4, // Vertical offset relative to sphere radius (0.5 = half radius up)
+  zoomLevel = 0.6, // Lower values = more zoom (0.6 = 60% of base distance)
+  sphereVerticalPosition = 0.38, // Vertical offset relative to sphere radius (0.5 = half radius up)
 } = Astro.props;
 ---
 
-<div id="sphere-background" class="absolute inset-0 -z-10 pointer-events-none">
+<div id="sphere-background" class="absolute inset-0 pointer-events-none">
   <canvas id="sphere-canvas"></canvas>
 </div>
+
+<script>
+  // Find the parent section element to get its height
+  const sphereBackground = document.getElementById('sphere-background');
+  const parentSection = sphereBackground?.closest('section');
+  
+  if (parentSection) {
+    // Store reference for use in the main script
+    window.__sphereParentSection = parentSection;
+  }
+</script>
 
 <script type="module" define:vars={{ defaultColor, sphereRadius, sphereDetail, zoomLevel, sphereVerticalPosition }}>
   (async () => {
@@ -61,11 +72,19 @@ const {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     
-    // Calculate camera distance to zoom in on sphere (showing only top half)
-    // zoomLevel controls the zoom: lower values = more zoom (0.6 = 60% of base distance)
+    // Get parent section height instead of viewport height
+    const parentSection = window.__sphereParentSection || canvas.closest('section');
+    const containerHeight = parentSection ? parentSection.clientHeight : window.innerHeight;
+    
+    // Calculate camera distance based on container height
+    // This makes the sphere fill almost the entire container height
+    // We're showing only the top half, so we use sphereRadius
     const fovRad = (45 * Math.PI) / 180;
-    const sphereDiameter = sphereRadius * 2;
-    const baseCameraDistance = (sphereDiameter / 2) / Math.tan(fovRad / 2);
+    const visibleSphereHeight = sphereRadius; // We're showing top half
+    
+    // Calculate distance based on container height
+    // Convert container height to world space and calculate camera distance
+    const baseCameraDistance = visibleSphereHeight / Math.tan(fovRad / 2);
     const cameraDistance = baseCameraDistance * zoomLevel;
     
     // Position camera relative to sphere vertical position
@@ -480,23 +499,37 @@ const {
       const width = window.innerWidth;
       const height = window.innerHeight;
       
+      // Get parent section height instead of viewport height
+      const parentSection = window.__sphereParentSection || canvas.closest('section');
+      const containerHeight = parentSection ? parentSection.clientHeight : height;
+      
       camera.aspect = width / height;
       
-      // Recalculate camera distance with zoom (using zoomLevel parameter)
+      // Recalculate camera distance based on container height
+      // This makes the sphere fill almost the entire container height
       const fovRad = (45 * Math.PI) / 180;
-      const sphereDiameter = sphereRadius * 2;
-      const baseCameraDistance = (sphereDiameter / 2) / Math.tan(fovRad / 2);
+      const visibleSphereHeight = sphereRadius; // We're showing top half
+      const baseCameraDistance = visibleSphereHeight / Math.tan(fovRad / 2);
       const cameraDistance = baseCameraDistance * zoomLevel;
       
-      // Maintain camera position (lower to show top half of sphere)
-      camera.position.set(0, -sphereRadius * 0.5, cameraDistance);
+      // Maintain camera position relative to sphere vertical position
+      camera.position.set(0, -sphereRadius * sphereVerticalPosition, cameraDistance);
       
       camera.updateProjectionMatrix();
       
       renderer.setSize(width, height);
     }
-
+    
     window.addEventListener('resize', onResize);
+    
+    // Also listen for section size changes using ResizeObserver
+    const parentSectionForObserver = window.__sphereParentSection || canvas.closest('section');
+    if (parentSectionForObserver && window.ResizeObserver) {
+      const resizeObserver = new ResizeObserver(() => {
+        onResize();
+      });
+      resizeObserver.observe(parentSectionForObserver);
+    }
 
     console.log('DisplacedSphereBackground: Initialized', { sphereRadius, sphereDetail });
   })();
