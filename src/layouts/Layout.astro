@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import '@maggioli-design-system/magma';
 
 interface Props {
   title?: string;
@@ -19,6 +18,12 @@ const { title = 'Vittorio - Design System Architect & Senior UX Designer', descr
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script>
+      (async () => {
+        const { defineCustomElements } = await import('@maggioli-design-system/magma/loader');
+        defineCustomElements();
+      })();
+    </script>
   </head>
   <body class="bg-tone-neutral-10 text-tone-neutral-01 antialiased">
     <slot />
