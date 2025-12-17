@@ -19,6 +19,7 @@
     "@maggioli-design-system/magma": "^1.10.7",
     "@maggioli-design-system/styles": "^15.11.0",
     "astro": "^4.0.0",
+    "locomotive-scroll": "^4.1.4",
     "postcss-iconsauce": "^1.4.1",
     "tailwindcss": "^3.4.0",
     "three": "^0.182.0"

@@ -25,15 +25,85 @@ const { title = 'Vittorio - Design System Architect & Senior UX Designer', descr
         window.sessionStorage.setItem('mdsIconSvgPath', 'public/icons/');
       })();
     </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css" />
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script>
+      function initLocomotiveScroll() {
+        if (typeof window !== 'undefined' && window.LocomotiveScroll) {
+          const container = document.querySelector('[data-scroll-container]');
+          if (!container) return;
+
+          const scroll = new window.LocomotiveScroll({
+            el: container,
+            smooth: true,
+            smoothMobile: false,
+            resetNativeScroll: false, // Disable native scroll reset to prevent body transform
+            getDirection: true,
+            getSpeed: true,
+            class: 'is-revealed',
+            scrollbarContainer: null,
+            scrollFromAnywhere: false,
+            touchMultiplier: 2,
+            firefoxMultiplier: 50,
+            touchSensitivity: 1,
+            normalizeScroll: false, // Disable normalize scroll to prevent extra space
+            smartphone: {
+              smooth: false,
+            },
+            tablet: {
+              smooth: false,
+            },
+          });
+
+          // Update scroll on resize
+          window.addEventListener('resize', () => {
+            scroll.update();
+          });
+
+          // Store scroll instance globally
+          window.__locomotiveScroll = scroll;
+        }
+      }
+
+      // Initialize when DOM and script are ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          // Wait for LocomotiveScroll to load
+          if (window.LocomotiveScroll) {
+            initLocomotiveScroll();
+          } else {
+            window.addEventListener('load', initLocomotiveScroll);
+          }
+        });
+      } else {
+        if (window.LocomotiveScroll) {
+          initLocomotiveScroll();
+        } else {
+          window.addEventListener('load', initLocomotiveScroll);
+        }
+      }
+    </script>
   </head>
   <body class="bg-tone-neutral text-tone-neutral-01 antialiased">
-    <slot />
+    <div data-scroll-container>
+      <slot />
+    </div>
   </body>
 </html>
 
 <style is:global>
   html {
     font-family: system-ui, sans-serif;
+  }
+
+  /* Prevent locomotive-scroll from adding extra space */
+  [data-scroll-container] {
+    overflow: visible !important;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 </style>
 

@@ -1,4 +1,17 @@
 ---
+/**
+ * Category Cards Component
+ *
+ * Props:
+ * @param {number} maxNegativeMargin - Maximum negative margin in rem (default: 22.5, equivalent to -3600px/16)
+ *                                     The section will start at margin-top: 0 and animate to this negative value as you scroll
+ */
+interface Props {
+  maxNegativeMargin?: number;
+}
+
+const { maxNegativeMargin = 22.5 } = Astro.props;
+
 const baseUrl = import.meta.env.BASE_URL;
 
 const categories = [
@@ -29,7 +42,11 @@ const categories = [
 ];
 ---
 
-<section class="py-2000 px-400 bg-white -mt-3600 relative z-10">
+<section
+  id="category-cards-section"
+  class="category-cards-parallax py-2000 px-400 bg-white relative z-10"
+  data-scroll
+>
   <div class="max-w-6xl mx-auto">
     <div class="grid grid-cols-1 tablet:grid-cols-3 gap-800">
       {categories.map((category) => (
@@ -50,4 +67,90 @@ const categories = [
   </div>
 </section>
 
+<style>
+  .category-cards-parallax {
+    /* Start with margin-top: 0, animate to negative value via CSS custom property */
+    margin-top: calc(-1 * var(--margin-offset, 0rem));
+    transition: margin-top 0.1s ease-out;
+    will-change: margin-top;
+  }
+</style>
 
+<script define:vars={{ maxNegativeMargin }}>
+  function initCategoryCardsParallax() {
+    if (typeof window === 'undefined' || !window.__locomotiveScroll) {
+      // Retry if locomotive scroll is not ready yet
+      setTimeout(initCategoryCardsParallax, 100);
+      return;
+    }
+
+    const section = document.getElementById('category-cards-section');
+    if (!section) {
+      // Retry if section is not in DOM yet
+      setTimeout(initCategoryCardsParallax, 100);
+      return;
+    }
+
+    const maxOffsetRem = maxNegativeMargin;
+
+    // Initialize margin to 0
+    section.style.setProperty('--margin-offset', '0rem');
+
+    // Function to update margin based on scroll position
+    function updateMargin() {
+      if (!section) return;
+
+      // Get current scroll position
+      const scrollY = window.scrollY || window.pageYOffset;
+      const windowHeight = window.innerHeight;
+
+      // Get section position relative to viewport
+      const sectionRect = section.getBoundingClientRect();
+      const sectionTop = sectionRect.top;
+
+      // Calculate when animation should start and end
+      // Start when section enters viewport (top of section at bottom of viewport)
+      const startPoint = windowHeight; // Section starts animating when it's 1 viewport height from top
+      const endPoint = -windowHeight * 0.5; // Animation completes when section is 0.5 viewport heights above viewport
+
+      // Calculate progress (0 to 1)
+      // When sectionTop is at startPoint, progress = 0
+      // When sectionTop is at endPoint, progress = 1
+      const progress = Math.min(
+        Math.max((startPoint - sectionTop) / (startPoint - endPoint), 0),
+        1
+      );
+
+      // Calculate current margin offset (0 to maxOffsetRem)
+      // As you scroll, margin becomes more negative (section moves up)
+      const currentOffsetRem = progress * maxOffsetRem;
+
+      // Update CSS custom property
+      section.style.setProperty('--margin-offset', `${currentOffsetRem}rem`);
+    }
+
+    // Listen to scroll events from locomotive-scroll
+    window.__locomotiveScroll.on('scroll', (obj) => {
+      updateMargin();
+    });
+
+    // Also listen to native scroll as fallback
+    window.addEventListener('scroll', updateMargin, { passive: true });
+
+    // Initial update
+    updateMargin();
+
+    // Update scroll instance
+    setTimeout(() => {
+      window.__locomotiveScroll?.update();
+    }, 100);
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCategoryCardsParallax);
+  } else {
+    // Wait a bit for locomotive-scroll to initialize
+    setTimeout(initCategoryCardsParallax, 200);
+  }
+</script>
