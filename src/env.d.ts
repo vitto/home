@@ -5,6 +5,7 @@ declare global {
     __sphereParentSection?: HTMLElement;
     __locomotiveScroll?: any;
     LocomotiveScroll?: any;
+    THREE?: any;
   }
 }
 

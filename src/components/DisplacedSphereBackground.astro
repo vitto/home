@@ -50,10 +50,10 @@ const {
   }
 </script>
 
-<script type="module" define:vars={{ defaultColor, sphereRadius, sphereDetail, zoomLevel, sphereVerticalPosition }}>
+<script type="module" define:vars={{ defaultColor, sphereRadius, sphereDetail, zoomLevel, sphereVerticalPosition, baseUrl: import.meta.env.BASE_URL }}>
   (async () => {
-    // Import Three.js
-    const THREE = await import('https://esm.sh/three@0.160.0');
+    // Import Three.js from vendor directory
+    const THREE = await import(`${baseUrl}/vendor/three.module.min.js`);
 
     // Helper function to get CSS custom property value and convert to hex
     function getCSSColor(cssVarName) {
