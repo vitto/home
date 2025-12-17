@@ -40,10 +40,10 @@ const socialLinks = [
             rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
             class="footer-item group no-underline inline-flex min-w-4000"
           >
-            <mds-card class="shadow-none group-hover:bg-tone-neutral-10 group-hover:shadow-inner bg-transparent transition-cosmetic w-full group-hover:py-100 group-hover:-mt-200 ease-out-expo duration-1000">
+            <mds-card class="shadow-none bg-transparent transition-cosmetic w-full group-hover:-translate-y-200 ease-out-expo duration-1000">
               <mds-card-content class="text-center flex flex-col items-center gap-200 ">
                 <div
-                  class={`p-200 bg-tone-neutral-09 rounded-lg inline-flex transition-cosmetic group-hover:bg-tone-neutral group-hover:shadow-sm-sharp ${link.iconHover}`}
+                  class={`p-200 bg-tone-neutral-09 rounded-lg inline-flex transition-cosmetic group-hover:bg-tone-neutral group-hover:shadow-sm-sharp ease-out-expo duration-1000 ${link.iconHover}`}
                 >
                   <mds-icon name={link.icon} />
                 </div>
