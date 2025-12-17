@@ -30,7 +30,7 @@ const locomotiveScrollFiles = [
 locomotiveScrollFiles.forEach(({ src, dest }) => {
   const srcPath = join(locomotiveScrollDir, src);
   const destPath = join(vendorDir, dest);
-  
+
   if (existsSync(srcPath)) {
     copyFileSync(srcPath, destPath);
     console.log(`✓ Copied ${src} to public/vendor/${dest}`);
@@ -49,7 +49,7 @@ const threeFiles = [
 threeFiles.forEach(({ src, dest }) => {
   const srcPath = join(threeDir, src);
   const destPath = join(vendorDir, dest);
-  
+
   if (existsSync(srcPath)) {
     copyFileSync(srcPath, destPath);
     console.log(`✓ Copied ${src} to public/vendor/${dest}`);
@@ -78,7 +78,7 @@ if (existsSync(magmaLoaderDir)) {
   loaderFiles.forEach((file) => {
     const srcPath = join(magmaLoaderDir, file);
     const destPath = join(magmaLoaderDestDir, file);
-    
+
     if (statSync(srcPath).isFile()) {
       copyFileSync(srcPath, destPath);
       console.log(`✓ Copied ${file} to public/vendor/maggioli-loader/${file}`);
@@ -88,7 +88,7 @@ if (existsSync(magmaLoaderDir)) {
   // Copy dist/esm/polyfills and dist/esm/loader.js (and its dependencies)
   const distEsmDir = join(magmaDir, 'dist', 'esm');
   const distEsmDestDir = join(magmaDistDestDir, 'esm');
-  
+
   if (existsSync(distEsmDir)) {
     if (!existsSync(distEsmDestDir)) {
       mkdirSync(distEsmDestDir, { recursive: true });
@@ -107,7 +107,9 @@ if (existsSync(magmaLoaderDir)) {
         const destPath = join(polyfillsDestDir, file);
         if (statSync(srcPath).isFile()) {
           copyFileSync(srcPath, destPath);
-          console.log(`✓ Copied polyfills/${file} to public/vendor/maggioli-loader/dist/esm/polyfills/${file}`);
+          console.log(
+            `✓ Copied polyfills/${file} to public/vendor/maggioli-loader/dist/esm/polyfills/${file}`
+          );
         }
       });
     }
@@ -118,7 +120,7 @@ if (existsSync(magmaLoaderDir)) {
     if (existsSync(loaderJsPath)) {
       copyFileSync(loaderJsPath, join(distEsmDestDir, 'loader.js'));
       console.log(`✓ Copied loader.js to public/vendor/maggioli-loader/dist/esm/loader.js`);
-      
+
       // Copy ALL .js files from dist/esm (dependencies, chunks, entry files, etc.)
       const distEsmFiles = readdirSync(distEsmDir);
       distEsmFiles.forEach((file) => {
@@ -138,4 +140,3 @@ if (existsSync(magmaLoaderDir)) {
 }
 
 console.log('✓ Vendor assets copied successfully');
-

@@ -10,4 +10,3 @@ export default defineConfig({
   // Base path for GitHub Pages project site (remove or set to '/' for user site)
   base: '/home',
 });
-

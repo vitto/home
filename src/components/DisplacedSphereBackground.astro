@@ -50,7 +50,17 @@ const {
   }
 </script>
 
-<script type="module" define:vars={{ defaultColor, sphereRadius, sphereDetail, zoomLevel, sphereVerticalPosition, baseUrl: import.meta.env.BASE_URL }}>
+<script
+  type="module"
+  define:vars={{
+    defaultColor,
+    sphereRadius,
+    sphereDetail,
+    zoomLevel,
+    sphereVerticalPosition,
+    baseUrl: import.meta.env.BASE_URL,
+  }}
+>
   (async () => {
     // Import Three.js from vendor directory
     const THREE = await import(`${baseUrl}/vendor/three.module.min.js`);
@@ -82,10 +92,12 @@ const {
         const g = parseInt(rgbMatch[2]);
         const b = parseInt(rgbMatch[3]);
         // Convert to hex format for Three.js
-        return `#${[r, g, b].map(x => {
-          const hex = x.toString(16);
-          return hex.length === 1 ? '0' + hex : hex;
-        }).join('')}`;
+        return `#${[r, g, b]
+          .map((x) => {
+            const hex = x.toString(16);
+            return hex.length === 1 ? '0' + hex : hex;
+          })
+          .join('')}`;
       }
 
       // If value is already in hex format or other valid color format, return as is
@@ -108,7 +120,12 @@ const {
 
     // Scene setup
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
 
     // Get parent section height instead of viewport height
     // @ts-ignore - Custom property on window
@@ -132,7 +149,7 @@ const {
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
       antialias: true,
-      alpha: true
+      alpha: true,
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -404,7 +421,9 @@ const {
         float pattern = getDisplacement(position);
         vPattern = pattern;
 
-        ${hasTangents ? `
+        ${
+          hasTangents
+            ? `
         // Neighbours technique: find two vectors perpendicular to normal and each other
         vec3 biTangent = cross(normal, tangent.xyz);
         float shift = 0.01; // approximate distance to the neighbour
@@ -426,7 +445,8 @@ const {
 
         // Recalculated normal using cross product
         transformedNormal = normalize(cross(toA, toB));
-        ` : `
+        `
+            : `
         // Fallback: simpler normal recalculation without tangents
         vec3 posX = position + vec3(0.01, 0.0, 0.0);
         vec3 posZ = position + vec3(0.0, 0.0, 0.01);
@@ -441,7 +461,8 @@ const {
         vec3 toX = normalize(posX - transformed);
         vec3 toZ = normalize(posZ - transformed);
         transformedNormal = normalize(cross(toX, toZ));
-        `}
+        `
+        }
 
         #include <project_vertex>
         `

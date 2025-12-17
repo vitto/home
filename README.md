@@ -62,7 +62,7 @@ The site is automatically deployed to GitHub Pages via GitHub Actions when chang
 
 Before deploying, make sure to:
 
-1. **Update `astro.config.mjs`**: 
+1. **Update `astro.config.mjs`**:
    - Set the `site` URL to match your GitHub Pages URL (e.g., `https://yourusername.github.io`)
    - Adjust the `base` path if your site is not at the root (currently set to `/home` for a project page)
 
@@ -95,4 +95,3 @@ Before deploying, make sure to:
 - [Astro](https://astro.build/) - Static site generator
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [Prettier](https://prettier.io/) - Code formatter
-

@@ -32,25 +32,29 @@ const socialLinks = [
     </mds-text>
 
     <div class="flex flex-wrap justify-center gap-600 items-start">
-      {socialLinks.map((link) => (
-        <a
-          href={link.url}
-          target={link.url.startsWith('http') ? '_blank' : undefined}
-          rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-          class="footer-item group no-underline inline-flex min-w-4000"
-        >
-          <mds-card class="shadow-none group-hover:bg-tone-neutral-10 group-hover:shadow-inner bg-transparent transition-cosmetic w-full group-hover:py-100 group-hover:-mt-200 ease-out-expo duration-1000">
-            <mds-card-content class="text-center flex flex-col items-center gap-200 ">
-              <div class={`p-200 bg-tone-neutral-09 rounded-lg inline-flex transition-cosmetic group-hover:bg-tone-neutral group-hover:shadow-sm-sharp ${link.iconHover}`}>
-                <mds-icon name={link.icon}></mds-icon>
-              </div>
-              <mds-text><b>{link.name}</b></mds-text>
-            </mds-card-content>
-          </mds-card>
-        </a>
-      ))}
+      {
+        socialLinks.map((link) => (
+          <a
+            href={link.url}
+            target={link.url.startsWith('http') ? '_blank' : undefined}
+            rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+            class="footer-item group no-underline inline-flex min-w-4000"
+          >
+            <mds-card class="shadow-none group-hover:bg-tone-neutral-10 group-hover:shadow-inner bg-transparent transition-cosmetic w-full group-hover:py-100 group-hover:-mt-200 ease-out-expo duration-1000">
+              <mds-card-content class="text-center flex flex-col items-center gap-200 ">
+                <div
+                  class={`p-200 bg-tone-neutral-09 rounded-lg inline-flex transition-cosmetic group-hover:bg-tone-neutral group-hover:shadow-sm-sharp ${link.iconHover}`}
+                >
+                  <mds-icon name={link.icon} />
+                </div>
+                <mds-text>
+                  <b>{link.name}</b>
+                </mds-text>
+              </mds-card-content>
+            </mds-card>
+          </a>
+        ))
+      }
     </div>
   </div>
 </footer>
-
-
