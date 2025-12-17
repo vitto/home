@@ -3,18 +3,21 @@ const socialLinks = [
   {
     name: 'LinkedIn',
     icon: 'mdi/linkedin',
+    iconHover: 'group-hover:fill-label-blue-05',
     url: 'https://linkedin.com/in/vittoriovittori',
     color: 'from-label-blue-04 to-label-blue-03',
   },
   {
     name: 'GitHub',
     icon: 'mdi/github',
+    iconHover: 'group-hover:fill-tone-neutral-03',
     url: 'https://github.com/vitto',
     color: 'from-tone-neutral-02 to-tone-neutral-01',
   },
   {
     name: 'Resume',
-    icon: 'mgg/google-book-large-outline',
+    icon: 'mi/outline/sim-card-download',
+    iconHover: 'group-hover:fill-label-yellow-04',
     url: '/vittorio-vittori-ds-architect-ux-designer-resume.pdf',
     color: 'from-label-violet-04 to-label-violet-03',
   },
@@ -22,26 +25,26 @@ const socialLinks = [
 ---
 
 <footer class="px-600 desktop:px-1200 pb-3200">
-  <div class="max-w-screen-desktop w-full mx-auto text-center bg-tone-neutral-10 rounded-3xl p-600 desktop:p-1200">
+  <div class="max-w-screen-desktop w-full mx-auto text-center grid">
     <mds-text typography="h2" class="mb-400 text-tone-neutral-01">Let's Connect</mds-text>
     <mds-text typography="detail" class="mb-1200">
       Interested in collaborating or learning more about my work in UX design and design systems?
     </mds-text>
 
-    <div class="grid grid-cols-1 tablet:grid-cols-3 gap-600 min-w-min">
+    <div class="flex flex-wrap justify-center gap-600 items-start">
       {socialLinks.map((link) => (
         <a
           href={link.url}
           target={link.url.startsWith('http') ? '_blank' : undefined}
           rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-          class="group no-underline"
+          class="footer-item group no-underline inline-flex min-w-4000"
         >
-          <mds-card class="shadow-none group-hover:shadow-sm group-hover:bg-tone-neutral bg-transparent group-hover:-translate-y-200 transition-cosmetic">
-            <mds-card-content class="text-center flex flex-col items-center">
-              <div class="p-200 bg-tone-neutral-09 rounded-lg inline-flex">
+          <mds-card class="shadow-none group-hover:bg-tone-neutral-10 group-hover:shadow-inner bg-transparent transition-cosmetic w-full group-hover:py-100 group-hover:-mt-200 ease-out-expo duration-1000">
+            <mds-card-content class="text-center flex flex-col items-center gap-200 ">
+              <div class={`p-200 bg-tone-neutral-09 rounded-lg inline-flex transition-cosmetic group-hover:bg-tone-neutral group-hover:shadow-sm-sharp ${link.iconHover}`}>
                 <mds-icon name={link.icon}></mds-icon>
               </div>
-              <div class="text-lg font-semibold">{link.name}</div>
+              <mds-text><b>{link.name}</b></mds-text>
             </mds-card-content>
           </mds-card>
         </a>

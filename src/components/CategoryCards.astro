@@ -36,7 +36,7 @@ const categories = [
   {
     id: 'hax-principles',
     title: 'HAX Principles',
-    icon: 'mi/baseline/close',
+    icon: 'mgg/ai-chatbot',
     iconHover: 'group-hover:bg-label-violet-09 group-hover:fill-label-violet-05',
     description: 'Designing transparent, predictable AI experiences following Microsoft HAX guidelines',
     link: `${baseUrl}hax-principles`,
@@ -54,14 +54,14 @@ const categories = [
     <div class="grid grid-cols-1 tablet:grid-cols-3 desktop:gap-800 tablet:gap-600">
       {categories.map((category) => (
         <a href={category.link} class="block group no-underline" data-category-id={category.id}>
-          <mds-card class={`${category.color} text-tone-neutral-03 group-hover:-translate-y-200 shadow-sm-sharp transition-cosmetic bg-tone-neutral/80 backdrop-blur-lg group-hover:bg-tone-neutral`}>
+          <mds-card class={`${category.color} text-tone-neutral-03 group-hover:-translate-y-200 shadow-sm-sharp transition-cosmetic bg-tone-neutral/80 backdrop-blur-lg group-hover:bg-tone-neutral ease-out-expo duration-1000`}>
             <mds-card-content class="p-600">
-              <div class={`p-200 rounded-lg inline-flex justify-self-start bg-tone-neutral-06/10 transition-cosmetic ${category.iconHover} group-hover:scale-120 scale-120`}>
+              <div class={`p-200 rounded-lg inline-flex justify-self-start bg-transparent transition-cosmetic group-hover:scale-125 ease-out-expo duration-1000 fill-tone-neutral-03 ${category.iconHover}`}>
                 <mds-icon name={category.icon}></mds-icon>
               </div>
               <mds-text typography="h2" class="mb-300">{category.title}</mds-text>
               <mds-text typography="detail" class="leading-relaxed">{category.description}</mds-text>
-              <div class="mt-600 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div class="mt-600 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-cosmetic translate-y-200">
                 <span class="text-sm font-semibold">Explore →</span>
               </div>
             </mds-card-content>
