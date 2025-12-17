@@ -44,10 +44,10 @@ const categories = [
 
 <section
   id="category-cards-section"
-  class="category-cards-parallax py-2000 px-400 bg-white relative z-10"
+  class="category-cards-parallax py-2000 px-600 desktop:px-1200 bg-white relative z-10"
   data-scroll
 >
-  <div class="max-w-6xl mx-auto">
+  <div class="max-w-screen-wide w-full mx-auto">
     <div class="grid grid-cols-1 tablet:grid-cols-3 gap-800">
       {categories.map((category) => (
         <a href={category.link} class="block group no-underline" data-category-id={category.id}>
