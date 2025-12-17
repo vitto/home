@@ -4,6 +4,9 @@ dist/
 public/icons/
 public/vendor/
 
+# husky internal files (auto-generated)
+.husky/_/
+
 # dependencies
 node_modules/
 
