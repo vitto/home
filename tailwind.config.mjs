@@ -9,6 +9,10 @@ export default {
       animation: {
         'pulse-more': 'pulseMore 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
+      transitionProperty: {
+        cosmetic:
+          'background-color, border-color, border-radius, box-shadow, color, fill, height, margin, opacity, padding, transform, width',
+      },
       keyframes: {
         pulseMore: {
           '0%, 100%': { opacity: '1' },
