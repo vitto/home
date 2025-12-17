@@ -7,12 +7,12 @@ export default {
   theme: {
     extend: {
       animation: {
-        'cursor-blink': 'blink 2s step-end infinite',
+        'pulse-more': 'pulseMore 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
-        blink: {
-          '0%, 49%': { opacity: '1' },
-          '50%, 100%': { opacity: '0' },
+        pulseMore: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.2' },
         },
       },
     },

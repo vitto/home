@@ -10,7 +10,7 @@
 :root {
   --variant-primary: var(--variant-primary-01);
   --variant-user-centered-design: var(--label-amaranth-06);
-  --variant-design-systems: var(--label-green-06);
+  --variant-design-systems: var(--status-success-06);
   --variant-hax-principles: var(--label-violet-06);
 }
 

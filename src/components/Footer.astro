@@ -2,19 +2,19 @@
 const socialLinks = [
   {
     name: 'LinkedIn',
-    icon: '💼',
+    icon: 'mdi/linkedin',
     url: 'https://linkedin.com/in/vittoriovittori',
     color: 'from-label-blue-04 to-label-blue-03',
   },
   {
     name: 'GitHub',
-    icon: '🐙',
+    icon: 'mdi/github',
     url: 'https://github.com/vitto',
     color: 'from-tone-neutral-02 to-tone-neutral-01',
   },
   {
     name: 'Resume',
-    icon: '📄',
+    icon: 'mgg/google-book-large-outline',
     url: '/vittorio-vittori-ds-architect-ux-designer-resume.pdf',
     color: 'from-label-violet-04 to-label-violet-03',
   },
@@ -28,16 +28,22 @@ const socialLinks = [
       Interested in collaborating or learning more about my work in UX design and design systems?
     </mds-text>
 
-    <div class="grid grid-cols-1 tablet:grid-cols-3 gap-600">
+    <div class="grid grid-cols-1 tablet:grid-cols-3 gap-600 min-w-min">
       {socialLinks.map((link) => (
         <a
           href={link.url}
           target={link.url.startsWith('http') ? '_blank' : undefined}
           rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-          class="group block p-600 rounded-xl bg-gradient-to-br {link.color} text-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          class="group no-underline"
         >
-          <div class="text-4xl mb-300">{link.icon}</div>
-          <div class="text-lg font-semibold">{link.name}</div>
+          <mds-card class="shadow-none group-hover:shadow-sm group-hover:bg-tone-neutral bg-transparent group-hover:-translate-y-200 transition-cosmetic">
+            <mds-card-content class="text-center flex flex-col items-center">
+              <div class="p-200 bg-tone-neutral-09 rounded-lg inline-flex">
+                <mds-icon name={link.icon}></mds-icon>
+              </div>
+              <div class="text-lg font-semibold">{link.name}</div>
+            </mds-card-content>
+          </mds-card>
         </a>
       ))}
     </div>

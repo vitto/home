@@ -19,6 +19,7 @@ const categories = [
     id: 'user-centered-design',
     title: 'User-Centered Design',
     icon: 'mi/baseline/person',
+    iconHover: 'group-hover:bg-label-amaranth-09 group-hover:fill-label-amaranth-05',
     description: 'Applying NN/g usability heuristics to create intuitive, accessible interfaces',
     link: `${baseUrl}user-centered-design`,
     color: 'from-label-blue-05 to-label-blue-04',
@@ -27,6 +28,7 @@ const categories = [
     id: 'design-systems',
     title: 'Design Systems',
     icon: 'mi/baseline/palette',
+    iconHover: 'group-hover:bg-status-success-09 group-hover:fill-status-success-05',
     description: 'Building scalable, maintainable component libraries with clear documentation',
     link: `${baseUrl}design-systems`,
     color: 'from-label-violet-05 to-label-violet-04',
@@ -35,6 +37,7 @@ const categories = [
     id: 'hax-principles',
     title: 'HAX Principles',
     icon: 'mi/baseline/close',
+    iconHover: 'group-hover:bg-label-violet-09 group-hover:fill-label-violet-05',
     description: 'Designing transparent, predictable AI experiences following Microsoft HAX guidelines',
     link: `${baseUrl}hax-principles`,
     color: 'from-label-green-05 to-label-green-04',
@@ -48,12 +51,14 @@ const categories = [
   data-scroll
 >
   <div class="max-w-screen-wide w-full mx-auto">
-    <div class="grid grid-cols-1 tablet:grid-cols-3 gap-800">
+    <div class="grid grid-cols-1 tablet:grid-cols-3 desktop:gap-800 tablet:gap-600">
       {categories.map((category) => (
         <a href={category.link} class="block group no-underline" data-category-id={category.id}>
-          <mds-card class={`${category.color} text-tone-neutral-03 group-hover:-translate-y-200 shadow-sm-sharp transition-cosmetic`}>
+          <mds-card class={`${category.color} text-tone-neutral-03 group-hover:-translate-y-200 shadow-sm-sharp transition-cosmetic bg-tone-neutral/80 backdrop-blur-lg group-hover:bg-tone-neutral`}>
             <mds-card-content class="p-600">
-              <mds-icon name={category.icon}></mds-icon>
+              <div class={`p-200 rounded-lg inline-flex justify-self-start bg-tone-neutral-06/10 transition-cosmetic ${category.iconHover} group-hover:scale-120 scale-120`}>
+                <mds-icon name={category.icon}></mds-icon>
+              </div>
               <mds-text typography="h2" class="mb-300">{category.title}</mds-text>
               <mds-text typography="detail" class="leading-relaxed">{category.description}</mds-text>
               <div class="mt-600 opacity-0 group-hover:opacity-100 transition-opacity">
