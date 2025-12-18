@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Privacy Policy - Vittorio Vittori"
+  description="Privacy policy for Vittorio Vittori's portfolio website. This site respects your privacy by design."
+>
+  <main class="min-h-screen px-400 desktop:px-1200 py-2000">
+    <div class="max-w-screen-desktop w-full mx-auto grid gap-2400">
+      <div class="grid gap-200">
+        <mds-text typography="h1">Privacy Policy</mds-text>
+        <mds-text typography="detail">
+          This site respects your privacy by design. No tracking. No ads. Just static HTML.
+        </mds-text>
+        <mds-text typography="detail">
+          Last updated: {
+            new Date().toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })
+          }
+        </mds-text>
+      </div>
+
+      <div class="grid gap-2400">
+        <div class="grid gap-600">
+          <div class="grid gap-200">
+            <mds-text typography="h4">Data Controller</mds-text>
+            <mds-text typography="detail">
+              Personal website of <strong>Vittorio Vittori</strong>, Design System Architect and
+              Senior UX Designer. <br />
+              Resident in Italy.
+            </mds-text>
+          </div>
+          <mds-button
+            class="justify-self-start"
+            size="sm"
+            slot="action"
+            variant="dark"
+            tone="ghost"
+            href="mailto:your-email@example.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            your-email@example.com
+          </mds-button>
+        </div>
+
+        <div class="grid gap-600">
+          <div class="grid gap-200">
+            <mds-text typography="h4">GitHub Pages Hosting</mds-text>
+            <mds-text typography="detail">
+              This site is hosted on GitHub Pages. GitHub may collect access logs (including IP
+              address) for security and reliability purposes.
+            </mds-text>
+          </div>
+          <mds-button
+            class="justify-self-start"
+            size="sm"
+            slot="action"
+            variant="dark"
+            tone="ghost"
+            href="https://pages.github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub Pages
+          </mds-button>
+        </div>
+
+        <div class="grid gap-600">
+          <div class="grid gap-200">
+            <mds-text typography="h4">User-Submitted Data</mds-text>
+            <mds-text typography="detail">
+              If you contact me, your data will only be used to respond to your inquiry. I do not
+              share, sell, or use your contact information for any other purpose.
+            </mds-text>
+          </div>
+          <mds-button
+            class="justify-self-start"
+            size="sm"
+            slot="action"
+            variant="dark"
+            tone="ghost"
+            href="https://linkedin.com/in/vittoriovittori"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </mds-button>
+        </div>
+
+        <div class="grid gap-600">
+          <div class="grid gap-200">
+            <mds-text typography="h4">What this site does not do</mds-text>
+            <mds-list>
+              <mds-list-item icon="mi/baseline/bar-chart">
+                <mds-text typography="detail">No tracking scripts or analytics</mds-text>
+              </mds-list-item>
+              <mds-list-item icon="mi/outline/cookie">
+                <mds-text typography="detail"
+                  >No cookies (except those required by GitHub Pages for security)</mds-text
+                >
+              </mds-list-item>
+              <mds-list-item icon="mi/baseline/ads-click">
+                <mds-text typography="detail">No third-party advertising</mds-text>
+              </mds-list-item>
+              <mds-list-item icon="mi/outline/badge">
+                <mds-text typography="detail"
+                  >No data collection beyond what GitHub Pages requires for hosting</mds-text
+                >
+              </mds-list-item>
+            </mds-list>
+          </div>
+        </div>
+
+        <div class="grid gap-600">
+          <div class="grid gap-200">
+            <mds-text typography="h4">Your Rights</mds-text>
+            <mds-text typography="detail">
+              Under GDPR, you have the right to access, rectify, or delete any personal data I may
+              have collected through direct contact. To exercise these rights, please contact me
+              using the email address provided above.
+            </mds-text>
+          </div>
+          <mds-button
+            class="justify-self-start"
+            size="sm"
+            slot="action"
+            variant="dark"
+            tone="ghost"
+            href="https://linkedin.com/in/vittoriovittori"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </mds-button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
