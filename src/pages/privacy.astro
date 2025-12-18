@@ -81,48 +81,52 @@ const privacySections = [
         </mds-text>
         <mds-text typography="detail">
           Last updated:{' '}
-          {new Date().toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
+          {
+            new Date().toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })
+          }
         </mds-text>
       </div>
 
       <div class="grid gap-1600">
-        {privacySections.map((section) => (
-          <div class="grid gap-600">
-            <div class="grid gap-200">
-              <mds-text typography="h4">{section.title}</mds-text>
-              {section.description && (
-                <mds-text typography="detail" set:html={section.description} />
-              )}
-              {section.list && (
-                <mds-list>
-                  {section.list.map((item) => (
-                    <mds-list-item icon={item.icon}>
-                      <mds-text typography="detail">{item.text}</mds-text>
-                    </mds-list-item>
-                  ))}
-                </mds-list>
+        {
+          privacySections.map((section) => (
+            <div class="grid gap-600">
+              <div class="grid gap-200">
+                <mds-text typography="h4">{section.title}</mds-text>
+                {section.description && (
+                  <mds-text typography="detail" set:html={section.description} />
+                )}
+                {section.list && (
+                  <mds-list>
+                    {section.list.map((item) => (
+                      <mds-list-item icon={item.icon}>
+                        <mds-text typography="detail">{item.text}</mds-text>
+                      </mds-list-item>
+                    ))}
+                  </mds-list>
+                )}
+              </div>
+              {section.button && (
+                <mds-button
+                  class="justify-self-start"
+                  size="sm"
+                  slot="action"
+                  variant="dark"
+                  tone="ghost"
+                  href={section.button.href}
+                >
+                  {section.button.label}
+                </mds-button>
               )}
             </div>
-            {section.button && (
-              <mds-button
-                class="justify-self-start"
-                size="sm"
-                slot="action"
-                variant="dark"
-                tone="ghost"
-                href={section.button.href}
-              >
-                {section.button.label}
-              </mds-button>
-            )}
-          </div>
-        ))}
+          ))
+        }
       </div>
-      <mds-hr />
+      <mds-hr></mds-hr>
     </div>
   </main>
   <Footer />
