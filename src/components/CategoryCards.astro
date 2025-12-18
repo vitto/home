@@ -19,19 +19,17 @@ const categories = [
     id: 'user-centered-design',
     title: 'User-Centered Design',
     icon: 'mi/baseline/person',
-    iconHover: 'group-hover:bg-label-amaranth-09 group-hover:fill-label-amaranth-05',
+    iconHover: 'group-hover:bg-status-success-09 group-hover:fill-status-success-05',
     description: 'Applying NN/g usability heuristics to create intuitive, accessible interfaces',
     link: `${baseUrl}user-centered-design`,
-    color: 'from-label-blue-05 to-label-blue-04',
   },
   {
     id: 'design-systems',
     title: 'Design Systems',
     icon: 'mi/baseline/palette',
-    iconHover: 'group-hover:bg-status-success-09 group-hover:fill-status-success-05',
+    iconHover: 'group-hover:bg-label-amaranth-09 group-hover:fill-label-amaranth-05',
     description: 'Building scalable, maintainable component libraries with clear documentation',
     link: `${baseUrl}design-systems`,
-    color: 'from-label-violet-05 to-label-violet-04',
   },
   {
     id: 'hax-principles',
@@ -41,7 +39,6 @@ const categories = [
     description:
       'Designing transparent, predictable AI experiences following Microsoft HAX guidelines',
     link: `${baseUrl}hax-principles`,
-    color: 'from-label-green-05 to-label-green-04',
   },
 ];
 ---
@@ -57,7 +54,7 @@ const categories = [
         categories.map((category) => (
           <a href={category.link} class="block group no-underline" data-category-id={category.id}>
             <mds-card
-              class={`${category.color} text-tone-neutral-03 group-hover:-translate-y-200 shadow-sm-sharp transition-cosmetic bg-tone-neutral/80 backdrop-blur group-hover:bg-tone-neutral ease-out-expo duration-1000`}
+              class="text-tone-neutral-03 group-hover:-translate-y-200 shadow-sm-sharp transition-cosmetic bg-tone-neutral/80 backdrop-blur group-hover:bg-tone-neutral ease-out-expo duration-1000"
             >
               <mds-card-content class="p-600">
                 <div

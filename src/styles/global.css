@@ -8,9 +8,9 @@
 @import '@maggioli-design-system/styles/dist/css/base.css';
 
 :root {
-  --variant-primary: var(--variant-primary-01);
-  --variant-user-centered-design: var(--label-amaranth-06);
-  --variant-design-systems: var(--status-success-06);
+  --variant-primary: var(--tone-neutral-01);
+  --variant-design-systems: var(--label-amaranth-06);
+  --variant-user-centered-design: var(--status-success-06);
   --variant-hax-principles: var(--label-violet-06);
 }
 
