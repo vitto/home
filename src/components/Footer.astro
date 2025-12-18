@@ -1,4 +1,6 @@
 ---
+const baseUrl = import.meta.env.BASE_URL;
+
 const socialLinks = [
   {
     name: 'LinkedIn',
@@ -59,9 +61,10 @@ const socialLinks = [
       }
     </div>
 
-    <mds-text
-      >No tracking. No ads. Just static HTML hosted on GitHub Pages.<br />
-      This site respects your privacy by design.</mds-text
-    >
+    <mds-text>
+      No tracking. No ads. Just static HTML hosted on GitHub Pages.<br />
+      This site respects your privacy by design.
+    </mds-text>
+    <mds-button href={`${baseUrl}/privacy`} class="justify-self-center" icon="mi/outline/privacy-tip" variant="dark" tone="quiet">Privacy Policy</mds-button>
   </div>
 </footer>
