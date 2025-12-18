@@ -15,6 +15,16 @@ const rootDir = join(__dirname, '..');
 const publicDir = join(rootDir, 'public');
 const vendorDir = join(publicDir, 'vendor');
 
+// Parse command line arguments
+const isVerbose = process.argv.includes('--verbose');
+
+// Helper function to log only if verbose mode is enabled
+const log = (message) => {
+  if (isVerbose) {
+    console.log(message);
+  }
+};
+
 // Create vendor directory if it doesn't exist
 if (!existsSync(vendorDir)) {
   mkdirSync(vendorDir, { recursive: true });
@@ -33,7 +43,7 @@ locomotiveScrollFiles.forEach(({ src, dest }) => {
 
   if (existsSync(srcPath)) {
     copyFileSync(srcPath, destPath);
-    console.log(`✓ Copied ${src} to public/vendor/${dest}`);
+    log(`✓ Copied ${src} to public/vendor/${dest}`);
   } else {
     console.warn(`⚠ File not found: ${srcPath}`);
   }
@@ -52,7 +62,7 @@ threeFiles.forEach(({ src, dest }) => {
 
   if (existsSync(srcPath)) {
     copyFileSync(srcPath, destPath);
-    console.log(`✓ Copied ${src} to public/vendor/${dest}`);
+    log(`✓ Copied ${src} to public/vendor/${dest}`);
   } else {
     console.warn(`⚠ File not found: ${srcPath}`);
   }
@@ -81,7 +91,7 @@ if (existsSync(magmaLoaderDir)) {
 
     if (statSync(srcPath).isFile()) {
       copyFileSync(srcPath, destPath);
-      console.log(`✓ Copied ${file} to public/vendor/maggioli-loader/${file}`);
+      log(`✓ Copied ${file} to public/vendor/maggioli-loader/${file}`);
     }
   });
 
@@ -107,7 +117,7 @@ if (existsSync(magmaLoaderDir)) {
         const destPath = join(polyfillsDestDir, file);
         if (statSync(srcPath).isFile()) {
           copyFileSync(srcPath, destPath);
-          console.log(
+          log(
             `✓ Copied polyfills/${file} to public/vendor/maggioli-loader/dist/esm/polyfills/${file}`
           );
         }
@@ -119,7 +129,7 @@ if (existsSync(magmaLoaderDir)) {
     const loaderJsPath = join(distEsmDir, 'loader.js');
     if (existsSync(loaderJsPath)) {
       copyFileSync(loaderJsPath, join(distEsmDestDir, 'loader.js'));
-      console.log(`✓ Copied loader.js to public/vendor/maggioli-loader/dist/esm/loader.js`);
+      log(`✓ Copied loader.js to public/vendor/maggioli-loader/dist/esm/loader.js`);
 
       // Copy ALL .js files from dist/esm (dependencies, chunks, entry files, etc.)
       const distEsmFiles = readdirSync(distEsmDir);
@@ -129,7 +139,7 @@ if (existsSync(magmaLoaderDir)) {
           const destPath = join(distEsmDestDir, file);
           if (statSync(srcPath).isFile()) {
             copyFileSync(srcPath, destPath);
-            console.log(`✓ Copied ${file} to public/vendor/maggioli-loader/dist/esm/${file}`);
+            log(`✓ Copied ${file} to public/vendor/maggioli-loader/dist/esm/${file}`);
           }
         }
       });
