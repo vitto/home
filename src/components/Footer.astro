@@ -25,11 +25,13 @@ const socialLinks = [
 ---
 
 <footer class="px-600 desktop:px-1200 pb-3200">
-  <div class="max-w-screen-desktop w-full mx-auto text-center grid">
-    <mds-text typography="h2" class="mb-400 text-tone-neutral-01">Let's Connect</mds-text>
-    <mds-text typography="detail" class="mb-1200">
-      Interested in collaborating or learning more about my work in UX design and design systems?
-    </mds-text>
+  <div class="max-w-screen-desktop w-full mx-auto text-center grid gap-1200">
+    <div class="grid gap-200">
+      <mds-text typography="h2" class="text-tone-neutral-01">Let's Connect</mds-text>
+      <mds-text typography="detail">
+        Interested in collaborating or learning more about my work in UX design and design systems?
+      </mds-text>
+    </div>
 
     <div class="flex flex-wrap justify-center gap-600 items-start">
       {
@@ -56,5 +58,10 @@ const socialLinks = [
         ))
       }
     </div>
+
+    <mds-text
+      >No tracking. No ads. Just static HTML hosted on GitHub Pages.<br />
+      This site respects your privacy by design.</mds-text
+    >
   </div>
 </footer>
