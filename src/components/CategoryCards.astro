@@ -53,9 +53,7 @@ const categories = [
       {
         categories.map((category) => (
           <a href={category.link} class="block group no-underline" data-category-id={category.id}>
-            <mds-card
-              class="text-tone-neutral-03 group-hover:-translate-y-200 shadow-sm-sharp transition-cosmetic bg-tone-neutral/80 backdrop-blur group-hover:bg-tone-neutral ease-out-expo duration-1000"
-            >
+            <mds-card class="text-tone-neutral-03 group-hover:-translate-y-200 shadow-sm-sharp transition-cosmetic bg-tone-neutral/80 backdrop-blur group-hover:bg-tone-neutral ease-out-expo duration-1000">
               <mds-card-content class="p-600">
                 <div
                   class={`p-200 rounded-lg inline-flex justify-self-start bg-transparent transition-cosmetic group-hover:-translate-y-200 group-hover:pt-200 ease-out-expo duration-1000 fill-tone-neutral-03 ${category.iconHover}`}
