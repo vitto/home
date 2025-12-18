@@ -67,7 +67,7 @@ const categories = [
                   {category.description}
                 </mds-text>
                 <div class="mt-600 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-cosmetic translate-y-200">
-                  <mds-text text="Explore →" animation="yugop" />
+                  <mds-text text="→" animation="yugop" data-category-text={category.id} />
                 </div>
               </mds-card-content>
             </mds-card>
@@ -163,5 +163,34 @@ const categories = [
   } else {
     // Wait a bit for locomotive-scroll to initialize
     setTimeout(initCategoryCardsParallax, 200);
+  }
+
+  // Handle category card text animation on hover
+  function initCategoryCardsTextAnimation() {
+    const categoryLinks = document.querySelectorAll('[data-category-id]');
+
+    categoryLinks.forEach((link) => {
+      const categoryId = link.getAttribute('data-category-id');
+      const textElement = document.querySelector(`[data-category-text="${categoryId}"]`);
+
+      if (!textElement) return;
+
+      link.addEventListener('mouseenter', () => {
+        // Change text to trigger animation
+        textElement.setAttribute('text', 'Explore →');
+      });
+
+      link.addEventListener('mouseleave', () => {
+        // Change text back to trigger animation
+        textElement.setAttribute('text', '→');
+      });
+    });
+  }
+
+  // Initialize text animation when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCategoryCardsTextAnimation);
+  } else {
+    initCategoryCardsTextAnimation();
   }
 </script>
