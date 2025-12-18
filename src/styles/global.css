@@ -42,3 +42,12 @@ mds-text {
   line-height: 1;
   min-height: auto;
 }
+
+mds-button[variant='dark'][tone='ghost'] {
+  --mds-button-border-color: var(--tone-neutral-07);
+  border-radius: 1000px;
+}
+
+mds-button[variant='dark'][tone='ghost']:hover {
+  --mds-button-border-color: var(--tone-neutral-07);
+}
