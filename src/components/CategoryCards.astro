@@ -45,7 +45,7 @@ const categories = [
 
 <section
   id="category-cards-section"
-  class="category-cards-parallax py-2000 px-600 desktop:px-1200 bg-white relative z-10"
+  class="category-cards-parallax pb-2000 px-600 desktop:px-1200 bg-white relative z-10"
   data-scroll
 >
   <div class="max-w-screen-wide w-full mx-auto">
@@ -53,10 +53,10 @@ const categories = [
       {
         categories.map((category) => (
           <a href={category.link} class="block group no-underline" data-category-id={category.id}>
-            <mds-card class="text-tone-neutral-03 group-hover:-translate-y-200 shadow-sm-sharp transition-cosmetic bg-tone-neutral/80 backdrop-blur group-hover:bg-tone-neutral ease-out-expo duration-1000">
+            <mds-card class="rounded-3xl text-tone-neutral-03 group-hover:-translate-y-200 shadow-sm-sharp transition-cosmetic bg-tone-neutral/80 backdrop-blur group-hover:bg-tone-neutral ease-out-expo duration-1000">
               <mds-card-content class="p-600">
                 <div
-                  class={`p-200 rounded-lg inline-flex justify-self-start bg-transparent transition-cosmetic group-hover:-translate-y-200 group-hover:pt-200 ease-out-expo duration-1000 fill-tone-neutral-03 ${category.iconHover}`}
+                  class={`p-200 -translate-x-200 rounded-lg inline-flex justify-self-start bg-transparent transition-cosmetic group-hover:-translate-y-200 group-hover:pt-200 ease-out-expo duration-1000 fill-tone-neutral-03 ${category.iconHover}`}
                 >
                   <mds-icon name={category.icon} />
                 </div>
