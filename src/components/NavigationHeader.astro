@@ -1,0 +1,56 @@
+---
+interface Props {
+  items?: Array<{
+    href: string;
+    label: string;
+    icon: string;
+  }>;
+}
+
+const baseUrl = import.meta.env.BASE_URL;
+
+const defaultItems = [
+  {
+    href: baseUrl,
+    label: 'Home',
+    icon: 'mi/baseline/home',
+  },
+  {
+    href: `${baseUrl}user-centered-design`,
+    label: 'User-Centered Design',
+    icon: 'mi/baseline/person',
+  },
+  {
+    href: `${baseUrl}design-systems`,
+    label: 'Design Systems',
+    icon: 'mi/baseline/palette',
+  },
+  {
+    href: `${baseUrl}hax-principles`,
+    label: 'HAX Principles',
+    icon: 'mgg/ai-chatbot',
+  },
+];
+
+const { items = defaultItems } = Astro.props;
+---
+
+<header class="sticky top-0 z-50 bg-tone-neutral/95 backdrop-blur-sm border-b border-tone-neutral-08">
+  <nav class="max-w-screen-desktop w-full mx-auto px-400 desktop:px-1200 py-600">
+    <div class="flex flex-wrap items-center gap-400 justify-center tablet:justify-start">
+      {items.map((item) => (
+        <mds-button
+          href={item.href}
+          size="sm"
+          variant="dark"
+          tone="ghost"
+          icon={item.icon}
+          class="whitespace-nowrap"
+        >
+          {item.label}
+        </mds-button>
+      ))}
+    </div>
+  </nav>
+</header>
+
