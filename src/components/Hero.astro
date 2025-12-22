@@ -1,17 +1,27 @@
 ---
-import DisplacedSphereBackground from './DisplacedSphereBackground.astro';
+import DisplacedSphere from './DisplacedSphere.astro';
 // Get base URL from Astro config
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<section class="min-h-[720px] flex items-start justify-center px-400 relative overflow-hidden">
-  <DisplacedSphereBackground />
+<DisplacedSphere
+  initialX={2}
+  initialY={-0.15}
+  initialZ={-3}
+  initialScale={0.5}
+  initialBlur={0}
+  animationDelay={300}
+  animationDuration={1500}
+  maxParallaxOffset={0.3}
+/>
+<section class="flex items-start justify-center px-400 relative overflow-hidden">
   <div
-    class="max-w-screen-desktop w-full mx-auto px-600 py-1200 relative z-10 text-tone-neutral text-center grid gap-400"
+    class="max-w-screen-desktop w-full mx-auto p-600 py-1200 relative z-10 text-tone-neutral text-center grid gap-400"
   >
     <div class="grid">
       <!-- <mds-icon icon="vv/logo" class="w-3600 h-3600 justify-self-center"></mds-icon> -->
       <mds-img
+        loading="auto"
         src={`${baseUrl}/vittorio-vittori-logo.svg`}
         class="w-3600 h-3600 justify-self-center"></mds-img>
       <mds-text typography="h1" class="vittori-o">

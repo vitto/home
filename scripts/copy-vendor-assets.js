@@ -2,7 +2,6 @@
 /**
  * Script to copy vendor assets to public directory
  * This is for libraries that need to be loaded as static files
- * (e.g., locomotive-scroll which expects to be loaded globally)
  */
 
 import { copyFileSync, mkdirSync, existsSync, readdirSync, statSync } from 'fs';
@@ -30,25 +29,6 @@ if (!existsSync(vendorDir)) {
   mkdirSync(vendorDir, { recursive: true });
 }
 
-// Copy locomotive-scroll assets
-const locomotiveScrollDir = join(rootDir, 'node_modules', 'locomotive-scroll', 'dist');
-const locomotiveScrollFiles = [
-  { src: 'locomotive-scroll.min.js', dest: 'locomotive-scroll.min.js' },
-  { src: 'locomotive-scroll.css', dest: 'locomotive-scroll.css' },
-];
-
-locomotiveScrollFiles.forEach(({ src, dest }) => {
-  const srcPath = join(locomotiveScrollDir, src);
-  const destPath = join(vendorDir, dest);
-
-  if (existsSync(srcPath)) {
-    copyFileSync(srcPath, destPath);
-    log(`✓ Copied ${src} to public/vendor/${dest}`);
-  } else {
-    console.warn(`⚠ File not found: ${srcPath}`);
-  }
-});
-
 // Copy Three.js assets
 const threeDir = join(rootDir, 'node_modules', 'three', 'build');
 const threeFiles = [
@@ -67,6 +47,38 @@ threeFiles.forEach(({ src, dest }) => {
     console.warn(`⚠ File not found: ${srcPath}`);
   }
 });
+
+// Copy easing-utils assets
+const easingUtilsDir = join(rootDir, 'node_modules', 'easing-utils');
+const easingUtilsFiles = [
+  { src: 'index.js', dest: 'easing-utils.js' },
+  { src: 'index.mjs', dest: 'easing-utils.mjs' },
+];
+
+// Try to find the main file (could be index.js, index.mjs, or dist/index.js)
+const possiblePaths = [
+  join(easingUtilsDir, 'index.js'),
+  join(easingUtilsDir, 'index.mjs'),
+  join(easingUtilsDir, 'dist', 'index.js'),
+  join(easingUtilsDir, 'dist', 'index.mjs'),
+  join(easingUtilsDir, 'src', 'index.js'),
+];
+
+let easingUtilsMainFile = null;
+for (const path of possiblePaths) {
+  if (existsSync(path)) {
+    easingUtilsMainFile = path;
+    break;
+  }
+}
+
+if (easingUtilsMainFile) {
+  const destPath = join(vendorDir, 'easing-utils.js');
+  copyFileSync(easingUtilsMainFile, destPath);
+  log(`✓ Copied easing-utils to public/vendor/easing-utils.js`);
+} else {
+  console.warn(`⚠ easing-utils main file not found. Tried: ${possiblePaths.join(', ')}`);
+}
 
 // Copy Maggioli Design System loader and dependencies
 const magmaDir = join(rootDir, 'node_modules', '@maggioli-design-system', 'magma');

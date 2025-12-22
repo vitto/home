@@ -3,9 +3,8 @@
 declare global {
   interface Window {
     __sphereParentSection?: HTMLElement;
-    __locomotiveScroll?: any;
-    LocomotiveScroll?: any;
     THREE?: any;
+    __sphereParallaxUpdate?: () => void;
   }
 }
 

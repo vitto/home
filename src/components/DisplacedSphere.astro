@@ -1,6 +1,6 @@
 ---
 /**
- * Displaced Sphere Background
+ * Displaced Sphere
  *
  * Based on: https://github.com/pavel-mazhuga/codrops-tutorial-distorted-sphere-custom-material
  * Creates an animated displaced sphere with custom shaders
@@ -17,6 +17,17 @@
  * @param {number} sphereDetail - Detail level/subdivisions of the sphere (default: 200)
  * @param {number} zoomLevel - Zoom level multiplier for camera distance (default: 0.6, lower = more zoom)
  * @param {number} sphereVerticalPosition - Vertical position offset of the sphere (default: 0.5, relative to radius)
+ * @param {number} initialX - Initial X position offset (default: 0)
+ * @param {number} initialY - Initial Y position offset (default: 0)
+ * @param {number} initialZ - Initial Z position offset (default: 0)
+ * @param {number} initialScale - Initial scale (default: 1.0)
+ * @param {number} initialBlur - Initial blur amount (0-1, default: 0)
+ * @param {number} animationDelay - Delay before animation starts in ms (default: 0)
+ * @param {number} animationDuration - Animation duration in ms (default: 2000)
+ * @param {number} maxParallaxOffset - Maximum parallax offset for Y position in world units (default: 0, disabled)
+ *                                     Positive values move sphere down as you scroll, negative moves it up
+ * @param {number} initialParallaxOffset - Initial parallax offset value (default: 0)
+ *                                         This sets the starting parallax offset before scroll begins
  */
 interface Props {
   defaultColor?: string;
@@ -24,6 +35,15 @@ interface Props {
   sphereDetail?: number;
   zoomLevel?: number;
   sphereVerticalPosition?: number;
+  initialX?: number;
+  initialY?: number;
+  initialZ?: number;
+  initialScale?: number;
+  initialBlur?: number;
+  animationDelay?: number;
+  animationDuration?: number;
+  maxParallaxOffset?: number;
+  initialParallaxOffset?: number;
 }
 
 const {
@@ -32,11 +52,30 @@ const {
   sphereDetail = 400,
   zoomLevel = 0.6, // Lower values = more zoom (0.6 = 60% of base distance)
   sphereVerticalPosition = 0.45, // Vertical offset relative to sphere radius (0.5 = half radius up)
+  initialX = 0,
+  initialY = 0,
+  initialZ = 0,
+  initialScale = 1.0,
+  initialBlur = 0,
+  animationDelay = 0,
+  animationDuration = 2000,
+  maxParallaxOffset = 0,
+  initialParallaxOffset = 0,
 } = Astro.props;
+
+// Use lower detail for initial render, then enhance
+const initialDetail = Math.min(50, Math.floor(sphereDetail / 8));
+const targetDetail = sphereDetail;
 ---
 
-<div id="sphere-background" class="absolute inset-0 pointer-events-none">
-  <canvas id="sphere-canvas"></canvas>
+<div id="sphere-background" class="fixed inset-0 pointer-events-none">
+  <canvas id="sphere-canvas" aria-hidden="true"></canvas>
+  <div
+    id="sphere-loading"
+    class="absolute inset-0 bg-gradient-to-b from-transparent to-transparent opacity-0 transition-opacity duration-500"
+    aria-hidden="true"
+  >
+  </div>
 </div>
 
 <script>
@@ -52,17 +91,72 @@ const {
 
 <script
   type="module"
+  defer
   define:vars={{
     defaultColor,
     sphereRadius,
     sphereDetail,
     zoomLevel,
     sphereVerticalPosition,
+    initialX,
+    initialY,
+    initialZ,
+    initialScale,
+    initialBlur,
+    animationDelay,
+    animationDuration,
+    initialDetail,
+    targetDetail,
+    maxParallaxOffset,
+    initialParallaxOffset,
     baseUrl: import.meta.env.BASE_URL,
   }}
 >
-  (async () => {
-    // Import Three.js from vendor directory
+  // Defer initialization to avoid blocking initial render
+  const initSphere = async () => {
+    // Wait for idle time or use setTimeout as fallback
+    if ('requestIdleCallback' in window) {
+      await new Promise((resolve) => {
+        requestIdleCallback(resolve, { timeout: 2000 });
+      });
+    } else {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+
+    // Check if component is visible using IntersectionObserver
+    const canvas = document.getElementById('sphere-canvas');
+    if (!canvas) return;
+
+    // Use IntersectionObserver to only initialize when visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+          initializeThreeJS();
+        }
+      },
+      { rootMargin: '50px' }
+    );
+
+    observer.observe(canvas);
+
+    // Fallback: initialize after 1 second if still not visible
+    setTimeout(() => {
+      if (observer) {
+        observer.disconnect();
+        initializeThreeJS();
+      }
+    }, 1000);
+  };
+
+  const initializeThreeJS = async () => {
+    // Show loading state
+    const loadingEl = document.getElementById('sphere-loading');
+    if (loadingEl) {
+      loadingEl.style.opacity = '0.3';
+    }
+
+    // Import Three.js from vendor directory (lazy load)
     const THREE = await import(`${baseUrl}/vendor/three.module.min.js`);
 
     // Helper function to get CSS custom property value and convert to hex
@@ -114,7 +208,7 @@ const {
 
     const canvas = document.getElementById('sphere-canvas');
     if (!canvas) {
-      // console.warn('DisplacedSphereBackground: Canvas not found');
+      // console.warn('DisplacedSphere: Canvas not found');
       return;
     }
 
@@ -152,7 +246,8 @@ const {
       alpha: true,
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    // Limit pixel ratio for better performance
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -162,107 +257,76 @@ const {
     directionalLight.position.set(-2, -2, 3.5); // Moved light down (negative Y)
     scene.add(directionalLight);
 
-    // Create geometry with high detail
-    let geometry = new THREE.IcosahedronGeometry(sphereRadius, sphereDetail);
-
-    // Ensure geometry has all required attributes for computeTangents
-    // Required: index, position, normal, uv
-    let mergedGeometry = geometry;
-    let hasTangents = false;
-
-    // Ensure normals exist
-    if (!geometry.hasAttribute('normal')) {
-      geometry.computeVertexNormals();
-    }
-
-    // Create UV coordinates if missing (must be done before indexing)
-    // IcosahedronGeometry might not have UVs by default in some versions
-    if (!geometry.hasAttribute('uv')) {
-      // console.log('DisplacedSphereBackground: Creating UV coordinates...');
-      const positionAttribute = geometry.getAttribute('position');
-      const vertexCount = positionAttribute.count;
-      const uvs = new Float32Array(vertexCount * 2);
-
-      // Generate spherical UV coordinates
-      for (let i = 0; i < vertexCount; i++) {
-        const x = positionAttribute.getX(i);
-        const y = positionAttribute.getY(i);
-        const z = positionAttribute.getZ(i);
-
-        // Convert 3D position to spherical coordinates, then to UV
-        const u = Math.atan2(x, z) / (2 * Math.PI) + 0.5;
-        const v = Math.asin(y) / Math.PI + 0.5;
-
-        uvs[i * 2] = u;
-        uvs[i * 2 + 1] = v;
+    // Helper function to process geometry attributes (split into chunks for non-blocking)
+    const processGeometryAttributes = (geo, computeTangentsNow = false) => {
+      // Ensure normals exist
+      if (!geo.hasAttribute('normal')) {
+        geo.computeVertexNormals();
       }
 
-      geometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
-    }
+      // Create UV coordinates if missing (must be done before indexing)
+      if (!geo.hasAttribute('uv')) {
+        const positionAttribute = geo.getAttribute('position');
+        const vertexCount = positionAttribute.count;
+        const uvs = new Float32Array(vertexCount * 2);
 
-    // Ensure geometry is indexed (required for computeTangents)
-    // IcosahedronGeometry might not be indexed when loaded from CDN
-    if (geometry.index === null) {
-      // console.log('DisplacedSphereBackground: Geometry is not indexed, creating index...');
+        // Generate spherical UV coordinates
+        for (let i = 0; i < vertexCount; i++) {
+          const x = positionAttribute.getX(i);
+          const y = positionAttribute.getY(i);
+          const z = positionAttribute.getZ(i);
 
-      // If geometry is not indexed, we need to create an index
-      // For a non-indexed geometry, vertices are already in triangle order
-      const positionAttribute = geometry.getAttribute('position');
-      const vertexCount = positionAttribute.count;
+          // Convert 3D position to spherical coordinates, then to UV
+          const u = Math.atan2(x, z) / (2 * Math.PI) + 0.5;
+          const v = Math.asin(y) / Math.PI + 0.5;
 
-      // Create index: for non-indexed geometry, each 3 vertices form a triangle
-      const triangleCount = vertexCount / 3;
-      const indices = new Uint32Array(triangleCount * 3);
+          uvs[i * 2] = u;
+          uvs[i * 2 + 1] = v;
+        }
 
-      for (let i = 0; i < triangleCount; i++) {
-        indices[i * 3] = i * 3;
-        indices[i * 3 + 1] = i * 3 + 1;
-        indices[i * 3 + 2] = i * 3 + 2;
+        geo.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
       }
 
-      geometry.setIndex(new THREE.BufferAttribute(indices, 1));
-      // console.log('DisplacedSphereBackground: Index created', { triangleCount, indexCount: indices.length });
-    }
+      // Ensure geometry is indexed (required for computeTangents)
+      if (geo.index === null) {
+        const positionAttribute = geo.getAttribute('position');
+        const vertexCount = positionAttribute.count;
+        const triangleCount = vertexCount / 3;
+        const indices = new Uint32Array(triangleCount * 3);
 
-    // Update mergedGeometry reference
-    mergedGeometry = geometry;
+        for (let i = 0; i < triangleCount; i++) {
+          indices[i * 3] = i * 3;
+          indices[i * 3 + 1] = i * 3 + 1;
+          indices[i * 3 + 2] = i * 3 + 2;
+        }
 
-    // Verify all required attributes exist
-    const hasIndex = mergedGeometry.index !== null;
-    const hasPosition = mergedGeometry.hasAttribute('position');
-    const hasNormal = mergedGeometry.hasAttribute('normal');
-    const hasUV = mergedGeometry.hasAttribute('uv');
-
-    // console.log('DisplacedSphereBackground: Geometry attributes check', {
-    //   hasIndex,
-    //   hasPosition,
-    //   hasNormal,
-    //   hasUV,
-    //   hasComputeTangents: !!mergedGeometry.computeTangents,
-    //   indexCount: mergedGeometry.index ? mergedGeometry.index.count : 0,
-    //   positionCount: hasPosition ? mergedGeometry.getAttribute('position').count : 0,
-    //   normalCount: hasNormal ? mergedGeometry.getAttribute('normal').count : 0,
-    //   uvCount: hasUV ? mergedGeometry.getAttribute('uv').count : 0
-    // });
-
-    if (hasIndex && hasPosition && hasNormal && hasUV && mergedGeometry.computeTangents) {
-      try {
-        mergedGeometry.computeTangents();
-        hasTangents = mergedGeometry.hasAttribute('tangent');
-        // console.log('DisplacedSphereBackground: Tangents computed successfully', hasTangents);
-      } catch (tangentError) {
-        // console.warn('DisplacedSphereBackground: computeTangents failed', tangentError);
-        hasTangents = false;
+        geo.setIndex(new THREE.BufferAttribute(indices, 1));
       }
-    } else {
-      // console.warn('DisplacedSphereBackground: Geometry missing required attributes for computeTangents', {
-      //   hasIndex,
-      //   hasPosition,
-      //   hasNormal,
-      //   hasUV,
-      //   hasComputeTangents: !!mergedGeometry.computeTangents
-      // });
-    }
+
+      let hasTangents = false;
+      if (computeTangentsNow) {
+        const hasIndex = geo.index !== null;
+        const hasPosition = geo.hasAttribute('position');
+        const hasNormal = geo.hasAttribute('normal');
+        const hasUV = geo.hasAttribute('uv');
+
+        if (hasIndex && hasPosition && hasNormal && hasUV && geo.computeTangents) {
+          try {
+            geo.computeTangents();
+            hasTangents = geo.hasAttribute('tangent');
+          } catch (tangentError) {
+            hasTangents = false;
+          }
+        }
+      }
+
+      return hasTangents;
+    };
+
+    // Create geometry with lower initial detail for faster first render
+    const initialGeometry = new THREE.IcosahedronGeometry(sphereRadius, initialDetail);
+    let mergedGeometry = initialGeometry;
+    let hasTangents = processGeometryAttributes(mergedGeometry, true);
 
     // Shader uniforms
     let currentColor = primaryColor;
@@ -274,6 +338,7 @@ const {
       uNoiseStrength: { value: 0.5 },
       uFractAmount: { value: 8.0 },
       uSpeed: { value: 0.1 }, // Further reduced for slower animation
+      uBlur: { value: initialBlur },
     };
 
     // Classic Perlin 3D Noise function
@@ -384,6 +449,7 @@ const {
       ior: 2.81,
       iridescence: 0.96,
       color: new THREE.Color(primaryColor),
+      transparent: true, // Enable transparency for blur effect
     });
 
     // Modify shader using onBeforeCompile
@@ -395,6 +461,7 @@ const {
       shader.uniforms.uNoiseStrength = uniforms.uNoiseStrength;
       shader.uniforms.uFractAmount = uniforms.uFractAmount;
       shader.uniforms.uSpeed = uniforms.uSpeed;
+      shader.uniforms.uBlur = uniforms.uBlur;
 
       // Build shader code based on whether tangents are available
       // Following the tutorial: https://tympanus.net/codrops/2024/07/09/creating-an-animated-displaced-sphere-with-a-custom-three-js-material/
@@ -468,30 +535,160 @@ const {
         `
       );
 
-      // Modify fragment shader to use custom color
+      // Modify fragment shader to use custom color and blur
       shader.fragmentShader = shader.fragmentShader.replace(
         '#include <common>',
         `#include <common>
         uniform vec3 uColor;
+        uniform float uBlur;
         varying float vPattern;
         `
       );
 
-      // Apply color in fragment shader
+      // Apply color and blur in fragment shader
       shader.fragmentShader = shader.fragmentShader.replace(
         '#include <color_fragment>',
         `
         #include <color_fragment>
-        diffuseColor.rgb = mix(diffuseColor.rgb, uColor, 0.8) * (0.5 + vPattern * 0.5);
+        vec3 baseColor = mix(diffuseColor.rgb, uColor, 0.8) * (0.5 + vPattern * 0.5);
+
+        // Apply blur effect: reduce intensity, add glow, and reduce alpha
+        // Blur creates a softer, more diffused appearance
+        float blurFactor = uBlur;
+        vec3 blurredColor = mix(baseColor, baseColor * 0.2, blurFactor);
+
+        // Add glow effect for blur
+        vec3 glowColor = mix(blurredColor, uColor * 0.5, blurFactor * 0.3);
+
+        // Reduce alpha for transparency effect
+        diffuseColor.a *= (1.0 - blurFactor * 0.5);
+
+        // Apply final color with blur
+        diffuseColor.rgb = mix(baseColor, glowColor, blurFactor);
         `
       );
     };
 
     // Create mesh
     const sphere = new THREE.Mesh(mergedGeometry, material);
-    // Position sphere vertically based on parameter
-    sphere.position.y = sphereRadius * sphereVerticalPosition;
+
+    // Set initial position, scale, and rotation
+    const finalY = sphereRadius * sphereVerticalPosition;
+
+    // Calculate initial and final positions correctly
+    // X is always centered (ignored)
+    const initialPosition = {
+      x: 0, // Always centered on X axis
+      y: initialY + finalY,
+      z: initialZ,
+    };
+    const finalPosition = {
+      x: 0, // Always centered on X axis
+      y: finalY,
+      z: 0,
+    };
+    const finalScale = 1.0;
+    const finalBlur = 0;
+
+    // Set initial state
+    sphere.position.set(initialPosition.x, initialPosition.y, initialPosition.z);
+    sphere.scale.set(initialScale, initialScale, initialScale);
+    uniforms.uBlur.value = initialBlur;
+
+    // Apply initial CSS blur
+    if (canvas && initialBlur > 0) {
+      const blurAmount = initialBlur * 20.0;
+      canvas.style.filter = `blur(${blurAmount}px)`;
+      canvas.style.opacity = 1.0 - initialBlur * 0.3;
+    }
+
     scene.add(sphere);
+
+    // Animation state
+    let animationStartTime = null;
+    let isAnimating = false;
+
+    // Parallax state for smooth interpolation
+    // Initialize to initialParallaxOffset to set starting parallax value
+    // This ensures smooth transition from initial animation to parallax
+    let targetParallaxOffset = initialParallaxOffset;
+    let currentParallaxOffset = initialParallaxOffset;
+
+    // Easing function (ease-out-expo)
+    const easeOutExpo = (t) => {
+      return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+    };
+
+    // Start animation after delay (wait for first render)
+    const startAnimation = () => {
+      const start = () => {
+        animationStartTime = performance.now();
+        isAnimating = true;
+        // console.log('DisplacedSphere: Animation started', {
+        //   initialPosition,
+        //   finalPosition,
+        //   initialScale,
+        //   finalScale,
+        //   initialBlur,
+        //   finalBlur
+        // });
+      };
+
+      if (animationDelay > 0) {
+        setTimeout(start, animationDelay);
+      } else {
+        // Small delay to ensure first frame is rendered
+        requestAnimationFrame(() => {
+          requestAnimationFrame(start);
+        });
+      }
+    };
+
+    // Render first frame with initial values before starting animation
+    renderer.render(scene, camera);
+
+    startAnimation();
+
+    // Progressive enhancement: upgrade to higher detail after initial animation completes
+    // This prevents the geometry upgrade from blocking the initial animation
+    if (targetDetail > initialDetail) {
+      const upgradeGeometry = () => {
+        // Wait until initial animation is complete
+        const checkAnimationComplete = () => {
+          if (!isAnimating) {
+            // Animation complete, now upgrade geometry
+            const upgrade = () => {
+              const highDetailGeometry = new THREE.IcosahedronGeometry(sphereRadius, targetDetail);
+              processGeometryAttributes(highDetailGeometry, true);
+
+              // Replace geometry smoothly
+              sphere.geometry.dispose();
+              sphere.geometry = highDetailGeometry;
+            };
+
+            // Use requestIdleCallback to upgrade geometry when browser is idle
+            if ('requestIdleCallback' in window) {
+              requestIdleCallback(upgrade, { timeout: 1000 });
+            } else {
+              setTimeout(upgrade, 200);
+            }
+          } else {
+            // Animation still running, check again in next frame
+            requestAnimationFrame(checkAnimationComplete);
+          }
+        };
+
+        // Start checking after a small delay to ensure animation has started
+        setTimeout(() => {
+          requestAnimationFrame(checkAnimationComplete);
+        }, 100);
+      };
+
+      // Start upgrade process after initial render
+      requestAnimationFrame(() => {
+        requestAnimationFrame(upgradeGeometry);
+      });
+    }
 
     // Color transition function
     function updateColor() {
@@ -537,11 +734,94 @@ const {
 
     // Animation loop
     let time = 0;
+    let lastFrameTime = performance.now();
+    let firstFrameRendered = false;
+
     function animate() {
       requestAnimationFrame(animate);
 
-      time += 0.016; // ~60fps
+      // Calculate delta time for smooth animation regardless of frame rate
+      const currentTime = performance.now();
+      const deltaTime = Math.min((currentTime - lastFrameTime) / 1000, 0.1); // Cap at 100ms
+      lastFrameTime = currentTime;
+
+      // Update time for displacement animation (always running for fluid effect)
+      time += deltaTime;
       uniforms.uTime.value = time;
+
+      // Handle initial animation (position, scale, blur)
+      if (isAnimating && animationStartTime !== null) {
+        const elapsed = performance.now() - animationStartTime;
+        const progress = Math.min(elapsed / animationDuration, 1);
+        const eased = easeOutExpo(progress);
+
+        // Animate position
+        // X is always centered (ignored)
+        sphere.position.x = 0; // Always centered on X axis
+        sphere.position.y = THREE.MathUtils.lerp(initialPosition.y, finalPosition.y, eased);
+        sphere.position.z = THREE.MathUtils.lerp(initialPosition.z, finalPosition.z, eased);
+
+        // Animate scale
+        const currentScale = THREE.MathUtils.lerp(initialScale, finalScale, eased);
+        sphere.scale.set(currentScale, currentScale, currentScale);
+
+        // Animate blur
+        const currentBlur = THREE.MathUtils.lerp(initialBlur, finalBlur, eased);
+        uniforms.uBlur.value = currentBlur;
+
+        // Apply CSS filter blur for visual effect
+        if (canvas) {
+          const blurAmount = currentBlur * 20.0; // Max 20px blur
+          canvas.style.filter = blurAmount > 0 ? `blur(${blurAmount}px)` : 'none';
+          canvas.style.opacity = 1.0 - currentBlur * 0.3; // Slight opacity reduction
+        }
+
+        // Stop animation when complete
+        if (progress >= 1) {
+          isAnimating = false;
+          // Initialize parallax offset to initialParallaxOffset when animation completes
+          // This ensures smooth transition from initial animation to parallax
+          if (maxParallaxOffset !== 0) {
+            currentParallaxOffset = initialParallaxOffset;
+            targetParallaxOffset = initialParallaxOffset;
+          }
+        }
+      }
+
+      // Apply parallax offset to Y position with smooth interpolation
+      if (maxParallaxOffset !== 0 && !isAnimating) {
+        // Calculate parallax directly in animation loop for smooth, frame-synced updates
+        const categorySection = document.getElementById('category-cards-section');
+        if (categorySection) {
+          const windowHeight = window.innerHeight;
+          const sectionRect = categorySection.getBoundingClientRect();
+          const sectionTop = sectionRect.top;
+
+          // Calculate when animation should start and end
+          const startPoint = windowHeight;
+          const endPoint = -windowHeight * 0.5;
+
+          // Calculate progress (0 to 1)
+          const progress = Math.min(
+            Math.max((startPoint - sectionTop) / (startPoint - endPoint), 0),
+            1
+          );
+
+          // Calculate target parallax offset
+          // Start from initialParallaxOffset and add parallax based on scroll progress
+          const targetOffset = initialParallaxOffset + progress * maxParallaxOffset;
+
+          // Smoothly interpolate current offset towards target
+          // Use exponential smoothing for very smooth movement
+          // Higher factor = more responsive, lower = smoother
+          const smoothingFactor = 0.01; // Adjust this (0.1-0.3 range works well)
+          currentParallaxOffset += (targetOffset - currentParallaxOffset) * smoothingFactor;
+
+          // Apply parallax offset to sphere Y position
+          // This smoothly transitions from initial position to final + parallax
+          sphere.position.y = finalPosition.y + currentParallaxOffset;
+        }
+      }
 
       // Rotate sphere slowly (further reduced speed)
       sphere.rotation.y += 0.0001;
@@ -549,10 +829,28 @@ const {
       // Update color
       updateColor();
 
+      // Always render to maintain fluid animation
       renderer.render(scene, camera);
+
+      // Hide loading state once first frame is rendered
+      if (!firstFrameRendered) {
+        firstFrameRendered = true;
+        if (loadingEl) {
+          loadingEl.style.opacity = '0';
+          setTimeout(() => {
+            if (loadingEl && loadingEl.parentNode) {
+              loadingEl.style.display = 'none';
+            }
+          }, 500);
+        }
+      }
     }
 
     animate();
+
+    // Parallax scroll effect for sphere Y position
+    // Parallax is calculated directly in the animate loop using native scroll
+    // No need for locomotive-scroll or separate initialization
 
     // Handle resize
     function onResize() {
@@ -592,8 +890,11 @@ const {
       resizeObserver.observe(parentSectionForObserver);
     }
 
-    // console.log('DisplacedSphereBackground: Initialized', { sphereRadius, sphereDetail });
-  })();
+    // console.log('DisplacedSphere: Initialized', { sphereRadius, sphereDetail });
+  };
+
+  // Start initialization
+  initSphere();
 </script>
 
 <style>
@@ -616,3 +917,4 @@ const {
     left: 0;
   }
 </style>
+
