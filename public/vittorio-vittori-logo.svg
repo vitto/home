@@ -1,5 +1,6 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8.5 13H54.5L36.5 44L32.5 37L42.5 20H4.5L8.5 13Z" fill="black"/>
-<path d="M4.5 21H40.5L36.5 28H16.5L34.5 61H27.5L4.5 21Z" fill="black"/>
-<path d="M18.5 29H26.5L36.5 46L55.5 14L59.5 21L35.5 60L18.5 29Z" fill="black"/>
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <path d="M8.5 13H54.5L36.5 44L32.5 37L42.5 20H4.5L8.5 13Z" />
+  <path d="M4.5 21H40.5L36.5 28H16.5L34.5 61H27.5L4.5 21Z" />
+  <path d="M18.5 29H26.5L36.5 46L55.5 14L59.5 21L35.5 60L18.5 29Z" />
 </svg>
+
