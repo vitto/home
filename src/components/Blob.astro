@@ -30,6 +30,9 @@
  * @param {number} sphereDetail - Sphere detail/subdivisions (default: 54)
  * @param {number} cameraFov - Camera field of view (default: 15)
  * @param {number} cameraDistance - Camera distance (default: 4)
+ * @param {number} positionY - Y position offset (default: -0.2)
+ * @param {number} positionZ - Z position offset (default: 0)
+ * @param {number} scale - Scale multiplier (default: 1)
  */
 interface Props {
   speed?: number;
@@ -56,6 +59,9 @@ interface Props {
   sphereDetail?: number;
   cameraFov?: number;
   cameraDistance?: number;
+  positionY?: number;
+  positionZ?: number;
+  scale?: number;
 }
 
 const {
@@ -83,6 +89,9 @@ const {
   sphereDetail = 54,
   cameraFov = 15,
   cameraDistance = 4,
+  positionY = -0.2,
+  positionZ = 0,
+  scale = 1,
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -129,6 +138,9 @@ const baseUrl = import.meta.env.BASE_URL;
     sphereDetail,
     cameraFov,
     cameraDistance,
+    positionY,
+    positionZ,
+    scale,
     baseUrl,
   }}
 >
@@ -451,49 +463,10 @@ const baseUrl = import.meta.env.BASE_URL;
     // Create geometry and mesh
     const geometry = new THREE.IcosahedronGeometry(sphereRadius, sphereDetail);
     const mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(-0.4, -0.2, 0);
+    // X is always centered (0), Y and Z are configurable
+    mesh.position.set(0, positionY, positionZ);
+    mesh.scale.set(scale, scale, scale);
     scene.add(mesh);
-
-    // OrbitControls (simplified version)
-    let isDragging = false;
-    let previousMousePosition = { x: 0, y: 0 };
-    let cameraRotation = { x: 0, y: 0 };
-
-    const onMouseDown = (e) => {
-      isDragging = true;
-      previousMousePosition = { x: e.clientX, y: e.clientY };
-    };
-
-    const onMouseMove = (e) => {
-      if (!isDragging) return;
-
-      const deltaX = e.clientX - previousMousePosition.x;
-      const deltaY = e.clientY - previousMousePosition.y;
-
-      cameraRotation.y += deltaX * 0.01;
-      cameraRotation.x += deltaY * 0.01;
-
-      // Limit vertical rotation
-      cameraRotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, cameraRotation.x));
-
-      previousMousePosition = { x: e.clientX, y: e.clientY };
-    };
-
-    const onMouseUp = () => {
-      isDragging = false;
-    };
-
-    const onWheel = (e) => {
-      e.preventDefault();
-      currentCameraDistance += e.deltaY * 0.01;
-      currentCameraDistance = Math.max(1, Math.min(10, currentCameraDistance));
-    };
-
-    canvas.addEventListener('mousedown', onMouseDown);
-    canvas.addEventListener('mousemove', onMouseMove);
-    canvas.addEventListener('mouseup', onMouseUp);
-    canvas.addEventListener('mouseleave', onMouseUp);
-    canvas.addEventListener('wheel', onWheel);
 
     // Setup dat.gui if enabled
     let gui = null;
@@ -643,11 +616,8 @@ const baseUrl = import.meta.env.BASE_URL;
       time += deltaTime;
       uniforms.uTime.value = time;
 
-      // Update camera rotation
-      const radius = currentCameraDistance;
-      camera.position.x = Math.sin(cameraRotation.y) * Math.cos(cameraRotation.x) * radius;
-      camera.position.y = Math.sin(cameraRotation.x) * radius;
-      camera.position.z = Math.cos(cameraRotation.y) * Math.cos(cameraRotation.x) * radius;
+      // Camera stays in fixed position
+      camera.position.set(0, 0, currentCameraDistance);
       camera.lookAt(0, 0, 0);
 
       renderer.render(scene, camera);
@@ -671,11 +641,6 @@ const baseUrl = import.meta.env.BASE_URL;
     // Cleanup function
     return () => {
       window.removeEventListener('resize', onResize);
-      canvas.removeEventListener('mousedown', onMouseDown);
-      canvas.removeEventListener('mousemove', onMouseMove);
-      canvas.removeEventListener('mouseup', onMouseUp);
-      canvas.removeEventListener('mouseleave', onMouseUp);
-      canvas.removeEventListener('wheel', onWheel);
       if (gui) {
         gui.destroy();
       }
@@ -688,7 +653,7 @@ const baseUrl = import.meta.env.BASE_URL;
 
 <style>
   #blob-container {
-    position: relative;
+    position: fixed;
     width: 100%;
     height: 100%;
   }
