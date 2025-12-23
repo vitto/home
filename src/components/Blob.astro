@@ -30,7 +30,8 @@
  * @param {number} sphereDetail - Sphere detail/subdivisions (default: 54)
  * @param {number} cameraFov - Camera field of view (default: 15)
  * @param {number} cameraDistance - Camera distance (default: 4)
- * @param {number} positionY - Y position offset (default: -0.2)
+ * @param {number} positionY - Y position offset for desktop (viewport width > 480px, default: -0.2)
+ * @param {number} positionYMobile - Y position offset for mobile (viewport width <= 480px, default: same as positionY)
  * @param {number} positionZ - Z position offset (default: 0)
  * @param {number} scale - Scale multiplier (default: 1)
  * @param {number} maxScrollTranslate - Maximum translateY value in pixels when page is fully scrolled (default: 0, disabled)
@@ -61,6 +62,7 @@ interface Props {
   cameraFov?: number;
   cameraDistance?: number;
   positionY?: number;
+  positionYMobile?: number;
   positionZ?: number;
   scale?: number;
   maxScrollTranslate?: number;
@@ -92,10 +94,14 @@ const {
   cameraFov = 15,
   cameraDistance = 4,
   positionY = -0.2,
+  positionYMobile,
   positionZ = 0,
   scale = 1,
   maxScrollTranslate = 0,
 } = Astro.props;
+
+// Use positionYMobile if provided, otherwise fallback to positionY
+const mobilePositionY = positionYMobile !== undefined ? positionYMobile : positionY;
 
 const baseUrl = import.meta.env.BASE_URL;
 ---
@@ -142,6 +148,7 @@ const baseUrl = import.meta.env.BASE_URL;
     cameraFov,
     cameraDistance,
     positionY,
+    positionYMobile: positionYMobile !== undefined ? positionYMobile : positionY,
     positionZ,
     scale,
     maxScrollTranslate,
@@ -459,8 +466,16 @@ const baseUrl = import.meta.env.BASE_URL;
     // Create geometry and mesh
     const geometry = new THREE.IcosahedronGeometry(sphereRadius, sphereDetail);
     const mesh = new THREE.Mesh(geometry, material);
+
+    // Determine current positionY based on viewport width (mobile breakpoint: 480px)
+    // Use positionYMobile if provided, otherwise fallback to positionY
+    const mobilePositionY = positionYMobile !== undefined ? positionYMobile : positionY;
+    const getCurrentPositionY = () => {
+      return window.innerWidth <= 480 ? mobilePositionY : positionY;
+    };
+
     // X is always centered (0), Y and Z are configurable
-    mesh.position.set(0, positionY, positionZ);
+    mesh.position.set(0, getCurrentPositionY(), positionZ);
     mesh.scale.set(scale, scale, scale);
     scene.add(mesh);
 
@@ -630,6 +645,9 @@ const baseUrl = import.meta.env.BASE_URL;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
+
+      // Update mesh Y position based on viewport width
+      mesh.position.y = getCurrentPositionY();
     }
 
     window.addEventListener('resize', onResize);
