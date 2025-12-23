@@ -8,14 +8,11 @@ const baseUrl = import.meta.env.BASE_URL;
 
 <section class="flex items-start justify-center px-400 relative overflow-hidden">
   <div
-    class="max-w-screen-desktop w-full mx-auto p-600 py-1200 relative z-10 text-tone-neutral-01 text-center grid gap-400"
+    class="max-w-screen-desktop w-full mx-auto p-600 py-1200 relative z-10 text-tone-neutral text-center grid gap-400"
   >
     <div class="grid">
       <!-- <mds-icon icon="vv/logo" class="w-3600 h-3600 justify-self-center"></mds-icon> -->
-      <!-- <mds-img
-        loading="auto"
-        src={`${baseUrl}/vittorio-vittori-logo.svg`}
-        class="w-3600 h-3600 justify-self-center"></mds-img> -->
+      <img src={`${baseUrl}/vittorio-vittori-logo.svg`} class="w-3600 h-3600 justify-self-center" />
       <h1 class="text-title-h1 vittori-o">
         Vittori<span class="inline-block animate-pulse-more">o</span>
       </h1>
@@ -25,7 +22,7 @@ const baseUrl = import.meta.env.BASE_URL;
       Crafting scalable human-centered experiences<br />
       through systematic design thinking.
     </p>
-    <Button href="https://maggioli.com" class="justify-self-center">
+    <Button href="https://maggioli.com" class="justify-self-center" variant="hero">
       <Icon name="mi/baseline/alternate-email" />
       Maggioli Spa
     </Button>

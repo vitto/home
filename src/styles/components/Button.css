@@ -13,4 +13,12 @@
   &.button--outline {
     @apply border-2 border-solid border-tone-neutral-07;
   }
+
+  &.button--light {
+    @apply text-tone-neutral border-tone-neutral hover:bg-tone-neutral/30 focus-visible:bg-tone-neutral/30;
+  }
+
+  &.button--hero {
+    @apply text-tone-neutral border-tone-neutral hover:bg-tone-neutral-01/30 focus-visible:bg-tone-neutral-01/30;
+  }
 }
