@@ -6,6 +6,9 @@
 @import '@maggioli-design-system/styles/dist/tailwind/typography.css';
 @import '@maggioli-design-system/styles/dist/css/colors-rgb.css';
 @import '@maggioli-design-system/styles/dist/css/base.css';
+@import './iconsauce.css';
+@import './components/Button.css';
+@import './components/Icon.css';
 
 :root {
   --variant-primary: var(--label-sky-06);
@@ -17,10 +20,6 @@
 body,
 html {
   scroll-behavior: smooth;
-}
-
-html,
-mds-text {
   font-family:
     system-ui,
     -apple-system,
@@ -41,13 +40,4 @@ mds-text {
   font-size: clamp(4rem, 10vw, 6rem);
   line-height: 1;
   min-height: auto;
-}
-
-mds-button[variant='dark'][tone='ghost'] {
-  --mds-button-border-color: var(--tone-neutral-07);
-  border-radius: 1000px;
-}
-
-mds-button[variant='dark'][tone='ghost']:hover {
-  --mds-button-border-color: var(--tone-neutral-07);
 }

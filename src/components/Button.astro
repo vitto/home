@@ -1,0 +1,54 @@
+---
+/**
+ * Button Component
+ *
+ * Renders a button/link with consistent styling and security attributes
+ *
+ * Props:
+ * @param {string} href - Link URL (if not provided, renders as button element)
+ * @param {string} class - Additional CSS classes to add (base "button" class is always included)
+ * @param {string} variant - Button variant (e.g., "strong" for "button--strong")
+ * @param {string} tone - Button tone (e.g., "outline" for "button--outline")
+ */
+interface Props {
+  href?: string;
+  class?: string;
+  variant?: string;
+  tone?: string;
+}
+
+const { href, class: className = '', variant, tone } = Astro.props;
+
+// Build class string: always include "button", add variant if provided, then additional classes
+const buttonClasses = [
+  'button',
+  'overflow-hidden',
+  'focus-bounce',
+  tone ? `button--${tone}` : '',
+  variant ? `button--${variant}` : '',
+  className,
+]
+  .filter(Boolean)
+  .join(' ');
+
+// Add target="_blank" and rel attributes only for external links (http/https)
+const isExternalLink = href ? /^https?:\/\//.test(href) : false;
+const linkAttrs = isExternalLink
+  ? {
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    }
+  : {};
+---
+
+{
+  href ? (
+    <a class={buttonClasses} href={href} {...linkAttrs}>
+      <slot />
+    </a>
+  ) : (
+    <button class={buttonClasses} type="button">
+      <slot />
+    </button>
+  )
+}

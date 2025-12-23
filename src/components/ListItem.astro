@@ -1,0 +1,26 @@
+---
+import Icon from '../components/Icon.astro';
+/**
+ * ListItem Component
+ *
+ * Renders a list item with an icon and slot content
+ *
+ * Props:
+ * @param {string} icon - Icon name (e.g., "mi/baseline/bar-chart")
+ * @param {string} class - Additional CSS classes to add (base "flex gap-200 pl-400" classes are always included)
+ */
+interface Props {
+  icon?: string;
+  class?: string;
+}
+
+const { icon, class: className = '' } = Astro.props;
+
+// Always include base classes, then add additional classes
+const listItemClasses = ['flex', 'gap-200', 'pl-400', className].filter(Boolean).join(' ');
+---
+
+<div class={listItemClasses}>
+  <Icon name={icon} />
+  <slot />
+</div>

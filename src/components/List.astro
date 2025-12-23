@@ -1,0 +1,22 @@
+---
+/**
+ * List Component
+ *
+ * Renders a list container for ListItem components
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes to add (base "grid gap-400" classes are always included)
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+// Always include base classes, then add additional classes
+const listClasses = ['grid', 'gap-400', className].filter(Boolean).join(' ');
+---
+
+<div class={listClasses}>
+  <slot />
+</div>

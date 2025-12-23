@@ -1,0 +1,24 @@
+---
+/**
+ * Icon Component
+ *
+ * Renders an iconsauce icon with customizable classes
+ *
+ * Props:
+ * @param {string} name - Icon name (e.g., "mi/baseline/alternate-email", "mgg/ai-chatbot")
+ * @param {string} class - Additional CSS classes to add to the iconsauce-icon wrapper
+ */
+interface Props {
+  name?: string;
+  class?: string;
+}
+
+const { name = 'mi/baseline/alternate-email', class: className = '' } = Astro.props;
+
+// Combine classes: always include iconsauce-icon, plus any additional classes
+const iconClasses = `iconsauce-icon${className ? ` ${className}` : ''}`;
+---
+
+<span class={iconClasses}>
+  <span class={name}></span>
+</span>

@@ -9,7 +9,7 @@ public/vendor/
 
 # dependencies
 node_modules/
-
+src/styles/iconsauce.css
 # logs
 npm-debug.log*
 yarn-debug.log*

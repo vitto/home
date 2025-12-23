@@ -1,0 +1,701 @@
+---
+/**
+ * Blob Component
+ *
+ * Animated blob sphere with custom shaders and noise-based distortion
+ * Converted from React component to Astro
+ *
+ * Props:
+ * @param {number} speed - Animation speed (default: 0.1)
+ * @param {number} density - Noise density (default: 1.5)
+ * @param {number} strength - Noise strength (default: 0.2)
+ * @param {number} frequency - Rotation frequency (default: 2.0)
+ * @param {number} amplitude - Rotation amplitude (default: 6.0)
+ * @param {number} intensity - Color intensity (default: 10.0)
+ * @param {boolean} wireframe - Show wireframe (default: false)
+ * @param {boolean} showGui - Show dat.gui controls (default: false)
+ * @param {number} brightness_R - Red brightness (default: 0.938)
+ * @param {number} brightness_G - Green brightness (default: 0.328)
+ * @param {number} brightness_B - Blue brightness (default: 0.718)
+ * @param {number} contrast_R - Red contrast (default: 0.659)
+ * @param {number} contrast_G - Green contrast (default: 0.438)
+ * @param {number} contrast_B - Blue contrast (default: 0.328)
+ * @param {number} oscillation_R - Red oscillation (default: 0.388)
+ * @param {number} oscillation_G - Green oscillation (default: 0.388)
+ * @param {number} oscillation_B - Blue oscillation (default: 0.296)
+ * @param {number} phase_R - Red phase (default: 2.538)
+ * @param {number} phase_G - Green phase (default: 2.478)
+ * @param {number} phase_B - Blue phase (default: 0.168)
+ * @param {number} sphereRadius - Sphere radius (default: 1)
+ * @param {number} sphereDetail - Sphere detail/subdivisions (default: 54)
+ * @param {number} cameraFov - Camera field of view (default: 15)
+ * @param {number} cameraDistance - Camera distance (default: 4)
+ */
+interface Props {
+  speed?: number;
+  density?: number;
+  strength?: number;
+  frequency?: number;
+  amplitude?: number;
+  intensity?: number;
+  wireframe?: boolean;
+  showGui?: boolean;
+  brightness_R?: number;
+  brightness_G?: number;
+  brightness_B?: number;
+  contrast_R?: number;
+  contrast_G?: number;
+  contrast_B?: number;
+  oscillation_R?: number;
+  oscillation_G?: number;
+  oscillation_B?: number;
+  phase_R?: number;
+  phase_G?: number;
+  phase_B?: number;
+  sphereRadius?: number;
+  sphereDetail?: number;
+  cameraFov?: number;
+  cameraDistance?: number;
+}
+
+const {
+  speed = 0.1,
+  density = 1.5,
+  strength = 0.2,
+  frequency = 2.0,
+  amplitude = 6.0,
+  intensity = 10.0,
+  wireframe = false,
+  showGui = false,
+  brightness_R = 0.938,
+  brightness_G = 0.328,
+  brightness_B = 0.718,
+  contrast_R = 0.659,
+  contrast_G = 0.438,
+  contrast_B = 0.328,
+  oscillation_R = 0.388,
+  oscillation_G = 0.388,
+  oscillation_B = 0.296,
+  phase_R = 2.538,
+  phase_G = 2.478,
+  phase_B = 0.168,
+  sphereRadius = 1,
+  sphereDetail = 54,
+  cameraFov = 15,
+  cameraDistance = 4,
+} = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<div id="blob-container" class="w-full h-full">
+  <canvas id="blob-canvas" aria-hidden="true"></canvas>
+</div>
+
+{
+  showGui && (
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.min.css"
+    />
+  )
+}
+
+<script
+  type="module"
+  defer
+  define:vars={{
+    speed,
+    density,
+    strength,
+    frequency,
+    amplitude,
+    intensity,
+    wireframe,
+    showGui,
+    brightness_R,
+    brightness_G,
+    brightness_B,
+    contrast_R,
+    contrast_G,
+    contrast_B,
+    oscillation_R,
+    oscillation_G,
+    oscillation_B,
+    phase_R,
+    phase_G,
+    phase_B,
+    sphereRadius,
+    sphereDetail,
+    cameraFov,
+    cameraDistance,
+    baseUrl,
+  }}
+>
+  // Shader code
+  const noiseShader = `
+    // GLSL textureless classic 3D noise "cnoise",
+    // with an RSL-style periodic variant "pnoise".
+    // Author:  Stefan Gustavson (stefan.gustavson@liu.se)
+    // Version: 2011-10-11
+    //
+    // Many thanks to Ian McEwan of Ashima Arts for the
+    // ideas for permutation and gradient selection.
+    //
+    // Copyright (c) 2011 Stefan Gustavson. All rights reserved.
+    // Distributed under the MIT license. See LICENSE file.
+    // https://github.com/ashima/webgl-noise
+    //
+
+    vec3 mod289(vec3 x)
+    {
+      return x - floor(x * (1.0 / 289.0)) * 289.0;
+    }
+
+    vec4 mod289(vec4 x)
+    {
+      return x - floor(x * (1.0 / 289.0)) * 289.0;
+    }
+
+    vec4 permute(vec4 x)
+    {
+      return mod289(((x*34.0)+1.0)*x);
+    }
+
+    vec4 taylorInvSqrt(vec4 r)
+    {
+      return 1.79284291400159 - 0.85373472095314 * r;
+    }
+
+    vec3 fade(vec3 t) {
+      return t*t*t*(t*(t*6.0-15.0)+10.0);
+    }
+
+    // Classic Perlin noise, periodic variant
+    float pnoise(vec3 P, vec3 rep)
+    {
+      vec3 Pi0 = mod(floor(P), rep); // Integer part, modulo period
+      vec3 Pi1 = mod(Pi0 + vec3(1.0), rep); // Integer part + 1, mod period
+      Pi0 = mod289(Pi0);
+      Pi1 = mod289(Pi1);
+      vec3 Pf0 = fract(P); // Fractional part for interpolation
+      vec3 Pf1 = Pf0 - vec3(1.0); // Fractional part - 1.0
+      vec4 ix = vec4(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
+      vec4 iy = vec4(Pi0.yy, Pi1.yy);
+      vec4 iz0 = Pi0.zzzz;
+      vec4 iz1 = Pi1.zzzz;
+
+      vec4 ixy = permute(permute(ix) + iy);
+      vec4 ixy0 = permute(ixy + iz0);
+      vec4 ixy1 = permute(ixy + iz1);
+
+      vec4 gx0 = ixy0 * (1.0 / 7.0);
+      vec4 gy0 = fract(floor(gx0) * (1.0 / 7.0)) - 0.5;
+      gx0 = fract(gx0);
+      vec4 gz0 = vec4(0.5) - abs(gx0) - abs(gy0);
+      vec4 sz0 = step(gz0, vec4(0.0));
+      gx0 -= sz0 * (step(0.0, gx0) - 0.5);
+      gy0 -= sz0 * (step(0.0, gy0) - 0.5);
+
+      vec4 gx1 = ixy1 * (1.0 / 7.0);
+      vec4 gy1 = fract(floor(gx1) * (1.0 / 7.0)) - 0.5;
+      gx1 = fract(gx1);
+      vec4 gz1 = vec4(0.5) - abs(gx1) - abs(gy1);
+      vec4 sz1 = step(gz1, vec4(0.0));
+      gx1 -= sz1 * (step(0.0, gx1) - 0.5);
+      gy1 -= sz1 * (step(0.0, gy1) - 0.5);
+
+      vec3 g000 = vec3(gx0.x,gy0.x,gz0.x);
+      vec3 g100 = vec3(gx0.y,gy0.y,gz0.y);
+      vec3 g010 = vec3(gx0.z,gy0.z,gz0.z);
+      vec3 g110 = vec3(gx0.w,gy0.w,gz0.w);
+      vec3 g001 = vec3(gx1.x,gy1.x,gz1.x);
+      vec3 g101 = vec3(gx1.y,gy1.y,gz1.y);
+      vec3 g011 = vec3(gx1.z,gy1.z,gz1.z);
+      vec3 g111 = vec3(gx1.w,gy1.w,gz1.w);
+
+      vec4 norm0 = taylorInvSqrt(vec4(dot(g000, g000), dot(g010, g010), dot(g100, g100), dot(g110, g110)));
+      g000 *= norm0.x;
+      g010 *= norm0.y;
+      g100 *= norm0.z;
+      g110 *= norm0.w;
+      vec4 norm1 = taylorInvSqrt(vec4(dot(g001, g001), dot(g011, g011), dot(g101, g101), dot(g111, g111)));
+      g001 *= norm1.x;
+      g011 *= norm1.y;
+      g101 *= norm1.z;
+      g111 *= norm1.w;
+
+      float n000 = dot(g000, Pf0);
+      float n100 = dot(g100, vec3(Pf1.x, Pf0.yz));
+      float n010 = dot(g010, vec3(Pf0.x, Pf1.y, Pf0.z));
+      float n110 = dot(g110, vec3(Pf1.xy, Pf0.z));
+      float n001 = dot(g001, vec3(Pf0.xy, Pf1.z));
+      float n101 = dot(g101, vec3(Pf1.x, Pf0.y, Pf1.z));
+      float n011 = dot(g011, vec3(Pf0.x, Pf1.yz));
+      float n111 = dot(g111, Pf1);
+
+      vec3 fade_xyz = fade(Pf0);
+      vec4 n_z = mix(vec4(n000, n100, n010, n110), vec4(n001, n101, n011, n111), fade_xyz.z);
+      vec2 n_yz = mix(n_z.xy, n_z.zw, fade_xyz.y);
+      float n_xyz = mix(n_yz.x, n_yz.y, fade_xyz.x);
+      return 2.2 * n_xyz;
+    }
+  `;
+
+  const rotationShader = `
+    mat3 rotation3dY(float angle) {
+      float s = sin(angle);
+      float c = cos(angle);
+
+      return mat3(
+        c, 0.0, -s,
+        0.0, 1.0, 0.0,
+        s, 0.0, c
+      );
+    }
+
+    vec3 rotateY(vec3 v, float angle) {
+      return rotation3dY(angle) * v;
+    }
+  `;
+
+  const vertexShader = `
+    varying float vDistort;
+    varying vec2 vUv;
+
+    uniform float uTime;
+    uniform float uSpeed;
+    uniform float uNoiseDensity;
+    uniform float uNoiseStrength;
+    uniform float uFrequency;
+    uniform float uAmplitude;
+
+    ${noiseShader}
+
+    ${rotationShader}
+
+    void main() {
+      vUv = uv;
+      float t = uTime * uSpeed;
+      float distortion = pnoise((normal + t) * uNoiseDensity, vec3(10.0)) * uNoiseStrength;
+
+      vec3 pos = position + (normal * distortion);
+      float angle = sin(uv.y * uFrequency + t) * uAmplitude;
+      pos = rotateY(pos, angle);
+
+      vDistort = distortion;
+
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
+    }
+  `;
+
+  const fragmentShader = `
+    varying vec2 vUv;
+    varying float vDistort;
+
+    uniform float uTime;
+    uniform float uIntensity;
+
+    uniform float uBrightness_r;
+    uniform float uBrightness_g;
+    uniform float uBrightness_b;
+
+    uniform float uContrast_r;
+    uniform float uContrast_g;
+    uniform float uContrast_b;
+
+    uniform float uOscillation_r;
+    uniform float uOscillation_g;
+    uniform float uOscillation_b;
+
+    uniform float uPhase_r;
+    uniform float uPhase_g;
+    uniform float uPhase_b;
+
+    vec3 cosPalette(float t, vec3 a, vec3 b, vec3 c, vec3 d) {
+      return a + b * cos(9.28318 * (c * t + d));
+    }
+
+    void main() {
+      float distort = vDistort * uIntensity;
+
+      vec3 brightness = vec3(uBrightness_r , uBrightness_g , uBrightness_b);
+      vec3 contrast = vec3(uContrast_r, uContrast_g, uContrast_b);
+      vec3 oscilation = vec3( uOscillation_r,  uOscillation_g,  uOscillation_b);
+      vec3 phase = vec3(uPhase_r, uPhase_g, uPhase_b);
+
+      vec3 color = cosPalette(distort, brightness, contrast, oscilation, phase);
+
+      gl_FragColor = vec4(color, 1.0);
+    }
+  `;
+
+  // Initialize blob
+  const initBlob = async () => {
+    // Wait for idle time or use setTimeout as fallback
+    if ('requestIdleCallback' in window) {
+      await new Promise((resolve) => {
+        requestIdleCallback(resolve, { timeout: 2000 });
+      });
+    } else {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+
+    const canvas = document.getElementById('blob-canvas');
+    if (!canvas) return;
+
+    // Use IntersectionObserver to only initialize when visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+          initializeThreeJS();
+        }
+      },
+      { rootMargin: '50px' }
+    );
+
+    observer.observe(canvas);
+
+    // Fallback: initialize after 1 second if still not visible
+    setTimeout(() => {
+      if (observer) {
+        observer.disconnect();
+        initializeThreeJS();
+      }
+    }, 1000);
+  };
+
+  const initializeThreeJS = async () => {
+    // Import Three.js from vendor directory (lazy load)
+    const THREE = await import(`${baseUrl}/vendor/three.module.min.js`);
+
+    const canvas = document.getElementById('blob-canvas');
+    if (!canvas) return;
+
+    // Get container dimensions
+    const container = canvas.parentElement;
+    const width = container?.clientWidth || window.innerWidth;
+    const height = container?.clientHeight || window.innerHeight;
+
+    // Scene setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(cameraFov, width / height, 0.1, 1000);
+
+    // Create mutable variable for camera distance (cameraDistance prop is constant)
+    let currentCameraDistance = cameraDistance;
+    camera.position.set(0, 0, currentCameraDistance);
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      antialias: true,
+      alpha: true,
+    });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+
+    // Create settings object (mutable for GUI)
+    const settings = {
+      speed,
+      density,
+      strength,
+      frequency,
+      amplitude,
+      intensity,
+      wireframe,
+      brightness_R: brightness_R,
+      brightness_G: brightness_G,
+      brightness_B: brightness_B,
+      contrast_R: contrast_R,
+      contrast_G: contrast_G,
+      contrast_B: contrast_B,
+      oscillation_R: oscillation_R,
+      oscillation_G: oscillation_G,
+      oscillation_B: oscillation_B,
+      phase_R: phase_R,
+      phase_G: phase_G,
+      phase_B: phase_B,
+    };
+
+    // Shader uniforms
+    const uniforms = {
+      uTime: { value: 0 },
+      uSpeed: { value: settings.speed },
+      uNoiseDensity: { value: settings.density },
+      uNoiseStrength: { value: settings.strength },
+      uFrequency: { value: settings.frequency },
+      uAmplitude: { value: settings.amplitude },
+      uIntensity: { value: settings.intensity },
+      uBrightness_r: { value: settings.brightness_R },
+      uBrightness_g: { value: settings.brightness_G },
+      uBrightness_b: { value: settings.brightness_B },
+      uContrast_r: { value: settings.contrast_R },
+      uContrast_g: { value: settings.contrast_G },
+      uContrast_b: { value: settings.contrast_B },
+      uOscillation_r: { value: settings.oscillation_R },
+      uOscillation_g: { value: settings.oscillation_G },
+      uOscillation_b: { value: settings.oscillation_B },
+      uPhase_r: { value: settings.phase_R },
+      uPhase_g: { value: settings.phase_G },
+      uPhase_b: { value: settings.phase_B },
+    };
+
+    // Create material
+    const material = new THREE.ShaderMaterial({
+      vertexShader,
+      fragmentShader,
+      uniforms,
+      wireframe: settings.wireframe,
+    });
+
+    // Create geometry and mesh
+    const geometry = new THREE.IcosahedronGeometry(sphereRadius, sphereDetail);
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(-0.4, -0.2, 0);
+    scene.add(mesh);
+
+    // OrbitControls (simplified version)
+    let isDragging = false;
+    let previousMousePosition = { x: 0, y: 0 };
+    let cameraRotation = { x: 0, y: 0 };
+
+    const onMouseDown = (e) => {
+      isDragging = true;
+      previousMousePosition = { x: e.clientX, y: e.clientY };
+    };
+
+    const onMouseMove = (e) => {
+      if (!isDragging) return;
+
+      const deltaX = e.clientX - previousMousePosition.x;
+      const deltaY = e.clientY - previousMousePosition.y;
+
+      cameraRotation.y += deltaX * 0.01;
+      cameraRotation.x += deltaY * 0.01;
+
+      // Limit vertical rotation
+      cameraRotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, cameraRotation.x));
+
+      previousMousePosition = { x: e.clientX, y: e.clientY };
+    };
+
+    const onMouseUp = () => {
+      isDragging = false;
+    };
+
+    const onWheel = (e) => {
+      e.preventDefault();
+      currentCameraDistance += e.deltaY * 0.01;
+      currentCameraDistance = Math.max(1, Math.min(10, currentCameraDistance));
+    };
+
+    canvas.addEventListener('mousedown', onMouseDown);
+    canvas.addEventListener('mousemove', onMouseMove);
+    canvas.addEventListener('mouseup', onMouseUp);
+    canvas.addEventListener('mouseleave', onMouseUp);
+    canvas.addEventListener('wheel', onWheel);
+
+    // Setup dat.gui if enabled
+    let gui = null;
+    if (showGui) {
+      try {
+        // Load dat.gui as a global script (it's not an ES6 module)
+        const loadDatGui = () => {
+          return new Promise((resolve, reject) => {
+            // Check if already loaded
+            if (typeof window !== 'undefined' && window.dat && window.dat.GUI) {
+              resolve(window.dat.GUI);
+              return;
+            }
+
+            // Check if script is already being loaded
+            if (document.querySelector('script[src*="dat.gui"]')) {
+              // Wait for it to load
+              const checkInterval = setInterval(() => {
+                if (window.dat && window.dat.GUI) {
+                  clearInterval(checkInterval);
+                  resolve(window.dat.GUI);
+                }
+              }, 100);
+              setTimeout(() => {
+                clearInterval(checkInterval);
+                reject(new Error('dat.gui loading timeout'));
+              }, 5000);
+              return;
+            }
+
+            // Load from CDN
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.min.js';
+            script.onload = () => {
+              if (window.dat && window.dat.GUI) {
+                resolve(window.dat.GUI);
+              } else {
+                reject(new Error('dat.gui failed to load'));
+              }
+            };
+            script.onerror = () => reject(new Error('Failed to load dat.gui script'));
+            document.head.appendChild(script);
+          });
+        };
+
+        const DatGUI = await loadDatGui();
+        gui = new DatGUI();
+        gui.close();
+
+        const folder1 = gui.addFolder('Noise');
+        const folder2 = gui.addFolder('Rotation');
+        const folder3 = gui.addFolder('Color Intensity');
+        const folder4 = gui.addFolder('Color Brightness');
+        const folder5 = gui.addFolder('Color Contrast');
+        const folder6 = gui.addFolder('Color Oscilation');
+        const folder7 = gui.addFolder('Color Phase');
+        const folder8 = gui.addFolder('Other');
+
+        folder1.add(settings, 'speed', 0.1, 1, 0.01).onChange((v) => {
+          uniforms.uSpeed.value = v;
+        });
+        folder1.add(settings, 'density', 0, 10, 0.01).onChange((v) => {
+          uniforms.uNoiseDensity.value = v;
+        });
+        folder1.add(settings, 'strength', 0, 2, 0.01).onChange((v) => {
+          uniforms.uNoiseStrength.value = v;
+        });
+
+        folder2.add(settings, 'frequency', 0, 10, 0.1).onChange((v) => {
+          uniforms.uFrequency.value = v;
+        });
+        folder2.add(settings, 'amplitude', 0, 10, 0.1).onChange((v) => {
+          uniforms.uAmplitude.value = v;
+        });
+
+        folder3.add(settings, 'intensity', 0, 10, 0.1).onChange((v) => {
+          uniforms.uIntensity.value = v;
+        });
+
+        folder4.add(settings, 'brightness_R', -3.1, 3.1, 0.1).onChange((v) => {
+          uniforms.uBrightness_r.value = v;
+        });
+        folder4.add(settings, 'brightness_G', -3.1, 3.1, 0.1).onChange((v) => {
+          uniforms.uBrightness_g.value = v;
+        });
+        folder4.add(settings, 'brightness_B', -3.1, 3.1, 0.1).onChange((v) => {
+          uniforms.uBrightness_b.value = v;
+        });
+
+        folder5.add(settings, 'contrast_R', -3.1, 3.1, 0.1).onChange((v) => {
+          uniforms.uContrast_r.value = v;
+        });
+        folder5.add(settings, 'contrast_G', -3.1, 3.1, 0.1).onChange((v) => {
+          uniforms.uContrast_g.value = v;
+        });
+        folder5.add(settings, 'contrast_B', -3.1, 3.1, 0.1).onChange((v) => {
+          uniforms.uContrast_b.value = v;
+        });
+
+        folder6.add(settings, 'oscillation_R', -3.1, 3.1, 0.1).onChange((v) => {
+          uniforms.uOscillation_r.value = v;
+        });
+        folder6.add(settings, 'oscillation_G', -3.1, 3.1, 0.1).onChange((v) => {
+          uniforms.uOscillation_g.value = v;
+        });
+        folder6.add(settings, 'oscillation_B', -3.1, 3.1, 0.1).onChange((v) => {
+          uniforms.uOscillation_b.value = v;
+        });
+
+        folder7.add(settings, 'phase_R', -3.1, 3.1, 0.1).onChange((v) => {
+          uniforms.uPhase_r.value = v;
+        });
+        folder7.add(settings, 'phase_G', -3.1, 3.1, 0.1).onChange((v) => {
+          uniforms.uPhase_g.value = v;
+        });
+        folder7.add(settings, 'phase_B', -3.1, 3.1, 0.1).onChange((v) => {
+          uniforms.uPhase_b.value = v;
+        });
+
+        folder8.add(settings, 'wireframe').onChange((v) => {
+          material.wireframe = v;
+        });
+        folder8
+          .add(settings, 'showGui')
+          .name('Toggle GUI')
+          .onChange(() => {
+            if (window.dat && window.dat.GUI) {
+              window.dat.GUI.toggleHide();
+            }
+          });
+      } catch (e) {
+        console.warn('dat.gui not available, GUI disabled:', e);
+      }
+    }
+
+    // Animation loop
+    let time = 0;
+    let lastFrameTime = performance.now();
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      const currentTime = performance.now();
+      const deltaTime = Math.min((currentTime - lastFrameTime) / 1000, 0.1);
+      lastFrameTime = currentTime;
+
+      time += deltaTime;
+      uniforms.uTime.value = time;
+
+      // Update camera rotation
+      const radius = currentCameraDistance;
+      camera.position.x = Math.sin(cameraRotation.y) * Math.cos(cameraRotation.x) * radius;
+      camera.position.y = Math.sin(cameraRotation.x) * radius;
+      camera.position.z = Math.cos(cameraRotation.y) * Math.cos(cameraRotation.x) * radius;
+      camera.lookAt(0, 0, 0);
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Handle resize
+    function onResize() {
+      const container = canvas.parentElement;
+      const width = container?.clientWidth || window.innerWidth;
+      const height = container?.clientHeight || window.innerHeight;
+
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    }
+
+    window.addEventListener('resize', onResize);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('resize', onResize);
+      canvas.removeEventListener('mousedown', onMouseDown);
+      canvas.removeEventListener('mousemove', onMouseMove);
+      canvas.removeEventListener('mouseup', onMouseUp);
+      canvas.removeEventListener('mouseleave', onMouseUp);
+      canvas.removeEventListener('wheel', onWheel);
+      if (gui) {
+        gui.destroy();
+      }
+    };
+  };
+
+  // Start initialization
+  initBlob();
+</script>
+
+<style>
+  #blob-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  #blob-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>

@@ -64,7 +64,7 @@ const {
 } = Astro.props;
 
 // Use lower detail for initial render, then enhance
-const initialDetail = Math.min(50, Math.floor(sphereDetail / 8));
+const initialDetail = Math.min(20, Math.floor(sphereDetail / 16));
 const targetDetail = sphereDetail;
 ---
 
@@ -326,7 +326,8 @@ const targetDetail = sphereDetail;
     // Create geometry with lower initial detail for faster first render
     const initialGeometry = new THREE.IcosahedronGeometry(sphereRadius, initialDetail);
     let mergedGeometry = initialGeometry;
-    let hasTangents = processGeometryAttributes(mergedGeometry, true);
+    // Don't compute tangents on first render to avoid blocking - will compute asynchronously later
+    let hasTangents = processGeometryAttributes(mergedGeometry, false);
 
     // Shader uniforms
     let currentColor = primaryColor;
@@ -648,6 +649,42 @@ const targetDetail = sphereDetail;
     renderer.render(scene, camera);
 
     startAnimation();
+
+    // Compute tangents asynchronously after first frame to avoid blocking initial render
+    // This significantly reduces JavaScript blocking time
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        // Wait for idle time to compute tangents without blocking
+        const computeTangentsAsync = () => {
+          try {
+            // Ensure geometry has all required attributes before computing tangents
+            if (
+              mergedGeometry.index !== null &&
+              mergedGeometry.hasAttribute('position') &&
+              mergedGeometry.hasAttribute('normal') &&
+              mergedGeometry.hasAttribute('uv') &&
+              mergedGeometry.computeTangents
+            ) {
+              mergedGeometry.computeTangents();
+              if (mergedGeometry.hasAttribute('tangent')) {
+                hasTangents = true;
+                // Update material to use tangents for better lighting
+                material.needsUpdate = true;
+              }
+            }
+          } catch (e) {
+            // Fallback: continue without tangents (visual difference is minimal)
+            console.warn('DisplacedSphere: Could not compute tangents, using fallback:', e);
+          }
+        };
+
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(computeTangentsAsync, { timeout: 2000 });
+        } else {
+          setTimeout(computeTangentsAsync, 500);
+        }
+      });
+    });
 
     // Progressive enhancement: upgrade to higher detail after initial animation completes
     // This prevents the geometry upgrade from blocking the initial animation

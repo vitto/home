@@ -2,6 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import NavigationHeader from '../components/NavigationHeader.astro';
+import Button from '../components/Button.astro';
+import List from '../components/List.astro';
+import ListItem from '../components/ListItem.astro';
+
+const latestUpdate = new Date('2025-12-19').toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 
 const privacySections = [
   {
@@ -77,20 +86,13 @@ const privacySections = [
   <main class="min-h-screen px-400 desktop:px-1200 py-2000">
     <div class="max-w-screen-desktop w-full mx-auto grid gap-2400">
       <div class="grid gap-200">
-        <mds-text typography="h1">Privacy Policy</mds-text>
-        <mds-text typography="detail">
+        <h1 class="text-title-h1">Privacy Policy</h1>
+        <p class="text-info-detail">
           This site respects your privacy by design. No tracking. No ads. Just static HTML.
-        </mds-text>
-        <mds-text typography="detail">
-          Last updated:{' '}
-          {
-            new Date().toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })
-          }
-        </mds-text>
+        </p>
+        <p class="text-info-detail">
+          {`Last updated: ${latestUpdate}`}
+        </p>
       </div>
 
       <div class="grid gap-1600">
@@ -98,38 +100,30 @@ const privacySections = [
           privacySections.map((section) => (
             <div class="grid gap-600">
               <div class="grid gap-200">
-                <mds-text typography="h4">{section.title}</mds-text>
+                <h4 class="text-title-h4" set:html={section.title} />
                 {section.description && (
-                  <mds-text typography="detail" set:html={section.description} />
+                  <p class="text-info-detail" set:html={section.description} />
                 )}
                 {section.list && (
-                  <mds-list>
+                  <List class="mt-200">
                     {section.list.map((item) => (
-                      <mds-list-item icon={item.icon}>
-                        <mds-text typography="detail">{item.text}</mds-text>
-                      </mds-list-item>
+                      <ListItem icon={item.icon}>
+                        <p class="text-info-detail">{item.text}</p>
+                      </ListItem>
                     ))}
-                  </mds-list>
+                  </List>
                 )}
               </div>
               {section.button && (
-                <mds-button
-                  class="justify-self-start"
-                  size="sm"
-                  slot="action"
-                  variant="dark"
-                  tone="ghost"
-                  href={section.button.href}
-                  target="blank"
-                >
+                <Button href={section.button.href} variant="outline" class="justify-self-start">
                   {section.button.label}
-                </mds-button>
+                </Button>
               )}
             </div>
           ))
         }
       </div>
-      <mds-hr></mds-hr>
+      <div class="h-50 w-full bg-tone-neutral-08"></div>
     </div>
   </main>
   <Footer />

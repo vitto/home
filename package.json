@@ -5,7 +5,7 @@
   "scripts": {
     "predev": "npm run icons && npm run copy-vendor",
     "dev": "astro dev",
-    "icons": "iconsauce --verbose --config ./iconsauce.config.cjs --output-svg ./public/icons/",
+    "icons": "iconsauce --verbose --config ./iconsauce.config.cjs --output-css ./src/styles/iconsauce.css",
     "copy-vendor": "node scripts/copy-vendor-assets.js",
     "prestart": "npm run icons && npm run copy-vendor",
     "start": "astro dev",
@@ -24,6 +24,10 @@
     "easing-utils": "^1.0.0",
     "postcss-iconsauce": "^1.4.1",
     "tailwindcss": "^3.4.0",
+    "react": "^19.2.3",
+    "react-three-fiber": "^6.0.13",
+    "@react-three/drei": "^10.7.7",
+    "zustand": "^5.0.9",
     "three": "^0.182.0"
   },
   "devDependencies": {

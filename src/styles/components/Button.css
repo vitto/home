@@ -1,0 +1,16 @@
+/* Button.astro */
+
+.button {
+  @apply text-title-action h-900 px-400;
+
+  display: inline-flex;
+  text-decoration: none;
+  align-items: center;
+  border-radius: 1000px;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &.button--outline {
+    @apply border-2 border-solid border-tone-neutral-07;
+  }
+}

@@ -1,45 +1,33 @@
 ---
-import DisplacedSphere from './DisplacedSphere.astro';
+// import DisplacedSphere from './DisplacedSphere.astro';
+import Icon from './Icon.astro';
+import Button from './Button.astro';
 // Get base URL from Astro config
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<DisplacedSphere
-  initialX={2}
-  initialY={-0.15}
-  initialZ={-3}
-  initialScale={0.5}
-  initialBlur={0}
-  animationDelay={300}
-  animationDuration={1500}
-  maxParallaxOffset={0.3}
-/>
 <section class="flex items-start justify-center px-400 relative overflow-hidden">
   <div
-    class="max-w-screen-desktop w-full mx-auto p-600 py-1200 relative z-10 text-tone-neutral text-center grid gap-400"
+    class="max-w-screen-desktop w-full mx-auto p-600 py-1200 relative z-10 text-tone-neutral-01 text-center grid gap-400"
   >
     <div class="grid">
       <!-- <mds-icon icon="vv/logo" class="w-3600 h-3600 justify-self-center"></mds-icon> -->
-      <mds-img
+      <!-- <mds-img
         loading="auto"
         src={`${baseUrl}/vittorio-vittori-logo.svg`}
-        class="w-3600 h-3600 justify-self-center"></mds-img>
-      <mds-text typography="h1" class="vittori-o">
+        class="w-3600 h-3600 justify-self-center"></mds-img> -->
+      <h1 class="text-title-h1 vittori-o">
         Vittori<span class="inline-block animate-pulse-more">o</span>
-      </mds-text>
-      <mds-text typography="paragraph">Design System Architect / Senior UX Designer</mds-text>
+      </h1>
+      <p class="text-info-paragraph m-auto">Design System Architect / Senior UX Designer</p>
     </div>
-    <mds-text typography="detail">
+    <p class="text-info-detail m-auto">
       Crafting scalable human-centered experiences<br />
       through systematic design thinking.
-    </mds-text>
-    <mds-button
-      icon="mi/baseline/alternate-email"
-      class="justify-self-center rounded-full pl-150 hover:bg-tone-neutral/10"
-      variant="light"
-      target="blank"
-      href="https://maggioli.com"
-      tone="quiet">Maggioli Spa</mds-button
-    >
+    </p>
+    <Button href="https://maggioli.com" class="justify-self-center">
+      <Icon name="mi/baseline/alternate-email" />
+      Maggioli Spa
+    </Button>
   </div>
 </section>

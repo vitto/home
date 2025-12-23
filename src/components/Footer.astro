@@ -1,76 +1,72 @@
 ---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
 const baseUrl = import.meta.env.BASE_URL;
 
 const socialLinks = [
   {
     name: 'LinkedIn',
     icon: 'mdi/linkedin',
-    iconHover: 'group-hover:fill-label-blue-05',
+    iconHover: 'group-hover:text-label-blue-05 group-focus-visible:text-label-blue-05 transition',
     url: 'https://linkedin.com/in/vittoriovittori',
-    color: 'from-label-blue-04 to-label-blue-03',
   },
   {
     name: 'GitHub',
     icon: 'mdi/github',
-    iconHover: 'group-hover:fill-tone-neutral-03',
+    iconHover:
+      'group-hover:text-tone-neutral-03 group-focus-visible:text-tone-neutral-03 transition',
     url: 'https://github.com/vitto',
-    color: 'from-tone-neutral-02 to-tone-neutral-01',
   },
   {
     name: 'Resume',
     icon: 'mi/outline/file-download',
-    iconHover: 'group-hover:fill-label-yellow-04',
+    iconHover:
+      'group-hover:text-label-yellow-04 group-focus-visible:text-label-yellow-04 transition',
     url: '/vittorio-vittori-ds-architect-ux-designer-resume.pdf',
-    color: 'from-label-violet-04 to-label-violet-03',
   },
 ];
 ---
 
 <footer class="px-600 desktop:px-1200 pb-3200">
-  <div class="max-w-screen-desktop w-full mx-auto text-center grid gap-1200">
-    <div class="grid gap-200">
-      <mds-text typography="h2" class="text-tone-neutral-01">Let's Connect</mds-text>
-      <mds-text typography="detail">
+  <div class="max-w-screen-desktop w-full mx-auto text-center grid gap-1200 justify-center">
+    <div class="grid gap-200 justify-center">
+      <h2 class="text-title-h2 text-tone-neutral-01">Let's Connect</h2>
+      <p class="text-info-detail">
         Interested in collaborating or learning more about my work in UX design and design systems?
-      </mds-text>
+      </p>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-600 items-start">
+    <div class="flex flex-wrap gap-600 items-start justify-center">
       {
         socialLinks.map((link) => (
           <a
             href={link.url}
             target={link.url.startsWith('http') ? '_blank' : undefined}
             rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-            class="footer-item group no-underline inline-flex min-w-4000"
+            class="footer-item group no-underline inline-flex min-w-4000 focus-bounce rounded-lg p-400"
           >
-            <mds-card class="shadow-none bg-transparent transition-cosmetic w-full group-hover:-translate-y-200 ease-out-expo duration-1000">
-              <mds-card-content class="text-center flex flex-col items-center gap-200 ">
-                <div
-                  class={`p-200 bg-tone-neutral-09 rounded-lg inline-flex transition-cosmetic group-hover:bg-tone-neutral group-hover:shadow-sm-sharp ease-out-expo duration-1000 ${link.iconHover}`}
-                >
-                  <mds-icon name={link.icon} />
-                </div>
-                <mds-text>
-                  <b>{link.name}</b>
-                </mds-text>
-              </mds-card-content>
-            </mds-card>
+            <div class="text-center flex flex-col items-center gap-200 transition w-full group-hover:-translate-y-200 group-focus-visible:-translate-y-200 ease-out-expo duration-1000">
+              <div
+                class={`p-200 bg-tone-neutral-09 rounded-lg inline-flex transition group-hover:bg-tone-neutral group-focus-visible:bg-tone-neutral group-hover:shadow-sm-sharp group-focus-visible:shadow-sm-sharp ease-out-expo duration-1000 min-h-1000`}
+              >
+                <Icon class={link.iconHover} name={link.icon} />
+              </div>
+              <p class="text-info-detail">
+                <b set:html={link.name}>{link.name}</b>
+              </p>
+            </div>
           </a>
         ))
       }
     </div>
 
-    <mds-text>
+    <p class="text-info-detail">
       No tracking. No ads. Just static HTML hosted on GitHub Pages.<br />
       This site respects your privacy by design.
-    </mds-text>
-    <mds-button
-      href={`${baseUrl}/privacy`}
-      class="justify-self-center"
-      icon="mi/outline/privacy-tip"
-      variant="dark"
-      tone="quiet">Privacy Policy</mds-button
-    >
+    </p>
+    <Button class="justify-self-center" href={`${baseUrl}/privacy`}>
+      <Icon name="mi/outline/privacy-tip" />
+      Privacy Policy
+    </Button>
   </div>
 </footer>
