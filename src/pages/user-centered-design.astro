@@ -1,51 +1,39 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
+import PrincipleCard from '../components/PrincipleCard.astro';
+import CategoryFilter from '../components/CategoryFilter.astro';
+import CardTextAnimation from '../components/CardTextAnimation.astro';
+import data from '../data/user-centered-design.json';
+import Blob from '../components/Blob.astro';
+import Footer from '../components/Footer.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<Layout title="User-Centered Design - Vittorio's Portfolio">
-  <section class="min-h-screen py-2000 px-400 bg-white">
-    <div class="max-w-4xl mx-auto">
-      <mds-text typography="h1" class="mb-600 text-tone-neutral-01">User-Centered Design</mds-text>
+<SectionLayout title="User-Centered Design - Vittorio's Portfolio">
+  <Blob positionY={0.9} positionYMobile={0.5} scale={0.875} maxScrollTranslate={600} />
+  <section class="min-h-screen py-2000 px-400 relative z-10">
+    <div class="max-w-6xl mx-auto">
+      <mds-text typography="h1" class="mb-600 text-tone-neutral-01">{data.title}</mds-text>
       <mds-text typography="detail" class="mb-1200 leading-relaxed">
-        Applying NN/g usability heuristics to create intuitive, accessible interfaces
+        {data.description}
       </mds-text>
 
-      <div class="prose prose-lg">
-        <mds-text typography="detail" class="mb-800">
-          Based on Nielsen Norman Group's ten usability heuristics, I apply proven principles to
-          create interfaces that are intuitive, accessible, and user-friendly.
-        </mds-text>
+      <CategoryFilter categories={data.categories} />
 
-        <mds-card class="bg-label-blue-10 mb-800">
-          <mds-card-content>
-            <mds-text typography="h2" class="mb-400 text-tone-neutral-01">Key Principles</mds-text>
-            <ul class="list-disc list-inside space-y-200 text-tone-neutral-05">
-              <li>Visibility of system status</li>
-              <li>Match between system and the real world</li>
-              <li>User control and freedom</li>
-              <li>Consistency and standards</li>
-              <li>Error prevention</li>
-              <li>Recognition rather than recall</li>
-              <li>Flexibility and efficiency of use</li>
-              <li>Aesthetic and minimalist design</li>
-              <li>Help users recognize, diagnose, and recover from errors</li>
-              <li>Help and documentation</li>
-            </ul>
-          </mds-card-content>
-        </mds-card>
-
-        <mds-text typography="detail">
-          <a
-            href="https://www.nngroup.com/articles/ten-usability-heuristics/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-label-blue-04 hover:underline"
-          >
-            Learn more about NN/g usability heuristics →
-          </a>
-        </mds-text>
+      <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-600">
+        {
+          data.principles.map((principle) => (
+            <PrincipleCard
+              id={principle.id}
+              title={principle.title}
+              category={principle.category}
+              icon={principle.icon}
+              color={principle.color}
+              href={`${baseUrl}user-centered-design/${principle.id}`}
+            />
+          ))
+        }
       </div>
 
       <div class="mt-1200">
@@ -53,4 +41,6 @@ const baseUrl = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
-</Layout>
+  <Footer />
+  <CardTextAnimation />
+</SectionLayout>

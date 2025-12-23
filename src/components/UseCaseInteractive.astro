@@ -1,0 +1,37 @@
+---
+/**
+ * UseCaseInteractive Component
+ *
+ * Wrapper for interactive use case demonstrations
+ * Provides a container with appropriate styling for custom interactive content
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`use-case-interactive mt-1200 ${className}`}>
+  <slot />
+</div>
+
+<style>
+  .use-case-interactive {
+    min-height: 400px;
+    padding: 2rem;
+    background: var(--tone-neutral-10);
+    border-radius: 1.5rem;
+    border: 1px solid var(--tone-neutral-08);
+  }
+
+  @media (max-width: 768px) {
+    .use-case-interactive {
+      padding: 1.5rem;
+      min-height: 300px;
+    }
+  }
+</style>

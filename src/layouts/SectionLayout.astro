@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Vittorio - Design System Architect & Senior UX Designer',
+  description = 'Crafting scalable human-centered experiences through systematic design thinking.',
+} = Astro.props;
+
+// Get base URL from Astro config
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script type="module" define:vars={{ baseUrl: import.meta.env.BASE_URL }}>
+      (async () => {
+        // Import Maggioli loader from vendor directory
+        // First apply polyfills, then load components
+        const { applyPolyfills } = await import(
+          `${baseUrl}/vendor/maggioli-loader/dist/esm/polyfills/index.js`
+        );
+        await applyPolyfills();
+        const { defineCustomElements } = await import(
+          `${baseUrl}/vendor/maggioli-loader/dist/esm/loader.js`
+        );
+        defineCustomElements();
+        window.sessionStorage.setItem('mdsIconSvgPath', `${baseUrl}/icons/`);
+      })();
+    </script>
+    <!-- Preload Three.js core module to reduce dependency chain -->
+    <link rel="modulepreload" href={`${baseUrl}/vendor/three.core.min.js`} />
+  </head>
+  <body class="bg-tone-neutral-10 text-tone-neutral-01 antialiased">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    font-family: system-ui, sans-serif;
+  }
+</style>

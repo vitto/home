@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import CardTextAnimation from './CardTextAnimation.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -11,7 +12,7 @@ const categories = [
     iconHover:
       'group-hover:bg-status-success-09 group-focus-visible:bg-status-success-09 group-hover:text-status-success-05 group-focus-visible:text-status-success-05',
     description: 'Applying NN/g usability heuristics to create intuitive, accessible interfaces',
-    link: `${baseUrl}user-centered-design`,
+    link: `${baseUrl}/user-centered-design`,
   },
   {
     id: 'design-systems',
@@ -20,7 +21,7 @@ const categories = [
     iconHover:
       'group-hover:bg-label-amaranth-09 group-focus-visible:bg-label-amaranth-09 group-hover:text-label-amaranth-05 group-focus-visible:text-label-amaranth-05',
     description: 'Building scalable, maintainable component libraries with clear documentation',
-    link: `${baseUrl}design-systems`,
+    link: `${baseUrl}/design-systems`,
   },
   {
     id: 'hax-principles',
@@ -30,7 +31,7 @@ const categories = [
       'group-hover:bg-label-violet-09 group-focus-visible:bg-label-violet-09 group-hover:text-label-violet-05 group-focus-visible:text-label-violet-05',
     description:
       'Designing transparent, predictable AI experiences following Microsoft HAX guidelines',
-    link: `${baseUrl}hax-principles`,
+    link: `${baseUrl}/hax-principles`,
   },
 ];
 ---
@@ -68,33 +69,4 @@ const categories = [
   </div>
 </section>
 
-<script>
-  // Handle category card text animation on hover
-  function initCategoryCardsTextAnimation() {
-    const categoryLinks = document.querySelectorAll('[data-category-id]');
-
-    categoryLinks.forEach((link) => {
-      const categoryId = link.getAttribute('data-category-id');
-      const textElement = document.querySelector(`[data-category-text="${categoryId}"]`);
-
-      if (!textElement) return;
-
-      link.addEventListener('mouseenter', () => {
-        // Change text to trigger animation
-        textElement.setAttribute('text', 'Explore →');
-      });
-
-      link.addEventListener('mouseleave', () => {
-        // Change text back to trigger animation
-        textElement.setAttribute('text', '→');
-      });
-    });
-  }
-
-  // Initialize text animation when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCategoryCardsTextAnimation);
-  } else {
-    initCategoryCardsTextAnimation();
-  }
-</script>
+<CardTextAnimation />

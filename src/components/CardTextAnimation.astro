@@ -1,0 +1,54 @@
+---
+/**
+ * CardTextAnimation Component
+ *
+ * Shared script for handling text animation on card hover
+ * Works with both CategoryCards and PrincipleCard components
+ */
+---
+
+<script>
+  // Initialize animations for both card types
+  function initAllCardTextAnimations() {
+    // Category cards: data-category-id -> data-category-text
+    const categoryLinks = document.querySelectorAll('[data-category-id]');
+    categoryLinks.forEach((link) => {
+      const categoryId = link.getAttribute('data-category-id');
+      const textElement = document.querySelector(`[data-category-text="${categoryId}"]`);
+
+      if (!textElement) return;
+
+      link.addEventListener('mouseenter', () => {
+        textElement.setAttribute('text', 'Explore →');
+      });
+
+      link.addEventListener('mouseleave', () => {
+        textElement.setAttribute('text', '→');
+      });
+    });
+
+    // Principle cards: data-principle-id -> data-principle-text
+    const principleLinks = document.querySelectorAll('[data-principle-id]');
+    principleLinks.forEach((link) => {
+      const principleId = link.getAttribute('data-principle-id');
+      const textElement = document.querySelector(`[data-principle-text="${principleId}"]`);
+
+      if (!textElement) return;
+
+      link.addEventListener('mouseenter', () => {
+        textElement.setAttribute('text', 'Explore →');
+      });
+
+      link.addEventListener('mouseleave', () => {
+        textElement.setAttribute('text', '→');
+      });
+    });
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAllCardTextAnimations);
+  } else {
+    initAllCardTextAnimations();
+  }
+</script>

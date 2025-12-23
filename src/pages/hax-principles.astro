@@ -1,110 +1,36 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
+import PrincipleCard from '../components/PrincipleCard.astro';
+import CategoryFilter from '../components/CategoryFilter.astro';
+import CardTextAnimation from '../components/CardTextAnimation.astro';
+import data from '../data/hax-principles.json';
 
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<Layout title="HAX Principles - Vittorio's Portfolio">
+<SectionLayout title="HAX Principles - Vittorio's Portfolio">
   <section class="min-h-screen py-2000 px-400 bg-white">
-    <div class="max-w-4xl mx-auto">
-      <mds-text typography="h1" class="mb-600 text-tone-neutral-01">HAX Principles</mds-text>
+    <div class="max-w-6xl mx-auto">
+      <mds-text typography="h1" class="mb-600 text-tone-neutral-01">{data.title}</mds-text>
       <mds-text typography="detail" class="mb-1200 leading-relaxed">
-        Designing transparent, predictable AI experiences following Microsoft HAX guidelines
+        {data.description}
       </mds-text>
 
-      <div class="prose prose-lg">
-        <mds-text typography="detail" class="mb-800">
-          Human-AI Experience (HAX) principles guide the design of AI systems that are transparent,
-          predictable, and user-centered. These principles ensure AI enhances rather than hinders
-          human capabilities.
-        </mds-text>
+      <CategoryFilter categories={data.categories} />
 
-        <mds-card class="bg-label-green-10 mb-800">
-          <mds-card-content>
-            <mds-text typography="h2" class="mb-400 text-tone-neutral-01"
-              >Core HAX Principles</mds-text
-            >
-            <ul class="space-y-400 text-tone-neutral-05">
-              <li>
-                <strong>Make clear what the system can do</strong> - Users should understand the AI's
-                capabilities and limitations.
-              </li>
-              <li>
-                <strong>Make clear how well the system can do what it can do</strong> - Provide confidence
-                indicators and accuracy information.
-              </li>
-              <li>
-                <strong>Time services based on context</strong> - Deliver AI assistance at the right moment.
-              </li>
-              <li>
-                <strong>Show contextually relevant information</strong> - Present information that matters
-                to the user's current task.
-              </li>
-              <li>
-                <strong>Match relevant social norms</strong> - Design AI interactions that feel natural
-                and appropriate.
-              </li>
-              <li>
-                <strong>Mitigate social biases</strong> - Ensure AI systems are fair and inclusive.
-              </li>
-              <li>
-                <strong>Support efficient invocation</strong> - Make it easy for users to access AI features
-                when needed.
-              </li>
-              <li>
-                <strong>Support efficient dismissal</strong> - Allow users to easily ignore or dismiss
-                AI suggestions.
-              </li>
-              <li>
-                <strong>Support efficient correction</strong> - Enable users to fix AI mistakes quickly
-                and easily.
-              </li>
-              <li>
-                <strong>Scope services when in doubt</strong> - Limit AI actions when uncertainty exists.
-              </li>
-              <li>
-                <strong>Make clear why the system did what it did</strong> - Provide explanations for
-                AI decisions.
-              </li>
-              <li>
-                <strong>Remember recent interactions</strong> - Maintain context across user sessions.
-              </li>
-              <li>
-                <strong>Learn from user behavior</strong> - Adapt to user preferences over time.
-              </li>
-              <li>
-                <strong>Update and adapt cautiously</strong> - Make changes that improve rather than disrupt
-                user workflows.
-              </li>
-              <li>
-                <strong>Encourage granular feedback</strong> - Enable users to provide specific feedback
-                on AI performance.
-              </li>
-              <li>
-                <strong>Convey the consequences of user actions</strong> - Help users understand how their
-                actions affect the AI system.
-              </li>
-              <li>
-                <strong>Provide global controls</strong> - Give users control over AI behavior and settings.
-              </li>
-              <li>
-                <strong>Notify users about changes</strong> - Keep users informed about system updates
-                and changes.
-              </li>
-            </ul>
-          </mds-card-content>
-        </mds-card>
-
-        <mds-text typography="detail">
-          <a
-            href="https://www.microsoft.com/en-us/haxtoolkit/ai-guidelines/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-label-green-04 hover:underline"
-          >
-            Learn more about Microsoft HAX guidelines →
-          </a>
-        </mds-text>
+      <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-600">
+        {
+          data.principles.map((principle) => (
+            <PrincipleCard
+              id={principle.id}
+              title={principle.title}
+              category={principle.category}
+              icon={principle.icon}
+              color={principle.color}
+              href={`${baseUrl}hax-principles/${principle.id}`}
+            />
+          ))
+        }
       </div>
 
       <div class="mt-1200">
@@ -112,4 +38,5 @@ const baseUrl = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
-</Layout>
+  <CardTextAnimation />
+</SectionLayout>

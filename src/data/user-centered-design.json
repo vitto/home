@@ -1,0 +1,88 @@
+{
+  "title": "User-Centered Design",
+  "description": "Applying NN/g usability heuristics to create intuitive, accessible interfaces",
+  "categories": ["Cognitive load", "Control", "Error handling", "Support"],
+  "principles": [
+    {
+      "id": "visibility-of-system-status",
+      "title": "Visibility of System Status",
+      "category": "Cognitive load",
+      "icon": "mi/baseline/visibility",
+      "description": "The system should always keep users informed about what is going on, through appropriate feedback within reasonable time.",
+      "color": "status-success"
+    },
+    {
+      "id": "match-between-system-and-real-world",
+      "title": "Match Between the System and the Real World",
+      "category": "Cognitive load",
+      "icon": "mi/baseline/language",
+      "description": "The system should speak the users' language, with words, phrases and concepts familiar to the user, rather than system-oriented terms.",
+      "color": "status-success"
+    },
+    {
+      "id": "user-control-and-freedom",
+      "title": "User Control and Freedom",
+      "category": "Control",
+      "icon": "mi/baseline/exit-to-app",
+      "description": "Users often choose system functions by mistake and will need a clearly marked 'emergency exit' to leave the unwanted state without having to go through an extended dialogue.",
+      "color": "label-blue"
+    },
+    {
+      "id": "consistency-and-standards",
+      "title": "Consistency and Standards",
+      "category": "Predictability",
+      "icon": "mi/baseline/rule",
+      "description": "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform conventions.",
+      "color": "label-blue"
+    },
+    {
+      "id": "error-prevention",
+      "title": "Error Prevention",
+      "category": "Error handling",
+      "icon": "mi/baseline/shield",
+      "description": "Even better than good error messages is a careful design which prevents a problem from occurring in the first place.",
+      "color": "status-error"
+    },
+    {
+      "id": "recognition-rather-than-recall",
+      "title": "Recognition Rather than Recall",
+      "category": "Cognitive load",
+      "icon": "mi/baseline/lightbulb",
+      "description": "Minimize the user's memory load by making objects, actions, and options visible. The user should not have to remember information from one part of the dialogue to another.",
+      "color": "status-success"
+    },
+    {
+      "id": "flexibility-and-efficiency-of-use",
+      "title": "Flexibility and Efficiency of Use",
+      "category": "Control",
+      "icon": "mi/baseline/tune",
+      "description": "Accelerators — unseen by the novice user — may often speed up the interaction for the expert user such that the system can cater to both inexperienced and experienced users.",
+      "color": "label-blue"
+    },
+    {
+      "id": "aesthetic-and-minimalist-design",
+      "title": "Aesthetic and Minimalist Design",
+      "category": "Cognitive load",
+      "icon": "mi/baseline/brush",
+      "description": "Dialogues should not contain information which is irrelevant or rarely needed. Every extra unit of information in a dialogue competes with the relevant units of information and diminishes their relative visibility.",
+      "color": "status-success"
+    },
+    {
+      "id": "help-users-recognize-diagnose-and-recover-from-errors",
+      "title": "Help Users Recognize, Diagnose, and Recover from Errors",
+      "category": "Error handling",
+      "icon": "mi/baseline/error-outline",
+      "description": "Error messages should be expressed in plain language (no codes), precisely indicate the problem, and constructively suggest a solution.",
+      "color": "status-error"
+    },
+    {
+      "id": "help-and-documentation",
+      "title": "Help and Documentation",
+      "category": "Support",
+      "icon": "mi/baseline/help-outline",
+      "description": "Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation.",
+      "color": "label-violet"
+    }
+  ]
+}
+

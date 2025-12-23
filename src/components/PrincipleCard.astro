@@ -1,0 +1,85 @@
+---
+import Icon from './Icon.astro';
+import Badge from './Badge.astro';
+
+/**
+ * PrincipleCard Component
+ *
+ * Displays a card for a design principle with icon, title, category badge, and link
+ *
+ * Props:
+ * @param {string} id - Principle ID/slug
+ * @param {string} title - Principle title
+ * @param {string} category - Category name
+ * @param {string} icon - Icon name
+ * @param {string} color - Color theme (e.g., "status-success", "label-blue")
+ * @param {string} href - Link URL to the use case page
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  id: string;
+  title: string;
+  category: string;
+  icon?: string;
+  color: string;
+  href: string;
+  class?: string;
+}
+
+const {
+  id,
+  title,
+  category,
+  icon = 'mi/baseline/palette',
+  color,
+  href,
+  class: className = '',
+} = Astro.props;
+
+// Map color names to CSS classes
+const colorClasses: Record<string, string> = {
+  'status-success':
+    'group-hover:bg-status-success-09 group-focus-visible:bg-status-success-09 text-status-success-05',
+  'label-blue':
+    'group-hover:bg-label-blue-09 group-focus-visible:bg-label-blue-09 text-label-blue-05',
+  'status-error':
+    'group-hover:bg-status-error-09 group-focus-visible:bg-status-error-09 text-status-error-05',
+  'label-violet':
+    'group-hover:bg-label-violet-09 group-focus-visible:bg-label-violet-09 text-label-violet-05',
+  'label-amaranth':
+    'group-hover:bg-label-amaranth-09 group-focus-visible:bg-label-amaranth-09 text-label-amaranth-05',
+  'label-sky': 'group-hover:bg-label-sky-09 group-focus-visible:bg-label-sky-09 text-label-sky-05',
+  'label-green':
+    'group-hover:bg-label-green-09 group-focus-visible:bg-label-green-09 text-label-green-05',
+};
+
+const categoryColorClass = colorClasses[color] || 'bg-tone-neutral-09 text-tone-neutral-05';
+---
+
+<a
+  href={href}
+  class={`group inline-flex flex-col no-underline focus-bounce rounded-3xl ${className}`}
+  data-principle-id={id}
+  data-category={category}
+>
+  <div
+    class="grid auto-rows-min rounded-3xl align-self-start text-tone-neutral-03 p-600 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral/80 backdrop-blur group-hover:bg-tone-neutral group-focus-visible:bg-tone-neutral ease-out-expo duration-1000"
+  >
+    <div class="flex items-center gap-400 mb-400">
+      <div
+        class={`p-200 -translate-x-200 rounded-lg inline-flex justify-self-start transition group-hover:-translate-y-200 group-focus-visible:-translate-y-200 group-hover:pt-200 group-focus-visible:pt-200 ease-out-expo duration-1000 ${categoryColorClass}`}
+      >
+        <Icon name={icon} class="" />
+      </div>
+    </div>
+    <h3 class="mb-300 text-title-h3 tablet-max:text-title-h4">{title}</h3>
+    <div class="flex gap-400 items-center mt-600">
+      <Badge variant={color} class="shrink-0">{category}</Badge>
+      <div
+        class="inline-flex gap-400 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition min-h-600"
+      >
+        <mds-text text="→" animation="yugop" data-principle-text={id}></mds-text>
+      </div>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,88 @@
+{
+  "title": "Design Systems",
+  "description": "Building scalable, maintainable component libraries with clear documentation",
+  "categories": ["architecture", "component design", "maintenance and evolution", "adoption", "value"],
+  "principles": [
+    {
+      "id": "single-source-of-truth",
+      "title": "Single Source of Truth",
+      "category": "architecture",
+      "icon": "mi/baseline/database",
+      "description": "A centralized repository where all design decisions live, ensuring consistency across all platforms and tools.",
+      "color": "label-amaranth"
+    },
+    {
+      "id": "separation-of-semantics-and-presentation",
+      "title": "Separazione tra Semantica e Presentazione",
+      "category": "architecture",
+      "icon": "mi/baseline/layers",
+      "description": "Separating meaning from appearance allows components to be flexible, reusable, and maintainable across different contexts.",
+      "color": "label-amaranth"
+    },
+    {
+      "id": "scalability",
+      "title": "Scalabilità",
+      "category": "architecture",
+      "icon": "mi/baseline/trending-up",
+      "description": "Design systems must grow with the organization, supporting new teams, products, and use cases without breaking existing implementations.",
+      "color": "label-amaranth"
+    },
+    {
+      "id": "behavioral-consistency",
+      "title": "Consistenza Comportamentale",
+      "category": "component design",
+      "icon": "mi/baseline/psychology",
+      "description": "Components should behave predictably across different contexts, following established interaction patterns and user expectations.",
+      "color": "label-violet"
+    },
+    {
+      "id": "composition-over-configuration",
+      "title": "Composizione > Configurazione",
+      "category": "component design",
+      "icon": "mi/baseline/widgets",
+      "description": "Building complex interfaces through composition of smaller, focused components rather than configuring monolithic ones.",
+      "color": "label-violet"
+    },
+    {
+      "id": "api-stability-and-versioning",
+      "title": "API Stability e Versioning Consapevole",
+      "category": "maintenance and evolution",
+      "icon": "mi/baseline/update",
+      "description": "Maintaining stable APIs while evolving the system, with clear versioning strategies and migration paths.",
+      "color": "label-sky"
+    },
+    {
+      "id": "clear-governance",
+      "title": "Governance Chiara",
+      "category": "maintenance and evolution",
+      "icon": "mi/baseline/gavel",
+      "description": "Establishing clear processes for contributions, reviews, and decision-making to ensure quality and consistency.",
+      "color": "label-sky"
+    },
+    {
+      "id": "documentation-as-primary-interface",
+      "title": "Documentazione come Interfaccia Primaria",
+      "category": "adoption",
+      "icon": "mi/baseline/menu-book",
+      "description": "Comprehensive, accessible documentation that serves as the primary way teams discover and use design system components.",
+      "color": "status-success"
+    },
+    {
+      "id": "accessibility-as-structural-requirement",
+      "title": "Accessibilità come Requisito Strutturale",
+      "category": "adoption",
+      "icon": "mi/baseline/accessibility-new",
+      "description": "Accessibility built into the foundation of every component, not added as an afterthought.",
+      "color": "status-success"
+    },
+    {
+      "id": "measurable-impact",
+      "title": "Misurabilità dell'Impatto",
+      "category": "value",
+      "icon": "mi/baseline/analytics",
+      "description": "Tracking metrics that demonstrate the value and effectiveness of the design system on product quality and team efficiency.",
+      "color": "label-green"
+    }
+  ]
+}
+

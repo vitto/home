@@ -1,0 +1,99 @@
+---
+/**
+ * CategoryFilter Component
+ *
+ * Client-side filter buttons for filtering principles by category
+ *
+ * Props:
+ * @param {string[]} categories - Array of category names
+ * @param {string} activeCategory - Currently active category (empty string = all)
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  categories: string[];
+  activeCategory?: string;
+  class?: string;
+}
+
+const { categories, activeCategory = '', class: className = '' } = Astro.props;
+---
+
+<div class={`flex flex-wrap gap-200 mb-800 ${className}`} data-filter-container>
+  <button
+    type="button"
+    class="px-400 py-200 rounded-lg text-info-detail transition bg-tone-neutral/80 hover:bg-tone-neutral focus-bounce"
+    data-filter="all"
+    data-filter-active={activeCategory === ''}
+  >
+    All
+  </button>
+  {
+    categories.map((category) => (
+      <button
+        type="button"
+        class="px-400 py-200 rounded-lg text-info-detail transition bg-tone-neutral/80 hover:bg-tone-neutral focus-bounce"
+        data-filter={category}
+        data-filter-active={activeCategory === category}
+      >
+        {category}
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  function initCategoryFilter() {
+    const filterContainer = document.querySelector('[data-filter-container]');
+    if (!filterContainer) return;
+
+    const filterButtons = filterContainer.querySelectorAll('[data-filter]');
+    const principleCards = document.querySelectorAll('[data-principle-id]');
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filterValue = button.getAttribute('data-filter');
+
+        // Update active state
+        filterButtons.forEach((btn) => {
+          const isActive = btn.getAttribute('data-filter') === filterValue;
+          btn.setAttribute('data-filter-active', String(isActive));
+          if (isActive) {
+            btn.classList.add('bg-tone-neutral', 'font-medium');
+            btn.classList.remove('bg-tone-neutral/80');
+          } else {
+            btn.classList.remove('bg-tone-neutral', 'font-medium');
+            btn.classList.add('bg-tone-neutral/80');
+          }
+        });
+
+        // Filter cards
+        principleCards.forEach((card) => {
+          const cardCategory = card.getAttribute('data-category');
+          const shouldShow = filterValue === 'all' || cardCategory === filterValue;
+
+          if (shouldShow) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Initialize active state
+    filterButtons.forEach((button) => {
+      const isActive = button.getAttribute('data-filter-active') === 'true';
+      if (isActive) {
+        button.classList.add('bg-tone-neutral', 'font-medium');
+        button.classList.remove('bg-tone-neutral/80');
+      }
+    });
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCategoryFilter);
+  } else {
+    initCategoryFilter();
+  }
+</script>

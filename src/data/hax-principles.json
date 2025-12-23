@@ -1,0 +1,152 @@
+{
+  "title": "HAX Principles",
+  "description": "Designing transparent, predictable AI experiences following Microsoft HAX guidelines",
+  "categories": ["Capability Transparency", "Contextual Intelligence", "Ethical Alignment", "Error Recovery & Control", "System Explainability", "Adaptive Memory", "Feedback & Governance"],
+  "principles": [
+    {
+      "id": "make-clear-what-system-can-do",
+      "title": "Make Clear What the System Can Do",
+      "category": "Capability Transparency",
+      "icon": "mgg/ai-chatbot",
+      "description": "Users should understand the AI's capabilities and limitations upfront, setting appropriate expectations.",
+      "color": "label-blue"
+    },
+    {
+      "id": "make-clear-how-well-system-can-do",
+      "title": "Make Clear How Well the System Can Do What It Can Do",
+      "category": "Capability Transparency",
+      "icon": "mi/baseline/assessment",
+      "description": "Provide confidence indicators and accuracy information so users can make informed decisions.",
+      "color": "label-blue"
+    },
+    {
+      "id": "time-services-based-on-context",
+      "title": "Time Services Based on Context",
+      "category": "Contextual Intelligence",
+      "icon": "mi/baseline/schedule",
+      "description": "Deliver AI assistance at the right moment, when it's most useful and least disruptive.",
+      "color": "label-violet"
+    },
+    {
+      "id": "show-contextually-relevant-information",
+      "title": "Show Contextually Relevant Information",
+      "category": "Contextual Intelligence",
+      "icon": "mi/baseline/info",
+      "description": "Present information that matters to the user's current task and context.",
+      "color": "label-violet"
+    },
+    {
+      "id": "match-relevant-social-norms",
+      "title": "Match Relevant Social Norms",
+      "category": "Ethical Alignment",
+      "icon": "mi/baseline/people",
+      "description": "Design AI interactions that feel natural and appropriate within cultural and social contexts.",
+      "color": "status-success"
+    },
+    {
+      "id": "mitigate-social-biases",
+      "title": "Mitigate Social Biases",
+      "category": "Ethical Alignment",
+      "icon": "mi/baseline/balance",
+      "description": "Ensure AI systems are fair, inclusive, and free from harmful biases.",
+      "color": "status-success"
+    },
+    {
+      "id": "support-efficient-invocation",
+      "title": "Support Efficient Invocation",
+      "category": "Error Recovery & Control",
+      "icon": "mi/baseline/play-arrow",
+      "description": "Make it easy for users to access AI features when needed, with clear entry points.",
+      "color": "status-error"
+    },
+    {
+      "id": "support-efficient-dismissal",
+      "title": "Support Efficient Dismissal",
+      "category": "Error Recovery & Control",
+      "icon": "mi/baseline/close",
+      "description": "Allow users to easily ignore or dismiss AI suggestions without friction.",
+      "color": "status-error"
+    },
+    {
+      "id": "support-efficient-correction",
+      "title": "Support Efficient Correction",
+      "category": "Error Recovery & Control",
+      "icon": "mi/baseline/edit",
+      "description": "Enable users to fix AI mistakes quickly and easily, with clear correction paths.",
+      "color": "status-error"
+    },
+    {
+      "id": "scope-services-when-in-doubt",
+      "title": "Scope Services When in Doubt",
+      "category": "Error Recovery & Control",
+      "icon": "mi/baseline/security",
+      "description": "Limit AI actions when uncertainty exists, prioritizing user safety and control.",
+      "color": "status-error"
+    },
+    {
+      "id": "make-clear-why-system-did-what-it-did",
+      "title": "Make Clear Why the System Did What It Did",
+      "category": "System Explainability",
+      "icon": "mi/baseline/lightbulb-outline",
+      "description": "Provide explanations for AI decisions, helping users understand the reasoning behind actions.",
+      "color": "label-sky"
+    },
+    {
+      "id": "remember-recent-interactions",
+      "title": "Remember Recent Interactions",
+      "category": "Adaptive Memory",
+      "icon": "mi/baseline/history",
+      "description": "Maintain context across user sessions, remembering relevant past interactions.",
+      "color": "label-amaranth"
+    },
+    {
+      "id": "learn-from-user-behavior",
+      "title": "Learn from User Behavior",
+      "category": "Adaptive Memory",
+      "icon": "mi/baseline/school",
+      "description": "Adapt to user preferences over time, improving personalization while respecting privacy.",
+      "color": "label-amaranth"
+    },
+    {
+      "id": "update-and-adapt-cautiously",
+      "title": "Update and Adapt Cautiously",
+      "category": "Adaptive Memory",
+      "icon": "mi/baseline/trending-up",
+      "description": "Make changes that improve rather than disrupt user workflows, with careful testing.",
+      "color": "label-amaranth"
+    },
+    {
+      "id": "encourage-granular-feedback",
+      "title": "Encourage Granular Feedback",
+      "category": "Feedback & Governance",
+      "icon": "mi/baseline/feedback",
+      "description": "Enable users to provide specific feedback on AI performance, improving the system iteratively.",
+      "color": "label-green"
+    },
+    {
+      "id": "convey-consequences-of-user-actions",
+      "title": "Convey the Consequences of User Actions",
+      "category": "Feedback & Governance",
+      "icon": "mi/baseline/warning",
+      "description": "Help users understand how their actions affect the AI system and outcomes.",
+      "color": "label-green"
+    },
+    {
+      "id": "provide-global-controls",
+      "title": "Provide Global Controls",
+      "category": "Feedback & Governance",
+      "icon": "mi/baseline/settings",
+      "description": "Give users control over AI behavior and settings at a system-wide level.",
+      "color": "label-green"
+    },
+    {
+      "id": "notify-users-about-changes",
+      "title": "Notify Users About Changes",
+      "category": "Feedback & Governance",
+      "icon": "mi/baseline/notifications",
+      "description": "Keep users informed about system updates and changes that affect their experience.",
+      "color": "label-green"
+    }
+  ]
+}
+

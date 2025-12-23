@@ -1,94 +1,36 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
+import PrincipleCard from '../components/PrincipleCard.astro';
+import CategoryFilter from '../components/CategoryFilter.astro';
+import CardTextAnimation from '../components/CardTextAnimation.astro';
+import data from '../data/design-systems.json';
 
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Design Systems - Vittorio's Portfolio">
+<SectionLayout title="Design Systems - Vittorio's Portfolio">
   <section class="min-h-screen py-2000 px-400 bg-white">
-    <div class="max-w-4xl mx-auto">
-      <mds-text typography="h1" class="mb-600 text-tone-neutral-01">Design Systems</mds-text>
+    <div class="max-w-6xl mx-auto">
+      <mds-text typography="h1" class="mb-600 text-tone-neutral-01">{data.title}</mds-text>
       <mds-text typography="detail" class="mb-1200 leading-relaxed">
-        Building scalable, maintainable component libraries with clear documentation
+        {data.description}
       </mds-text>
 
-      <div class="prose prose-lg">
-        <mds-text typography="detail" class="mb-800">
-          Design systems are the foundation of consistent, scalable user experiences. I specialize
-          in creating comprehensive design systems that enable teams to build better products
-          faster.
-        </mds-text>
+      <CategoryFilter categories={data.categories} />
 
-        <div class="grid grid-cols-1 tablet:grid-cols-2 gap-600 mb-800">
-          <mds-card class="bg-label-violet-10">
-            <mds-card-content>
-              <mds-text typography="h3" class="mb-300 text-tone-neutral-01">Design Tokens</mds-text>
-              <mds-text typography="detail">
-                Centralized design decisions stored as data, ensuring consistency across platforms
-                and tools.
-              </mds-text>
-            </mds-card-content>
-          </mds-card>
-
-          <mds-card class="bg-label-violet-10">
-            <mds-card-content>
-              <mds-text typography="h3" class="mb-300 text-tone-neutral-01">Accessibility</mds-text>
-              <mds-text typography="detail">
-                WCAG-compliant components that work for everyone, regardless of ability or device.
-              </mds-text>
-            </mds-card-content>
-          </mds-card>
-
-          <mds-card class="bg-label-violet-10">
-            <mds-card-content>
-              <mds-text typography="h3" class="mb-300 text-tone-neutral-01">Motion Design</mds-text>
-              <mds-text typography="detail">
-                Thoughtful animations that enhance usability and provide meaningful feedback.
-              </mds-text>
-            </mds-card-content>
-          </mds-card>
-
-          <mds-card class="bg-label-violet-10">
-            <mds-card-content>
-              <mds-text typography="h3" class="mb-300 text-tone-neutral-01"
-                >Design Language</mds-text
-              >
-              <mds-text typography="detail">
-                Cohesive visual and interaction patterns that create a unified brand experience.
-              </mds-text>
-            </mds-card-content>
-          </mds-card>
-        </div>
-
-        <mds-card class="bg-tone-neutral-09 mb-800">
-          <mds-card-content>
-            <mds-text typography="h2" class="mb-400 text-tone-neutral-01"
-              >Featured Projects</mds-text
-            >
-            <ul class="space-y-400 text-tone-neutral-05">
-              <li>
-                <strong>Magma Design System</strong> - A comprehensive design system built with StencilJS,
-                exported as Web Components, React, and Angular components.
-                <a
-                  href="https://magma.maggiolicloud.it/storybook/?path=/docs/common-tests--docs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-label-violet-04 hover:underline ml-200"
-                >
-                  View Storybook →
-                </a>
-              </li>
-              <li>
-                <strong>Maggioli Design System Styles</strong> - Core styling and design tokens for the
-                Maggioli ecosystem.
-              </li>
-              <li>
-                <strong>Iconsauce</strong> - SVG icon library system similar to Tailwind, combining icons
-                from different libraries into a single CSS file.
-              </li>
-            </ul>
-          </mds-card-content>
-        </mds-card>
+      <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-600">
+        {
+          data.principles.map((principle) => (
+            <PrincipleCard
+              id={principle.id}
+              title={principle.title}
+              category={principle.category}
+              icon={principle.icon}
+              color={principle.color}
+              href={`${baseUrl}design-systems/${principle.id}`}
+            />
+          ))
+        }
       </div>
 
       <div class="mt-1200">
@@ -96,4 +38,5 @@ const baseUrl = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
-</Layout>
+  <CardTextAnimation />
+</SectionLayout>
