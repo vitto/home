@@ -42,7 +42,7 @@ const baseUrl = import.meta.env.BASE_URL;
     <!-- Preload Three.js core module to reduce dependency chain -->
     <link rel="modulepreload" href={`${baseUrl}/vendor/three.core.min.js`} />
   </head>
-  <body class="bg-tone-neutral-10 text-tone-neutral-01 antialiased">
+  <body class="bg-tone-neutral-10 text-tone-neutral-01 antialiased" role="main">
     <slot />
   </body>
 </html>

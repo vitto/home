@@ -4,12 +4,41 @@ import PrincipleCard from '../components/PrincipleCard.astro';
 import CategoryFilter from '../components/CategoryFilter.astro';
 import CardTextAnimation from '../components/CardTextAnimation.astro';
 import data from '../data/design-systems.json';
+import Blob from '../components/Blob.astro';
+import blobConfigs from '../data/blob-configs.json';
 
 const baseUrl = import.meta.env.BASE_URL;
+const blobConfig = blobConfigs['design-systems'];
 ---
 
 <SectionLayout title="Design Systems - Vittorio's Portfolio">
-  <section class="min-h-screen py-2000 px-400 bg-white">
+  <Blob
+    speed={blobConfig.speed}
+    density={blobConfig.density}
+    strength={blobConfig.strength}
+    frequency={blobConfig.frequency}
+    amplitude={blobConfig.amplitude}
+    intensity={blobConfig.intensity}
+    wireframe={blobConfig.wireframe}
+    brightness_R={blobConfig.brightness_R}
+    brightness_G={blobConfig.brightness_G}
+    brightness_B={blobConfig.brightness_B}
+    contrast_R={blobConfig.contrast_R}
+    contrast_G={blobConfig.contrast_G}
+    contrast_B={blobConfig.contrast_B}
+    oscillation_R={blobConfig.oscillation_R}
+    oscillation_G={blobConfig.oscillation_G}
+    oscillation_B={blobConfig.oscillation_B}
+    phase_R={blobConfig.phase_R}
+    phase_G={blobConfig.phase_G}
+    phase_B={blobConfig.phase_B}
+    positionY={blobConfig.positionY}
+    positionYMobile={blobConfig.positionYMobile}
+    scale={blobConfig.scale}
+    maxScrollTranslate={blobConfig.maxScrollTranslate}
+    showGui={false}
+  />
+  <section class="min-h-screen py-2000 px-400 z-10 relative">
     <div class="max-w-6xl mx-auto">
       <mds-text typography="h1" class="mb-600 text-tone-neutral-01">{data.title}</mds-text>
       <mds-text typography="detail" class="mb-1200 leading-relaxed">

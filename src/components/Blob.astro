@@ -76,7 +76,7 @@ const {
   amplitude = 6.0,
   intensity = 10.0,
   wireframe = false,
-  showGui = false,
+  showGui = true,
   brightness_R = 0.938,
   brightness_G = 0.328,
   brightness_B = 0.718,
@@ -353,6 +353,25 @@ const baseUrl = import.meta.env.BASE_URL;
     }
   `;
 
+  // Store reference to updateBlobConfig function (will be set when Three.js initializes)
+  let updateBlobConfigRef = null;
+
+  // Expose a placeholder function immediately so CategoryCards can detect blob presence
+  if (typeof window !== 'undefined') {
+    window.updateBlobConfig = (config, animate) => {
+      if (updateBlobConfigRef) {
+        updateBlobConfigRef(config, animate);
+      } else {
+        // Store config to apply when blob initializes
+        if (!window._pendingBlobConfig) {
+          window._pendingBlobConfig = [];
+        }
+        window._pendingBlobConfig.push({ config, animate });
+      }
+    };
+    window._blobReady = false;
+  }
+
   // Initialize blob
   const initBlob = async () => {
     // Wait for idle time or use setTimeout as fallback
@@ -397,8 +416,11 @@ const baseUrl = import.meta.env.BASE_URL;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(cameraFov, width / height, 0.1, 1000);
 
-    // Create mutable variable for camera distance (cameraDistance prop is constant)
+    // Create mutable variables for props that are constants
     let currentCameraDistance = cameraDistance;
+    let currentPositionY = positionY;
+    let currentPositionYMobile = positionYMobile !== undefined ? positionYMobile : positionY;
+    let currentScale = scale;
     camera.position.set(0, 0, currentCameraDistance);
 
     const renderer = new THREE.WebGLRenderer({
@@ -430,6 +452,32 @@ const baseUrl = import.meta.env.BASE_URL;
       phase_R: phase_R,
       phase_G: phase_G,
       phase_B: phase_B,
+    };
+
+    // Store initial configuration for reset functionality
+    const initialConfig = {
+      speed,
+      density,
+      strength,
+      frequency,
+      amplitude,
+      intensity,
+      wireframe,
+      brightness_R,
+      brightness_G,
+      brightness_B,
+      contrast_R,
+      contrast_G,
+      contrast_B,
+      oscillation_R,
+      oscillation_G,
+      oscillation_B,
+      phase_R,
+      phase_G,
+      phase_B,
+      positionY: currentPositionY,
+      positionYMobile: currentPositionYMobile,
+      scale: currentScale,
     };
 
     // Shader uniforms
@@ -468,15 +516,13 @@ const baseUrl = import.meta.env.BASE_URL;
     const mesh = new THREE.Mesh(geometry, material);
 
     // Determine current positionY based on viewport width (mobile breakpoint: 480px)
-    // Use positionYMobile if provided, otherwise fallback to positionY
-    const mobilePositionY = positionYMobile !== undefined ? positionYMobile : positionY;
     const getCurrentPositionY = () => {
-      return window.innerWidth <= 480 ? mobilePositionY : positionY;
+      return window.innerWidth <= 480 ? currentPositionYMobile : currentPositionY;
     };
 
     // X is always centered (0), Y and Z are configurable
     mesh.position.set(0, getCurrentPositionY(), positionZ);
-    mesh.scale.set(scale, scale, scale);
+    mesh.scale.set(currentScale, currentScale, currentScale);
     scene.add(mesh);
 
     // Setup dat.gui if enabled
@@ -613,6 +659,154 @@ const baseUrl = import.meta.env.BASE_URL;
       }
     }
 
+    // Easing function for smooth transitions (easeOutExpo)
+    function easeOutExpo(t) {
+      return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+    }
+
+    // Animation system for transitioning between configurations
+    let animationState = {
+      isAnimating: false,
+      startValues: {},
+      targetValues: {},
+      startTime: 0,
+      duration: 2000, // 2 seconds
+    };
+
+    // Function to animate a value from start to target
+    function animateValue(start, target, progress) {
+      return start + (target - start) * progress;
+    }
+
+    // Function to update settings and uniforms with animation
+    function updateBlobConfig(newConfig, animate = true) {
+      if (!animate) {
+        // Direct update without animation
+        Object.keys(newConfig).forEach((key) => {
+          if (key === 'speed') {
+            settings.speed = newConfig.speed;
+            uniforms.uSpeed.value = newConfig.speed;
+          } else if (key === 'density') {
+            settings.density = newConfig.density;
+            uniforms.uNoiseDensity.value = newConfig.density;
+          } else if (key === 'strength') {
+            settings.strength = newConfig.strength;
+            uniforms.uNoiseStrength.value = newConfig.strength;
+          } else if (key === 'frequency') {
+            settings.frequency = newConfig.frequency;
+            uniforms.uFrequency.value = newConfig.frequency;
+          } else if (key === 'amplitude') {
+            settings.amplitude = newConfig.amplitude;
+            uniforms.uAmplitude.value = newConfig.amplitude;
+          } else if (key === 'intensity') {
+            settings.intensity = newConfig.intensity;
+            uniforms.uIntensity.value = newConfig.intensity;
+          } else if (key === 'brightness_R') {
+            settings.brightness_R = newConfig.brightness_R;
+            uniforms.uBrightness_r.value = newConfig.brightness_R;
+          } else if (key === 'brightness_G') {
+            settings.brightness_G = newConfig.brightness_G;
+            uniforms.uBrightness_g.value = newConfig.brightness_G;
+          } else if (key === 'brightness_B') {
+            settings.brightness_B = newConfig.brightness_B;
+            uniforms.uBrightness_b.value = newConfig.brightness_B;
+          } else if (key === 'contrast_R') {
+            settings.contrast_R = newConfig.contrast_R;
+            uniforms.uContrast_r.value = newConfig.contrast_R;
+          } else if (key === 'contrast_G') {
+            settings.contrast_G = newConfig.contrast_G;
+            uniforms.uContrast_g.value = newConfig.contrast_G;
+          } else if (key === 'contrast_B') {
+            settings.contrast_B = newConfig.contrast_B;
+            uniforms.uContrast_b.value = newConfig.contrast_B;
+          } else if (key === 'oscillation_R') {
+            settings.oscillation_R = newConfig.oscillation_R;
+            uniforms.uOscillation_r.value = newConfig.oscillation_R;
+          } else if (key === 'oscillation_G') {
+            settings.oscillation_G = newConfig.oscillation_G;
+            uniforms.uOscillation_g.value = newConfig.oscillation_G;
+          } else if (key === 'oscillation_B') {
+            settings.oscillation_B = newConfig.oscillation_B;
+            uniforms.uOscillation_b.value = newConfig.oscillation_B;
+          } else if (key === 'phase_R') {
+            settings.phase_R = newConfig.phase_R;
+            uniforms.uPhase_r.value = newConfig.phase_R;
+          } else if (key === 'phase_G') {
+            settings.phase_G = newConfig.phase_G;
+            uniforms.uPhase_g.value = newConfig.phase_G;
+          } else if (key === 'phase_B') {
+            settings.phase_B = newConfig.phase_B;
+            uniforms.uPhase_b.value = newConfig.phase_B;
+          } else if (key === 'positionY') {
+            currentPositionY = newConfig.positionY;
+            mesh.position.y = getCurrentPositionY();
+          } else if (key === 'positionYMobile') {
+            currentPositionYMobile = newConfig.positionYMobile;
+            mesh.position.y = getCurrentPositionY();
+          } else if (key === 'scale') {
+            currentScale = newConfig.scale;
+            mesh.scale.set(currentScale, currentScale, currentScale);
+          }
+        });
+        return;
+      }
+
+      // Store start values
+      animationState.startValues = {
+        speed: settings.speed,
+        density: settings.density,
+        strength: settings.strength,
+        frequency: settings.frequency,
+        amplitude: settings.amplitude,
+        intensity: settings.intensity,
+        brightness_R: settings.brightness_R,
+        brightness_G: settings.brightness_G,
+        brightness_B: settings.brightness_B,
+        contrast_R: settings.contrast_R,
+        contrast_G: settings.contrast_G,
+        contrast_B: settings.contrast_B,
+        oscillation_R: settings.oscillation_R,
+        oscillation_G: settings.oscillation_G,
+        oscillation_B: settings.oscillation_B,
+        phase_R: settings.phase_R,
+        phase_G: settings.phase_G,
+        phase_B: settings.phase_B,
+        positionY: currentPositionY,
+        positionYMobile: currentPositionYMobile,
+        scale: currentScale,
+      };
+
+      // Store target values
+      animationState.targetValues = { ...newConfig };
+
+      // Start animation
+      animationState.isAnimating = true;
+      animationState.startTime = performance.now();
+    }
+
+    // Store reference to the actual updateBlobConfig function
+    updateBlobConfigRef = updateBlobConfig;
+
+    // Function to reset to initial configuration
+    const resetBlobConfig = (animate = true) => {
+      updateBlobConfig(initialConfig, animate);
+    };
+
+    // Replace the placeholder with the actual function
+    if (typeof window !== 'undefined') {
+      window.updateBlobConfig = updateBlobConfig;
+      window.resetBlobConfig = resetBlobConfig;
+      window._blobReady = true;
+
+      // Apply any pending configs that were queued before initialization
+      if (window._pendingBlobConfig && window._pendingBlobConfig.length > 0) {
+        window._pendingBlobConfig.forEach(({ config, animate }) => {
+          updateBlobConfig(config, animate);
+        });
+        window._pendingBlobConfig = [];
+      }
+    }
+
     // Animation loop
     let time = 0;
     let lastFrameTime = performance.now();
@@ -626,6 +820,188 @@ const baseUrl = import.meta.env.BASE_URL;
 
       time += deltaTime;
       uniforms.uTime.value = time;
+
+      // Handle configuration animation
+      if (animationState.isAnimating) {
+        const elapsed = currentTime - animationState.startTime;
+        const progress = Math.min(elapsed / animationState.duration, 1);
+        const easedProgress = easeOutExpo(progress);
+
+        // Animate all values
+        if (animationState.targetValues.speed !== undefined) {
+          settings.speed = animateValue(
+            animationState.startValues.speed,
+            animationState.targetValues.speed,
+            easedProgress
+          );
+          uniforms.uSpeed.value = settings.speed;
+        }
+        if (animationState.targetValues.density !== undefined) {
+          settings.density = animateValue(
+            animationState.startValues.density,
+            animationState.targetValues.density,
+            easedProgress
+          );
+          uniforms.uNoiseDensity.value = settings.density;
+        }
+        if (animationState.targetValues.strength !== undefined) {
+          settings.strength = animateValue(
+            animationState.startValues.strength,
+            animationState.targetValues.strength,
+            easedProgress
+          );
+          uniforms.uNoiseStrength.value = settings.strength;
+        }
+        if (animationState.targetValues.frequency !== undefined) {
+          settings.frequency = animateValue(
+            animationState.startValues.frequency,
+            animationState.targetValues.frequency,
+            easedProgress
+          );
+          uniforms.uFrequency.value = settings.frequency;
+        }
+        if (animationState.targetValues.amplitude !== undefined) {
+          settings.amplitude = animateValue(
+            animationState.startValues.amplitude,
+            animationState.targetValues.amplitude,
+            easedProgress
+          );
+          uniforms.uAmplitude.value = settings.amplitude;
+        }
+        if (animationState.targetValues.intensity !== undefined) {
+          settings.intensity = animateValue(
+            animationState.startValues.intensity,
+            animationState.targetValues.intensity,
+            easedProgress
+          );
+          uniforms.uIntensity.value = settings.intensity;
+        }
+        if (animationState.targetValues.brightness_R !== undefined) {
+          settings.brightness_R = animateValue(
+            animationState.startValues.brightness_R,
+            animationState.targetValues.brightness_R,
+            easedProgress
+          );
+          uniforms.uBrightness_r.value = settings.brightness_R;
+        }
+        if (animationState.targetValues.brightness_G !== undefined) {
+          settings.brightness_G = animateValue(
+            animationState.startValues.brightness_G,
+            animationState.targetValues.brightness_G,
+            easedProgress
+          );
+          uniforms.uBrightness_g.value = settings.brightness_G;
+        }
+        if (animationState.targetValues.brightness_B !== undefined) {
+          settings.brightness_B = animateValue(
+            animationState.startValues.brightness_B,
+            animationState.targetValues.brightness_B,
+            easedProgress
+          );
+          uniforms.uBrightness_b.value = settings.brightness_B;
+        }
+        if (animationState.targetValues.contrast_R !== undefined) {
+          settings.contrast_R = animateValue(
+            animationState.startValues.contrast_R,
+            animationState.targetValues.contrast_R,
+            easedProgress
+          );
+          uniforms.uContrast_r.value = settings.contrast_R;
+        }
+        if (animationState.targetValues.contrast_G !== undefined) {
+          settings.contrast_G = animateValue(
+            animationState.startValues.contrast_G,
+            animationState.targetValues.contrast_G,
+            easedProgress
+          );
+          uniforms.uContrast_g.value = settings.contrast_G;
+        }
+        if (animationState.targetValues.contrast_B !== undefined) {
+          settings.contrast_B = animateValue(
+            animationState.startValues.contrast_B,
+            animationState.targetValues.contrast_B,
+            easedProgress
+          );
+          uniforms.uContrast_b.value = settings.contrast_B;
+        }
+        if (animationState.targetValues.oscillation_R !== undefined) {
+          settings.oscillation_R = animateValue(
+            animationState.startValues.oscillation_R,
+            animationState.targetValues.oscillation_R,
+            easedProgress
+          );
+          uniforms.uOscillation_r.value = settings.oscillation_R;
+        }
+        if (animationState.targetValues.oscillation_G !== undefined) {
+          settings.oscillation_G = animateValue(
+            animationState.startValues.oscillation_G,
+            animationState.targetValues.oscillation_G,
+            easedProgress
+          );
+          uniforms.uOscillation_g.value = settings.oscillation_G;
+        }
+        if (animationState.targetValues.oscillation_B !== undefined) {
+          settings.oscillation_B = animateValue(
+            animationState.startValues.oscillation_B,
+            animationState.targetValues.oscillation_B,
+            easedProgress
+          );
+          uniforms.uOscillation_b.value = settings.oscillation_B;
+        }
+        if (animationState.targetValues.phase_R !== undefined) {
+          settings.phase_R = animateValue(
+            animationState.startValues.phase_R,
+            animationState.targetValues.phase_R,
+            easedProgress
+          );
+          uniforms.uPhase_r.value = settings.phase_R;
+        }
+        if (animationState.targetValues.phase_G !== undefined) {
+          settings.phase_G = animateValue(
+            animationState.startValues.phase_G,
+            animationState.targetValues.phase_G,
+            easedProgress
+          );
+          uniforms.uPhase_g.value = settings.phase_G;
+        }
+        if (animationState.targetValues.phase_B !== undefined) {
+          settings.phase_B = animateValue(
+            animationState.startValues.phase_B,
+            animationState.targetValues.phase_B,
+            easedProgress
+          );
+          uniforms.uPhase_b.value = settings.phase_B;
+        }
+        if (animationState.targetValues.scale !== undefined) {
+          currentScale = animateValue(
+            animationState.startValues.scale,
+            animationState.targetValues.scale,
+            easedProgress
+          );
+          mesh.scale.set(currentScale, currentScale, currentScale);
+        }
+        if (animationState.targetValues.positionY !== undefined) {
+          currentPositionY = animateValue(
+            animationState.startValues.positionY,
+            animationState.targetValues.positionY,
+            easedProgress
+          );
+          mesh.position.y = getCurrentPositionY();
+        }
+        if (animationState.targetValues.positionYMobile !== undefined) {
+          currentPositionYMobile = animateValue(
+            animationState.startValues.positionYMobile,
+            animationState.targetValues.positionYMobile,
+            easedProgress
+          );
+          mesh.position.y = getCurrentPositionY();
+        }
+
+        // Check if animation is complete
+        if (progress >= 1) {
+          animationState.isAnimating = false;
+        }
+      }
 
       // Camera stays in fixed position
       camera.position.set(0, 0, currentCameraDistance);
@@ -648,6 +1024,7 @@ const baseUrl = import.meta.env.BASE_URL;
 
       // Update mesh Y position based on viewport width
       mesh.position.y = getCurrentPositionY();
+      mesh.scale.set(currentScale, currentScale, currentScale);
     }
 
     window.addEventListener('resize', onResize);
