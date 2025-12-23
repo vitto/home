@@ -33,6 +33,7 @@
  * @param {number} positionY - Y position offset (default: -0.2)
  * @param {number} positionZ - Z position offset (default: 0)
  * @param {number} scale - Scale multiplier (default: 1)
+ * @param {number} maxScrollTranslate - Maximum translateY value in pixels when page is fully scrolled (default: 0, disabled)
  */
 interface Props {
   speed?: number;
@@ -62,6 +63,7 @@ interface Props {
   positionY?: number;
   positionZ?: number;
   scale?: number;
+  maxScrollTranslate?: number;
 }
 
 const {
@@ -92,6 +94,7 @@ const {
   positionY = -0.2,
   positionZ = 0,
   scale = 1,
+  maxScrollTranslate = 0,
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -141,6 +144,7 @@ const baseUrl = import.meta.env.BASE_URL;
     positionY,
     positionZ,
     scale,
+    maxScrollTranslate,
     baseUrl,
   }}
 >
@@ -630,9 +634,72 @@ const baseUrl = import.meta.env.BASE_URL;
 
     window.addEventListener('resize', onResize);
 
+    // Setup scroll parallax effect if enabled
+    let scrollCleanup = null;
+    if (maxScrollTranslate > 0) {
+      const blobContainer = document.getElementById('blob-container');
+      if (blobContainer) {
+        // Calculate max scroll possible (document height - viewport height)
+        const getMaxScroll = () => {
+          return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        };
+
+        // Update translateY based on scroll position
+        const updateScrollParallax = () => {
+          const scrollY = window.scrollY;
+          const maxScroll = getMaxScroll();
+
+          // Calculate scroll progress (0 to 1)
+          const scrollProgress = maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0;
+
+          // Calculate translateY: from 0 (top) to -maxScrollTranslate (bottom)
+          // Negative value moves element up as you scroll down
+          const translateY = -scrollProgress * maxScrollTranslate;
+
+          // Update CSS custom property
+          blobContainer.style.setProperty('--scroll-translate-y', `${translateY}px`);
+        };
+
+        // Use requestAnimationFrame for smooth updates
+        let rafId = null;
+        const onScroll = () => {
+          if (rafId === null) {
+            rafId = requestAnimationFrame(() => {
+              updateScrollParallax();
+              rafId = null;
+            });
+          }
+        };
+
+        // Initial update
+        updateScrollParallax();
+
+        // Listen to scroll events
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Update on resize (max scroll might change)
+        const onResizeScroll = () => {
+          updateScrollParallax();
+        };
+        window.addEventListener('resize', onResizeScroll);
+
+        // Store cleanup function
+        scrollCleanup = () => {
+          window.removeEventListener('scroll', onScroll);
+          window.removeEventListener('resize', onResizeScroll);
+          if (rafId !== null) {
+            cancelAnimationFrame(rafId);
+          }
+        };
+      }
+    }
+
     // Cleanup function
     return () => {
       window.removeEventListener('resize', onResize);
+      if (scrollCleanup) {
+        scrollCleanup();
+      }
       if (gui) {
         gui.destroy();
       }
@@ -645,6 +712,7 @@ const baseUrl = import.meta.env.BASE_URL;
 
 <style>
   #blob-container {
+    --scroll-translate-y: 0px;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -652,8 +720,12 @@ const baseUrl = import.meta.env.BASE_URL;
     transform-origin: center top;
     animation-delay: 500ms;
     animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
     scale: 0;
-    @apply ease-in-out-expo;
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transform: translateY(var(--scroll-translate-y));
+    @apply ease-out-expo;
   }
 
   #blob-canvas {
