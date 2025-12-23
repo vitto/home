@@ -1,7 +1,15 @@
 {
   "title": "HAX Principles",
   "description": "Designing transparent, predictable AI experiences following Microsoft HAX guidelines",
-  "categories": ["Capability Transparency", "Contextual Intelligence", "Ethical Alignment", "Error Recovery & Control", "System Explainability", "Adaptive Memory", "Feedback & Governance"],
+  "categories": [
+    "Capability Transparency",
+    "Contextual Intelligence",
+    "Ethical Alignment",
+    "Error Recovery & Control",
+    "System Explainability",
+    "Adaptive Memory",
+    "Feedback & Governance"
+  ],
   "principles": [
     {
       "id": "make-clear-what-system-can-do",
@@ -149,4 +157,3 @@
     }
   ]
 }
-

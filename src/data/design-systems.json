@@ -1,7 +1,13 @@
 {
   "title": "Design Systems",
   "description": "Building scalable, maintainable component libraries with clear documentation",
-  "categories": ["architecture", "component design", "maintenance and evolution", "adoption", "value"],
+  "categories": [
+    "architecture",
+    "component design",
+    "maintenance and evolution",
+    "adoption",
+    "value"
+  ],
   "principles": [
     {
       "id": "single-source-of-truth",
@@ -85,4 +91,3 @@
     }
   ]
 }
-
