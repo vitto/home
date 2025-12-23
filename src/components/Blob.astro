@@ -368,14 +368,6 @@ const baseUrl = import.meta.env.BASE_URL;
     );
 
     observer.observe(canvas);
-
-    // Fallback: initialize after 1 second if still not visible
-    setTimeout(() => {
-      if (observer) {
-        observer.disconnect();
-        initializeThreeJS();
-      }
-    }, 1000);
   };
 
   const initializeThreeJS = async () => {
