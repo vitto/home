@@ -16,9 +16,7 @@ interface Props {
 const { name = 'mi/baseline/alternate-email', class: className = '' } = Astro.props;
 
 // Combine classes: always include iconsauce-icon, plus any additional classes
-const iconClasses = `iconsauce-icon${className ? ` ${className}` : ''}`;
+const iconClasses = `iconsauce-icon ${name}${className ? ` ${className}` : ''}`;
 ---
 
-<span class={iconClasses}>
-  <span class={name}></span>
-</span>
+<span class={iconClasses}></span>
