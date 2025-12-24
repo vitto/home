@@ -59,12 +59,12 @@ const categoryColorClass = colorClasses[color] || 'bg-tone-neutral-09 text-tone-
 
 <a
   href={href}
-  class={`group inline-flex flex-col no-underline focus-bounce rounded-3xl ${className}`}
+  class={`group inline-flex flex-col no-underline focus-bounce ${className}`}
   data-principle-id={id}
   data-category={category}
 >
   <div
-    class="grid auto-rows-min rounded-3xl align-self-start text-tone-neutral-03 p-600 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral/80 backdrop-blur group-hover:bg-tone-neutral group-focus-visible:bg-tone-neutral ease-out-expo duration-1000"
+    class="grid aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_1fr_auto] text-tone-neutral-03 p-600 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral/80 backdrop-blur group-hover:bg-tone-neutral group-focus-visible:bg-tone-neutral ease-out-expo duration-1000"
   >
     <div class="flex items-center gap-400 mb-400">
       <div
@@ -73,8 +73,8 @@ const categoryColorClass = colorClasses[color] || 'bg-tone-neutral-09 text-tone-
         <Icon name={icon} class="" />
       </div>
     </div>
-    <h3 class="mb-300 text-title-h3 tablet-max:text-title-h4">{title}</h3>
-    <div class="flex gap-400 items-center mt-600">
+    <h3 class="text-title-h3 mobile:text-title-h4">{title}</h3>
+    <div class="flex gap-400 items-center">
       <Badge variant={color} class="shrink-0">{category}</Badge>
       <div
         class="inline-flex gap-400 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition min-h-600"

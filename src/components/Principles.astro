@@ -1,0 +1,23 @@
+---
+/**
+ * Principles Component
+ *
+ * Wrapper component for displaying principle cards in a grid layout
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes to add to the wrapper
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const baseClasses =
+  'grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-600 bg-tone-neutral-10 p-600 rounded-[48px]';
+const combinedClasses = `${baseClasses} ${className}`.trim();
+---
+
+<div class={combinedClasses}>
+  <slot />
+</div>

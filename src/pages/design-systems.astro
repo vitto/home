@@ -3,6 +3,8 @@ import SectionLayout from '../layouts/SectionLayout.astro';
 import PrincipleCard from '../components/PrincipleCard.astro';
 import CategoryFilter from '../components/CategoryFilter.astro';
 import CardTextAnimation from '../components/CardTextAnimation.astro';
+import Principles from '../components/Principles.astro';
+import Section from '../components/Section.astro';
 import data from '../data/design-systems.json';
 import Blob from '../components/Blob.astro';
 import blobConfigs from '../data/blob-configs.json';
@@ -38,34 +40,32 @@ const blobConfig = blobConfigs['design-systems'];
     maxScrollTranslate={blobConfig.maxScrollTranslate}
     showGui={false}
   />
-  <section class="min-h-screen py-2000 px-400 z-10 relative">
-    <div class="max-w-6xl mx-auto">
-      <mds-text typography="h1" class="mb-600 text-tone-neutral-01">{data.title}</mds-text>
-      <mds-text typography="detail" class="mb-1200 leading-relaxed">
-        {data.description}
-      </mds-text>
+  <Section class="z-10 relative">
+    <mds-text typography="h1" class="mb-600 text-tone-neutral-01">{data.title}</mds-text>
+    <mds-text typography="detail" class="mb-1200 leading-relaxed">
+      {data.description}
+    </mds-text>
 
-      <CategoryFilter categories={data.categories} />
+    <CategoryFilter categories={data.categories} />
 
-      <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-600">
-        {
-          data.principles.map((principle) => (
-            <PrincipleCard
-              id={principle.id}
-              title={principle.title}
-              category={principle.category}
-              icon={principle.icon}
-              color={principle.color}
-              href={`${baseUrl}design-systems/${principle.id}`}
-            />
-          ))
-        }
-      </div>
+    <Principles>
+      {
+        data.principles.map((principle) => (
+          <PrincipleCard
+            id={principle.id}
+            title={principle.title}
+            category={principle.category}
+            icon={principle.icon}
+            color={principle.color}
+            href={`${baseUrl}/design-systems/${principle.id}`}
+          />
+        ))
+      }
+    </Principles>
 
-      <div class="mt-1200">
-        <a href={baseUrl} class="text-label-violet-04 hover:underline">← Back to Home</a>
-      </div>
+    <div class="mt-1200">
+      <a href={baseUrl} class="text-label-violet-04 hover:underline">← Back to Home</a>
     </div>
-  </section>
+  </Section>
   <CardTextAnimation />
 </SectionLayout>

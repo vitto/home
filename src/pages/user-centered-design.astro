@@ -1,73 +1,44 @@
 ---
-import SectionLayout from '../layouts/SectionLayout.astro';
+import Layout from '../layouts/Layout.astro';
 import PrincipleCard from '../components/PrincipleCard.astro';
 import CategoryFilter from '../components/CategoryFilter.astro';
 import CardTextAnimation from '../components/CardTextAnimation.astro';
+import Principles from '../components/Principles.astro';
+import Section from '../components/Section.astro';
 import data from '../data/user-centered-design.json';
-import Blob from '../components/Blob.astro';
 import Footer from '../components/Footer.astro';
-import blobConfigs from '../data/blob-configs.json';
 
 const baseUrl = import.meta.env.BASE_URL;
-const blobConfig = blobConfigs['user-centered-design'];
 ---
 
-<SectionLayout title="User-Centered Design - Vittorio's Portfolio">
-  <Blob
-    speed={blobConfig.speed}
-    density={blobConfig.density}
-    strength={blobConfig.strength}
-    frequency={blobConfig.frequency}
-    amplitude={blobConfig.amplitude}
-    intensity={blobConfig.intensity}
-    wireframe={blobConfig.wireframe}
-    brightness_R={blobConfig.brightness_R}
-    brightness_G={blobConfig.brightness_G}
-    brightness_B={blobConfig.brightness_B}
-    contrast_R={blobConfig.contrast_R}
-    contrast_G={blobConfig.contrast_G}
-    contrast_B={blobConfig.contrast_B}
-    oscillation_R={blobConfig.oscillation_R}
-    oscillation_G={blobConfig.oscillation_G}
-    oscillation_B={blobConfig.oscillation_B}
-    phase_R={blobConfig.phase_R}
-    phase_G={blobConfig.phase_G}
-    phase_B={blobConfig.phase_B}
-    positionY={blobConfig.positionY}
-    positionYMobile={blobConfig.positionYMobile}
-    scale={blobConfig.scale}
-    maxScrollTranslate={blobConfig.maxScrollTranslate}
-    showGui={false}
-  />
-  <section class="min-h-screen py-2000 px-400 relative z-10">
-    <div class="max-w-6xl mx-auto">
-      <mds-text typography="h1" class="mb-600 text-tone-neutral-01">{data.title}</mds-text>
-      <mds-text typography="detail" class="mb-1200 leading-relaxed">
-        {data.description}
-      </mds-text>
+<Layout title="User-Centered Design - Vittorio's Portfolio">
+  <Section>
+    <mds-text typography="h1" class="mb-600 text-tone-neutral-01">{data.title}</mds-text>
+    <mds-text typography="detail" class="mb-1200 leading-relaxed">
+      {data.description}
+    </mds-text>
 
-      <CategoryFilter categories={data.categories} />
+    <CategoryFilter categories={data.categories} />
 
-      <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-600">
-        {
-          data.principles.map((principle) => (
-            <PrincipleCard
-              id={principle.id}
-              title={principle.title}
-              category={principle.category}
-              icon={principle.icon}
-              color={principle.color}
-              href={`${baseUrl}user-centered-design/${principle.id}`}
-            />
-          ))
-        }
-      </div>
+    <Principles>
+      {
+        data.principles.map((principle) => (
+          <PrincipleCard
+            id={principle.id}
+            title={principle.title}
+            category={principle.category}
+            icon={principle.icon}
+            color={principle.color}
+            href={`${baseUrl}/user-centered-design/${principle.id}`}
+          />
+        ))
+      }
+    </Principles>
 
-      <div class="mt-1200">
-        <a href={baseUrl} class="text-label-blue-04 hover:underline">← Back to Home</a>
-      </div>
+    <div class="mt-1200">
+      <a href={baseUrl} class="text-label-blue-04 hover:underline">← Back to Home</a>
     </div>
-  </section>
+  </Section>
   <Footer />
   <CardTextAnimation />
-</SectionLayout>
+</Layout>

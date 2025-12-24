@@ -1105,6 +1105,9 @@ const baseUrl = import.meta.env.BASE_URL;
   initBlob();
 </script>
 
+<!-- Preload Three.js core module to reduce dependency chain -->
+<link rel="modulepreload" href={`${baseUrl}/vendor/three.core.min.js`} />
+
 <style>
   #blob-container {
     --scroll-translate-y: 0px;
