@@ -13,7 +13,7 @@
       "id": "single-source-of-truth",
       "title": "Single Source of Truth",
       "category": "architecture",
-      "icon": "mi/baseline/database",
+      "icon": "mi/outline/account-balance",
       "description": "A centralized repository where all design decisions live, ensuring consistency across all platforms and tools.",
       "color": "label-amaranth"
     },

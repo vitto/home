@@ -7,27 +7,42 @@
  * Props:
  * @param {string} href - Link URL (if not provided, renders as button element)
  * @param {string} class - Additional CSS classes to add (base "button" class is always included)
- * @param {string} variant - Button variant (e.g., "strong" for "button--strong")
- * @param {string} tone - Button tone (e.g., "outline" for "button--outline")
+ * @param {string} variant - Button variant (e.g., "outline", "light", "hero", or color variants)
  */
 interface Props {
   href?: string;
   class?: string;
   variant?: string;
-  tone?: string;
 }
 
-const { href, class: className = '', variant, tone } = Astro.props;
+const { href, class: className = '', variant = 'none' } = Astro.props;
+
+// Map variant names to CSS classes
+const variants: Record<string, string> = {
+  none: '',
+  outline: 'button--outline',
+  light: 'button--light',
+  hero: 'button--hero',
+  'status-success': 'button--status-success',
+  'status-info': 'button--status-info',
+  'status-error': 'button--status-error',
+  'status-warning': 'button--status-warning',
+  'label-amaranth': 'button--label-amaranth',
+  'label-orchid': 'button--label-orchid',
+  'label-violet': 'button--label-violet',
+  'label-blue': 'button--label-blue',
+  'label-sky': 'button--label-sky',
+  'label-aqua': 'button--label-aqua',
+  'label-green': 'button--label-green',
+  'label-lime': 'button--label-lime',
+  'label-yellow': 'button--label-yellow',
+  'label-orange': 'button--label-orange',
+};
+
+const variantClass = variants[variant] || '';
 
 // Build class string: always include "button", add variant if provided, then additional classes
-const buttonClasses = [
-  'button',
-  'overflow-hidden',
-  'focus-bounce',
-  tone ? `button--${tone}` : '',
-  variant ? `button--${variant}` : '',
-  className,
-]
+const buttonClasses = ['button', 'overflow-hidden', 'focus-bounce', variantClass, className]
   .filter(Boolean)
   .join(' ');
 

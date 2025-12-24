@@ -8,7 +8,6 @@
 @import '@maggioli-design-system/styles/dist/css/base.css';
 @import './iconsauce.css';
 @import './components/Button.css';
-@import './components/Icon.css';
 
 :root {
   --variant-primary: var(--label-sky-06);

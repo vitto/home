@@ -10,6 +10,7 @@ import Badge from './Badge.astro';
  * Props:
  * @param {string} id - Principle ID/slug
  * @param {string} title - Principle title
+ * @param {string} description - Principle description
  * @param {string} category - Category name
  * @param {string} icon - Icon name
  * @param {string} color - Color theme (e.g., "status-success", "label-blue")
@@ -20,6 +21,7 @@ import Badge from './Badge.astro';
 interface Props {
   id: string;
   title: string;
+  description: string;
   category: string;
   icon?: string;
   color: string;
@@ -30,6 +32,7 @@ interface Props {
 const {
   id,
   title,
+  description,
   category,
   icon = 'mi/baseline/palette',
   color,
@@ -79,16 +82,17 @@ const categoryColorClass = colorClasses[color] || 'bg-tone-neutral-09 text-tone-
   data-category={category}
 >
   <div
-    class="grid aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_1fr_auto] text-tone-neutral-03 p-600 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral/80 backdrop-blur group-[&:is(:hover,:focus-visible)]:bg-tone-neutral ease-out-expo duration-1000"
+    class="grid gap-200 tablet:aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_auto_1fr_auto] text-tone-neutral-03 p-600 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral/80 backdrop-blur group-[&:is(:hover,:focus-visible)]:bg-tone-neutral ease-out-expo duration-1000"
   >
-    <div class="flex items-center gap-400 mb-400">
-      <div
-        class={`p-200 rounded-lg inline-flex justify-self-start transition origin-left group-[&:is(:hover,:focus-visible)]:scale-125 ease-out-expo duration-1000 border border-solid ${categoryColorClass}`}
-      >
-        <Icon name={icon} />
-      </div>
+    <div
+      class={`p-200 rounded-lg inline-flex justify-self-start transition origin-left group-[&:is(:hover,:focus-visible)]:scale-125 ease-out-expo duration-1000 border border-solid ${categoryColorClass}`}
+    >
+      <Icon name={icon} />
     </div>
     <h3 class="text-title-h3 mobile:text-title-h4">{title}</h3>
+    <p class="text-info-detail">
+      {description}
+    </p>
     <div class="flex gap-400 items-center">
       <Badge class={`shrink-0 ease-out-expo duration-1000 ${categoryColorClass}`}>
         {category}
