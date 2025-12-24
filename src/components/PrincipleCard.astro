@@ -40,18 +40,33 @@ const {
 // Map color names to CSS classes
 const colorClasses: Record<string, string> = {
   'status-success':
-    'group-hover:bg-status-success-09 group-focus-visible:bg-status-success-09 text-status-success-05',
-  'label-blue':
-    'group-hover:bg-label-blue-09 group-focus-visible:bg-label-blue-09 text-label-blue-05',
+    'group-[&:is(:hover,:focus-visible)]:bg-status-success-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-status-success-05 border-status-success-05/30',
+  'status-info':
+    'group-[&:is(:hover,:focus-visible)]:bg-status-info-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-status-info-05 border-status-info-05/30',
   'status-error':
-    'group-hover:bg-status-error-09 group-focus-visible:bg-status-error-09 text-status-error-05',
-  'label-violet':
-    'group-hover:bg-label-violet-09 group-focus-visible:bg-label-violet-09 text-label-violet-05',
+    'group-[&:is(:hover,:focus-visible)]:bg-status-error-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-status-error-05 border-status-error-05/30',
+  'status-warning':
+    'group-[&:is(:hover,:focus-visible)]:bg-status-warning-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-status-warning-05 border-status-warning-05/30',
   'label-amaranth':
-    'group-hover:bg-label-amaranth-09 group-focus-visible:bg-label-amaranth-09 text-label-amaranth-05',
-  'label-sky': 'group-hover:bg-label-sky-09 group-focus-visible:bg-label-sky-09 text-label-sky-05',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-amaranth-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-amaranth-05 border-label-amaranth-05/30',
+  'label-orchid':
+    'group-[&:is(:hover,:focus-visible)]:bg-label-orchid-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-orchid-05 border-label-orchid-05/30',
+  'label-violet':
+    'group-[&:is(:hover,:focus-visible)]:bg-label-violet-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-violet-05 border-label-violet-05/30',
+  'label-blue':
+    'group-[&:is(:hover,:focus-visible)]:bg-label-blue-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-blue-05 border-label-blue-05/30',
+  'label-sky':
+    'group-[&:is(:hover,:focus-visible)]:bg-label-sky-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-sky-05 border-label-sky-05/30',
+  'label-aqua':
+    'group-[&:is(:hover,:focus-visible)]:bg-label-aqua-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-aqua-05 border-label-aqua-05/30',
   'label-green':
-    'group-hover:bg-label-green-09 group-focus-visible:bg-label-green-09 text-label-green-05',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-green-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-green-05 border-label-green-05/30',
+  'label-lime':
+    'group-[&:is(:hover,:focus-visible)]:bg-label-lime-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-lime-05 border-label-lime-05/30',
+  'label-yellow':
+    'group-[&:is(:hover,:focus-visible)]:bg-label-yellow-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-yellow-05 border-label-yellow-05/30',
+  'label-orange':
+    'group-[&:is(:hover,:focus-visible)]:bg-label-orange-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-orange-05 border-label-orange-05/30',
 };
 
 const categoryColorClass = colorClasses[color] || 'bg-tone-neutral-09 text-tone-neutral-05';
@@ -64,20 +79,22 @@ const categoryColorClass = colorClasses[color] || 'bg-tone-neutral-09 text-tone-
   data-category={category}
 >
   <div
-    class="grid aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_1fr_auto] text-tone-neutral-03 p-600 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral/80 backdrop-blur group-hover:bg-tone-neutral group-focus-visible:bg-tone-neutral ease-out-expo duration-1000"
+    class="grid aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_1fr_auto] text-tone-neutral-03 p-600 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral/80 backdrop-blur group-[&:is(:hover,:focus-visible)]:bg-tone-neutral ease-out-expo duration-1000"
   >
     <div class="flex items-center gap-400 mb-400">
       <div
-        class={`p-200 -translate-x-200 rounded-lg inline-flex justify-self-start transition group-hover:-translate-y-200 group-focus-visible:-translate-y-200 group-hover:pt-200 group-focus-visible:pt-200 ease-out-expo duration-1000 ${categoryColorClass}`}
+        class={`p-200 rounded-lg inline-flex justify-self-start transition origin-left group-[&:is(:hover,:focus-visible)]:scale-125 ease-out-expo duration-1000 border border-solid ${categoryColorClass}`}
       >
-        <Icon name={icon} class="" />
+        <Icon name={icon} />
       </div>
     </div>
     <h3 class="text-title-h3 mobile:text-title-h4">{title}</h3>
     <div class="flex gap-400 items-center">
-      <Badge variant={color} class="shrink-0">{category}</Badge>
+      <Badge class={`shrink-0 ease-out-expo duration-1000 ${categoryColorClass}`}>
+        {category}
+      </Badge>
       <div
-        class="inline-flex gap-400 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition min-h-600"
+        class="inline-flex gap-400 opacity-0 group-[&:is(:hover,:focus-visible)]:opacity-100 transition min-h-600"
       >
         <mds-text text="→" animation="yugop" data-principle-text={id}></mds-text>
       </div>

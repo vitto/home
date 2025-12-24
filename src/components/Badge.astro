@@ -9,33 +9,34 @@
  * @param {string} class - Additional CSS classes
  */
 interface Props {
-  variant: string;
+  variant?: string;
   class?: string;
 }
 
-const { variant, class: className = '' } = Astro.props;
+const { variant = 'none', class: className = '' } = Astro.props;
 
 // Map color names to CSS classes
 const colorClasses: Record<string, string> = {
-  'status-success':
-    'group-hover:bg-status-success-09 group-focus-visible:bg-status-success-09 text-status-success-05 border border-solid border-status-success-06/30 transition',
-  'label-blue':
-    'group-hover:bg-label-blue-09 group-focus-visible:bg-label-blue-09 text-label-blue-05 border border-solid border-label-blue-06/30 transition',
-  'status-error':
-    'group-hover:bg-status-error-09 group-focus-visible:bg-status-error-09 text-status-error-05 border border-solid border-status-error-06/30 transition',
-  'label-violet':
-    'group-hover:bg-label-violet-09 group-focus-visible:bg-label-violet-09 text-label-violet-05 border border-solid border-label-violet-06/30 transition',
-  'label-amaranth':
-    'group-hover:bg-label-amaranth-09 group-focus-visible:bg-label-amaranth-09 text-label-amaranth-05 border border-solid border-label-amaranth-06/30 transition',
-  'label-sky':
-    'group-hover:bg-label-sky-09 group-focus-visible:bg-label-sky-09 text-label-sky-05 border border-solid border-label-sky-06/30 transition',
-  'label-green':
-    'group-hover:bg-label-green-09 group-focus-visible:bg-label-green-09 text-label-green-05 border border-solid border-label-green-06/30 transition',
+  none: '',
+  'status-success': 'text-status-success-05 border-status-success-06/30',
+  'status-info': 'text-status-info-05 border-status-info-06/30',
+  'status-error': 'text-status-error-05 border-status-error-06/30',
+  'status-warning': 'text-status-warning-05 border-status-warning-06/30',
+  'label-amaranth': 'text-label-amaranth-05 border-label-amaranth-06/30',
+  'label-orchid': 'text-label-orchid-05 border-label-orchid-06/30',
+  'label-violet': 'text-label-violet-05 border-label-violet-06/30',
+  'label-blue': 'text-label-blue-05 border-label-blue-06/30',
+  'label-sky': 'text-label-sky-05 border-label-sky-06/30',
+  'label-aqua': 'text-label-aqua-05 border-label-aqua-06/30',
+  'label-green': 'text-label-green-05 border-label-green-06/30',
+  'label-lime': 'text-label-lime-05 border-label-lime-06/30',
+  'label-yellow': 'text-label-yellow-05 border-label-yellow-06/30',
+  'label-orange': 'text-label-orange-05 border-label-orange-06/30',
 };
 
-const variantColorClass = colorClasses[variant] || 'bg-tone-neutral-09 text-tone-neutral-05';
+const variantColorClass = colorClasses[variant];
 const combinedClasses =
-  `inline-flex px-100 py-50 rounded-md text-info-label ${variantColorClass} ${className}`.trim();
+  `inline-flex px-100 py-50 rounded-md text-info-label border border-solid ${variantColorClass} ${className}`.trim();
 ---
 
 <span class={combinedClasses}>

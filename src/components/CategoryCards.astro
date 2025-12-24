@@ -11,7 +11,7 @@ const categories = [
     title: 'User-Centered Design',
     icon: 'mi/baseline/person',
     iconHover:
-      'group-hover:bg-status-success-09 group-focus-visible:bg-status-success-09 group-hover:text-status-success-05 group-focus-visible:text-status-success-05',
+      'group-[&:is(:hover,:focus-visible)]:bg-status-success-09 group-[&:is(:hover,:focus-visible)]:text-status-success-05',
     description: 'Applying NN/g usability heuristics to create intuitive, accessible interfaces',
     link: `${baseUrl}/user-centered-design`,
   },
@@ -20,7 +20,7 @@ const categories = [
     title: 'Design Systems',
     icon: 'mi/baseline/palette',
     iconHover:
-      'group-hover:bg-label-amaranth-09 group-focus-visible:bg-label-amaranth-09 group-hover:text-label-amaranth-05 group-focus-visible:text-label-amaranth-05',
+      'group-[&:is(:hover,:focus-visible)]:bg-label-amaranth-09 group-[&:is(:hover,:focus-visible)]:text-label-amaranth-05',
     description: 'Building scalable, maintainable component libraries with clear documentation',
     link: `${baseUrl}/design-systems`,
   },
@@ -29,7 +29,7 @@ const categories = [
     title: 'HAX Principles',
     icon: 'mgg/ai-chatbot',
     iconHover:
-      'group-hover:bg-label-violet-09 group-focus-visible:bg-label-violet-09 group-hover:text-label-violet-05 group-focus-visible:text-label-violet-05',
+      'group-[&:is(:hover,:focus-visible)]:bg-label-violet-09 group-[&:is(:hover,:focus-visible)]:text-label-violet-05',
     description:
       'Designing transparent, predictable AI experiences following Microsoft HAX guidelines',
     link: `${baseUrl}/hax-principles`,
@@ -51,15 +51,15 @@ const categories = [
             class="inline-flex flex-col group no-underline focus-bounce rounded-3xl"
             data-category-id={category.id}
           >
-            <div class="grid auto-rows-min rounded-3xl align-self-start text-tone-neutral-03 p-600 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral/80 backdrop-blur group-hover:bg-tone-neutral group-focus-visible:bg-tone-neutral ease-out-expo duration-1000">
+            <div class="grid auto-rows-min rounded-3xl align-self-start text-tone-neutral-03 p-600 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral/80 backdrop-blur group-[&:is(:hover,:focus-visible)]:bg-tone-neutral ease-out-expo duration-1000">
               <div
-                class={`p-200 -translate-x-200 rounded-lg inline-flex justify-self-start bg-transparent transition group-hover:-translate-y-200 group-focus-visible:-translate-y-200 group-hover:pt-200 group-focus-visible:pt-200 ease-out-expo duration-1000 color-tone-neutral-03 ${category.iconHover}`}
+                class={`p-200 -translate-x-200 rounded-lg inline-flex justify-self-start bg-transparent transition group-[&:is(:hover,:focus-visible)]:-translate-y-200 group-[&:is(:hover,:focus-visible)]:pt-200 ease-out-expo duration-1000 color-tone-neutral-03 ${category.iconHover}`}
               >
                 <Icon name={category.icon} />
               </div>
               <h2 class="mb-300 text-title-h2 tablet-max:text-title-h3">{category.title}</h2>
               <p class="text-info-detail">{category.description}</p>
-              <div class="mt-600 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 group-hover:translate-y-0 group-focus-visible:translate-y-0 transition translate-y-200 h-600">
+              <div class="mt-600 opacity-0 group-[&:is(:hover,:focus-visible)]:opacity-100 group-[&:is(:hover,:focus-visible)]:translate-y-0 transition translate-y-200 h-600">
                 <mds-text text="→" animation="yugop" data-category-text={category.id} />
               </div>
             </div>
