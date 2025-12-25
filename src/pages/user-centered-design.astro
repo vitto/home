@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import PrincipleCard from '../components/PrincipleCard.astro';
 import CategoryFilter from '../components/CategoryFilter.astro';
-import CardTextAnimation from '../components/CardTextAnimation.astro';
 import Principles from '../components/Principles.astro';
 import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
 import data from '../data/user-centered-design.json';
 import Footer from '../components/Footer.astro';
 
@@ -13,10 +13,7 @@ const baseUrl = import.meta.env.BASE_URL;
 
 <Layout title="User-Centered Design - Vittorio's Portfolio">
   <Section>
-    <mds-text typography="h1" class="mb-600 text-tone-neutral-01">{data.title}</mds-text>
-    <mds-text typography="detail" class="mb-1200 leading-relaxed">
-      {data.description}
-    </mds-text>
+    <SectionHeader title={data.title} description={data.description} />
 
     <CategoryFilter categories={data.categories} />
 
@@ -41,5 +38,4 @@ const baseUrl = import.meta.env.BASE_URL;
     </div>
   </Section>
   <Footer />
-  <CardTextAnimation />
 </Layout>

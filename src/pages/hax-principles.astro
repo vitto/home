@@ -2,23 +2,20 @@
 import SectionLayout from '../layouts/SectionLayout.astro';
 import PrincipleCard from '../components/PrincipleCard.astro';
 import CategoryFilter from '../components/CategoryFilter.astro';
-import CardTextAnimation from '../components/CardTextAnimation.astro';
 import Principles from '../components/Principles.astro';
 import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
 import data from '../data/hax-principles.json';
-import Blob from '../components/Blob.astro';
-import blobConfigs from '../data/blob-configs.json';
+// import Blob from '../components/Blob.astro';
+// import blobConfigs from '../data/blob-configs.json';
+// const blobConfig = blobConfigs['hax-principles'];
 
 const baseUrl = import.meta.env.BASE_URL;
-const blobConfig = blobConfigs['hax-principles'];
 ---
 
 <SectionLayout title="HAX Principles - Vittorio's Portfolio">
   <Section class="z-10 relative">
-    <mds-text typography="h1" class="mb-600 text-tone-neutral-01">{data.title}</mds-text>
-    <mds-text typography="detail" class="mb-1200 leading-relaxed">
-      {data.description}
-    </mds-text>
+    <SectionHeader title={data.title} description={data.description} />
 
     <CategoryFilter categories={data.categories} />
 
@@ -42,5 +39,4 @@ const blobConfig = blobConfigs['hax-principles'];
       <a href={baseUrl} class="text-label-green-04 hover:underline">← Back to Home</a>
     </div>
   </Section>
-  <CardTextAnimation />
 </SectionLayout>

@@ -1,0 +1,24 @@
+---
+/**
+ * SectionHeader Component
+ *
+ * Displays a section title and description
+ *
+ * Props:
+ * @param {string} title - Section title
+ * @param {string} description - Section description
+ */
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<header class="grid gap-200">
+  <h1 class="text-title-h1 text-tone-neutral-01">{title}</h1>
+  <p class="text-info-detail">
+    {description}
+  </p>
+</header>
