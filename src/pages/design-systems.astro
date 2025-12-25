@@ -5,6 +5,7 @@ import CategoryFilter from '../components/CategoryFilter.astro';
 import Principles from '../components/Principles.astro';
 import Section from '../components/Section.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import Footer from '../components/Footer.astro';
 import data from '../data/design-systems.json';
 // import blobConfigs from '../data/blob-configs.json';
 // const blobConfig = blobConfigs['design-systems'];
@@ -38,4 +39,5 @@ const baseUrl = import.meta.env.BASE_URL;
       <a href={baseUrl} class="text-label-violet-04 hover:underline">← Back to Home</a>
     </div>
   </Section>
+  <Footer />
 </SectionLayout>
