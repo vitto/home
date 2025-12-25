@@ -9,13 +9,6 @@
 @import './iconsauce.css';
 @import './components/Button.css';
 
-:root {
-  --variant-primary: var(--label-sky-06);
-  --variant-design-systems: var(--label-amaranth-06);
-  --variant-user-centered-design: var(--status-success-06);
-  --variant-hax-principles: var(--label-violet-06);
-}
-
 body,
 html {
   scroll-behavior: smooth;
