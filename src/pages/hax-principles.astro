@@ -8,6 +8,8 @@ import SectionHeader from '../components/SectionHeader.astro';
 import Footer from '../components/Footer.astro';
 import data from '../data/hax-principles.json';
 import Header from '../components/Header.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
 // import Blob from '../components/Blob.astro';
 // import blobConfigs from '../data/blob-configs.json';
 // const blobConfig = blobConfigs['hax-principles'];
@@ -16,7 +18,7 @@ const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <SectionLayout title="HAX Principles - Vittorio's Portfolio">
-  <Section>
+  <Section contentClass="gap-1200">
     <Header />
     <SectionHeader title={data.title} description={data.description} />
 
@@ -38,9 +40,10 @@ const baseUrl = import.meta.env.BASE_URL;
       }
     </Principles>
 
-    <div class="mt-1200">
-      <a href={baseUrl} class="text-label-green-04 hover:underline">← Back to Home</a>
-    </div>
+    <Button href={baseUrl} variant="outline" class="justify-self-start">
+      <Icon name="mi/baseline/arrow-back" />
+      Back to Home
+    </Button>
   </Section>
   <Footer />
 </SectionLayout>

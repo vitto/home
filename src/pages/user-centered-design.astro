@@ -7,13 +7,15 @@ import Section from '../components/Section.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import data from '../data/user-centered-design.json';
 import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
 import Header from '../components/Header.astro';
+import Icon from '../components/Icon.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <Layout title="User-Centered Design - Vittorio's Portfolio">
-  <Section>
+  <Section contentClass="gap-1200">
     <Header />
     <SectionHeader title={data.title} description={data.description} />
 
@@ -35,9 +37,10 @@ const baseUrl = import.meta.env.BASE_URL;
       }
     </Principles>
 
-    <div class="mt-1200">
-      <a href={baseUrl} class="text-label-blue-04 hover:underline">← Back to Home</a>
-    </div>
+    <Button href={baseUrl} variant="outline" class="justify-self-start">
+      <Icon name="mi/baseline/arrow-back" />
+      Back to Home
+    </Button>
   </Section>
   <Footer />
 </Layout>

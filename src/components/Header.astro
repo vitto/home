@@ -1,6 +1,7 @@
 ---
 import Button from './Button.astro';
 import Icon from './Icon.astro';
+import categoriesData from '../data/categories.json';
 
 interface Props {
   items?: Array<{
@@ -12,39 +13,28 @@ interface Props {
 
 const baseUrl = import.meta.env.BASE_URL;
 
-const defaultItems = [
-  {
-    href: baseUrl,
-    label: 'Home',
-    icon: 'mi/baseline/home',
-  },
-  {
-    href: `${baseUrl}/user-centered-design`,
-    label: 'User-Centered Design',
-    icon: 'mi/baseline/person',
-  },
-  {
-    href: `${baseUrl}/design-systems`,
-    label: 'Design Systems',
-    icon: 'mi/baseline/palette',
-  },
-  {
-    href: `${baseUrl}/hax-principles`,
-    label: 'HAX Principles',
-    icon: 'mgg/ai-chatbot',
-  },
-];
+// Map categories data to header items format
+const defaultItems = categoriesData.map((category) => ({
+  href: `${baseUrl}${category.path}`,
+  label: category.title,
+  icon: category.icon,
+}));
 
 const { items = defaultItems } = Astro.props;
 ---
 
-<header class="grid">
-  <nav
-    class="flex flex-wrap items-center gap-400 justify-center tablet:justify-start border-2 border-red-500 border-solid"
-  >
+<header class="flex items-center gap-400 justify-between">
+  <a href={baseUrl} class="inline-flex focus-bounce rounded-2xl shrink-0">
+    <img
+      alt="Vittorio Vittori Logo"
+      src={`${baseUrl}/vittorio-vittori-logo-centered.svg`}
+      class="w-2000 h-2000 justify-self-center"
+    />
+  </a>
+  <nav class="flex flex-wrap items-center gap-400">
     {
       items.map((item) => (
-        <Button href={item.href} variant="dark" class="whitespace-nowrap shrink-0">
+        <Button href={item.href} variant="light">
           <Icon name={item.icon} />
           {item.label}
         </Button>

@@ -2,39 +2,15 @@
 import Icon from './Icon.astro';
 import CardTextAnimation from './CardTextAnimation.astro';
 import blobConfigs from '../data/blob-configs.json';
+import categoriesData from '../data/categories.json';
 
 const baseUrl = import.meta.env.BASE_URL;
 
-const categories = [
-  {
-    id: 'user-centered-design',
-    title: 'User-Centered Design',
-    icon: 'mi/baseline/person',
-    iconHover:
-      'group-[&:is(:hover,:focus-visible)]:bg-status-success-09 group-[&:is(:hover,:focus-visible)]:text-status-success-05',
-    description: 'Applying NN/g usability heuristics to create intuitive, accessible interfaces',
-    link: `${baseUrl}/user-centered-design`,
-  },
-  {
-    id: 'design-systems',
-    title: 'Design Systems',
-    icon: 'mi/baseline/palette',
-    iconHover:
-      'group-[&:is(:hover,:focus-visible)]:bg-label-amaranth-09 group-[&:is(:hover,:focus-visible)]:text-label-amaranth-05',
-    description: 'Building scalable, maintainable component libraries with clear documentation',
-    link: `${baseUrl}/design-systems`,
-  },
-  {
-    id: 'hax-principles',
-    title: 'HAX Principles',
-    icon: 'mgg/ai-chatbot',
-    iconHover:
-      'group-[&:is(:hover,:focus-visible)]:bg-label-violet-09 group-[&:is(:hover,:focus-visible)]:text-label-violet-05',
-    description:
-      'Designing transparent, predictable AI experiences following Microsoft HAX guidelines',
-    link: `${baseUrl}/hax-principles`,
-  },
-];
+// Map categories data and add full link URLs
+const categories = categoriesData.map((category) => ({
+  ...category,
+  link: `${baseUrl}${category.path}`,
+}));
 ---
 
 <section class="pb-2000 px-600 desktop:px-1200 bg-white relative z-10">

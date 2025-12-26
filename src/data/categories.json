@@ -1,0 +1,26 @@
+[
+  {
+    "id": "user-centered-design",
+    "title": "User-Centered Design",
+    "icon": "mi/baseline/person",
+    "iconHover": "group-[&:is(:hover,:focus-visible)]:bg-status-success-09 group-[&:is(:hover,:focus-visible)]:text-status-success-05",
+    "description": "Applying NN/g usability heuristics to create intuitive, accessible interfaces",
+    "path": "/user-centered-design"
+  },
+  {
+    "id": "design-systems",
+    "title": "Design Systems",
+    "icon": "mi/baseline/palette",
+    "iconHover": "group-[&:is(:hover,:focus-visible)]:bg-label-amaranth-09 group-[&:is(:hover,:focus-visible)]:text-label-amaranth-05",
+    "description": "Building scalable, maintainable component libraries with clear documentation",
+    "path": "/design-systems"
+  },
+  {
+    "id": "hax-principles",
+    "title": "HAX Principles",
+    "icon": "mgg/ai-chatbot",
+    "iconHover": "group-[&:is(:hover,:focus-visible)]:bg-label-violet-09 group-[&:is(:hover,:focus-visible)]:text-label-violet-05",
+    "description": "Designing transparent, predictable AI experiences following Microsoft HAX guidelines",
+    "path": "/hax-principles"
+  }
+]
