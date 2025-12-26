@@ -1,4 +1,7 @@
 ---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+
 interface Props {
   items?: Array<{
     href: string;
@@ -16,17 +19,17 @@ const defaultItems = [
     icon: 'mi/baseline/home',
   },
   {
-    href: `${baseUrl}user-centered-design`,
+    href: `${baseUrl}/user-centered-design`,
     label: 'User-Centered Design',
     icon: 'mi/baseline/person',
   },
   {
-    href: `${baseUrl}design-systems`,
+    href: `${baseUrl}/design-systems`,
     label: 'Design Systems',
     icon: 'mi/baseline/palette',
   },
   {
-    href: `${baseUrl}hax-principles`,
+    href: `${baseUrl}/hax-principles`,
     label: 'HAX Principles',
     icon: 'mgg/ai-chatbot',
   },
@@ -44,16 +47,10 @@ const { items = defaultItems } = Astro.props;
     >
       {
         items.map((item) => (
-          <mds-button
-            href={item.href}
-            size="sm"
-            variant="dark"
-            tone="ghost"
-            icon={item.icon}
-            class="whitespace-nowrap shrink-0"
-          >
+          <Button href={item.href} variant="dark" class="whitespace-nowrap shrink-0">
+            <Icon name={item.icon} />
             {item.label}
-          </mds-button>
+          </Button>
         ))
       }
     </div>

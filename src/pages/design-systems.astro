@@ -6,6 +6,7 @@ import Principles from '../components/Principles.astro';
 import Section from '../components/Section.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 import data from '../data/design-systems.json';
 // import blobConfigs from '../data/blob-configs.json';
 // const blobConfig = blobConfigs['design-systems'];
@@ -14,7 +15,8 @@ const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <SectionLayout title="Design Systems - Vittorio's Portfolio">
-  <Section class="z-10 relative">
+  <Section>
+    <Header />
     <SectionHeader title={data.title} description={data.description} />
 
     <CategoryFilter categories={data.categories} />

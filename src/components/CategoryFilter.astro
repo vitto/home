@@ -5,19 +5,22 @@ import Button from './Button.astro';
  * CategoryFilter Component
  *
  * Client-side filter buttons for filtering principles by category
+ * Remembers filter selection per section using localStorage
  *
  * Props:
  * @param {string[]} categories - Array of category names
  * @param {string} activeCategory - Currently active category (empty string = all)
+ * @param {string} sectionId - Section identifier for localStorage (defaults to URL pathname)
  * @param {string} class - Additional CSS classes
  */
 interface Props {
   categories: string[];
   activeCategory?: string;
+  sectionId?: string;
   class?: string;
 }
 
-const { categories, activeCategory = '', class: className = '' } = Astro.props;
+const { categories, activeCategory = '', sectionId, class: className = '' } = Astro.props;
 ---
 
 <div class={`flex flex-wrap gap-200 ${className}`} data-filter-container>
@@ -33,7 +36,7 @@ const { categories, activeCategory = '', class: className = '' } = Astro.props;
   }
 </div>
 
-<script>
+<script define:vars={{ sectionId: sectionId || '' }}>
   function initCategoryFilter() {
     const filterContainer = document.querySelector('[data-filter-container]');
     if (!filterContainer) return;
@@ -41,32 +44,89 @@ const { categories, activeCategory = '', class: className = '' } = Astro.props;
     const filterButtons = filterContainer.querySelectorAll('[data-filter]');
     const principleCards = document.querySelectorAll('[data-principle-id]');
 
+    // Determine section ID from prop or URL pathname
+    const getSectionId = () => {
+      if (sectionId && sectionId.trim() !== '') return sectionId;
+
+      // Extract section from URL pathname
+      // Examples:
+      // /home/user-centered-design -> user-centered-design
+      // /home/design-systems -> design-systems
+      // /home/hax-principles -> hax-principles
+      const pathname = window.location.pathname;
+      // Remove trailing slash and get last segment
+      const segments = pathname.replace(/\/$/, '').split('/').filter(Boolean);
+      const lastSegment = segments[segments.length - 1];
+
+      // Known section names
+      const knownSections = ['user-centered-design', 'design-systems', 'hax-principles'];
+      if (knownSections.includes(lastSegment)) {
+        return lastSegment;
+      }
+
+      return 'default';
+    };
+
+    const currentSectionId = getSectionId();
+    const storageKey = `filter-${currentSectionId}`;
+
+    // Load saved filter from localStorage
+    const loadSavedFilter = () => {
+      try {
+        const savedFilter = localStorage.getItem(storageKey);
+        if (savedFilter) {
+          return savedFilter;
+        }
+      } catch (e) {
+        console.warn('Failed to load filter from localStorage:', e);
+      }
+      return null;
+    };
+
+    // Save filter to localStorage
+    const saveFilter = (filterValue) => {
+      try {
+        localStorage.setItem(storageKey, filterValue);
+      } catch (e) {
+        console.warn('Failed to save filter to localStorage:', e);
+      }
+    };
+
+    // Apply filter (update UI and filter cards)
+    const applyFilter = (filterValue) => {
+      // Update active state - CSS handles styling via data-filter-active attribute
+      filterButtons.forEach((btn) => {
+        const isActive = btn.getAttribute('data-filter') === filterValue;
+        btn.setAttribute('data-filter-active', String(isActive));
+      });
+
+      // Filter cards
+      principleCards.forEach((card) => {
+        const cardCategory = card.getAttribute('data-category');
+        const shouldShow = filterValue === 'all' || cardCategory === filterValue;
+
+        if (shouldShow) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    };
+
+    // Initialize with saved filter or default
+    const savedFilter = loadSavedFilter();
+    if (savedFilter) {
+      applyFilter(savedFilter);
+    }
+
+    // Add click listeners
     filterButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const filterValue = button.getAttribute('data-filter');
-
-        // Update active state - CSS handles styling via data-filter-active attribute
-        filterButtons.forEach((btn) => {
-          const isActive = btn.getAttribute('data-filter') === filterValue;
-          btn.setAttribute('data-filter-active', String(isActive));
-        });
-
-        // Filter cards
-        principleCards.forEach((card) => {
-          const cardCategory = card.getAttribute('data-category');
-          const shouldShow = filterValue === 'all' || cardCategory === filterValue;
-
-          if (shouldShow) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        });
+        saveFilter(filterValue);
+        applyFilter(filterValue);
       });
     });
-
-    // Initialize active state - CSS handles styling via data-filter-active attribute
-    // The attribute is already set in the template, so no additional initialization needed
   }
 
   // Initialize when DOM is ready
