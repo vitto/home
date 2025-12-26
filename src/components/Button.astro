@@ -17,32 +17,33 @@ interface Props {
 
 const { href, class: className = '', variant = 'none' } = Astro.props;
 
+// Extract data-* attributes from props
+const dataAttributes: Record<string, string> = {};
+Object.keys(Astro.props).forEach((key) => {
+  if (key.startsWith('data-')) {
+    dataAttributes[key] = (Astro.props as any)[key];
+  }
+});
+
 // Map variant names to CSS classes
 const variants: Record<string, string> = {
   none: '',
-  outline: 'button--outline',
-  light: 'button--light',
-  hero: 'button--hero',
-  'status-success': 'button--status-success',
-  'status-info': 'button--status-info',
-  'status-error': 'button--status-error',
-  'status-warning': 'button--status-warning',
-  'label-amaranth': 'button--label-amaranth',
-  'label-orchid': 'button--label-orchid',
-  'label-violet': 'button--label-violet',
-  'label-blue': 'button--label-blue',
-  'label-sky': 'button--label-sky',
-  'label-aqua': 'button--label-aqua',
-  'label-green': 'button--label-green',
-  'label-lime': 'button--label-lime',
-  'label-yellow': 'button--label-yellow',
-  'label-orange': 'button--label-orange',
+  outline:
+    'border-tone-neutral-01/10 hover:border-tone-neutral-01/20 focus-visible:border-tone-neutral-01/20',
+  light:
+    'text-tone-neutral-02 border-tone-neutral hover:bg-tone-neutral/30 focus-visible:bg-tone-neutral/30',
+  hero: 'text-tone-neutral bg-transparent border-transparent hover:bg-tone-neutral-01/30 focus-visible:bg-tone-neutral-01/30',
 };
 
 const variantClass = variants[variant] || '';
 
 // Build class string: always include "button", add variant if provided, then additional classes
-const buttonClasses = ['button', 'overflow-hidden', 'focus-bounce', variantClass, className]
+const buttonClasses = [
+  'button cursor-pointer first-letter:uppercase px-300 py-100 border-2 border-solid inline-flex no-underline items-center justify-center rounded-full gap-200',
+  'focus-bounce',
+  variantClass,
+  className,
+]
   .filter(Boolean)
   .join(' ');
 
@@ -58,11 +59,11 @@ const linkAttrs = isExternalLink
 
 {
   href ? (
-    <a class={buttonClasses} href={href} {...linkAttrs}>
+    <a class={buttonClasses} href={href} {...linkAttrs} {...dataAttributes}>
       <slot />
     </a>
   ) : (
-    <button class={buttonClasses} type="button">
+    <button class={buttonClasses} type="button" {...dataAttributes}>
       <slot />
     </button>
   )

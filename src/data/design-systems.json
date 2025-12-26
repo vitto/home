@@ -1,13 +1,7 @@
 {
   "title": "Design Systems",
   "description": "Building scalable, maintainable component libraries with clear documentation",
-  "categories": [
-    "architecture",
-    "component design",
-    "maintenance and evolution",
-    "adoption",
-    "value"
-  ],
+  "categories": ["architecture", "component design", "maintenance", "adoption", "value"],
   "principles": [
     {
       "id": "single-source-of-truth",
@@ -52,7 +46,7 @@
     {
       "id": "api-stability-and-versioning",
       "title": "API Stability e Versioning Consapevole",
-      "category": "maintenance and evolution",
+      "category": "maintenance",
       "icon": "mi/outline/update",
       "description": "Maintaining stable APIs while evolving the system, with clear versioning strategies and migration paths.",
       "color": "label-sky"
@@ -60,7 +54,7 @@
     {
       "id": "clear-governance",
       "title": "Governance Chiara",
-      "category": "maintenance and evolution",
+      "category": "maintenance",
       "icon": "mi/outline/gavel",
       "description": "Establishing clear processes for contributions, reviews, and decision-making to ensure quality and consistency.",
       "color": "label-sky"

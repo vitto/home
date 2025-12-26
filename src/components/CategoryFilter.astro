@@ -1,4 +1,6 @@
 ---
+import Button from './Button.astro';
+
 /**
  * CategoryFilter Component
  *
@@ -18,25 +20,15 @@ interface Props {
 const { categories, activeCategory = '', class: className = '' } = Astro.props;
 ---
 
-<div class={`flex flex-wrap gap-200 mb-800 ${className}`} data-filter-container>
-  <button
-    type="button"
-    class="px-400 py-200 rounded-lg text-info-detail transition bg-tone-neutral/80 hover:bg-tone-neutral focus-bounce"
-    data-filter="all"
-    data-filter-active={activeCategory === ''}
-  >
+<div class={`flex flex-wrap gap-200 ${className}`} data-filter-container>
+  <Button data-filter="all" data-filter-active={String(activeCategory === '')} variant="outline">
     All
-  </button>
+  </Button>
   {
     categories.map((category) => (
-      <button
-        type="button"
-        class="px-400 py-200 rounded-lg text-info-detail transition bg-tone-neutral/80 hover:bg-tone-neutral focus-bounce"
-        data-filter={category}
-        data-filter-active={activeCategory === category}
-      >
-        {category}
-      </button>
+      <Button data-filter={category} data-filter-active={String(activeCategory === category)}>
+        <span class="first-letter:uppercase">{category}</span>
+      </Button>
     ))
   }
 </div>
@@ -53,17 +45,10 @@ const { categories, activeCategory = '', class: className = '' } = Astro.props;
       button.addEventListener('click', () => {
         const filterValue = button.getAttribute('data-filter');
 
-        // Update active state
+        // Update active state - CSS handles styling via data-filter-active attribute
         filterButtons.forEach((btn) => {
           const isActive = btn.getAttribute('data-filter') === filterValue;
           btn.setAttribute('data-filter-active', String(isActive));
-          if (isActive) {
-            btn.classList.add('bg-tone-neutral', 'font-medium');
-            btn.classList.remove('bg-tone-neutral/80');
-          } else {
-            btn.classList.remove('bg-tone-neutral', 'font-medium');
-            btn.classList.add('bg-tone-neutral/80');
-          }
         });
 
         // Filter cards
@@ -80,14 +65,8 @@ const { categories, activeCategory = '', class: className = '' } = Astro.props;
       });
     });
 
-    // Initialize active state
-    filterButtons.forEach((button) => {
-      const isActive = button.getAttribute('data-filter-active') === 'true';
-      if (isActive) {
-        button.classList.add('bg-tone-neutral', 'font-medium');
-        button.classList.remove('bg-tone-neutral/80');
-      }
-    });
+    // Initialize active state - CSS handles styling via data-filter-active attribute
+    // The attribute is already set in the template, so no additional initialization needed
   }
 
   // Initialize when DOM is ready

@@ -1,24 +1,18 @@
 /* Button.astro */
 
 .button {
-  @apply text-title-action h-900 px-400;
+  /* Filter active state - uses data attribute instead of variant */
 
-  display: inline-flex;
-  text-decoration: none;
-  align-items: center;
-  border-radius: 1000px;
-  justify-content: center;
-  gap: 0.5rem;
-
-  &.button--outline {
-    @apply border-2 border-solid border-tone-neutral-07;
+  &::first-letter {
+    text-transform: uppercase;
   }
 
-  &.button--light {
-    @apply text-tone-neutral border-tone-neutral hover:bg-tone-neutral/30 focus-visible:bg-tone-neutral/30;
+  &[data-filter-active='true'] {
+    @apply bg-tone-neutral-03 text-tone-neutral border-transparent;
   }
 
-  &.button--hero {
-    @apply text-tone-neutral border-tone-neutral hover:bg-tone-neutral-01/30 focus-visible:bg-tone-neutral-01/30;
+  &[data-filter-active='false'],
+  &:not([data-filter-active]) {
+    @apply bg-tone-neutral text-tone-neutral-03 border-transparent;
   }
 }
