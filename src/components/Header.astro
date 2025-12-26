@@ -38,21 +38,17 @@ const defaultItems = [
 const { items = defaultItems } = Astro.props;
 ---
 
-<header
-  class="fixed top-0 left-0 right-0 z-50 bg-tone-neutral/95 backdrop-blur-sm border-b border-tone-neutral-08"
->
-  <nav class="max-w-screen-desktop w-full mx-auto px-400 desktop:px-1200 py-600">
-    <div
-      class="flex flex-wrap items-center gap-400 justify-center tablet:justify-start border-2 border-red-500 border-solid"
-    >
-      {
-        items.map((item) => (
-          <Button href={item.href} variant="dark" class="whitespace-nowrap shrink-0">
-            <Icon name={item.icon} />
-            {item.label}
-          </Button>
-        ))
-      }
-    </div>
+<header class="grid">
+  <nav
+    class="flex flex-wrap items-center gap-400 justify-center tablet:justify-start border-2 border-red-500 border-solid"
+  >
+    {
+      items.map((item) => (
+        <Button href={item.href} variant="dark" class="whitespace-nowrap shrink-0">
+          <Icon name={item.icon} />
+          {item.label}
+        </Button>
+      ))
+    }
   </nav>
 </header>

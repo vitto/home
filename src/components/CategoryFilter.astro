@@ -24,12 +24,10 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
 ---
 
 <div class={`flex flex-wrap gap-200 ${className}`} data-filter-container>
-  <Button data-filter="all" data-filter-active={String(activeCategory === '')} variant="outline">
-    All
-  </Button>
+  <Button data-filter="all" data-filter-active="false" variant="outline">All</Button>
   {
     categories.map((category) => (
-      <Button data-filter={category} data-filter-active={String(activeCategory === category)}>
+      <Button data-filter={category} data-filter-active="false">
         <span class="first-letter:uppercase">{category}</span>
       </Button>
     ))
@@ -113,10 +111,14 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
       });
     };
 
-    // Initialize with saved filter or default
+    // Initialize with saved filter only (no default selection)
+    // This allows for a transition effect when the saved filter is applied
     const savedFilter = loadSavedFilter();
     if (savedFilter) {
-      applyFilter(savedFilter);
+      // Small delay to allow initial render, then apply saved filter for transition effect
+      requestAnimationFrame(() => {
+        applyFilter(savedFilter);
+      });
     }
 
     // Add click listeners
