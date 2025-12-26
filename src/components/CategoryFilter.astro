@@ -114,7 +114,7 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
     // Check for category query parameter first (takes precedence over saved filter)
     const urlParams = new URLSearchParams(window.location.search);
     const categoryParam = urlParams.get('category');
-    
+
     // Initialize with query parameter, saved filter, or no selection
     let filterToApply = null;
     if (categoryParam) {
@@ -126,7 +126,7 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
       // Otherwise use saved filter
       filterToApply = loadSavedFilter();
     }
-    
+
     if (filterToApply) {
       // Small delay to allow initial render, then apply filter for transition effect
       requestAnimationFrame(() => {
