@@ -11,9 +11,10 @@
 interface Props {
   variant?: string;
   class?: string;
+  font?: string;
 }
 
-const { variant = 'none', class: className = '' } = Astro.props;
+const { variant = 'none', class: className = '', font = 'text-info-label' } = Astro.props;
 
 // Map color names to CSS classes
 const colorClasses: Record<string, string> = {
@@ -36,7 +37,7 @@ const colorClasses: Record<string, string> = {
 
 const variantColorClass = colorClasses[variant];
 const combinedClasses =
-  `inline-flex px-100 py-50 rounded-md text-info-label ${variantColorClass} ${className}`.trim();
+  `inline-flex px-100 py-50 rounded-md ${font} ${variantColorClass} ${className}`.trim();
 ---
 
 <span class={combinedClasses}>

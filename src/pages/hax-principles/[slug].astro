@@ -1,7 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Icon from '../../components/Icon.astro';
-import Badge from '../../components/Badge.astro';
+import SectionLayout from '../../layouts/SectionLayout.astro';
+import Section from '../../components/Section.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PrincipleHeader from '../../components/PrincipleHeader.astro';
 import UseCaseInteractive from '../../components/UseCaseInteractive.astro';
 import data from '../../data/hax-principles.json';
 
@@ -19,50 +21,15 @@ interface Props {
 }
 
 const { principle } = Astro.props;
-
-// Map color names to CSS classes
-const colorClasses: Record<string, string> = {
-  'status-success': 'bg-status-success-09 text-status-success-05',
-  'label-blue': 'bg-label-blue-09 text-label-blue-05',
-  'status-error': 'bg-status-error-09 text-status-error-05',
-  'label-violet': 'bg-label-violet-09 text-label-violet-05',
-  'label-amaranth': 'bg-label-amaranth-09 text-label-amaranth-05',
-  'label-sky': 'bg-label-sky-09 text-label-sky-05',
-  'label-green': 'bg-label-green-09 text-label-green-05',
-};
-
-// Map color names to CSS classes for icon background
-const categoryColorClass =
-  colorClasses[principle.color] || 'bg-tone-neutral-09 text-tone-neutral-05';
 ---
 
-<Layout title={`${principle.title} - HAX Principles`}>
-  <section class="min-h-screen py-2000 px-400 bg-white">
-    <div class="max-w-4xl mx-auto">
-      <div class="mb-1200">
-        <a
-          href={`${baseUrl}/hax-principles`}
-          class="text-label-green-04 hover:underline mb-800 inline-block"
-        >
-          ← Back to HAX Principles
-        </a>
-
-        <div class="flex items-center gap-400 mb-600">
-          <div class={`p-300 rounded-lg ${categoryColorClass}`}>
-            <Icon name={principle.icon} />
-          </div>
-          <Badge variant={principle.color}>{principle.category}</Badge>
-        </div>
-
-        <mds-text typography="h1" class="mb-600 text-tone-neutral-01">{principle.title}</mds-text>
-        <mds-text typography="detail" class="mb-1200 leading-relaxed text-tone-neutral-05">
-          {principle.description}
-        </mds-text>
-      </div>
-
-      <UseCaseInteractive>
-        <slot />
-      </UseCaseInteractive>
-    </div>
-  </section>
-</Layout>
+<SectionLayout title={`${principle.title} - HAX Principles`}>
+  <Section contentClass="gap-1200">
+    <Header />
+    <PrincipleHeader principle={principle} sectionName={data.title} sectionPath="/hax-principles" />
+    <UseCaseInteractive>
+      <slot />
+    </UseCaseInteractive>
+  </Section>
+</SectionLayout>
+<Footer />

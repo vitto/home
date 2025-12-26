@@ -111,13 +111,26 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
       });
     };
 
-    // Initialize with saved filter only (no default selection)
-    // This allows for a transition effect when the saved filter is applied
-    const savedFilter = loadSavedFilter();
-    if (savedFilter) {
-      // Small delay to allow initial render, then apply saved filter for transition effect
+    // Check for category query parameter first (takes precedence over saved filter)
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    
+    // Initialize with query parameter, saved filter, or no selection
+    let filterToApply = null;
+    if (categoryParam) {
+      // Use query parameter if present
+      filterToApply = categoryParam;
+      // Save it to localStorage for future visits
+      saveFilter(filterToApply);
+    } else {
+      // Otherwise use saved filter
+      filterToApply = loadSavedFilter();
+    }
+    
+    if (filterToApply) {
+      // Small delay to allow initial render, then apply filter for transition effect
       requestAnimationFrame(() => {
-        applyFilter(savedFilter);
+        applyFilter(filterToApply);
       });
     }
 
