@@ -8,11 +8,11 @@
   }
 
   &[data-filter-active='true'] {
-    @apply bg-tone-neutral-03 text-tone-neutral border-transparent;
+    @apply bg-tone-neutral-03 text-tone-neutral border-transparent duration-0;
   }
 
   &[data-filter-active='false'],
   &:not([data-filter-active]) {
-    @apply bg-tone-neutral text-tone-neutral-03 border-transparent;
+    @apply bg-tone-neutral text-tone-neutral-03 border-transparent duration-0;
   }
 }
