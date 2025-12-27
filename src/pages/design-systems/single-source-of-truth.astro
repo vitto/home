@@ -1,0 +1,204 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/design-systems.json';
+import Icon from '../../components/Icon.astro';
+
+const principle = data.principles.find((p) => p.id === 'single-source-of-truth')!;
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Design Systems`}
+  principle={principle}
+  sectionName={data.title}
+  sectionPath="/design-systems"
+>
+  <div class="grid gap-800">
+    <div class="grid gap-400">
+      <h2 class="text-title-h2">The Problem: Multiple Sources of Truth</h2>
+      <p class="text-info-paragraph">
+        Without a single source of truth, design tokens, components, and patterns are duplicated
+        across different tools and platforms, leading to inconsistencies and maintenance nightmares.
+      </p>
+    </div>
+
+    <div class="grid gap-600">
+      <h3 class="text-title-h3">Example: Color Tokens</h3>
+      <div class="grid gap-400">
+        <div class="p-600 bg-tone-neutral-10 rounded-2xl border border-tone-neutral-08">
+          <h4 class="text-title-h4 mb-400">Before: Scattered Definitions</h4>
+          <div class="grid gap-200 font-mono text-sm">
+            <div class="flex items-center gap-400">
+              <div class="w-400 h-400 rounded bg-[#3B82F6]"></div>
+              <span>CSS: <code class="bg-tone-neutral-09 px-200 rounded">#3B82F6</code></span>
+            </div>
+            <div class="flex items-center gap-400">
+              <div class="w-400 h-400 rounded bg-[#2563EB]"></div>
+              <span>Figma: <code class="bg-tone-neutral-09 px-200 rounded">#2563EB</code></span>
+            </div>
+            <div class="flex items-center gap-400">
+              <div class="w-400 h-400 rounded bg-[#1D4ED8]"></div>
+              <span>React: <code class="bg-tone-neutral-09 px-200 rounded">#1D4ED8</code></span>
+            </div>
+          </div>
+          <p class="text-info-detail mt-400 text-status-error-05">
+            ❌ Three different values for "primary blue" = inconsistency
+          </p>
+        </div>
+
+        <div class="p-600 bg-tone-neutral-10 rounded-2xl border border-tone-neutral-08">
+          <h4 class="text-title-h4 mb-400">After: Single Source of Truth</h4>
+          <div class="grid gap-200 font-mono text-sm">
+            <div class="flex items-center gap-400">
+              <div class="w-400 h-400 rounded bg-label-blue-05"></div>
+              <span
+                >Design System: <code class="bg-tone-neutral-09 px-200 rounded">label-blue-05</code
+                ></span
+              >
+            </div>
+            <div class="text-info-detail pl-600">↓ Used everywhere</div>
+            <div class="grid grid-cols-3 gap-200 pl-600">
+              <div class="text-xs">CSS</div>
+              <div class="text-xs">Figma</div>
+              <div class="text-xs">React</div>
+            </div>
+          </div>
+          <p class="text-info-detail mt-400 text-status-success-05">
+            ✅ One token, consistent everywhere
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid gap-400">
+      <h3 class="text-title-h3">Interactive Demo: Component Reuse</h3>
+      <p class="text-info-paragraph">
+        Click the buttons below to see how a single component definition can be used across
+        different contexts:
+      </p>
+
+      <div class="grid gap-400 p-600 bg-tone-neutral-10 rounded-2xl border border-tone-neutral-08">
+        <div class="flex gap-200 flex-wrap">
+          <button
+            type="button"
+            class="px-400 py-200 rounded-lg bg-label-blue-05 text-tone-neutral border-none cursor-pointer hover:bg-label-blue-04 transition-colors"
+            data-context="web"
+          >
+            Web App
+          </button>
+          <button
+            type="button"
+            class="px-400 py-200 rounded-lg bg-tone-neutral-08 text-tone-neutral-03 border-none cursor-pointer hover:bg-tone-neutral-07 transition-colors"
+            data-context="mobile"
+          >
+            Mobile App
+          </button>
+          <button
+            type="button"
+            class="px-400 py-200 rounded-lg bg-tone-neutral-08 text-tone-neutral-03 border-none cursor-pointer hover:bg-tone-neutral-07 transition-colors"
+            data-context="docs"
+          >
+            Documentation
+          </button>
+        </div>
+
+        <div
+          id="component-preview"
+          class="p-600 bg-tone-neutral rounded-2xl min-h-[200px] flex items-center justify-center"
+        >
+          <div class="text-center">
+            <p class="text-info-detail mb-400">Select a context to see the component</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid gap-400">
+      <h3 class="text-title-h3">Key Benefits</h3>
+      <ul class="grid gap-200 list-none pl-0">
+        <li class="flex items-start gap-400">
+          <Icon name="mi/baseline/check-circle" class="text-status-success-05 shrink-0 mt-100" />
+          <span class="text-info-paragraph">
+            <strong>Consistency:</strong> Same design decisions everywhere, automatically
+          </span>
+        </li>
+        <li class="flex items-start gap-400">
+          <Icon name="mi/baseline/check-circle" class="text-status-success-05 shrink-0 mt-100" />
+          <span class="text-info-paragraph">
+            <strong>Efficiency:</strong> Update once, propagate everywhere
+          </span>
+        </li>
+        <li class="flex items-start gap-400">
+          <Icon name="mi/baseline/check-circle" class="text-status-success-05 shrink-0 mt-100" />
+          <span class="text-info-paragraph">
+            <strong>Quality:</strong> Single place to enforce design standards and accessibility
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function initComponentDemo() {
+      const buttons = document.querySelectorAll('[data-context]');
+      const preview = document.getElementById('component-preview');
+
+      if (!preview) return;
+
+      const contexts = {
+        web: {
+          title: 'Web Application',
+          description: 'Primary button component in a web app context',
+          component:
+            '<button class="px-600 py-300 rounded-lg bg-label-blue-05 text-tone-neutral font-medium hover:bg-label-blue-04 transition-colors">Get Started</button>',
+        },
+        mobile: {
+          title: 'Mobile Application',
+          description: 'Same component, adapted for touch interactions',
+          component:
+            '<button class="px-800 py-400 rounded-xl bg-label-blue-05 text-tone-neutral font-medium text-lg hover:bg-label-blue-04 transition-colors">Get Started</button>',
+        },
+        docs: {
+          title: 'Documentation Site',
+          description: 'Component showcased in design system documentation',
+          component:
+            '<div class="p-600 bg-tone-neutral-10 rounded-2xl border border-tone-neutral-08"><button class="px-600 py-300 rounded-lg bg-label-blue-05 text-tone-neutral font-medium hover:bg-label-blue-04 transition-colors">Get Started</button><p class="text-info-caption mt-400">Primary button component</p></div>',
+        },
+      };
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const context = button.getAttribute('data-context');
+          if (!context || !(context in contexts)) return;
+
+          const contextData = contexts[context as keyof typeof contexts];
+          if (!contextData) return;
+
+          // Update active button
+          buttons.forEach((btn) => {
+            btn.classList.remove('bg-label-blue-05', 'text-tone-neutral');
+            btn.classList.add('bg-tone-neutral-08', 'text-tone-neutral-03');
+          });
+          button.classList.remove('bg-tone-neutral-08', 'text-tone-neutral-03');
+          button.classList.add('bg-label-blue-05', 'text-tone-neutral');
+
+          // Update preview
+          preview.innerHTML = `
+                <div class="text-center w-full">
+                  <h4 class="text-title-h4 mb-200">${contextData.title}</h4>
+                  <p class="text-info-detail mb-600">${contextData.description}</p>
+                  <div class="flex justify-center">
+                    ${contextData.component}
+                  </div>
+                </div>
+              `;
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initComponentDemo);
+    } else {
+      initComponentDemo();
+    }
+  </script>
+</PrincipleLayout>
