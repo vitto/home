@@ -14,7 +14,7 @@ interface Props {
 
 const { class: className = '', contentClass = 'gap-600' } = Astro.props;
 
-const baseClasses = 'min-h-screen py-2000 px-400';
+const baseClasses = 'min-h-screen py-2000 mobile:py-600 px-600';
 const combinedClasses = `${baseClasses} ${className}`.trim();
 ---
 

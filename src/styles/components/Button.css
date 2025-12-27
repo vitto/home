@@ -7,12 +7,12 @@
     text-transform: uppercase;
   }
 
-  &[data-filter-active='true'] {
+  &[data-filter][data-filter-active='true'] {
     @apply bg-tone-neutral-03 text-tone-neutral border-transparent duration-0;
   }
 
-  &[data-filter-active='false'],
-  &:not([data-filter-active]) {
+  &[data-filter][data-filter-active='false'],
+  &[data-filter]:not([data-filter-active]) {
     @apply bg-tone-neutral text-tone-neutral-03 border-transparent duration-0;
   }
 }

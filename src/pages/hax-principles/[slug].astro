@@ -24,7 +24,7 @@ const { principle } = Astro.props;
 ---
 
 <SectionLayout title={`${principle.title} - HAX Principles`}>
-  <Section contentClass="gap-1200">
+  <Section contentClass="gap-1200 mobile:gap-600">
     <Header />
     <PrincipleHeader principle={principle} sectionName={data.title} sectionPath="/hax-principles" />
     <UseCaseInteractive>

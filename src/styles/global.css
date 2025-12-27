@@ -8,6 +8,7 @@
 @import '@maggioli-design-system/styles/dist/css/base.css';
 @import './iconsauce.css';
 @import './components/Button.css';
+@import './components/Header.css';
 
 body,
 html {

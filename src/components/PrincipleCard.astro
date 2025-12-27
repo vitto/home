@@ -82,10 +82,10 @@ const categoryColorClass = colorClasses[color] || 'bg-tone-neutral-09 text-tone-
   data-category={category}
 >
   <div
-    class="principle-card grid gap-200 aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_auto_1fr_auto] desktop:grid-rows-[auto_1fr_auto] text-tone-neutral-03 p-600 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral/80 backdrop-blur group-[&:is(:hover,:focus-visible)]:bg-tone-neutral ease-out-expo duration-1000"
+    class="principle-card grid gap-200 aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_auto_1fr_auto] desktop:grid-rows-[auto_1fr_auto] text-tone-neutral-03 p-600 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral/80 backdrop-blur group-[&:is(:hover,:focus-visible)]:bg-tone-neutral ease-out-expo duration-500"
   >
     <div
-      class={`p-200 rounded-full inline-flex justify-self-start transition-[color,background-color,border-color,padding,border-radius] group-[&:is(:hover,:focus-visible)]:px-600 ease-out-expo duration-1000 ${categoryColorClass}`}
+      class={`p-200 rounded-full inline-flex justify-self-start transition-[color,background-color,border-color,padding,border-radius] group-[&:is(:hover,:focus-visible)]:px-600 ease-out-expo duration-500 ${categoryColorClass}`}
     >
       <Icon name={icon} />
     </div>
@@ -95,7 +95,7 @@ const categoryColorClass = colorClasses[color] || 'bg-tone-neutral-09 text-tone-
     </p>
     <div class="flex gap-400 items-center">
       <Badge
-        class={`shrink-0 ease-out-expo duration-1000 transition-[background-color,color,padding] group-[&:is(:hover,:focus-visible)]:px-200 ${categoryColorClass}`}
+        class={`shrink-0 ease-out-expo duration-500 transition-[background-color,color,padding] group-[&:is(:hover,:focus-visible)]:px-200 ${categoryColorClass}`}
       >
         {category}
       </Badge>

@@ -3,7 +3,7 @@ import magmaPreset from '@maggioli-design-system/styles';
 /** @type {import('tailwindcss').Config} */
 export default {
   presets: [magmaPreset],
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  content: ['./src/**/*.{astro,html,js,json,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       animation: {

@@ -1,0 +1,34 @@
+.header-nav {
+  @apply duration-500
+    ease-in-out-quart
+    mobile:bg-transparent
+    mobile:bottom-0
+    mobile:fixed
+    mobile:flex-col
+    mobile:gap-400
+    mobile:h-full
+    mobile:items-start
+    mobile:justify-start
+    mobile:pointer-events-none
+    mobile:left-0
+    mobile:overflow-y-auto
+    mobile:p-400
+    mobile:right-0
+    mobile:top-0
+    mobile:w-full
+    mobile:z-10
+    transition-cosmetic;
+
+  &.header-nav--opened {
+    @apply mobile:pointer-events-auto
+      mobile:bg-tone-neutral-01/80;
+  }
+}
+
+.header-nav-menu {
+  @apply mobile:opacity-0 mobile:translate-x-full mobile:transition-cosmetic ease-in-out-quart duration-500;
+
+  &.header-nav-menu--opened {
+    @apply -translate-x-0 opacity-100;
+  }
+}

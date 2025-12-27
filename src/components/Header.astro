@@ -8,37 +8,124 @@ interface Props {
     href: string;
     label: string;
     icon: string;
+    button: string;
+    buttonSelected?: string;
   }>;
 }
 
 const baseUrl = import.meta.env.BASE_URL;
 
+// Determine current section from URL pathname
+const currentPath = Astro.url.pathname;
+const currentSection = categoriesData.find((category) => currentPath.includes(category.path));
+
 // Map categories data to header items format
-const defaultItems = categoriesData.map((category) => ({
-  href: `${baseUrl}${category.path}`,
-  label: category.title,
-  icon: category.icon,
-}));
+const defaultItems = categoriesData.map((category) => {
+  const isCurrentSection = currentSection?.id === category.id;
+  return {
+    href: `${baseUrl}${category.path}`,
+    icon: category.icon,
+    label: category.title,
+    button: isCurrentSection ? category.buttonSelected : category.button,
+  };
+});
 
 const { items = defaultItems } = Astro.props;
 ---
 
 <header class="flex items-center gap-400 justify-between">
-  <a href={baseUrl} class="inline-flex focus-bounce rounded-2xl shrink-0">
+  <a
+    href={baseUrl}
+    class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] focus-visible:rotate-[60deg] ease-out-expo transition-transform duration-500"
+  >
     <img
       alt="Vittorio Vittori Logo"
-      src={`${baseUrl}/vittorio-vittori-logo-centered.svg`}
-      class="w-2000 h-2000 justify-self-center"
+      src={`${baseUrl}/vittorio-vittori-logo.svg`}
+      class="w-2000 h-2000 mobile:w-1600 mobile:h-1600 justify-self-center"
     />
   </a>
-  <nav class="flex flex-wrap items-center gap-400">
-    {
-      items.map((item) => (
-        <Button href={item.href} variant="light">
-          <Icon name={item.icon} />
-          {item.label}
-        </Button>
-      ))
-    }
-  </nav>
+  <button
+    type="button"
+    class="hidden mobile:inline-flex focus-bounce rounded-2xl shrink-0 no-underline bg-transparent border-none cursor-pointer"
+    data-menu-toggle
+    aria-label="Toggle menu"
+  >
+    <Icon class="mobile:text-[44px]" name="mi/round/menu" />
+  </button>
+  <div class="header-nav" data-header-nav>
+    <nav
+      class="header-nav-menu flex mobile:flex-col mobile:items-start items-center gap-400 mobile:bg-tone-neutral rounded-2xl p-600"
+      data-header-nav-menu
+    >
+      <div class="mobile:grid hidden">
+        <h3 class="text-title-h3">Vittorio Vittori</h3>
+        <p class="text-info-caption">Design System Architect & Senior UX Designer</p>
+      </div>
+      {
+        items.map((item) => (
+          <Button href={item.href} class={item.button}>
+            <Icon name={item.icon} />
+            {item.label}
+          </Button>
+        ))
+      }
+    </nav>
+  </div>
 </header>
+
+<script>
+  function initHeaderMenu() {
+    const menuToggle = document.querySelector('[data-menu-toggle]');
+    const headerNav = document.querySelector('[data-header-nav]');
+    const headerNavMenu = document.querySelector('[data-header-nav-menu]');
+
+    if (!menuToggle || !headerNav || !headerNavMenu) return;
+
+    const openMenu = () => {
+      headerNav.classList.add('header-nav--opened');
+      headerNavMenu.classList.add('header-nav-menu--opened');
+    };
+
+    const closeMenu = () => {
+      headerNav.classList.remove('header-nav--opened');
+      headerNavMenu.classList.remove('header-nav-menu--opened');
+    };
+
+    const toggleMenu = () => {
+      const isOpen = headerNav.classList.contains('header-nav--opened');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    };
+
+    // Toggle menu on button click
+    menuToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleMenu();
+    });
+
+    // Close menu when clicking on header-nav (but not on the menu itself)
+    headerNav.addEventListener('click', (e) => {
+      // Only close if clicking directly on header-nav, not on children
+      if (e.target === headerNav) {
+        closeMenu();
+      }
+    });
+
+    // Close menu when clicking on a link inside the menu
+    const menuLinks = headerNavMenu.querySelectorAll('a');
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeaderMenu);
+  } else {
+    initHeaderMenu();
+  }
+</script>
