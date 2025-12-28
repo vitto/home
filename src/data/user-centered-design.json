@@ -3,11 +3,11 @@
   "description": "Applying NN/g usability heuristics to create intuitive, accessible interfaces",
   "categories": ["Cognitive load", "Control", "Error handling", "Support"],
   "categoryColors": {
-    "Cognitive load": "status-success",
-    "Control": "label-blue",
-    "Error handling": "status-error",
-    "Support": "label-violet",
-    "Predictability": "label-blue"
+    "Cognitive load": "label-orange",
+    "Control": "label-aqua",
+    "Error handling": "label-orchid",
+    "Support": "label-lime",
+    "Predictability": "label-sky"
   },
   "principles": [
     {

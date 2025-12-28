@@ -3,11 +3,11 @@
   "description": "Building scalable, maintainable component libraries with clear documentation",
   "categories": ["Architecture", "Component Design", "Maintenance", "Adoption", "Value"],
   "categoryColors": {
-    "Architecture": "label-amaranth",
-    "Component Design": "label-violet",
-    "Maintenance": "label-sky",
-    "Adoption": "status-success",
-    "Value": "label-green"
+    "Architecture": "label-orange",
+    "Component Design": "label-sky",
+    "Maintenance": "label-yellow",
+    "Adoption": "label-lime",
+    "Value": "label-orchid"
   },
   "principles": [
     {

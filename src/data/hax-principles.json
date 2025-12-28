@@ -11,13 +11,13 @@
     "Governance"
   ],
   "categoryColors": {
-    "Clarity": "label-blue",
-    "Context": "label-violet",
-    "Alignment": "status-success",
-    "Recovery": "status-error",
-    "Explainability": "label-sky",
-    "Adaptation": "label-amaranth",
-    "Governance": "label-green"
+    "Clarity": "label-sky",
+    "Context": "label-aqua",
+    "Alignment": "label-orange",
+    "Recovery": "label-yellow",
+    "Explainability": "label-blue",
+    "Adaptation": "label-orchid",
+    "Governance": "label-lime"
   },
   "principles": [
     {
