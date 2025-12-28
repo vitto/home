@@ -26,7 +26,13 @@ interface Props {
   class?: string;
 }
 
-const { principle, categoryColors, sectionName, sectionPath, class: className = 'grid gap-600' } = Astro.props;
+const {
+  principle,
+  categoryColors,
+  sectionName,
+  sectionPath,
+  class: className = 'grid gap-600',
+} = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
 const categoryUrl = `${baseUrl}${sectionPath}?category=${encodeURIComponent(principle.category)}`;

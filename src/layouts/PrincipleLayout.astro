@@ -27,7 +27,12 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
 <SectionLayout title={title}>
   <Section contentClass="gap-1200 mobile:gap-600">
     <Header />
-    <PrincipleHeader principle={principle} categoryColors={categoryColors} sectionName={sectionName} sectionPath={sectionPath} />
+    <PrincipleHeader
+      principle={principle}
+      categoryColors={categoryColors}
+      sectionName={sectionName}
+      sectionPath={sectionPath}
+    />
     <UseCaseInteractive>
       <slot />
     </UseCaseInteractive>
