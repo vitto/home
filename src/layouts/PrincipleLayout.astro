@@ -11,23 +11,23 @@ interface Props {
   title: string;
   principle: {
     icon: string;
-    color: string;
     category: string;
     title: string;
     description: string;
   };
+  categoryColors: Record<string, string>;
   sectionName: string;
   sectionPath: string;
 }
 
 const baseUrl = import.meta.env.BASE_URL;
-const { title, principle, sectionName, sectionPath } = Astro.props;
+const { title, principle, categoryColors, sectionName, sectionPath } = Astro.props;
 ---
 
 <SectionLayout title={title}>
   <Section contentClass="gap-1200 mobile:gap-600">
     <Header />
-    <PrincipleHeader principle={principle} sectionName={sectionName} sectionPath={sectionPath} />
+    <PrincipleHeader principle={principle} categoryColors={categoryColors} sectionName={sectionName} sectionPath={sectionPath} />
     <UseCaseInteractive>
       <slot />
     </UseCaseInteractive>

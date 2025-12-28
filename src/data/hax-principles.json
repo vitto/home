@@ -10,150 +10,141 @@
     "Adaptation",
     "Governance"
   ],
+  "categoryColors": {
+    "Clarity": "label-blue",
+    "Context": "label-violet",
+    "Alignment": "status-success",
+    "Recovery": "status-error",
+    "Explainability": "label-sky",
+    "Adaptation": "label-amaranth",
+    "Governance": "label-green"
+  },
   "principles": [
     {
       "id": "make-clear-what-system-can-do",
       "title": "Make Clear What the System Can Do",
       "category": "Clarity",
       "icon": "mgg/ai-chatbot-outline",
-      "description": "Users should understand the AI's capabilities and limitations upfront, setting appropriate expectations.",
-      "color": "label-blue"
+      "description": "Users should understand the AI's capabilities and limitations upfront, setting appropriate expectations."
     },
     {
       "id": "make-clear-how-well-system-can-do",
       "title": "Make Clear How Well the System Can Do What It Can Do",
       "category": "Clarity",
       "icon": "mi/outline/assessment",
-      "description": "Provide confidence indicators and accuracy information so users can make informed decisions.",
-      "color": "label-blue"
+      "description": "Provide confidence indicators and accuracy information so users can make informed decisions."
     },
     {
       "id": "time-services-based-on-context",
       "title": "Time Services Based on Context",
       "category": "Context",
       "icon": "mi/outline/schedule",
-      "description": "Deliver AI assistance at the right moment, when it's most useful and least disruptive.",
-      "color": "label-violet"
+      "description": "Deliver AI assistance at the right moment, when it's most useful and least disruptive."
     },
     {
       "id": "show-contextually-relevant-information",
       "title": "Show Contextually Relevant Information",
       "category": "Context",
       "icon": "mi/outline/info",
-      "description": "Present information that matters to the user's current task and context.",
-      "color": "label-violet"
+      "description": "Present information that matters to the user's current task and context."
     },
     {
       "id": "match-relevant-social-norms",
       "title": "Match Relevant Social Norms",
       "category": "Alignment",
       "icon": "mi/outline/people",
-      "description": "Design AI interactions that feel natural and appropriate within cultural and social contexts.",
-      "color": "status-success"
+      "description": "Design AI interactions that feel natural and appropriate within cultural and social contexts."
     },
     {
       "id": "mitigate-social-biases",
       "title": "Mitigate Social Biases",
       "category": "Alignment",
       "icon": "mi/outline/balance",
-      "description": "Ensure AI systems are fair, inclusive, and free from harmful biases.",
-      "color": "status-success"
+      "description": "Ensure AI systems are fair, inclusive, and free from harmful biases."
     },
     {
       "id": "support-efficient-invocation",
       "title": "Support Efficient Invocation",
       "category": "Recovery",
       "icon": "mi/outline/play-arrow",
-      "description": "Make it easy for users to access AI features when needed, with clear entry points.",
-      "color": "status-error"
+      "description": "Make it easy for users to access AI features when needed, with clear entry points."
     },
     {
       "id": "support-efficient-dismissal",
       "title": "Support Efficient Dismissal",
       "category": "Recovery",
       "icon": "mi/outline/close",
-      "description": "Allow users to easily ignore or dismiss AI suggestions without friction.",
-      "color": "status-error"
+      "description": "Allow users to easily ignore or dismiss AI suggestions without friction."
     },
     {
       "id": "support-efficient-correction",
       "title": "Support Efficient Correction",
       "category": "Recovery",
       "icon": "mi/outline/edit",
-      "description": "Enable users to fix AI mistakes quickly and easily, with clear correction paths.",
-      "color": "status-error"
+      "description": "Enable users to fix AI mistakes quickly and easily, with clear correction paths."
     },
     {
       "id": "scope-services-when-in-doubt",
       "title": "Scope Services When in Doubt",
       "category": "Recovery",
       "icon": "mi/outline/security",
-      "description": "Limit AI actions when uncertainty exists, prioritizing user safety and control.",
-      "color": "status-error"
+      "description": "Limit AI actions when uncertainty exists, prioritizing user safety and control."
     },
     {
       "id": "make-clear-why-system-did-what-it-did",
       "title": "Make Clear Why the System Did What It Did",
       "category": "Explainability",
       "icon": "mi/outline/lightbulb",
-      "description": "Provide explanations for AI decisions, helping users understand the reasoning behind actions.",
-      "color": "label-sky"
+      "description": "Provide explanations for AI decisions, helping users understand the reasoning behind actions."
     },
     {
       "id": "remember-recent-interactions",
       "title": "Remember Recent Interactions",
       "category": "Adaptation",
       "icon": "mi/outline/history",
-      "description": "Maintain context across user sessions, remembering relevant past interactions.",
-      "color": "label-amaranth"
+      "description": "Maintain context across user sessions, remembering relevant past interactions."
     },
     {
       "id": "learn-from-user-behavior",
       "title": "Learn from User Behavior",
       "category": "Adaptation",
       "icon": "mi/outline/school",
-      "description": "Adapt to user preferences over time, improving personalization while respecting privacy.",
-      "color": "label-amaranth"
+      "description": "Adapt to user preferences over time, improving personalization while respecting privacy."
     },
     {
       "id": "update-and-adapt-cautiously",
       "title": "Update and Adapt Cautiously",
       "category": "Adaptation",
       "icon": "mi/outline/trending-up",
-      "description": "Make changes that improve rather than disrupt user workflows, with careful testing.",
-      "color": "label-amaranth"
+      "description": "Make changes that improve rather than disrupt user workflows, with careful testing."
     },
     {
       "id": "encourage-granular-feedback",
       "title": "Encourage Granular Feedback",
       "category": "Governance",
       "icon": "mi/outline/feedback",
-      "description": "Enable users to provide specific feedback on AI performance, improving the system iteratively.",
-      "color": "label-green"
+      "description": "Enable users to provide specific feedback on AI performance, improving the system iteratively."
     },
     {
       "id": "convey-consequences-of-user-actions",
       "title": "Convey the Consequences of User Actions",
       "category": "Governance",
       "icon": "mi/outline/warning-amber",
-      "description": "Help users understand how their actions affect the AI system and outcomes.",
-      "color": "label-green"
+      "description": "Help users understand how their actions affect the AI system and outcomes."
     },
     {
       "id": "provide-global-controls",
       "title": "Provide Global Controls",
       "category": "Governance",
       "icon": "mi/outline/settings",
-      "description": "Give users control over AI behavior and settings at a system-wide level.",
-      "color": "label-green"
+      "description": "Give users control over AI behavior and settings at a system-wide level."
     },
     {
       "id": "notify-users-about-changes",
       "title": "Notify Users About Changes",
       "category": "Governance",
       "icon": "mi/outline/notifications",
-      "description": "Keep users informed about system updates and changes that affect their experience.",
-      "color": "label-green"
+      "description": "Keep users informed about system updates and changes that affect their experience."
     }
   ]
 }

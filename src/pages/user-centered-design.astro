@@ -30,7 +30,7 @@ const baseUrl = import.meta.env.BASE_URL;
             description={principle.description}
             category={principle.category}
             icon={principle.icon}
-            color={principle.color}
+            color={data.categoryColors[principle.category]}
             href={`${baseUrl}/user-centered-design/${principle.id}`}
           />
         ))

@@ -1,87 +1,84 @@
 {
   "title": "Design Systems",
   "description": "Building scalable, maintainable component libraries with clear documentation",
-  "categories": ["architecture", "component design", "maintenance", "adoption", "value"],
+  "categories": ["Architecture", "Component Design", "Maintenance", "Adoption", "Value"],
+  "categoryColors": {
+    "Architecture": "label-amaranth",
+    "Component Design": "label-violet",
+    "Maintenance": "label-sky",
+    "Adoption": "status-success",
+    "Value": "label-green"
+  },
   "principles": [
     {
       "id": "single-source-of-truth",
       "title": "Single Source of Truth",
-      "category": "architecture",
+      "category": "Architecture",
       "icon": "mi/outline/account-balance",
-      "description": "A centralized repository where all design decisions live, ensuring consistency across all platforms and tools.",
-      "color": "label-amaranth"
+      "description": "A centralized repository where all design decisions live, ensuring consistency across all platforms and tools."
     },
     {
       "id": "separation-of-semantics-and-presentation",
       "title": "Separation of Semantics and Presentation",
-      "category": "architecture",
+      "category": "Architecture",
       "icon": "mi/outline/layers",
-      "description": "Separating meaning from appearance allows components to be flexible, reusable, and maintainable across different contexts.",
-      "color": "label-amaranth"
+      "description": "Separating meaning from appearance allows components to be flexible, reusable, and maintainable across different contexts."
     },
     {
       "id": "scalability",
       "title": "Scalability",
-      "category": "architecture",
+      "category": "Architecture",
       "icon": "mi/outline/trending-up",
-      "description": "Design systems must grow with the organization, supporting new teams, products, and use cases without breaking existing implementations.",
-      "color": "label-amaranth"
+      "description": "Design systems must grow with the organization, supporting new teams, products, and use cases without breaking existing implementations."
     },
     {
       "id": "behavioral-consistency",
       "title": "Behavioral Consistency",
-      "category": "component design",
+      "category": "Component Design",
       "icon": "mi/outline/psychology",
-      "description": "Components should behave predictably across different contexts, following established interaction patterns and user expectations.",
-      "color": "label-violet"
+      "description": "Components should behave predictably across different contexts, following established interaction patterns and user expectations."
     },
     {
       "id": "composition-over-configuration",
       "title": "Composition Over Configuration",
-      "category": "component design",
+      "category": "Component Design",
       "icon": "mi/outline/widgets",
-      "description": "Building complex interfaces through composition of smaller, focused components rather than configuring monolithic ones.",
-      "color": "label-violet"
+      "description": "Building complex interfaces through composition of smaller, focused components rather than configuring monolithic ones."
     },
     {
       "id": "api-stability-and-versioning",
       "title": "Stability API and Aware Versioning",
-      "category": "maintenance",
+      "category": "Maintenance",
       "icon": "mi/outline/update",
-      "description": "Maintaining stable APIs while evolving the system, with clear versioning strategies and migration paths.",
-      "color": "label-sky"
+      "description": "Maintaining stable APIs while evolving the system, with clear versioning strategies and migration paths."
     },
     {
       "id": "clear-governance",
       "title": "Clear Governance",
-      "category": "maintenance",
+      "category": "Maintenance",
       "icon": "mi/outline/gavel",
-      "description": "Establishing clear processes for contributions, reviews, and decision-making to ensure quality and consistency.",
-      "color": "label-sky"
+      "description": "Establishing clear processes for contributions, reviews, and decision-making to ensure quality and consistency."
     },
     {
       "id": "documentation-as-primary-interface",
       "title": "Documentation as a Primary Interface",
-      "category": "adoption",
+      "category": "Adoption",
       "icon": "mi/outline/menu-book",
-      "description": "Comprehensive, accessible documentation that serves as the primary way teams discover and use design system components.",
-      "color": "status-success"
+      "description": "Comprehensive, accessible documentation that serves as the primary way teams discover and use design system components."
     },
     {
       "id": "accessibility-as-structural-requirement",
       "title": "Accessibility as a Structural Requirement",
-      "category": "adoption",
+      "category": "Adoption",
       "icon": "mi/outline/accessibility-new",
-      "description": "Accessibility built into the foundation of every component, not added as an afterthought.",
-      "color": "status-success"
+      "description": "Accessibility built into the foundation of every component, not added as an afterthought."
     },
     {
       "id": "measurable-impact",
       "title": "Measurable Impact",
-      "category": "value",
+      "category": "Value",
       "icon": "mi/outline/analytics",
-      "description": "Tracking metrics that demonstrate the value and effectiveness of the design system on product quality and team efficiency.",
-      "color": "label-green"
+      "description": "Tracking metrics that demonstrate the value and effectiveness of the design system on product quality and team efficiency."
     }
   ]
 }

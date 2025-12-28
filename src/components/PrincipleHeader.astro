@@ -16,17 +16,17 @@ import Badge from './Badge.astro';
 interface Props {
   principle: {
     icon: string;
-    color: string;
     category: string;
     title: string;
     description: string;
   };
+  categoryColors: Record<string, string>;
   sectionName: string;
   sectionPath: string;
   class?: string;
 }
 
-const { principle, sectionName, sectionPath, class: className = 'grid gap-600' } = Astro.props;
+const { principle, categoryColors, sectionName, sectionPath, class: className = 'grid gap-600' } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
 const categoryUrl = `${baseUrl}${sectionPath}?category=${encodeURIComponent(principle.category)}`;
@@ -50,7 +50,8 @@ const colorClasses: Record<string, string> = {
   'label-orange': 'bg-label-orange-05',
 };
 
-const categoryColorClass = colorClasses[principle.color] || '';
+const categoryColor = categoryColors[principle.category] || '';
+const categoryColorClass = colorClasses[categoryColor] || '';
 ---
 
 <div class={className}>
