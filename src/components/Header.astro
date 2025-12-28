@@ -33,46 +33,48 @@ const defaultItems = categoriesData.map((category) => {
 const { items = defaultItems } = Astro.props;
 ---
 
-<header class="flex items-center gap-400 justify-between">
-  <a
-    href={baseUrl}
-    class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] focus-visible:rotate-[60deg] ease-out-expo transition-transform duration-500"
-  >
-    <img
-      alt="Vittorio Vittori Logo"
-      src={`${baseUrl}/vittorio-vittori-logo.svg`}
-      class="w-2000 h-2000 mobile:w-1600 mobile:h-1600 justify-self-center"
-    />
-  </a>
-  <button
-    type="button"
-    class="hidden mobile:inline-flex focus-bounce rounded-2xl shrink-0 no-underline bg-transparent border-none cursor-pointer"
-    data-menu-toggle
-    aria-label="Toggle menu"
-  >
-    <Icon class="mobile:text-[44px]" name="mi/round/menu" />
-  </button>
-  <div class="header-nav" data-header-nav>
-    <nav
-      class="header-nav-menu flex mobile:flex-col mobile:items-start items-center gap-400 mobile:bg-tone-neutral rounded-2xl p-600"
-      data-header-nav-menu
+<div>
+  <header class="flex items-end gap-400 justify-between">
+    <a
+      href={baseUrl}
+      class="tablet:-translate-y-200 inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] focus-visible:rotate-[60deg] ease-out-expo transition-transform duration-500"
     >
-      <div class="mobile:grid hidden">
-        <h3 class="text-title-h3">Vittorio Vittori</h3>
-        <p class="text-info-caption">Design System Architect & Senior UX Designer</p>
-      </div>
-      {
-        items.map((item) => (
-          <Button href={item.href} class={item.button}>
-            <Icon name={item.icon} />
-            {item.label}
-          </Button>
-        ))
-      }
-    </nav>
-  </div>
-</header>
-
+      <img
+        alt="Vittorio Vittori Logo"
+        src={`${baseUrl}/vittorio-vittori-logo.svg`}
+        class="w-1000 h-1000 mobile:w-1600 mobile:h-1600 justify-self-center"
+      />
+    </a>
+    <button
+      type="button"
+      class="hidden mobile:inline-flex focus-bounce rounded-2xl shrink-0 no-underline bg-transparent border-none cursor-pointer"
+      data-menu-toggle
+      aria-label="Toggle menu"
+    >
+      <Icon class="mobile:text-[44px]" name="mi/round/menu" />
+    </button>
+    <div class="header-nav" data-header-nav>
+      <nav
+        class="header-nav-menu flex mobile:flex-col mobile:items-start items-start gap-400 mobile:bg-tone-neutral rounded-2xl mobile:p-600"
+        data-header-nav-menu
+      >
+        <div class="mobile:grid hidden">
+          <h3 class="text-title-h3">Vittorio Vittori</h3>
+          <p class="text-info-caption">Design System Architect & Senior UX Designer</p>
+        </div>
+        {
+          items.map((item) => (
+            <Button href={item.href} class={item.button}>
+              <Icon name={item.icon} />
+              {item.label}
+            </Button>
+          ))
+        }
+      </nav>
+    </div>
+  </header>
+  <div class="h-50 bg-tone-neutral-03"></div>
+</div>
 <script>
   function initHeaderMenu() {
     const menuToggle = document.querySelector('[data-menu-toggle]');
