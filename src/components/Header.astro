@@ -61,14 +61,14 @@ const { items = defaultItems, menu = true } = Astro.props;
     {
       menu ? (
         <>
-          <button
-            type="button"
-            class="inline-flex focus-bounce rounded-2xl shrink-0 no-underline bg-transparent border-none cursor-pointer"
+          <Button
             data-menu-toggle
-            aria-label="Toggle menu"
+            title="Toggle menu"
+            variant="light"
+            class="inline-flex focus-bounce rounded-2xl shrink-0 no-underline bg-transparent border-none cursor-pointer"
           >
-            <Icon class="mobile:text-[32px]" name="mi/round/menu" />
-          </button>
+            <Icon class="mobile:text-[32px]" name="mi/outline/menu" />
+          </Button>
           <div
             class="header-nav grid grid-cols-[1fr_auto] tablet:grid-cols-[1fr_768px_1fr]"
             data-header-nav

@@ -48,38 +48,6 @@ threeFiles.forEach(({ src, dest }) => {
   }
 });
 
-// Copy easing-utils assets
-const easingUtilsDir = join(rootDir, 'node_modules', 'easing-utils');
-const easingUtilsFiles = [
-  { src: 'index.js', dest: 'easing-utils.js' },
-  { src: 'index.mjs', dest: 'easing-utils.mjs' },
-];
-
-// Try to find the main file (could be index.js, index.mjs, or dist/index.js)
-const possiblePaths = [
-  join(easingUtilsDir, 'index.js'),
-  join(easingUtilsDir, 'index.mjs'),
-  join(easingUtilsDir, 'dist', 'index.js'),
-  join(easingUtilsDir, 'dist', 'index.mjs'),
-  join(easingUtilsDir, 'src', 'index.js'),
-];
-
-let easingUtilsMainFile = null;
-for (const path of possiblePaths) {
-  if (existsSync(path)) {
-    easingUtilsMainFile = path;
-    break;
-  }
-}
-
-if (easingUtilsMainFile) {
-  const destPath = join(vendorDir, 'easing-utils.js');
-  copyFileSync(easingUtilsMainFile, destPath);
-  log(`✓ Copied easing-utils to public/vendor/easing-utils.js`);
-} else {
-  console.warn(`⚠ easing-utils main file not found. Tried: ${possiblePaths.join(', ')}`);
-}
-
 // Copy Maggioli Design System loader and dependencies
 const magmaDir = join(rootDir, 'node_modules', '@maggioli-design-system', 'magma');
 const magmaLoaderDir = join(magmaDir, 'loader');

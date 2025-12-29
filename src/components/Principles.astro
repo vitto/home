@@ -14,11 +14,11 @@ interface Props {
 const { class: className = '' } = Astro.props;
 
 const baseClasses =
-  'priciples-section w-full max-w-screen-desktop grid grid-cols-1 tablet:grid-cols-3 desktop:grid-cols-4 gap-600 desktop:gap-400 bg-tone-neutral-10 p-600 rounded-[48px]';
+  'priciples-section w-full max-w-screen-desktop grid grid-cols-1 tablet:grid-cols-3 desktop:grid-cols-4 gap-600 desktop:gap-400 mobile:bg-tone-neutral-09 bg-tone-neutral-10 p-600 rounded-[48px]';
 const combinedClasses = `${baseClasses} ${className}`.trim();
 ---
 
-<section class="flex justify-center px-600">
+<section class="flex justify-center px-600 mobile:px-0">
   <div class={combinedClasses}>
     <slot />
   </div>
