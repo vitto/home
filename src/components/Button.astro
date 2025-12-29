@@ -14,10 +14,11 @@ interface Props {
   href?: string;
   class?: string;
   tabIndex?: number;
+  title?: string;
   variant?: string;
 }
 
-const { href, class: className = '', tabIndex = 0, variant = 'none' } = Astro.props;
+const { href, class: className = '', tabIndex = 0, variant = 'none', title = '' } = Astro.props;
 
 // Extract data-* attributes from props
 const dataAttributes: Record<string, string> = {};
@@ -30,6 +31,7 @@ Object.keys(Astro.props).forEach((key) => {
 // Map variant names to CSS classes
 const variants: Record<string, string> = {
   none: '',
+  back: 'text-tone-neutral-03 bg-tone-neutral-09 border-none hover:bg-tone-neutral-08 focus-visible:bg-tone-neutral-08 p-200 px-600',
   outline:
     'border-tone-neutral-01/10 hover:border-tone-neutral-01/20 focus-visible:border-tone-neutral-01/20',
   light:
@@ -42,7 +44,7 @@ const variantClass = variants[variant] || '';
 // Build class string: always include "button", add variant if provided, then additional classes
 const buttonClasses = [
   'button first-letter:uppercase no-underline inline-flex items-center justify-center',
-  'px-300 py-100 gap-200',
+  variant === 'back' ? 'rounded-l-full rounded-r-none -mr-400' : 'px-300 py-100 gap-200',
   'border-2 border-solid rounded-full',
   'cursor-pointer focus-bounce',
   variantClass,
@@ -63,11 +65,24 @@ const linkAttrs = isExternalLink
 
 {
   href ? (
-    <a class={buttonClasses} href={href} {...linkAttrs} {...dataAttributes} tabindex={tabIndex}>
+    <a
+      class={buttonClasses}
+      href={href}
+      {...linkAttrs}
+      {...dataAttributes}
+      tabindex={tabIndex}
+      title={title}
+    >
       <slot />
     </a>
   ) : (
-    <button class={buttonClasses} type="button" {...dataAttributes} tabindex={tabIndex}>
+    <button
+      class={buttonClasses}
+      type="button"
+      {...dataAttributes}
+      tabindex={tabIndex}
+      title={title}
+    >
       <slot />
     </button>
   )

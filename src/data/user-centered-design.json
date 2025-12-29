@@ -1,7 +1,7 @@
 {
   "title": "User-Centered Design",
   "description": "Applying NN/g usability heuristics to create intuitive, accessible interfaces",
-  "categories": ["Cognitive load", "Control", "Error handling", "Support"],
+  "categories": ["Cognitive load", "Control", "Error handling", "Predictability", "Support"],
   "categoryColors": {
     "Cognitive load": "label-orange",
     "Control": "label-aqua",

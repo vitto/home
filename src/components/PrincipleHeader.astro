@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import Badge from './Badge.astro';
+import Button from './Button.astro';
 
 /**
  * PrincipleHeader Component
@@ -35,7 +36,8 @@ const {
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
-const categoryUrl = `${baseUrl}${sectionPath}?category=${encodeURIComponent(principle.category)}`;
+const categorySectionUrl = `${baseUrl}${sectionPath}`;
+const categoryUrl = `${categorySectionUrl}?category=${encodeURIComponent(principle.category)}`;
 
 // Map color names to CSS classes for icon background
 
@@ -56,14 +58,19 @@ const colorClasses: Record<string, string> = {
   'label-orange': 'bg-label-orange-05',
 };
 
-const categoryColor = categoryColors[principle.category] || '';
+const categoryColor = (categoryColors[principle.category] as string | undefined) || '';
 const categoryColorClass = colorClasses[categoryColor] || '';
 ---
 
 <div class={className}>
   <div class="flex items-center gap-400">
-    <div class={`inline-flex p-200 px-600 rounded-full text-tone-neutral ${categoryColorClass}`}>
-      <Icon name={principle.icon} />
+    <div class="flex items-center">
+      <Button href={categorySectionUrl} variant="back" title={`Back to ${sectionName}`}>
+        <Icon name="mi/outline/arrow-back" />
+      </Button>
+      <div class={`inline-flex p-200 px-600 rounded-full text-tone-neutral ${categoryColorClass}`}>
+        <Icon name={principle.icon} />
+      </div>
     </div>
     <div class="grid">
       <h6 class="text-title-h6">{sectionName}</h6>

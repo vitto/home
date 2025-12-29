@@ -18,25 +18,24 @@ const baseUrl = import.meta.env.BASE_URL;
   <Section contentClass="gap-1200 mobile:gap-600">
     <Header />
     <SectionHeader title={data.title} description={data.description} />
-
     <CategoryFilter categories={data.categories} />
-
-    <Principles>
-      {
-        data.principles.map((principle) => (
-          <PrincipleCard
-            id={principle.id}
-            title={principle.title}
-            description={principle.description}
-            category={principle.category}
-            icon={principle.icon}
-            color={data.categoryColors[principle.category]}
-            href={`${baseUrl}/design-systems/${principle.id}`}
-          />
-        ))
-      }
-    </Principles>
-
+  </Section>
+  <Principles>
+    {
+      data.principles.map((principle) => (
+        <PrincipleCard
+          id={principle.id}
+          title={principle.title}
+          description={principle.description}
+          category={principle.category}
+          icon={principle.icon}
+          color={data.categoryColors[principle.category as keyof typeof data.categoryColors] || ''}
+          href={`${baseUrl}/design-systems/${principle.id}`}
+        />
+      ))
+    }
+  </Principles>
+  <Section class="pt-0" contentClass="py-600">
     <Button href={baseUrl} variant="outline" class="justify-self-start">
       <Icon name="mi/baseline/arrow-back" />
       Back to Home

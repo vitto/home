@@ -14,5 +14,10 @@
   &[data-filter][data-filter-active='false'],
   &[data-filter]:not([data-filter-active]) {
     @apply bg-tone-neutral text-tone-neutral-03 border-transparent duration-0;
+
+    &:hover,
+    &:focus-visible {
+      @apply bg-tone-neutral-09;
+    }
   }
 }
