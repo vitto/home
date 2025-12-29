@@ -1,0 +1,34 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/user-centered-design.json';
+import UseCase from '../../components/UseCase.astro';
+import UseCaseInteractive from '../../components/UseCaseInteractive.astro';
+
+const principle = data.principles.find((p) => p.id === 'visibility-of-system-status')!;
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Design Systems`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/design-systems"
+>
+  <UseCase
+    title="Loading / Waiting"
+    description="The system makes it clear that an operation is in progress and, when possible, communicates its duration or progress, reducing anxiety and uncertainty during the wait."
+  >
+    <UseCaseInteractive>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+    </UseCaseInteractive>
+  </UseCase>
+
+  <UseCase
+    title="Loading / Waiting"
+    description="The system makes it clear that an operation is in progress and, when possible, communicates its duration or progress, reducing anxiety and uncertainty during the wait."
+  >
+    <UseCaseInteractive>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+    </UseCaseInteractive>
+  </UseCase>
+</PrincipleLayout>

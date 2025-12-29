@@ -65,14 +65,11 @@ const categoryColorClass = colorClasses[categoryColor] || '';
 <div class={className}>
   <div class="flex items-center gap-400">
     <div class="flex items-center">
-      <Button href={categorySectionUrl} variant="back" title={`Back to ${sectionName}`}>
-        <Icon name="mi/outline/arrow-back" />
-      </Button>
       <div class={`inline-flex p-200 px-600 rounded-full text-tone-neutral ${categoryColorClass}`}>
         <Icon name={principle.icon} />
       </div>
     </div>
-    <div class="grid">
+    <div class="grid grow">
       <h6 class="text-title-h6">{sectionName}</h6>
       <a
         href={categoryUrl}
@@ -87,6 +84,14 @@ const categoryColorClass = colorClasses[categoryColor] || '';
         </Badge>
       </a>
     </div>
+    <Button
+      href={categorySectionUrl}
+      variant="outline"
+      title={`Back to ${sectionName}`}
+      class="shrink-0"
+    >
+      <Icon name="mi/outline/arrow-back" />
+    </Button>
   </div>
   <div class="grid gap-200">
     <h1 class="text-title-h1">{principle.title}</h1>

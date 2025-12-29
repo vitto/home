@@ -33,9 +33,7 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
       sectionName={sectionName}
       sectionPath={sectionPath}
     />
-    <UseCaseInteractive>
-      <slot />
-    </UseCaseInteractive>
+    <slot />
     <div class="h-50 bg-tone-neutral-03"></div>
     <Button href={baseUrl} variant="outline" class="justify-self-center">
       <Icon name="mi/baseline/arrow-back" />

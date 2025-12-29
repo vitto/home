@@ -15,6 +15,13 @@ interface Props {
 const { class: className = '' } = Astro.props;
 ---
 
-<div class={`use-case-interactive ${className}`}>
-  <slot />
+<div
+  class={`use-case-interactive bg-tone-neutral-09 p-600 grid gap-400 rounded-[28px] ${className}`}
+>
+  <p class="text-info-caption text-tone-neutral-05">
+    Interact with this use case to see how it works
+  </p>
+  <div class="grid gap-400 bg-tone-neutral p-600 rounded-xl shadow-sm-sharp">
+    <slot />
+  </div>
 </div>

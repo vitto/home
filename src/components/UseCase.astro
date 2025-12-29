@@ -1,0 +1,17 @@
+---
+import UseCaseInteractive from './UseCaseInteractive.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  class?: string;
+}
+
+const { title, description, class: className = '' } = Astro.props;
+---
+
+<article class={`grid gap-400 ${className}`}>
+  <h3 class="text-title-h3">{title}</h3>
+  <p class="text-info-detail">{description}</p>
+  <slot />
+</article>
