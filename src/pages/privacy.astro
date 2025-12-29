@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Button from '../components/Button.astro';
 import List from '../components/List.astro';
 import ListItem from '../components/ListItem.astro';
+import personalData from '../data/personal.json';
 
 const latestUpdate = new Date('2025-12-19').toLocaleDateString('en-US', {
   year: 'numeric',
@@ -16,8 +17,7 @@ const privacySections = [
   {
     id: 'data-controller',
     title: 'Data Controller',
-    description:
-      'Personal website of <strong>Vittorio Vittori</strong>, Design System Architect and Senior UX Designer. <br /> Resident in Italy.',
+    description: `Personal website of <strong>Vittorio Vittori</strong>, ${personalData.role}. <br /> Resident in Italy.`,
     button: {
       href: 'https://linkedin.com/in/vittoriovittori',
       label: 'LinkedIn',

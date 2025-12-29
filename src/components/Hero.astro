@@ -2,6 +2,7 @@
 // import DisplacedSphere from './DisplacedSphere.astro';
 import Icon from './Icon.astro';
 import Button from './Button.astro';
+import personalData from '../data/personal.json';
 // Get base URL from Astro config
 const baseUrl = import.meta.env.BASE_URL;
 ---
@@ -19,11 +20,11 @@ const baseUrl = import.meta.env.BASE_URL;
       <h1 class="text-title-h1 vittori-o">
         Vittori<span class="inline-block animate-pulse-more">o</span>
       </h1>
-      <p class="text-info-paragraph m-auto"><b>Design System Architect / Senior UX Designer</b></p>
+      <p class="text-info-paragraph m-auto"><b>{personalData.role}</b></p>
     </div>
     <p class="text-info-detail m-auto">
       <b>
-        Crafting scalable human-centered experiences<br />
+      Crafting scalable human-centered experiences<br />
         through systematic design thinking.</b
       >
     </p>

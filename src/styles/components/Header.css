@@ -1,34 +1,50 @@
 .header-nav {
   @apply duration-500
-    ease-in-out-quart
-    mobile:bg-transparent
-    mobile:bottom-0
-    mobile:fixed
-    mobile:flex-col
-    mobile:gap-400
-    mobile:h-full
-    mobile:items-start
-    mobile:justify-start
-    mobile:pointer-events-none
-    mobile:left-0
-    mobile:overflow-y-auto
-    mobile:p-400
-    mobile:right-0
-    mobile:top-0
-    mobile:w-full
-    mobile:z-10
+    mobile:ease-in-out-quart
+    ease-out-expo
+    bottom-0
+    fixed
+    flex-col
+    gap-400
+    h-full
+    items-start
+    justify-start
+    pointer-events-none
+    left-0
+    overflow-y-auto
+    right-0
+    py-600
+    top-0
+    w-full
+    z-10
+    bg-transparent
     transition-cosmetic;
 
   &.header-nav--opened {
-    @apply mobile:pointer-events-auto
-      mobile:bg-tone-neutral-01/80;
+    @apply bg-tone-neutral-01/20
+    mobile:bg-tone-neutral-01/80
+    pointer-events-auto
+    px-600;
   }
 }
 
 .header-nav-menu {
-  @apply mobile:opacity-0 mobile:translate-x-full mobile:transition-cosmetic ease-in-out-quart duration-500;
+  @apply duration-500
+  mobile:ease-in-out-quart
+  ease-out-expo
+  justify-self-end
+  mobile:scale-100
+  opacity-0
+  p-600
+  scale-50
+  origin-right
+  transition-cosmetic
+  mobile:translate-x-full;
 
   &.header-nav-menu--opened {
-    @apply -translate-x-0 opacity-100;
+    @apply translate-x-0
+    translate-y-0
+    opacity-100
+    scale-100;
   }
 }
