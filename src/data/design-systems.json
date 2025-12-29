@@ -77,7 +77,7 @@
       "id": "measurable-impact",
       "title": "Measurable Impact",
       "category": "Value",
-      "icon": "mi/outline/analytics",
+      "icon": "mi/outline/assessment",
       "description": "Tracking metrics that demonstrate the value and effectiveness of the design system on product quality and team efficiency."
     }
   ]

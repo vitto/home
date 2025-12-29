@@ -52,9 +52,9 @@ const { items = defaultItems, menu = true } = Astro.props;
         />
       </a>
       <div class="grid mobile:hidden">
-        <h2 class="text-title-h3">
+        <h1 class="text-title-h3">
           Vittori<span class="inline-block animate-pulse-more">o</span>
-        </h2>
+        </h1>
         <p class="text-info-caption">{personalData.role}</p>
       </div>
     </div>
@@ -83,12 +83,18 @@ const { items = defaultItems, menu = true } = Astro.props;
                 </h2>
                 <p class="text-info-tip">{personalData.role}</p>
               </div>
+              <div class="h-50 bg-tone-neutral-03 w-full mobile:inline-flex hidden" />
               {items.map((item) => (
                 <Button href={item.href} class={item.button} tabIndex={item.current}>
                   <Icon name={item.icon} />
                   {item.label}
                 </Button>
               ))}
+              <div class="h-50 bg-tone-neutral-03 w-full" />
+              <Button href={baseUrl} variant="outline" class="w-full">
+                <Icon name="mi/baseline/arrow-back" />
+                Back to Home
+              </Button>
             </nav>
           </div>
         </>
