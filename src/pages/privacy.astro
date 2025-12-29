@@ -6,6 +6,7 @@ import Button from '../components/Button.astro';
 import List from '../components/List.astro';
 import ListItem from '../components/ListItem.astro';
 import personalData from '../data/personal.json';
+import Section from '../components/Section.astro';
 
 const latestUpdate = new Date('2025-12-19').toLocaleDateString('en-US', {
   year: 'numeric',
@@ -82,9 +83,9 @@ const privacySections = [
   title="Privacy Policy - Vittorio Vittori"
   description="Privacy policy for Vittorio Vittori's portfolio website. This site respects your privacy by design."
 >
-  <Header />
-  <main class="min-h-screen px-400 desktop:px-1200 py-2000">
+  <main class="px-400 desktop:px-1200 py-600">
     <div class="max-w-screen-desktop w-full mx-auto grid gap-2400">
+      <Header menu={false} />
       <div class="grid gap-200">
         <h1 class="text-title-h1">Privacy Policy</h1>
         <p class="text-info-detail">

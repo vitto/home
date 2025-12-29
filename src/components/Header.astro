@@ -13,6 +13,7 @@ interface Props {
     current: number;
     buttonSelected?: string;
   }>;
+  menu?: boolean;
 }
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -33,7 +34,7 @@ const defaultItems = categoriesData.map((category) => {
   };
 });
 
-const { items = defaultItems } = Astro.props;
+const { items = defaultItems, menu = true } = Astro.props;
 ---
 
 <div>
@@ -57,38 +58,47 @@ const { items = defaultItems } = Astro.props;
         <p class="text-info-caption">{personalData.role}</p>
       </div>
     </div>
-    <button
-      type="button"
-      class="inline-flex focus-bounce rounded-2xl shrink-0 no-underline bg-transparent border-none cursor-pointer"
-      data-menu-toggle
-      aria-label="Toggle menu"
-    >
-      <Icon class="mobile:text-[32px]" name="mi/round/menu" />
-    </button>
-    <div
-      class="header-nav grid grid-cols-[1fr_auto] tablet:grid-cols-[1fr_768px_1fr]"
-      data-header-nav
-    >
-      <nav
-        class="header-nav-menu col-start-2 flex flex-col items-start gap-400 bg-tone-neutral rounded-2xl py-600"
-        data-header-nav-menu
-      >
-        <div class="mobile:grid hidden">
-          <h2 class="text-title-h3">
-            Vittori<span class="inline-block animate-pulse-more">o</span>
-          </h2>
-          <p class="text-info-tip">{personalData.role}</p>
-        </div>
-        {
-          items.map((item) => (
-            <Button href={item.href} class={item.button} tabIndex={item.current}>
-              <Icon name={item.icon} />
-              {item.label}
-            </Button>
-          ))
-        }
-      </nav>
-    </div>
+    {
+      menu ? (
+        <>
+          <button
+            type="button"
+            class="inline-flex focus-bounce rounded-2xl shrink-0 no-underline bg-transparent border-none cursor-pointer"
+            data-menu-toggle
+            aria-label="Toggle menu"
+          >
+            <Icon class="mobile:text-[32px]" name="mi/round/menu" />
+          </button>
+          <div
+            class="header-nav grid grid-cols-[1fr_auto] tablet:grid-cols-[1fr_768px_1fr]"
+            data-header-nav
+          >
+            <nav
+              class="header-nav-menu col-start-2 flex flex-col items-start gap-400 bg-tone-neutral rounded-2xl py-600"
+              data-header-nav-menu
+            >
+              <div class="mobile:grid hidden">
+                <h2 class="text-title-h3">
+                  Vittori<span class="inline-block animate-pulse-more">o</span>
+                </h2>
+                <p class="text-info-tip">{personalData.role}</p>
+              </div>
+              {items.map((item) => (
+                <Button href={item.href} class={item.button} tabIndex={item.current}>
+                  <Icon name={item.icon} />
+                  {item.label}
+                </Button>
+              ))}
+            </nav>
+          </div>
+        </>
+      ) : (
+        <Button href={baseUrl} variant="outline" class="justify-self-start">
+          <Icon name="mi/baseline/arrow-back" />
+          Back to Home
+        </Button>
+      )
+    }
   </header>
   <div class="h-50 bg-tone-neutral-03"></div>
 </div>
