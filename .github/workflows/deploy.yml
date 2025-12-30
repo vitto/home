@@ -34,7 +34,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Disable Jekyll
+      - name: Disable Jekyll if it exists
         run: |
           echo "" > ./dist/.nojekyll
           echo "safe: true" > ./dist/_config.yml
