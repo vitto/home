@@ -127,7 +127,7 @@ const principle = data.principles.find((p) => p.id === 'visibility-of-system-sta
       <script>
         function initSaveButton() {
           // Get the UseCase scope (article and container) for this script
-          const scope = (window as any).getUseCaseScope?.();
+          const scope = (window as any).getUseCaseScope?.('user-actions');
           if (!scope) return;
 
           const { container } = scope;
@@ -137,7 +137,16 @@ const principle = data.principles.find((p) => p.id === 'visibility-of-system-sta
           if (!saveButton) return;
 
           saveButton.addEventListener('click', () => {
-            console.log('Save button clicked');
+            saveButton.textContent = 'Element saved successfully';
+            saveButton.setAttribute('disabled', 'true');
+            saveButton.setAttribute('icon', 'mi/baseline/done');
+            saveButton.setAttribute('variant', 'success');
+            setTimeout(() => {
+              saveButton.textContent = 'Save';
+              saveButton.removeAttribute('disabled');
+              saveButton.removeAttribute('icon');
+              saveButton.setAttribute('variant', 'primary');
+            }, 2000);
           });
         }
 
