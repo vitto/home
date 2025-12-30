@@ -32,9 +32,17 @@ const principle = data.principles.find((p) => p.id === 'visibility-of-system-sta
       <mds-button class="max-w-8000 w-full" data-save-button>Proceed</mds-button>
       <script>
         function initSaveDataDemo() {
-          const saveButton = document.querySelector('[data-save-button]');
-          const progressBar = document.querySelector('[data-progress-bar]');
-          const progressText = document.querySelector('[data-progress-text]');
+          // Get the UseCase scope (article and container) for this script
+          // Can pass id explicitly or let it find automatically
+          const scope = (window as any).getUseCaseScope?.('loading-waiting');
+          if (!scope) return;
+
+          const { container } = scope;
+
+          // Scope all queries to the container
+          const saveButton = container.querySelector('[data-save-button]');
+          const progressBar = container.querySelector('[data-progress-bar]');
+          const progressText = container.querySelector('[data-progress-text]');
 
           if (!saveButton || !progressBar || !progressText) return;
 
@@ -115,7 +123,30 @@ const principle = data.principles.find((p) => p.id === 'visibility-of-system-sta
     description="Every input produces immediate and perceptible feedback, so the user knows the action has been received and is being processed or completed."
   >
     <UseCaseInteractive>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+      <mds-button class="max-w-8000 w-full" data-save-button>Save</mds-button>
+      <script>
+        function initSaveButton() {
+          // Get the UseCase scope (article and container) for this script
+          const scope = (window as any).getUseCaseScope?.();
+          if (!scope) return;
+
+          const { container } = scope;
+
+          // Scope query to the container
+          const saveButton = container.querySelector('[data-save-button]');
+          if (!saveButton) return;
+
+          saveButton.addEventListener('click', () => {
+            console.log('Save button clicked');
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initSaveButton);
+        } else {
+          initSaveButton();
+        }
+      </script>
     </UseCaseInteractive>
   </UseCase>
 

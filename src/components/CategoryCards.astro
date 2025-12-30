@@ -24,16 +24,16 @@ const categories = categoriesData.map((category) => ({
             data-category-id={category.id}
           >
             <div class="grid auto-rows-min rounded-3xl align-self-start text-tone-neutral-03 p-600 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral/80 backdrop-blur group-[&:is(:hover,:focus-visible)]:bg-tone-neutral ease-out-expo duration-1000">
-              <div
+                <div
                 class={`p-200 -translate-x-200 rounded-full inline-flex justify-self-start bg-transparent transition group-[&:is(:hover,:focus-visible)]:-translate-y-200 group-[&:is(:hover,:focus-visible)]:pt-200 ease-out-expo duration-1000 color-tone-neutral-03 ${category.iconHover}`}
-              >
+                >
                 <Icon name={category.icon} />
-              </div>
+                </div>
               <h2 class="mb-300 text-title-h2 tablet-max:text-title-h3">{category.title}</h2>
               <p class="text-info-detail">{category.description}</p>
               <div class="mt-600 opacity-0 group-[&:is(:hover,:focus-visible)]:opacity-100 group-[&:is(:hover,:focus-visible)]:translate-y-0 transition translate-y-200 h-600">
-                <mds-text text="→" animation="yugop" data-category-text={category.id} />
-              </div>
+                  <mds-text text="→" animation="yugop" data-category-text={category.id} />
+                </div>
             </div>
           </a>
         ))
@@ -88,11 +88,11 @@ const categories = categoriesData.map((category) => ({
     };
 
     // Start checking
-    if (document.readyState === 'loading') {
+  if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
         setTimeout(checkBlob, 100);
       });
-    } else {
+  } else {
       setTimeout(checkBlob, 100);
     }
   }

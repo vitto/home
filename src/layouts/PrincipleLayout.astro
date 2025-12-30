@@ -24,6 +24,38 @@ const baseUrl = import.meta.env.BASE_URL;
 const { title, principle, categoryColors, sectionName, sectionPath } = Astro.props;
 ---
 
+<script is:inline>
+  // Global utility function to find the UseCase article and container for the current script
+  // This function can be called with an id, or it will try to find the article containing the calling script
+  window.getUseCaseScope = function getUseCaseScope(id) {
+    let article = null;
+
+    if (id) {
+      // If id is provided, use it directly
+      article = document.getElementById(id);
+    } else {
+      // Otherwise, try to find the article containing the current script
+      const currentScript = document.currentScript;
+      if (currentScript) {
+        article = currentScript.closest('article');
+      }
+    }
+
+    if (!article) return null;
+
+    const articleId = article.getAttribute('id');
+    if (!articleId) return null;
+
+    const container = article.querySelector('.use-case-interactive');
+    if (!container) return null;
+
+    return {
+      article: article,
+      articleId: articleId,
+      container: container,
+    };
+  };
+</script>
 <SectionLayout title={title}>
   <Section contentClass="gap-1200 mobile:gap-600">
     <Header />
