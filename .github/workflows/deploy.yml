@@ -35,7 +35,10 @@ jobs:
         run: npm run build
 
       - name: Disable Jekyll
-        run: touch ./dist/.nojekyll
+        run: |
+          echo "" > ./dist/.nojekyll
+          echo "safe: true" > ./dist/_config.yml
+          echo "Created .nojekyll and _config.yml files in dist directory"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
