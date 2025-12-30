@@ -10,15 +10,10 @@
  */
 interface Props {
   class?: string;
-  aspect?:
-    | 'aspect-square'
-    | 'aspect-picture'
-    | 'aspect-video'
-    | 'aspect-landscape'
-    | 'aspect-panorama';
+  contentClass?: string;
 }
 
-const { class: className = '', aspect = 'aspect-panorama' } = Astro.props;
+const { class: className = '', contentClass = '' } = Astro.props;
 ---
 
 <div
@@ -28,8 +23,12 @@ const { class: className = '', aspect = 'aspect-panorama' } = Astro.props;
     Interact with this use case to see how it works
   </p>
   <div
-    class={`flex flex-col items-center justify-center gap-400 bg-tone-neutral p-600 rounded-xl shadow-sm-sharp w-full  ${aspect}`}
+    class={`flex flex-col items-center justify-center gap-400 bg-tone-neutral px-600 py-1200 rounded-xl shadow-sm-sharp w-full`}
   >
-    <slot />
+    <div
+      class={`flex flex-col items-center justify-center gap-400 w-full relative box-border ${contentClass}`}
+    >
+      <slot />
+    </div>
   </div>
 </div>
