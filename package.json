@@ -5,7 +5,7 @@
   "scripts": {
     "predev": "npm run icons && npm run copy-vendor",
     "dev": "astro dev",
-    "icons": "iconsauce --verbose --config ./iconsauce.config.cjs --output-css ./src/styles/iconsauce.css",
+    "icons": "iconsauce --verbose --config ./iconsauce.config.cjs --output-css ./src/styles/iconsauce.css --output-svg ./public/icons",
     "copy-vendor": "node scripts/copy-vendor-assets.js",
     "prestart": "npm run icons && npm run copy-vendor",
     "start": "astro dev",
