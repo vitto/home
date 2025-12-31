@@ -7,18 +7,27 @@ import UseCaseInteractive from '../../UseCaseInteractive.astro';
   title="Navigation and Flows"
   description="The interface clearly communicates the current position and progress within a path, preventing disorientation and abandonment."
 >
-  <UseCaseInteractive clsHeight={126}>
+  <UseCaseInteractive clsHeight={131}>
     <mds-tab>
       <mds-tab-item selected>First tab</mds-tab-item>
       <mds-tab-item>Second tab</mds-tab-item>
       <mds-tab-item>Third tab</mds-tab-item>
-      <div slot="content" class="bg-label-amaranth-09 p-600 text-center rounded-2xl mt-50">
+      <div
+        slot="content"
+        class="bg-label-amaranth-10 border-solid border-1 border-label-amaranth-09 p-600 text-center rounded-2xl mt-100"
+      >
         <mds-text>Contents for the first tab</mds-text>
       </div>
-      <div slot="content" class="bg-label-blue-09 p-600 text-center rounded-2xl mt-50">
+      <div
+        slot="content"
+        class="bg-label-blue-10 border-solid border-1 border-label-blue-09 p-600 text-center rounded-2xl mt-100"
+      >
         <mds-text>Contents for the second tab</mds-text>
       </div>
-      <div slot="content" class="bg-label-orange-09 p-600 text-center rounded-2xl mt-50">
+      <div
+        slot="content"
+        class="bg-label-orange-10 border-solid border-1 border-label-orange-09 p-600 text-center rounded-2xl mt-100"
+      >
         <mds-text>Contents for the third tab</mds-text>
       </div>
     </mds-tab>

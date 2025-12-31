@@ -1,5 +1,5 @@
 ---
-import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
 import data from '../../data/user-centered-design.json';
 import LoadingWaiting from '../../components/use-cases/visibility-of-system-status/LoadingWaiting.astro';
 import UserActions from '../../components/use-cases/visibility-of-system-status/UserActions.astro';
@@ -12,7 +12,7 @@ import SystemAndSettings from '../../components/use-cases/visibility-of-system-s
 const principle = data.principles.find((p) => p.id === 'visibility-of-system-status')!;
 ---
 
-<PrincipleLayout
+<UseCaseLayout
   title={`${principle.title} - Design Systems`}
   principle={principle}
   categoryColors={data.categoryColors}
@@ -26,4 +26,4 @@ const principle = data.principles.find((p) => p.id === 'visibility-of-system-sta
   <NavigationAndFlows />
   <InputAndValidation />
   <SystemAndSettings />
-</PrincipleLayout>
+</UseCaseLayout>

@@ -1,12 +1,12 @@
 ---
-import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
 import data from '../../data/design-systems.json';
 import Icon from '../../components/Icon.astro';
 
 const principle = data.principles.find((p) => p.id === 'single-source-of-truth')!;
 ---
 
-<PrincipleLayout
+<UseCaseLayout
   title={`${principle.title} - Design Systems`}
   principle={principle}
   categoryColors={data.categoryColors}
@@ -202,4 +202,4 @@ const principle = data.principles.find((p) => p.id === 'single-source-of-truth')
       initComponentDemo();
     }
   </script>
-</PrincipleLayout>
+</UseCaseLayout>

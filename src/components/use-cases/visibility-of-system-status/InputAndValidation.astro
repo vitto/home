@@ -7,7 +7,130 @@ import UseCaseInteractive from '../../UseCaseInteractive.astro';
   title="Input and Validation"
   description="The status of the data entered is always clear, allowing the user to immediately know whether what they are doing is correct or requires correction."
 >
-  <UseCaseInteractive>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+  <UseCaseInteractive clsHeight={120}>
+    <mds-input-field label="Password" class="w-full max-w-8000 font-info">
+      <mds-input type="password" placeholder="Es: Password123" data-password-input></mds-input>
+    </mds-input-field>
+    <mds-benchmark-bar
+      value="0"
+      variant="primary"
+      alias=""
+      class="w-full max-w-8000"
+      data-password-strength-bar
+    >
+      <span data-password-strength-text>Enter a password</span>
+    </mds-benchmark-bar>
+    <script>
+      function initPasswordStrengthChecker() {
+        // Get the UseCase scope (article and container) for this script
+        const scope = (window as any).getUseCaseScope?.('input-and-validation');
+        if (!scope) return;
+
+        const { container } = scope;
+
+        // Scope all queries to the container
+        const passwordInput = container.querySelector('[data-password-input]');
+        const strengthBar = container.querySelector('[data-password-strength-bar]');
+        const strengthText = container.querySelector('[data-password-strength-text]');
+
+        if (!passwordInput || !strengthBar || !strengthText) return;
+
+        function calculatePasswordStrength(password: string) {
+          if (!password || password.length === 0) {
+            return {
+              value: 0,
+              variant: 'primary',
+              alias: '',
+              text: 'Enter a password',
+            };
+          }
+
+          let strength = 0;
+          const checks = {
+            length: password.length >= 8,
+            lowercase: /[a-z]/.test(password),
+            uppercase: /[A-Z]/.test(password),
+            number: /[0-9]/.test(password),
+            special: /[^a-zA-Z0-9]/.test(password),
+          };
+
+          // Calculate strength based on criteria
+          if (checks.length) strength += 20;
+          if (checks.lowercase) strength += 20;
+          if (checks.uppercase) strength += 20;
+          if (checks.number) strength += 20;
+          if (checks.special) strength += 20;
+
+          // Bonus for longer passwords
+          if (password.length >= 12) strength = Math.min(100, strength + 10);
+          if (password.length >= 16) strength = Math.min(100, strength + 10);
+
+          // Determine variant and text based on strength
+          let variant: string;
+          let text: string;
+          let alias: string;
+
+          if (strength <= 20) {
+            variant = 'error';
+            text = 'Password strengh';
+            alias = 'Very weak';
+          } else if (strength <= 40) {
+            variant = 'error';
+            text = 'Password strengh';
+            alias = 'Weak';
+          } else if (strength <= 60) {
+            variant = 'warning';
+            text = 'Password strengh';
+            alias = 'Fair';
+          } else if (strength <= 80) {
+            variant = 'success';
+            text = 'Password strengh';
+            alias = 'Good';
+          } else {
+            variant = 'info';
+            text = 'Password strengh';
+            alias = 'Strong';
+          }
+
+          return {
+            value: strength,
+            variant,
+            alias,
+            text,
+          };
+        }
+
+        function updatePasswordStrength(event?: Event) {
+          // Get password value from web component
+          // Try accessing value property directly, or from event target
+          let password = '';
+          if (event && event.target) {
+            password = (event.target as any).value || '';
+          } else {
+            password = (passwordInput as any).value || '';
+          }
+
+          const strength = calculatePasswordStrength(password);
+
+          strengthBar.setAttribute('value', String(strength.value));
+          strengthBar.setAttribute('variant', strength.variant);
+          strengthBar.setAttribute('alias', strength.alias);
+          strengthText.textContent = strength.text;
+        }
+
+        // Listen to input events
+        passwordInput.addEventListener('input', updatePasswordStrength);
+        passwordInput.addEventListener('change', updatePasswordStrength);
+
+        // Initialize with empty state
+        updatePasswordStrength();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPasswordStrengthChecker);
+      } else {
+        initPasswordStrengthChecker();
+      }
+    </script>
   </UseCaseInteractive>
 </UseCase>

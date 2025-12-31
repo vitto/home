@@ -1,5 +1,5 @@
 ---
-import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
 import data from '../../data/hax-principles.json';
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -18,7 +18,7 @@ interface Props {
 const { principle } = Astro.props;
 ---
 
-<PrincipleLayout
+<UseCaseLayout
   title={`${principle.title} - HAX Principles`}
   principle={principle}
   categoryColors={data.categoryColors}
@@ -26,4 +26,4 @@ const { principle } = Astro.props;
   sectionPath="/hax-principles"
 >
   <slot />
-</PrincipleLayout>
+</UseCaseLayout>

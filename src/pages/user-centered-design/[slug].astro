@@ -1,5 +1,5 @@
 ---
-import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
 import data from '../../data/user-centered-design.json';
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -18,7 +18,7 @@ interface Props {
 const { principle } = Astro.props;
 ---
 
-<PrincipleLayout
+<UseCaseLayout
   title={`${principle.title} - User-Centered Design`}
   principle={principle}
   categoryColors={data.categoryColors}
@@ -26,4 +26,4 @@ const { principle } = Astro.props;
   sectionPath="/user-centered-design"
 >
   <slot />
-</PrincipleLayout>
+</UseCaseLayout>
