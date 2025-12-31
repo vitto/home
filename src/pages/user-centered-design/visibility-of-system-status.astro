@@ -37,17 +37,18 @@ const users = [
 
 // Helper function to get status indicator class
 function getStatusClass(status: 'online' | 'offline' | 'busy' | 'error') {
+  console.log(status);
   switch (status) {
     case 'online':
       return 'bg-status-success-06';
     case 'offline':
-      return 'bg-status-error-06';
+      return 'bg-tone-neutral-06';
     case 'busy':
-      return 'bg-label-orange-07';
+      return 'bg-status-error-06';
     case 'error':
       return 'bg-tone-neutral-07';
     default:
-      return 'bg-status-success-06';
+      return 'bg-tone-neutral-03';
   }
 }
 ---
@@ -258,10 +259,15 @@ function getStatusClass(status: 'online' | 'offline' | 'busy' | 'error') {
         {
           users.map((user) => (
             <mds-author class="gap-200 min-h-600">
-              <div slot="avatar" class="inline-flex items-center justify-center relative">
+              <div
+                slot="avatar"
+                class="inline-flex items-center justify-center relative"
+                title={`${user.name} is ${user.status}`}
+                data-user-title
+              >
                 <mds-avatar src={user.avatar} class="size-600" />
                 <div
-                  class={`size-300 rounded-full ${getStatusClass(user.status)} absolute bottom-0 -right-100 border-solid border-2 border-tone-neutral-09`}
+                  class={`size-300 rounded-full ${getStatusClass(user.status)} absolute bottom-0 -right-100 border-solid border-2 border-tone-neutral-09 transition`}
                   data-status-indicator
                 />
               </div>
@@ -276,7 +282,7 @@ function getStatusClass(status: 'online' | 'offline' | 'busy' | 'error') {
           <mds-text typography="h6">Mario Rossi</mds-text>
           <div
             slot="detail"
-            class="size-300 rounded-full bg-status-success-06"
+            class="size-300 rounded-full bg-status-success-06 transition"
             data-status-indicator
           >
           </div>
@@ -305,17 +311,31 @@ function getStatusClass(status: 'online' | 'offline' | 'busy' | 'error') {
             container.querySelectorAll('[data-status-indicator]')
           ) as HTMLElement[];
 
+          // Find all user title elements
+          const allUserTitles = Array.from(
+            container.querySelectorAll('[data-user-title]')
+          ) as HTMLElement[];
+
           if (!simulateButton || !notification || !retryButton || !statusIndicator || !statusText)
             return;
 
           // Store original status classes for all indicators
           const originalStatusClasses = allStatusIndicators.map((indicator) => {
-            // Get the current status class (online, offline, busy)
+            // Get the current status class (online, offline, busy, error)
             const classes = indicator.className.split(' ');
             const statusClass =
-              classes.find((cls) => cls.startsWith('bg-status-') || cls.startsWith('bg-label-')) ||
-              'bg-status-success-06';
+              classes.find(
+                (cls) =>
+                  cls.startsWith('bg-status-') ||
+                  cls.startsWith('bg-label-') ||
+                  cls.startsWith('bg-tone-')
+              ) || 'bg-status-success-06';
             return statusClass;
+          });
+
+          // Store original titles for all user title elements
+          const originalTitles = allUserTitles.map((titleElement) => {
+            return titleElement.getAttribute('title') || '';
           });
 
           const restoreInitialState = () => {
@@ -333,15 +353,19 @@ function getStatusClass(status: 'online' | 'offline' | 'busy' | 'error') {
             notification.classList.add('-translate-y-600');
             // Restore all status indicators to their original state
             allStatusIndicators.forEach((indicator, index) => {
-              // Remove error class
-              indicator.classList.remove('bg-tone-neutral-07');
               // Restore original status class
               indicator.classList.remove(
                 'bg-status-success-06',
                 'bg-status-error-06',
-                'bg-label-orange-07'
+                'bg-label-orange-07',
+                'bg-tone-neutral-07',
+                'bg-tone-neutral-06'
               );
               indicator.classList.add(originalStatusClasses[index]);
+            });
+            // Restore original titles
+            allUserTitles.forEach((titleElement, index) => {
+              titleElement.setAttribute('title', originalTitles[index]);
             });
             // Change status text to Online
             statusText.textContent = 'Online';
@@ -365,10 +389,16 @@ function getStatusClass(status: 'online' | 'offline' | 'busy' | 'error') {
               indicator.classList.remove(
                 'bg-status-success-06',
                 'bg-status-error-06',
-                'bg-label-orange-07'
+                'bg-label-orange-07',
+                'bg-tone-neutral-06',
+                'bg-tone-neutral-07'
               );
               // Add error class
               indicator.classList.add('bg-tone-neutral-07');
+            });
+            // Change all user titles to "Connection error"
+            allUserTitles.forEach((titleElement) => {
+              titleElement.setAttribute('title', 'Connection error');
             });
             // Change status text to Offline
             statusText.textContent = 'Offline';

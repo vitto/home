@@ -15,7 +15,7 @@
       "title": "Visibility of System Status",
       "category": "Cognitive load",
       "icon": "mi/outline/visibility",
-      "description": "The system should always keep users informed about what is going on, through appropriate feedback within reasonable time."
+      "description": "The system should always keep users informed about what is going on, through appropriate feedback within reasonable time. If the user is asking 'is something happening?', the system is failing this principle. If, however, the system consistently understands what is happening, when, and with what outcome, Visibility of System Status is respected."
     },
     {
       "id": "match-between-system-and-real-world",
