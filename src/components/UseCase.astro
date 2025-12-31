@@ -35,7 +35,7 @@ const articleId = title
   <slot />
 </article>
 
-<script>
+<script define:vars={{ articleId }}>
   function initCopyLink() {
     const copyButtons = document.querySelectorAll('[data-copy-link]');
 
@@ -97,13 +97,36 @@ const articleId = title
     }
   }
 
+  function initUseCaseCLS() {
+    // Get the scope for this use case using the article ID
+    const scope = window.getUseCaseScope?.(articleId);
+    if (!scope || !scope.container) return;
+
+    // Initialize CLS prevention and viewport opacity for this use case
+    if (window.removeCLSPreventStyle) {
+      setTimeout(() => {
+        window.removeCLSPreventStyle(scope.container);
+      }, 100);
+      // Also try after a longer delay as fallback
+      setTimeout(() => {
+        window.removeCLSPreventStyle(scope.container);
+      }, 1000);
+    }
+
+    if (window.initViewportOpacity) {
+      window.initViewportOpacity(scope.container);
+    }
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initCopyLink();
       scrollToHash();
+      initUseCaseCLS();
     });
   } else {
     initCopyLink();
     scrollToHash();
+    initUseCaseCLS();
   }
 </script>
