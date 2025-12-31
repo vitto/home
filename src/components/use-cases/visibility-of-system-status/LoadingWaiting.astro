@@ -1,0 +1,108 @@
+---
+import UseCase from '../../UseCase.astro';
+import UseCaseInteractive from '../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Loading / Waiting"
+  description="The system makes it clear that an operation is in progress and, when possible, communicates its duration or progress, reducing anxiety and uncertainty during the wait."
+>
+  <UseCaseInteractive clsHeight={80}>
+    <mds-benchmark-bar
+      class="min-h-[28px] max-w-8000 w-full"
+      value="0"
+      max="100"
+      variant="primary"
+      alias="Ready"
+      data-progress-bar
+    >
+      <span data-progress-text>Ready to save data</span>
+    </mds-benchmark-bar>
+    <mds-button class="max-w-8000 w-full" data-save-button>Proceed</mds-button>
+    <script>
+      function initSaveDataDemo() {
+        // Get the UseCase scope (article and container) for this script
+        // Can pass id explicitly or let it find automatically
+        const scope = (window as any).getUseCaseScope?.('loading-waiting');
+        if (!scope) return;
+
+        const { container } = scope;
+
+        // Scope all queries to the container
+        const saveButton = container.querySelector('[data-save-button]');
+        const progressBar = container.querySelector('[data-progress-bar]');
+        const progressText = container.querySelector('[data-progress-text]');
+
+        if (!saveButton || !progressBar || !progressText) return;
+
+        const progressStates = [
+          { value: 0, alias: 'Ready', text: 'Ready to save data' },
+          { value: 20, alias: 'Files', text: 'Saving' },
+          { value: 40, alias: 'Images', text: 'Saving' },
+          { value: 60, alias: 'Metadata', text: 'Saving' },
+          { value: 80, alias: 'Personal data', text: 'Saving' },
+          { value: 100, alias: 'Complete', text: 'Saving' },
+        ];
+
+        let isSaving = false;
+        let currentStateIndex = 0;
+
+        const resetDemo = () => {
+          isSaving = false;
+          currentStateIndex = 0;
+          saveButton.removeAttribute('await');
+          saveButton.removeAttribute('icon');
+          saveButton.setAttribute('variant', 'primary');
+          saveButton.textContent = 'Proceed';
+          progressBar.setAttribute('value', '0');
+          progressBar.setAttribute('alias', 'Ready');
+          progressText.textContent = 'Ready to save data';
+        };
+
+        const updateProgress = () => {
+          const state = progressStates[currentStateIndex];
+          progressBar.setAttribute('value', String(state.value));
+          progressBar.setAttribute('alias', state.alias);
+          progressText.textContent = state.text;
+
+          // Update button when reaching 100%
+          if (state.value === 100) {
+            saveButton.textContent = 'Complete';
+            saveButton.setAttribute('icon', 'mi/baseline/done');
+            saveButton.removeAttribute('await');
+            saveButton.setAttribute('variant', 'success');
+          }
+
+          currentStateIndex++;
+
+          if (currentStateIndex < progressStates.length) {
+            // Random delay between 600-1000ms for each step
+            const randomDelay = Math.floor(Math.random() * (1000 - 600 + 1)) + 600;
+            setTimeout(updateProgress, randomDelay);
+          } else {
+            // Wait 1 second at 100% before resetting
+            setTimeout(() => {
+              resetDemo();
+            }, 2000);
+          }
+        };
+
+        saveButton.addEventListener('click', () => {
+          if (isSaving) return;
+
+          isSaving = true;
+          saveButton.setAttribute('await', 'true');
+          saveButton.textContent = 'Please wait...';
+          currentStateIndex = 1; // Start from first progress state
+          updateProgress();
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSaveDataDemo);
+      } else {
+        initSaveDataDemo();
+      }
+    </script>
+  </UseCaseInteractive>
+</UseCase>

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Mario Rossi",
+    "avatar": "/assets/example-avatar-01.png",
+    "status": "offline"
+  },
+  {
+    "name": "Luigi Verdi",
+    "avatar": "/assets/example-avatar-02.png",
+    "status": "online"
+  },
+  {
+    "name": "Giulia Arancioni",
+    "avatar": "/assets/example-avatar-03.png",
+    "status": "busy"
+  },
+  {
+    "name": "Anna Neri",
+    "avatar": "/assets/example-avatar-04.png",
+    "status": "offline"
+  },
+  {
+    "name": "Jamie Oliver",
+    "avatar": "/assets/example-avatar-06.png",
+    "status": "online"
+  }
+]

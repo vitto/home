@@ -1,0 +1,31 @@
+---
+import UseCase from '../../UseCase.astro';
+import UseCaseInteractive from '../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Background Processes"
+  description="Activities that are not immediately active remain visible in the system state, preventing the user from losing context or repeating actions already initiated."
+>
+  <UseCaseInteractive clsHeight={392}>
+    <mds-entity await class="w-full max-w-8000">
+      <mds-text typography="h6">Processing metadata</mds-text>
+      <mds-badge variant="primary" slot="detail">book</mds-badge>
+      <mds-text typography="caption" slot="detail">2 hours estimated to finish</mds-text>
+    </mds-entity>
+    <mds-text typography="caption"
+      >You can edit the main metadata of the book while it's being processed.</mds-text
+    >
+    <mds-input-field label="Title" class="w-full max-w-8000">
+      <mds-input placeholder="Es: Open" value="Open"></mds-input>
+    </mds-input-field>
+    <mds-input-field label="Description" class="w-full max-w-8000">
+      <mds-input
+        type="textarea"
+        maxlength="240"
+        placeholder="Es: Andre Agassi's autobiography: a raw and honest account of talent, pressure, hatred for tennis, and personal redemption. It's not a book about sports, but about being human under enormous expectations."
+        value="Andre Agassi's autobiography: a raw and honest account of talent, pressure, hatred for tennis, and personal redemption. It's not a book about sports, but about being human under enormous expectations."
+      ></mds-input>
+    </mds-input-field>
+  </UseCaseInteractive>
+</UseCase>

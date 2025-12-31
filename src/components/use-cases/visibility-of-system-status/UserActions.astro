@@ -1,0 +1,45 @@
+---
+import UseCase from '../../UseCase.astro';
+import UseCaseInteractive from '../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="User Actions"
+  description="Every input produces immediate and perceptible feedback, so the user knows the action has been received and is being processed or completed."
+>
+  <UseCaseInteractive clsHeight={36}>
+    <mds-button class="max-w-8000 w-full" data-save-button>Save</mds-button>
+    <script>
+      function initSaveButton() {
+        // Get the UseCase scope (article and container) for this script
+        const scope = (window as any).getUseCaseScope?.('user-actions');
+        if (!scope) return;
+
+        const { container } = scope;
+
+        // Scope query to the container
+        const saveButton = container.querySelector('[data-save-button]');
+        if (!saveButton) return;
+
+        saveButton.addEventListener('click', () => {
+          saveButton.textContent = 'Element saved successfully';
+          saveButton.setAttribute('disabled', 'true');
+          saveButton.setAttribute('icon', 'mi/baseline/done');
+          saveButton.setAttribute('variant', 'success');
+          setTimeout(() => {
+            saveButton.textContent = 'Save';
+            saveButton.removeAttribute('disabled');
+            saveButton.removeAttribute('icon');
+            saveButton.setAttribute('variant', 'primary');
+          }, 2000);
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSaveButton);
+      } else {
+        initSaveButton();
+      }
+    </script>
+  </UseCaseInteractive>
+</UseCase>
