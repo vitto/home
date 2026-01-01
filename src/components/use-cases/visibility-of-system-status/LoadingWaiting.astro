@@ -51,6 +51,7 @@ import UseCaseInteractive from '../../UseCaseInteractive.astro';
           isSaving = false;
           currentStateIndex = 0;
           saveButton.removeAttribute('await');
+          saveButton.setAttribute('tabindex', '0');
           saveButton.removeAttribute('icon');
           saveButton.setAttribute('variant', 'primary');
           saveButton.textContent = 'Proceed';
@@ -92,6 +93,8 @@ import UseCaseInteractive from '../../UseCaseInteractive.astro';
 
           isSaving = true;
           saveButton.setAttribute('await', 'true');
+          saveButton.blur();
+          saveButton.setAttribute('tabindex', '-1');
           saveButton.textContent = 'Please wait...';
           currentStateIndex = 1; // Start from first progress state
           updateProgress();

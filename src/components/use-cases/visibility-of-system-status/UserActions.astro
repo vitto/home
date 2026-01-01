@@ -21,16 +21,27 @@ import UseCaseInteractive from '../../UseCaseInteractive.astro';
         const saveButton = container.querySelector('[data-save-button]');
         if (!saveButton) return;
 
+        let isProcessing = false;
+
         saveButton.addEventListener('click', () => {
+          // Prevent multiple clicks while processing
+          if (isProcessing) return;
+
+          isProcessing = true;
           saveButton.textContent = 'Element saved successfully';
-          saveButton.setAttribute('disabled', 'true');
+          saveButton.classList.add('pointer-events-none');
+          saveButton.setAttribute('tabindex', '-1');
+          saveButton.blur();
           saveButton.setAttribute('icon', 'mi/baseline/done');
           saveButton.setAttribute('variant', 'success');
+
           setTimeout(() => {
             saveButton.textContent = 'Save';
-            saveButton.removeAttribute('disabled');
+            saveButton.classList.remove('pointer-events-none');
             saveButton.removeAttribute('icon');
+            saveButton.setAttribute('tabindex', '0');
             saveButton.setAttribute('variant', 'primary');
+            isProcessing = false;
           }, 2000);
         });
       }
