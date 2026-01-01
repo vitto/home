@@ -88,9 +88,12 @@ const categoryColorClass = colorClasses[categoryColor] || '';
       href={categorySectionUrl}
       variant="outline"
       title={`Back to ${sectionName}`}
-      class="shrink-0"
+      class="shrink-0 group hover:w-1600 focus-visible:w-1600 transition-cosmetic ease-out-expo duration-500"
     >
-      <Icon name="mi/outline/arrow-back" />
+      <Icon
+        class="group-hover:-translate-x-200 group-focus-visible:-translate-x-200 transition-transform ease-out-expo duration-500"
+        name="mi/outline/arrow-back"
+      />
     </Button>
   </div>
   <div class="grid gap-200">
