@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 /**
  * Button Component
  *
@@ -17,7 +19,19 @@ interface Props {
   title?: string;
   variant?: string;
 }
+/*
+bg-tone-neutral
+border-solid
+border-2
+border-tone-neutral-10
+focus-visible:border-tone-neutral-09
+hover:border-tone-neutral-09
+p-200
+px-600
+text-tone-neutral-03
 
+bg-tone-neutral border-solid border-2 border-tone-neutral-10 focus-visible:border-tone-neutral-09 hover:border-tone-neutral-09 p-200 px-600 text-tone-neutral-03
+*/
 const { href, class: className = '', tabIndex = 0, variant = 'none', title = '' } = Astro.props;
 
 // Extract data-* attributes from props
@@ -31,7 +45,8 @@ Object.keys(Astro.props).forEach((key) => {
 // Map variant names to CSS classes
 const variants: Record<string, string> = {
   none: '',
-  back: 'text-tone-neutral-03 bg-tone-neutral-09 border-none hover:bg-tone-neutral-08 focus-visible:bg-tone-neutral-08 p-200 px-600',
+  back: 'shrink-0 group hover:w-1600 focus-visible:w-1600 transition-cosmetic ease-out-expo duration-500 bg-tone-neutral border-solid border-2 border-tone-neutral-09 focus-visible:border-tone-neutral-08 hover:border-tone-neutral-08 text-tone-neutral-03',
+  next: 'shrink-0 group hover:w-1600 focus-visible:w-1600 transition-cosmetic ease-out-expo duration-500 bg-tone-neutral border-solid border-2 border-tone-neutral-09 focus-visible:border-tone-neutral-08 hover:border-tone-neutral-08 text-tone-neutral-03',
   outline:
     'border-tone-neutral-01/10 hover:border-tone-neutral-01/20 focus-visible:border-tone-neutral-01/20',
   light:
@@ -43,8 +58,12 @@ const variantClass = variants[variant] || '';
 
 // Build class string: always include "button", add variant if provided, then additional classes
 const buttonClasses = [
-  'button first-letter:uppercase no-underline inline-flex items-center justify-center',
-  variant === 'back' ? 'rounded-l-full rounded-r-none -mr-400' : 'px-300 py-100 gap-200',
+  'button first-letter:uppercase no-underline inline-flex items-center',
+  variant === 'back' && 'justify-start',
+  variant === 'next' && 'justify-end',
+  variant === 'back' || variant === 'next'
+    ? 'p-200 gap-200'
+    : 'px-300 py-100 gap-200 justify-center',
   'border-2 border-solid rounded-full',
   'cursor-pointer focus-bounce',
   variantClass,
@@ -73,6 +92,8 @@ const linkAttrs = isExternalLink
       tabindex={tabIndex}
       title={title}
     >
+      {variant === 'back' && <Icon class="justify-self-start" name="mi/outline/arrow-back" />}
+      {variant === 'next' && <Icon class="justify-self-end" name="mi/outline/arrow-forward" />}
       <slot />
     </a>
   ) : (

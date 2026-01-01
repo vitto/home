@@ -1,0 +1,81 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  baseUrl: string;
+  currentPrincipleId: string;
+  sectionPath: string;
+  allPrinciples: Array<{ id: string }>;
+}
+
+const { baseUrl, currentPrincipleId, sectionPath, allPrinciples } = Astro.props;
+
+// Find current principle index
+const currentIndex = allPrinciples.findIndex((p) => p.id === currentPrincipleId);
+
+// Calculate previous and next principle
+const prevPrinciple = currentIndex > 0 ? allPrinciples[currentIndex - 1] : null;
+const nextPrinciple =
+  currentIndex < allPrinciples.length - 1 ? allPrinciples[currentIndex + 1] : null;
+
+// Build URLs
+const prevUrl = prevPrinciple ? `${baseUrl}${sectionPath}/${prevPrinciple.id}` : null;
+const nextUrl = nextPrinciple ? `${baseUrl}${sectionPath}/${nextPrinciple.id}` : null;
+---
+
+<div class="fixed inline-flex bottom-0 left-0 right-0 justify-center pointer-events-none z-20">
+  <div
+    class="pointer-events-auto inline-flex justify-center items-center bottom-0 pb-200 gap-200 p-200 bg-tone-neutral-09/60 backdrop-blur rounded-t-[30px] border-solid border-2 border-tone-neutral-06/10 border-b-0"
+  >
+    <div class="shrink-0 w-1600 inline-flex justify-end items-center">
+      {
+        prevUrl ? (
+          <Button href={prevUrl} variant="back" title="Go to previous principle" />
+        ) : (
+          <div class="w-1600" />
+        )
+      }
+    </div>
+    <a
+      title="Back to top"
+      href="#"
+      data-scroll-to-top
+      class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] focus-visible:rotate-[60deg] ease-out-expo transition-transform duration-500"
+    >
+      <img
+        alt="Vittorio Vittori Logo"
+        src={`${baseUrl}/assets/vittorio-vittori-logo.svg`}
+        class="w-1000 h-1000 justify-self-center"
+      />
+    </a>
+    <div class="shrink-0 w-1600 inline-flex justify-start items-center">
+      {
+        nextUrl ? (
+          <Button href={nextUrl} variant="next" title="Go to next principle" />
+        ) : (
+          <div class="w-1600" />
+        )
+      }
+    </div>
+  </div>
+</div>
+<script>
+  function initScrollToTop() {
+    const scrollToTopButton = document.querySelector('[data-scroll-to-top]');
+    if (!scrollToTopButton) return;
+
+    scrollToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollToTop);
+  } else {
+    initScrollToTop();
+  }
+</script>

@@ -8,8 +8,11 @@ import ErrorsAndProblems from '../../components/use-cases/visibility-of-system-s
 import NavigationAndFlows from '../../components/use-cases/visibility-of-system-status/NavigationAndFlows.astro';
 import InputAndValidation from '../../components/use-cases/visibility-of-system-status/InputAndValidation.astro';
 import SystemAndSettings from '../../components/use-cases/visibility-of-system-status/SystemAndSettings.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
 
 const principle = data.principles.find((p) => p.id === 'visibility-of-system-status')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/user-centered-design';
 ---
 
 <UseCaseLayout
@@ -26,4 +29,10 @@ const principle = data.principles.find((p) => p.id === 'visibility-of-system-sta
   <NavigationAndFlows />
   <InputAndValidation />
   <SystemAndSettings />
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
 </UseCaseLayout>
