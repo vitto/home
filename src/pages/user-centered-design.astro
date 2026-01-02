@@ -12,6 +12,9 @@ import Header from '../components/Header.astro';
 import Icon from '../components/Icon.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
+
+// Sort principles by title
+const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompare(b.title));
 ---
 
 <Layout title="User-Centered Design - Vittorio's Portfolio">
@@ -23,7 +26,7 @@ const baseUrl = import.meta.env.BASE_URL;
   </Section>
   <Principles>
     {
-      data.principles.map((principle) => (
+      sortedPrinciples.map((principle) => (
         <PrincipleCard
           id={principle.id}
           title={principle.title}

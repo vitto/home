@@ -15,6 +15,11 @@ import Icon from '../components/Icon.astro';
 // const blobConfig = blobConfigs['hax-principles'];
 
 const baseUrl = import.meta.env.BASE_URL;
+
+// Sort principles by title
+const sortedPrinciples = [...data.principles].sort((a, b) =>
+  a.title.localeCompare(b.title)
+);
 ---
 
 <SectionLayout title="HAX Principles - Vittorio's Portfolio">
@@ -26,7 +31,7 @@ const baseUrl = import.meta.env.BASE_URL;
   </Section>
   <Principles>
     {
-      data.principles.map((principle) => (
+      sortedPrinciples.map((principle) => (
         <PrincipleCard
           id={principle.id}
           title={principle.title}
