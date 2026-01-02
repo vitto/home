@@ -7,6 +7,7 @@
     "buttonSelected": "bg-label-green-05 text-tone-neutral border-transparent",
     "iconHover": "group-[&:is(:hover,:focus-visible)]:bg-label-green-09 group-[&:is(:hover,:focus-visible)]:text-label-green-05",
     "description": "Applying NN/g usability heuristics to create intuitive, accessible interfaces",
+    "logo": "text-label-green-09 mix-blend-multiply",
     "path": "/user-centered-design"
   },
   {
@@ -17,6 +18,7 @@
     "icon": "mi/baseline/palette",
     "iconHover": "group-[&:is(:hover,:focus-visible)]:bg-label-amaranth-09 group-[&:is(:hover,:focus-visible)]:text-label-amaranth-05",
     "description": "Building scalable, maintainable component libraries with clear documentation",
+    "logo": "text-label-amaranth-08 mix-blend-multiply",
     "path": "/design-systems"
   },
   {
@@ -27,6 +29,7 @@
     "icon": "mgg/ai-chatbot",
     "iconHover": "group-[&:is(:hover,:focus-visible)]:bg-label-violet-09 group-[&:is(:hover,:focus-visible)]:text-label-violet-05",
     "description": "Designing transparent, predictable AI experiences following Microsoft HAX guidelines",
+    "logo": "text-label-violet-08 mix-blend-multiply",
     "path": "/hax-principles"
   }
 ]

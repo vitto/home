@@ -44,21 +44,46 @@ const categories = categoriesData.map((category) => ({
 
 <CardTextAnimation />
 
-<script define:vars={{ blobConfigs: JSON.stringify(blobConfigs) }}>
-  // Handle blob configuration changes on category card hover
+<script
+  define:vars={{ blobConfigs: JSON.stringify(blobConfigs), categories: JSON.stringify(categories) }}
+>
+  // Handle blob configuration changes and logo color on category card hover
   function initBlobConfigHover() {
     const categoryLinks = document.querySelectorAll('[data-category-id]');
     const configs = JSON.parse(blobConfigs);
+    const categoriesData = JSON.parse(categories);
+    const vvLogo = document.querySelector('.vv-logo');
 
     categoryLinks.forEach((link) => {
       const categoryId = link.getAttribute('data-category-id');
       const config = configs[categoryId];
+      const category = categoriesData.find((c) => c.id === categoryId);
 
       if (!config) return;
 
       link.addEventListener('mouseenter', () => {
+        // Update blob configuration
         if (typeof window !== 'undefined' && window.updateBlobConfig) {
           window.updateBlobConfig(config, true);
+        }
+
+        // Update logo classes
+        if (vvLogo && category && category.logo) {
+          // Remove all logo classes from other categories
+          categoriesData.forEach((cat) => {
+            if (cat.logo) {
+              // Split logo string into individual classes and remove each one
+              const classes = cat.logo.split(/\s+/).filter(Boolean);
+              classes.forEach((cls) => {
+                vvLogo.classList.remove(cls);
+              });
+            }
+          });
+          // Add current category logo classes (split by space)
+          const classes = category.logo.split(/\s+/).filter(Boolean);
+          classes.forEach((cls) => {
+            vvLogo.classList.add(cls);
+          });
         }
       });
 
@@ -66,6 +91,15 @@ const categories = categoriesData.map((category) => ({
         // Reset to initial blob configuration
         if (typeof window !== 'undefined' && window.resetBlobConfig) {
           window.resetBlobConfig(true);
+        }
+
+        // Remove logo classes
+        if (vvLogo && category && category.logo) {
+          // Split logo string into individual classes and remove each one
+          const classes = category.logo.split(/\s+/).filter(Boolean);
+          classes.forEach((cls) => {
+            vvLogo.classList.remove(cls);
+          });
         }
       });
     });
