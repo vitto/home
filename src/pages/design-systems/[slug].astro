@@ -1,6 +1,7 @@
 ---
 import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
 import data from '../../data/design-systems.json';
+import PrincipleNav from '../../components/PrincipleNav.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -16,6 +17,7 @@ interface Props {
 }
 
 const { principle } = Astro.props;
+const sectionPath = '/design-systems';
 ---
 
 <UseCaseLayout
@@ -26,4 +28,10 @@ const { principle } = Astro.props;
   sectionPath="/design-systems"
 >
   <slot />
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
 </UseCaseLayout>
