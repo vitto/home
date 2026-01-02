@@ -17,9 +17,7 @@ import Icon from '../components/Icon.astro';
 const baseUrl = import.meta.env.BASE_URL;
 
 // Sort principles by title
-const sortedPrinciples = [...data.principles].sort((a, b) =>
-  a.title.localeCompare(b.title)
-);
+const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompare(b.title));
 ---
 
 <SectionLayout title="HAX Principles - Vittorio's Portfolio">
