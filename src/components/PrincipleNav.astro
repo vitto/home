@@ -6,18 +6,21 @@ interface Props {
   baseUrl: string;
   currentPrincipleId: string;
   sectionPath: string;
-  allPrinciples: Array<{ id: string }>;
+  allPrinciples: Array<{ id: string; title: string }>;
 }
 
 const { baseUrl, currentPrincipleId, sectionPath, allPrinciples } = Astro.props;
 
-// Find current principle index
-const currentIndex = allPrinciples.findIndex((p) => p.id === currentPrincipleId);
+// Sort principles alphabetically by title
+const sortedPrinciples = [...allPrinciples].sort((a, b) => a.title.localeCompare(b.title));
 
-// Calculate previous and next principle
-const prevPrinciple = currentIndex > 0 ? allPrinciples[currentIndex - 1] : null;
+// Find current principle index in sorted array
+const currentIndex = sortedPrinciples.findIndex((p) => p.id === currentPrincipleId);
+
+// Calculate previous and next principle based on alphabetical order
+const prevPrinciple = currentIndex > 0 ? sortedPrinciples[currentIndex - 1] : null;
 const nextPrinciple =
-  currentIndex < allPrinciples.length - 1 ? allPrinciples[currentIndex + 1] : null;
+  currentIndex < sortedPrinciples.length - 1 ? sortedPrinciples[currentIndex + 1] : null;
 
 // Build URLs
 const prevUrl = prevPrinciple ? `${baseUrl}${sectionPath}/${prevPrinciple.id}` : null;
