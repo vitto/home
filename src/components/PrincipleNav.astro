@@ -1,5 +1,6 @@
 ---
 import Button from './Button.astro';
+import Icon from './Icon.astro';
 
 interface Props {
   baseUrl: string;
@@ -40,13 +41,9 @@ const nextUrl = nextPrinciple ? `${baseUrl}${sectionPath}/${nextPrinciple.id}` :
       title="Back to top"
       href="#"
       data-scroll-to-top
-      class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] focus-visible:rotate-[60deg] ease-out-expo transition-transform duration-500"
+      class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] focus-visible:rotate-[60deg] ease-out-expo transition-transform duration-500 no-underline"
     >
-      <img
-        alt="Vittorio Vittori Logo"
-        src={`${baseUrl}/assets/vittorio-vittori-logo.svg`}
-        class="w-1000 h-1000 justify-self-center"
-      />
+      <Icon name="vv/logo" class="text-[48px] justify-self-center" />
     </a>
     <div class="shrink-0 w-1600 inline-flex justify-start items-center">
       {

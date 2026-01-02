@@ -43,13 +43,9 @@ const { items = defaultItems, menu = true } = Astro.props;
       <a
         title="Back to Home"
         href={baseUrl}
-        class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] focus-visible:rotate-[60deg] ease-out-expo transition-transform duration-500"
+        class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] focus-visible:rotate-[60deg] ease-out-expo transition-transform duration-500 no-underline"
       >
-        <img
-          alt="Vittorio Vittori Logo"
-          src={`${baseUrl}/assets/vittorio-vittori-logo.svg`}
-          class="w-1600 h-1600 mobile:w-1600 mobile:h-1600 justify-self-center"
-        />
+        <Icon name="vv/logo" class="text-[64px] justify-self-center" />
       </a>
       <div class="grid mobile:hidden">
         <h1 class="text-title-h3">
