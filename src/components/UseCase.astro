@@ -63,13 +63,12 @@ const articleId = title
           // Visual feedback: temporarily change icon
           const icon = button.querySelector('.iconsauce-icon');
           if (icon) {
-            const originalClass = icon.className;
             icon.className = icon.className.replace(/mi\/baseline\/link/, 'mi/baseline/check');
             button.setAttribute('aria-label', 'Link copied!');
             button.setAttribute('title', 'Link copied!');
 
             setTimeout(() => {
-              icon.className = originalClass;
+              icon.className = icon.className.replace(/mi\/baseline\/check/, 'mi/baseline/link');
               const article = button.closest('article');
               const titleText = article?.querySelector('h3')?.textContent || '';
               button.setAttribute('aria-label', `Copy link to ${titleText}`);
