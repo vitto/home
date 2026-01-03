@@ -7,7 +7,34 @@ import UseCaseInteractive from '../../UseCaseInteractive.astro';
   title="Visual Cleanliness"
   description="Visual styling supports content and actions without competing for attention or adding unnecessary decoration."
 >
-  <!-- <UseCaseInteractive clsHeight={120}>
-    Content will be added later
-  </UseCaseInteractive> -->
+  <UseCaseInteractive clsHeight={120} toggle articleId="visual-cleanliness">
+    <mds-banner headline="Add unnecessay elements">
+      <mds-text typography="detail">
+        Are you sure you want to add unnecessary elements and distract the user from the essential,
+        to add cognitive load and decrease the usability?
+      </mds-text>
+      <mds-button slot="action" variant="dark" tone="quiet">Cancel</mds-button>
+      <mds-button slot="action" variant="primary">Confirm</mds-button>
+    </mds-banner>
+    <mds-banner
+      headline="Remove elements that are not necessary"
+      icon="mi/outline/block"
+      tone="strong"
+      class="hidden"
+    >
+      <mds-text typography="detail">
+        Are you sure you want to remove unnecessary elements and focus on the essential, to reduce
+        the cognitive load and improve the usability?
+      </mds-text>
+      <mds-text typography="detail">
+        This should improve the usability and avoid user to read <b>unnecessary information</b>.
+      </mds-text>
+      <mds-text typography="detail">
+        That's why we have removed the unnecessary text to read and focus on the essential.
+      </mds-text>
+      <mds-text typography="detail">Yep.</mds-text>
+      <mds-button slot="action" variant="dark" tone="ghost">Cancel</mds-button>
+      <mds-button slot="action" variant="primary">Confirm</mds-button>
+    </mds-banner>
+  </UseCaseInteractive>
 </UseCase>

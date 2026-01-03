@@ -1,6 +1,13 @@
 ---
 import UseCase from '../../UseCase.astro';
 import UseCaseInteractive from '../../UseCaseInteractive.astro';
+import usersData from '../../../data/visibility-of-system-status/users.json';
+const baseUrl = import.meta.env.BASE_URL;
+const users = usersData.map((user) => ({
+  ...user,
+  avatar: `${baseUrl}${user.avatar}`,
+}));
+const user = users[2];
 ---
 
 <UseCase
@@ -8,31 +15,26 @@ import UseCaseInteractive from '../../UseCaseInteractive.astro';
   description="The interface presents only what is necessary for the user's current goal, removing visual noise and redundant information."
 >
   <UseCaseInteractive clsHeight={180} toggle articleId="essential-content">
-    <mds-banner headline="Add unnecessay elements">
-      <mds-text typography="detail">
-        Are you sure you want to add unnecessary elements and distract the user from the essential,
-        to add cognitive load and decrease the usability?
-      </mds-text>
-      <mds-button slot="action" variant="dark" tone="quiet">Cancel</mds-button>
-      <mds-button slot="action" variant="error">Confirm</mds-button>
-    </mds-banner>
-    <mds-banner
-      headline="Remove elements that are not necessary"
-      icon="mi/outline/block"
-      tone="strong"
-      class="hidden"
-    >
-      <mds-text typography="detail">
-        Are you sure you want to remove unnecessary elements and focus on the essential, to reduce
-        the cognitive load and improve the usability?
-      </mds-text>
-      <mds-text typography="detail">
-        This should improve the usability and avoid user to read <b>unnecessary information</b>.
-      </mds-text>
-      <mds-button slot="action" variant="dark" tone="quiet">Cancel</mds-button>
-      <mds-button slot="action" variant="dark" tone="ghost">Homepage</mds-button>
-      <mds-button slot="action" variant="dark">Confirmation settings</mds-button>
-      <mds-button slot="action" variant="primary">Confirm</mds-button>
-    </mds-banner>
+    {
+      user && (
+        <>
+          <mds-author class="gap-300 w-full max-w-8000">
+            <mds-avatar slot="avatar" src={user.avatar} class="size-1000" />
+            <div class="grid grid-cols-full grow">
+              <mds-text typography="h6">{user.name}</mds-text>
+              <mds-text typography="caption">{user.role}</mds-text>
+            </div>
+          </mds-author>
+          <mds-author class="gap-400 w-full max-w-8000">
+            <mds-avatar slot="avatar" src={user.avatar} class="size-1600" />
+            <div class="grid grid-cols-full grow">
+              <mds-text typography="h6">{user.name}</mds-text>
+              <mds-text typography="caption">{user.role}</mds-text>
+              <mds-text typography="caption">{user.email}</mds-text>
+            </div>
+          </mds-author>
+        </>
+      )
+    }
   </UseCaseInteractive>
 </UseCase>

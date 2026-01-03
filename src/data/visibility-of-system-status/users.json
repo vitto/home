@@ -2,30 +2,35 @@
   {
     "name": "Mario Rossi",
     "avatar": "/assets/example-avatar-01.png",
+    "role": "Product Manager",
     "email": "mario.rossi@example.com",
     "status": "offline"
   },
   {
     "name": "Luigi Verdi",
     "avatar": "/assets/example-avatar-02.png",
+    "role": "UX Designer",
     "email": "luigi.verdi@example.com",
     "status": "online"
   },
   {
-    "name": "Giulia Arancioni",
+    "name": "Giulia Crippa",
     "avatar": "/assets/example-avatar-03.png",
-    "email": "giulia.arancioni@example.com",
+    "role": "Frontend Developer",
+    "email": "giulia.crippa@example.com",
     "status": "busy"
   },
   {
     "name": "Joan Baez",
     "avatar": "/assets/example-avatar-04.png",
+    "role": "Backend Developer",
     "email": "joan.baez@example.com",
     "status": "offline"
   },
   {
     "name": "Jamie Oliver",
     "avatar": "/assets/example-avatar-06.png",
+    "role": "Product Owner",
     "email": "jamie.oliver@example.com",
     "status": "online"
   }
