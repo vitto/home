@@ -7,21 +7,19 @@ import UseCaseInteractive from '../../UseCaseInteractive.astro';
   title="Essential Content"
   description="The interface presents only what is necessary for the user's current goal, removing visual noise and redundant information."
 >
-  <UseCaseInteractive clsHeight={180}>
-    <mds-banner headline="Add unnecessay elements" data-banner data-banner-first>
+  <UseCaseInteractive clsHeight={180} toggle articleId="essential-content">
+    <mds-banner headline="Add unnecessay elements">
       <mds-text typography="detail">
         Are you sure you want to add unnecessary elements and distract the user from the essential,
         to add cognitive load and decrease the usability?
       </mds-text>
       <mds-button slot="action" variant="dark" tone="quiet">Cancel</mds-button>
-      <mds-button slot="action" variant="error" data-confirm-button>Confirm</mds-button>
+      <mds-button slot="action" variant="error">Confirm</mds-button>
     </mds-banner>
     <mds-banner
       headline="Remove elements that are not necessary"
       icon="mi/outline/block"
       tone="strong"
-      data-banner
-      data-banner-second
       class="hidden"
     >
       <mds-text typography="detail">
@@ -34,48 +32,7 @@ import UseCaseInteractive from '../../UseCaseInteractive.astro';
       <mds-button slot="action" variant="dark" tone="quiet">Cancel</mds-button>
       <mds-button slot="action" variant="dark" tone="ghost">Homepage</mds-button>
       <mds-button slot="action" variant="dark">Confirmation settings</mds-button>
-      <mds-button slot="action" variant="primary" data-confirm-button>Confirm</mds-button>
+      <mds-button slot="action" variant="primary">Confirm</mds-button>
     </mds-banner>
   </UseCaseInteractive>
-  <script>
-    function initBannerToggle() {
-      // Get the UseCase scope (article and container) for this script
-      const scope = (window as any).getUseCaseScope?.('essential-content');
-      if (!scope) return;
-
-      const { container } = scope;
-
-      // Find all banners
-      const firstBanner = container.querySelector('[data-banner-first]');
-      const secondBanner = container.querySelector('[data-banner-second]');
-
-      if (!firstBanner || !secondBanner) return;
-
-      // Find confirm buttons
-      const firstConfirmButton = firstBanner.querySelector('[data-confirm-button]');
-      const secondConfirmButton = secondBanner.querySelector('[data-confirm-button]');
-
-      // First banner: hide itself and show second banner
-      if (firstConfirmButton) {
-        firstConfirmButton.addEventListener('click', () => {
-          firstBanner.classList.add('hidden');
-          secondBanner.classList.remove('hidden');
-        });
-      }
-
-      // Second banner: hide itself and show first banner
-      if (secondConfirmButton) {
-        secondConfirmButton.addEventListener('click', () => {
-          secondBanner.classList.add('hidden');
-          firstBanner.classList.remove('hidden');
-        });
-      }
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initBannerToggle);
-    } else {
-      initBannerToggle();
-    }
-  </script>
 </UseCase>
