@@ -1,13 +1,124 @@
 ---
 import UseCase from '../../UseCase.astro';
 import UseCaseInteractive from '../../UseCaseInteractive.astro';
+import usersData from '../../../data/visibility-of-system-status/users.json';
+const baseUrl = import.meta.env.BASE_URL;
+
+// Map users with full avatar URLs and get only the first one
+const users = usersData.map((user) => ({
+  ...user,
+  avatar: `${baseUrl}${user.avatar}`,
+}));
+const firstUser = users[0];
 ---
 
 <UseCase
   title="Consistency"
   description="Styles and interaction patterns are applied predictably, reducing the need for interpretation or relearning."
 >
-  <UseCaseInteractive clsHeight={120}>
+  <UseCaseInteractive
+    clsHeight={240}
+    contentClass="min-h-[290px] tablet:min-h-[240px]"
+    label="Click on component menu to see consistency"
+  >
+    <div class="grid gap-600 grid-cols-full tablet:grid-cols-2 w-full">
+      <div class="flex items-center justify-center">
+        <mds-entity icon="mi/baseline/apartment" class="w-full">
+          <mds-text typography="h6">Your home</mds-text>
+          <mds-text slot="detail" typography="caption"
+            >350 Fifth Avenue, New York, NY 10118, USA</mds-text
+          >
+          <mds-button
+            id="consistency-entity-button"
+            slot="action"
+            icon="mi/baseline/more-vert"
+            variant="dark"
+            tone="quiet"></mds-button>
+        </mds-entity>
+        <mds-dropdown
+          target="#consistency-entity-button"
+          class="gap-200 p-200 min-w-6000 rounded-2xl"
+        >
+          <mds-button
+            icon="mi/outline/edit"
+            variant="dark"
+            tone="quiet"
+            class="grow justify-start hover:bg-tone-neutral-09">Edit</mds-button
+          >
+          <mds-button
+            icon="mi/outline/bar-chart"
+            variant="dark"
+            tone="quiet"
+            class="grow justify-start hover:bg-tone-neutral-09"
+          >
+            <span class="flex grow justify-between items-center">
+              Show stats
+              <mds-badge class="justify-self-end" tone="ghost" variant="dark">pro</mds-badge>
+            </span>
+          </mds-button>
+          <mds-hr class="bg-tone-neutral-09 h-50 -mx-200 w-auto"></mds-hr>
+          <mds-button
+            icon="mi/outline/delete"
+            variant="error"
+            tone="quiet"
+            class="grow justify-start hover:bg-status-error-10">Delete</mds-button
+          >
+        </mds-dropdown>
+      </div>
+      <div class="flex items-center justify-center">
+        {
+          firstUser && (
+            <>
+              <mds-author class="gap-200 w-full">
+                <mds-avatar slot="avatar" src={firstUser.avatar} class="size-1000" />
+                <div class="flex gap-200">
+                  <div class="grid grid-cols-full grow">
+                    <mds-text typography="h6">{firstUser.name}</mds-text>
+                    <mds-text typography="caption">{firstUser.email}</mds-text>
+                  </div>
+                  <mds-button
+                    id="consistency-author-button"
+                    icon="mi/baseline/more-vert"
+                    variant="dark"
+                    tone="quiet"
+                  />
+                </div>
+              </mds-author>
+              <mds-dropdown
+                target="#consistency-author-button"
+                class="gap-200 p-200 min-w-6000 rounded-2xl"
+              >
+                <mds-button
+                  icon="mi/outline/edit"
+                  variant="dark"
+                  tone="quiet"
+                  class="grow justify-start hover:bg-tone-neutral-09"
+                >
+                  Edit
+                </mds-button>
+                <mds-button
+                  icon="mi/outline/pageview"
+                  variant="dark"
+                  tone="quiet"
+                  class="grow justify-start hover:bg-tone-neutral-09"
+                >
+                  Show profile page
+                </mds-button>
+                <mds-hr class="bg-tone-neutral-09 h-50 -mx-200 w-auto" />
+                <mds-button
+                  icon="mi/outline/logout"
+                  variant="dark"
+                  tone="quiet"
+                  class="grow justify-start hover:bg-tone-neutral-09"
+                >
+                  Logout
+                </mds-button>
+              </mds-dropdown>
+            </>
+          )
+        }
+      </div>
+    </div>
     <!-- Content will be added later -->
   </UseCaseInteractive>
 </UseCase>

@@ -2,26 +2,31 @@
   {
     "name": "Mario Rossi",
     "avatar": "/assets/example-avatar-01.png",
+    "email": "mario.rossi@example.com",
     "status": "offline"
   },
   {
     "name": "Luigi Verdi",
     "avatar": "/assets/example-avatar-02.png",
+    "email": "luigi.verdi@example.com",
     "status": "online"
   },
   {
     "name": "Giulia Arancioni",
     "avatar": "/assets/example-avatar-03.png",
+    "email": "giulia.arancioni@example.com",
     "status": "busy"
   },
   {
-    "name": "Anna Neri",
+    "name": "Joan Baez",
     "avatar": "/assets/example-avatar-04.png",
+    "email": "joan.baez@example.com",
     "status": "offline"
   },
   {
     "name": "Jamie Oliver",
     "avatar": "/assets/example-avatar-06.png",
+    "email": "jamie.oliver@example.com",
     "status": "online"
   }
 ]
