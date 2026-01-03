@@ -59,7 +59,7 @@ html {
     opacity: 1;
   }
 }
-mds-button::part(label) {
+mds-dropdown mds-button::part(label) {
   flex-grow: 1;
 }
 
