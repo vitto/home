@@ -67,3 +67,7 @@ mds-badge[tone='ghost'][variant='dark'] {
   background-color: rgb(var(--tone-neutral));
   border-color: rgb(var(--tone-neutral-07));
 }
+
+mds-input-switch[data-toggle-switch] {
+  --mds-input-switch-box-color-enabled-checked: rgb(var(--tone-neutral-04));
+}

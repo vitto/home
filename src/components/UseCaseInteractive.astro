@@ -13,6 +13,8 @@ interface Props {
   contentClass?: string;
   label?: string;
   clsHeight?: number;
+  toggle?: boolean;
+  articleId?: string;
 }
 
 const {
@@ -20,19 +22,35 @@ const {
   contentClass = 'justify-center items-center gap-400',
   clsHeight = null,
   label = null,
+  toggle = false,
+  articleId = null,
 } = Astro.props;
 
 const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsHeight}px;` : null;
 ---
 
 <div
-  class={`use-case-interactive bg-tone-neutral-09 p-600 grid gap-400 grid-cols-full rounded-[28px] mobile:-mx-600 group ${className}`}
+  class={`use-case-interactive bg-tone-neutral-10 p-600 grid gap-400 grid-cols-full rounded-[28px] mobile:-mx-600 group ${className}`}
 >
-  <p
-    class={`${label ? 'group-hover:blink' : ''} text-info-option text-center text-tone-neutral-03 justify-self-center`}
-  >
-    {label || 'Interact with this use case to see how it works'}
-  </p>
+  {
+    toggle ? (
+      <div class="inline-flex items-center gap-200 text-tone-neutral-04 justify-self-center min-h-600">
+        <mds-text class="cursor-default" typography="option">
+          off
+        </mds-text>
+        <mds-input-switch size="sm" typography="option" data-toggle-switch checked />
+        <mds-text class="cursor-default" typography="option">
+          on
+        </mds-text>
+      </div>
+    ) : (
+      <p
+        class={`${label ? 'group-hover:blink' : ''} text-info-option text-center text-tone-neutral-03 justify-self-center`}
+      >
+        {label || 'Interact with this use case to see how it works'}
+      </p>
+    )
+  }
   <div
     class={`flex flex-col items-center justify-center gap-400 bg-tone-neutral overflow-hidden px-600 py-1200 rounded-xl shadow-sm-sharp w-full`}
   >
@@ -40,9 +58,17 @@ const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsH
       class={`flex flex-col transition-cosmetic w-full relative box-border delay-300 opacity-0 scale-90 ${contentClass}`}
       style={initialStyle}
       data-cls-prevent
+      data-toggle-container={toggle ? 'true' : undefined}
       lang="en"
     >
       <slot />
     </div>
   </div>
 </div>
+
+<script define:vars={{ articleId }}>
+  if (window.initToggle && articleId) {
+    window.initToggle(articleId);
+    console.log('articleId', articleId);
+  }
+</script>

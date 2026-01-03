@@ -133,6 +133,85 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
     // Observe the element
     observer.observe(element);
   };
+
+  // Function to initialize toggle functionality for use cases
+  window.initToggle = function initToggle(articleId) {
+    console.log('initToggle', articleId);
+    // Get articleId from parameter or find parent article
+    let id = articleId;
+    if (!id) {
+      const currentScript = document.currentScript;
+      if (currentScript) {
+        const article = currentScript.closest('article');
+        id = article?.getAttribute('id') || null;
+      }
+    }
+
+    if (!id) return;
+
+    const scope = window.getUseCaseScope?.(id);
+    if (!scope) return;
+
+    const { container } = scope;
+    const toggleContainer = container.querySelector('[data-toggle-container]');
+    const switchElement = container.querySelector('[data-toggle-switch]');
+
+    if (!toggleContainer || !switchElement) return;
+
+    // Get the first two direct children
+    const children = Array.from(toggleContainer.children);
+    if (children.length < 2) return;
+
+    const firstElement = children[0];
+    const secondElement = children[1];
+
+    // Initially show second element (switch is off by default)
+    firstElement.classList.remove('hidden');
+    secondElement.classList.add('hidden');
+
+    // Wait for web component to be defined
+    customElements.whenDefined('mds-input-switch').then(() => {
+      // Listen for change events
+      switchElement.addEventListener('mdsInputSwitchChange', (e) => {
+        const isChecked = e.detail?.checked ?? switchElement.checked ?? false;
+
+        if (isChecked) {
+          // Switch is on: show first element, hide second
+          firstElement.classList.remove('hidden');
+          secondElement.classList.add('hidden');
+        } else {
+          // Switch is off: show second element, hide first
+          firstElement.classList.add('hidden');
+          secondElement.classList.remove('hidden');
+        }
+      });
+    });
+  };
+
+  // Initialize all toggles on page load
+  function initAllToggles() {
+    // Find all articles with toggle containers
+    const articles = document.querySelectorAll('article[id]');
+    articles.forEach((article) => {
+      const articleId = article.getAttribute('id');
+      if (!articleId) return;
+
+      const container = article.querySelector('.use-case-interactive');
+      if (!container) return;
+
+      const toggleContainer = container.querySelector('[data-toggle-container]');
+      if (toggleContainer) {
+        // This article has a toggle, initialize it
+        window.initToggle(articleId);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAllToggles);
+  } else {
+    initAllToggles();
+  }
 </script>
 <SectionLayout title={title}>
   <Section contentClass="gap-1200 mobile:gap-600">
