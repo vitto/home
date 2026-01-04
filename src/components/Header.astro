@@ -95,10 +95,9 @@ const { items = defaultItems, menu = true } = Astro.props;
           </div>
         </>
       ) : (
-        <Button href={baseUrl} variant="outline" class="justify-self-start">
-          <Icon name="mi/baseline/arrow-back" />
-          Back to Home
-        </Button>
+        <div class="inline-flex justify-self-center justify-end w-[84px]">
+          <Button class="justify-self-center" href={baseUrl} variant="back" title="Back to Home" />
+        </div>
       )
     }
   </header>

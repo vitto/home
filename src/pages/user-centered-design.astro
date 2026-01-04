@@ -40,10 +40,9 @@ const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompa
     }
   </Principles>
   <Section>
-    <Button href={baseUrl} variant="outline" class="justify-self-center">
-      <Icon name="mi/baseline/arrow-back" />
-      Back to Home
-    </Button>
+    <div class="inline-flex justify-self-center justify-end w-[84px] pr-500">
+      <Button class="justify-self-center" href={baseUrl} variant="back" title="Back to Home" />
+    </div>
   </Section>
   <Footer />
 </Layout>

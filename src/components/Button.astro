@@ -9,12 +9,14 @@ import Icon from './Icon.astro';
  * Props:
  * @param {string} href - Link URL (if not provided, renders as button element)
  * @param {string} class - Additional CSS classes to add (base "button" class is always included)
+ * @param {string} icon - Custom icon
  * @param {number} tabIndex - Tab index for the button
  * @param {string} variant - Button variant (e.g., "outline", "light", "hero", or color variants)
  */
 interface Props {
   href?: string;
   class?: string;
+  icon?: string;
   tabIndex?: number;
   title?: string;
   variant?: string;
@@ -32,7 +34,14 @@ text-tone-neutral-03
 
 bg-tone-neutral border-solid border-2 border-tone-neutral-10 focus-visible:border-tone-neutral-09 hover:border-tone-neutral-09 p-200 px-600 text-tone-neutral-03
 */
-const { href, class: className = '', tabIndex = 0, variant = 'none', title = '' } = Astro.props;
+const {
+  href,
+  class: className = '',
+  tabIndex = 0,
+  variant = 'none',
+  title = '',
+  icon = '',
+} = Astro.props;
 
 // Extract data-* attributes from props
 const dataAttributes: Record<string, string> = {};
@@ -92,8 +101,12 @@ const linkAttrs = isExternalLink
       tabindex={tabIndex}
       title={title}
     >
-      {variant === 'back' && <Icon class="justify-self-start" name="mi/outline/arrow-back" />}
-      {variant === 'next' && <Icon class="justify-self-end" name="mi/outline/arrow-forward" />}
+      {variant === 'back' && (
+        <Icon class="justify-self-start" name={icon || 'mi/outline/arrow-back'} />
+      )}
+      {variant === 'next' && (
+        <Icon class="justify-self-end" name={icon || 'mi/outline/arrow-forward'} />
+      )}
       <slot />
     </a>
   ) : (
