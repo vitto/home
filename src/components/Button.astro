@@ -89,35 +89,72 @@ const linkAttrs = isExternalLink
       rel: 'noopener noreferrer',
     }
   : {};
+
+const isBackOrNext = variant === 'back' || variant === 'next';
+const wrapperClass =
+  variant === 'back'
+    ? 'inline-flex justify-self-center justify-end w-[84px] pr-500'
+    : variant === 'next'
+      ? 'inline-flex justify-self-center justify-start w-[84px] pl-500'
+      : '';
 ---
 
 {
-  href ? (
-    <a
-      class={buttonClasses}
-      href={href}
-      {...linkAttrs}
-      {...dataAttributes}
-      tabindex={tabIndex}
-      title={title}
-    >
-      {variant === 'back' && (
-        <Icon class="justify-self-start" name={icon || 'mi/outline/arrow-back'} />
+  isBackOrNext ? (
+    <div class={wrapperClass}>
+      {href ? (
+        <a
+          class={buttonClasses}
+          href={href}
+          {...linkAttrs}
+          {...dataAttributes}
+          tabindex={tabIndex}
+          title={title}
+        >
+          {variant === 'back' && (
+            <Icon class="justify-self-start" name={icon || 'mi/outline/arrow-back'} />
+          )}
+          {variant === 'next' && (
+            <Icon class="justify-self-end" name={icon || 'mi/outline/arrow-forward'} />
+          )}
+          <slot />
+        </a>
+      ) : (
+        <button
+          class={buttonClasses}
+          type="button"
+          {...dataAttributes}
+          tabindex={tabIndex}
+          title={title}
+        >
+          <slot />
+        </button>
       )}
-      {variant === 'next' && (
-        <Icon class="justify-self-end" name={icon || 'mi/outline/arrow-forward'} />
-      )}
-      <slot />
-    </a>
+    </div>
   ) : (
-    <button
-      class={buttonClasses}
-      type="button"
-      {...dataAttributes}
-      tabindex={tabIndex}
-      title={title}
-    >
-      <slot />
-    </button>
+    <>
+      {href ? (
+        <a
+          class={buttonClasses}
+          href={href}
+          {...linkAttrs}
+          {...dataAttributes}
+          tabindex={tabIndex}
+          title={title}
+        >
+          <slot />
+        </a>
+      ) : (
+        <button
+          class={buttonClasses}
+          type="button"
+          {...dataAttributes}
+          tabindex={tabIndex}
+          title={title}
+        >
+          <slot />
+        </button>
+      )}
+    </>
   )
 }

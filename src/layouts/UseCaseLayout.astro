@@ -224,9 +224,7 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
     />
     <slot />
     <div class="h-50 bg-tone-neutral-03"></div>
-    <div class="inline-flex justify-self-center justify-end w-[84px] pr-500">
-      <Button class="justify-self-center" href={baseUrl} variant="back" title="Back to Home" />
-    </div>
+    <Button href={baseUrl} variant="back" title="Back to Home" />
   </Section>
 </SectionLayout>
 <Footer />

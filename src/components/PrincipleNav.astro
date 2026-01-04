@@ -31,15 +31,13 @@ const nextUrl = nextPrinciple ? `${baseUrl}${sectionPath}/${nextPrinciple.id}` :
   <div
     class="pointer-events-auto inline-flex justify-center items-center bottom-0 pb-200 gap-200 p-200 shadow-sm-sharp bg-tone-neutral/80 backdrop-blur rounded-t-[30px]"
   >
-    <div class="shrink-0 w-1600 inline-flex justify-end items-center">
-      {
-        prevUrl ? (
-          <Button href={prevUrl} variant="back" title="Go to previous principle" />
-        ) : (
-          <div class="w-1600" />
-        )
-      }
-    </div>
+    {
+      prevUrl ? (
+        <Button href={prevUrl} variant="back" title="Go to previous principle" />
+      ) : (
+        <div class="w-1600" />
+      )
+    }
     <a
       title="Back to top"
       href="#"
@@ -48,15 +46,13 @@ const nextUrl = nextPrinciple ? `${baseUrl}${sectionPath}/${nextPrinciple.id}` :
     >
       <Icon name="vv/logo" class="text-[40px] justify-self-center" />
     </a>
-    <div class="shrink-0 w-1600 inline-flex justify-start items-center">
-      {
-        nextUrl ? (
-          <Button href={nextUrl} variant="next" title="Go to next principle" />
-        ) : (
-          <div class="w-1600" />
-        )
-      }
-    </div>
+    {
+      nextUrl ? (
+        <Button href={nextUrl} variant="next" title="Go to next principle" />
+      ) : (
+        <div class="w-1600" />
+      )
+    }
   </div>
 </div>
 <script>
