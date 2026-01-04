@@ -1,0 +1,39 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/user-centered-design.json';
+import InternalConsistency from '../../components/use-cases/user-centered-design/consistency-and-standards/InternalConsistency.astro';
+import ExternalStandards from '../../components/use-cases/user-centered-design/consistency-and-standards/ExternalStandards.astro';
+import VisualConsistency from '../../components/use-cases/user-centered-design/consistency-and-standards/VisualConsistency.astro';
+import BehavioralConsistency from '../../components/use-cases/user-centered-design/consistency-and-standards/BehavioralConsistency.astro';
+import TerminologyConsistency from '../../components/use-cases/user-centered-design/consistency-and-standards/TerminologyConsistency.astro';
+import PatternReuse from '../../components/use-cases/user-centered-design/consistency-and-standards/PatternReuse.astro';
+import SystemIntegrity from '../../components/use-cases/user-centered-design/consistency-and-standards/SystemIntegrity.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+
+const principle = data.principles.find((p) => p.id === 'consistency-and-standards')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/user-centered-design';
+const sectionName = 'User-Centered Design';
+---
+
+<UseCaseLayout
+  title={`${principle.title} / ${sectionName}`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath={sectionPath}
+>
+  <InternalConsistency />
+  <ExternalStandards />
+  <VisualConsistency />
+  <BehavioralConsistency />
+  <TerminologyConsistency />
+  <PatternReuse />
+  <SystemIntegrity />
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>

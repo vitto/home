@@ -1,7 +1,7 @@
 ---
-import UseCase from '../../UseCase.astro';
-import UseCaseInteractive from '../../UseCaseInteractive.astro';
-import usersData from '../../../data/visibility-of-system-status/users.json';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import usersData from '../../../../data/visibility-of-system-status/users.json';
 const baseUrl = import.meta.env.BASE_URL;
 const users = usersData.map((user) => ({
   ...user,
@@ -31,6 +31,7 @@ const user = users[2];
               <mds-text typography="h6">{user.name}</mds-text>
               <mds-text typography="caption">{user.role}</mds-text>
               <mds-text typography="caption">{user.email}</mds-text>
+              <mds-text typography="caption">Last activity 5 min ago</mds-text>
             </div>
           </mds-author>
         </>
