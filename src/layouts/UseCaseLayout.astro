@@ -188,6 +188,87 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
     });
   };
 
+  // Function to initialize multiple examples functionality for use cases
+  window.initMultiple = function initMultiple(articleId) {
+    // Get articleId from parameter or find parent article
+    let id = articleId;
+    if (!id) {
+      const currentScript = document.currentScript;
+      if (currentScript) {
+        const article = currentScript.closest('article');
+        id = article?.getAttribute('id') || null;
+      }
+    }
+
+    if (!id) return;
+
+    const scope = window.getUseCaseScope?.(id);
+    if (!scope) return;
+
+    const { container } = scope;
+    const multipleContainer = container.querySelector('[data-multiple-container]');
+    const indicatorsContainer = container.querySelector('[data-multiple-indicators]');
+    const indicatorTemplate = document.querySelector('[data-multiple-indicator-template]');
+
+    if (!multipleContainer || !indicatorsContainer || !indicatorTemplate) return;
+
+    // Get all direct children (slotted elements)
+    const children = Array.from(multipleContainer.children);
+    if (children.length < 2) return;
+
+    let currentIndex = 0;
+
+    // Function to show a specific element and hide others
+    function showElement(index) {
+      children.forEach((child, i) => {
+        if (i === index) {
+          child.classList.remove('hidden');
+        } else {
+          child.classList.add('hidden');
+        }
+      });
+
+      // Update indicator dots
+      const indicators = indicatorsContainer.querySelectorAll('a');
+
+      indicators.forEach((indicator, i) => {
+        const indicatorDiv = indicator.querySelector('div');
+        if (i === index) {
+          indicator.classList.add('pointer-events-none');
+          indicatorDiv.classList.add('bg-tone-neutral-01');
+          indicatorDiv.classList.remove('bg-tone-neutral-07');
+        } else {
+          indicator.classList.remove('pointer-events-none');
+          indicatorDiv.classList.remove('bg-tone-neutral-01');
+          indicatorDiv.classList.add('bg-tone-neutral-07');
+        }
+      });
+
+      currentIndex = index;
+    }
+
+    // Create indicator dots dynamically using template
+    children.forEach((_, index) => {
+      const indicator = indicatorTemplate.content.cloneNode(true).querySelector('a');
+      const indicatorDiv = indicator.querySelector('div');
+      if (!indicator) return;
+
+      indicatorDiv.classList.add(
+        index === 0 ? ('bg-tone-neutral-01', 'pointer-events-none') : 'bg-tone-neutral-07'
+      );
+      indicator.setAttribute('title', `Show example ${index + 1}`);
+      indicator.setAttribute('data-multiple-index', index.toString());
+      indicator.addEventListener('click', (e) => {
+        e.preventDefault();
+        showElement(index);
+      });
+      indicatorsContainer.appendChild(indicator);
+    });
+
+    // Initially show first element, hide others
+    showElement(0);
+  };
+
   // Initialize all toggles on page load
   function initAllToggles() {
     // Find all articles with toggle containers
@@ -207,12 +288,47 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
     });
   }
 
+  // Initialize all multiple examples on page load
+  function initAllMultiples() {
+    // Find all articles with multiple containers
+    const articles = document.querySelectorAll('article[id]');
+    articles.forEach((article) => {
+      const articleId = article.getAttribute('id');
+      if (!articleId) return;
+
+      const container = article.querySelector('.use-case-interactive');
+      if (!container) return;
+
+      const multipleContainer = container.querySelector('[data-multiple-container]');
+      if (multipleContainer) {
+        // This article has multiple examples, initialize it
+        window.initMultiple(articleId);
+      }
+    });
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAllToggles);
+    document.addEventListener('DOMContentLoaded', () => {
+      initAllToggles();
+      initAllMultiples();
+    });
   } else {
     initAllToggles();
+    initAllMultiples();
   }
 </script>
+<template data-multiple-indicator-template>
+  <a
+    class="p-100 inline-flex justify-center items-center focus-bounce relative focus-visible:z-10 cursor-pointer group/dot"
+    tabindex="0"
+    data-multiple-index
+  >
+    <div
+      class="size-200 rounded-full transition-colors bg-tone-neutral-07 group-hover/dot:bg-tone-neutral-06"
+    >
+    </div>
+  </a>
+</template>
 <SectionLayout title={title}>
   <Section contentClass="gap-1200 mobile:gap-600">
     <Header />
