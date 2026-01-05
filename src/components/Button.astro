@@ -54,8 +54,8 @@ Object.keys(Astro.props).forEach((key) => {
 // Map variant names to CSS classes
 const variants: Record<string, string> = {
   none: '',
-  back: 'shrink-0 group hover:w-1600 focus-visible:w-1600 transition-cosmetic ease-out-expo duration-500 bg-tone-neutral button-outline hover:button-outline-strong focus-visible:button-outline-strong border-0 text-tone-neutral-03',
-  next: 'shrink-0 group hover:w-1600 focus-visible:w-1600 transition-cosmetic ease-out-expo duration-500 bg-tone-neutral button-outline hover:button-outline-strong focus-visible:button-outline-strong border-0 text-tone-neutral-03',
+  back: 'shrink-0 group hover:w-1600 focus-visible:w-1600 transition-cosmetic ease-out-expo duration-500 bg-tone-neutral button-outline hover:button-outline-strong focus-visible:button-outline-strong text-tone-neutral-03',
+  next: 'shrink-0 group hover:w-1600 focus-visible:w-1600 transition-cosmetic ease-out-expo duration-500 bg-tone-neutral button-outline hover:button-outline-strong focus-visible:button-outline-strong text-tone-neutral-03',
   outline:
     'border-0 button-outline hover:button-outline-strong focus-visible:button-outline-strong',
   light:
@@ -72,8 +72,8 @@ const buttonClasses = [
   variant === 'next' && 'justify-end',
   variant === 'back' || variant === 'next'
     ? 'p-200 gap-200'
-    : 'px-300 py-100 gap-200 justify-center',
-  'border-2 border-solid rounded-full',
+    : 'px-300 py-100 gap-200 justify-center border-2 border-solid',
+  'rounded-full border-box',
   'cursor-pointer focus-bounce',
   variantClass,
   className,
@@ -93,9 +93,9 @@ const linkAttrs = isExternalLink
 const isBackOrNext = variant === 'back' || variant === 'next';
 const wrapperClass =
   variant === 'back'
-    ? 'inline-flex justify-self-center justify-end w-[84px] pr-500'
+    ? 'inline-flex justify-self-center justify-end w-[84px]'
     : variant === 'next'
-      ? 'inline-flex justify-self-center justify-start w-[84px] pl-500'
+      ? 'inline-flex justify-self-center justify-start w-[84px]'
       : '';
 ---
 

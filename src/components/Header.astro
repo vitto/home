@@ -95,9 +95,7 @@ const { items = defaultItems, menu = true } = Astro.props;
           </div>
         </>
       ) : (
-        <div class="inline-flex justify-self-center justify-end w-[84px]">
-          <Button class="justify-self-center" href={baseUrl} variant="back" title="Back to Home" />
-        </div>
+        <Button href={baseUrl} variant="back" title="Back to Home" class="mr-500" />
       )
     }
   </header>
