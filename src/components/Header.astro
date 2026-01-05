@@ -70,7 +70,7 @@ const { items = defaultItems, menu = true } = Astro.props;
             data-header-nav
           >
             <nav
-              class="header-nav-menu col-start-2 flex flex-col items-start gap-400 bg-tone-neutral rounded-2xl py-600"
+              class="header-nav-menu col-start-2 grid grid-cols-fill gap-400 bg-tone-neutral rounded-2xl py-600"
               data-header-nav-menu
             >
               <div class="mobile:grid hidden">
@@ -81,12 +81,22 @@ const { items = defaultItems, menu = true } = Astro.props;
               </div>
               <div class="h-50 bg-tone-neutral-03 w-full mobile:inline-flex hidden" />
               {items.map((item) => (
-                <Button href={item.href} class={item.button} tabIndex={item.current}>
+                <Button
+                  href={item.href}
+                  class={item.button}
+                  justify="justify-start"
+                  tabIndex={item.current}
+                >
                   <Icon name={item.icon} />
                   {item.label}
                 </Button>
               ))}
               <div class="h-50 bg-tone-neutral-03 w-full" />
+              <mds-pref>
+                <mds-pref-theme />
+                <mds-pref-contrast />
+                <mds-pref-animation />
+              </mds-pref>
               <Button href={baseUrl} variant="outline" class="w-full">
                 <Icon name="mi/baseline/arrow-back" />
                 Back to Home

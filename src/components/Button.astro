@@ -20,6 +20,7 @@ interface Props {
   tabIndex?: number;
   title?: string;
   variant?: string;
+  justify?: 'justify-start' | 'justify-center' | 'justify-end';
 }
 /*
 bg-tone-neutral
@@ -41,6 +42,7 @@ const {
   variant = 'none',
   title = '',
   icon = '',
+  justify,
 } = Astro.props;
 
 // Extract data-* attributes from props
@@ -57,7 +59,7 @@ const variants: Record<string, string> = {
   back: 'shrink-0 group hover:w-1600 focus-visible:w-1600 transition-cosmetic ease-out-expo duration-500 bg-tone-neutral button-outline hover:button-outline-strong focus-visible:button-outline-strong text-tone-neutral-03',
   next: 'shrink-0 group hover:w-1600 focus-visible:w-1600 transition-cosmetic ease-out-expo duration-500 bg-tone-neutral button-outline hover:button-outline-strong focus-visible:button-outline-strong text-tone-neutral-03',
   outline:
-    'border-0 button-outline hover:button-outline-strong focus-visible:button-outline-strong',
+    'button-outline-strong hover:button-outline-stronger focus-visible:button-outline-stronger',
   light:
     'text-tone-neutral-02 bg-tone-neutral border-tone-neutral hover:bg-tone-neutral-09 focus-visible:bg-tone-neutral-09',
   hero: 'text-tone-neutral bg-transparent border-transparent hover:bg-tone-neutral-01/30 focus-visible:bg-tone-neutral-01/30',
@@ -65,15 +67,17 @@ const variants: Record<string, string> = {
 
 const variantClass = variants[variant] || '';
 
+// Determine justify class: use prop if provided, otherwise use variant-based logic or default
+const justifyClass =
+  justify ||
+  (variant === 'back' ? 'justify-start' : variant === 'next' ? 'justify-end' : 'justify-center');
+
 // Build class string: always include "button", add variant if provided, then additional classes
 const buttonClasses = [
   'button first-letter:uppercase no-underline inline-flex items-center',
-  variant === 'back' && 'justify-start',
-  variant === 'next' && 'justify-end',
-  variant === 'back' || variant === 'next'
-    ? 'p-200 gap-200'
-    : 'px-300 py-100 gap-200 justify-center border-2 border-solid',
-  'rounded-full border-box',
+  justifyClass,
+  variant === 'back' || variant === 'next' ? 'p-200 gap-200' : 'px-300 py-100 gap-200',
+  'rounded-full border-box border-0 border-none',
   'cursor-pointer focus-bounce',
   variantClass,
   className,

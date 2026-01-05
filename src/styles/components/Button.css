@@ -21,3 +21,17 @@
     }
   }
 }
+
+@layer components {
+  .button-outline {
+    box-shadow: 0 0 0 2px rgb(var(--tone-neutral-01) / 0.05);
+  }
+
+  .button-outline-strong {
+    box-shadow: 0 0 0 2px rgb(var(--tone-neutral-01) / 0.1);
+  }
+
+  .button-outline-stronger {
+    box-shadow: 0 0 0 2px rgb(var(--tone-neutral-01) / 0.2);
+  }
+}
