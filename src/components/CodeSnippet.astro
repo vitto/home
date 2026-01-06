@@ -1,0 +1,52 @@
+---
+import { codeToHtml } from 'shiki';
+
+/**
+ * CodeSnippet Component
+ *
+ * Displays formatted code snippets with syntax highlighting using Shiki
+ *
+ * Props:
+ * @param {string} language - Language of the code ('html' | 'javascript' | 'js' | any Shiki supported language)
+ * @param {string} code - The code content to display
+ * @param {string} title - Optional title for the code block
+ */
+interface Props {
+  language?: string;
+  code: string;
+  title?: string;
+  class?: string;
+}
+
+const { language = 'html', code: rawCode, title, class: className = '' } = Astro.props;
+
+// Trim initial and final newlines and whitespace
+const code = rawCode.trim();
+
+// Normalize language names (js -> javascript)
+const normalizedLanguage = language === 'js' ? 'javascript' : language;
+
+// Highlight the code using Shiki
+const highlightedCode = await codeToHtml(code, {
+  lang: normalizedLanguage,
+  theme: 'github-dark',
+});
+
+// Extract just the code content (remove the pre wrapper that Shiki adds)
+const codeMatch = highlightedCode.match(/<pre[^>]*><code[^>]*>(.*?)<\/code><\/pre>/s);
+const codeContent = codeMatch ? codeMatch[1] : highlightedCode;
+
+const uniqueId = `code-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<div class={`code-snippet-container ${className}`}>
+  {
+    title && (
+      <mds-text class="justify-self-center" typography="option">
+        {title}
+      </mds-text>
+    )
+  }
+  <pre
+    class="code-snippet-pre shiki github-dark"><code class={`code-snippet-code language-${normalizedLanguage}`} id={uniqueId} data-language={normalizedLanguage} set:html={codeContent} /></pre>
+</div>

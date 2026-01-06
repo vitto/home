@@ -307,14 +307,47 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
     });
   }
 
+  // Function to initialize code snippet copy functionality
+  function initCodeSnippetCopy() {
+    const copyButtons = document.querySelectorAll('[data-code-id]');
+    copyButtons.forEach((button) => {
+      button.addEventListener('click', async () => {
+        const codeId = button.getAttribute('data-code-id');
+        const codeElement = document.getElementById(codeId);
+        if (!codeElement) return;
+
+        // Get the raw code text (without HTML tags)
+        const codeText = codeElement.textContent || codeElement.innerText;
+
+        try {
+          await navigator.clipboard.writeText(codeText);
+          // Visual feedback
+          const originalHTML = button.innerHTML;
+          button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          `;
+          setTimeout(() => {
+            button.innerHTML = originalHTML;
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy code:', err);
+        }
+      });
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initAllToggles();
       initAllMultiples();
+      initCodeSnippetCopy();
     });
   } else {
     initAllToggles();
     initAllMultiples();
+    initCodeSnippetCopy();
   }
 </script>
 <template data-multiple-indicator-template>

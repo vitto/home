@@ -129,4 +129,23 @@ if (existsSync(magmaLoaderDir)) {
   console.warn(`⚠ Maggioli loader directory not found: ${magmaLoaderDir}`);
 }
 
+// Copy Shiki assets (if needed)
+// Note: Shiki is primarily used at build time and generates HTML,
+// so it typically doesn't need static assets copied to public.
+// However, if you need to use Shiki themes or languages at runtime,
+// you may need to copy them here.
+const shikiDir = join(rootDir, 'node_modules', 'shiki');
+const shikiDestDir = join(vendorDir, 'shiki');
+
+if (existsSync(shikiDir)) {
+  // Shiki doesn't typically need static assets, but we create the directory
+  // structure in case it's needed in the future
+  if (!existsSync(shikiDestDir)) {
+    mkdirSync(shikiDestDir, { recursive: true });
+  }
+  log('✓ Shiki directory structure prepared (no static assets needed)');
+} else {
+  console.warn(`⚠ Shiki directory not found: ${shikiDir}`);
+}
+
 console.log('✓ Vendor assets copied successfully');

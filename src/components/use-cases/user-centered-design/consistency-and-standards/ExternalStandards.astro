@@ -1,13 +1,48 @@
 ---
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import CodeSnippet from '../../../CodeSnippet.astro';
+
+const htmlExample1 = `<mds-button variant="success" tone="weak">Click me</mds-button>
+<mds-banner variant="success" tone="weak" deletable>...</mds-banner>`;
+
+const htmlExample2 = `<mds-input-field label="Your name">
+  <mds-input type="text" name="full-name" required placeholder="Es: Mario Rossi"></mds-input>
+<mds-input-field>
+<mds-input-switch type="checkbox" name="agree" required checked>
+  I agree to the terms and conditions
+</mds-input-switch>`;
+
+const htmlExample3 = `<MdsInputField label="Your name">
+  <MdsInput type="text" name="full-name" required placeholder="Es: Mario Rossi"></MdsInput>
+<MdsInputField>
+<MdsInputSwitch type="checkbox" name="agree" required checked>
+  I agree to the terms and conditions
+</MdsInputSwitch>`;
 ---
 
 <UseCase
   title="External Standards"
   description="The interface follows established platform, industry, and web conventions, reducing the learning curve."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Content will be added later -->
-  </UseCaseInteractive>
+  <CodeSnippet
+    class="w-full"
+    language="html"
+    code={htmlExample1}
+    title="Different components, same conventions"
+  />
+
+  <CodeSnippet
+    class="w-full"
+    language="html"
+    code={htmlExample2}
+    title="Standard conventions based components"
+  />
+
+  <CodeSnippet
+    class="w-full"
+    language="html"
+    code={htmlExample3}
+    title="React wrappers available"
+  />
 </UseCase>

@@ -1,0 +1,31 @@
+.code-snippet-container {
+  @apply bg-tone-neutral-08 dark:bg-tone-neutral-09 p-600 pt-400 grid gap-400 grid-cols-full rounded-[28px] mobile:-mx-600;
+}
+
+.code-snippet-header {
+  @apply flex items-center justify-between px-400 py-200 bg-tone-neutral-08 border-b border-tone-neutral-07;
+}
+
+.code-snippet-title {
+  @apply text-tone-neutral-03 font-medium;
+}
+
+.code-snippet-copy {
+  @apply inline-flex items-center justify-center p-100 rounded focus-bounce cursor-pointer text-tone-neutral-04 hover:text-tone-neutral-02 hover:bg-tone-neutral-07 transition-colors;
+}
+
+.code-snippet-pre {
+  @apply m-0 overflow-x-auto rounded-2xl bg-tone-neutral-02 dark:bg-tone-neutral-08;
+}
+
+.code-snippet-code {
+  @apply block p-400 mr-400 box-border;
+  font-size: 0.875rem;
+
+  white-space: pre;
+}
+
+/* Shiki styles are handled by the library */
+.shiki {
+  @apply m-0;
+}
