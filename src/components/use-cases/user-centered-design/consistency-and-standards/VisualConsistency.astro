@@ -1,13 +1,68 @@
 ---
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import usersData from '../../../../data/visibility-of-system-status/users.json';
+const baseUrl = import.meta.env.BASE_URL;
+
+const users = usersData.map((user) => ({
+  ...user,
+  avatar: `${baseUrl}${user.avatar}`,
+}));
+const user = users[4];
+
+// Calculate datetime 5 minutes ago
+const now = new Date();
+const fiveMinutesAgo = new Date(now.getTime() - 5 * 60 * 1000);
+const datetime = fiveMinutesAgo.toISOString();
+
+// Calculate datetime 3 days ago
+const threeDaysAgo = new Date(now.getTime() - 3 * 24 * 60 * 60 * 1000);
+const datetimeThreeDaysAgo = threeDaysAgo.toISOString();
 ---
 
 <UseCase
   title="Visual Consistency"
   description="Visual styles are applied uniformly, reinforcing recognition and predictability."
 >
-  <UseCaseInteractive clsHeight={120}>
-    <!-- Content will be added later -->
+  <UseCaseInteractive clsHeight={140} multiple>
+    <mds-push-notification-item
+      deletable="false"
+      src={`${baseUrl}/assets/tdr-book-cover-02.webp`}
+      message="Finally the Book of The Designers Republic is here! Are you ready to read it?"
+      subject="AZTDR"
+      datetime={datetimeThreeDaysAgo}
+      variant="primary"
+    >
+      <mds-button size="sm" slot="action" tone="weak" variant="dark">Read</mds-button>
+    </mds-push-notification-item>
+    <mds-push-notification-item
+      deletable="false"
+      src={user.avatar}
+      data-avatar
+      message="Hey Vittorio, how's going? I hope you have a great day!"
+      subject={user.name}
+      datetime={datetime}
+      variant="primary"
+    >
+      <mds-button size="sm" slot="action" tone="weak" variant="primary">Reply</mds-button>
+    </mds-push-notification-item>
+    <mds-push-notification-item
+      deletable="false"
+      icon="mi/baseline/attach-file"
+      message="You have a new attachment from John Doe."
+      subject="New attachment"
+      variant="info"
+    >
+      <mds-button size="sm" slot="action" tone="weak" variant="info">Download</mds-button>
+    </mds-push-notification-item>
+    <mds-push-notification-item
+      deletable="false"
+      icon="mi/baseline/wifi-tethering-error"
+      message="Please check your internet connection and try again."
+      subject="Connection lost"
+      variant="error"
+    >
+      <mds-button size="sm" slot="action" tone="weak" variant="error">Retry</mds-button>
+    </mds-push-notification-item>
   </UseCaseInteractive>
 </UseCase>

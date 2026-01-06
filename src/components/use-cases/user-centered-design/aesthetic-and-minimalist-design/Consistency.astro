@@ -20,6 +20,7 @@ const firstUser = users[0];
     clsHeight={200}
     contentClass="min-h-[200px] tablet:min-h-[200px] justify-between gap-600 max-w-8000 mx-auto"
     label="Click on component menu to see consistency"
+    multiple
   >
     <div class="flex items-center justify-center">
       <mds-entity icon="mi/baseline/apartment" class="w-full">
@@ -36,6 +37,7 @@ const firstUser = users[0];
       </mds-entity>
       <mds-dropdown
         target="#consistency-entity-button"
+        offset={8}
         class="gap-200 p-200 min-w-6000 rounded-2xl"
       >
         <mds-button
@@ -85,8 +87,7 @@ const firstUser = users[0];
             </mds-author>
             <mds-dropdown
               target="#consistency-author-button"
-              auto-placement="false"
-              placement="top"
+              offset={6}
               class="gap-200 p-200 min-w-6000 rounded-2xl"
             >
               <mds-button

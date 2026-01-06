@@ -8,6 +8,16 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   description="Established solutions are reused instead of reinvented, strengthening familiarity and efficiency."
 >
   <UseCaseInteractive clsHeight={120}>
-    <!-- Content will be added later -->
+    <div class="grid gap-400">
+      <mds-text typography="caption" class="max-w-title"
+        >This text is a reusable web component, also the button below is a reusable web component.</mds-text
+      >
+      <mds-button id="pattern-reuse-button">Click me</mds-button>
+      <mds-dropdown target="#pattern-reuse-button" placement="top" class="max-w-8000 p-400">
+        <mds-text typography="caption"
+          >And this is a dropdown, also a reusable web component.</mds-text
+        >
+      </mds-dropdown>
+    </div>
   </UseCaseInteractive>
 </UseCase>
