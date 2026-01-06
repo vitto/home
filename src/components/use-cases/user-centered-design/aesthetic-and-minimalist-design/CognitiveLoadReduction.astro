@@ -9,10 +9,12 @@ import personalData from '../../../../data/personal.json';
   description="The system minimizes the amount of information users must remember, compare, or interpret to complete a task."
 >
   <UseCaseInteractive clsHeight={84} toggle articleId="cognitive-load-reduction">
-    <div class="flex items-center justify-between w-full rounded-2xl p-600 shadow-sm-sharp">
+    <div
+      class="flex items-center justify-between w-full rounded-2xl p-600 shadow-sm-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09"
+    >
       <mds-icon
         name="vv/logo"
-        class="size-900 cursor-pointer focus-bounce rounded-lg hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
+        class="size-900 cursor-pointer fill-tone-neutral-02 focus-bounce rounded-lg hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
         tabindex="0"></mds-icon>
       <nav class="flex items-center gap-400">
         <mds-button class="rounded-full" variant="dark" tone="quiet">Login</mds-button>
@@ -20,9 +22,13 @@ import personalData from '../../../../data/personal.json';
         ></mds-button>
       </nav>
     </div>
-    <div class="flex items-center justify-between w-full rounded-2xl p-600 shadow-lg-sharp">
+    <div
+      class="flex items-center justify-between w-full rounded-2xl p-600 shadow-lg-sharp dark:shadow-sm-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09"
+    >
       <div class="flex gap-400">
-        <mds-icon name="vv/logo" class="size-900 color-tone-neutral-01 dark:color-tone-neutral-09"
+        <mds-icon
+          name="vv/logo"
+          class="size-900 fill-tone-neutral-02 color-tone-neutral-01 dark:color-tone-neutral-09"
         ></mds-icon>
         <div class="flex flex-col">
           <mds-text typography="h6">Vittorio Vittori</mds-text>
