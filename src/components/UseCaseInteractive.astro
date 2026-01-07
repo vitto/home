@@ -15,6 +15,7 @@ interface Props {
   clsHeight?: number;
   toggle?: boolean;
   multiple?: boolean;
+  overflowHidden?: boolean;
   articleId?: string;
 }
 
@@ -25,6 +26,7 @@ const {
   label = null,
   toggle = false,
   multiple = false,
+  overflowHidden = true,
   articleId = null,
 } = Astro.props;
 
@@ -75,13 +77,13 @@ const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsH
       <p
         class={`${label ? 'group-hover:blink' : ''} text-info-option text-center text-tone-neutral-03 justify-self-center`}
       >
-        {label || 'Interact with this use case to see how it works'}
+        {label || 'Interactive use case'}
       </p>
     ) : null
   }
 
   <div
-    class={`flex flex-col items-center justify-center gap-400 bg-tone-neutral overflow-hidden p-600 tablet:py-1200 rounded-xl shadow-sm-sharp dark:border-solid dark:border-tone-neutral-07 dark:border w-full`}
+    class={`flex flex-col items-center justify-center gap-400 bg-tone-neutral ${overflowHidden ? 'overflow-hidden' : ''} p-600 tablet:py-1200 rounded-xl shadow-sm-sharp dark:border-solid dark:border-tone-neutral-07 dark:border w-full`}
   >
     <div
       class={`flex flex-col transition-cosmetic w-full relative box-border delay-300 opacity-0 scale-90 ${contentClass}`}
