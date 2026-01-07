@@ -2,6 +2,8 @@
 
 A personal portfolio website showcasing design system architecture and UX design work, built with Astro, Tailwind CSS, and Web Components.
 
+[vitto.github.io/home](https://vitto.github.io/home/)
+
 ## Features
 
 - **Modern Stack**: Built with Astro for optimal performance and Tailwind CSS for styling
