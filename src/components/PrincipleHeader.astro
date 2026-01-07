@@ -63,14 +63,16 @@ const categoryColorClass = colorClasses[categoryColor] || '';
 ---
 
 <div class={className}>
-  <div class="flex items-center gap-400">
+  <div class="flex items-center gap-400 mobile:gap-200">
     <div class="flex items-center">
-      <div class={`inline-flex p-200 px-600 rounded-full text-tone-neutral ${categoryColorClass}`}>
+      <div
+        class={`inline-flex p-200 tablet:px-600 rounded-full text-tone-neutral ${categoryColorClass}`}
+      >
         <Icon name={principle.icon} />
       </div>
     </div>
     <div class="grid grow">
-      <h6 class="text-title-h6">{sectionName}</h6>
+      <h6 class="text-title-h6 truncate">{sectionName}</h6>
       <a
         href={categoryUrl}
         title={`Back to ${sectionName} and set category to ${principle.category}`}

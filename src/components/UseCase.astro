@@ -17,21 +17,23 @@ const articleId = title
   .replace(/^-+|-+$/g, '');
 ---
 
-<article id={articleId} class={`grid gap-400 scroll-m-1000 ${className}`}>
+<article id={articleId} class={`grid gap-600 scroll-m-1000 ${className}`}>
   <div class="flex items-start gap-200 justify-between">
-    <h3 class="text-title-h3">{title}</h3>
+    <div class="grid gap-200">
+      <h3 class="text-title-h3">{title}</h3>
+      <p class="text-info-detail">{description}</p>
+    </div>
     <Button
       data-copy-link
       data-article-id={articleId}
       variant="light"
-      class="shrink-0 py-300"
+      class="shrink-0 py-300 -mb-400"
       title={`Copy link to ${title}`}
       aria-label={`Copy link to ${title}`}
     >
       <Icon name="mi/baseline/link" class="text-tone-neutral-04" />
     </Button>
   </div>
-  <p class="text-info-detail">{description}</p>
   <slot />
 </article>
 
