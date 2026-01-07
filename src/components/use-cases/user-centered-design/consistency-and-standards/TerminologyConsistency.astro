@@ -1,13 +1,68 @@
 ---
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import workspacesData from '../../../../data/visibility-of-system-status/workspaces.json';
+
+const baseUrl = import.meta.env.BASE_URL;
+const workspaces = workspacesData.slice(0, 4);
 ---
 
 <UseCase
   title="Terminology Consistency"
   description="Words and labels are used consistently to avoid confusion and misinterpretation."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Content will be added later -->
+  <UseCaseInteractive clsHeight={0} toggle>
+    <div class="grid gap-600 grid-cols-full w-full max-w-8000">
+      <div class="grid gap-0">
+        <mds-text typography="h5">Workspaces</mds-text>
+        <mds-text typography="caption"
+          >Workspaces are the places where users are working together as teams.</mds-text
+        >
+      </div>
+      <div
+        class="grid grid-cols-full overflow-hidden rounded-xl border border-solid border-tone-neutral-08"
+      >
+        {
+          workspaces
+            .flatMap((workspace, index) => [
+              <mds-entity icon="mi/baseline/group" class="rounded-none shadow-none">
+                <mds-text typography="h6">{workspace.name}</mds-text>
+                <mds-text typography="caption" slot="detail">
+                  {workspace.description}
+                </mds-text>
+              </mds-entity>,
+              index < workspaces.length - 1 && <mds-separator />,
+            ])
+            .filter(Boolean)
+        }
+      </div>
+      <mds-button variant="primary" tone="weak">Add Workspace</mds-button>
+    </div>
+    <div class="grid gap-600 grid-cols-full w-full max-w-8000">
+      <div class="grid gap-0">
+        <mds-text typography="h5">Workspaces</mds-text>
+        <mds-text typography="caption"
+          >Teams are the places where users are working together.</mds-text
+        >
+      </div>
+      <div
+        class="grid grid-cols-full overflow-hidden rounded-xl border border-solid border-tone-neutral-08"
+      >
+        {
+          workspaces
+            .flatMap((workspace, index) => [
+              <mds-entity icon="mi/baseline/group" class="rounded-none shadow-none">
+                <mds-text typography="h6">{workspace.name}</mds-text>
+                <mds-text typography="caption" slot="detail">
+                  {workspace.description}
+                </mds-text>
+              </mds-entity>,
+              index < workspaces.length - 1 && <mds-separator />,
+            ])
+            .filter(Boolean)
+        }
+      </div>
+      <mds-button variant="primary" tone="weak">Add Group</mds-button>
+    </div>
   </UseCaseInteractive>
 </UseCase>

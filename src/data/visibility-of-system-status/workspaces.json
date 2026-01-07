@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Attacker You",
+    "slug": "attacker-you",
+    "description": "Fujimi Junior High School",
+    "membersIds": [1, 4, 5]
+  },
+  {
+    "id": 2,
+    "name": "Dash Kappei",
+    "slug": "dash-kappei",
+    "description": "Seirin High School basketball team",
+    "membersIds": [1, 2, 3]
+  },
+  {
+    "id": 3,
+    "name": "Guard Kise",
+    "slug": "guard-kise",
+    "description": "Seirin High School basketball team",
+    "membersIds": [1, 3]
+  },
+  {
+    "id": 4,
+    "name": "Design System Team",
+    "slug": "design-system-team",
+    "description": "Core design system maintenance and development",
+    "membersIds": [2, 3, 5]
+  },
+  {
+    "id": 5,
+    "name": "Mobile App Squad",
+    "slug": "mobile-app-squad",
+    "description": "iOS and Android application development",
+    "membersIds": [1, 2, 4]
+  },
+  {
+    "id": 6,
+    "name": "Backend Infrastructure",
+    "slug": "backend-infrastructure",
+    "description": "Server architecture and API development",
+    "membersIds": [4, 5]
+  },
+  {
+    "id": 7,
+    "name": "User Research Group",
+    "slug": "user-research-group",
+    "description": "User testing and research initiatives",
+    "membersIds": [1, 2, 3, 5]
+  },
+  {
+    "id": 8,
+    "name": "QA Testing Team",
+    "slug": "qa-testing-team",
+    "description": "Quality assurance and testing workflows",
+    "membersIds": [2, 3, 4]
+  }
+]
