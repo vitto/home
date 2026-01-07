@@ -10,6 +10,7 @@
 @import './components/Button.css';
 @import './components/CodeSnippet.css';
 @import './components/Header.css';
+@import './components/PrincipleNav.css';
 
 body,
 html {
