@@ -17,12 +17,12 @@ const firstUser = users[0];
   description="Styles and interaction patterns are applied predictably, reducing the need for interpretation or relearning."
 >
   <UseCaseInteractive
-    clsHeight={200}
-    contentClass="min-h-[200px] tablet:min-h-[200px] justify-between gap-600 max-w-8000 mx-auto"
+    clsHeight={60}
+    overflowHidden={false}
     label="Click on component menu to see consistency"
     multiple
   >
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center w-full max-w-8000">
       <mds-entity icon="mi/baseline/apartment" class="w-full">
         <mds-text typography="h6">Your home</mds-text>
         <mds-text slot="detail" typography="caption"
@@ -66,7 +66,7 @@ const firstUser = users[0];
         >
       </mds-dropdown>
     </div>
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center w-full max-w-8000">
       {
         firstUser && (
           <>

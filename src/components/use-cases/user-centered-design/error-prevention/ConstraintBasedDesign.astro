@@ -7,7 +7,16 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Constraint-Based Design"
   description="The interface prevents errors by limiting what users can do, making invalid actions impossible rather than recoverable."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Content will be added later -->
+  <UseCaseInteractive
+    clsHeight={72}
+    overflowHidden={false}
+    contentClass="z-20 relative justify-center items-center gap-400"
+  >
+    <mds-input-field label="booking date" class="max-w-9600 w-full">
+      <mds-input-date-range>
+        <mds-input-date slot="start"></mds-input-date>
+        <mds-input-date slot="end"></mds-input-date>
+      </mds-input-date-range>
+    </mds-input-field>
   </UseCaseInteractive>
 </UseCase>

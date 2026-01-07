@@ -7,7 +7,210 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Clear Input Expectations"
   description="The system makes requirements explicit so users know what is expected before acting."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Content will be added later -->
+  <UseCaseInteractive clsHeight={284}>
+    <mds-input-field label="Password" class="w-full max-w-8000 font-info">
+      <mds-input type="password" placeholder="Es: Password123" data-password-input></mds-input>
+    </mds-input-field>
+    <mds-benchmark-bar
+      value="0"
+      variant="primary"
+      alias=""
+      class="w-full max-w-8000"
+      data-password-strength-bar
+    >
+      <span data-password-strength-text>Strength</span>
+    </mds-benchmark-bar>
+    <div class="grid gap-200 w-full max-w-8000" data-password-checks></div>
+    <script>
+      function initPasswordStrengthChecker() {
+        // Get the UseCase scope (article and container) for this script
+        const scope = (window as any).getUseCaseScope?.('clear-input-expectations');
+        if (!scope) return;
+
+        const { container } = scope;
+
+        // Scope all queries to the container
+        const passwordInput = container.querySelector('[data-password-input]');
+        const strengthBar = container.querySelector('[data-password-strength-bar]');
+        const strengthText = container.querySelector('[data-password-strength-text]');
+        const checksContainer = container.querySelector('[data-password-checks]');
+
+        if (!passwordInput || !strengthBar || !strengthText || !checksContainer) return;
+
+        // Define password check criteria with labels and icons
+        const passwordChecks = [
+          {
+            id: 'lowercase',
+            label: 'Contains lowercase letter',
+            iconUnchecked: 'mdi/format-letter-case-lower',
+            iconChecked: 'mi/baseline/check-circle',
+            check: (password: string) => /[a-z]/.test(password),
+          },
+          {
+            id: 'uppercase',
+            label: 'Contains uppercase letter',
+            iconUnchecked: 'mdi/format-letter-case-upper',
+            iconChecked: 'mi/baseline/check-circle',
+            check: (password: string) => /[A-Z]/.test(password),
+          },
+          {
+            id: 'number',
+            label: 'Contains number',
+            iconUnchecked: 'mi/baseline/numbers',
+            iconChecked: 'mi/baseline/check-circle',
+            check: (password: string) => /[0-9]/.test(password),
+          },
+          {
+            id: 'special',
+            label: 'Contains special character',
+            iconUnchecked: 'mdi/asterisk',
+            iconChecked: 'mi/baseline/check-circle',
+            check: (password: string) => /[^a-zA-Z0-9]/.test(password),
+          },
+          {
+            id: 'length',
+            label: 'At least 8 characters',
+            iconUnchecked: 'mi/outline/straighten',
+            iconChecked: 'mi/baseline/check-circle',
+            check: (password: string) => password.length >= 8,
+          },
+        ];
+
+        // Initialize check elements
+        function initializeCheckElements() {
+          passwordChecks.forEach((check) => {
+            const checkElement = document.createElement('div');
+            checkElement.className =
+              'flex items-center gap-200 text-tone-neutral-03 fill-tone-neutral-03';
+            checkElement.setAttribute('data-password-check', check.id);
+            checkElement.innerHTML = `
+            <mds-icon name="${check.iconUnchecked}"></mds-icon>
+            <mds-text typography="caption">${check.label}</mds-text>
+          `;
+            checksContainer.appendChild(checkElement);
+          });
+        }
+
+        // Update check element state
+        function updateCheckElement(checkId: string, isValid: boolean) {
+          const checkElement = checksContainer.querySelector(`[data-password-check="${checkId}"]`);
+          if (!checkElement) return;
+
+          const check = passwordChecks.find((c) => c.id === checkId);
+          if (!check) return;
+
+          const icon = checkElement.querySelector('mds-icon');
+          if (icon) {
+            icon.setAttribute('name', isValid ? check.iconChecked : check.iconUnchecked);
+          }
+
+          if (isValid) {
+            checkElement.className =
+              'flex items-center gap-200 text-status-success-05 fill-status-success-05';
+          } else {
+            checkElement.className =
+              'flex items-center gap-200 text-tone-neutral-03 fill-tone-neutral-03';
+          }
+        }
+
+        function calculatePasswordStrength(password: string) {
+          if (!password || password.length === 0) {
+            return {
+              value: 0,
+              variant: 'primary',
+              alias: '',
+              text: 'Strength',
+              checks: passwordChecks.map((check) => ({ id: check.id, isValid: false })),
+            };
+          }
+
+          let strength = 0;
+          const checksResults = passwordChecks.map((check) => {
+            const isValid = check.check(password);
+            if (isValid) strength += 20;
+            return { id: check.id, isValid };
+          });
+
+          // Bonus for longer passwords
+          if (password.length >= 12) strength = Math.min(100, strength + 10);
+          if (password.length >= 16) strength = Math.min(100, strength + 10);
+
+          // Determine variant and text based on strength
+          let variant: string;
+          let text: string;
+          let alias: string;
+
+          if (strength <= 20) {
+            variant = 'error';
+            text = 'Password strengh';
+            alias = 'Very weak';
+          } else if (strength <= 40) {
+            variant = 'error';
+            text = 'Password strengh';
+            alias = 'Weak';
+          } else if (strength <= 60) {
+            variant = 'warning';
+            text = 'Password strengh';
+            alias = 'Fair';
+          } else if (strength <= 80) {
+            variant = 'success';
+            text = 'Password strengh';
+            alias = 'Good';
+          } else {
+            variant = 'info';
+            text = 'Password strengh';
+            alias = 'Strong';
+          }
+
+          return {
+            value: strength,
+            variant,
+            alias,
+            text,
+            checks: checksResults,
+          };
+        }
+
+        function updatePasswordStrength(event?: Event) {
+          // Get password value from web component
+          // Try accessing value property directly, or from event target
+          let password = '';
+          if (event && event.target) {
+            password = (event.target as any).value || '';
+          } else {
+            password = (passwordInput as any).value || '';
+          }
+
+          const strength = calculatePasswordStrength(password);
+
+          // Update strength bar
+          strengthBar.setAttribute('value', String(strength.value));
+          strengthBar.setAttribute('variant', strength.variant);
+          strengthBar.setAttribute('alias', strength.alias);
+          strengthText.textContent = strength.text;
+
+          // Update individual check elements
+          strength.checks.forEach((checkResult) => {
+            updateCheckElement(checkResult.id, checkResult.isValid);
+          });
+        }
+
+        // Initialize check elements
+        initializeCheckElements();
+
+        // Listen to input events
+        passwordInput.addEventListener('input', updatePasswordStrength);
+        passwordInput.addEventListener('change', updatePasswordStrength);
+
+        // Initialize with empty state
+        updatePasswordStrength();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPasswordStrengthChecker);
+      } else {
+        initPasswordStrengthChecker();
+      }
+    </script>
   </UseCaseInteractive>
 </UseCase>

@@ -7,7 +7,136 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Destructive Action Protection"
   description="Potentially harmful actions require additional intent, preventing accidental execution."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Content will be added later -->
+  <UseCaseInteractive clsHeight={316} toggle>
+    <div class="grid gap-400 grid-cols-full w-full relative p-600">
+      <mds-text typography="h6">Notifications</mds-text>
+      <div class="grid gap-400 grid-cols-full">
+        <div class="flex items-center justify-between">
+          <mds-text typography="detail">Notify me when I receive a direct message</mds-text>
+          <mds-input-switch checked></mds-input-switch>
+        </div>
+        <div class="flex items-center justify-between">
+          <mds-text typography="detail">Email messages</mds-text>
+          <mds-input-switch checked></mds-input-switch>
+        </div>
+      </div>
+      <mds-banner headline="Delete account" variant="error" tone="weak">
+        <mds-text typography="detail">
+          Delete your account. This action will permanently delete your account and all your data,
+          including any content you've created, messages received, and any other data associated
+          with your account.
+        </mds-text>
+        <mds-button variant="error" tone="strong" slot="action" data-delete-button
+          >Delete</mds-button
+        >
+      </mds-banner>
+      <div
+        class="items-center justify-center bg-tone-neutral-06/30 absolute inset-0 z-10 rounded-3xl backdrop-blur-sm p-600 flex opacity-0 translate-y-200 pointer-events-none transition-cosmetic"
+        data-confirm-banner
+      >
+        <mds-banner class="w-full max-w-8000" variant="primary" tone="weak">
+          <mds-text typography="detail">
+            Are you sure you want to delete this item? This action <b>cannot be undone</b>.
+          </mds-text>
+          <mds-button variant="dark" tone="weak" slot="action" data-cancel-button>
+            Cancel
+          </mds-button>
+          <mds-button variant="error" tone="strong" slot="action">Confirm deletion</mds-button>
+        </mds-banner>
+      </div>
+    </div>
+
+    <div class="grid gap-400 grid-cols-full w-full p-600">
+      <mds-text typography="h6">Notifications</mds-text>
+      <div class="grid gap-400 grid-cols-full">
+        <div class="flex items-center justify-between">
+          <mds-text typography="detail">Notify me when I receive a direct message</mds-text>
+          <mds-input-switch></mds-input-switch>
+        </div>
+        <div class="flex items-center justify-between">
+          <mds-text typography="detail">Email messages</mds-text>
+          <mds-input-switch></mds-input-switch>
+        </div>
+      </div>
+      <mds-banner headline="Delete account" variant="error" tone="weak">
+        <mds-text typography="detail">
+          Delete your account. This action will permanently delete your account and all your data,
+          including any content you've created, messages received, and any other data associated
+          with your account.
+        </mds-text>
+        <mds-button variant="error" tone="strong" slot="action" data-delete-no-confirm-button
+          >Delete</mds-button
+        >
+      </mds-banner>
+      <div
+        class="items-center justify-center bg-tone-neutral absolute inset-0 z-10 rounded-3xl flex flex-col gap-600 opacity-0 translate-y-200 pointer-events-none transition-cosmetic"
+        data-deleted-account-banner
+      >
+        <mds-text typography="detail">
+          The account has been deleted, you will be logged out of your account.<br />
+          Thank you for using our service.
+        </mds-text>
+        <mds-button data-dismiss-banner>Go to homepage</mds-button>
+      </div>
+    </div>
   </UseCaseInteractive>
 </UseCase>
+
+<script>
+  function initDestructiveActionProtection() {
+    const articleId = 'destructive-action-protection';
+    const scope = (window as any).getUseCaseScope?.(articleId);
+    if (!scope) return;
+
+    const { container } = scope;
+    const deleteButton = container.querySelector('[data-delete-button]');
+    const confirmBanner = container.querySelector('[data-confirm-banner]');
+    const cancelButton = container.querySelector('[data-cancel-button]');
+    const deleteNoConfirmButton = container.querySelector('[data-delete-no-confirm-button]');
+    const deletedAccountBanner = container.querySelector('[data-deleted-account-banner]');
+
+    // Handle first variant (with confirmation)
+    if (deleteButton && confirmBanner) {
+      // Show confirmation banner when Delete is clicked
+      deleteButton.addEventListener('click', () => {
+        confirmBanner.classList.remove('opacity-0');
+        confirmBanner.classList.remove('translate-y-200');
+        confirmBanner.classList.remove('pointer-events-none');
+      });
+
+      // Hide confirmation banner when Cancel is clicked
+      if (cancelButton) {
+        cancelButton.addEventListener('click', () => {
+          confirmBanner.classList.add('opacity-0');
+          confirmBanner.classList.add('translate-y-200');
+          confirmBanner.classList.add('pointer-events-none');
+        });
+      }
+    }
+
+    // Handle second variant (without confirmation - direct deletion)
+    if (deleteNoConfirmButton && deletedAccountBanner) {
+      deleteNoConfirmButton.addEventListener('click', () => {
+        deletedAccountBanner.classList.remove('opacity-0');
+        deletedAccountBanner.classList.remove('translate-y-200');
+        deletedAccountBanner.classList.remove('pointer-events-none');
+      });
+
+      // Hide banner when "Go to homepage" is clicked
+      const dismissButton = deletedAccountBanner.querySelector('[data-dismiss-banner]');
+      if (dismissButton) {
+        dismissButton.addEventListener('click', () => {
+          deletedAccountBanner.classList.add('opacity-0');
+          deletedAccountBanner.classList.add('translate-y-200');
+          deletedAccountBanner.classList.add('pointer-events-none');
+        });
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDestructiveActionProtection);
+  } else {
+    initDestructiveActionProtection();
+  }
+</script>

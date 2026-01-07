@@ -7,7 +7,28 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Clear Affordances"
   description="Elements communicate what actions are possible and which are not, reducing misclicks and misuse."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Content will be added later -->
+  <UseCaseInteractive clsHeight={368}>
+    <div class="grid gap-800 grid-cols-full w-full max-w-8000">
+      <div class="grid gap-400 grid-cols-full">
+        <mds-input-field label="Email" class="w-full max-w-8000 font-info">
+          <mds-input type="email" placeholder="Es: mario.rossi@example.com" required></mds-input>
+        </mds-input-field>
+        <mds-input-field label="Full name" class="w-full max-w-8000 font-info">
+          <mds-input type="email" placeholder="Es: Mario Rossi" value="Mario Rossi" readonly
+          ></mds-input>
+        </mds-input-field>
+        <mds-input-field label="credit card number" class="w-full max-w-8000 font-info">
+          <mds-input
+            type="email"
+            placeholder="Es: 0123 4567 8901 2345"
+            value="0123 4567 8901 2345"
+            disabled></mds-input>
+        </mds-input-field>
+      </div>
+      <div class="grid gap-400">
+        <mds-button variant="primary" tone="weak" disabled>Disabled</mds-button>
+        <mds-button variant="primary" tone="weak">Enabled</mds-button>
+      </div>
+    </div>
   </UseCaseInteractive>
 </UseCase>
