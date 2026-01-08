@@ -8,7 +8,7 @@ const users = usersData.map((user) => ({
   ...user,
   avatar: `${baseUrl}${user.avatar}`,
 }));
-const user = users[0];
+const user = users[1];
 ---
 
 <UseCase
@@ -16,17 +16,22 @@ const user = users[0];
   description="The interface feels like a single, coherent system rather than a collection of disconnected parts."
 >
   <UseCaseInteractive clsHeight={414} label="Separated components which compose complex components">
-    <div class="grid gap-400 grid-cols-full w-full max-w-8000">
-      <mds-icon name="mi/baseline/group" class="justify-self-start"></mds-icon>
-      <mds-badge class="justify-self-start">{user.status}</mds-badge>
-      <mds-avatar class="justify-self-start" src={user.avatar}></mds-avatar>
-      <mds-text typography="h6">{user.name}</mds-text>
-      <mds-text typography="caption">{user.role}</mds-text>
-      <mds-button variant="primary" tone="weak">Button</mds-button>
-      <div class="flex items-center justify-center py-600">
-        <mds-icon name="mi/baseline/arrow-downward"></mds-icon>
+    <div class="grid gap-600 grid-cols-full w-full max-w-8000">
+      <div
+        class="grid gap-400 grid-cols-full p-600 border-solid rounded-3xl border-50 relative animate-pulse-group"
+      >
+        <mds-icon name="mi/baseline/group" class="justify-self-start fill-tone-neutral-03"
+        ></mds-icon>
+        <mds-badge class="justify-self-start">{user.status}</mds-badge>
+        <mds-avatar class="justify-self-start" src={user.avatar}></mds-avatar>
+        <mds-text typography="h6">{user.name}</mds-text>
+        <mds-text typography="caption">{user.role}</mds-text>
+        <mds-button variant="primary" tone="weak">Button</mds-button>
+        <mds-icon
+          class="justify-self-center absolute bottom-0 right-auto left-auto translate-y-[22px]"
+          name="mi/baseline/arrow-downward"></mds-icon>
       </div>
-      <mds-entity icon="mi/baseline/group">
+      <mds-entity icon="mi/baseline/group" initials={user.initials}>
         <mds-text typography="h6">{user.name}</mds-text>
         <mds-badge slot="detail" variant="dark" tone="ghost">{user.status}</mds-badge>
         <mds-text typography="caption" slot="detail">{user.role}</mds-text>
