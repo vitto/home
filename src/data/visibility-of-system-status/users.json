@@ -1,6 +1,7 @@
 [
   {
     "name": "Mario Rossi",
+    "initials": "MR",
     "avatar": "/assets/example-avatar-01.png",
     "role": "Product Manager",
     "email": "mario.rossi@example.com",
@@ -8,6 +9,7 @@
   },
   {
     "name": "Luigi Verdi",
+    "initials": "LV",
     "avatar": "/assets/example-avatar-02.png",
     "role": "UX Designer",
     "email": "luigi.verdi@example.com",
@@ -15,6 +17,7 @@
   },
   {
     "name": "Giulia Crippa",
+    "initials": "GC",
     "avatar": "/assets/example-avatar-03.png",
     "role": "Frontend Developer",
     "email": "giulia.crippa@example.com",
@@ -22,6 +25,7 @@
   },
   {
     "name": "Joan Baez",
+    "initials": "JB",
     "avatar": "/assets/example-avatar-04.png",
     "role": "Backend Developer",
     "email": "joan.baez@example.com",
@@ -29,6 +33,7 @@
   },
   {
     "name": "Jamie Oliver",
+    "initials": "JO",
     "avatar": "/assets/example-avatar-06.png",
     "role": "Product Owner",
     "email": "jamie.oliver@example.com",
