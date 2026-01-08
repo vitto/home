@@ -45,22 +45,6 @@ html {
   }
 }
 
-@layer components {
-  .blink {
-    animation: oneBlink 0.6s forwards;
-  }
-}
-
-@keyframes oneBlink {
-  0%,
-  50% {
-    opacity: 0;
-  }
-  50%,
-  100% {
-    opacity: 1;
-  }
-}
 mds-dropdown mds-button::part(label) {
   flex-grow: 1;
 }
