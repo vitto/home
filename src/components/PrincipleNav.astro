@@ -29,20 +29,20 @@ const nextUrl = nextPrinciple ? `${baseUrl}${sectionPath}/${nextPrinciple.id}` :
 
 <div class="fixed inline-flex bottom-0 left-0 right-0 justify-center pointer-events-none z-20">
   <div
-    class="pointer-events-auto inline-flex justify-center items-center bottom-0 pb-200 gap-400 p-200 nav-outline-strong bg-tone-neutral/80 backdrop-blur rounded-t-[30px]"
+    class="pointer-events-auto inline-flex justify-center items-center bottom-0 gap-400 p-200 nav-outline-strong bg-tone-neutral/80 backdrop-blur rounded-t-[28px]"
   >
     {
       prevUrl ? (
         <Button href={prevUrl} variant="back" title="Go to previous principle" />
       ) : (
-        <div class="w-[84px] shrink-0" />
+        <div class="w-1600 shrink-0" />
       )
     }
     <a
       title="Back to top"
       href="#"
       data-scroll-to-top
-      class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] focus-visible:rotate-[60deg] ease-out-expo transition-transform duration-500 no-underline"
+      class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] hover:translate-y-[4px] focus-visible:rotate-[60deg] focus-visible:translate-y-[4px] ease-out-expo transition-transform duration-500 no-underline"
     >
       <Icon name="vv/logo" class="text-[40px] justify-self-center" />
     </a>
@@ -50,7 +50,7 @@ const nextUrl = nextPrinciple ? `${baseUrl}${sectionPath}/${nextPrinciple.id}` :
       nextUrl ? (
         <Button href={nextUrl} variant="next" title="Go to next principle" />
       ) : (
-        <div class="w-[84px] shrink-0" />
+        <div class="w-1600 shrink-0" />
       )
     }
   </div>
