@@ -7,7 +7,26 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Safe Defaults"
   description="The system preselects options that minimize risk and reflect the most common or least harmful choice."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Content will be added later -->
+  <UseCaseInteractive clsHeight={60} toggle>
+    <mds-entity icon="mi/outline/medical-information" class="w-full max-w-8000">
+      <mds-text typography="h6">Medical Certificate</mds-text>
+      <mds-text slot="detail" typography="caption">3918VW88DX7</mds-text>
+      <mds-button
+        title="Archive certificate"
+        icon="mi/outline/inventory-2"
+        variant="dark"
+        tone="quiet"
+        slot="action"></mds-button>
+    </mds-entity>
+    <mds-entity icon="mi/outline/medical-information" class="w-full max-w-8000">
+      <mds-text typography="h6">Medical Certificate</mds-text>
+      <mds-text slot="detail" typography="caption">3918VW88DX7</mds-text>
+      <mds-button
+        title="Delete certificate"
+        icon="mi/outline/delete"
+        variant="error"
+        tone="quiet"
+        slot="action"></mds-button>
+    </mds-entity>
   </UseCaseInteractive>
 </UseCase>

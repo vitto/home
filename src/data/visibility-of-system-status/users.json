@@ -2,41 +2,51 @@
   {
     "name": "Mario Rossi",
     "initials": "MR",
+    "country": "Italy",
     "avatar": "/assets/example-avatar-01.png",
     "role": "Product Manager",
     "email": "mario.rossi@example.com",
-    "status": "offline"
+    "status": "offline",
+    "medicalCertificate": "3918VW88DX7"
   },
   {
     "name": "Luigi Verdi",
     "initials": "LV",
+    "country": "Italy",
     "avatar": "/assets/example-avatar-02.png",
     "role": "UX Designer",
     "email": "luigi.verdi@example.com",
-    "status": "online"
+    "status": "online",
+    "medicalCertificate": "8766AZ32FG1"
   },
   {
     "name": "Giulia Crippa",
     "initials": "GC",
+    "country": "Italy",
     "avatar": "/assets/example-avatar-03.png",
     "role": "Frontend Developer",
     "email": "giulia.crippa@example.com",
-    "status": "busy"
+    "status": "busy",
+    "medicalCertificate": "1099DD12DG9"
   },
   {
     "name": "Joan Baez",
     "initials": "JB",
+    "country": "USA",
     "avatar": "/assets/example-avatar-04.png",
     "role": "Backend Developer",
     "email": "joan.baez@example.com",
-    "status": "offline"
+    "status": "offline",
+    "medicalCertificate": "2223TY04ZS0"
   },
   {
     "name": "Jamie Oliver",
     "initials": "JO",
+    "country": "UK",
     "avatar": "/assets/example-avatar-06.png",
     "role": "Product Owner",
     "email": "jamie.oliver@example.com",
-    "status": "online"
+    "status": "online",
+    "medicalCertificate": "3334UX15RT2"
   }
 ]

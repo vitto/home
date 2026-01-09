@@ -7,7 +7,9 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Real-Time Validation"
   description="Errors are caught while the user is acting, not after submission, reducing frustration and rework."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Content will be added later -->
+  <UseCaseInteractive clsHeight={298}>
+    <form class="grid gap-600 w-full">
+      <mds-input-upload max-file-size="0.25" max-files="3" accept="image/*"></mds-input-upload>
+    </form>
   </UseCaseInteractive>
 </UseCase>

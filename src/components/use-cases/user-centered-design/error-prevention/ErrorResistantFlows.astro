@@ -1,13 +1,131 @@
 ---
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import usersData from '../../../../data/visibility-of-system-status/users.json';
+const baseUrl = import.meta.env.BASE_URL;
+
+const users = usersData.map((user) => ({
+  ...user,
+  avatar: `${baseUrl}${user.avatar}`,
+}));
+const user = users[0];
 ---
 
 <UseCase
   title="Error-Resistant Flows"
   description="User journeys are designed to reduce the likelihood of mistakes, especially in critical paths."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Content will be added later -->
+  <UseCaseInteractive clsHeight={72}>
+    <!-- Progressive disclosure -->
+    <div class="grid gap-600 w-full max-w-8000">
+      <mds-input-field label="Select your country">
+        <mds-input-select data-country-select>
+          <option value="" disabled selected>Available countries</option>
+          <option value="it">Italy</option>
+          <option value="es">Spain</option>
+        </mds-input-select>
+      </mds-input-field>
+      <!-- Italy: Certificate found -->
+      <div class="hidden gap-600" data-certificate-found>
+        <div class="grid gap-200">
+          <mds-text typography="detail"
+            >Certificate <b class="text-status-success-05">found</b></mds-text
+          >
+          <div class="grid p-200 bg-tone-neutral-09 rounded-xl">
+            <mds-entity icon="mi/outline/medical-information" class="w-full">
+              <mds-text typography="h6">{user.name}</mds-text>
+              <mds-text slot="detail" typography="caption">{user.medicalCertificate}</mds-text>
+            </mds-entity>
+          </div>
+        </div>
+        <mds-button variant="primary" tone="strong">Continue</mds-button>
+      </div>
+      <!-- Spain: Certificate not found -->
+      <div class="hidden gap-600" data-certificate-not-found>
+        <div class="grid gap-200">
+          <mds-text typography="detail"
+            >Certificate <b class="text-status-error-05">not found</b></mds-text
+          >
+          <div class="grid p-400 bg-tone-neutral-09 rounded-xl">
+            <mds-text typography="caption"
+              >Please create a new certificate first to continue.</mds-text
+            >
+          </div>
+        </div>
+        <mds-button variant="primary" tone="weak">Create new certificate</mds-button>
+      </div>
+    </div>
   </UseCaseInteractive>
 </UseCase>
+
+<script>
+  function initCountrySelect() {
+    const articleId = 'error-resistant-flows';
+    const scope = (window as any).getUseCaseScope?.(articleId);
+    if (!scope) return;
+
+    const { container } = scope;
+    const countrySelect = container.querySelector('[data-country-select]');
+    const certificateFound = container.querySelector('[data-certificate-found]');
+    const certificateNotFound = container.querySelector('[data-certificate-not-found]');
+
+    if (!countrySelect || !certificateFound || !certificateNotFound) return;
+
+    // Store references as non-null after the check (using type assertion)
+    const foundEl = certificateFound as HTMLElement;
+    const notFoundEl = certificateNotFound as HTMLElement;
+
+    function handleCountryChange(event: Event) {
+      // Try to get the value from the event target or the web component itself
+      const target = event.target as any;
+      let selectedValue = target?.value || '';
+
+      // If value is not in event target, try getting it from the web component
+      if (!selectedValue && countrySelect) {
+        selectedValue = (countrySelect as any).value || '';
+      }
+
+      // Hide both sections first
+      foundEl.classList.add('hidden');
+      foundEl.classList.remove('grid');
+      notFoundEl.classList.add('hidden');
+      notFoundEl.classList.remove('grid');
+
+      // Show the appropriate section based on selection
+      if (selectedValue === 'it') {
+        foundEl.classList.remove('hidden');
+        foundEl.classList.add('grid');
+      } else if (selectedValue === 'es') {
+        notFoundEl.classList.remove('hidden');
+        notFoundEl.classList.add('grid');
+      }
+    }
+
+    // Listen to change events on the web component
+    // Web components typically bubble change events from their internal elements
+    countrySelect.addEventListener('mdsInputSelectChange', handleCountryChange);
+
+    // Also try to find a select element in case it's in the light DOM
+    // const selectElement = countrySelect.querySelector('select');
+    // if (selectElement) {
+    //   selectElement.addEventListener('change', handleCountryChange);
+    // }
+  }
+
+  // Wait for web components to be defined before initializing
+  function waitForComponents() {
+    if (customElements.get('mds-input-select')) {
+      initCountrySelect();
+    } else {
+      // Wait a bit and try again if components aren't loaded yet
+      setTimeout(waitForComponents, 100);
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForComponents);
+  } else {
+    waitForComponents();
+  }
+</script>
