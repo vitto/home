@@ -27,9 +27,11 @@ const prevUrl = prevPrinciple ? `${baseUrl}${sectionPath}/${prevPrinciple.id}` :
 const nextUrl = nextPrinciple ? `${baseUrl}${sectionPath}/${nextPrinciple.id}` : null;
 ---
 
-<div class="fixed inline-flex bottom-0 left-0 right-0 justify-center pointer-events-none z-20">
+<div
+  class="fixed inline-flex bottom-600 left-0 right-0 justify-center pointer-events-none z-20 animate-intro [animation-delay:2000ms]"
+>
   <div
-    class="pointer-events-auto inline-flex justify-center items-center bottom-0 gap-400 p-200 nav-outline-strong bg-tone-neutral/80 backdrop-blur rounded-t-[28px]"
+    class="pointer-events-auto inline-flex justify-center items-center bottom-0 gap-400 p-200 nav-outline-strong bg-tone-neutral/60 backdrop-blur rounded-full"
   >
     {
       prevUrl ? (
@@ -44,7 +46,7 @@ const nextUrl = nextPrinciple ? `${baseUrl}${sectionPath}/${nextPrinciple.id}` :
       data-scroll-to-top
       class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] hover:translate-y-[4px] focus-visible:rotate-[60deg] focus-visible:translate-y-[4px] ease-out-expo transition-transform duration-500 no-underline"
     >
-      <Icon name="vv/logo" class="text-[40px] justify-self-center" />
+      <Icon name="vv/logo" class="text-tone-neutral-01 text-[40px] justify-self-center" />
     </a>
     {
       nextUrl ? (

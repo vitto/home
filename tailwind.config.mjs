@@ -10,6 +10,7 @@ export default {
         'pulse-more': 'pulseMore 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         blink: 'blink 0.6s forwards',
         'pulse-group': 'pulseGroup 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        intro: 'intro 0.5s cubic-bezier(0.19, 1, 0.22, 1) backwards',
       },
       transitionProperty: {
         cosmetic:
@@ -33,6 +34,10 @@ export default {
         blink: {
           '0%, 50%': { opacity: '0' },
           '50%, 100%': { opacity: '1' },
+        },
+        intro: {
+          '0%': { transform: 'translate(0, 150%)' },
+          '100%': { transform: 'translate(0, 0)' },
         },
       },
     },
