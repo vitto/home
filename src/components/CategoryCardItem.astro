@@ -1,0 +1,51 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  id: string;
+  link: string;
+  icon: string;
+  iconHover: string;
+  title: string;
+  description: string;
+  selected?: boolean;
+  selectedClass?: string;
+  headerIconSelected?: string;
+}
+
+const {
+  id,
+  link,
+  icon,
+  iconHover,
+  title,
+  description,
+  selected = false,
+  selectedClass = '',
+  headerIconSelected = '',
+} = Astro.props;
+---
+
+<a
+  href={link}
+  class={`inline-flex flex-col group no-underline focus-bounce rounded-3xl ${selected ? 'pointer-events-none' : ''}`}
+  data-category-id={id}
+  aria-current={selected ? 'page' : undefined}
+>
+  <div
+    class={`grid auto-rows-min rounded-3xl align-self-start  p-600 group-hover:-translate-y-200 transition ease-out-expo duration-1000 ${selected ? `${selectedClass}` : 'bg-tone-neutral/80 backdrop-blur group-[&:is(:hover,:focus-visible)]:bg-tone-neutral shadow-sm-sharp text-tone-neutral-03 group-hover:dark:border-tone-neutral-01/50 group-focus-visible:dark:border-tone-neutral-01/0 dark:border-solid dark:border-50 dark:border-tone-neutral-01/30'}`}
+  >
+    <div
+      class={`p-200 -translate-x-200 rounded-full inline-flex justify-self-start bg-transparent transition group-[&:is(:hover,:focus-visible)]:-translate-y-200 group-[&:is(:hover,:focus-visible)]:pt-200 ease-out-expo duration-1000 ${iconHover} ${selected ? headerIconSelected : 'color-tone-neutral-03'}`}
+    >
+      <Icon name={icon} />
+    </div>
+    <h2 class="mb-300 text-title-h2 tablet-max:text-title-h3">{title}</h2>
+    <p class="text-info-detail">{description}</p>
+    <div
+      class="mt-600 opacity-0 group-[&:is(:hover,:focus-visible)]:opacity-100 group-[&:is(:hover,:focus-visible)]:translate-y-0 transition translate-y-200 h-600"
+    >
+      <mds-text text="→" animation="yugop" data-category-text={id}></mds-text>
+    </div>
+  </div>
+</a>
