@@ -8,25 +8,150 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   description="The system preselects options that minimize risk and reflect the most common or least harmful choice."
 >
   <UseCaseInteractive clsHeight={60} toggle>
-    <mds-entity icon="mi/outline/medical-information" class="w-full max-w-8000">
+    <mds-entity
+      icon="mi/outline/medical-information"
+      class="w-full max-w-8000"
+      variant="success"
+      tone="weak"
+      data-archive-entity
+    >
       <mds-text typography="h6">Medical Certificate</mds-text>
+      <mds-badge slot="detail" variant="dark" tone="ghost" class="hidden" data-archive-badge
+        >Archived</mds-badge
+      >
       <mds-text slot="detail" typography="caption">3918VW88DX7</mds-text>
       <mds-button
         title="Archive certificate"
         icon="mi/outline/inventory-2"
         variant="dark"
         tone="quiet"
-        slot="action"></mds-button>
+        slot="action"
+        data-archive-button></mds-button>
     </mds-entity>
-    <mds-entity icon="mi/outline/medical-information" class="w-full max-w-8000">
-      <mds-text typography="h6">Medical Certificate</mds-text>
-      <mds-text slot="detail" typography="caption">3918VW88DX7</mds-text>
-      <mds-button
-        title="Delete certificate"
-        icon="mi/outline/delete"
-        variant="error"
-        tone="quiet"
-        slot="action"></mds-button>
-    </mds-entity>
+    <div class="grid gap-200 w-full max-w-8000">
+      <mds-entity
+        icon="mi/outline/medical-information"
+        class="w-full max-w-8000"
+        data-delete-entity
+      >
+        <mds-text typography="h6">Medical Certificate</mds-text>
+        <mds-text slot="detail" typography="caption">3918VW88DX7</mds-text>
+        <mds-button
+          title="Delete certificate"
+          icon="mi/outline/delete"
+          variant="error"
+          tone="quiet"
+          slot="action"
+          data-delete-button></mds-button>
+      </mds-entity>
+      <div
+        class="hidden bg-tone-neutral-09 p-600 py-400 h-1500 rounded-lg text-center"
+        data-delete-success
+      >
+        <mds-text typography="caption">Medical Certificate successfully deleted.</mds-text>
+      </div>
+    </div>
   </UseCaseInteractive>
 </UseCase>
+
+<script>
+  function initArchiveToggle() {
+    const articleId = 'safe-defaults';
+    const scope = (window as any).getUseCaseScope?.(articleId);
+    if (!scope) return;
+
+    const { container } = scope;
+    const archiveButton = container.querySelector('[data-archive-button]');
+    const archiveBadge = container.querySelector('[data-archive-badge]');
+    const archiveEntity = container.querySelector('[data-archive-entity]');
+    if (!archiveButton || !archiveBadge || !archiveEntity) return;
+
+    const buttonEl = archiveButton as HTMLElement;
+    const badgeEl = archiveBadge as HTMLElement;
+    const entityEl = archiveEntity as HTMLElement;
+    let isArchived = false;
+
+    function toggleArchive() {
+      isArchived = !isArchived;
+
+      if (isArchived) {
+        // Show badge and change button to unarchive state
+        badgeEl.classList.remove('hidden');
+        buttonEl.setAttribute('icon', 'mi/outline/undo');
+        buttonEl.setAttribute('title', 'Unarchive certificate');
+        entityEl.setAttribute('tone', 'weak');
+        entityEl.setAttribute('variant', 'warning');
+      } else {
+        // Hide badge and change button to archive state
+        badgeEl.classList.add('hidden');
+        entityEl.setAttribute('variant', 'success');
+        entityEl.setAttribute('tone', 'weak');
+        buttonEl.setAttribute('icon', 'mi/outline/inventory-2');
+        buttonEl.setAttribute('title', 'Archive certificate');
+      }
+    }
+
+    // Listen for click events on the button
+    buttonEl.addEventListener('click', toggleArchive);
+  }
+
+  function initDeleteToggle() {
+    const articleId = 'safe-defaults';
+    const scope = (window as any).getUseCaseScope?.(articleId);
+    if (!scope) return;
+
+    const { container } = scope;
+    const deleteButton = container.querySelector('[data-delete-button]');
+    const deleteEntity = container.querySelector('[data-delete-entity]');
+    const deleteSuccess = container.querySelector('[data-delete-success]');
+
+    if (!deleteButton || !deleteEntity || !deleteSuccess) return;
+
+    const buttonEl = deleteButton as HTMLElement;
+    const entityEl = deleteEntity as HTMLElement;
+    const successEl = deleteSuccess as HTMLElement;
+
+    let rollbackTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    function handleDelete() {
+      // Clear any existing timeout
+      if (rollbackTimeout) {
+        clearTimeout(rollbackTimeout);
+        rollbackTimeout = null;
+      }
+
+      // Toggle: hide entity, show success message
+      entityEl.classList.add('hidden');
+      successEl.classList.remove('hidden');
+
+      // Set timeout to rollback after 2000ms
+      rollbackTimeout = setTimeout(() => {
+        // Rollback: show entity, hide success message
+        entityEl.classList.remove('hidden');
+        successEl.classList.add('hidden');
+        rollbackTimeout = null;
+      }, 2000);
+    }
+
+    // Listen for click events on the delete button
+    buttonEl.addEventListener('click', handleDelete);
+  }
+
+  // Wait for web components to be defined before initializing
+  function waitForComponents() {
+    if (customElements.get('mds-button')) {
+      initArchiveToggle();
+      initDeleteToggle();
+    } else {
+      // Wait a bit and try again if components aren't loaded yet
+      setTimeout(waitForComponents, 100);
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForComponents);
+  } else {
+    waitForComponents();
+  }
+</script>
