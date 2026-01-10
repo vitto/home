@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import PrincipleHeader from '../components/PrincipleHeader.astro';
 import Button from '../components/Button.astro';
 import Icon from '../components/Icon.astro';
+import SectionFooter from '../components/SectionFooter.astro';
 interface Props {
   title: string;
   principle: {
@@ -375,5 +376,6 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
     <div class="h-50 bg-tone-neutral-03"></div>
     <Button href={baseUrl} variant="back" title="Back to Home" class="mr-500" />
   </Section>
+  <SectionFooter />
 </SectionLayout>
 <Footer />

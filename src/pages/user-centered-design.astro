@@ -10,6 +10,7 @@ import Footer from '../components/Footer.astro';
 import Button from '../components/Button.astro';
 import Header from '../components/Header.astro';
 import Icon from '../components/Icon.astro';
+import SectionFooter from '../components/SectionFooter.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -39,8 +40,6 @@ const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompa
       ))
     }
   </Principles>
-  <Section>
-    <Button href={baseUrl} variant="back" title="Back to Home" class="mr-500" />
-  </Section>
+  <SectionFooter />
   <Footer />
 </Layout>

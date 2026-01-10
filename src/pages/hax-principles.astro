@@ -5,11 +5,10 @@ import CategoryFilter from '../components/CategoryFilter.astro';
 import Principles from '../components/Principles.astro';
 import Section from '../components/Section.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import SectionFooter from '../components/SectionFooter.astro';
 import Footer from '../components/Footer.astro';
 import data from '../data/hax-principles.json';
 import Header from '../components/Header.astro';
-import Button from '../components/Button.astro';
-import Icon from '../components/Icon.astro';
 // import Blob from '../components/Blob.astro';
 // import blobConfigs from '../data/blob-configs.json';
 // const blobConfig = blobConfigs['hax-principles'];
@@ -42,8 +41,6 @@ const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompa
       ))
     }
   </Principles>
-  <Section>
-    <Button href={baseUrl} variant="back" title="Back to Home" class="mr-500" />
-  </Section>
+  <SectionFooter />
   <Footer />
 </SectionLayout>
