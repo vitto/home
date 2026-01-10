@@ -1,6 +1,12 @@
 ---
 import Button from './Button.astro';
 import Icon from './Icon.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = 'px-600 desktop:px-1200 pb-3200' } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 
 const socialLinks = [
@@ -25,7 +31,7 @@ const socialLinks = [
 ];
 ---
 
-<footer class="px-600 desktop:px-1200 pb-3200">
+<footer class={className}>
   <div class="max-w-screen-desktop w-full mx-auto text-center grid gap-1200 justify-center">
     <div class="grid gap-200 justify-center">
       <h4 class="text-title-h2 text-tone-neutral-01">Let's Connect</h4>
@@ -41,7 +47,7 @@ const socialLinks = [
             href={link.url}
             target={link.url.startsWith('http') ? '_blank' : undefined}
             rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-            class="relative group no-underline inline-flex max-w-4000 basis-0 grow focus-bounce rounded-lg p-400 py-600 bg-tone-neutral/60 hover:bg-tone-neutral backdrop-blur"
+            class="relative group no-underline inline-flex max-w-4000 basis-0 grow focus-bounce rounded-lg p-400 py-600 mobile:p-200 mobile:py-400 bg-tone-neutral/60 hover:bg-tone-neutral backdrop-blur"
           >
             <div class="text-center flex flex-col items-center gap-200 transition w-full group-[&:is(:hover,:focus-visible)]:-translate-y-200 ease-out-expo duration-1000">
               <div

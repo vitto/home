@@ -1,11 +1,9 @@
 .header-nav {
   @apply duration-500
-    mobile:ease-in-out-quart
-    ease-out-expo
+    ease-in-out-quart
     bottom-0
     fixed
     flex-col
-    gap-400
     h-full
     items-start
     justify-start
@@ -13,33 +11,43 @@
     left-0
     overflow-y-auto
     right-0
-    py-600
+    p-600
     top-0
     w-full
     z-10
     bg-transparent
+    mobile:py-0
+    mobile:pr-0
     transition-cosmetic;
 
   &.header-nav--opened {
-    @apply bg-tone-neutral-01/20
-    mobile:bg-tone-neutral-01/80
-    pointer-events-auto
-    px-600;
+    @apply bg-tone-neutral-01/80
+    dark:bg-tone-neutral/80
+    pointer-events-auto;
   }
 }
 
 .header-nav-menu {
   @apply duration-500
-  mobile:ease-in-out-quart
-  ease-out-expo
+  auto-rows-min
+  bg-tone-neutral
+  col-start-2
+  ease-in-out-quart
+  gap-600
+  grid
+  h-full
   justify-self-end
-  mobile:scale-100
   opacity-0
-  p-600
-  scale-50
   origin-right
+  dark:border-50
+  dark:border-solid
+  dark:border-tone-neutral-08
+  p-600
+  rounded-2xl
+  mobile:rounded-none
   transition-cosmetic
-  mobile:translate-x-full;
+  translate-x-full
+  w-full;
 
   &.header-nav-menu--opened {
     @apply translate-x-0

@@ -1,6 +1,8 @@
 ---
 import Button from './Button.astro';
 import Icon from './Icon.astro';
+import CategoryCardItem from './CategoryCardItem.astro';
+import Footer from './Footer.astro';
 import categoriesData from '../data/categories.json';
 import personalData from '../data/personal.json';
 
@@ -11,7 +13,7 @@ interface Props {
     icon: string;
     button: string;
     current: number;
-    buttonSelected?: string;
+    headerSelected?: string;
   }>;
   menu?: boolean;
 }
@@ -22,19 +24,13 @@ const baseUrl = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname;
 const currentSection = categoriesData.find((category) => currentPath.includes(category.path));
 
-// Map categories data to header items format
-const defaultItems = categoriesData.map((category) => {
-  const isCurrentSection = currentSection?.id === category.id;
-  return {
-    href: `${baseUrl}${category.path}`,
-    icon: category.icon,
-    label: category.title,
-    current: isCurrentSection ? -1 : 0,
-    button: isCurrentSection ? category.buttonSelected : category.button,
-  };
-});
+// Map categories data with full link URLs for CategoryCardItem
+const categories = categoriesData.map((category) => ({
+  ...category,
+  link: `${baseUrl}${category.path}`,
+}));
 
-const { items = defaultItems, menu = true } = Astro.props;
+const { menu = true } = Astro.props;
 ---
 
 <div>
@@ -65,42 +61,46 @@ const { items = defaultItems, menu = true } = Astro.props;
           >
             <Icon class="mobile:text-[32px]" name="mi/outline/menu" />
           </Button>
-          <div
-            class="header-nav grid grid-cols-[1fr_auto] tablet:grid-cols-[1fr_768px_1fr]"
-            data-header-nav
-          >
-            <nav
-              class="header-nav-menu col-start-2 grid grid-cols-fill gap-400 bg-tone-neutral rounded-2xl py-600"
-              data-header-nav-menu
-            >
-              <div class="mobile:grid hidden">
-                <h2 class="text-title-h3">
-                  Vittori<span class="inline-block animate-pulse-more">o</span>
-                </h2>
-                <p class="text-info-tip">{personalData.role}</p>
+          <div class="header-nav grid grid-cols-[48px_auto] tablet:grid-cols-2" data-header-nav>
+            <nav class="header-nav-menu grid-cols-fill" data-header-nav-menu>
+              <div class="flex items-center justify-between">
+                <div class="grid">
+                  <h2 class="text-title-h3">
+                    Vittori<span class="inline-block animate-pulse-more">o</span>
+                  </h2>
+                  <p class="text-info-tip">{personalData.role}</p>
+                </div>
+                <Button title="Back to Home" href={baseUrl} variant="back" icon="mi/outline/home" />
               </div>
-              <div class="h-50 bg-tone-neutral-03 w-full mobile:inline-flex hidden" />
-              {items.map((item) => (
-                <Button
-                  href={item.href}
-                  class={item.button}
-                  justify="justify-start"
-                  tabIndex={item.current}
-                >
-                  <Icon name={item.icon} />
-                  {item.label}
-                </Button>
-              ))}
+              <div class="h-50 bg-tone-neutral-03 w-full flex" />
+              <div class="grid gap-400 grid-cols-fit-lg mobile:grid-cols-full">
+                {categories.map((category) => {
+                  const isSelected = currentSection?.id === category.id;
+                  return (
+                    <CategoryCardItem
+                      id={category.id}
+                      link={category.link}
+                      icon={category.icon}
+                      iconHover={category.iconHover}
+                      title={category.title}
+                      description={category.description}
+                      selected={isSelected}
+                      headerIconSelected={isSelected ? category.headerIconSelected : ''}
+                      selectedClass={isSelected ? category.headerSelected : ''}
+                    />
+                  );
+                })}
+              </div>
               <div class="h-50 bg-tone-neutral-03 w-full" />
-              <mds-pref>
-                <mds-pref-theme />
-                <mds-pref-contrast />
-                <mds-pref-animation />
-              </mds-pref>
-              <Button href={baseUrl} variant="outline" class="w-full">
-                <Icon name="mi/baseline/arrow-back" />
-                Back to Home
-              </Button>
+              <div class="inline-flex">
+                <mds-pref class="max-w-8000 w-full">
+                  <mds-pref-theme />
+                  {/* <mds-pref-contrast /> */}
+                  {/* <mds-pref-animation /> */}
+                </mds-pref>
+              </div>
+              <div class="h-50 bg-tone-neutral-03 w-full" />
+              <Footer class="py-600" />
             </nav>
           </div>
         </>
