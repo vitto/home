@@ -64,6 +64,12 @@ const nextUrl = nextPrinciple ? `${baseUrl}${sectionPath}/${nextPrinciple.id}` :
 
     scrollToTopButton.addEventListener('click', (e) => {
       e.preventDefault();
+
+      // Remove hash from URL if present
+      if (window.location.hash) {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
