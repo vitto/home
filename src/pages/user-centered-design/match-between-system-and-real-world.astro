@@ -1,0 +1,39 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/user-centered-design.json';
+import FamiliarLanguage from '../../components/use-cases/user-centered-design/match-between-system-and-real-world/FamiliarLanguage.astro';
+import RealWorldMetaphors from '../../components/use-cases/user-centered-design/match-between-system-and-real-world/RealWorldMetaphors.astro';
+import NaturalMapping from '../../components/use-cases/user-centered-design/match-between-system-and-real-world/NaturalMapping.astro';
+import DomainAlignedConcepts from '../../components/use-cases/user-centered-design/match-between-system-and-real-world/DomainAlignedConcepts.astro';
+import LogicalInformationOrder from '../../components/use-cases/user-centered-design/match-between-system-and-real-world/LogicalInformationOrder.astro';
+import MeaningfulFeedback from '../../components/use-cases/user-centered-design/match-between-system-and-real-world/MeaningfulFeedback.astro';
+import HumanTimeAndUnits from '../../components/use-cases/user-centered-design/match-between-system-and-real-world/HumanTimeAndUnits.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+
+const principle = data.principles.find((p) => p.id === 'match-between-system-and-real-world')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/user-centered-design';
+const sectionName = 'User-Centered Design';
+---
+
+<UseCaseLayout
+  title={`${principle.title} / ${sectionName}`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath={sectionPath}
+>
+  <DomainAlignedConcepts />
+  <FamiliarLanguage />
+  <HumanTimeAndUnits />
+  <LogicalInformationOrder />
+  <MeaningfulFeedback />
+  <NaturalMapping />
+  <RealWorldMetaphors />
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>

@@ -1,0 +1,22 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import CreditCard from '../../CreditCard.astro';
+---
+
+<UseCase
+  title="Domain-Aligned Concepts"
+  description="The system reflects the user's mental model of the domain, not the internal system model."
+>
+  <UseCaseInteractive clsHeight={0} toggle>
+    <div class="w-full max-w-8000 grid gap-600">
+      <mds-text>Wallet</mds-text>
+      <mds-text>Credit Cards</mds-text>
+      <div class="grid gap-600 auto-rows-min min-h-6400 bg-tone-slate-04">
+        <CreditCard cardNumber="4875 5478 4474 4485" />
+        <CreditCard cardNumber="4875 5478 4474 4485" backgroundColor="bg-label-green-05" />
+      </div>
+    </div>
+    <div>dos</div>
+  </UseCaseInteractive>
+</UseCase>

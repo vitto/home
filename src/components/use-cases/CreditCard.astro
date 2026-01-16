@@ -1,0 +1,47 @@
+---
+import Icon from '../Icon.astro';
+
+interface Props {
+  cardNumber: string;
+  backgroundColor?: string;
+  icon?: string;
+  class?: string;
+}
+
+const {
+  cardNumber,
+  backgroundColor = 'bg-label-amaranth-05',
+  icon = 'mi/outline/credit-card',
+  class: className = '',
+} = Astro.props;
+---
+
+<div
+  class={`[&:not(:last-child)]:h-1200 relative [&:not(:last-child)]:hover:h-4400 flex transition-all duration-300 ${className}`}
+>
+  <div
+    class={`credit-card text-center absolute top-0 left-0 right-0 flex flex-col gap-200 rounded-3xl ${backgroundColor} w-full p-600 justify-between items-start ${className}`}
+  >
+    <div class="flex gap-400 items-center">
+      <mds-icon name={icon} class="w-800 h-800 fill-tone-neutral/60"></mds-icon>
+      <mds-text typography="h6" class="text-tone-neutral">VISA</mds-text>
+    </div>
+    <mds-text typography="snippet" class="cc-number text-tone-neutral bg-transparent shadow-none">
+      <b>{cardNumber}</b>
+    </mds-text>
+  </div>
+</div>
+
+<style>
+  .credit-card {
+    aspect-ratio: 16/9;
+    corner-shape: squircle;
+    box-shadow: 0 -2px 0 1px rgb(0 0 0 / 0.05);
+    border-top: 2px solid rgb(255 255 255 / 0.25);
+
+    .cc-number {
+      font-size: 1.25rem;
+      text-shadow: 0 2px rgb(0 0 0 / 0.25);
+    }
+  }
+</style>

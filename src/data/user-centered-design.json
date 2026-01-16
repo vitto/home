@@ -20,7 +20,7 @@
     },
     {
       "id": "match-between-system-and-real-world",
-      "draft": true,
+      "draft": false,
       "title": "Match Between the System and the Real World",
       "category": "Cognitive load",
       "icon": "mi/outline/language",
