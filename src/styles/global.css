@@ -56,6 +56,8 @@ mds-badge[tone='ghost'][variant='dark'] {
 
 mds-input-switch[data-toggle-switch] {
   --mds-input-switch-box-color-enabled-checked: rgb(var(--tone-neutral-04));
+  --mds-input-switch-icon-color-checked: rgb(var(--status-success-05));
+  --mds-input-switch-icon-color-unchecked: rgb(var(--status-error-05));
 }
 
 mds-button,

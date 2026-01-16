@@ -5,6 +5,7 @@ interface Props {
   cardNumber: string;
   backgroundColor?: string;
   icon?: string;
+  name?: string;
   class?: string;
 }
 
@@ -12,24 +13,24 @@ const {
   cardNumber,
   backgroundColor = 'bg-label-amaranth-05',
   icon = 'mi/outline/credit-card',
+  name = 'VISA',
   class: className = '',
 } = Astro.props;
 ---
 
 <div
-  class={`[&:not(:last-child)]:h-1200 relative [&:not(:last-child)]:hover:h-4400 flex transition-all duration-300 ${className}`}
+  class={`[&:not(:last-child)]:-mb-3200 [&:hover:not(:last-child)]:-translate-y-200 duration-300 transition-transform credit-card text-center flex flex-col gap-200 relative rounded-3xl ${backgroundColor} w-full p-600 pt-400 justify-between items-start min-w-0 ${className}`}
 >
-  <div
-    class={`credit-card text-center absolute top-0 left-0 right-0 flex flex-col gap-200 rounded-3xl ${backgroundColor} w-full p-600 justify-between items-start ${className}`}
-  >
-    <div class="flex gap-400 items-center">
-      <mds-icon name={icon} class="w-800 h-800 fill-tone-neutral/60"></mds-icon>
-      <mds-text typography="h6" class="text-tone-neutral">VISA</mds-text>
-    </div>
-    <mds-text typography="snippet" class="cc-number text-tone-neutral bg-transparent shadow-none">
-      <b>{cardNumber}</b>
-    </mds-text>
+  <div class="flex gap-400 items-center">
+    <mds-icon name={icon} class="w-800 h-800 fill-tone-neutral/60"></mds-icon>
+    <mds-text typography="h6" class="text-tone-neutral dark:text-tone-neutral-01">{name}</mds-text>
   </div>
+  <mds-text
+    typography="snippet"
+    class="cc-number text-tone-neutral dark:text-tone-neutral-01 bg-transparent shadow-none"
+  >
+    <b>{cardNumber}</b>
+  </mds-text>
 </div>
 
 <style>
@@ -38,6 +39,7 @@ const {
     corner-shape: squircle;
     box-shadow: 0 -2px 0 1px rgb(0 0 0 / 0.05);
     border-top: 2px solid rgb(255 255 255 / 0.25);
+    border-bottom: 3px solid rgb(0 0 0 / 0.15);
 
     .cc-number {
       font-size: 1.25rem;

@@ -8,15 +8,56 @@ import CreditCard from '../../CreditCard.astro';
   title="Domain-Aligned Concepts"
   description="The system reflects the user's mental model of the domain, not the internal system model."
 >
-  <UseCaseInteractive clsHeight={0} toggle>
+  <UseCaseInteractive clsHeight={461} toggle>
     <div class="w-full max-w-8000 grid gap-600">
-      <mds-text>Wallet</mds-text>
-      <mds-text>Credit Cards</mds-text>
-      <div class="grid gap-600 auto-rows-min min-h-6400 bg-tone-slate-04">
-        <CreditCard cardNumber="4875 5478 4474 4485" />
-        <CreditCard cardNumber="4875 5478 4474 4485" backgroundColor="bg-label-green-05" />
+      <mds-text typography="h3">Wallet</mds-text>
+      <mds-text typography="h5">Credit Cards</mds-text>
+      <div class="grid gap-200 auto-rows-min bg-tone-slate-09 p-200 rounded-3xl">
+        <CreditCard
+          cardNumber="4875 5478 4474 4485"
+          icon="mi/outline/pets"
+          name="MonsterCard"
+          backgroundColor="bg-label-orange-05"
+        />
+        <CreditCard
+          cardNumber="4875 5478 4474 4485"
+          name="GRANA"
+          icon="mi/outline/toll"
+          backgroundColor="bg-label-green-05"
+        />
+        <CreditCard
+          cardNumber="4875 5478 4474 4485"
+          name="European Express"
+          icon="mi/outline/euro"
+          backgroundColor="bg-label-sky-05"
+        />
       </div>
+      <mds-button>Send money</mds-button>
     </div>
-    <div>dos</div>
+    <div class="w-full max-w-8000 grid gap-600">
+      <mds-text typography="h3">Money Assets</mds-text>
+      <mds-text typography="h5">Payment Resources</mds-text>
+      <div class="grid gap-200 auto-rows-min bg-tone-slate-09 p-200 rounded-3xl">
+        <CreditCard
+          cardNumber="4875 5478 4474 4485"
+          icon="mi/outline/pets"
+          name="MonsterCard"
+          backgroundColor="bg-label-orange-05"
+        />
+        <CreditCard
+          cardNumber="4875 5478 4474 4485"
+          name="GRANA"
+          icon="mi/outline/toll"
+          backgroundColor="bg-label-green-05"
+        />
+        <CreditCard
+          cardNumber="4875 5478 4474 4485"
+          name="European Express"
+          icon="mi/outline/euro"
+          backgroundColor="bg-label-sky-05"
+        />
+      </div>
+      <mds-button>Start payment pipeline</mds-button>
+    </div>
   </UseCaseInteractive>
 </UseCase>
