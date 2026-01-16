@@ -16,6 +16,7 @@ import Badge from './Badge.astro';
  * @param {string} color - Color theme (e.g., "status-success", "label-blue")
  * @param {string} href - Link URL to the use case page
  * @param {string} class - Additional CSS classes
+ * @param {boolean} draft - Whether the principle is a draft
  */
 
 interface Props {
@@ -27,6 +28,7 @@ interface Props {
   color: string;
   href: string;
   class?: string;
+  draft?: boolean;
 }
 
 const {
@@ -77,7 +79,7 @@ const categoryColorClass = colorClasses[color] || 'bg-tone-neutral-09 text-tone-
 
 <a
   href={href}
-  class={`group inline-flex flex-col no-underline focus-bounce rounded-3xl ${className}`}
+  class={`inline-flex group flex-col no-underline focus-bounce rounded-3xl ${className}`}
   data-principle-id={id}
   data-category={category}
 >

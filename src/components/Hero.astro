@@ -2,6 +2,7 @@
 // import DisplacedSphere from './DisplacedSphere.astro';
 import Icon from './Icon.astro';
 import Button from './Button.astro';
+import HeaderMenu from './HeaderMenu.astro';
 import personalData from '../data/personal.json';
 // Get base URL from Astro config
 const baseUrl = import.meta.env.BASE_URL;
@@ -9,9 +10,14 @@ const baseUrl = import.meta.env.BASE_URL;
 
 <section class="flex items-start justify-center px-400 relative overflow-hidden z-20">
   <div
-    class="max-w-screen-desktop text-shadow w-full mx-auto p-600 py-1200 relative z-10 text-tone-neutral text-center grid gap-400"
+    class="max-w-screen-desktop w-full mx-auto p-600 py-1200 relative z-10 text-tone-neutral text-center grid gap-400"
   >
-    <div class="grid">
+    <div class="absolute top-600 right-0">
+      <HeaderMenu
+        iconColor="text-tone-neutral group-hover:text-tone-neutral-01 group-focus-visible:text-tone-neutral-01"
+      />
+    </div>
+    <div class="grid text-shadow">
       <Icon name="vv/logo" class="text-[144px] justify-self-center vv-logo transition-cosmetic" />
       <h1 class="text-title-h1 vittori-o">
         Vittori<span class="inline-block animate-pulse-more">o</span>

@@ -28,17 +28,21 @@ const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompa
   </Section>
   <Principles>
     {
-      sortedPrinciples.map((principle) => (
-        <PrincipleCard
-          id={principle.id}
-          title={principle.title}
-          description={principle.description}
-          category={principle.category}
-          icon={principle.icon}
-          color={data.categoryColors[principle.category as keyof typeof data.categoryColors] || ''}
-          href={`${baseUrl}/hax-principles/${principle.id}`}
-        />
-      ))
+      sortedPrinciples
+        .filter((principle) => !(principle as any).draft)
+        .map((principle) => (
+          <PrincipleCard
+            id={principle.id}
+            title={principle.title}
+            description={principle.description}
+            category={principle.category}
+            icon={principle.icon}
+            color={
+              data.categoryColors[principle.category as keyof typeof data.categoryColors] || ''
+            }
+            href={`${baseUrl}/hax-principles/${principle.id}`}
+          />
+        ))
     }
   </Principles>
   <SectionFooter />

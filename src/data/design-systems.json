@@ -12,6 +12,7 @@
   "principles": [
     {
       "id": "single-source-of-truth",
+      "draft": true,
       "title": "Single Source of Truth",
       "category": "Architecture",
       "icon": "mi/outline/account-balance",
@@ -19,6 +20,7 @@
     },
     {
       "id": "separation-of-semantics-and-presentation",
+      "draft": true,
       "title": "Separation of Semantics and Presentation",
       "category": "Architecture",
       "icon": "mi/outline/layers",
@@ -26,6 +28,7 @@
     },
     {
       "id": "scalability",
+      "draft": true,
       "title": "Scalability",
       "category": "Architecture",
       "icon": "mi/outline/trending-up",
@@ -33,6 +36,7 @@
     },
     {
       "id": "behavioral-consistency",
+      "draft": true,
       "title": "Behavioral Consistency",
       "category": "Component Design",
       "icon": "mi/outline/psychology",
@@ -40,6 +44,7 @@
     },
     {
       "id": "composition-over-configuration",
+      "draft": true,
       "title": "Composition Over Configuration",
       "category": "Component Design",
       "icon": "mi/outline/widgets",
@@ -47,6 +52,7 @@
     },
     {
       "id": "api-stability-and-versioning",
+      "draft": true,
       "title": "Stability API and Aware Versioning",
       "category": "Maintenance",
       "icon": "mi/outline/update",
@@ -54,6 +60,7 @@
     },
     {
       "id": "clear-governance",
+      "draft": true,
       "title": "Clear Governance",
       "category": "Maintenance",
       "icon": "mi/outline/gavel",
@@ -61,6 +68,7 @@
     },
     {
       "id": "documentation-as-primary-interface",
+      "draft": true,
       "title": "Documentation as a Primary Interface",
       "category": "Adoption",
       "icon": "mi/outline/menu-book",
@@ -68,6 +76,7 @@
     },
     {
       "id": "accessibility-as-structural-requirement",
+      "draft": true,
       "title": "Accessibility as a Structural Requirement",
       "category": "Adoption",
       "icon": "mi/outline/accessibility-new",
@@ -75,6 +84,7 @@
     },
     {
       "id": "measurable-impact",
+      "draft": true,
       "title": "Measurable Impact",
       "category": "Value",
       "icon": "mi/outline/assessment",

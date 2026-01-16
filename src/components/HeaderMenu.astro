@@ -1,0 +1,127 @@
+---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import CategoryCardItem from './CategoryCardItem.astro';
+import Footer from './Footer.astro';
+import categoriesData from '../data/categories.json';
+import personalData from '../data/personal.json';
+
+interface Props {
+  iconColor?: string;
+}
+
+const { iconColor = 'text-tone-neutral-03' } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+
+// Determine current section from URL pathname
+const currentPath = Astro.url.pathname;
+const currentSection = categoriesData.find((category) => currentPath.includes(category.path));
+
+// Map categories data with full link URLs for CategoryCardItem
+const categories = categoriesData.map((category) => ({
+  ...category,
+  link: `${baseUrl}${category.path}`,
+}));
+---
+
+<Button
+  data-menu-toggle
+  title="Toggle menu"
+  variant="light"
+  class="inline-flex group focus-bounce rounded-2xl shrink-0 no-underline bg-transparent border-none cursor-pointer size-1200"
+>
+  <Icon class={`mobile:text-[32px] transition-colors ${iconColor}`} name="mi/outline/menu" />
+</Button>
+<div class="header-nav grid grid-cols-[48px_auto] tablet:grid-cols-2 text-left" data-header-nav>
+  <nav class="header-nav-menu grid-cols-fill" data-header-nav-menu>
+    <div class="flex items-center justify-between">
+      <div class="grid text-tone-neutral-03">
+        <h2 class="text-title-h3">
+          Vittori<span class="inline-block animate-pulse-more">o</span>
+        </h2>
+        <p class="text-info-tip">{personalData.role}</p>
+      </div>
+      <Button title="Back to Home" href={baseUrl} variant="back" icon="mi/outline/home" />
+    </div>
+    <div class="h-50 bg-tone-neutral-03 w-full flex"></div>
+    <div class="grid gap-400 grid-cols-fit-lg mobile:grid-cols-full">
+      {
+        categories.map((category) => {
+          const isSelected = currentSection?.id === category.id;
+          return (
+            <CategoryCardItem
+              id={category.id}
+              link={category.link}
+              icon={category.icon}
+              iconHover={category.iconHover}
+              title={category.title}
+              description={category.description}
+              selected={isSelected}
+              headerIconSelected={isSelected ? category.headerIconSelected : ''}
+              selectedClass={isSelected ? category.headerSelected : ''}
+            />
+          );
+        })
+      }
+    </div>
+    <div class="h-50 bg-tone-neutral-03 w-full"></div>
+    <div class="inline-flex">
+      <mds-pref class="max-w-8000 w-full">
+        <mds-pref-theme></mds-pref-theme>
+        {/* <mds-pref-contrast /> */}
+        {/* <mds-pref-animation /> */}
+      </mds-pref>
+    </div>
+    <div class="h-50 bg-tone-neutral-03 w-full"></div>
+    <Footer class="py-600" />
+  </nav>
+</div>
+
+<script>
+  function initHeaderMenu() {
+    const menuToggle = document.querySelector('[data-menu-toggle]');
+    const headerNav = document.querySelector('[data-header-nav]');
+    const headerNavMenu = document.querySelector('[data-header-nav-menu]');
+
+    if (!menuToggle || !headerNav || !headerNavMenu) return;
+
+    const openMenu = () => {
+      headerNav.classList.add('header-nav--opened');
+      headerNavMenu.classList.add('header-nav-menu--opened');
+    };
+
+    const closeMenu = () => {
+      headerNav.classList.remove('header-nav--opened');
+      headerNavMenu.classList.remove('header-nav-menu--opened');
+    };
+
+    const toggleMenu = () => {
+      const isOpen = headerNav.classList.contains('header-nav--opened');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    };
+
+    // Toggle menu on button click
+    menuToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleMenu();
+    });
+
+    // Close menu when clicking on header-nav (but not on the menu itself)
+    headerNav.addEventListener('click', (e) => {
+      // Only close if clicking directly on header-nav, not on children
+      if (e.target === headerNav) {
+        closeMenu();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeaderMenu);
+  } else {
+    initHeaderMenu();
+  }
+</script>

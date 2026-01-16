@@ -12,6 +12,7 @@
   "principles": [
     {
       "id": "visibility-of-system-status",
+      "draft": false,
       "title": "Visibility of System Status",
       "category": "Cognitive load",
       "icon": "mi/outline/visibility",
@@ -19,6 +20,7 @@
     },
     {
       "id": "match-between-system-and-real-world",
+      "draft": true,
       "title": "Match Between the System and the Real World",
       "category": "Cognitive load",
       "icon": "mi/outline/language",
@@ -26,6 +28,7 @@
     },
     {
       "id": "user-control-and-freedom",
+      "draft": true,
       "title": "User Control and Freedom",
       "category": "Control",
       "icon": "mi/outline/exit-to-app",
@@ -33,6 +36,7 @@
     },
     {
       "id": "consistency-and-standards",
+      "draft": false,
       "title": "Consistency and Standards",
       "category": "Predictability",
       "icon": "mi/outline/rule",
@@ -40,6 +44,7 @@
     },
     {
       "id": "error-prevention",
+      "draft": false,
       "title": "Error Prevention",
       "category": "Error handling",
       "icon": "mi/outline/shield",
@@ -47,6 +52,7 @@
     },
     {
       "id": "recognition-rather-than-recall",
+      "draft": true,
       "title": "Recognition Rather than Recall",
       "category": "Cognitive load",
       "icon": "mi/outline/lightbulb",
@@ -54,6 +60,7 @@
     },
     {
       "id": "flexibility-and-efficiency-of-use",
+      "draft": true,
       "title": "Flexibility and Efficiency of Use",
       "category": "Control",
       "icon": "mi/outline/tune",
@@ -61,6 +68,7 @@
     },
     {
       "id": "aesthetic-and-minimalist-design",
+      "draft": false,
       "title": "Aesthetic and Minimalist Design",
       "category": "Cognitive load",
       "icon": "mi/outline/brush",
@@ -68,6 +76,7 @@
     },
     {
       "id": "help-users-recognize-diagnose-and-recover-from-errors",
+      "draft": true,
       "title": "Help Users Recognize, Diagnose, and Recover from Errors",
       "category": "Error handling",
       "icon": "mi/outline/error-outline",
@@ -75,6 +84,7 @@
     },
     {
       "id": "help-and-documentation",
+      "draft": true,
       "title": "Help and Documentation",
       "category": "Support",
       "icon": "mi/outline/help-outline",
