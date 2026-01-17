@@ -7,7 +7,81 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Meaningful Feedback"
   description="System responses are expressed in terms of real-world outcomes, not abstract system states."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+  <UseCaseInteractive clsHeight={36} toggle>
+    <div class="grid gap-600 w-full max-w-8000">
+      <mds-button class="w-full" data-example-1-button>Send Email</mds-button>
+    </div>
+    <div class="grid gap-600 w-full max-w-8000">
+      <mds-button class="w-full" data-example-2-button>Process Request</mds-button>
+    </div>
+    <script>
+      function initMeaningfulFeedback() {
+        const articleId = 'meaningful-feedback';
+        const scope = (window as any).getUseCaseScope?.(articleId);
+        if (!scope) return;
+
+        const { container } = scope;
+
+        // Example 1: Real-world outcome feedback
+        const example1Button = container.querySelector('[data-example-1-button]');
+        if (example1Button) {
+          let isProcessing1 = false;
+
+          example1Button.addEventListener('click', () => {
+            if (isProcessing1) return;
+
+            isProcessing1 = true;
+            example1Button.textContent = 'Email sent successfully';
+            example1Button.classList.add('pointer-events-none');
+            example1Button.setAttribute('tabindex', '-1');
+            example1Button.blur();
+            example1Button.setAttribute('icon', 'mi/baseline/done');
+            example1Button.setAttribute('variant', 'success');
+
+            setTimeout(() => {
+              example1Button.textContent = 'Send Email';
+              example1Button.classList.remove('pointer-events-none');
+              example1Button.removeAttribute('icon');
+              example1Button.setAttribute('tabindex', '0');
+              example1Button.setAttribute('variant', 'primary');
+              isProcessing1 = false;
+            }, 2000);
+          });
+        }
+
+        // Example 2: Abstract system state feedback
+        const example2Button = container.querySelector('[data-example-2-button]');
+        if (example2Button) {
+          let isProcessing2 = false;
+
+          example2Button.addEventListener('click', () => {
+            if (isProcessing2) return;
+
+            isProcessing2 = true;
+            example2Button.textContent = 'SMTP operation succeeded';
+            example2Button.classList.add('pointer-events-none');
+            example2Button.setAttribute('tabindex', '-1');
+            example2Button.blur();
+            example2Button.setAttribute('icon', 'mi/baseline/done');
+            example2Button.setAttribute('variant', 'success');
+
+            setTimeout(() => {
+              example2Button.textContent = 'Process Request';
+              example2Button.classList.remove('pointer-events-none');
+              example2Button.removeAttribute('icon');
+              example2Button.setAttribute('tabindex', '0');
+              example2Button.setAttribute('variant', 'primary');
+              isProcessing2 = false;
+            }, 2000);
+          });
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMeaningfulFeedback);
+      } else {
+        initMeaningfulFeedback();
+      }
+    </script>
   </UseCaseInteractive>
 </UseCase>

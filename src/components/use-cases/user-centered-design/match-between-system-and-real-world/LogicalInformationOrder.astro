@@ -8,6 +8,21 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   description="Information is presented in a sequence that feels natural and expected."
 >
   <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+    <div class="grid gap-600 grid-cols-fit-md w-full">
+      <mds-usage variant="do">
+        <mds-text typography="h6">John Doe</mds-text>
+        <mds-text typography="h6">1234 Elm Street, Apt 5B</mds-text>
+        <mds-text typography="h6">Springfield, IL 62704</mds-text>
+        <mds-text typography="h6">United States</mds-text>
+        <mds-text typography="h6">Phone: +1 217-555-0198</mds-text>
+      </mds-usage>
+      <mds-usage variant="dont">
+        <mds-text typography="h6">1234 Elm Street, Apt 5B</mds-text>
+        <mds-text typography="h6">John Doe</mds-text>
+        <mds-text typography="h6">Phone: +1 217-555-0198</mds-text>
+        <mds-text typography="h6">Springfield, IL 62704</mds-text>
+        <mds-text typography="h6">United States</mds-text>
+      </mds-usage>
+    </div>
   </UseCaseInteractive>
 </UseCase>
