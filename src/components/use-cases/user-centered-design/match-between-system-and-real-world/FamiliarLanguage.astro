@@ -7,7 +7,22 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Familiar Language"
   description="The system uses words, phrases, and concepts that are familiar to users, avoiding technical or internal terminology."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+  <UseCaseInteractive clsHeight={0} multiple>
+    <div class="grid gap-600 grid-cols-fit-md w-full">
+      <mds-usage variant="do"><mds-text typography="h6">Payment received</mds-text></mds-usage>
+      <mds-usage variant="dont"><mds-text typography="h6">Transaction OK</mds-text></mds-usage>
+    </div>
+    <div class="grid gap-600 grid-cols-fit-md w-full">
+      <mds-usage variant="do"><mds-text typography="h6">Save changes</mds-text></mds-usage>
+      <mds-usage variant="dont"><mds-text typography="h6">Persist data</mds-text></mds-usage>
+    </div>
+    <div class="grid gap-600 grid-cols-fit-md w-full">
+      <mds-usage variant="do"
+        ><mds-text typography="h6">Your order is on the way</mds-text></mds-usage
+      >
+      <mds-usage variant="dont"
+        ><mds-text typography="h6">Order status: dispatched (ID: 78432)</mds-text></mds-usage
+      >
+    </div>
   </UseCaseInteractive>
 </UseCase>

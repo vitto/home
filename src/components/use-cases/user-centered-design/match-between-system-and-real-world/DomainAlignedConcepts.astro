@@ -37,7 +37,31 @@ import CreditCard from '../../CreditCard.astro';
     <div class="w-full max-w-8000 grid gap-600">
       <mds-text typography="h3">Money Assets</mds-text>
       <mds-text typography="h5">Payment Resources</mds-text>
-      <div class="grid gap-200 auto-rows-min bg-tone-slate-09 p-200 rounded-3xl">
+      <mds-table>
+        <mds-table-header>
+          <mds-table-header-cell label="Credit Card"></mds-table-header-cell>
+          <mds-table-header-cell label="Code"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          <mds-table-row>
+            <mds-table-cell>MonsterCard</mds-table-cell>
+            <mds-table-cell>2544 4573 6422 1185</mds-table-cell>
+          </mds-table-row>
+        </mds-table-body>
+        <mds-table-body>
+          <mds-table-row>
+            <mds-table-cell>GRANA</mds-table-cell>
+            <mds-table-cell>3365 9911 6571 2398</mds-table-cell>
+          </mds-table-row>
+        </mds-table-body>
+        <mds-table-body>
+          <mds-table-row>
+            <mds-table-cell>European Express</mds-table-cell>
+            <mds-table-cell>4875 5478 4474 4485</mds-table-cell>
+          </mds-table-row>
+        </mds-table-body>
+      </mds-table>
+      <!-- <div class="grid gap-200 auto-rows-min bg-tone-slate-09 p-200 rounded-3xl">
         <CreditCard
           cardNumber="4875 5478 4474 4485"
           icon="mi/outline/pets"
@@ -56,7 +80,7 @@ import CreditCard from '../../CreditCard.astro';
           icon="mi/outline/euro"
           backgroundColor="bg-label-sky-05"
         />
-      </div>
+      </div> -->
       <mds-button>Start payment pipeline</mds-button>
     </div>
   </UseCaseInteractive>
