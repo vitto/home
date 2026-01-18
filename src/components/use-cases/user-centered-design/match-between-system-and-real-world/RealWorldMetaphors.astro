@@ -1,13 +1,70 @@
 ---
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import cartData from '../../../../data/visibility-of-system-status/cart.json';
+import CartItem from '../../CartItem.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+
+// Map cart data and add baseUrl to image paths
+const cart = cartData.slice(0, 2).map((item) => ({
+  ...item,
+  image: `${baseUrl}${item.image}`,
+}));
 ---
 
 <UseCase
   title="Real-World Metaphors"
   description="Digital concepts are represented using metaphors users already understand from everyday life."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+  <UseCaseInteractive clsHeight={84} toggle articleId="real-world-metaphors" overflowHidden={false}>
+    <div
+      class="flex items-center justify-between w-full rounded-2xl p-600 shadow-sm-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09"
+    >
+      <mds-icon
+        name="vv/logo"
+        class="size-900 cursor-pointer fill-tone-neutral-02 focus-bounce rounded-lg hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
+        tabindex="0"></mds-icon>
+      <nav class="flex items-center gap-400">
+        <mds-button
+          icon="mi/outline/shopping-cart"
+          class="rounded-full shopping-cart-button hover:bg-tone-neutral-09"
+          variant="dark"
+          tone="quiet"
+        >
+          Shopping cart
+        </mds-button>
+      </nav>
+      <mds-dropdown target=".shopping-cart-button" class="w-7200 p-0 gap-0">
+        <div class="flex justify-center items-center p-400">
+          <mds-button variant="dark">Checkout</mds-button>
+        </div>
+        {cart.map((item) => <CartItem {...item} />)}
+      </mds-dropdown>
+    </div>
+    <div
+      class="flex items-center justify-between w-full rounded-2xl p-600 shadow-sm-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09"
+    >
+      <mds-icon
+        name="vv/logo"
+        class="size-900 cursor-pointer fill-tone-neutral-02 focus-bounce rounded-lg hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
+        tabindex="0"></mds-icon>
+      <nav class="flex items-center gap-400">
+        <mds-button
+          icon="mi/outline/list"
+          class="rounded-full items-cart-button hover:bg-tone-neutral-09"
+          variant="dark"
+          tone="quiet"
+        >
+          Temporary items list
+        </mds-button>
+      </nav>
+      <mds-dropdown target=".items-cart-button" class="w-7200 p-0 gap-0">
+        <div class="flex justify-center items-center p-400">
+          <mds-button variant="dark">Buy items list</mds-button>
+        </div>
+        {cart.map((item) => <CartItem {...item} />)}
+      </mds-dropdown>
+    </div>
   </UseCaseInteractive>
 </UseCase>

@@ -52,7 +52,7 @@
     },
     {
       "id": "recognition-rather-than-recall",
-      "draft": true,
+      "draft": false,
       "title": "Recognition Rather than Recall",
       "category": "Cognitive load",
       "icon": "mi/outline/lightbulb",

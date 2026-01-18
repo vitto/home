@@ -7,7 +7,25 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Natural Mapping"
   description="Controls and outcomes are arranged in a way that mirrors real-world cause-and-effect relationships."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+  <UseCaseInteractive clsHeight={48} toggle>
+    <mds-input-field class="w-full max-w-9600">
+      <mds-input type="number" placeholder="Es: 42" controls-layout="horizontal"></mds-input>
+    </mds-input-field>
+    <mds-input-field class="w-full max-w-9600 natural-mapping">
+      <mds-input type="number" placeholder="Es: 101" controls-layout="horizontal"></mds-input>
+    </mds-input-field>
   </UseCaseInteractive>
 </UseCase>
+
+<style>
+  .natural-mapping mds-input::part(counter-button-decrease) {
+    left: auto;
+    right: 0;
+    transform: rotate(180deg);
+  }
+  .natural-mapping mds-input::part(counter-button-increase) {
+    left: 0;
+    right: auto;
+    transform: rotate(180deg);
+  }
+</style>
