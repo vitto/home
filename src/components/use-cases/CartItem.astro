@@ -1,0 +1,40 @@
+---
+interface Props {
+  image: string;
+  title: string;
+  price: string;
+  quantity: number;
+  description?: string;
+  class?: string;
+}
+
+const { image, title, price, quantity, description, class: className = '' } = Astro.props;
+---
+
+<div
+  class={`cart-item first:border-t-0 border-t-25 border-tone-neutral-08 border-0 border-solid flex gap-400 items-center p-400 ${className}`}
+>
+  {
+    image && (
+      <img
+        src={image}
+        alt={title}
+        class="w-1600 h-auto object-cover shrink-0 aspect-square rounded-lg"
+      />
+    )
+  }
+  <div class="flex flex-col gap-200 flex-1 min-w-0">
+    <mds-text typography="h6" class="text-tone-neutral-01">{title}</mds-text>
+    {
+      description && (
+        <mds-text typography="caption" class="text-tone-neutral-03">
+          {description}
+        </mds-text>
+      )
+    }
+    <div class="flex gap-400 items-center">
+      <mds-text typography="caption" class="text-tone-neutral-03">Qty: {quantity}</mds-text>
+      <mds-text typography="h6" class="text-tone-neutral-01">{price}</mds-text>
+    </div>
+  </div>
+</div>
