@@ -1,13 +1,130 @@
 ---
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+
+const autocompleteItems = [
+  'Vittorio Vittori is a Design System Architect',
+  'Vittorio Vittori is a UX Designer',
+  'Vittorio Vittori loves accessibility',
+  'Vittorio Vittori why did his parents give him a modular name',
+];
 ---
 
 <UseCase
   title="Recognition Over Commands"
   description="Interaction favors selection and recognition over memorizing commands or syntax."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+  <UseCaseInteractive
+    clsHeight={0}
+    overflowHidden={false}
+    articleId="recognition-over-commands"
+    label="Autocomplete search"
+  >
+    <div class="w-full relative h-4000">
+      <mds-input
+        data-search-input
+        icon="mi/outline/search"
+        placeholder='Digit "Vittorio" to see the autocomplete'
+        type="text"></mds-input>
+      <div
+        class="hidden absolute top-1200 left-0 right-0 mt-200 bg-tone-neutral dark:bg-tone-neutral-09 rounded-lg shadow-sm-sharp border border-tone-neutral-03/20 z-10 max-h-4400 overflow-y-auto"
+        data-autocomplete-results
+      >
+        <!-- Autocomplete results will be inserted here -->
+      </div>
+    </div>
+    <script>
+      function initAutocomplete() {
+        const articleId = 'recognition-over-commands';
+        const scope = (window as any).getUseCaseScope?.(articleId);
+        if (!scope) return;
+        const { container } = scope;
+        const searchInput = container.querySelector('[data-search-input]') as HTMLElement;
+        const resultsContainer = container.querySelector(
+          '[data-autocomplete-results]'
+        ) as HTMLElement;
+        if (!searchInput || !resultsContainer) return;
+        const autocompleteItems = [
+          "Vittorio Vittori designed Luciano Pavarotti's last album cover",
+          'Vittorio Vittori Design System Architect',
+          'Vittorio Vittori UX Designer',
+          'Vittorio Vittori had a dog named Fudo who remembers every day',
+          'Vittorio Vittori loves accessibility',
+          'Vittorio Vittori made ADV banners for Adobe',
+          'Vittorio Vittori made ADV banners for Microsoft',
+          'Vittorio Vittori made ADV banners for Phillips',
+          'Vittorio Vittori why did his parents give him a modular name',
+        ];
+        function highlightText(text: string, query: string): string {
+          if (!query) return text;
+          const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+          return text.replace(
+            regex,
+            '<mark class="bg-label-blue-08 text-label-blue-04 px-50 rounded-md">$1</mark>'
+          );
+        }
+        function filterResults(query: string): string[] {
+          if (!query) return [];
+          const lowerQuery = query.toLowerCase();
+          return autocompleteItems.filter((item) => item.toLowerCase().includes(lowerQuery));
+        }
+        function renderResults(query: string) {
+          // Only show autocomplete if query has at least 2 characters
+          if (query.length < 2) {
+            resultsContainer.classList.add('hidden');
+            resultsContainer.innerHTML = '';
+            return;
+          }
+          const filtered = filterResults(query);
+          if (filtered.length === 0) {
+            resultsContainer.classList.add('hidden');
+            resultsContainer.innerHTML = '';
+            return;
+          }
+          const totalResults = filtered.length;
+          const maxResults = 4;
+          const displayedResults = filtered.slice(0, maxResults);
+          resultsContainer.classList.remove('hidden');
+          const resultsHTML = displayedResults
+            .map(
+              (item) =>
+                `<div class="px-400 py-100 hover:bg-tone-neutral-10 cursor-pointer border-b border-tone-neutral-03/10"><mds-text typography="caption" class="text-tone-neutral-03">${highlightText(item, query)}</mds-text></div>`
+            )
+            .join('');
+          const tipHTML =
+            totalResults > maxResults
+              ? `<div class="px-400 py-200 bg-tone-neutral-10 border-t border-tone-neutral-03/10"><mds-text typography="caption" class="text-tone-neutral-03">Showing ${maxResults} of ${totalResults} results</mds-text></div>`
+              : `<div class="px-400 py-200 bg-tone-neutral-10 border-t border-tone-neutral-03/10"><mds-text typography="caption" class="text-tone-neutral-03">${totalResults} result${totalResults !== 1 ? 's' : ''}</mds-text></div>`;
+          resultsContainer.innerHTML = resultsHTML + tipHTML;
+        }
+        function getInputValue(): string {
+          const inputElement = searchInput.querySelector('input') as HTMLInputElement;
+          return inputElement?.value || '';
+        }
+        function handleInputChange(event: Event) {
+          const target = event.target as any;
+          const value = target?.value || getInputValue();
+          renderResults(value);
+        }
+        function handleInputBlur() {
+          resultsContainer.classList.add('hidden');
+          resultsContainer.innerHTML = '';
+        }
+        searchInput.addEventListener('mdsInputChange', handleInputChange);
+        searchInput.addEventListener('mdsInputBlur', handleInputBlur);
+      }
+      function waitForComponents() {
+        if (customElements.get('mds-input')) {
+          initAutocomplete();
+        } else {
+          setTimeout(waitForComponents, 100);
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', waitForComponents);
+      } else {
+        waitForComponents();
+      }
+    </script>
   </UseCaseInteractive>
 </UseCase>

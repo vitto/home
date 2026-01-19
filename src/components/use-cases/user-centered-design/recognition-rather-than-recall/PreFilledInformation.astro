@@ -1,13 +1,54 @@
 ---
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import userData from '../../../../data/visibility-of-system-status/users.json';
+
+const baseUrl = import.meta.env.BASE_URL;
+const user = userData[0]; // Use first user from the data
 ---
 
 <UseCase
   title="Pre-Filled Information"
   description="The system remembers and shows previously entered or relevant information to reduce memory load."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+  <UseCaseInteractive clsHeight={364} toggle>
+    <div class="w-full max-w-8000 grid gap-400">
+      <mds-author>
+        <mds-avatar slot="avatar" src={`${baseUrl}${user.avatar}`}></mds-avatar>
+        <mds-text typography="h6">{user.name}</mds-text>
+        <mds-text typography="detail">{user.email}</mds-text>
+      </mds-author>
+      <mds-input-field label="Name"
+        ><mds-input type="text" value={user.name} required placeholder="Es: Eric Ross"
+        ></mds-input></mds-input-field
+      >
+      <mds-input-field label="Email"
+        ><mds-input type="email" value={user.email} required placeholder="Es: eric.ross@example.com"
+        ></mds-input></mds-input-field
+      >
+      <mds-input-field label="Phone"
+        ><mds-input type="tel" value={user.phone} placeholder="Es: +39 333 1234567"
+        ></mds-input></mds-input-field
+      >
+      <mds-button>Save changes</mds-button>
+    </div>
+    <div class="w-full max-w-8000 grid gap-400">
+      <mds-author>
+        <mds-avatar slot="avatar" src={`${baseUrl}${user.avatar}`}></mds-avatar>
+        <mds-text typography="h6">{user.name}</mds-text>
+        <mds-text typography="detail">{user.email}</mds-text>
+      </mds-author>
+      <mds-input-field label="Name"
+        ><mds-input type="text" required placeholder="Es: Eric Ross"></mds-input></mds-input-field
+      >
+      <mds-input-field label="Email"
+        ><mds-input type="email" required placeholder="Es: eric.ross@example.com"
+        ></mds-input></mds-input-field
+      >
+      <mds-input-field label="Phone"
+        ><mds-input type="tel" placeholder="Es: +39 333 1234567"></mds-input></mds-input-field
+      >
+      <mds-button>Save changes</mds-button>
+    </div>
   </UseCaseInteractive>
 </UseCase>

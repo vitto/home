@@ -6,6 +6,7 @@
     "avatar": "/assets/example-avatar-01.png",
     "role": "Product Manager",
     "email": "mario.rossi@example.com",
+    "phone": "+39 333 1234567",
     "status": "offline",
     "medicalCertificate": "3918VW88DX7"
   },
@@ -16,6 +17,7 @@
     "avatar": "/assets/example-avatar-02.png",
     "role": "UX Designer",
     "email": "luigi.verdi@example.com",
+    "phone": "+39 340 9876543",
     "status": "online",
     "medicalCertificate": "8766AZ32FG1"
   },
@@ -26,6 +28,7 @@
     "avatar": "/assets/example-avatar-03.png",
     "role": "Frontend Developer",
     "email": "giulia.crippa@example.com",
+    "phone": "+39 347 5551234",
     "status": "busy",
     "medicalCertificate": "1099DD12DG9"
   },
@@ -36,6 +39,7 @@
     "avatar": "/assets/example-avatar-04.png",
     "role": "Backend Developer",
     "email": "joan.baez@example.com",
+    "phone": "+1 (555) 123-4567",
     "status": "offline",
     "medicalCertificate": "2223TY04ZS0"
   },
@@ -46,6 +50,7 @@
     "avatar": "/assets/example-avatar-06.png",
     "role": "Product Owner",
     "email": "jamie.oliver@example.com",
+    "phone": "+44 20 7946 0958",
     "status": "online",
     "medicalCertificate": "3334UX15RT2"
   }
