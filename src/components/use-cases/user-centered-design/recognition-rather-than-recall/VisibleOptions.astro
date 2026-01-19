@@ -1,13 +1,205 @@
 ---
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import userData from '../../../../data/visibility-of-system-status/users.json';
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <UseCase
   title="Visible Options"
   description="The system makes available actions and choices visible, so users don't have to remember what is possible."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+  <UseCaseInteractive clsHeight={488} articleId="visible-options">
+    <div
+      data-grid-container
+      class="grid w-full grid-cols-[1fr_0px] ease-out-expo duration-500 transition-[grid-template-columns] overflow-hidden bg-tone-neutral-10 rounded-2xl relative"
+    >
+      <mds-table class="w-full" selectable>
+        <mds-table-header>
+          <mds-table-header-cell label="Name"></mds-table-header-cell>
+          <mds-table-header-cell label="Role"></mds-table-header-cell>
+          <mds-table-header-cell label="Country"></mds-table-header-cell>
+          <mds-table-header-cell label="Phone"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          {
+            userData.map((user) => (
+              <mds-table-row>
+                <mds-table-cell>
+                  <mds-author>
+                    <mds-avatar slot="avatar" src={`${baseUrl}${user.avatar}`} />
+                    <mds-text class="text-nowrap" typography="h6">
+                      {user.name}
+                    </mds-text>
+                    <mds-text class="text-nowrap" typography="detail">
+                      {user.email}
+                    </mds-text>
+                  </mds-author>
+                </mds-table-cell>
+                <mds-table-cell>
+                  <mds-text class="text-nowrap">{user.role}</mds-text>
+                </mds-table-cell>
+                <mds-table-cell>
+                  <mds-text class="text-nowrap">{user.country}</mds-text>
+                </mds-table-cell>
+                <mds-table-cell>
+                  <mds-text class="text-nowrap">{user.phone}</mds-text>
+                </mds-table-cell>
+                <mds-button
+                  slot="action"
+                  variant="dark"
+                  tone="weak"
+                  icon="mi/outline/edit"
+                  title="Edit"
+                />
+                <mds-button
+                  slot="action"
+                  variant="error"
+                  tone="weak"
+                  icon="mi/outline/person-off"
+                  title="Deactivate"
+                />
+              </mds-table-row>
+            ))
+          }
+        </mds-table-body>
+      </mds-table>
+      <div
+        class="flex flex-col h-full gap-200 rounded-r-2xl bg-tone-neutral-10 p-400 mobile:hidden"
+      >
+        <div class="sticky top-1200 self-start justify-self-start flex flex-col gap-200">
+          <mds-text typography="label" class="px-200">Batch Actions</mds-text>
+          <div class="grid gap-200 bg-tone-neutral p-400 rounded-lg shadow-sm">
+            <mds-button
+              data-batch-edit-button
+              class="justify-start"
+              variant="light"
+              tone="weak"
+              icon="mi/outline/edit"
+            >
+              Edit
+            </mds-button>
+            <mds-button
+              class="justify-start"
+              variant="light"
+              tone="weak"
+              icon="mi/outline/person-off"
+            >
+              Move to group
+            </mds-button>
+            <mds-button
+              class="justify-start"
+              variant="error"
+              tone="quiet"
+              icon="mi/outline/person-off"
+            >
+              Deactivate
+            </mds-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function initTableSelection() {
+        const articleId = 'visible-options';
+        const scope = (window as any).getUseCaseScope?.(articleId);
+        if (!scope) return;
+        const { container } = scope;
+        const gridContainer = container.querySelector('[data-grid-container]') as HTMLElement;
+        const table = container.querySelector('mds-table') as HTMLElement;
+        const editButton = container.querySelector('[data-batch-edit-button]') as HTMLElement;
+        const mobileBatchMenu = document.querySelector('[data-mobile-batch-menu]') as HTMLElement;
+        const mobileEditButton = document.querySelector(
+          '[data-mobile-batch-edit-button]'
+        ) as HTMLElement;
+        if (!gridContainer || !table) return;
+        function handleSelectionChange(event: Event) {
+          const customEvent = event as CustomEvent;
+          const selectedRows = customEvent.detail?.rows || [];
+          const hasSelection = selectedRows.length > 0;
+          const hasMultipleSelection = selectedRows.length >= 2;
+          if (hasSelection) {
+            gridContainer.classList.remove('grid-cols-[1fr_0px]');
+            gridContainer.classList.add('mobile:grid-cols-[1fr_0px]');
+            gridContainer.classList.add('tablet:grid-cols-[1fr_216px]');
+            if (mobileBatchMenu) {
+              mobileBatchMenu.classList.remove('translate-y-full');
+            }
+          } else {
+            gridContainer.classList.add('grid-cols-[1fr_0px]');
+            gridContainer.classList.remove('mobile:grid-cols-[1fr_0px]');
+            gridContainer.classList.remove('tablet:grid-cols-[1fr_216px]');
+            if (mobileBatchMenu) {
+              mobileBatchMenu.classList.add('translate-y-full');
+            }
+          }
+          if (editButton) {
+            if (hasMultipleSelection) {
+              editButton.setAttribute('disabled', '');
+            } else {
+              editButton.removeAttribute('disabled');
+            }
+          }
+          if (mobileEditButton) {
+            if (hasMultipleSelection) {
+              mobileEditButton.setAttribute('disabled', '');
+            } else {
+              mobileEditButton.removeAttribute('disabled');
+            }
+          }
+        }
+        table.addEventListener('mdsTableSelectionChange', handleSelectionChange);
+      }
+      function waitForComponents() {
+        if (customElements.get('mds-table')) {
+          initTableSelection();
+        } else {
+          setTimeout(waitForComponents, 100);
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', waitForComponents);
+      } else {
+        waitForComponents();
+      }
+    </script>
   </UseCaseInteractive>
+  <div
+    data-mobile-batch-menu
+    class="context-menu fixed z-30 grid gap-200 rounded-t-3xl bottom-0 right-0 left-0 tablet:hidden p-600 bg-tone-neutral-01/20 translate-y-full transition-transform ease-out-expo duration-500"
+  >
+    <div class="grid gap-200 bg-tone-neutral p-400 rounded-lg shadow-sm">
+      <mds-text typography="label" class="px-200 pb-100">Batch Actions</mds-text>
+      <mds-hr class="h-50 -mx-400 w-auto"></mds-hr>
+      <mds-button
+        data-mobile-batch-edit-button
+        class="justify-start"
+        variant="light"
+        tone="weak"
+        icon="mi/outline/edit"
+      >
+        Edit
+      </mds-button>
+      <mds-button class="justify-start" variant="light" tone="weak" icon="mi/outline/person-off">
+        Move to group
+      </mds-button>
+      <mds-button class="justify-start" variant="error" tone="quiet" icon="mi/outline/person-off">
+        Deactivate
+      </mds-button>
+    </div>
+  </div>
 </UseCase>
+<style>
+  div[data-grid-container] {
+    interpolate-size: allow-keywords;
+  }
+  mds-author {
+    min-width: max-content;
+    width: max-content;
+    container: initial;
+  }
+  mds-table-cell {
+    vertical-align: middle;
+  }
+</style>
