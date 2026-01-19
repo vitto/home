@@ -45,15 +45,14 @@ const autocompleteItems = [
         ) as HTMLElement;
         if (!searchInput || !resultsContainer) return;
         const autocompleteItems = [
-          "Vittorio Vittori designed Luciano Pavarotti's last album cover",
           'Vittorio Vittori Design System Architect',
+          'Vitto made ADV banners for Adobe',
+          'Vitto made ADV banners for Microsoft',
+          'Vitto made ADV banners for Phillips',
+          'Vittori[o] why did his parents give him a modular name',
           'Vittorio Vittori UX Designer',
           'Vittorio Vittori had a dog named Fudo who remembers every day',
-          'Vittorio Vittori loves accessibility',
-          'Vittorio Vittori made ADV banners for Adobe',
-          'Vittorio Vittori made ADV banners for Microsoft',
-          'Vittorio Vittori made ADV banners for Phillips',
-          'Vittorio Vittori why did his parents give him a modular name',
+          'Vittorio loves accessibility',
         ];
         function highlightText(text: string, query: string): string {
           if (!query) return text;
@@ -98,7 +97,7 @@ const autocompleteItems = [
           resultsContainer.innerHTML = resultsHTML + tipHTML;
         }
         function getInputValue(): string {
-          const inputElement = searchInput.querySelector('input') as HTMLInputElement;
+          const inputElement = searchInput as HTMLInputElement;
           return inputElement?.value || '';
         }
         function handleInputChange(event: Event) {
@@ -110,8 +109,15 @@ const autocompleteItems = [
           resultsContainer.classList.add('hidden');
           resultsContainer.innerHTML = '';
         }
+        function handleInputFocus() {
+          const value = getInputValue();
+          if (value) {
+            renderResults(value);
+          }
+        }
         searchInput.addEventListener('mdsInputChange', handleInputChange);
         searchInput.addEventListener('mdsInputBlur', handleInputBlur);
+        searchInput.addEventListener('mdsInputFocus', handleInputFocus);
       }
       function waitForComponents() {
         if (customElements.get('mds-input')) {
