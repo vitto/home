@@ -7,7 +7,120 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Clear Exit Paths"
   description="Users can always leave a state or flow without getting stuck."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+  <UseCaseInteractive clsHeight={320} toggle articleId="clear-exit-paths">
+    <div class="h-8000 w-full flex items-center justify-center">
+      <mds-button data-show-modal-button>Show modal</mds-button>
+      <mds-modal position="center" class="rounded-xl" data-modal>
+        <mds-banner slot="window" headline="Are you sure you want to leave?" deletable class="max-w-[480px]">
+          <mds-text>This is a block of text that will be displayed in the banner, it's used to explain the action to the user.</mds-text>
+          <mds-button slot="action" variant="dark" tone="ghost" data-close-modal-button>Cancel</mds-button>
+        </mds-banner>
+      </mds-modal>
+    </div>
+    <div class="h-8000 w-full flex items-center justify-center relative">
+      <mds-button variant="error" data-show-overlay-button>Show modal</mds-button>
+      <div class="absolute inset-0 bg-tone-neutral-01/60 flex items-center justify-center rounded-xl opacity-0 pointer-events-none transition-opacity" data-overlay>
+        <mds-banner headline="Are you sure you want to leave?" class="max-w-[480px]">
+          <mds-text>This is a block of text that will be displayed in the banner, it's used to explain the action to the user.</mds-text>
+        </mds-banner>
+      </div>
+    </div>
   </UseCaseInteractive>
 </UseCase>
+
+<script>
+  function initModalInteraction() {
+    const articleId = 'clear-exit-paths';
+    const scope = (window as any).getUseCaseScope?.(articleId);
+    if (!scope) return;
+
+    const { container } = scope;
+    const showModalButton = container.querySelector('[data-show-modal-button]');
+    const modal = container.querySelector('[data-modal]');
+    const closeModalButton = container.querySelector('[data-close-modal-button]');
+
+    if (!showModalButton || !modal) return;
+
+    // Open modal when "Show Modal" button is clicked
+    showModalButton.addEventListener('click', () => {
+      modal.setAttribute('opened', '');
+    });
+
+    // Close modal when Cancel button is clicked
+    if (closeModalButton) {
+      closeModalButton.addEventListener('click', () => {
+        modal.removeAttribute('opened');
+      });
+    }
+
+    // Close modal when banner is deleted (deletable attribute)
+    const banner = modal.querySelector('mds-banner');
+    if (banner) {
+      banner.addEventListener('click', (e: Event) => {
+        const target = e.target as HTMLElement;
+        // Check if the delete button was clicked
+        if (target.closest('[slot="delete"]') || target.closest('mds-icon[name*="close"]')) {
+          modal.removeAttribute('opened');
+        }
+      });
+    }
+  }
+
+  function initOverlayInteraction() {
+    const articleId = 'clear-exit-paths';
+    const scope = (window as any).getUseCaseScope?.(articleId);
+    if (!scope) return;
+
+    const { container } = scope;
+    const showOverlayButton = container.querySelector('[data-show-overlay-button]');
+    const overlay = container.querySelector('[data-overlay]') as HTMLElement;
+
+    if (!showOverlayButton || !overlay) return;
+
+    let rollbackTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    // Helper function to restore initial state
+    const restoreInitialState = () => {
+      overlay.classList.remove('opacity-100');
+      overlay.classList.add('opacity-0');
+      overlay.classList.add('pointer-events-none');
+    };
+
+    // Show overlay when "Show modal" button is clicked
+    showOverlayButton.addEventListener('click', () => {
+      // Clear any existing timeout
+      if (rollbackTimeout) {
+        clearTimeout(rollbackTimeout);
+        rollbackTimeout = null;
+      }
+
+      // Show overlay: remove opacity-0 and pointer-events-none, add opacity-100
+      overlay.classList.remove('opacity-0');
+      overlay.classList.remove('pointer-events-none');
+      overlay.classList.add('opacity-100');
+
+      // Set timeout to rollback after 3000ms
+      rollbackTimeout = setTimeout(() => {
+        restoreInitialState();
+        rollbackTimeout = null;
+      }, 3000);
+    });
+  }
+
+  // Wait for web components to be defined before initializing
+  function waitForComponents() {
+    if (customElements.get('mds-button') && customElements.get('mds-modal')) {
+      initModalInteraction();
+      initOverlayInteraction();
+    } else {
+      setTimeout(waitForComponents, 100);
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForComponents);
+  } else {
+    waitForComponents();
+  }
+</script>
