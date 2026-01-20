@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -84,4 +86,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       }
     </script>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Explain what actually happened</UsageItem>
+    <UsageItem variant="dont">Show raw system statuses or codes</UsageItem>
+    <UsageItem variant="do">Focus on user-impacting results</UsageItem>
+    <UsageItem variant="dont">Describe internal operations</UsageItem>
+    <UsageItem variant="do">Use feedback that confirms user intent</UsageItem>
+    <UsageItem variant="dont">Leave outcomes ambiguous</UsageItem>
+  </Usage>
 </UseCase>

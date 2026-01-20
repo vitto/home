@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -80,6 +82,14 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </div>
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Require confirmation for irreversible actions</UsageItem>
+    <UsageItem variant="dont">Execute destructive actions immediately</UsageItem>
+    <UsageItem variant="do">Use clear, specific warning messages</UsageItem>
+    <UsageItem variant="dont">Use vague confirmations like “Are you sure?”</UsageItem>
+    <UsageItem variant="do">Differentiate destructive actions visually</UsageItem>
+    <UsageItem variant="dont">Style destructive and safe actions the same</UsageItem>
+  </Usage>
 </UseCase>
 
 <script>

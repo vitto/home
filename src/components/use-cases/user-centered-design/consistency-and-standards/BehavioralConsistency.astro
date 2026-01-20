@@ -2,6 +2,8 @@
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import usersData from '../../../../data/visibility-of-system-status/users.json';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 const baseUrl = import.meta.env.BASE_URL;
 
 // Map users with full avatar URLs and get only the first one
@@ -121,4 +123,18 @@ const firstUser = users[0];
       }
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Ensure the same interaction leads to the same result everywhere
+    </UsageItem>
+    <UsageItem variant="dont">
+      Change outcomes for the same action depending on the screen
+    </UsageItem>
+    <UsageItem variant="do">Align gestures, clicks, and shortcuts across features</UsageItem>
+    <UsageItem variant="dont">Introduce special-case behaviors without clear reason</UsageItem>
+    <UsageItem variant="do">
+      Test interactions across the entire product, not in isolation
+    </UsageItem>
+    <UsageItem variant="dont">Assume users will relearn behavior in different sections</UsageItem>
+  </Usage>
 </UseCase>

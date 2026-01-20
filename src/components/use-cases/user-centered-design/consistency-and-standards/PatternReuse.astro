@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -20,4 +22,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-dropdown>
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Reuse proven UI patterns</UsageItem>
+    <UsageItem variant="dont">Design new components for already-solved problems</UsageItem>
+    <UsageItem variant="do">Maintain a shared component library</UsageItem>
+    <UsageItem variant="dont">Fork components without clear necessity</UsageItem>
+    <UsageItem variant="do">Optimize patterns through iteration</UsageItem>
+    <UsageItem variant="dont">Reset design decisions with each feature</UsageItem>
+  </Usage>
 </UseCase>

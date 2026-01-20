@@ -1,28 +1,37 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
-import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
 
 <UseCase
   title="Human Time and Units"
   description="Time, quantities, and measurements are expressed in forms people naturally understand."
 >
-  <UseCaseInteractive clsHeight={68} multiple>
-    <div class="grid gap-600 grid-cols-fit-md w-full">
-      <mds-usage variant="do"
-        ><mds-text typography="h6">About 3 minutes remaining</mds-text></mds-usage
-      >
-      <mds-usage variant="dont"><mds-text typography="h6">Progress: 42%</mds-text></mds-usage>
-    </div>
-    <div class="grid gap-600 grid-cols-fit-md w-full">
-      <mds-usage variant="do"><mds-text typography="h6">2 items left in stock</mds-text></mds-usage>
-      <mds-usage variant="dont"><mds-text typography="h6">Inventory level: 2</mds-text></mds-usage>
-    </div>
-    <div class="grid gap-600 grid-cols-fit-md w-full">
-      <mds-usage variant="do"><mds-text typography="h6">Every Monday</mds-text></mds-usage>
-      <mds-usage variant="dont"
-        ><mds-text typography="h6">RRULE:FREQ=WEEKLY;BYDAY=MO</mds-text></mds-usage
-      >
-    </div>
-  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Use relative and human-readable time formats<br />
+      <b>About 3 minutes remaining</b>
+    </UsageItem>
+    <UsageItem variant="dont">
+      Expose raw timestamps or system units<br />
+      <b>Progress: 42%</b>
+    </UsageItem>
+    <UsageItem variant="do">
+      Round numbers to meaningful values<br />
+      <b>2 items left in stock</b>
+    </UsageItem>
+    <UsageItem variant="dont">
+      Show unnecessary numerical precision<br />
+      <b>Inventory level: 2</b>
+    </UsageItem>
+    <UsageItem variant="do">
+      Adapt units to user expectations<br />
+      <b>Every Monday</b>
+    </UsageItem>
+    <UsageItem variant="dont">
+      Force users to convert measurements<br />
+      <b>RRULE:FREQ=WEEKLY;BYDAY=MO</b>
+    </UsageItem>
+  </Usage>
 </UseCase>

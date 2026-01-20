@@ -2,6 +2,8 @@
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import personalData from '../../../../data/personal.json';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 ---
 
 <UseCase
@@ -43,4 +45,12 @@ import personalData from '../../../../data/personal.json';
       </nav>
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Group related information and actions together</UsageItem>
+    <UsageItem variant="dont">Force users to mentally connect scattered elements</UsageItem>
+    <UsageItem variant="do">Use sensible defaults to reduce decision-making</UsageItem>
+    <UsageItem variant="dont">Require configuration for every interaction</UsageItem>
+    <UsageItem variant="do">Show information only when it becomes relevant</UsageItem>
+    <UsageItem variant="dont">Expose all options at once regardless of context</UsageItem>
+  </Usage>
 </UseCase>

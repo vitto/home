@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -7,7 +9,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Clear Input Expectations"
   description="The system makes requirements explicit so users know what is expected before acting."
 >
-  <UseCaseInteractive clsHeight={284}>
+  <UseCaseInteractive clsHeight={284} label="Password strength indicator">
     <mds-input-field label="Password" class="w-full max-w-8000 font-info">
       <mds-input type="password" placeholder="Es: Password123" data-password-input></mds-input>
     </mds-input-field>
@@ -213,4 +215,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       }
     </script>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">State format and constraints upfront</UsageItem>
+    <UsageItem variant="dont">Reveal requirements only after submission</UsageItem>
+    <UsageItem variant="do">Use labels and helper text together</UsageItem>
+    <UsageItem variant="dont">Rely on placeholder text alone</UsageItem>
+    <UsageItem variant="do">Show character limits before typing</UsageItem>
+    <UsageItem variant="dont">Let users discover limits by trial and error</UsageItem>
+  </Usage>
 </UseCase>

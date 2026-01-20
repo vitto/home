@@ -2,6 +2,8 @@
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import usersData from '../../../../data/visibility-of-system-status/users.json';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 const baseUrl = import.meta.env.BASE_URL;
 
 const users = usersData.map((user) => ({
@@ -56,6 +58,14 @@ const user = users[0];
       </div>
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Break complex tasks into manageable steps</UsageItem>
+    <UsageItem variant="dont">Force users through long, dense forms</UsageItem>
+    <UsageItem variant="do">Provide a final review before commitment</UsageItem>
+    <UsageItem variant="dont">Submit critical actions without user review</UsageItem>
+    <UsageItem variant="do">Design flows around common user goals</UsageItem>
+    <UsageItem variant="dont">Optimize flows only for edge cases</UsageItem>
+  </Usage>
 </UseCase>
 
 <script>

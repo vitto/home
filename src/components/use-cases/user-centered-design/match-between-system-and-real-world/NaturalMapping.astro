@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -15,6 +17,14 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       <mds-input type="number" placeholder="Es: 101" controls-layout="horizontal"></mds-input>
     </mds-input-field>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Align controls with real-world behavior</UsageItem>
+    <UsageItem variant="dont">Invert or obscure cause-effect relationships</UsageItem>
+    <UsageItem variant="do">Make outcomes predictable from the action</UsageItem>
+    <UsageItem variant="dont">Require learning arbitrary interactions</UsageItem>
+    <UsageItem variant="do">Use spatial consistency</UsageItem>
+    <UsageItem variant="dont">Break established interaction patterns</UsageItem>
+  </Usage>
 </UseCase>
 
 <style>

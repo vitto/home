@@ -3,6 +3,8 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import cartData from '../../../../data/visibility-of-system-status/cart.json';
 import CartItem from '../../CartItem.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -67,4 +69,12 @@ const cart = cartData.slice(0, 2).map((item) => ({
       </mds-dropdown>
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Use widely understood real-world metaphors</UsageItem>
+    <UsageItem variant="dont">Invent obscure or mixed metaphors</UsageItem>
+    <UsageItem variant="do">Keep metaphors consistent across the system</UsageItem>
+    <UsageItem variant="dont">Break metaphor rules with unexpected behavior</UsageItem>
+    <UsageItem variant="do">Support understanding without explanation</UsageItem>
+    <UsageItem variant="dont">Rely on metaphors that require learning</UsageItem>
+  </Usage>
 </UseCase>

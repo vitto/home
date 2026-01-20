@@ -2,6 +2,8 @@
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import usersData from '../../../../data/visibility-of-system-status/users.json';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 const baseUrl = import.meta.env.BASE_URL;
 
 // Map users with full avatar URLs and get only the first one
@@ -121,4 +123,12 @@ const firstUser = users[0];
       }
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Apply the same visual treatment to the same type of action</UsageItem>
+    <UsageItem variant="dont">Change styles or behavior arbitrarily between screens</UsageItem>
+    <UsageItem variant="do">Reuse established interaction patterns</UsageItem>
+    <UsageItem variant="dont">Introduce new patterns without a clear need</UsageItem>
+    <UsageItem variant="do">Maintain consistent spacing and typography</UsageItem>
+    <UsageItem variant="dont">Mix multiple visual systems in the same product</UsageItem>
+  </Usage>
 </UseCase>

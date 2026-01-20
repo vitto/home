@@ -2,6 +2,8 @@
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import CodeSnippet from '../../../CodeSnippet.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 
 const htmlExample1 = `<mds-button variant="success" tone="weak">Click me</mds-button>
 <mds-banner variant="success" tone="weak" deletable>...</mds-banner>`;
@@ -25,13 +27,23 @@ const htmlExample3 = `<MdsInputField label="Your name">
   title="External Standards"
   description="The interface follows established platform, industry, and web conventions, reducing the learning curve."
 >
-  <CodeSnippet language="html" code={htmlExample1} title="Different components, same conventions" />
+  <UseCaseInteractive multiple>
+    <mds-keyboard try>
+      <mds-keyboard-key name="command"></mds-keyboard-key>
+      <mds-keyboard-key name="x"></mds-keyboard-key>
+    </mds-keyboard>
 
-  <CodeSnippet
-    language="html"
-    code={htmlExample2}
-    title="Components based on standard conventions"
-  />
-
-  <CodeSnippet language="html" code={htmlExample3} title="React wrappers available" />
+    <mds-keyboard try>
+      <mds-keyboard-key name="windows"></mds-keyboard-key>
+      <mds-keyboard-key name="x"></mds-keyboard-key>
+    </mds-keyboard>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Follow OS and platform-specific guidelines</UsageItem>
+    <UsageItem variant="dont">Redefine common patterns without strong justification</UsageItem>
+    <UsageItem variant="do">Use familiar symbols and interaction models</UsageItem>
+    <UsageItem variant="dont">Assume novelty is more important than usability</UsageItem>
+    <UsageItem variant="do">Respect accessibility and web standards</UsageItem>
+    <UsageItem variant="dont">Break conventions for purely aesthetic reasons</UsageItem>
+  </Usage>
 </UseCase>

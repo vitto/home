@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -19,4 +21,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-input-date-range>
     </mds-input-field>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Constrain inputs to valid options</UsageItem>
+    <UsageItem variant="dont">Allow invalid data and handle it later</UsageItem>
+    <UsageItem variant="do">Guide users with progressive disclosure</UsageItem>
+    <UsageItem variant="dont">Overwhelm users with unrestricted choices</UsageItem>
+    <UsageItem variant="do">Prevent impossible states by design</UsageItem>
+    <UsageItem variant="dont">Rely solely on error messages for prevention</UsageItem>
+  </Usage>
 </UseCase>

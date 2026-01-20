@@ -2,6 +2,8 @@
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import usersData from '../../../../data/visibility-of-system-status/users.json';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 const baseUrl = import.meta.env.BASE_URL;
 const users = usersData.map((user) => ({
   ...user,
@@ -38,4 +40,12 @@ const user = users[2];
       )
     }
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Prioritize content directly related to the current task</UsageItem>
+    <UsageItem variant="dont">Display secondary or promotional content by default</UsageItem>
+    <UsageItem variant="do">Remove duplicated or low-value information</UsageItem>
+    <UsageItem variant="dont">Repeat the same data in multiple visual forms</UsageItem>
+    <UsageItem variant="do">Defer optional information behind secondary actions</UsageItem>
+    <UsageItem variant="dont">Overload screens with edge-case details</UsageItem>
+  </Usage>
 </UseCase>

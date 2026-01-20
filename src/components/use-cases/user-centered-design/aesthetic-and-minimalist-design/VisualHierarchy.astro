@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -14,6 +16,16 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   >
     <mds-icon name="mi/baseline/favorite" class="fill-label-amaranth-05 w-2000 h-2000"></mds-icon>
     <mds-text typography="h1">Love Is All</mds-text>
-    <mds-text typography="h6">Everything else is just secondary</mds-text>
+    <mds-text typography="h6" class="text-tone-neutral-05"
+      >Everything else is just secondary</mds-text
+    >
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Use size, contrast, and spacing to show importance</UsageItem>
+    <UsageItem variant="dont">Give equal visual weight to all elements</UsageItem>
+    <UsageItem variant="do">Guide the eye from primary to secondary content</UsageItem>
+    <UsageItem variant="dont">Force users to scan randomly for key actions</UsageItem>
+    <UsageItem variant="do">Align hierarchy with user priorities</UsageItem>
+    <UsageItem variant="dont">Base hierarchy solely on aesthetic preferences</UsageItem>
+  </Usage>
 </UseCase>

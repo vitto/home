@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -52,6 +54,14 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </div>
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Choose defaults that protect users</UsageItem>
+    <UsageItem variant="dont">Preselect risky or irreversible options</UsageItem>
+    <UsageItem variant="do">Base defaults on common user behavior</UsageItem>
+    <UsageItem variant="dont">Use defaults that benefit only the system</UsageItem>
+    <UsageItem variant="do">Allow users to change defaults easily</UsageItem>
+    <UsageItem variant="dont">Hide or lock default choices</UsageItem>
+  </Usage>
 </UseCase>
 
 <script>

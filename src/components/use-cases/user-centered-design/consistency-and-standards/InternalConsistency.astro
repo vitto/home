@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 const baseUrl = import.meta.env.BASE_URL;
@@ -26,4 +28,12 @@ const baseUrl = import.meta.env.BASE_URL;
       <mds-button class="max-mobile:w-full" size="lg" slot="action">New contact</mds-button>
     </mds-zero>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Apply the same rules to similar components</UsageItem>
+    <UsageItem variant="dont">Create hidden exceptions to established behavior</UsageItem>
+    <UsageItem variant="do">Centralize logic for shared interactions</UsageItem>
+    <UsageItem variant="dont">Let different teams define behavior independently</UsageItem>
+    <UsageItem variant="do">Document patterns and enforce them</UsageItem>
+    <UsageItem variant="dont">Rely on memory instead of guidelines</UsageItem>
+  </Usage>
 </UseCase>

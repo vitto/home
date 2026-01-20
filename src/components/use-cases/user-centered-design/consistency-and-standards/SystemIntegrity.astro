@@ -2,6 +2,8 @@
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import usersData from '../../../../data/visibility-of-system-status/users.json';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 const baseUrl = import.meta.env.BASE_URL;
 
 const users = usersData.map((user) => ({
@@ -15,7 +17,11 @@ const user = users[1];
   title="System Integrity"
   description="The interface feels like a single, coherent system rather than a collection of disconnected parts."
 >
-  <UseCaseInteractive clsHeight={414} label="Separated components which compose complex components">
+  <UseCaseInteractive
+    clsHeight={414}
+    overflowHidden={false}
+    label="Separated components which compose complex components"
+  >
     <div class="grid gap-600 grid-cols-full w-full max-w-8000">
       <div
         class="grid gap-400 grid-cols-full p-600 border-solid rounded-3xl border-50 relative animate-pulse-group"
@@ -35,9 +41,24 @@ const user = users[1];
         <mds-text typography="h6">{user.name}</mds-text>
         <mds-badge slot="detail" variant="dark" tone="ghost">{user.status}</mds-badge>
         <mds-text typography="caption" slot="detail">{user.role}</mds-text>
-        <mds-button icon="mi/outline/more-vert" slot="action" tone="quiet" variant="dark"
-        ></mds-button>
+        <mds-button
+          id="system-integrity-button"
+          icon="mi/outline/more-vert"
+          slot="action"
+          tone="quiet"
+          variant="dark"></mds-button>
       </mds-entity>
+      <mds-dropdown target="#system-integrity-button">
+        <mds-text typography="caption">Dropdown content</mds-text>
+      </mds-dropdown>
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Design features as parts of a whole</UsageItem>
+    <UsageItem variant="dont">Treat each section as a standalone product</UsageItem>
+    <UsageItem variant="do">Ensure transitions feel natural and connected</UsageItem>
+    <UsageItem variant="dont">Mix conflicting interaction paradigms</UsageItem>
+    <UsageItem variant="do">Align design, content, and behavior</UsageItem>
+    <UsageItem variant="dont">Allow visual or functional drift over time</UsageItem>
+  </Usage>
 </UseCase>

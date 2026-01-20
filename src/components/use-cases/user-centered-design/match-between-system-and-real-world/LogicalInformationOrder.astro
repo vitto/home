@@ -1,28 +1,43 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import userData from '../../../../data/visibility-of-system-status/users.json';
+
+const baseUrl = import.meta.env.BASE_URL;
+const user = userData[3];
 ---
 
 <UseCase
   title="Logical Information Order"
   description="Information is presented in a sequence that feels natural and expected."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <div class="grid gap-600 grid-cols-fit-md w-full">
-      <mds-usage variant="do">
-        <mds-text typography="h6">John Doe</mds-text>
-        <mds-text typography="h6">1234 Elm Street, Apt 5B</mds-text>
-        <mds-text typography="h6">Springfield, IL 62704</mds-text>
-        <mds-text typography="h6">United States</mds-text>
-        <mds-text typography="h6">Phone: +1 217-555-0198</mds-text>
-      </mds-usage>
-      <mds-usage variant="dont">
-        <mds-text typography="h6">1234 Elm Street, Apt 5B</mds-text>
-        <mds-text typography="h6">John Doe</mds-text>
-        <mds-text typography="h6">Phone: +1 217-555-0198</mds-text>
-        <mds-text typography="h6">Springfield, IL 62704</mds-text>
-        <mds-text typography="h6">United States</mds-text>
-      </mds-usage>
-    </div>
+  <UseCaseInteractive clsHeight={0} toggle>
+    <mds-author class="w-full max-w-8000 items-start">
+      <mds-avatar slot="avatar" src={`${baseUrl}${user.avatar}`}></mds-avatar>
+      <mds-text typography="h6">{user.name}</mds-text>
+      <mds-text typography="caption">{user.phone}</mds-text>
+      <mds-text typography="caption">{user.address}</mds-text>
+      <mds-text typography="caption">{user.city}</mds-text>
+      <mds-text typography="caption">{user.country}</mds-text>
+    </mds-author>
+    <mds-author class="w-full max-w-8000 items-start">
+      <mds-avatar slot="avatar" src={`${baseUrl}${user.avatar}`}></mds-avatar>
+      <mds-text typography="h6">{user.phone}</mds-text>
+      <mds-text typography="caption">{user.country}</mds-text>
+      <mds-text typography="caption">{user.name}</mds-text>
+      <mds-text typography="caption">{user.city}</mds-text>
+      <mds-text typography="caption">{user.address}</mds-text>
+    </mds-author>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Follow real-world or task-based sequences</UsageItem>
+    <UsageItem variant="dont">Order information by technical priority</UsageItem>
+    <UsageItem variant="do">Group related information together</UsageItem>
+    <UsageItem variant="dont">Scatter dependent fields across screens</UsageItem>
+    <UsageItem variant="do">Respect user expectations from similar products</UsageItem>
+    <UsageItem variant="dont">Invent unconventional sequences without reason</UsageItem>
+  </Usage>
 </UseCase>

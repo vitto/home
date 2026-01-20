@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -11,4 +13,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <mds-button icon="mi/outline/search" tone="weak" variant="success">Search</mds-button>
     <mds-button icon="mi/outline/token" tone="weak" variant="error">Proceed</mds-button>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Match visual style to the element's function</UsageItem>
+    <UsageItem variant="dont">Reuse the same style for different purposes</UsageItem>
+    <UsageItem variant="do">Use labels that describe the outcome of actions</UsageItem>
+    <UsageItem variant="dont">Rely on vague or metaphorical wording</UsageItem>
+    <UsageItem variant="do">Ensure behavior matches visual expectations</UsageItem>
+    <UsageItem variant="dont">Create elements that look clickable but are not</UsageItem>
+  </Usage>
 </UseCase>

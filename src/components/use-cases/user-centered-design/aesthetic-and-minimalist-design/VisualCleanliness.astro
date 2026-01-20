@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -29,12 +31,22 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       <mds-text typography="detail">
         This should improve the usability and avoid user to read <b>unnecessary information</b>.
       </mds-text>
-      <mds-text typography="detail">
-        That's why we have removed the unnecessary text to read and focus on the essential.
-      </mds-text>
+      <div class="p-200 border-dashed border-50 border-label-orange-08 rounded-lg">
+        <mds-text typography="detail">
+          That's why we have removed the unnecessary text to read and focus on the essential.
+        </mds-text>
+      </div>
       <mds-text typography="detail">Yep.</mds-text>
-      <mds-button slot="action" variant="dark" tone="ghost">Cancel</mds-button>
+      <mds-button slot="action" variant="ai" tone="ghost">Cancel</mds-button>
       <mds-button slot="action" variant="primary">Confirm</mds-button>
     </mds-banner>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Use decoration only when it adds meaning</UsageItem>
+    <UsageItem variant="dont">Add visual effects purely for aesthetics</UsageItem>
+    <UsageItem variant="do">Favor whitespace to separate content</UsageItem>
+    <UsageItem variant="dont">Rely on heavy borders and dividers</UsageItem>
+    <UsageItem variant="do">Keep color palettes minimal and functional</UsageItem>
+    <UsageItem variant="dont">Use too many accent colors on one screen</UsageItem>
+  </Usage>
 </UseCase>

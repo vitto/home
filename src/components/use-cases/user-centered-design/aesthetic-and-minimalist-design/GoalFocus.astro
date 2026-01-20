@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -30,4 +32,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-button>
     </mds-banner>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Define a clear primary action per screen</UsageItem>
+    <UsageItem variant="dont">Compete with multiple equally prominent actions</UsageItem>
+    <UsageItem variant="do">Support the main task with secondary actions</UsageItem>
+    <UsageItem variant="dont">Introduce unrelated features on the same screen</UsageItem>
+    <UsageItem variant="do">Align layout and content with the main goal</UsageItem>
+    <UsageItem variant="dont">Design screens as generic feature containers</UsageItem>
+  </Usage>
 </UseCase>

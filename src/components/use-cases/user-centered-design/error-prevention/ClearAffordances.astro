@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -31,4 +33,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </div>
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Use visual cues to indicate interactive elements</UsageItem>
+    <UsageItem variant="dont">Make clickable and non-clickable elements look the same</UsageItem>
+    <UsageItem variant="do">Show disabled states for unavailable actions</UsageItem>
+    <UsageItem variant="dont">Allow actions without any visual affordance</UsageItem>
+    <UsageItem variant="do">Use consistent patterns across the interface</UsageItem>
+    <UsageItem variant="dont">Change interaction patterns arbitrarily</UsageItem>
+  </Usage>
 </UseCase>

@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -12,4 +14,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       <mds-input-upload max-file-size="0.25" max-files="3" accept="image/*"></mds-input-upload>
     </form>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Validate inputs as users interact</UsageItem>
+    <UsageItem variant="dont">Show all errors only after form submission</UsageItem>
+    <UsageItem variant="do">Use clear, actionable error messages</UsageItem>
+    <UsageItem variant="dont">Display generic or technical error text</UsageItem>
+    <UsageItem variant="do">Confirm valid input positively</UsageItem>
+    <UsageItem variant="dont">Only communicate when something is wrong</UsageItem>
+  </Usage>
 </UseCase>
