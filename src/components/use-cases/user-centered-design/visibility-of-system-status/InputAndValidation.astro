@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -213,4 +215,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       }
     </script>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Validate inputs as early as possible</UsageItem>
+    <UsageItem variant="dont">Wait until form submission to show all errors</UsageItem>
+    <UsageItem variant="do">Clearly distinguish valid and invalid states</UsageItem>
+    <UsageItem variant="dont">Use color alone to communicate validation status</UsageItem>
+    <UsageItem variant="do">Explain how to fix invalid input</UsageItem>
+    <UsageItem variant="dont">Mark inputs as wrong without guidance</UsageItem>
+  </Usage>
 </UseCase>

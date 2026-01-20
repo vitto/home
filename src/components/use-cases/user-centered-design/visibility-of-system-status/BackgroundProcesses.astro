@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -28,4 +30,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       ></mds-input>
     </mds-input-field>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Expose background activities in a persistent, unobtrusive way</UsageItem>
+    <UsageItem variant="dont">Hide long-running background tasks completely</UsageItem>
+    <UsageItem variant="do">Allow users to check progress at any time</UsageItem>
+    <UsageItem variant="dont">Restart background tasks without informing the user</UsageItem>
+    <UsageItem variant="do">Clearly indicate when a background task finishes or fails</UsageItem>
+    <UsageItem variant="dont">Assume users will remember actions started earlier</UsageItem>
+  </Usage>
 </UseCase>

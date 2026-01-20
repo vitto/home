@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -53,4 +55,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       }
     </script>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Provide instant visual feedback for every interaction</UsageItem>
+    <UsageItem variant="dont">Require users to infer whether an action was registered</UsageItem>
+    <UsageItem variant="do">Disable controls while an action is processing</UsageItem>
+    <UsageItem variant="dont">Allow repeated clicks that trigger duplicate actions</UsageItem>
+    <UsageItem variant="do">Confirm completion with clear feedback</UsageItem>
+    <UsageItem variant="dont">Rely only on subtle or invisible state changes</UsageItem>
+  </Usage>
 </UseCase>

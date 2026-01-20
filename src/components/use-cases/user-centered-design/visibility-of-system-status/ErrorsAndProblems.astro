@@ -3,6 +3,8 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import usersData from '../../../../data/visibility-of-system-status/users.json';
 import { getStatusClass } from '../../../../data/visibility-of-system-status/helpers';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -200,4 +202,12 @@ const users = usersData.map((user) => ({
       }
     </script>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Explain errors in clear, user-oriented language</UsageItem>
+    <UsageItem variant="dont">Display raw technical or system error codes</UsageItem>
+    <UsageItem variant="do">Indicate whether user action is required and what to do next</UsageItem>
+    <UsageItem variant="dont">Show errors without recovery options when possible</UsageItem>
+    <UsageItem variant="do">Surface errors immediately when they occur</UsageItem>
+    <UsageItem variant="dont">Silently fail or delay error communication</UsageItem>
+  </Usage>
 </UseCase>

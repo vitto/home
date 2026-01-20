@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -108,4 +110,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       }
     </script>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Show a visible loading indicator immediately after an action</UsageItem>
+    <UsageItem variant="dont">Leave the interface static during long operations</UsageItem>
+    <UsageItem variant="do">Provide progress or time estimates when available</UsageItem>
+    <UsageItem variant="dont">Use infinite spinners for operations longer than a few seconds</UsageItem>
+    <UsageItem variant="do">Keep users informed if the wait is longer than expected</UsageItem>
+    <UsageItem variant="dont">Block the entire UI when only part of it is loading</UsageItem>
+  </Usage>
 </UseCase>

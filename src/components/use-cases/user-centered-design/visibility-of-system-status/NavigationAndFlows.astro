@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -32,4 +34,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </div>
     </mds-tab>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Always show where the user is within a flow</UsageItem>
+    <UsageItem variant="dont">Force users to remember previous steps</UsageItem>
+    <UsageItem variant="do">Indicate remaining steps or progress</UsageItem>
+    <UsageItem variant="dont">Hide progress in long or complex flows</UsageItem>
+    <UsageItem variant="do">Keep navigation status consistent across screens</UsageItem>
+    <UsageItem variant="dont">Change navigation patterns unexpectedly</UsageItem>
+  </Usage>
 </UseCase>

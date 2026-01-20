@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -14,4 +16,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       <mds-pref-theme></mds-pref-theme>
     </mds-pref>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Synchronize UI state with the real system state</UsageItem>
+    <UsageItem variant="dont">Require users to reload to confirm changes</UsageItem>
+    <UsageItem variant="do">Confirm when a setting is successfully applied</UsageItem>
+    <UsageItem variant="dont">Leave settings in an ambiguous or pending state</UsageItem>
+    <UsageItem variant="do">Revert UI state if a change fails</UsageItem>
+    <UsageItem variant="dont">Show a setting as active when it is not</UsageItem>
+  </Usage>
 </UseCase>
