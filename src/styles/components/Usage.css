@@ -2,10 +2,9 @@
   background-color: rgb(var(--tone-neutral));
 }
 
-.usage mds-usage[variant="dont"] {
+.usage mds-usage[variant='dont'] {
   @apply mobile:order-last;
 }
-
 
 .usage-content {
   @apply transition-cosmetic ease-out-expo duration-500 p-600 bg-tone-neutral-10;

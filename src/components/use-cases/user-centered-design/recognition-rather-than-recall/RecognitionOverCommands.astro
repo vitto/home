@@ -21,7 +21,8 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
           data-search-input
           icon="mi/outline/search"
           placeholder='Digit "Vittorio" to see the autocomplete'
-          type="text">
+          type="text"
+        >
         </mds-input>
         <div class="grid gap-200">
           <mds-text typography="label">latest searches</mds-text>
@@ -119,14 +120,18 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 
         // Use event delegation to handle clicks on result items
         // Using capture phase to catch clicks before child elements intercept them
-        resultsContainer.addEventListener('click', (e: Event) => {
-          const target = e.target as HTMLElement;
-          // Check if click originated from a result item or its children
-          const resultItem = target.closest('[data-result-item]');
-          if (resultItem) {
-            clearSearch();
-          }
-        }, { capture: true });
+        resultsContainer.addEventListener(
+          'click',
+          (e: Event) => {
+            const target = e.target as HTMLElement;
+            // Check if click originated from a result item or its children
+            const resultItem = target.closest('[data-result-item]');
+            if (resultItem) {
+              clearSearch();
+            }
+          },
+          { capture: true }
+        );
 
         function getInputValue(): string {
           const inputElement = searchInput as HTMLInputElement;
@@ -166,7 +171,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
               // Trigger the search by dispatching mdsInputChange event
               const changeEvent = new CustomEvent('mdsInputChange', {
                 bubbles: true,
-                detail: { value: buttonText }
+                detail: { value: buttonText },
               });
               searchInput.dispatchEvent(changeEvent);
             }
