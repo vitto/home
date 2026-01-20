@@ -39,8 +39,14 @@ const baseUrl = import.meta.env.BASE_URL;
               </div>
             </div>
             <div class="grid grid-cols-[1fr_auto] gap-200">
-              <mds-button variant="light" icon="mi/outline/favorite-border" data-follow-button>Follow</mds-button>
-              <mds-button icon="mi/outline/visibility-off" variant="error" title="Do not show again" data-hide-button></mds-button>
+              <mds-button variant="light" icon="mi/outline/favorite-border" data-follow-button
+                >Follow</mds-button
+              >
+              <mds-button
+                icon="mi/outline/visibility-off"
+                variant="error"
+                title="Do not show again"
+                data-hide-button></mds-button>
             </div>
           </div>
         </div>
@@ -78,13 +84,22 @@ const baseUrl = import.meta.env.BASE_URL;
               </div>
             </div>
             <div class="grid grid-cols-[1fr_auto] gap-200">
-              <mds-button variant="light" icon="mi/outline/favorite-border" data-follow-button>Follow</mds-button>
-              <mds-button icon="mi/outline/delete" variant="error" title="Never show again" data-hide-button></mds-button>
+              <mds-button variant="light" icon="mi/outline/favorite-border" data-follow-button
+                >Follow</mds-button
+              >
+              <mds-button
+                icon="mi/outline/delete"
+                variant="error"
+                title="Never show again"
+                data-hide-button></mds-button>
             </div>
           </div>
         </div>
       </div>
-      <div class="fake-card rounded-[32px] bg-tone-neutral-09 items-center justify-center text-center p-600 hidden" data-fake-card>
+      <div
+        class="fake-card rounded-[32px] bg-tone-neutral-09 items-center justify-center text-center p-600 hidden"
+        data-fake-card
+      >
         <mds-text typography="detail">You will never see this Artist again.</mds-text>
       </div>
     </div>
@@ -151,7 +166,10 @@ const baseUrl = import.meta.env.BASE_URL;
         isHidden = false;
         // Restore original icon based on which card it is
         const isFirstCard = button.closest('.card')?.querySelector('[src*="mozart-portrait"]');
-        button.setAttribute('icon', isFirstCard ? 'mi/outline/visibility-off' : 'mi/outline/delete');
+        button.setAttribute(
+          'icon',
+          isFirstCard ? 'mi/outline/visibility-off' : 'mi/outline/delete'
+        );
         button.setAttribute('variant', 'error');
         button.setAttribute('title', originalTitle);
 
