@@ -11,17 +11,33 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <div class="h-8000 w-full flex items-center justify-center">
       <mds-button data-show-modal-button>Show modal</mds-button>
       <mds-modal position="center" class="rounded-xl" data-modal>
-        <mds-banner slot="window" headline="Are you sure you want to leave?" deletable class="max-w-[480px]">
-          <mds-text>This is a block of text that will be displayed in the banner, it's used to explain the action to the user.</mds-text>
-          <mds-button slot="action" variant="dark" tone="ghost" data-close-modal-button>Cancel</mds-button>
+        <mds-banner
+          slot="window"
+          headline="Are you sure you want to leave?"
+          deletable
+          class="max-w-[480px]"
+        >
+          <mds-text
+            >This is a block of text that will be displayed in the banner, it's used to explain the
+            action to the user.</mds-text
+          >
+          <mds-button slot="action" variant="dark" tone="ghost" data-close-modal-button
+            >Cancel</mds-button
+          >
         </mds-banner>
       </mds-modal>
     </div>
     <div class="h-8000 w-full flex items-center justify-center relative">
       <mds-button variant="error" data-show-overlay-button>Show modal</mds-button>
-      <div class="absolute inset-0 bg-tone-neutral-01/60 flex items-center justify-center rounded-xl opacity-0 pointer-events-none transition-opacity" data-overlay>
+      <div
+        class="absolute inset-0 bg-tone-neutral-01/60 flex items-center justify-center rounded-xl opacity-0 pointer-events-none transition-opacity"
+        data-overlay
+      >
         <mds-banner headline="Are you sure you want to leave?" class="max-w-[480px]">
-          <mds-text>This is a block of text that will be displayed in the banner, it's used to explain the action to the user.</mds-text>
+          <mds-text
+            >This is a block of text that will be displayed in the banner, it's used to explain the
+            action to the user.</mds-text
+          >
         </mds-banner>
       </div>
     </div>
