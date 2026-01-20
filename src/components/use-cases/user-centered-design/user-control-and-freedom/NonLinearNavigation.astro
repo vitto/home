@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -10,4 +12,26 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   <UseCaseInteractive clsHeight={0}>
     <!-- Use case content will go here -->
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">
+      Allow users to jump between sections
+    </UsageItem>
+    <UsageItem variant="dont">
+      Lock users into a fixed linear path
+    </UsageItem>
+    <UsageItem variant="do">
+      Keep navigation accessible at all times
+    </UsageItem>
+    <UsageItem variant="dont">
+      Hide navigation during tasks
+    </UsageItem>
+    <UsageItem variant="do">
+      Support exploration and backtracking
+    </UsageItem>
+    <UsageItem variant="dont">
+      Over-constrain user workflows
+    </UsageItem>
+  </Usage>
+
 </UseCase>

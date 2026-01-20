@@ -10,6 +10,7 @@
 @import './components/Button.css';
 @import './components/CodeSnippet.css';
 @import './components/Header.css';
+@import './components/Usage.css';
 @import './components/PrincipleNav.css';
 
 body,
@@ -64,3 +65,5 @@ mds-button,
 mds-push-notification-item[data-avatar]::part(picture) {
   border-radius: 1000px;
 }
+
+

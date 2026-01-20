@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -173,4 +175,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       }
     </script>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Show progress and next steps</UsageItem>
+    <UsageItem variant="dont">Rely on user memory of the process</UsageItem>
+    <UsageItem variant="do">Guide users with inline prompts</UsageItem>
+    <UsageItem variant="dont">Assume users know the next step</UsageItem>
+    <UsageItem variant="do">Use empty states to explain actions</UsageItem>
+    <UsageItem variant="dont">Leave empty screens unexplained</UsageItem>
+  </Usage>
 </UseCase>

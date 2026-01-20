@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -10,4 +12,26 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   <UseCaseInteractive clsHeight={0}>
     <!-- Use case content will go here -->
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">
+      Follow expected user behavior
+    </UsageItem>
+    <UsageItem variant="dont">
+      Override user intent
+    </UsageItem>
+    <UsageItem variant="do">
+      Ask before interrupting or redirecting
+    </UsageItem>
+    <UsageItem variant="dont">
+      Auto-redirect without warning
+    </UsageItem>
+    <UsageItem variant="do">
+      Let users control timing and pace
+    </UsageItem>
+    <UsageItem variant="dont">
+      Force automatic actions or reloads
+    </UsageItem>
+  </Usage>
+
 </UseCase>

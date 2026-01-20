@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -42,6 +44,28 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </div>
     </div>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">
+      Provide visible exit controls
+    </UsageItem>
+    <UsageItem variant="dont">
+      Trap users in modal or blocking states
+    </UsageItem>
+    <UsageItem variant="do">
+      Preserve progress when exiting
+    </UsageItem>
+    <UsageItem variant="dont">
+      Discard user input on exit
+    </UsageItem>
+    <UsageItem variant="do">
+      Support standard exit gestures and keys
+    </UsageItem>
+    <UsageItem variant="dont">
+      Disable expected navigation behavior
+    </UsageItem>
+  </Usage>
+
 </UseCase>
 
 <script>

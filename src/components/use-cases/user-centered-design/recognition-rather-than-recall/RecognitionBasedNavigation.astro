@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -39,4 +41,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </div>
     </mds-tab>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Use clear and familiar navigation labels</UsageItem>
+    <UsageItem variant="dont">Rely on hidden or memorized navigation paths</UsageItem>
+    <UsageItem variant="do">Provide breadcrumbs for orientation</UsageItem>
+    <UsageItem variant="dont">Force users to remember where they are</UsageItem>
+    <UsageItem variant="do">Keep navigation patterns consistent</UsageItem>
+    <UsageItem variant="dont">Change navigation behavior across screens</UsageItem>
+  </Usage>
 </UseCase>

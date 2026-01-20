@@ -1,4 +1,6 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
@@ -10,4 +12,25 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   <UseCaseInteractive clsHeight={0}>
     <!-- Use case content will go here -->
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">
+      Help users recover from mistakes
+    </UsageItem>
+    <UsageItem variant="dont">
+      Penalize minor errors
+    </UsageItem>
+    <UsageItem variant="do">
+      Use warnings before blocking actions
+    </UsageItem>
+    <UsageItem variant="dont">
+      Block users prematurely
+    </UsageItem>
+    <UsageItem variant="do">
+      Design explicitly for recovery paths
+    </UsageItem>
+    <UsageItem variant="dont">
+      Assume perfect user behavior
+    </UsageItem>
+  </Usage>
 </UseCase>

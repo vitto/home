@@ -1,0 +1,11 @@
+---
+interface Props {
+  variant: 'do' | 'dont';
+}
+
+const { variant } = Astro.props;
+---
+
+<mds-usage variant={variant}>
+  <mds-text typography="caption"><slot /></mds-text>
+</mds-usage>

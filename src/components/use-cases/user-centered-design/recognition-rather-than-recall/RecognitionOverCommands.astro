@@ -1,13 +1,8 @@
 ---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
-
-const autocompleteItems = [
-  'Vittorio Vittori is a Design System Architect',
-  'Vittorio Vittori is a UX Designer',
-  'Vittorio Vittori loves accessibility',
-  'Vittorio Vittori why did his parents give him a modular name',
-];
 ---
 
 <UseCase
@@ -21,11 +16,24 @@ const autocompleteItems = [
     label="Autocomplete search"
   >
     <div class="w-full relative h-4000">
-      <mds-input
-        data-search-input
-        icon="mi/outline/search"
-        placeholder='Digit "Vittorio" to see the autocomplete'
-        type="text"></mds-input>
+      <div class="grid gap-400">
+        <mds-input
+          data-search-input
+          icon="mi/outline/search"
+          placeholder='Digit "Vittorio" to see the autocomplete'
+          type="text">
+        </mds-input>
+        <div class="grid gap-200">
+          <mds-text typography="label">latest searches</mds-text>
+          <div class="flex gap-200 flex-wrap">
+            <mds-button variant="dark" tone="weak" data-search-button>Design</mds-button>
+            <mds-button variant="dark" tone="weak" data-search-button>UX</mds-button>
+            <mds-button variant="dark" tone="weak" data-search-button>Vittorio Vittori</mds-button>
+            <mds-button variant="dark" tone="weak" data-search-button>Dog</mds-button>
+            <mds-button variant="dark" tone="weak" data-search-button>Parent</mds-button>
+          </div>
+        </div>
+      </div>
       <div
         class="hidden absolute top-1200 left-0 right-0 mt-200 bg-tone-neutral dark:bg-tone-neutral-09 rounded-lg shadow-sm-sharp border border-tone-neutral-03/20 z-10 max-h-4400 overflow-y-auto"
         data-autocomplete-results
@@ -35,6 +43,7 @@ const autocompleteItems = [
     </div>
     <script>
       function initAutocomplete() {
+        console.log('initAutocomplete');
         const articleId = 'recognition-over-commands';
         const scope = (window as any).getUseCaseScope?.(articleId);
         if (!scope) return;
@@ -43,6 +52,7 @@ const autocompleteItems = [
         const resultsContainer = container.querySelector(
           '[data-autocomplete-results]'
         ) as HTMLElement;
+
         if (!searchInput || !resultsContainer) return;
         const autocompleteItems = [
           'Vittorio Vittori Design System Architect',
@@ -67,6 +77,16 @@ const autocompleteItems = [
           const lowerQuery = query.toLowerCase();
           return autocompleteItems.filter((item) => item.toLowerCase().includes(lowerQuery));
         }
+        function clearSearch() {
+          console.log('clearSearch');
+          const inputElement = searchInput as any;
+          if (inputElement) {
+            inputElement.value = '';
+          }
+          resultsContainer.classList.add('hidden');
+          resultsContainer.innerHTML = '';
+        }
+
         function renderResults(query: string) {
           // Only show autocomplete if query has at least 2 characters
           if (query.length < 2) {
@@ -86,8 +106,8 @@ const autocompleteItems = [
           resultsContainer.classList.remove('hidden');
           const resultsHTML = displayedResults
             .map(
-              (item) =>
-                `<div class="px-400 py-100 hover:bg-tone-neutral-10 cursor-pointer border-b border-tone-neutral-03/10"><mds-text typography="caption" class="text-tone-neutral-03">${highlightText(item, query)}</mds-text></div>`
+              (item, index) =>
+                `<div class="px-400 py-100 hover:bg-tone-neutral-10 cursor-pointer border-b border-tone-neutral-03/10" data-result-item data-result-index="${index}"><mds-text typography="caption" class="text-tone-neutral-03">${highlightText(item, query)}</mds-text></div>`
             )
             .join('');
           const tipHTML =
@@ -96,6 +116,18 @@ const autocompleteItems = [
               : `<div class="px-400 py-200 bg-tone-neutral-10 border-t border-tone-neutral-03/10"><mds-text typography="caption" class="text-tone-neutral-03">${totalResults} result${totalResults !== 1 ? 's' : ''}</mds-text></div>`;
           resultsContainer.innerHTML = resultsHTML + tipHTML;
         }
+
+        // Use event delegation to handle clicks on result items
+        // Using capture phase to catch clicks before child elements intercept them
+        resultsContainer.addEventListener('click', (e: Event) => {
+          const target = e.target as HTMLElement;
+          // Check if click originated from a result item or its children
+          const resultItem = target.closest('[data-result-item]');
+          if (resultItem) {
+            clearSearch();
+          }
+        }, { capture: true });
+
         function getInputValue(): string {
           const inputElement = searchInput as HTMLInputElement;
           return inputElement?.value || '';
@@ -118,6 +150,28 @@ const autocompleteItems = [
         searchInput.addEventListener('mdsInputChange', handleInputChange);
         searchInput.addEventListener('mdsInputBlur', handleInputBlur);
         searchInput.addEventListener('mdsInputFocus', handleInputFocus);
+
+        // Handle button clicks to fill search input
+        const searchButtons = container.querySelectorAll('[data-search-button]');
+        searchButtons.forEach((button: HTMLElement) => {
+          button.addEventListener('click', () => {
+            const buttonText = button.textContent?.trim() || '';
+            if (!buttonText) return;
+
+            // Set the input value
+            const inputElement = searchInput as any;
+            if (inputElement) {
+              inputElement.value = buttonText;
+
+              // Trigger the search by dispatching mdsInputChange event
+              const changeEvent = new CustomEvent('mdsInputChange', {
+                bubbles: true,
+                detail: { value: buttonText }
+              });
+              searchInput.dispatchEvent(changeEvent);
+            }
+          });
+        });
       }
       function waitForComponents() {
         if (customElements.get('mds-input')) {
@@ -133,4 +187,12 @@ const autocompleteItems = [
       }
     </script>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Offer selectable options instead of commands</UsageItem>
+    <UsageItem variant="dont">Require users to remember syntax</UsageItem>
+    <UsageItem variant="do">Expose actions through buttons and menus</UsageItem>
+    <UsageItem variant="dont">Hide core actions behind shortcuts only</UsageItem>
+    <UsageItem variant="do">Use descriptive labels for actions</UsageItem>
+    <UsageItem variant="dont">Rely on undocumented commands</UsageItem>
+  </Usage>
 </UseCase>

@@ -1,0 +1,22 @@
+---
+interface Props {
+  label?: string;
+  class?: string;
+}
+
+const { label = "Do and Don't", class: className = '' } = Astro.props;
+---
+
+<!-- <mds-accordion class={`usage ${className}`}>
+  <mds-accordion-item label={label}>
+    <div class="usage-content grid gap-400 grid-cols-fit-lg rounded-[28px]">
+      <slot />
+    </div>
+  </mds-accordion-item>
+</mds-accordion>
+
+<mds-hr class="h-50"></mds-hr> -->
+
+<div class="grid gap-400 grid-cols-fit-lg rounded-[28px]">
+  <slot />
+</div>

@@ -1,0 +1,22 @@
+.usage mds-usage {
+  background-color: rgb(var(--tone-neutral));
+}
+
+.usage mds-usage[variant="dont"] {
+  @apply mobile:order-last;
+}
+
+
+.usage-content {
+  @apply transition-cosmetic ease-out-expo duration-500 p-600 bg-tone-neutral-10;
+}
+
+.usage mds-accordion-item:not([selected]) .usage-content {
+  /* @apply p-0 bg-transparent delay-500; */
+  @apply scale-75 ease-in-circ;
+}
+
+.usage mds-accordion-item[selected] .usage-content {
+  /* @apply p-600 bg-tone-neutral-10 delay-75; */
+  @apply scale-100 delay-75 ease-out-expo;
+}
