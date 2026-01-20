@@ -28,7 +28,7 @@
     },
     {
       "id": "user-control-and-freedom",
-      "draft": true,
+      "draft": false,
       "title": "User Control and Freedom",
       "category": "Control",
       "icon": "mi/outline/exit-to-app",

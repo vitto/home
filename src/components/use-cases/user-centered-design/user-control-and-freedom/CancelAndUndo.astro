@@ -1,0 +1,214 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<UseCase
+  title="Cancel and Undo"
+  description="Users can easily reverse actions, reducing the fear of making mistakes and encouraging exploration."
+>
+  <UseCaseInteractive clsHeight={480} toggle articleId="cancel-and-undo">
+    <div class="flex flex-col gap-400 justify-center max-w-8000 w-full">
+      <div class="card relative overflow-hidden rounded-[32px]">
+        <mds-img
+          class="object-cover w-full h-full absolute inset-0"
+          src={`${baseUrl}/assets/mozart-portrait.jpg`}></mds-img>
+        <div
+          class="absolute text-tone-neutral rounded-b-2xl bottom-0 left-0 right-0 p-400 bg-gradient-to-b from-tone-neutral-01/0 to-tone-neutral-01/100"
+        >
+          <div class="grid gap-600">
+            <div class="grid gap-100">
+              <mds-text typography="h5">Wolfgang Amadeus Mozart</mds-text>
+              <mds-text typography="caption">Austrian composer and pianist (1756-1791)</mds-text>
+            </div>
+            <div class="grid grid-cols-3">
+              <div class="flex flex-col gap-0 text-tone-neutral items-center justify-center">
+                <mds-text typography="h6">124M</mds-text>
+                <mds-text typography="caption"><b>Followers</b></mds-text>
+              </div>
+              <div
+                class="flex flex-col gap-0 text-tone-neutral items-center justify-center border-x border-solid border-tone-neutral/30 border-y-0"
+              >
+                <mds-text typography="h6">67</mds-text>
+                <mds-text typography="caption"><b>Works</b></mds-text>
+              </div>
+              <div class="flex flex-col gap-0 text-tone-neutral items-center justify-center">
+                <mds-text typography="h6">95</mds-text>
+                <mds-text typography="caption"><b>Operas</b></mds-text>
+              </div>
+            </div>
+            <div class="grid grid-cols-[1fr_auto] gap-200">
+              <mds-button variant="light" icon="mi/outline/favorite-border" data-follow-button>Follow</mds-button>
+              <mds-button icon="mi/outline/visibility-off" variant="error" title="Do not show again" data-hide-button></mds-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-400 justify-center max-w-8000 w-full" data-card-wrapper>
+      <div class="card relative overflow-hidden rounded-[32px]" data-card>
+        <mds-img
+          class="object-cover w-full h-full absolute inset-0"
+          src={`${baseUrl}/assets/portrait-01.png`}></mds-img>
+        <div
+          class="absolute text-tone-neutral rounded-b-2xl bottom-0 left-0 right-0 p-400 bg-gradient-to-b from-tone-neutral-01/0 to-tone-neutral-01/100"
+        >
+          <div class="grid gap-600">
+            <div class="grid gap-100">
+              <mds-text typography="h5">Kurt Cabin</mds-text>
+              <mds-text typography="caption">
+                I'm a musician and producer from New York City, currently based in Los Angeles.
+              </mds-text>
+            </div>
+            <div class="grid grid-cols-3">
+              <div class="flex flex-col gap-0 text-tone-neutral items-center justify-center">
+                <mds-text typography="h6">72M</mds-text>
+                <mds-text typography="caption"><b>Followers</b></mds-text>
+              </div>
+              <div
+                class="flex flex-col gap-0 text-tone-neutral items-center justify-center border-x border-solid border-tone-neutral/30 border-y-0"
+              >
+                <mds-text typography="h6">6</mds-text>
+                <mds-text typography="caption"><b>Albums</b></mds-text>
+              </div>
+              <div class="flex flex-col gap-0 text-tone-neutral items-center justify-center">
+                <mds-text typography="h6">15</mds-text>
+                <mds-text typography="caption"><b>Singles</b></mds-text>
+              </div>
+            </div>
+            <div class="grid grid-cols-[1fr_auto] gap-200">
+              <mds-button variant="light" icon="mi/outline/favorite-border" data-follow-button>Follow</mds-button>
+              <mds-button icon="mi/outline/delete" variant="error" title="Never show again" data-hide-button></mds-button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fake-card rounded-[32px] bg-tone-neutral-09 items-center justify-center text-center p-600 hidden" data-fake-card>
+        <mds-text typography="detail">You will never see this Artist again.</mds-text>
+      </div>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
+<style>
+  mds-toast:not([visible]) {
+    transform: translateY(200%);
+  }
+
+  .card,
+  .fake-card {
+    aspect-ratio: 2 / 3;
+  }
+
+  .card-footer {
+    mask: linear-gradient(transparent, black, black);
+    backdrop-filter: blur(8px);
+  }
+</style>
+
+<script>
+  function initButtonInteractions() {
+    const articleId = 'cancel-and-undo';
+    const scope = (window as any).getUseCaseScope?.(articleId);
+    if (!scope) return;
+
+    const { container } = scope;
+    const followButtons = container.querySelectorAll('[data-follow-button]');
+    const hideButtons = container.querySelectorAll('[data-hide-button]');
+
+    // Handle Follow button clicks
+    followButtons.forEach((button: HTMLElement) => {
+      let isFollowing = false;
+
+      button.addEventListener('click', () => {
+        isFollowing = !isFollowing;
+
+        if (isFollowing) {
+          button.setAttribute('icon', 'mi/outline/favorite');
+          button.textContent = 'Following';
+        } else {
+          button.setAttribute('icon', 'mi/outline/favorite-border');
+          button.textContent = 'Follow';
+        }
+      });
+    });
+
+    // Handle "Never show again" button clicks
+    hideButtons.forEach((button: HTMLElement) => {
+      let isHidden = false;
+      let rollbackTimeout: ReturnType<typeof setTimeout> | null = null;
+
+      // Store original title
+      const originalTitle = button.getAttribute('title') || '';
+
+      // Find the card wrapper (parent container)
+      const cardWrapper = button.closest('[data-card-wrapper]');
+      const card = cardWrapper?.querySelector('[data-card]') as HTMLElement;
+      const fakeCard = cardWrapper?.querySelector('[data-fake-card]') as HTMLElement;
+
+      // Helper function to restore initial state
+      const restoreInitialState = () => {
+        isHidden = false;
+        // Restore original icon based on which card it is
+        const isFirstCard = button.closest('.card')?.querySelector('[src*="mozart-portrait"]');
+        button.setAttribute('icon', isFirstCard ? 'mi/outline/visibility-off' : 'mi/outline/delete');
+        button.setAttribute('variant', 'error');
+        button.setAttribute('title', originalTitle);
+
+        // Toggle visibility: show card, hide fake-card
+        if (card && fakeCard) {
+          card.classList.remove('hidden');
+          fakeCard.classList.remove('flex');
+          fakeCard.classList.add('hidden');
+        }
+      };
+
+      button.addEventListener('click', () => {
+        // Clear any existing timeout
+        if (rollbackTimeout) {
+          clearTimeout(rollbackTimeout);
+          rollbackTimeout = null;
+        }
+
+        isHidden = !isHidden;
+
+        if (isHidden) {
+          button.setAttribute('icon', 'mi/outline/visibility');
+          button.setAttribute('variant', 'success');
+          button.setAttribute('title', 'Show again');
+
+          // Toggle visibility: hide card, show fake-card
+          if (card && fakeCard) {
+            card.classList.add('hidden');
+            fakeCard.classList.remove('hidden');
+            fakeCard.classList.add('flex');
+
+            // Set timeout to rollback after 2000ms
+            rollbackTimeout = setTimeout(() => {
+              restoreInitialState();
+              rollbackTimeout = null;
+            }, 2000);
+          }
+        } else {
+          restoreInitialState();
+        }
+      });
+    });
+  }
+
+  // Wait for web components to be defined before initializing
+  function waitForComponents() {
+    if (customElements.get('mds-button')) {
+      initButtonInteractions();
+    } else {
+      setTimeout(waitForComponents, 100);
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForComponents);
+  } else {
+    waitForComponents();
+  }
+</script>
