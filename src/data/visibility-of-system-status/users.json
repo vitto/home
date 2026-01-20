@@ -2,6 +2,8 @@
   {
     "name": "Mario Rossi",
     "initials": "MR",
+    "address": "Via dei Fori Imperiali, 123",
+    "city": "Rome",
     "country": "Italy",
     "avatar": "/assets/example-avatar-01.png",
     "role": "Product Manager",
@@ -13,6 +15,8 @@
   {
     "name": "Luigi Verdi",
     "initials": "LV",
+    "address": "Corso di Porta Romana, 45",
+    "city": "Milan",
     "country": "Italy",
     "avatar": "/assets/example-avatar-02.png",
     "role": "UX Designer",
@@ -24,6 +28,8 @@
   {
     "name": "Giulia Crippa",
     "initials": "GC",
+    "address": "Via della Scala, 78",
+    "city": "Florence",
     "country": "Italy",
     "avatar": "/assets/example-avatar-03.png",
     "role": "Frontend Developer",
@@ -35,6 +41,8 @@
   {
     "name": "Joan Baez",
     "initials": "JB",
+    "address": "1234 Oak Street, Apt 5B",
+    "city": "San Francisco",
     "country": "USA",
     "avatar": "/assets/example-avatar-04.png",
     "role": "Backend Developer",
@@ -46,6 +54,8 @@
   {
     "name": "Jamie Oliver",
     "initials": "JO",
+    "address": "45 High Street",
+    "city": "London",
     "country": "UK",
     "avatar": "/assets/example-avatar-06.png",
     "role": "Product Owner",
