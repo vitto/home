@@ -3,14 +3,23 @@ import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import PasswordStrength from '../../PasswordStrength.astro';
 ---
 
 <UseCase
   title="Forgiving Interaction"
   description="The interface tolerates imperfect actions and helps users recover gracefully."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+  <UseCaseInteractive
+    clsHeight={0}
+    articleId="forgiving-interaction"
+    label="Italian Fiscal Code validation"
+  >
+    <div class="grid gap-600 w-full max-w-8000">
+      <mds-input-field label="Fiscal Code">
+        <mds-input type="cf" required placeholder="Ex: RSSMRA85C10F205Z"></mds-input>
+      </mds-input-field>
+    </div>
   </UseCaseInteractive>
 
   <Usage>
