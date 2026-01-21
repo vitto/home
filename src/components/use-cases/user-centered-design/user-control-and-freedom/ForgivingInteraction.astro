@@ -14,6 +14,9 @@ import PasswordStrength from '../../PasswordStrength.astro';
     clsHeight={0}
     articleId="forgiving-interaction"
     label="Italian Fiscal Code validation"
+    bugExpected="Should validates the string once the user blurs the input."
+    bugCurrent="Validation starts after the first character is typed; then, after the first blur, it works as expected."
+    bugComponent="mds-input-field"
   >
     <div class="grid gap-600 w-full max-w-8000">
       <mds-input-field label="Fiscal Code">
