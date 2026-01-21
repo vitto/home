@@ -17,6 +17,9 @@ interface Props {
   multiple?: boolean;
   overflowHidden?: boolean;
   articleId?: string;
+  bugExpected?: string;
+  bugCurrent?: string;
+  bugComponent?: string;
 }
 
 const {
@@ -28,6 +31,9 @@ const {
   multiple = false,
   overflowHidden = true,
   articleId = null,
+  bugExpected = null,
+  bugCurrent = null,
+  bugComponent = null,
 } = Astro.props;
 
 // Validate that toggle and multiple are mutually exclusive
@@ -43,6 +49,7 @@ const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsH
 <div
   class={`use-case-interactive bg-tone-neutral-10 dark:bg-tone-neutral-09 p-600 pt-400 grid gap-400 grid-cols-full tablet:rounded-[28px] mobile:-mx-600 group z-10 ${className}`}
 >
+  <div class="flex justify-center items-center gap-100">
   {
     multiple && (
       <>
@@ -81,7 +88,43 @@ const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsH
       </p>
     ) : null
   }
-
+  {
+    (bugExpected || bugCurrent) && articleId ? (
+      <>
+        <div class="bug-report flex fill-status-error-05 cursor-pointer">
+          <mds-icon name="mi/outline/bug-report"></mds-icon>
+        </div>
+        <mds-dropdown class="max-w-8000" target={`#${articleId} .bug-report`}>
+          <div class="flex justify-between items-center gap-200">
+            <mds-badge variant="error">Bug reported</mds-badge>
+            {/* { bugComponent && <mds-badge variant="light" tone="strong" class="bg-tone-neutral-10">{ bugComponent}</mds-badge> } */}
+          </div>
+          {bugExpected &&
+            <div class="grid gap-100">
+              <mds-text typography="h6">Expected behavior</mds-text>
+              <mds-text typography="caption">{bugExpected}</mds-text>
+            </div>
+          }
+          {bugCurrent &&
+            <div class="grid gap-100">
+              <mds-text typography="h6">Current behavior</mds-text>
+              <mds-text typography="caption">{bugCurrent}</mds-text>
+            </div>
+          }
+          <div class="px-600 py-400 -mx-600 -mb-600 bg-tone-neutral-10 rounded-b-lg">
+            { bugComponent
+              ? <div class="grid gap-200">
+                <mds-text typography="option">Component affected</mds-text>
+                <mds-badge variant="light" tone="strong" class="justify-self-start bg-tone-neutral shadow-outline-light">{ bugComponent}</mds-badge>
+              </div>
+              : <mds-text typography="caption">I'll fix this issue as soon as possible</mds-text>
+            }
+          </div>
+        </mds-dropdown>
+      </>
+    ) : null
+  }
+  </div>
   <div
     class={`flex flex-col items-center justify-center gap-400 bg-tone-neutral ${overflowHidden ? 'overflow-hidden' : ''} p-600 tablet:py-1200 rounded-xl shadow-sm-sharp dark:border-solid dark:border-tone-neutral-07 dark:border w-full`}
   >
