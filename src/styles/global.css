@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @import '@maggioli-design-system/styles/dist/css/hydrated.css';
 @import '@maggioli-design-system/styles/dist/css/reset.css';
 @import '@maggioli-design-system/styles/dist/css/globals.css';
@@ -13,8 +15,21 @@
 @import './components/Usage.css';
 @import './components/PrincipleNav.css';
 
+.text-title-h1,
+.text-title-h2,
+.text-title-h3,
+.text-title-h4,
+.text-title-h5,
+.text-title-h6,
+.text-info-paragraph,
+.text-info-detail,
+.text-info-caption,
+.text-info-label,
+.text-info-option,
+.text-info-tip,
 body,
-html {
+html,
+mds-text {
   scroll-behavior: smooth;
   font-family:
     system-ui,
@@ -64,4 +79,16 @@ mds-input-switch[data-toggle-switch] {
 mds-button,
 mds-push-notification-item[data-avatar]::part(picture) {
   border-radius: 1000px;
+}
+
+mds-usage {
+  min-height: 92px;
+  /* justify-content: center; */
+  align-items: center;
+  /* text-align: center; */
+  grid-template-rows: auto 1fr;
+}
+
+mds-usate {
+  text-wrap: pretty;
 }
