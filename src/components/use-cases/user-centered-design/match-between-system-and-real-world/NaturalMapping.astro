@@ -9,7 +9,14 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Natural Mapping"
   description="Controls and outcomes are arranged in a way that mirrors real-world cause-and-effect relationships."
 >
-  <UseCaseInteractive clsHeight={48} toggle>
+  <UseCaseInteractive
+    clsHeight={48}
+    toggle
+    label="Number input"
+    articleId="natural-mapping"
+    bugComponent="mds-input"
+    bugCurrent="When the attribute type is se to number and the controls are shown, the style is not fully consistent with the rest of the design language and design system style."
+  >
     <mds-input-field class="w-full max-w-9600">
       <mds-input type="number" placeholder="Es: 42" controls-layout="horizontal"></mds-input>
     </mds-input-field>

@@ -12,6 +12,11 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   <UseCaseInteractive
     clsHeight={72}
     overflowHidden={false}
+    label="Date range"
+    articleId="constraint-based-design"
+    bugComponent="mds-input-date-range"
+    bugExpected="Actually, there is no way to change the font style of the date range."
+    bugCurrent="Fonts should be easier to customize."
     contentClass="z-20 relative justify-center items-center gap-400"
   >
     <mds-input-field label="booking date" class="max-w-9600 w-full">
