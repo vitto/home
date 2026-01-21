@@ -32,7 +32,7 @@ const categories = categoriesData.map((category) => ({
 >
   <Icon class={`mobile:text-[32px] transition-colors ${iconColor}`} name="mi/outline/menu" />
 </Button>
-<div class="header-nav grid grid-cols-[48px_auto] tablet:grid-cols-2 text-left" data-header-nav>
+<div class="header-nav" data-header-nav hidden>
   <nav class="header-nav-menu grid-cols-fill" data-header-nav-menu>
     <div class="flex items-center justify-between">
       <div class="grid text-tone-neutral-03">
@@ -84,6 +84,9 @@ const categories = categoriesData.map((category) => ({
     const headerNavMenu = document.querySelector('[data-header-nav-menu]');
 
     if (!menuToggle || !headerNav || !headerNavMenu) return;
+
+    console.log(headerNav);
+    headerNav.removeAttribute('hidden');
 
     const openMenu = () => {
       headerNav.classList.add('header-nav--opened');

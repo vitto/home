@@ -1,0 +1,7 @@
+.use-case-interactive-content {
+  transition-behavior: allow-discrete;
+  @starting-style {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}

@@ -1,24 +1,28 @@
 .header-nav {
   @apply duration-500
-    ease-in-out-quart
+    bg-transparent
     bottom-0
+    ease-in-out-quart
     fixed
     flex-col
+    grid
+    grid-cols-[48px_auto]
     h-full
     items-start
     justify-start
-    pointer-events-none
     left-0
-    overflow-y-auto
-    right-0
-    p-600
-    top-0
-    w-full
-    z-30
-    bg-transparent
-    mobile:py-0
     mobile:pr-0
-    transition-cosmetic;
+    mobile:py-0
+    overflow-y-auto
+    p-600
+    pointer-events-none
+    right-0
+    tablet:grid-cols-2
+    text-left
+    top-0
+    transition-cosmetic
+    w-full
+    z-30;
 
   &.header-nav--opened {
     @apply bg-tone-neutral-01/80

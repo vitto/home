@@ -86,8 +86,9 @@ const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsH
     class={`flex flex-col items-center justify-center gap-400 bg-tone-neutral ${overflowHidden ? 'overflow-hidden' : ''} p-600 tablet:py-1200 rounded-xl shadow-sm-sharp dark:border-solid dark:border-tone-neutral-07 dark:border w-full`}
   >
     <div
-      class={`flex flex-col transition-cosmetic w-full relative box-border delay-300 opacity-0 scale-90 ${contentClass}`}
+      class={`use-case-interactive-content flex flex-col transition-cosmetic w-full relative box-border delay-300 opacity-0 scale-90 ${contentClass}`}
       style={initialStyle}
+      hidden
       data-cls-prevent
       data-toggle-container={toggle ? 'true' : undefined}
       data-multiple-container={multiple ? 'true' : undefined}

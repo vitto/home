@@ -92,3 +92,8 @@ mds-usage {
 mds-usate {
   text-wrap: pretty;
 }
+
+mds-img::part(media) {
+  width: 100%;
+  height: 100%;
+}
