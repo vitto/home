@@ -91,9 +91,7 @@ const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsH
     {
       (bugExpected || bugCurrent) && articleId ? (
         <>
-          <div class="bug-report flex fill-status-error-05 cursor-pointer">
-            <mds-icon name="mi/outline/bug-report" />
-          </div>
+          <mds-button icon="mi/outline/bug-report" variant="error" tone="quiet" class="bug-report" title="Show bug report details"></mds-button>
           <mds-dropdown class="max-w-8000" target={`#${articleId} .bug-report`}>
             <div class="flex justify-between items-center gap-200">
               <mds-badge variant="error">Bug report</mds-badge>
