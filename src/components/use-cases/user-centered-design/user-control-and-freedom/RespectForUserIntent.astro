@@ -15,20 +15,52 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     bugComponent="mds-input-select"
     bugCurrent="There is no way to reset the input select to the initial state"
     bugExpected="The input select should be reset to its initial state by an API method"
+    toggle
   >
-    <div class="w-full max-w-8000 grid gap-600 auto-rows-min">
-      <mds-text typography="h4" tag="span">Account information</mds-text>
-      <div class="grid gap-400">
-        <mds-input-field label="Choose a country">
-          <mds-input-select placeholder="Not specified" data-country-select>
-            <option value="1">Buthan</option>
-            <option value="2">Italy</option>
-            <option value="3">Spain</option>
-          </mds-input-select>
-        </mds-input-field>
-        <mds-button disabled data-save-button>Save preference</mds-button>
+    <mds-tab fill animation="fade" class="w-full max-w-8000">
+      <mds-tab-item>Home</mds-tab-item>
+      <mds-tab-item selected>Account</mds-tab-item>
+      <div slot="content"class="w-full grid gap-600 auto-rows-min px-200 py-600">
+        <mds-text typography="h4" tag="span">Welcome back</mds-text>
+        <mds-text>Would you like to know more about our new products?</mds-text>
+        <mds-button variant="dark">Learn more</mds-button>
       </div>
-    </div>
+      <div slot="content"class="w-full grid gap-600 auto-rows-min px-200 py-600">
+        <mds-text typography="h4" tag="span">Account information</mds-text>
+        <div class="grid gap-400">
+          <mds-input-field label="Choose a country">
+            <mds-input-select placeholder="Not specified" data-country-select>
+              <option value="1">Buthan</option>
+              <option value="2">Italy</option>
+              <option value="3">Spain</option>
+            </mds-input-select>
+          </mds-input-field>
+          <mds-button disabled data-save-button>Save preference</mds-button>
+        </div>
+      </div>
+    </mds-tab>
+    <mds-tab fill animation="fade" class="w-full max-w-8000" data-second-tab>
+      <mds-tab-item data-home-tab>Home</mds-tab-item>
+      <mds-tab-item selected data-account-tab>Account</mds-tab-item>
+      <div slot="content"class="w-full grid gap-600 auto-rows-min px-200 py-600">
+        <mds-text typography="h4" tag="span">Welcome back</mds-text>
+        <mds-text>Would you like to know more about our new products?</mds-text>
+        <mds-button variant="dark">Learn more</mds-button>
+      </div>
+      <div slot="content"class="w-full grid gap-600 auto-rows-min px-200 py-600">
+        <mds-text typography="h4" tag="span">Account information</mds-text>
+        <div class="grid gap-400">
+          <mds-input-field label="Choose a country">
+            <mds-input-select placeholder="Not specified" data-country-select-second>
+              <option value="1">Buthan</option>
+              <option value="2">Italy</option>
+              <option value="3">Spain</option>
+            </mds-input-select>
+          </mds-input-field>
+          <mds-button disabled data-save-button-second>Save preference</mds-button>
+        </div>
+      </div>
+    </mds-tab>
   </UseCaseInteractive>
 
   <script>
@@ -41,6 +73,11 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       const { container } = scope;
       const countrySelect = container.querySelector('[data-country-select]');
       const saveButton = container.querySelector('[data-save-button]');
+      const countrySelectSecond = container.querySelector('[data-country-select-second]');
+      const saveButtonSecond = container.querySelector('[data-save-button-second]');
+      const secondTab = container.querySelector('[data-second-tab]');
+      const homeTab = container.querySelector('[data-home-tab]');
+      const accountTab = container.querySelector('[data-account-tab]');
 
       if (!countrySelect || !saveButton) return;
 
@@ -92,6 +129,22 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
           rollbackTimeout = null;
         }, 2000);
       });
+
+      // Handle second tab block - switch to Home tab when save button is clicked
+      if (countrySelectSecond && saveButtonSecond && homeTab && accountTab) {
+        // Enable button when country is selected in second tab
+        countrySelectSecond.addEventListener('mdsInputSelectChange', () => {
+          saveButtonSecond.removeAttribute('disabled');
+        });
+
+        // Switch to Home tab when save button is clicked in second tab
+        saveButtonSecond.addEventListener('click', () => {
+          // Remove selected from Account tab
+          accountTab.removeAttribute('selected');
+          // Add selected to Home tab
+          homeTab.setAttribute('selected', '');
+        });
+      }
     }
 
     if (document.readyState === 'loading') {
