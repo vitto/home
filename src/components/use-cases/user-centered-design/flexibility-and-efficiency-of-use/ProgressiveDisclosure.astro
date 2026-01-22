@@ -9,8 +9,172 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Progressive Disclosure"
   description="Advanced features are revealed gradually, keeping the interface simple for beginners while remaining powerful for experienced users."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+  <UseCaseInteractive clsHeight={293} articleId="progressive-disclosure" toggle>
+    <div class="grid gap-600 w-full max-w-8000">
+      <mds-text typography="h5">Customize player</mds-text>
+      <div class="grid gap-600">
+        <mds-text typography="h6">Head</mds-text>
+        <div class="grid gap-600">
+          <mds-input-field label="Haircut">
+            <mds-input-select data-haircut-select>
+              <option value="0" selected>None</option>
+              <option value="1">Short</option>
+              <option value="2">Long</option>
+              <option value="3">Medium</option>
+              <option value="4">Braids</option>
+              <option value="5">Ponytail</option>
+              <option value="6">Dreadlocks</option>
+              <option value="7">Afro</option>
+            </mds-input-select>
+          </mds-input-field>
+          <div class="hidden gap-600" data-hair-container>
+            <mds-input-field label="Hair color">
+              <mds-input-select>
+                <option value="1" selected>Brown</option>
+                <option value="2">Black</option>
+                <option value="3">Blonde</option>
+                <option value="4">Red</option>
+                <option value="5">Gray</option>
+                <option value="6">White</option>
+                <option value="7">Other</option>
+              </mds-input-select>
+            </mds-input-field>
+            <div class="flex items-center justify-between gap-600">
+              <mds-text typography="detail">Hair clip</mds-text>
+              <mds-input-switch></mds-input-switch>
+            </div>
+          </div>
+        </div>
+        <div class="grid gap-600 border-t border-tone-neutral-08 border-solid border-0 pt-600">
+          <mds-input-field label="Glasses">
+            <mds-input-select data-glasses-select>
+              <option value="0" selected>None</option>
+              <option value="1">Sunglasses</option>
+              <option value="2">Eyeglasses</option>
+              <option value="3">Prescription glasses</option>
+              <option value="4">Reading glasses</option>
+              <option value="5">Progressive lenses</option>
+              <option value="6">Bifocal lenses</option>
+              <option value="7">Trifocal lenses</option>
+              <option value="8">Progressive addition lenses</option>
+              <option value="9">Progressive addition progressive lenses</option>
+            </mds-input-select>
+          </mds-input-field>
+          <div class="hidden gap-600" data-glasses-container>
+            <mds-input-field label="Glasses color">
+              <mds-input-select>
+                <option value="1">Brown</option>
+                <option value="2">Black</option>
+                <option value="8" selected>Blue</option>
+                <option value="3">Gray</option>
+                <option value="4">Transparent</option>
+                <option value="5">Red</option>
+                <option value="6">White</option>
+                <option value="7">Yellow</option>
+              </mds-input-select>
+            </mds-input-field>
+            <mds-input-field label="Lens color">
+              <mds-input-select>
+                <option value="1">Brown</option>
+                <option value="2" selected>Black</option>
+                <option value="3">Gray</option>
+                <option value="4">Transparent</option>
+                <option value="5">Red</option>
+                <option value="6">White</option>
+                <option value="7">Yellow</option>
+              </mds-input-select>
+            </mds-input-field>
+            <div class="flex items-center justify-between gap-600">
+              <mds-text typography="detail">Glossy frame</mds-text>
+              <mds-input-switch></mds-input-switch>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid gap-600 w-full max-w-8000">
+      <mds-text typography="h5">Customize player</mds-text>
+      <div class="grid gap-600">
+        <mds-text typography="h6">Head</mds-text>
+        <div class="grid gap-600">
+          <mds-input-field label="Haircut">
+            <mds-input-select>
+              <option value="0" selected>None</option>
+              <option value="1">Short</option>
+              <option value="2">Long</option>
+              <option value="3">Medium</option>
+              <option value="4">Braids</option>
+              <option value="5">Ponytail</option>
+              <option value="6">Dreadlocks</option>
+              <option value="7">Afro</option>
+            </mds-input-select>
+          </mds-input-field>
+          <div class="grid gap-600">
+            <mds-input-field label="Hair color">
+              <mds-input-select>
+                <option value="1" selected>Brown</option>
+                <option value="2">Black</option>
+                <option value="3">Blonde</option>
+                <option value="4">Red</option>
+                <option value="5">Gray</option>
+                <option value="6">White</option>
+                <option value="7">Other</option>
+              </mds-input-select>
+            </mds-input-field>
+            <div class="flex items-center justify-between gap-600">
+              <mds-text typography="detail">Hair clip</mds-text>
+              <mds-input-switch></mds-input-switch>
+            </div>
+          </div>
+        </div>
+        <div class="grid gap-600 border-t border-tone-neutral-08 border-solid border-0 pt-600">
+          <mds-input-field label="Glasses">
+            <mds-input-select>
+              <option value="0" selected>None</option>
+              <option value="1">Sunglasses</option>
+              <option value="2">Eyeglasses</option>
+              <option value="3">Prescription glasses</option>
+              <option value="4">Reading glasses</option>
+              <option value="5">Progressive lenses</option>
+              <option value="6">Bifocal lenses</option>
+              <option value="7">Trifocal lenses</option>
+              <option value="8">Progressive addition lenses</option>
+              <option value="9">Progressive addition progressive lenses</option>
+            </mds-input-select>
+          </mds-input-field>
+          <div class="grid gap-600">
+            <mds-input-field label="Glasses color">
+              <mds-input-select>
+                <option value="1">Brown</option>
+                <option value="2">Black</option>
+                <option value="8" selected>Blue</option>
+                <option value="3">Gray</option>
+                <option value="4">Transparent</option>
+                <option value="5">Red</option>
+                <option value="6">White</option>
+                <option value="7">Yellow</option>
+              </mds-input-select>
+            </mds-input-field>
+            <mds-input-field label="Lens color">
+              <mds-input-select>
+                <option value="1">Brown</option>
+                <option value="2" selected>Black</option>
+                <option value="3">Gray</option>
+                <option value="4">Transparent</option>
+                <option value="5">Red</option>
+                <option value="6">White</option>
+                <option value="7">Yellow</option>
+              </mds-input-select>
+            </mds-input-field>
+            <div class="flex items-center justify-between gap-600">
+              <mds-text typography="detail">Glossy frame</mds-text>
+              <mds-input-switch></mds-input-switch>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </UseCaseInteractive>
   <Usage>
     <UsageItem variant="do">Hide advanced options behind clear affordances</UsageItem>
@@ -21,3 +185,60 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <UsageItem variant="dont">Make essential features hard to find</UsageItem>
   </Usage>
 </UseCase>
+
+<script>
+  function initProgressiveDisclosure() {
+    const articleId = 'progressive-disclosure';
+    // @ts-ignore
+    const scope = window.getUseCaseScope?.(articleId);
+    if (!scope) return;
+
+    const { container } = scope;
+    const haircutSelect = container.querySelector('[data-haircut-select]');
+    const hairContainer = container.querySelector('[data-hair-container]');
+    const glassesSelect = container.querySelector('[data-glasses-select]');
+    const glassesContainer = container.querySelector('[data-glasses-container]');
+
+    if (!haircutSelect || !hairContainer || !glassesSelect || !glassesContainer) return;
+
+    // Handle haircut select change
+    haircutSelect.addEventListener('mdsInputSelectChange', (event: any) => {
+      const value =
+        event.detail?.value ?? event.detail ?? haircutSelect.getAttribute('value') ?? '0';
+      const numValue = parseInt(value, 10);
+
+      if (numValue !== 0) {
+        // Show hair container
+        hairContainer.classList.remove('hidden');
+        hairContainer.classList.add('grid');
+      } else {
+        // Hide hair container
+        hairContainer.classList.remove('grid');
+        hairContainer.classList.add('hidden');
+      }
+    });
+
+    // Handle glasses select change
+    glassesSelect.addEventListener('mdsInputSelectChange', (event: any) => {
+      const value =
+        event.detail?.value ?? event.detail ?? glassesSelect.getAttribute('value') ?? '0';
+      const numValue = parseInt(value, 10);
+
+      if (numValue !== 0) {
+        // Show glasses container
+        glassesContainer.classList.remove('hidden');
+        glassesContainer.classList.add('grid');
+      } else {
+        // Hide glasses container
+        glassesContainer.classList.remove('grid');
+        glassesContainer.classList.add('hidden');
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProgressiveDisclosure);
+  } else {
+    initProgressiveDisclosure();
+  }
+</script>
