@@ -3,7 +3,7 @@ import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
-import userData from '../../../../data/visibility-of-system-status/users.json';
+import userData from '../../../../data/use-cases/users.json';
 
 const baseUrl = import.meta.env.BASE_URL;
 const user = userData[0]; // Use first user from the data
@@ -16,4 +16,12 @@ const user = userData[0]; // Use first user from the data
   <UseCaseInteractive clsHeight={0}>
     <!-- Use case content will go here -->
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Reuse previous inputs where appropriate</UsageItem>
+    <UsageItem variant="dont">Force users to re-enter the same data repeatedly</UsageItem>
+    <UsageItem variant="do">Make reused data visible and editable</UsageItem>
+    <UsageItem variant="dont">Auto-apply past data without user awareness</UsageItem>
+    <UsageItem variant="do">Respect privacy and data sensitivity</UsageItem>
+    <UsageItem variant="dont">Store or reuse sensitive data implicitly</UsageItem>
+  </Usage>
 </UseCase>

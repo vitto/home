@@ -12,4 +12,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   <UseCaseInteractive clsHeight={0}>
     <!-- Use case content will go here -->
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Use defaults based on common user behavior</UsageItem>
+    <UsageItem variant="dont">Leave critical fields empty when a safe default exists</UsageItem>
+    <UsageItem variant="do">Adapt defaults based on context</UsageItem>
+    <UsageItem variant="dont">Apply the same default to every situation blindly</UsageItem>
+    <UsageItem variant="do">Allow users to override defaults</UsageItem>
+    <UsageItem variant="dont">Make defaults irreversible</UsageItem>
+  </Usage>
 </UseCase>

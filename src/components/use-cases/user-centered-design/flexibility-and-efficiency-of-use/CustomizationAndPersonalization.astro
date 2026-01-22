@@ -10,6 +10,25 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   description="Users can tailor the interface and behavior to match their preferences, improving comfort and long-term efficiency."
 >
   <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+    <div class="flex flex-col gap-200 max-w-9600 w-full">
+      <div class="flex items-center justify-between">
+        <mds-text typography="h5">View latest artists</mds-text>
+        <mds-tab>
+          <mds-tab-item icon="mi/outline/window" selected></mds-tab-item>
+          <mds-tab-item icon="mi/outline/table-rows"></mds-tab-item>
+        </mds-tab>
+      </div>
+      <div class="grid grid-cols-2 gap-200">
+
+      </div>
+    </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Allow users to personalize layouts and views</UsageItem>
+    <UsageItem variant="dont">Lock users into a single rigid configuration</UsageItem>
+    <UsageItem variant="do">Save preferences persistently</UsageItem>
+    <UsageItem variant="dont">Reset user settings without explicit consent</UsageItem>
+    <UsageItem variant="do">Offer sensible defaults</UsageItem>
+    <UsageItem variant="dont">Require customization to make the product usable</UsageItem>
+  </Usage>
 </UseCase>

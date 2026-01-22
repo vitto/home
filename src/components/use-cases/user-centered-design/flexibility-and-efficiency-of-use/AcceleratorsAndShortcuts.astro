@@ -9,7 +9,50 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Accelerators and Shortcuts"
   description="The system provides faster ways to perform frequent actions, allowing expert users to work efficiently without overwhelming novice users."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+  <UseCaseInteractive
+    clsHeight={234}
+    label="A list of actions and their shortcuts"
+    bugComponent="mds-keyboard"
+    bugCurrent="After testing the shortcut, the tooltip shown when hovering the action test is empty"
+    bugExpected="The tooltip should show the shortcut text"
+    articleId="accelerators-and-shortcuts">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Action"></mds-table-header-cell>
+        <mds-table-header-cell label="Shortcut"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell class="align-middle py-200 w-full">
+            <mds-text typography="detail" class="whitespace-nowrap">Cut the selected text</mds-text>
+          </mds-table-cell>
+          <mds-table-cell class="align-middle p-200 min-w-5200">
+            <mds-keyboard try>
+              <mds-keyboard-key name="command"></mds-keyboard-key>
+              <mds-keyboard-key name="x"></mds-keyboard-key>
+            </mds-keyboard>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell class="align-middle py-200">
+            <mds-text typography="detail" class="whitespace-nowrap">Paste the selected text</mds-text>
+          </mds-table-cell>
+          <mds-table-cell class="align-middle p-200">
+            <mds-keyboard try>
+              <mds-keyboard-key name="command"></mds-keyboard-key>
+              <mds-keyboard-key name="v"></mds-keyboard-key>
+            </mds-keyboard>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Provide keyboard shortcuts for frequent actions</UsageItem>
+    <UsageItem variant="dont">Force all users to rely only on step-by-step flows</UsageItem>
+    <UsageItem variant="do">Expose shortcuts progressively or via help hints</UsageItem>
+    <UsageItem variant="dont">Hide shortcuts without any discoverability</UsageItem>
+    <UsageItem variant="do">Allow customization of shortcuts</UsageItem>
+    <UsageItem variant="dont">Hard-code shortcuts that conflict with system conventions</UsageItem>
+  </Usage>
 </UseCase>
