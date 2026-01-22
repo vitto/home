@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Sarah Fitzgerald",
+    "description": "Indie pop artist known for her ethereal vocals and dreamy soundscapes.",
+    "image": "/assets/portrait-02.png",
+    "albums": 2,
+    "singles": 8,
+    "followers": "1.2M"
+  },
+  {
+    "name": "Marcus Johnson",
+    "description": "Electronic music producer blending house and techno influences.",
+    "image": "/assets/portrait-03.png",
+    "albums": 4,
+    "singles": 15,
+    "followers": "850K"
+  },
+  {
+    "name": "Eric Tantlòn",
+    "description": "I'm a musician and producer from New York City, currently based in Los Angeles.",
+    "image": "/assets/portrait-01.png",
+    "albums": 3,
+    "singles": 12,
+    "followers": "16"
+  },
+  {
+    "name": "Luna Martinez",
+    "description": "Singer-songwriter creating intimate acoustic ballads and folk melodies.",
+    "image": "/assets/portrait-04.png",
+    "albums": 1,
+    "singles": 5,
+    "followers": "245K"
+  }
+]

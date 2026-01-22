@@ -1,0 +1,54 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  image: string;
+  followers: string;
+  albums: number;
+  singles: number;
+  class?: string;
+}
+
+const { name, description, image, followers, albums, singles, class: className = '' } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<div class={`@container relative overflow-hidden rounded-[32px] mobile:rounded-2xl aspect-card ${className}`}>
+  <mds-img
+    class="card object-cover w-full h-full absolute inset-0"
+    src={`${baseUrl}${image}`}></mds-img>
+  <div
+    class="absolute text-tone-neutral rounded-b-2xl bottom-0 left-0 right-0 p-400 bg-gradient-to-b from-tone-neutral-01/0 to-tone-neutral-01/100"
+  >
+    <div class="grid gap-300">
+      <div class="grid gap-100">
+        <mds-text typography="h5" class="text-shadow-sm">{name}</mds-text>
+        <mds-text typography="caption" class="text-shadow-sm hidden @md:flex">{description}</mds-text>
+      </div>
+      <div class="grid-cols-3 hidden @md:grid">
+        <div class="flex flex-col gap-0 text-tone-neutral items-center justify-center">
+          <mds-text typography="h6">{followers}</mds-text>
+          <mds-text typography="caption"><b>Followers</b></mds-text>
+        </div>
+        <div
+          class="flex flex-col gap-0 text-tone-neutral items-center justify-center tablet:border-x tablet:border-solid tablet:border-tone-neutral/30 tablet:border-y-0"
+        >
+          <mds-text typography="h6">{albums}</mds-text>
+          <mds-text typography="caption"><b>Albums</b></mds-text>
+        </div>
+        <div class="flex flex-col gap-0 text-tone-neutral items-center justify-center">
+          <mds-text typography="h6">{singles}</mds-text>
+          <mds-text typography="caption"><b>Singles</b></mds-text>
+        </div>
+      </div>
+      <div class="flex @md:grid @md:grid-cols-[1fr_auto] gap-200">
+        <mds-button variant="light" icon="mi/outline/favorite-border" class="hidden @md:flex">Follow</mds-button>
+        <mds-button variant="light" icon="mi/outline/favorite-border" class="inline-flex @md:hidden"></mds-button>
+        <mds-button
+          icon="mi/outline/visibility-off"
+          variant="error"
+          title="Do not show again"></mds-button>
+      </div>
+    </div>
+  </div>
+</div>

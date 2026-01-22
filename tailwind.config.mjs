@@ -1,4 +1,5 @@
 import magmaPreset from '@maggioli-design-system/styles';
+import containerQueries from '@tailwindcss/container-queries';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -6,6 +7,19 @@ export default {
   content: ['./src/**/*.{astro,html,js,json,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      containers: {
+        '2xs': '6rem',  // 96px
+        xs: '8rem',     // 128px
+        sm: '10rem',    // 160px
+        md: '20rem',    // 320px
+        lg: '25rem',    // 400px
+        xl: '30rem',    // 480px
+        '2xl': '35rem', // 560px
+        '3xl': '40rem', // 640px
+      },
+      aspectRatio: {
+        card: '2 / 3',
+      },
       animation: {
         'pulse-more': 'pulseMore 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         blink: 'blink 0.6s forwards',
@@ -42,5 +56,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [containerQueries],
 };

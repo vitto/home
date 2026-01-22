@@ -3,22 +3,35 @@ import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Card from '../../Card.astro';
+import artistsData from '../../../../data/use-cases/artists.json';
 ---
 
 <UseCase
   title="Customization and Personalization"
   description="Users can tailor the interface and behavior to match their preferences, improving comfort and long-term efficiency."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <div class="flex flex-col gap-200 max-w-9600 w-full">
+  <UseCaseInteractive clsHeight={0} articleId='customization-and-personalization'>
+    <div class="flex flex-col gap-600 w-full">
       <div class="flex items-center justify-between">
         <mds-text typography="h5">View latest artists</mds-text>
         <mds-tab>
-          <mds-tab-item icon="mi/outline/window" selected></mds-tab-item>
-          <mds-tab-item icon="mi/outline/table-rows"></mds-tab-item>
+          <mds-tab-item title="Grid view" icon="mi/outline/window" selected data-grid-view></mds-tab-item>
+          <mds-tab-item title="List view" icon="mi/outline/table-rows" data-list-view></mds-tab-item>
         </mds-tab>
       </div>
-      <div class="grid grid-cols-2 gap-200"></div>
+      <div class="grid grid-cols-2 gap-600 mobile:gap-400" data-cards-container>
+        {artistsData.map((artist) => (
+          <Card
+            name={artist.name}
+            description={artist.description}
+            image={artist.image}
+            followers={artist.followers}
+            albums={artist.albums}
+            singles={artist.singles}
+          />
+        ))}
+      </div>
     </div>
   </UseCaseInteractive>
   <Usage>
@@ -30,3 +43,37 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <UsageItem variant="dont">Require customization to make the product usable</UsageItem>
   </Usage>
 </UseCase>
+
+<script>
+  function initViewToggle() {
+    const articleId = 'customization-and-personalization';
+    // @ts-ignore
+    const scope = window.getUseCaseScope?.(articleId);
+    if (!scope) return;
+
+    const { container } = scope;
+    const gridViewTab = container.querySelector('[data-grid-view]');
+    const listViewTab = container.querySelector('[data-list-view]');
+    const cardsContainer = container.querySelector('[data-cards-container]');
+
+    if (!gridViewTab || !listViewTab || !cardsContainer) return;
+
+    // Switch to grid view (2 columns)
+    gridViewTab.addEventListener('click', () => {
+      cardsContainer.classList.remove('grid-cols-1');
+      cardsContainer.classList.add('grid-cols-2');
+    });
+
+    // Switch to list view (1 column)
+    listViewTab.addEventListener('click', () => {
+      cardsContainer.classList.remove('grid-cols-2');
+      cardsContainer.classList.add('grid-cols-1');
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initViewToggle);
+  } else {
+    initViewToggle();
+  }
+</script>
