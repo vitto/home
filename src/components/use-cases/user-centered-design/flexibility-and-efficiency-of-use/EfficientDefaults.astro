@@ -9,8 +9,77 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Efficient Defaults"
   description="Default values and configurations are optimized for the most common use cases, minimizing the need for repetitive user input."
 >
-  <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+  <UseCaseInteractive clsHeight={1025} articleId="efficient-defaults" toggle>
+    <div class="w-full">
+      <div class="grid gap-600" data-configuration-panel>
+        <mds-text typography="h5">Configuration</mds-text>
+        <div class="grid grid-cols-2 gap-600">
+          <div class="p-600 bg-tone-neutral-10 rounded-xl">
+            <mds-text
+              class="preview-title block min-h-auto leading-[1.35]"
+              typography="h3"
+              data-preview-title>Title</mds-text
+            >
+            <mds-text
+              class="preview-text block min-h-auto leading-[1.35]"
+              typography="caption"
+              data-preview-text
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</mds-text
+            >
+          </div>
+          <div class="grid gap-600">
+            <mds-text typography="h6">Typography</mds-text>
+            <mds-input-range value={28} min={20} max={36} step={4} data-headings-range>
+              Headings
+            </mds-input-range>
+            <mds-input-range value={18} min={14} max={24} step={2} data-text-range>
+              Text content
+            </mds-input-range>
+            <mds-button
+              class="justify-self-start justify-start w-fit"
+              variant="dark"
+              tone="ghost"
+              data-restart-button>Reset</mds-button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full">
+      <div class="grid gap-600" data-configuration-panel>
+        <mds-text typography="h5">Configuration</mds-text>
+        <div class="grid grid-cols-2 gap-600">
+          <div class="p-600 bg-tone-neutral-10 rounded-xl">
+            <mds-text
+              class="preview-title block min-h-auto leading-[1.35]"
+              typography="h3"
+              data-preview-title>Title</mds-text
+            >
+            <mds-text
+              class="preview-text block min-h-auto leading-[1.35]"
+              typography="caption"
+              data-preview-text
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</mds-text
+            >
+          </div>
+          <div class="grid gap-600">
+            <mds-text typography="h6">Typography</mds-text>
+            <mds-input-range value={20} min={20} max={36} step={4} data-headings-range>
+              Headings
+            </mds-input-range>
+            <mds-input-range value={24} min={14} max={24} step={2} data-text-range>
+              Text content
+            </mds-input-range>
+            <mds-button
+              class="justify-self-start justify-start w-fit"
+              variant="dark"
+              tone="ghost"
+              data-restart-button>Reset</mds-button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
   </UseCaseInteractive>
   <Usage>
     <UsageItem variant="do">Use defaults based on common user behavior</UsageItem>
@@ -21,3 +90,74 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <UsageItem variant="dont">Make defaults irreversible</UsageItem>
   </Usage>
 </UseCase>
+
+<script>
+  function initFontSizeControls() {
+    const articleId = 'efficient-defaults';
+    // @ts-ignore
+    const scope = window.getUseCaseScope?.(articleId);
+    if (!scope) return;
+
+    const { container } = scope;
+    // Find all instance containers (each div.w-full that contains a data-start section)
+    const instanceContainers = container.querySelectorAll('div.w-full');
+
+    instanceContainers.forEach((instanceContainer: Element) => {
+      const headingsRange = instanceContainer.querySelector('[data-headings-range]');
+      const textRange = instanceContainer.querySelector('[data-text-range]');
+      const previewTitle = instanceContainer.querySelector('[data-preview-title]');
+      const previewText = instanceContainer.querySelector('[data-preview-text]');
+      const configurationPanel = instanceContainer.querySelector('[data-configuration-panel]');
+      const restartButton = instanceContainer.querySelector('[data-restart-button]');
+
+      if (!headingsRange || !textRange || !previewTitle || !previewText) return;
+
+      // Set initial font sizes based on each instance's default values
+      const initialHeadingsSize = headingsRange.getAttribute('value') || '28';
+      const initialTextSize = textRange.getAttribute('value') || '18';
+      (previewTitle as HTMLElement).style.fontSize = `${initialHeadingsSize}px`;
+      (previewText as HTMLElement).style.fontSize = `${initialTextSize}px`;
+
+      // Store initial values for rollback
+      const initialState = {
+        headingsSize: initialHeadingsSize,
+        textSize: initialTextSize,
+      };
+
+      // Update title font size when headings range changes
+      headingsRange.addEventListener('mdsInputRangeChange', (event: any) => {
+        const fontSize = event.detail ?? initialHeadingsSize;
+        (previewTitle as HTMLElement).style.fontSize = `${fontSize}px`;
+      });
+
+      // Update text font size when text range changes
+      textRange.addEventListener('mdsInputRangeChange', (event: any) => {
+        const fontSize = event.detail ?? initialTextSize;
+        (previewText as HTMLElement).style.fontSize = `${fontSize}px`;
+      });
+
+      // Restart button - rollback to initial state
+      if (restartButton && configurationPanel) {
+        restartButton.addEventListener('click', () => {
+          // Reset font sizes
+          (previewTitle as HTMLElement).style.fontSize = `${initialState.headingsSize}px`;
+          (previewText as HTMLElement).style.fontSize = `${initialState.textSize}px`;
+
+          // Reset range values
+          headingsRange.setAttribute('value', initialState.headingsSize);
+          textRange.setAttribute('value', initialState.textSize);
+
+          // Trigger input event to update the range display
+          headingsRange.dispatchEvent(new Event('input', { bubbles: true }));
+          textRange.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFontSizeControls);
+  } else {
+    initFontSizeControls();
+  }
+</script>
