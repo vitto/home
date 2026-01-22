@@ -102,16 +102,16 @@ const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsH
             <div class="flex justify-between items-center gap-200">
               <mds-badge variant="error">Bug report</mds-badge>
             </div>
-            {bugExpected && (
-              <div class="grid gap-100">
-                <mds-text typography="h6">Expected behavior</mds-text>
-                <mds-text typography="caption">{bugExpected}</mds-text>
-              </div>
-            )}
             {bugCurrent && (
               <div class="grid gap-100">
                 <mds-text typography="h6">Current behavior</mds-text>
                 <mds-text typography="caption">{bugCurrent}</mds-text>
+              </div>
+            )}
+            {bugExpected && (
+              <div class="grid gap-100">
+                <mds-text typography="h6">Expected behavior</mds-text>
+                <mds-text typography="caption">{bugExpected}</mds-text>
               </div>
             )}
             <div class="px-600 py-400 -mx-600 -mb-600 bg-tone-neutral-10 rounded-b-lg">
