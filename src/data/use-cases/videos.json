@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Tropical Fishing: The Dreamer's Journey",
+    "description": "Follow an experienced fisherman on his daily routine in a beautiful coastal village. Discover the traditions and stories of a tropical fishing community.",
+    "duration": "15:22",
+    "image": "/assets/video-preview-01.webp"
+  },
+  {
+    "title": "Video Editing Masterclass",
+    "description": "Learn professional video editing techniques with Adobe Premiere Pro. Discover how to create stunning content from your workspace.",
+    "duration": "12:45",
+    "image": "/assets/video-preview-02.webp"
+  },
+  {
+    "title": "Live Concert Sound Engineering",
+    "description": "Experience the energy of live music production from the front-of-house mixing console. See how sound engineers create unforgettable concert experiences.",
+    "duration": "8:32",
+    "image": "/assets/video-preview-03.webp"
+  },
+  {
+    "title": "Street Performance: Urban Guitar",
+    "description": "Join a talented musician as he performs in the vibrant streets of the city, bringing music to life in an authentic urban setting.",
+    "duration": "5:18",
+    "image": "/assets/video-preview-04.webp"
+  }
+]

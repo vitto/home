@@ -4,6 +4,7 @@ import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import userData from '../../../../data/use-cases/users.json';
+import videosData from '../../../../data/use-cases/videos.json';
 
 const baseUrl = import.meta.env.BASE_URL;
 const user = userData[0]; // Use first user from the data
@@ -14,7 +15,23 @@ const user = userData[0]; // Use first user from the data
   description="The system reduces effort by remembering and reusing previous user inputs, selections, or patterns."
 >
   <UseCaseInteractive clsHeight={0}>
-    <!-- Use case content will go here -->
+    <div class="grid gap-600 w-full @container">
+      <div class="flex items-baseline justify-between">
+        <mds-text typography="h5">Recently viewed</mds-text>
+        <mds-button class="hover:bg-tone-neutral-10 focus-visible:bg-tone-neutral-10" size="sm" icon="mi/outline/arrow-forward" icon-position="right" variant="dark" tone="quiet">View all</mds-button>
+      </div>
+      <div class="grid gap-y-400 gap-x-100 grid-cols-1 @lg:grid-cols-2 @2xl:grid-cols-3">
+        {videosData.map((video) => (
+          <div class="grid gap-200 p-200 hover:bg-tone-neutral-09 cursor-pointer focus-bounce rounded-xl auto-rows-min" tabindex="0">
+            <mds-img class="rounded-lg" src={`${baseUrl}${video.image}`} alt={video.title} />
+            <div class="grid gap-200 grid-cols-[1fr_auto]">
+              <mds-text typography="h6" truncate="all">{video.title}</mds-text>
+              <mds-badge size="sm" variant="dark" tone="ghost" class="self-start justify-self-end">{video.duration}</mds-badge>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   </UseCaseInteractive>
   <Usage>
     <UsageItem variant="do">Reuse previous inputs where appropriate</UsageItem>
