@@ -13,9 +13,15 @@ const user = userData[4]; // Use first user from the data
   title="Non-Linear Navigation"
   description="Users are free to move between sections without following a rigid, enforced sequence."
 >
-  <UseCaseInteractive clsHeight={320} articleId="non-linear-navigation" label="Sections can be navigated to in any order">
+  <UseCaseInteractive
+    clsHeight={320}
+    articleId="non-linear-navigation"
+    label="Sections can be navigated to in any order"
+  >
     <div class="w-full h-8000" data-section-non-linear>
-      <div class="flex items-center justify-between rounded-2xl p-600 shadow-sm-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09 m-600 mb-0">
+      <div
+        class="flex items-center justify-between rounded-2xl p-600 shadow-sm-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09 m-600 mb-0"
+      >
         <mds-icon
           name="vv/logo"
           class="size-900 cursor-pointer fill-tone-neutral-02 focus-bounce rounded-lg hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
@@ -30,100 +36,134 @@ const user = userData[4]; // Use first user from the data
             icon="mi/baseline/menu"
             variant="dark"
             tone="quiet"
-            data-menu-button>
+            data-menu-button
+          >
             Menu
           </mds-button>
         </nav>
       </div>
-      <div class="[.menu-active_&]:opacity-100 opacity-0 [.menu-active_&]:pointer-events-auto pointer-events-none transition-opacity bg-tone-neutral-01/40 fixed inset-0 z-10 rounded-3xl p-400 flex items-stretch justify-end" data-modal-menu>
-        <div class="[.menu-active_&]:translate-x-0 translate-x-300 grid auto-rows-min gap-400 bg-tone-neutral rounded-xl p-600 shadow-md-sharp w-full max-w-[300px] transition-transform">
+      <div
+        class="[.menu-active_&]:opacity-100 opacity-0 [.menu-active_&]:pointer-events-auto pointer-events-none transition-opacity bg-tone-neutral-01/40 fixed inset-0 z-10 rounded-3xl p-400 flex items-stretch justify-end"
+        data-modal-menu
+      >
+        <div
+          class="[.menu-active_&]:translate-x-0 translate-x-300 grid auto-rows-min gap-400 bg-tone-neutral rounded-xl p-600 shadow-md-sharp w-full max-w-[300px] transition-transform"
+        >
           <mds-author>
-            <mds-avatar slot="avatar" class="rounded-full" tone="weak" src={`${baseUrl}${user.avatar}`}/>
+            <mds-avatar
+              slot="avatar"
+              class="rounded-full"
+              tone="weak"
+              src={`${baseUrl}${user.avatar}`}></mds-avatar>
             <mds-text typography="h6" tag="span">{user.name}</mds-text>
             <mds-text typography="caption" tag="span">{user.email}</mds-text>
           </mds-author>
-          <mds-hr class="h-50 -mx-600 w-auto rounded-none bg-tone-neutral-09"/>
+          <mds-hr class="h-50 -mx-600 w-auto rounded-none bg-tone-neutral-09"></mds-hr>
           <div class="grid auto-rows-min gap-100">
-            <mds-button icon="mi/outline/dashboard" variant="dark" tone="quiet" class="justify-start hover:bg-tone-neutral-10" data-menu-item-button>Dashboard</mds-button>
-            <mds-button icon="mi/outline/settings" variant="dark" tone="quiet" class="justify-start hover:bg-tone-neutral-10" data-menu-item-button>Settings</mds-button>
+            <mds-button
+              icon="mi/outline/dashboard"
+              variant="dark"
+              tone="quiet"
+              class="justify-start hover:bg-tone-neutral-10"
+              data-menu-item-button>Dashboard</mds-button
+            >
+            <mds-button
+              icon="mi/outline/settings"
+              variant="dark"
+              tone="quiet"
+              class="justify-start hover:bg-tone-neutral-10"
+              data-menu-item-button>Settings</mds-button
+            >
           </div>
         </div>
       </div>
-      <div class="[.section-active_&]:opacity-100 opacity-0 [.section-active_&]:pointer-events-auto pointer-events-none p-600 grid gap-400 transition-opacity" data-fake-section>
+      <div
+        class="[.section-active_&]:opacity-100 opacity-0 [.section-active_&]:pointer-events-auto pointer-events-none p-600 grid gap-400 transition-opacity"
+        data-fake-section
+      >
         <mds-text typography="h6" tag="span" data-section-title>Section name</mds-text>
         <mds-tab>
           <mds-tab-item selected>Sub section 1</mds-tab-item>
           <mds-tab-item>Sub section 2</mds-tab-item>
           <mds-tab-item>Sub section 3</mds-tab-item>
           <div slot="content" class="py-600 grid gap-400">
-            <mds-text typography="caption" tag="span">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</mds-text>
+            <mds-text typography="caption" tag="span"
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.</mds-text
+            >
           </div>
           <div slot="content" class="py-600 grid gap-400">
-            <mds-text typography="caption" tag="span">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</mds-text>
+            <mds-text typography="caption" tag="span"
+              >Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit.</mds-text
+            >
           </div>
           <div slot="content" class="py-600 grid gap-400">
-            <mds-text typography="caption" tag="span">Dolor consectetur adipiscing elit  incididunt ut labore. Lorem ipsum sit amet do eiusmod tempor et dolore magna aliqua.</mds-text>
+            <mds-text typography="caption" tag="span"
+              >Dolor consectetur adipiscing elit incididunt ut labore. Lorem ipsum sit amet do
+              eiusmod tempor et dolore magna aliqua.</mds-text
+            >
           </div>
         </mds-tab>
       </div>
     </div>
   </UseCaseInteractive>
 
-<script>
-  function initMenuNavigation() {
-    const articleId = 'non-linear-navigation';
-    // @ts-ignore
-    const scope = window.getUseCaseScope?.(articleId);
-    if (!scope) return;
+  <script>
+    function initMenuNavigation() {
+      const articleId = 'non-linear-navigation';
+      // @ts-ignore
+      const scope = window.getUseCaseScope?.(articleId);
+      if (!scope) return;
 
-    const { container } = scope;
-    const section = container.querySelector('[data-section-non-linear]');
-    const menuButton = container.querySelector('[data-menu-button]');
-    const modalMenu = container.querySelector('[data-modal-menu]');
-    const fakeSection = container.querySelector('[data-fake-section]');
-    const menuItemButtons = container.querySelectorAll('[data-menu-item-button]');
-    const logoIcon = container.querySelector('[data-logo-icon]');
+      const { container } = scope;
+      const section = container.querySelector('[data-section-non-linear]');
+      const menuButton = container.querySelector('[data-menu-button]');
+      const modalMenu = container.querySelector('[data-modal-menu]');
+      const fakeSection = container.querySelector('[data-fake-section]');
+      const menuItemButtons = container.querySelectorAll('[data-menu-item-button]');
+      const logoIcon = container.querySelector('[data-logo-icon]');
 
-    if (!menuButton || !modalMenu || !section || !fakeSection) return;
+      if (!menuButton || !modalMenu || !section || !fakeSection) return;
 
-    // Helper function to reset everything to initial state
-    const resetToInitialState = () => {
-      section.classList.remove('menu-active');
-      section.classList.remove('section-active');
-    };
+      // Helper function to reset everything to initial state
+      const resetToInitialState = () => {
+        section.classList.remove('menu-active');
+        section.classList.remove('section-active');
+      };
 
-    // Show modal menu when button is clicked
-    menuButton.addEventListener('click', () => {
-      section.classList.add('menu-active');
-    });
-
-    modalMenu.addEventListener('click', () => {
-      section.classList.remove('menu-active');
-    });
-
-    // Hide modal and show fake section when menu item is clicked
-    for (let i = 0; i < menuItemButtons.length; i++) {
-      const button = menuItemButtons[i];
-      button.addEventListener('click', () => {
-        section.classList.add('section-active');
-        fakeSection.querySelector('[data-section-title]').textContent = button.textContent;
+      // Show modal menu when button is clicked
+      menuButton.addEventListener('click', () => {
+        section.classList.add('menu-active');
       });
+
+      modalMenu.addEventListener('click', () => {
+        section.classList.remove('menu-active');
+      });
+
+      // Hide modal and show fake section when menu item is clicked
+      for (let i = 0; i < menuItemButtons.length; i++) {
+        const button = menuItemButtons[i];
+        button.addEventListener('click', () => {
+          section.classList.add('section-active');
+          fakeSection.querySelector('[data-section-title]').textContent = button.textContent;
+        });
+      }
+
+      // Reset everything when logo is clicked
+      if (logoIcon) {
+        logoIcon.addEventListener('click', () => {
+          resetToInitialState();
+        });
+      }
     }
 
-    // Reset everything when logo is clicked
-    if (logoIcon) {
-      logoIcon.addEventListener('click', () => {
-        resetToInitialState();
-      });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMenuNavigation);
+    } else {
+      initMenuNavigation();
     }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMenuNavigation);
-  } else {
-    initMenuNavigation();
-  }
-</script>
+  </script>
 
   <Usage>
     <UsageItem variant="do">Allow users to jump between sections</UsageItem>

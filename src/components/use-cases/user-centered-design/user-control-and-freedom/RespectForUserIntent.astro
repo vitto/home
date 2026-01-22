@@ -14,7 +14,8 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     articleId="respect-for-user-intent"
     bugComponent="mds-input-select"
     bugCurrent="There is no way to reset the input select to the initial state"
-    bugExpected="The input select should be reset to its initial state by an API method">
+    bugExpected="The input select should be reset to its initial state by an API method"
+  >
     <div class="w-full max-w-8000 grid gap-600 auto-rows-min">
       <mds-text typography="h4" tag="span">Account information</mds-text>
       <div class="grid gap-400">
@@ -30,75 +31,75 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     </div>
   </UseCaseInteractive>
 
-<script>
-  function initRespectForUserIntent() {
-    const articleId = 'respect-for-user-intent';
-    // @ts-ignore
-    const scope = window.getUseCaseScope?.(articleId);
-    if (!scope) return;
-
-    const { container } = scope;
-    const countrySelect = container.querySelector('[data-country-select]');
-    const saveButton = container.querySelector('[data-save-button]');
-
-    if (!countrySelect || !saveButton) return;
-
-    // @ts-ignore
-    let rollbackTimeout = null;
-    const originalText = saveButton.textContent || 'Save preference';
-
-    // Helper function to reset to initial state
-    const resetToInitialState = () => {
-      saveButton.setAttribute('disabled', '');
-      saveButton.setAttribute('variant', 'primary');
-      saveButton.removeAttribute('icon');
-      saveButton.textContent = originalText;
-      countrySelect.setAttribute('value', null);
-      countrySelect.selectedIndex = -1
+  <script>
+    function initRespectForUserIntent() {
+      const articleId = 'respect-for-user-intent';
       // @ts-ignore
-      if (rollbackTimeout) {
+      const scope = window.getUseCaseScope?.(articleId);
+      if (!scope) return;
+
+      const { container } = scope;
+      const countrySelect = container.querySelector('[data-country-select]');
+      const saveButton = container.querySelector('[data-save-button]');
+
+      if (!countrySelect || !saveButton) return;
+
+      // @ts-ignore
+      let rollbackTimeout = null;
+      const originalText = saveButton.textContent || 'Save preference';
+
+      // Helper function to reset to initial state
+      const resetToInitialState = () => {
+        saveButton.setAttribute('disabled', '');
+        saveButton.setAttribute('variant', 'primary');
+        saveButton.removeAttribute('icon');
+        saveButton.textContent = originalText;
+        countrySelect.setAttribute('value', null);
+        countrySelect.selectedIndex = -1;
         // @ts-ignore
-        clearTimeout(rollbackTimeout);
-        rollbackTimeout = null;
-      }
-    };
+        if (rollbackTimeout) {
+          // @ts-ignore
+          clearTimeout(rollbackTimeout);
+          rollbackTimeout = null;
+        }
+      };
 
-    // Enable button when country is selected
-    countrySelect.addEventListener('mdsInputSelectChange', () => {
-      saveButton.removeAttribute('disabled');
-    });
+      // Enable button when country is selected
+      countrySelect.addEventListener('mdsInputSelectChange', () => {
+        saveButton.removeAttribute('disabled');
+      });
 
-    // Change variant to success and rollback after 2 seconds when button is clicked
-    saveButton.addEventListener('click', () => {
-      // Clear any existing timeout
-      // @ts-ignore
-      if (rollbackTimeout) {
+      // Change variant to success and rollback after 2 seconds when button is clicked
+      saveButton.addEventListener('click', () => {
+        // Clear any existing timeout
         // @ts-ignore
-        clearTimeout(rollbackTimeout);
-        rollbackTimeout = null;
-      }
+        if (rollbackTimeout) {
+          // @ts-ignore
+          clearTimeout(rollbackTimeout);
+          rollbackTimeout = null;
+        }
 
-      // Change variant to success and update label
-      saveButton.setAttribute('disabled', '');
-      saveButton.setAttribute('variant', 'success');
-      saveButton.setAttribute('icon', 'mi/outline/done');
-      saveButton.textContent = 'Saved successfully';
+        // Change variant to success and update label
+        saveButton.setAttribute('disabled', '');
+        saveButton.setAttribute('variant', 'success');
+        saveButton.setAttribute('icon', 'mi/outline/done');
+        saveButton.textContent = 'Saved successfully';
 
-      // Rollback after 2 seconds
-      // @ts-ignore
-      rollbackTimeout = setTimeout(() => {
-        resetToInitialState();
-        rollbackTimeout = null;
-      }, 2000);
-    });
-  }
+        // Rollback after 2 seconds
+        // @ts-ignore
+        rollbackTimeout = setTimeout(() => {
+          resetToInitialState();
+          rollbackTimeout = null;
+        }, 2000);
+      });
+    }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initRespectForUserIntent);
-  } else {
-    initRespectForUserIntent();
-  }
-</script>
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initRespectForUserIntent);
+    } else {
+      initRespectForUserIntent();
+    }
+  </script>
 
   <Usage>
     <UsageItem variant="do">Follow expected user behavior</UsageItem>
