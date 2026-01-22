@@ -19,7 +19,10 @@ const users = usersData.map((user) => ({
   title="Errors and Problems"
   description="The system promptly reports anomalies and crashes, explaining what is happening and whether any action is required."
 >
-  <UseCaseInteractive clsHeight={360} label="A list of users and a button to simulate a connection problem">
+  <UseCaseInteractive
+    clsHeight={360}
+    label="A list of users and a button to simulate a connection problem"
+  >
     <mds-button class="transition" variant="dark" data-simulate-button>
       Connection problem
     </mds-button>
