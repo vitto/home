@@ -11,26 +11,30 @@ import artistsData from '../../../../data/use-cases/artists.json';
   title="Customization and Personalization"
   description="Users can tailor the interface and behavior to match their preferences, improving comfort and long-term efficiency."
 >
-  <UseCaseInteractive clsHeight={0} articleId='customization-and-personalization'>
+  <UseCaseInteractive clsHeight={0} articleId="customization-and-personalization">
     <div class="flex flex-col gap-600 w-full">
       <div class="flex items-center justify-between">
         <mds-text typography="h5">View latest artists</mds-text>
         <mds-tab>
-          <mds-tab-item title="Grid view" icon="mi/outline/window" selected data-grid-view></mds-tab-item>
-          <mds-tab-item title="List view" icon="mi/outline/table-rows" data-list-view></mds-tab-item>
+          <mds-tab-item title="Grid view" icon="mi/outline/window" selected data-grid-view
+          ></mds-tab-item>
+          <mds-tab-item title="List view" icon="mi/outline/table-rows" data-list-view
+          ></mds-tab-item>
         </mds-tab>
       </div>
       <div class="grid grid-cols-2 gap-600 mobile:gap-400" data-cards-container>
-        {artistsData.map((artist) => (
-          <Card
-            name={artist.name}
-            description={artist.description}
-            image={artist.image}
-            followers={artist.followers}
-            albums={artist.albums}
-            singles={artist.singles}
-          />
-        ))}
+        {
+          artistsData.map((artist) => (
+            <Card
+              name={artist.name}
+              description={artist.description}
+              image={artist.image}
+              followers={artist.followers}
+              albums={artist.albums}
+              singles={artist.singles}
+            />
+          ))
+        }
       </div>
     </div>
   </UseCaseInteractive>

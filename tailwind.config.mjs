@@ -8,12 +8,12 @@ export default {
   theme: {
     extend: {
       containers: {
-        '2xs': '6rem',  // 96px
-        xs: '8rem',     // 128px
-        sm: '10rem',    // 160px
-        md: '20rem',    // 320px
-        lg: '25rem',    // 400px
-        xl: '30rem',    // 480px
+        '2xs': '6rem', // 96px
+        xs: '8rem', // 128px
+        sm: '10rem', // 160px
+        md: '20rem', // 320px
+        lg: '25rem', // 400px
+        xl: '30rem', // 480px
         '2xl': '35rem', // 560px
         '3xl': '40rem', // 640px
       },
