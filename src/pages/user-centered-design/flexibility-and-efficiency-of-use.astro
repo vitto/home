@@ -1,0 +1,37 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/user-centered-design.json';
+import AcceleratorsAndShortcuts from '../../components/use-cases/user-centered-design/flexibility-and-efficiency-of-use/AcceleratorsAndShortcuts.astro';
+import CustomizationAndPersonalization from '../../components/use-cases/user-centered-design/flexibility-and-efficiency-of-use/CustomizationAndPersonalization.astro';
+import EfficientDefaults from '../../components/use-cases/user-centered-design/flexibility-and-efficiency-of-use/EfficientDefaults.astro';
+import ProgressiveDisclosure from '../../components/use-cases/user-centered-design/flexibility-and-efficiency-of-use/ProgressiveDisclosure.astro';
+import ReuseOfPreviousInput from '../../components/use-cases/user-centered-design/flexibility-and-efficiency-of-use/ReuseOfPreviousInput.astro';
+import ScalabilityForExpertise from '../../components/use-cases/user-centered-design/flexibility-and-efficiency-of-use/ScalabilityForExpertise.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+
+const principle = data.principles.find((p) => p.id === 'flexibility-and-efficiency-of-use')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/user-centered-design';
+const sectionName = 'User-Centered Design';
+---
+
+<UseCaseLayout
+  title={`${principle.title} / ${sectionName}`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath={sectionPath}
+>
+  <AcceleratorsAndShortcuts />
+  <CustomizationAndPersonalization />
+  <EfficientDefaults />
+  <ProgressiveDisclosure />
+  <ReuseOfPreviousInput />
+  <ScalabilityForExpertise />
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>

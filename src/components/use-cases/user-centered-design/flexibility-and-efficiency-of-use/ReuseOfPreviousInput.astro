@@ -1,0 +1,19 @@
+---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import userData from '../../../../data/visibility-of-system-status/users.json';
+
+const baseUrl = import.meta.env.BASE_URL;
+const user = userData[0]; // Use first user from the data
+---
+
+<UseCase
+  title="Reuse of Previous Input"
+  description="The system reduces effort by remembering and reusing previous user inputs, selections, or patterns."
+>
+  <UseCaseInteractive clsHeight={0}>
+    <!-- Use case content will go here -->
+  </UseCaseInteractive>
+</UseCase>
