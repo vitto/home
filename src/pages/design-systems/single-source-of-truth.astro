@@ -18,7 +18,8 @@ const sectionPath = '/design-systems';
   sectionPath="/design-systems"
 >
   <article class="grid gap-600">
-    <Markdown content={`
+    <Markdown
+      content={`
 When I design a design system, I treat it as the **single authoritative source** for components, patterns, accessibility rules, and behavioral decisions.
 
 This approach reduces ambiguity, subjective interpretation, and divergence between design and development.
@@ -33,9 +34,10 @@ For this reason, anything that is not expressed within the design system should 
 Every extension or change must pass through the system itself, in an explicit, documented, and versioned way.
 
 The goal is not control, but **clarity**: enabling teams to trust the system and focus on product work rather than interpretation and reconciliation.
-    `}/>
-    <Markdown content={
-      `
+    `}
+    />
+    <Markdown
+      content={`
 ## Real examples
 
 ---
@@ -44,7 +46,8 @@ The goal is not control, but **clarity**: enabling teams to trust the system and
 
 In a production design system I worked on, Storybook was intentionally positioned as the **operational source of truth**, not as a secondary showcase.
 
-[Magma Design System Storybook](https://magma.maggiolicloud.it/storybook/)`}/>
+[Magma Design System Storybook](https://magma.maggiolicloud.it/storybook/)`}
+    />
     <Usage>
       <UsageItem variant="do">
         Centralize components, variants, and states in a single, shared environment.
@@ -60,11 +63,13 @@ In a production design system I worked on, Storybook was intentionally positione
         system itself.
       </UsageItem>
     </Usage>
-    <Markdown content={`
+    <Markdown
+      content={`
   #### Components designed as public APIs
 
   Components were defined as stable contracts rather than flexible local implementations.
-    `}/>
+    `}
+    />
     <Usage>
       <UsageItem variant="do">Expose a limited and intentional set of properties.</UsageItem>
       <UsageItem variant="dont">Expose internal implementation details for convenience.</UsageItem>
