@@ -12,11 +12,11 @@
   "principles": [
     {
       "id": "single-source-of-truth",
-      "draft": true,
+      "draft": false,
       "title": "Single Source of Truth",
       "category": "Architecture",
       "icon": "mi/outline/account-balance",
-      "description": "A centralized repository where all design decisions live, ensuring consistency across all platforms and tools."
+      "description": "A centralized repository where all design decisions live, ensuring consistency across all platforms, tools and teams."
     },
     {
       "id": "separation-of-semantics-and-presentation",

@@ -1,0 +1,51 @@
+---
+import { marked } from 'marked';
+
+interface Props {
+  content?: string;
+  class?: string;
+}
+
+const { content, class: className = 'grid grid-cols-full gap-400' } = Astro.props;
+
+// Configura marked una sola volta (puoi anche spostarlo in un file separato)
+if (!marked.defaults.extensions) {
+  marked.use({
+    renderer: {
+      heading(token) {
+        // @ts-ignore - marked v17 API
+        const text = this.parser.parseInline(token.tokens);
+        return `<h${token.depth} class="text-title-h${token.depth} max-w-full text-wrap ${token.depth < 5 ? 'mt-600' : ''}">${text}</h${token.depth}>\n`;
+      },
+      paragraph(token) {
+        // @ts-ignore - marked v17 API
+        const text = this.parser.parseInline(token.tokens);
+        return `<p class="text-info-paragraph">${text}</p>\n`;
+      },
+      listitem(token) {
+        // @ts-ignore - marked v17 API
+        const body = this.parser.parse(token.tokens);
+        return `<li class="text-info-paragraph">${body}</li>\n`;
+      },
+    },
+  });
+}
+
+// Ottieni il contenuto dallo slot se non è passato come prop
+let markdownContent = content;
+if (!markdownContent && Astro.slots.has('default')) {
+  const slotContent = await Astro.slots.render('default');
+  markdownContent = slotContent?.toString() || '';
+}
+
+// Converti markdown in HTML
+const htmlContent = markdownContent ? marked(markdownContent) : '';
+---
+
+{
+  htmlContent && (
+    <div set:html={htmlContent} class={`markdown ${className}`}>
+      <slot />
+    </div>
+  )
+}

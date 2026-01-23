@@ -1,0 +1,24 @@
+.markdown a {
+  @apply decoration-tone-neutral-07
+  decoration-2
+  focus-bounce
+  rounded-md
+  hover:decoration-tone-neutral-05
+  focus-visible:decoration-tone-neutral-05
+  transition-[text-decoration-color]
+  duration-200
+  underline-offset-2;
+}
+
+.markdown hr {
+  @apply border-0 w-full flex h-50 bg-tone-neutral-08 mt-600;
+}
+
+.markdown p {
+  @apply text-tone-neutral-03;
+}
+
+.markdown p b,
+.markdown p strong {
+  @apply text-tone-neutral-01;
+}
