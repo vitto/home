@@ -9,7 +9,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Not Too Large"
   description="Help and documentation should be concise and focused. Large, exhaustive manuals increase cognitive load and reduce the likelihood that users will actually read or use the help provided."
 >
-  <UseCaseInteractive clsHeight={0} toggle>
+  <UseCaseInteractive clsHeight={64} toggle>
     <mds-accordion class="w-full">
       <mds-accordion-item label="How do I change my password?">
         <mds-text typography="detail">
@@ -74,13 +74,13 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
         </div>
       </mds-accordion-item>
     </mds-accordion>
-    <Usage>
-      <UsageItem variant="do">Keep help content concise and focused</UsageItem>
-      <UsageItem variant="dont">Create exhaustive, overwhelming manuals</UsageItem>
-      <UsageItem variant="do">Break content into digestible chunks</UsageItem>
-      <UsageItem variant="dont">Present everything in one long document</UsageItem>
-      <UsageItem variant="do">Prioritize most common tasks</UsageItem>
-      <UsageItem variant="dont">Include every possible edge case upfront</UsageItem>
-    </Usage>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Keep help content concise and focused</UsageItem>
+    <UsageItem variant="dont">Create exhaustive, overwhelming manuals</UsageItem>
+    <UsageItem variant="do">Break content into digestible chunks</UsageItem>
+    <UsageItem variant="dont">Present everything in one long document</UsageItem>
+    <UsageItem variant="do">Prioritize most common tasks</UsageItem>
+    <UsageItem variant="dont">Include every possible edge case upfront</UsageItem>
+  </Usage>
 </UseCase>
