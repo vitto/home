@@ -1,0 +1,169 @@
+---
+interface Props {
+  articleId: string;
+}
+
+const { articleId } = Astro.props;
+---
+
+<mds-stepper-bar data-stepper-bar items-done="1">
+  <mds-stepper-bar-item
+    badge
+    icon="mi/outline/person"
+    icon-checked="mi/outline/done"
+    label="New account"></mds-stepper-bar-item>
+  <mds-stepper-bar-item
+    badge
+    icon="mi/outline/badge"
+    icon-checked="mi/outline/done"
+    label="Personal data"></mds-stepper-bar-item>
+  <mds-stepper-bar-item
+    badge
+    icon="mi/outline/email"
+    icon-checked="mi/outline/done"
+    label="Newsletter settings"></mds-stepper-bar-item>
+  <mds-stepper-bar-item
+    badge
+    icon="mi/outline/lock-open"
+    icon-checked="mi/outline/done"
+    label="Account activation"></mds-stepper-bar-item>
+  <mds-stepper-bar-item
+    badge
+    icon="mi/outline/login"
+    icon-checked="mi/outline/done"
+    label="Login"></mds-stepper-bar-item>
+  <mds-stepper-bar-item badge icon="mi/outline/done" icon-checked="mi/outline/done" label="Done"
+  ></mds-stepper-bar-item>
+  <div
+    class="min-h-8000 flex rounded-lg items-center justify-center bg-label-amaranth-10 text-label-amaranth-04 relative"
+    slot="content"
+  >
+    <mds-text>New account</mds-text>
+    <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
+      Next step
+    </mds-button>
+  </div>
+  <div
+    class="min-h-8000 flex rounded-lg items-center justify-center bg-label-blue-10 text-label-blue-04 relative"
+    slot="content"
+  >
+    <mds-text>Personal data</mds-text>
+    <mds-button
+      class="absolute bottom-600 left-600"
+      data-prev-button
+      tone="ghost"
+      variant="dark"
+    >
+      Previous step
+    </mds-button>
+    <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
+      Next step
+    </mds-button>
+  </div>
+  <div
+    class="min-h-8000 flex rounded-lg items-center justify-center bg-label-green-10 text-label-green-04 relative"
+    slot="content"
+  >
+    <mds-text>Newsletter settings</mds-text>
+    <mds-button
+      class="absolute bottom-600 left-600"
+      data-prev-button
+      tone="ghost"
+      variant="dark"
+    >
+      Previous step
+    </mds-button>
+    <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
+      Next step
+    </mds-button>
+  </div>
+  <div
+    class="min-h-8000 flex rounded-lg items-center justify-center bg-label-orange-10 text-label-orange-04 relative"
+    slot="content"
+  >
+    <mds-text>Account activation</mds-text>
+    <mds-button
+      class="absolute bottom-600 left-600"
+      data-prev-button
+      tone="ghost"
+      variant="dark"
+    >
+      Previous step
+    </mds-button>
+    <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
+      Next step
+    </mds-button>
+  </div>
+  <div
+    class="min-h-8000 flex rounded-lg items-center justify-center bg-label-violet-10 text-label-violet-04 relative"
+    slot="content"
+  >
+    <mds-text>Login</mds-text>
+    <mds-button
+      class="absolute bottom-600 left-600"
+      data-prev-button
+      tone="ghost"
+      variant="dark"
+    >
+      Previous step
+    </mds-button>
+    <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
+      Next step
+    </mds-button>
+  </div>
+  <div
+    class="min-h-8000 flex rounded-lg items-center justify-center bg-label-sky-10 text-label-sky-04 relative"
+    slot="content"
+  >
+    <mds-text>Done</mds-text>
+    <mds-button
+      class="absolute bottom-600 left-600"
+      data-prev-button
+      tone="ghost"
+      variant="dark"
+    >
+      Previous step
+    </mds-button>
+  </div>
+</mds-stepper-bar>
+<script define:vars={{ articleId }}>
+  // @ts-ignore
+  function initStepperNavigation() {
+    // @ts-ignore
+    const scope = window.getUseCaseScope?.(articleId);
+    if (!scope) return;
+    const { container } = scope;
+    const stepperBar = container.querySelector('[data-stepper-bar]');
+    if (!stepperBar) return;
+    const nextButtons = container.querySelectorAll('[data-next-button]');
+    const prevButtons = container.querySelectorAll('[data-prev-button]');
+    const totalSteps = 6; // Total number of steps
+    let currentStep = 1; // Start from 1
+    function updateStep(step) {
+      if (step < 1 || step > totalSteps) return;
+      currentStep = step;
+      stepperBar.setAttribute('items-done', currentStep.toString());
+    }
+    function goToNext() {
+      if (currentStep < totalSteps) {
+        updateStep(currentStep + 1);
+      }
+    }
+    function goToPrev() {
+      if (currentStep > 1) {
+        updateStep(currentStep - 1);
+      }
+    }
+    nextButtons.forEach((button) => {
+      button.addEventListener('click', goToNext);
+    });
+    prevButtons.forEach((button) => {
+      button.addEventListener('click', goToPrev);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStepperNavigation);
+  } else {
+    initStepperNavigation();
+  }
+</script>
