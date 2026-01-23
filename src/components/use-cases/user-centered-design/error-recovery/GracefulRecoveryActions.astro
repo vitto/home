@@ -17,16 +17,28 @@ const workspace = workspacesData[0];
       <mds-entity icon="mi/baseline/sports-soccer">
         <mds-text typography="h6">{workspace.name}</mds-text>
         <mds-text typography="caption" slot="detail">{workspace.description}</mds-text>
-        <mds-button icon="mi/baseline/cancel" variant="light" tone="weak" slot="action" title="Remove element"></mds-button>
+        <mds-button
+          icon="mi/baseline/cancel"
+          variant="light"
+          tone="weak"
+          slot="action"
+          title="Remove element"></mds-button>
       </mds-entity>
       <mds-button variant="primary" tone="weak" data-save-button>Save changes</mds-button>
-      <mds-banner class="hidden" variant="error" tone="weak" data-error-banner>There was an error from the server while saving your changes.</mds-banner>
+      <mds-banner class="hidden" variant="error" tone="weak" data-error-banner
+        >There was an error from the server while saving your changes.</mds-banner
+      >
     </div>
     <div class="grid gap-600 grid-cols-full w-full max-w-8000">
       <mds-entity icon="mi/baseline/sports-soccer" variant="orange" tone="weak">
         <mds-text typography="h6">{workspace.name}</mds-text>
         <mds-text typography="caption" slot="detail">{workspace.description}</mds-text>
-        <mds-button icon="mi/baseline/cancel" variant="light" tone="weak" slot="action" title="Remove element"></mds-button>
+        <mds-button
+          icon="mi/baseline/cancel"
+          variant="light"
+          tone="weak"
+          slot="action"
+          title="Remove element"></mds-button>
       </mds-entity>
       <mds-button variant="primary" tone="weak" data-save-button-2>Save changes</mds-button>
       <mds-banner class="hidden" variant="error" tone="weak" data-error-banner-2>

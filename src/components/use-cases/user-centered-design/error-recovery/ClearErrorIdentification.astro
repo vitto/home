@@ -13,21 +13,28 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     clsHeight={180}
     articleId="clear-error-identification"
     label="A table with user data"
-    toggle>
+    toggle
+  >
     <mds-banner
       icon="mi/outline/warning-amber"
       variant="error"
       tone="weak"
-      headline="Payment failed">
-      <mds-text typography="detail">The payment method you selected is currently not available.<br/>Please try again later.</mds-text>
+      headline="Payment failed"
+    >
+      <mds-text typography="detail"
+        >The payment method you selected is currently not available.<br />Please try again later.</mds-text
+      >
       <mds-button slot="action" variant="error" tone="strong">Try again</mds-button>
     </mds-banner>
     <mds-banner
       icon="mi/outline/warning-amber"
       variant="primary"
       tone="weak"
-      headline="Payment failed">
-      <mds-text typography="detail">The payment method you selected is currently not available.<br/>Please try again later.</mds-text>
+      headline="Payment failed"
+    >
+      <mds-text typography="detail"
+        >The payment method you selected is currently not available.<br />Please try again later.</mds-text
+      >
       <mds-button slot="action" variant="primary" tone="strong">Try again</mds-button>
     </mds-banner>
   </UseCaseInteractive>
