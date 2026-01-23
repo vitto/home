@@ -1,0 +1,24 @@
+---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import PasswordStrength from '../../PasswordStrength.astro';
+---
+
+<UseCase
+  title="Error Prevention Feedback"
+  description="Whenever possible, the system should help users avoid errors by giving early feedback before submission or confirmation."
+>
+  <UseCaseInteractive clsHeight={284} label="Password strength indicator">
+    <PasswordStrength articleId="error-prevention-feedback" />
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Provide real-time validation feedback</UsageItem>
+    <UsageItem variant="dont">Wait until submission to show errors</UsageItem>
+    <UsageItem variant="do">Show warnings before critical actions</UsageItem>
+    <UsageItem variant="dont">Surprise users with errors after they act</UsageItem>
+    <UsageItem variant="do">Guide users toward correct input</UsageItem>
+    <UsageItem variant="dont">Let users complete forms with invalid data</UsageItem>
+  </Usage>
+</UseCase>

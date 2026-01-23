@@ -1,0 +1,148 @@
+---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import invoicesData from '../../../../data/use-cases/invoices.json';
+
+const invoices = [...invoicesData].sort((a, b) => {
+  // Sort by date in descending order (newest first)
+  return b.date.localeCompare(a.date);
+});
+---
+
+<UseCase
+  title="Visible Error Context"
+  description="Errors should appear in context, making it easy for users to understand where and why the problem occurred."
+>
+  <UseCaseInteractive clsHeight={872} toggle articleId='visible-error-context'>
+    <div class="grid gap-600 grid-cols-full w-full">
+      <div class="grid gap-100 grid-cols-full w-full">
+        <mds-text typography="h5">Billing & Invoicing</mds-text>
+        <mds-text>Your subscription is active until 2026-01-23.</mds-text>
+      </div>
+      <mds-banner
+        icon="mi/outline/warning-amber"
+        variant="error"
+        tone="weak"
+        headline="Payment failed">
+        <mds-text typography="detail">The payment method you selected is currently not available.<br/>Please try again later.</mds-text>
+        <mds-button slot="action" variant="error" tone="strong">Try again</mds-button>
+      </mds-banner>
+      <mds-table>
+        <mds-table-header>
+          <mds-table-header-cell label="Description"></mds-table-header-cell>
+          <mds-table-header-cell label="Date"></mds-table-header-cell>
+          <mds-table-header-cell label="Amount" sortable></mds-table-header-cell>
+          <mds-table-header-cell label="Status" sortable></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          {
+            invoices.map((invoice) => {
+              const statusVariant = invoice.status === 'paid'
+                ? 'success'
+                : invoice.status === 'error'
+                ? 'error'
+                : 'warning';
+              const statusLabel = invoice.status === 'paid'
+                ? 'Paid'
+                : invoice.status === 'error'
+                ? 'Error'
+                : 'Scheduled';
+
+              return (
+                <mds-table-row>
+                  <mds-table-cell class="whitespace-nowrap">{invoice.title}</mds-table-cell>
+                  <mds-table-cell class="whitespace-nowrap">{invoice.date}</mds-table-cell>
+                  <mds-table-cell class="whitespace-nowrap" value={parseInt(invoice.price.replace(/[$,]/g, ''), 10)}>{invoice.price}</mds-table-cell>
+                  <mds-table-cell>
+                    <mds-badge variant={statusVariant} tone="weak">{statusLabel}</mds-badge>
+                  </mds-table-cell>
+                  <div slot="action" class="flex">
+                    { invoice.status !== 'scheduled' && <mds-button title="Download invoice" class="rounded-full" icon="mi/outline/file-download" variant="dark" tone="quiet"></mds-button> }
+                  </div>
+                </mds-table-row>
+              );
+            })
+          }
+        </mds-table-body>
+      </mds-table>
+      <mds-hr />
+      <div class="grid gap-100 grid-cols-full w-full">
+        <mds-text typography="h5">Data consumption</mds-text>
+        <mds-text>Every month you consume 64GB of data averaging 2.1GB per day.</mds-text>
+      </div>
+      <mds-benchmark-bar value={73} alias="73GB / 100GB">
+        Monthly data consumption
+      </mds-benchmark-bar>
+    </div>
+    <div class="grid gap-600 grid-cols-full w-full">
+      <div class="grid gap-100 grid-cols-full w-full">
+        <mds-text typography="h5">Billing & Invoicing</mds-text>
+        <mds-text>Your subscription is active until 2026-01-23.</mds-text>
+      </div>
+      <mds-table>
+        <mds-table-header>
+          <mds-table-header-cell label="Description"></mds-table-header-cell>
+          <mds-table-header-cell label="Date"></mds-table-header-cell>
+          <mds-table-header-cell label="Amount" sortable></mds-table-header-cell>
+          <mds-table-header-cell label="Status" sortable></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          {
+            invoices.map((invoice) => {
+              const statusVariant = invoice.status === 'paid'
+                ? 'success'
+                : invoice.status === 'error'
+                ? 'error'
+                : 'warning';
+              const statusLabel = invoice.status === 'paid'
+                ? 'Paid'
+                : invoice.status === 'error'
+                ? 'Error'
+                : 'Scheduled';
+
+              return (
+                <mds-table-row>
+                  <mds-table-cell class="whitespace-nowrap">{invoice.title}</mds-table-cell>
+                  <mds-table-cell class="whitespace-nowrap">{invoice.date}</mds-table-cell>
+                  <mds-table-cell class="whitespace-nowrap" value={parseInt(invoice.price.replace(/[$,]/g, ''), 10)}>{invoice.price}</mds-table-cell>
+                  <mds-table-cell>
+                    <mds-badge variant={statusVariant} tone="weak">{statusLabel}</mds-badge>
+                  </mds-table-cell>
+                  <div slot="action">
+                    { invoice.status !== 'scheduled' && <mds-button title="Download invoice" icon="mi/outline/file-download" variant="dark" tone="quiet" slot="action"></mds-button> }
+                  </div>
+                </mds-table-row>
+              );
+            })
+          }
+        </mds-table-body>
+      </mds-table>
+      <mds-hr />
+      <div class="grid gap-100 grid-cols-full w-full">
+        <mds-text typography="h5">Data consumption</mds-text>
+        <mds-text>Every month you consume 64GB of data averaging 2.1GB per day.</mds-text>
+      </div>
+      <mds-benchmark-bar value={73} alias="73GB / 100GB">
+        Monthly data consumption
+      </mds-benchmark-bar>
+      <mds-banner
+        icon="mi/outline/warning-amber"
+        variant="error"
+        tone="weak"
+        headline="Payment failed">
+        <mds-text typography="detail">The payment method you selected is currently not available.<br/>Please try again later.</mds-text>
+        <mds-button slot="action" variant="error" tone="strong">Try again</mds-button>
+      </mds-banner>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Show errors near the relevant input or action</UsageItem>
+    <UsageItem variant="dont">Display errors in unrelated locations</UsageItem>
+    <UsageItem variant="do">Highlight the specific field or element with the error</UsageItem>
+    <UsageItem variant="dont">Show generic errors without context</UsageItem>
+    <UsageItem variant="do">Maintain error visibility until resolved</UsageItem>
+    <UsageItem variant="dont">Hide errors when users interact with other elements</UsageItem>
+  </Usage>
+</UseCase>

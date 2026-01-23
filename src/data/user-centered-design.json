@@ -76,7 +76,7 @@
     },
     {
       "id": "help-users-recognize-diagnose-and-recover-from-errors",
-      "draft": true,
+      "draft": false,
       "title": "Help Users Recognize, Diagnose, and Recover from Errors",
       "category": "Error handling",
       "icon": "mi/outline/error-outline",

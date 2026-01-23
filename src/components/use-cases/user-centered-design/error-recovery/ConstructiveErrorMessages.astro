@@ -1,0 +1,21 @@
+---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+---
+
+<UseCase
+  title="Constructive Error Messages"
+  description="Error messages should be written in plain language, explaining the problem without blaming the user or using technical jargon."
+>
+  <Usage>
+    <UsageItem variant="do">Password must be at least 8 characters</UsageItem>
+    <UsageItem variant="dont">Password short</UsageItem>
+
+    <UsageItem variant="do">File upload failed, you can upload images up to 10MB</UsageItem>
+    <UsageItem variant="dont">File too large, fix error</UsageItem>
+
+    <UsageItem variant="do">We couldn’t save your changes, check missing fields</UsageItem>
+    <UsageItem variant="dont">You forgot something, please fill in all fields</UsageItem>
+  </Usage>
+</UseCase>

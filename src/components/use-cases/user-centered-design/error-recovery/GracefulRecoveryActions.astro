@@ -1,0 +1,122 @@
+---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import workspacesData from '../../../../data/use-cases/workspaces.json';
+
+const workspace = workspacesData[0];
+---
+
+<UseCase
+  title="Graceful Recovery Actions"
+  description="After an error occurs, users should be able to recover easily without losing progress or restarting their task."
+>
+  <UseCaseInteractive clsHeight={120} label="Retry when something goes wrong" toggle>
+    <div class="grid gap-600 grid-cols-full w-full max-w-8000">
+      <mds-entity icon="mi/baseline/sports-soccer">
+        <mds-text typography="h6">{workspace.name}</mds-text>
+        <mds-text typography="caption" slot="detail">{workspace.description}</mds-text>
+        <mds-button icon="mi/baseline/cancel" variant="light" tone="weak" slot="action" title="Remove element"></mds-button>
+      </mds-entity>
+      <mds-button variant="primary" tone="weak" data-save-button>Save changes</mds-button>
+      <mds-banner class="hidden" variant="error" tone="weak" data-error-banner>There was an error from the server while saving your changes.</mds-banner>
+    </div>
+    <div class="grid gap-600 grid-cols-full w-full max-w-8000">
+      <mds-entity icon="mi/baseline/sports-soccer" variant="orange" tone="weak">
+        <mds-text typography="h6">{workspace.name}</mds-text>
+        <mds-text typography="caption" slot="detail">{workspace.description}</mds-text>
+        <mds-button icon="mi/baseline/cancel" variant="light" tone="weak" slot="action" title="Remove element"></mds-button>
+      </mds-entity>
+      <mds-button variant="primary" tone="weak" data-save-button-2>Save changes</mds-button>
+      <mds-banner class="hidden" variant="error" tone="weak" data-error-banner-2>
+        There was an error saving your changes.
+      </mds-banner>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Preserve user data when errors occur</UsageItem>
+    <UsageItem variant="dont">Lose user input when showing errors</UsageItem>
+    <UsageItem variant="do">Allow users to correct mistakes easily</UsageItem>
+    <UsageItem variant="dont">Force users to start over after errors</UsageItem>
+    <UsageItem variant="do">Provide undo or revert options</UsageItem>
+    <UsageItem variant="dont">Make errors irreversible</UsageItem>
+  </Usage>
+</UseCase>
+
+<script>
+  function initGracefulRecovery() {
+    const saveButton = document.querySelector('[data-save-button]') as HTMLElement;
+    const errorBanner = document.querySelector('[data-error-banner]') as HTMLElement;
+    const saveButton2 = document.querySelector('[data-save-button-2]') as HTMLElement;
+    const errorBanner2 = document.querySelector('[data-error-banner-2]') as HTMLElement;
+
+    // First section behavior
+    if (saveButton && errorBanner) {
+      const handleSaveClick = () => {
+        const isErrorState = saveButton.getAttribute('variant') === 'error';
+
+        if (isErrorState) {
+          // When clicking "Try again": hide banner and show await
+          errorBanner.classList.add('hidden');
+          saveButton.setAttribute('await', '');
+          saveButton.textContent = 'Saving data...';
+          saveButton.setAttribute('variant', 'primary');
+
+          // After 1 second, show error again (retry cycle)
+          setTimeout(() => {
+            saveButton.removeAttribute('await');
+            saveButton.setAttribute('variant', 'error');
+            saveButton.textContent = 'Try again';
+            errorBanner.classList.remove('hidden');
+          }, 1000);
+        } else {
+          // Initial click: show await and "Saving data..."
+          saveButton.setAttribute('await', '');
+          saveButton.textContent = 'Saving data...';
+
+          // After 1 second, show error state
+          setTimeout(() => {
+            saveButton.removeAttribute('await');
+            saveButton.setAttribute('variant', 'error');
+            saveButton.textContent = 'Try again';
+            errorBanner.classList.remove('hidden');
+          }, 1000);
+        }
+      };
+
+      saveButton.addEventListener('click', handleSaveClick);
+    }
+
+    // Second section behavior
+    if (saveButton2 && errorBanner2) {
+      const handleSaveClick2 = () => {
+        // First, show await state and "Saving data..."
+        saveButton2.setAttribute('await', '');
+        saveButton2.textContent = 'Saving data...';
+
+        // After 1 second, hide button and show banner
+        setTimeout(() => {
+          saveButton2.removeAttribute('await');
+          saveButton2.classList.add('hidden');
+          errorBanner2.classList.remove('hidden');
+
+          // After 3 seconds, roll back
+          setTimeout(() => {
+            saveButton2.classList.remove('hidden');
+            saveButton2.textContent = 'Save changes';
+            errorBanner2.classList.add('hidden');
+          }, 5000);
+        }, 1000);
+      };
+
+      saveButton2.addEventListener('click', handleSaveClick2);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGracefulRecovery);
+  } else {
+    initGracefulRecovery();
+  }
+</script>

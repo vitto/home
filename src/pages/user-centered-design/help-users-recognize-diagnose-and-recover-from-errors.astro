@@ -1,0 +1,37 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/user-centered-design.json';
+import ClearErrorIdentification from '../../components/use-cases/user-centered-design/error-recovery/ClearErrorIdentification.astro';
+import ConstructiveErrorMessages from '../../components/use-cases/user-centered-design/error-recovery/ConstructiveErrorMessages.astro';
+import ExplicitRecoveryGuidance from '../../components/use-cases/user-centered-design/error-recovery/ExplicitRecoveryGuidance.astro';
+import ErrorPreventionFeedback from '../../components/use-cases/user-centered-design/error-recovery/ErrorPreventionFeedback.astro';
+import GracefulRecoveryActions from '../../components/use-cases/user-centered-design/error-recovery/GracefulRecoveryActions.astro';
+import VisibleErrorContext from '../../components/use-cases/user-centered-design/error-recovery/VisibleErrorContext.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+
+const principle = data.principles.find((p) => p.id === 'help-users-recognize-diagnose-and-recover-from-errors')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/user-centered-design';
+const sectionName = 'User-Centered Design';
+---
+
+<UseCaseLayout
+  title={`${principle.title} / ${sectionName}`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath={sectionPath}
+>
+  <ClearErrorIdentification />
+  <ConstructiveErrorMessages />
+  <ErrorPreventionFeedback />
+  <ExplicitRecoveryGuidance />
+  <GracefulRecoveryActions />
+  <VisibleErrorContext />
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>

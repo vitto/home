@@ -1,0 +1,42 @@
+---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Clear Error Identification"
+  description="Errors should be immediately recognizable as such. Users must clearly understand that something went wrong, without confusing error states with normal system behavior."
+>
+  <UseCaseInteractive
+    clsHeight={180}
+    articleId="clear-error-identification"
+    label="A table with user data"
+    toggle>
+    <mds-banner
+      icon="mi/outline/warning-amber"
+      variant="error"
+      tone="weak"
+      headline="Payment failed">
+      <mds-text typography="detail">The payment method you selected is currently not available.<br/>Please try again later.</mds-text>
+      <mds-button slot="action" variant="error" tone="strong">Try again</mds-button>
+    </mds-banner>
+    <mds-banner
+      icon="mi/outline/warning-amber"
+      variant="primary"
+      tone="weak"
+      headline="Payment failed">
+      <mds-text typography="detail">The payment method you selected is currently not available.<br/>Please try again later.</mds-text>
+      <mds-button slot="action" variant="primary" tone="strong">Try again</mds-button>
+    </mds-banner>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Use distinct visual indicators for errors</UsageItem>
+    <UsageItem variant="dont">Make error states look like normal content</UsageItem>
+    <UsageItem variant="do">Use consistent error styling across the interface</UsageItem>
+    <UsageItem variant="dont">Use different error styles in different contexts</UsageItem>
+    <UsageItem variant="do">Make errors immediately visible</UsageItem>
+    <UsageItem variant="dont">Hide errors or make them hard to notice</UsageItem>
+  </Usage>
+</UseCase>

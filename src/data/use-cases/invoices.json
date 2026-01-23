@@ -1,0 +1,38 @@
+[
+  {
+    "title": "August",
+    "date": "2046-08-15",
+    "price": "$1,250.00",
+    "status": "paid"
+  },
+  {
+    "title": "July",
+    "date": "2046-07-15",
+    "price": "$1,180.50",
+    "status": "paid"
+  },
+  {
+    "title": "June",
+    "date": "2046-06-15",
+    "price": "$950.75",
+    "status": "error"
+  },
+  {
+    "title": "May",
+    "date": "2046-05-15",
+    "price": "$1,420.00",
+    "status": "paid"
+  },
+  {
+    "title": "September",
+    "date": "2046-09-15",
+    "price": "$1,350.25",
+    "status": "scheduled"
+  },
+  {
+    "title": "April",
+    "date": "2046-04-15",
+    "price": "$1,100.00",
+    "status": "paid"
+  }
+]
