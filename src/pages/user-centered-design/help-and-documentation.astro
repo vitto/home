@@ -1,0 +1,35 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/user-centered-design.json';
+import ConcreteActionableGuidance from '../../components/use-cases/user-centered-design/help-and-documentation/ConcreteActionableGuidance.astro';
+import EasyToSearch from '../../components/use-cases/user-centered-design/help-and-documentation/EasyToSearch.astro';
+import FocusedOnUsersTask from '../../components/use-cases/user-centered-design/help-and-documentation/FocusedOnUsersTask.astro';
+import NotTooLarge from '../../components/use-cases/user-centered-design/help-and-documentation/NotTooLarge.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+
+const principle = data.principles.find(
+  (p) => p.id === 'help-and-documentation'
+)!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/user-centered-design';
+const sectionName = 'User-Centered Design';
+---
+
+<UseCaseLayout
+  title={`${principle.title} / ${sectionName}`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath={sectionPath}
+>
+  <ConcreteActionableGuidance />
+  <EasyToSearch />
+  <FocusedOnUsersTask />
+  <NotTooLarge />
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>

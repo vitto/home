@@ -1,0 +1,44 @@
+---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Search from '../../Search.astro';
+---
+
+<UseCase
+  title="Easy to Search"
+  description="Help and documentation should be easy to search so users can quickly find relevant information. Users should not be forced to read large manuals or browse long sections to locate specific answers."
+>
+  <UseCaseInteractive clsHeight={0} overflowHidden={false} articleId="easy-to-search" label="Autocomplete search">
+    <Search
+      articleId="easy-to-search"
+      placeholder='Search for "fader" or "channel" to see the autocomplete'
+      autocompleteItems={[
+        'How to adjust channel fader levels',
+        'Setting up input channels on the console',
+        'Configuring EQ settings for each channel',
+        'How to route audio signals to aux sends',
+        'Using the built-in effects processor',
+        'Connecting external devices to the console',
+        'Setting up monitor mixes for performers',
+        'How to save and recall console presets',
+        'Troubleshooting audio routing issues',
+        'Understanding the channel strip controls',
+        'How to use the built-in compressor',
+        'Setting up headphone monitoring',
+        'Configuring the main output levels',
+        'How to use the talkback microphone',
+      ]}
+      latestSearches={['Fader', 'Channel', 'EQ', 'Routing', 'Effects']}
+    />
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Provide a searchable help system</UsageItem>
+    <UsageItem variant="dont">Force users to browse through long manuals</UsageItem>
+    <UsageItem variant="do">Use clear, searchable keywords</UsageItem>
+    <UsageItem variant="dont">Use technical jargon that users won't search for</UsageItem>
+    <UsageItem variant="do">Organize content with clear categories</UsageItem>
+    <UsageItem variant="dont">Create deep, nested hierarchies</UsageItem>
+  </Usage>
+</UseCase>

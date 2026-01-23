@@ -1,0 +1,25 @@
+---
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Focused on the User's Task"
+  description="Help content should be task-oriented rather than system-oriented. It should explain how to achieve user goals, not how the system is internally structured or implemented."
+>
+  <UseCaseInteractive clsHeight={0}>
+    <div class="w-full max-w-8000">
+      <!-- Use case content here -->
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Focus on user goals and tasks</UsageItem>
+    <UsageItem variant="dont">Explain system architecture or implementation</UsageItem>
+    <UsageItem variant="do">Use user-centered language</UsageItem>
+    <UsageItem variant="dont">Use technical system terminology</UsageItem>
+    <UsageItem variant="do">Show how to accomplish real-world tasks</UsageItem>
+    <UsageItem variant="dont">Describe features in isolation</UsageItem>
+  </Usage>
+</UseCase>

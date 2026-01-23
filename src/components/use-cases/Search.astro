@@ -1,0 +1,188 @@
+---
+interface Props {
+  articleId: string;
+  autocompleteItems?: string[];
+  placeholder?: string;
+  latestSearches?: string[];
+  class?: string;
+}
+
+const {
+  articleId,
+  autocompleteItems = [],
+  placeholder = 'Search...',
+  latestSearches = [],
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`w-full relative h-4000 ${className}`}>
+  <div class="grid gap-400">
+    <mds-input
+      data-search-input
+      icon="mi/outline/search"
+      placeholder={placeholder}
+      type="text"
+    >
+    </mds-input>
+    {latestSearches.length > 0 && (
+      <div class="grid gap-200">
+        <mds-text typography="label">latest searches</mds-text>
+        <div class="flex gap-200 flex-wrap">
+          {latestSearches.map((search) => (
+            <mds-button variant="dark" tone="weak" data-search-button>
+              {search}
+            </mds-button>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+  <div
+    class="hidden absolute top-1200 left-0 right-0 mt-200 bg-tone-neutral dark:bg-tone-neutral-09 rounded-lg shadow-sm-sharp border border-tone-neutral-03/20 z-10 max-h- overflow-y-auto"
+    data-autocomplete-results
+  >
+    <!-- Autocomplete results will be inserted here -->
+  </div>
+</div>
+<script define:vars={{ articleId, autocompleteItems }}>
+  // @ts-ignore
+  function initAutocomplete() {
+    // @ts-ignore
+    const scope = window.getUseCaseScope?.(articleId);
+    if (!scope) return;
+    const { container } = scope;
+    const searchInput = container.querySelector('[data-search-input]');
+    const resultsContainer = container.querySelector('[data-autocomplete-results]');
+
+    if (!searchInput || !resultsContainer) return;
+
+    function highlightText(text, query) {
+      if (!query) return text;
+      const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      return text.replace(
+        regex,
+        '<mark class="bg-label-blue-08 text-label-blue-04 px-50 rounded-md">$1</mark>'
+      );
+    }
+    function filterResults(query) {
+      if (!query) return [];
+      const lowerQuery = query.toLowerCase();
+      return autocompleteItems.filter((item) => item.toLowerCase().includes(lowerQuery));
+    }
+    function clearSearch() {
+      // @ts-ignore
+      if (searchInput && searchInput.value !== undefined) {
+        // @ts-ignore
+        searchInput.value = '';
+      }
+      resultsContainer.classList.add('hidden');
+      resultsContainer.innerHTML = '';
+    }
+
+    function renderResults(query) {
+      // Only show autocomplete if query has at least 2 characters
+      if (query.length < 2) {
+        resultsContainer.classList.add('hidden');
+        resultsContainer.innerHTML = '';
+        return;
+      }
+      const filtered = filterResults(query);
+      if (filtered.length === 0) {
+        resultsContainer.classList.add('hidden');
+        resultsContainer.innerHTML = '';
+        return;
+      }
+      const totalResults = filtered.length;
+      const maxResults = 4;
+      const displayedResults = filtered.slice(0, maxResults);
+      resultsContainer.classList.remove('hidden');
+      const resultsHTML = displayedResults
+        .map(
+          (item, index) =>
+            `<div class="px-400 py-200 hover:bg-tone-neutral-10 cursor-pointer border-b border-tone-neutral-03/10 border-b border-solid border-0" data-result-item data-result-index="${index}"><mds-text typography="caption" class="text-tone-neutral-03">${highlightText(item, query)}</mds-text></div>`
+        )
+        .join('');
+      const tipHTML =
+        totalResults > maxResults
+          ? `<div class="px-400 py-200 bg-tone-neutral-10 border-t border-tone-neutral-03/10"><mds-text typography="caption" class="text-tone-neutral-03">Showing ${maxResults} of ${totalResults} results</mds-text></div>`
+          : `<div class="px-400 py-200 bg-tone-neutral-10 border-t border-tone-neutral-03/10"><mds-text typography="caption" class="text-tone-neutral-03">${totalResults} result${totalResults !== 1 ? 's' : ''}</mds-text></div>`;
+      resultsContainer.innerHTML = resultsHTML + tipHTML;
+    }
+
+    // Use event delegation to handle clicks on result items
+    // Using capture phase to catch clicks before child elements intercept them
+    resultsContainer.addEventListener(
+      'click',
+      (e) => {
+        const target = e.target;
+        // Check if click originated from a result item or its children
+        const resultItem = target.closest('[data-result-item]');
+        if (resultItem) {
+          clearSearch();
+        }
+      },
+      { capture: true }
+    );
+
+    function getInputValue() {
+      // @ts-ignore
+      return searchInput?.value || '';
+    }
+    function handleInputChange(event) {
+      // @ts-ignore
+      const target = event.target;
+      // @ts-ignore
+      const value = target?.value || getInputValue();
+      renderResults(value);
+    }
+    function handleInputBlur() {
+      resultsContainer.classList.add('hidden');
+      resultsContainer.innerHTML = '';
+    }
+    function handleInputFocus() {
+      const value = getInputValue();
+      if (value) {
+        renderResults(value);
+      }
+    }
+    searchInput.addEventListener('mdsInputChange', handleInputChange);
+    searchInput.addEventListener('mdsInputBlur', handleInputBlur);
+    searchInput.addEventListener('mdsInputFocus', handleInputFocus);
+
+    // Handle button clicks to fill search input
+    const searchButtons = container.querySelectorAll('[data-search-button]');
+    searchButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const buttonText = button.textContent?.trim() || '';
+        if (!buttonText) return;
+
+        // Set the input value
+        // @ts-ignore
+        if (searchInput && searchInput.value !== undefined) {
+          // @ts-ignore
+          searchInput.value = buttonText;
+
+          // Trigger the search by dispatching mdsInputChange event
+          const changeEvent = new CustomEvent('mdsInputChange', {
+            bubbles: true,
+            detail: { value: buttonText },
+          });
+          searchInput.dispatchEvent(changeEvent);
+        }
+      });
+    });
+  }
+  function waitForComponents() {
+    if (customElements.get('mds-input')) {
+      initAutocomplete();
+    } else {
+      setTimeout(waitForComponents, 100);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForComponents);
+  } else {
+    waitForComponents();
+  }
+</script>

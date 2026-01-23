@@ -84,7 +84,7 @@
     },
     {
       "id": "help-and-documentation",
-      "draft": true,
+      "draft": false,
       "title": "Help and Documentation",
       "category": "Support",
       "icon": "mi/outline/help-outline",
