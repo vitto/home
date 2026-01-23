@@ -18,25 +18,22 @@ const {
 
 <div class={`w-full relative h-4000 ${className}`}>
   <div class="grid gap-400">
-    <mds-input
-      data-search-input
-      icon="mi/outline/search"
-      placeholder={placeholder}
-      type="text"
-    >
+    <mds-input data-search-input icon="mi/outline/search" placeholder={placeholder} type="text">
     </mds-input>
-    {latestSearches.length > 0 && (
-      <div class="grid gap-200">
-        <mds-text typography="label">latest searches</mds-text>
-        <div class="flex gap-200 flex-wrap">
-          {latestSearches.map((search) => (
-            <mds-button variant="dark" tone="weak" data-search-button>
-              {search}
-            </mds-button>
-          ))}
+    {
+      latestSearches.length > 0 && (
+        <div class="grid gap-200">
+          <mds-text typography="label">latest searches</mds-text>
+          <div class="flex gap-200 flex-wrap">
+            {latestSearches.map((search) => (
+              <mds-button variant="dark" tone="weak" data-search-button>
+                {search}
+              </mds-button>
+            ))}
+          </div>
         </div>
-      </div>
-    )}
+      )
+    }
   </div>
   <div
     class="hidden absolute top-1200 left-0 right-0 mt-200 bg-tone-neutral dark:bg-tone-neutral-09 rounded-lg shadow-sm-sharp border border-tone-neutral-03/20 z-10 max-h- overflow-y-auto"
