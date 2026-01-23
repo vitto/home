@@ -13,51 +13,74 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <mds-accordion class="w-full">
       <mds-accordion-item label="How do I change my password?">
         <mds-text typography="detail">
-          Go to Settings → Security → Change Password. Enter your current password and your new password twice. Click "Save" to update.
+          Go to Settings → Security → Change Password. Enter your current password and your new
+          password twice. Click "Save" to update.
         </mds-text>
       </mds-accordion-item>
     </mds-accordion>
     <mds-accordion class="w-full">
-      <mds-accordion-item label="Complete Guide to Password Management: Security Protocols, Best Practices, Technical Implementation, Edge Cases, and Troubleshooting">
+      <mds-accordion-item
+        label="Complete Guide to Password Management: Security Protocols, Best Practices, Technical Implementation, Edge Cases, and Troubleshooting"
+      >
         <div class="grid gap-400">
           <mds-text typography="detail">
             <strong>Introduction to Password Security</strong><br />
-            Password management is a critical aspect of digital security. This comprehensive guide covers all aspects of password management, from basic concepts to advanced security protocols. Understanding password security requires knowledge of cryptography, hashing algorithms, and security best practices...
+            Password management is a critical aspect of digital security. This comprehensive guide covers
+            all aspects of password management, from basic concepts to advanced security protocols. Understanding
+            password security requires knowledge of cryptography, hashing algorithms, and security best
+            practices...
           </mds-text>
           <mds-text typography="detail">
             <strong>Chapter 1: Understanding Password Hashing</strong><br />
-            Passwords are stored using one-way hash functions. The system uses bcrypt with a salt factor of 12. When you create a password, it goes through multiple transformation layers: first, the input is normalized to handle Unicode characters, then it's salted using a cryptographically secure random number generator...
+            Passwords are stored using one-way hash functions. The system uses bcrypt with a salt factor
+            of 12. When you create a password, it goes through multiple transformation layers: first,
+            the input is normalized to handle Unicode characters, then it's salted using a cryptographically
+            secure random number generator...
           </mds-text>
           <mds-text typography="detail">
             <strong>Chapter 2: Password Complexity Requirements</strong><br />
-            The system enforces password complexity through a multi-stage validation process. Minimum length is 8 characters, but we recommend 12 or more. The password must contain at least one uppercase letter, one lowercase letter, one number, and one special character from the set: !@#$%^&*()_+-=[]{}|;:,.<>?...
-          </mds-text>
-          <mds-text typography="detail">
-            <strong>Chapter 3: Password Reset Workflow</strong><br />
-            The password reset process involves multiple steps and security checks. When you request a password reset, the system generates a time-limited token using JWT (JSON Web Tokens) with a 1-hour expiration. This token is hashed and stored in our Redis cache with a TTL (Time To Live) of 3600 seconds...
-          </mds-text>
-          <mds-text typography="detail">
-            <strong>Chapter 4: Edge Cases and Error Handling</strong><br />
-            Various edge cases must be considered: what happens if the user requests multiple password resets within a short time frame? The system implements rate limiting using a token bucket algorithm. If more than 3 reset requests are made within 15 minutes, the system will temporarily block further requests...
-          </mds-text>
-          <mds-text typography="detail">
-            <strong>Chapter 5: Troubleshooting Common Issues</strong><br />
-            If you encounter issues changing your password, first check your browser's console for JavaScript errors. Verify that cookies are enabled and third-party cookies are not blocked. Clear your browser cache and try again. If the problem persists, check your network connection and ensure you're not behind a corporate firewall that might be blocking API requests...
-          </mds-text>
-          <mds-text typography="detail">
-            <strong>Appendix A: Technical Specifications</strong><br />
-            The password change endpoint is located at /api/v1/users/password. It accepts POST requests with Content-Type: application/json. The request body must include currentPassword (string, required), newPassword (string, required, minLength: 8), and confirmPassword (string, required)...
+            The system enforces password complexity through a multi-stage validation process. Minimum
+            length is 8 characters, but we recommend 12 or more. The password must contain at least one
+            uppercase letter, one lowercase letter, one number, and one special character from the set:
+            !@#$%^&*()_+-=[]{}|;:,.<>?...</>
+            <mds-text typography="detail">
+              <strong>Chapter 3: Password Reset Workflow</strong><br />
+              The password reset process involves multiple steps and security checks. When you request
+              a password reset, the system generates a time-limited token using JWT (JSON Web Tokens)
+              with a 1-hour expiration. This token is hashed and stored in our Redis cache with a TTL
+              (Time To Live) of 3600 seconds...
+            </mds-text>
+            <mds-text typography="detail">
+              <strong>Chapter 4: Edge Cases and Error Handling</strong><br />
+              Various edge cases must be considered: what happens if the user requests multiple password
+              resets within a short time frame? The system implements rate limiting using a token bucket
+              algorithm. If more than 3 reset requests are made within 15 minutes, the system will temporarily
+              block further requests...
+            </mds-text>
+            <mds-text typography="detail">
+              <strong>Chapter 5: Troubleshooting Common Issues</strong><br />
+              If you encounter issues changing your password, first check your browser's console for JavaScript
+              errors. Verify that cookies are enabled and third-party cookies are not blocked. Clear your
+              browser cache and try again. If the problem persists, check your network connection and
+              ensure you're not behind a corporate firewall that might be blocking API requests...
+            </mds-text>
+            <mds-text typography="detail">
+              <strong>Appendix A: Technical Specifications</strong><br />
+              The password change endpoint is located at /api/v1/users/password. It accepts POST requests
+              with Content-Type: application/json. The request body must include currentPassword (string,
+              required), newPassword (string, required, minLength: 8), and confirmPassword (string, required)...
+            </mds-text>
           </mds-text>
         </div>
       </mds-accordion-item>
     </mds-accordion>
+    <Usage>
+      <UsageItem variant="do">Keep help content concise and focused</UsageItem>
+      <UsageItem variant="dont">Create exhaustive, overwhelming manuals</UsageItem>
+      <UsageItem variant="do">Break content into digestible chunks</UsageItem>
+      <UsageItem variant="dont">Present everything in one long document</UsageItem>
+      <UsageItem variant="do">Prioritize most common tasks</UsageItem>
+      <UsageItem variant="dont">Include every possible edge case upfront</UsageItem>
+    </Usage>
   </UseCaseInteractive>
-  <Usage>
-    <UsageItem variant="do">Keep help content concise and focused</UsageItem>
-    <UsageItem variant="dont">Create exhaustive, overwhelming manuals</UsageItem>
-    <UsageItem variant="do">Break content into digestible chunks</UsageItem>
-    <UsageItem variant="dont">Present everything in one long document</UsageItem>
-    <UsageItem variant="do">Prioritize most common tasks</UsageItem>
-    <UsageItem variant="dont">Include every possible edge case upfront</UsageItem>
-  </Usage>
 </UseCase>
