@@ -27,11 +27,8 @@ const { articleId } = Astro.props;
     icon="mi/outline/lock-open"
     icon-checked="mi/outline/done"
     label="Account activation"></mds-stepper-bar-item>
-  <mds-stepper-bar-item
-    badge
-    icon="mi/outline/login"
-    icon-checked="mi/outline/done"
-    label="Login"></mds-stepper-bar-item>
+  <mds-stepper-bar-item badge icon="mi/outline/login" icon-checked="mi/outline/done" label="Login"
+  ></mds-stepper-bar-item>
   <mds-stepper-bar-item badge icon="mi/outline/done" icon-checked="mi/outline/done" label="Done"
   ></mds-stepper-bar-item>
   <div
@@ -48,12 +45,7 @@ const { articleId } = Astro.props;
     slot="content"
   >
     <mds-text>Personal data</mds-text>
-    <mds-button
-      class="absolute bottom-600 left-600"
-      data-prev-button
-      tone="ghost"
-      variant="dark"
-    >
+    <mds-button class="absolute bottom-600 left-600" data-prev-button tone="ghost" variant="dark">
       Previous step
     </mds-button>
     <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
@@ -65,12 +57,7 @@ const { articleId } = Astro.props;
     slot="content"
   >
     <mds-text>Newsletter settings</mds-text>
-    <mds-button
-      class="absolute bottom-600 left-600"
-      data-prev-button
-      tone="ghost"
-      variant="dark"
-    >
+    <mds-button class="absolute bottom-600 left-600" data-prev-button tone="ghost" variant="dark">
       Previous step
     </mds-button>
     <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
@@ -82,12 +69,7 @@ const { articleId } = Astro.props;
     slot="content"
   >
     <mds-text>Account activation</mds-text>
-    <mds-button
-      class="absolute bottom-600 left-600"
-      data-prev-button
-      tone="ghost"
-      variant="dark"
-    >
+    <mds-button class="absolute bottom-600 left-600" data-prev-button tone="ghost" variant="dark">
       Previous step
     </mds-button>
     <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
@@ -99,12 +81,7 @@ const { articleId } = Astro.props;
     slot="content"
   >
     <mds-text>Login</mds-text>
-    <mds-button
-      class="absolute bottom-600 left-600"
-      data-prev-button
-      tone="ghost"
-      variant="dark"
-    >
+    <mds-button class="absolute bottom-600 left-600" data-prev-button tone="ghost" variant="dark">
       Previous step
     </mds-button>
     <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
@@ -116,12 +93,7 @@ const { articleId } = Astro.props;
     slot="content"
   >
     <mds-text>Done</mds-text>
-    <mds-button
-      class="absolute bottom-600 left-600"
-      data-prev-button
-      tone="ghost"
-      variant="dark"
-    >
+    <mds-button class="absolute bottom-600 left-600" data-prev-button tone="ghost" variant="dark">
       Previous step
     </mds-button>
   </div>

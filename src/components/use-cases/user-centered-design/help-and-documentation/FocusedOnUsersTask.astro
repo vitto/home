@@ -13,54 +13,89 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <mds-accordion class="w-full">
       <mds-accordion-item label="How do I create a new account?">
         <mds-text typography="detail">
-          To create a new account, click the "Sign up" button on the homepage. Enter your email address and choose a secure password. You'll receive a confirmation email to verify your account. Once verified, you can log in and start using the platform.
+          To create a new account, click the "Sign up" button on the homepage. Enter your email
+          address and choose a secure password. You'll receive a confirmation email to verify your
+          account. Once verified, you can log in and start using the platform.
         </mds-text>
       </mds-accordion-item>
       <mds-accordion-item label="How do I reset my password?">
         <mds-text typography="detail">
-          If you've forgotten your password, click "Forgot password" on the login page. Enter your email address and you'll receive a link to reset your password. Click the link in the email and follow the instructions to create a new password.
+          If you've forgotten your password, click "Forgot password" on the login page. Enter your
+          email address and you'll receive a link to reset your password. Click the link in the
+          email and follow the instructions to create a new password.
         </mds-text>
       </mds-accordion-item>
       <mds-accordion-item label="How do I upload a profile picture?">
         <mds-text typography="detail">
-          Go to your profile settings by clicking your avatar in the top right corner. Select "Edit profile" and click on the current profile picture. Choose an image from your device (JPG, PNG, or GIF format). The image will be automatically resized and saved to your profile.
+          Go to your profile settings by clicking your avatar in the top right corner. Select "Edit
+          profile" and click on the current profile picture. Choose an image from your device (JPG,
+          PNG, or GIF format). The image will be automatically resized and saved to your profile.
         </mds-text>
       </mds-accordion-item>
       <mds-accordion-item label="How do I change my notification settings?">
         <mds-text typography="detail">
-          Navigate to Settings from the main menu, then select "Notifications". Here you can choose which types of notifications you want to receive (email, push, or in-app). Toggle the switches next to each notification type to enable or disable them according to your preferences.
+          Navigate to Settings from the main menu, then select "Notifications". Here you can choose
+          which types of notifications you want to receive (email, push, or in-app). Toggle the
+          switches next to each notification type to enable or disable them according to your
+          preferences.
         </mds-text>
       </mds-accordion-item>
       <mds-accordion-item label="How do I export my data?">
         <mds-text typography="detail">
-          To export your data, go to Settings and select "Privacy & Data". Click on "Export my data" and choose the format you prefer (JSON or CSV). The export will be prepared and sent to your email address within 24 hours. You'll receive a download link that remains active for 7 days.
+          To export your data, go to Settings and select "Privacy & Data". Click on "Export my data"
+          and choose the format you prefer (JSON or CSV). The export will be prepared and sent to
+          your email address within 24 hours. You'll receive a download link that remains active for
+          7 days.
         </mds-text>
       </mds-accordion-item>
     </mds-accordion>
     <mds-accordion class="w-full">
       <mds-accordion-item label="Account Creation Module Architecture">
         <mds-text typography="detail">
-          The account creation module utilizes a RESTful API endpoint (/api/v1/users) that implements a POST request handler. The module consists of three main components: the UserRegistrationService, which validates input data against the UserSchema, the EmailVerificationService that generates JWT tokens, and the DatabaseRepository that persists user data to the PostgreSQL database using an ORM layer.
+          The account creation module utilizes a RESTful API endpoint (/api/v1/users) that
+          implements a POST request handler. The module consists of three main components: the
+          UserRegistrationService, which validates input data against the UserSchema, the
+          EmailVerificationService that generates JWT tokens, and the DatabaseRepository that
+          persists user data to the PostgreSQL database using an ORM layer.
         </mds-text>
       </mds-accordion-item>
       <mds-accordion-item label="Password Reset Implementation">
         <mds-text typography="detail">
-          The password reset functionality is implemented through a microservice architecture. The PasswordResetController receives requests and delegates to the TokenGeneratorService, which creates time-limited tokens stored in Redis cache. The EmailDispatcherService sends emails via SMTP using the configured mail server, and the PasswordHasherService uses bcrypt with a salt factor of 12 to hash new passwords before storage.
+          The password reset functionality is implemented through a microservice architecture. The
+          PasswordResetController receives requests and delegates to the TokenGeneratorService,
+          which creates time-limited tokens stored in Redis cache. The EmailDispatcherService sends
+          emails via SMTP using the configured mail server, and the PasswordHasherService uses
+          bcrypt with a salt factor of 12 to hash new passwords before storage.
         </mds-text>
       </mds-accordion-item>
       <mds-accordion-item label="File Upload Component Structure">
         <mds-text typography="detail">
-          The profile picture upload feature is built on a multipart/form-data handler that processes file uploads through a middleware stack. Files are validated by the FileValidatorService checking MIME types and size constraints, then processed by the ImageProcessorService using Sharp library for resizing. The processed files are stored in AWS S3 buckets with CDN distribution, and metadata is saved in the FileMetadataRepository using MongoDB.
+          The profile picture upload feature is built on a multipart/form-data handler that
+          processes file uploads through a middleware stack. Files are validated by the
+          FileValidatorService checking MIME types and size constraints, then processed by the
+          ImageProcessorService using Sharp library for resizing. The processed files are stored in
+          AWS S3 buckets with CDN distribution, and metadata is saved in the FileMetadataRepository
+          using MongoDB.
         </mds-text>
       </mds-accordion-item>
       <mds-accordion-item label="Notification System Architecture">
         <mds-text typography="detail">
-          The notification system follows an event-driven architecture using a message queue (RabbitMQ). The NotificationDispatcherService subscribes to events from the EventBus and routes notifications through multiple channels. The EmailChannel uses SMTP, PushChannel implements WebSocket connections, and InAppChannel stores notifications in a Redis pub/sub system. User preferences are stored in a key-value store and retrieved via the PreferenceService.
+          The notification system follows an event-driven architecture using a message queue
+          (RabbitMQ). The NotificationDispatcherService subscribes to events from the EventBus and
+          routes notifications through multiple channels. The EmailChannel uses SMTP, PushChannel
+          implements WebSocket connections, and InAppChannel stores notifications in a Redis pub/sub
+          system. User preferences are stored in a key-value store and retrieved via the
+          PreferenceService.
         </mds-text>
       </mds-accordion-item>
       <mds-accordion-item label="Data Export Service Implementation">
         <mds-text typography="detail">
-          The data export functionality is implemented as an asynchronous job queue using Celery workers. The ExportJobService creates background tasks that query the database using SQLAlchemy ORM, serialize data using the DataSerializerService (supporting JSON and CSV formats), and upload the result to cloud storage. The NotificationService sends email notifications via the EmailGateway API, and download links are generated using signed URLs with expiration timestamps stored in the URLRegistry table.
+          The data export functionality is implemented as an asynchronous job queue using Celery
+          workers. The ExportJobService creates background tasks that query the database using
+          SQLAlchemy ORM, serialize data using the DataSerializerService (supporting JSON and CSV
+          formats), and upload the result to cloud storage. The NotificationService sends email
+          notifications via the EmailGateway API, and download links are generated using signed URLs
+          with expiration timestamps stored in the URLRegistry table.
         </mds-text>
       </mds-accordion-item>
     </mds-accordion>
