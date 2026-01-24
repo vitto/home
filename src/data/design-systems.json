@@ -27,76 +27,12 @@
       "description": "Maintain predictable behavior and shared rules without forcing every interface to look identical."
     },
     {
-      "id": "separation-of-semantics-and-presentation",
-      "draft": true,
-      "title": "Separation of Semantics and Presentation",
-      "category": "Architecture",
-      "icon": "mi/outline/layers",
-      "description": "Separating meaning from appearance allows components to be flexible, reusable, and maintainable across different contexts."
-    },
-    {
-      "id": "scalability",
-      "draft": true,
-      "title": "Scalability",
-      "category": "Architecture",
-      "icon": "mi/outline/trending-up",
-      "description": "Design systems must grow with the organization, supporting new teams, products, and use cases without breaking existing implementations."
-    },
-    {
-      "id": "behavioral-consistency",
-      "draft": true,
-      "title": "Behavioral Consistency",
-      "category": "Component Design",
-      "icon": "mi/outline/psychology",
-      "description": "Components should behave predictably across different contexts, following established interaction patterns and user expectations."
-    },
-    {
-      "id": "composition-over-configuration",
-      "draft": true,
-      "title": "Composition Over Configuration",
-      "category": "Component Design",
-      "icon": "mi/outline/widgets",
-      "description": "Building complex interfaces through composition of smaller, focused components rather than configuring monolithic ones."
-    },
-    {
-      "id": "api-stability-and-versioning",
-      "draft": true,
-      "title": "Stability API and Aware Versioning",
-      "category": "Maintenance",
-      "icon": "mi/outline/update",
-      "description": "Maintaining stable APIs while evolving the system, with clear versioning strategies and migration paths."
-    },
-    {
-      "id": "clear-governance",
-      "draft": true,
-      "title": "Clear Governance",
-      "category": "Maintenance",
-      "icon": "mi/outline/gavel",
-      "description": "Establishing clear processes for contributions, reviews, and decision-making to ensure quality and consistency."
-    },
-    {
-      "id": "documentation-as-primary-interface",
-      "draft": true,
-      "title": "Documentation as a Primary Interface",
+      "id": "adoption-over-perfection",
+      "draft": false,
+      "title": "Adoption Over Perfection",
       "category": "Adoption",
-      "icon": "mi/outline/menu-book",
-      "description": "Comprehensive, accessible documentation that serves as the primary way teams discover and use design system components."
-    },
-    {
-      "id": "accessibility-as-structural-requirement",
-      "draft": true,
-      "title": "Accessibility as a Structural Requirement",
-      "category": "Adoption",
-      "icon": "mi/outline/accessibility-new",
-      "description": "Accessibility built into the foundation of every component, not added as an afterthought."
-    },
-    {
-      "id": "measurable-impact",
-      "draft": true,
-      "title": "Measurable Impact",
-      "category": "Value",
-      "icon": "mi/outline/assessment",
-      "description": "Tracking metrics that demonstrate the value and effectiveness of the design system on product quality and team efficiency."
+      "icon": "mi/outline/rocket-launch",
+      "description": "Prioritize usable, evolving systems that teams actually adopt over perfect-but-ignored ideal solutions."
     }
   ]
 }

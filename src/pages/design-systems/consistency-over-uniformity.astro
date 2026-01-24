@@ -5,6 +5,8 @@ import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
 import Usage from '../../components/Usage.astro';
 import UsageItem from '../../components/UsageItem.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
 
 const principle = data.principles.find((p) => p.id === 'consistency-over-uniformity')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -43,7 +45,7 @@ The system defines **what must remain consistent** and **where variation is allo
 
     <Markdown
       content={`
-  ## Real examples
+  ## Approach
 
   ---
 
@@ -142,6 +144,42 @@ The system defines **what must remain consistent** and **where variation is allo
       <UsageItem variant="dont">Change interaction models for aesthetic reasons.</UsageItem>
     </Usage>
   </article>
+
+  <Bibliography
+    opener="The distinction between consistency and uniformity is well established across design and software disciplines:"
+    closer="These references support the principle conceptually, while the examples above reflect applied, real-world system design rather than theoretical uniformity."
+  >
+    <BibliographyItem
+      author="Jakob Nielsen"
+      title="Consistency and Standards"
+      description="Emphasizes predictable behavior over strict visual sameness."
+    />
+    <BibliographyItem
+      author="Alan Cooper"
+      title="About Face"
+      description="Explores consistency as a foundation for usable interaction models."
+    />
+    <BibliographyItem
+      author="Alla Kholmatova"
+      title="Design Systems"
+      description="Discusses how over-unification leads to brittle systems."
+    />
+    <BibliographyItem
+      author="Nathan Curtis"
+      title="Beyond Interface Inventory"
+      description="Advocates for principled variation rather than forced standardization."
+    />
+    <BibliographyItem
+      author="Brad Frost"
+      title="Atomic Design"
+      description="Highlights composability and flexibility as core system qualities."
+    />
+    <BibliographyItem
+      author="Luke Wroblewski"
+      title="Mobile First"
+      description="Shows how context-driven variation is essential across devices and environments."
+    />
+  </Bibliography>
 
   <PrincipleNav
     baseUrl={baseUrl}
