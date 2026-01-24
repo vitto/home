@@ -141,68 +141,6 @@ The system defines **what must remain consistent** and **where variation is allo
       <UsageItem variant="do">Optimize for learned behavior across the product.</UsageItem>
       <UsageItem variant="dont">Change interaction models for aesthetic reasons.</UsageItem>
     </Usage>
-
-    <Markdown
-      content={`
-#### Avoiding forced abstraction
-
-Not all UI elements were merged into a single abstract component.
-`}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Accept multiple components when their responsibilities diverge.
-      </UsageItem>
-      <UsageItem variant="do">Keep abstractions shallow and intentional.</UsageItem>
-      <UsageItem variant="dont">
-        Force uniform components that hide meaningful differences.
-      </UsageItem>
-      <UsageItem variant="dont">Introduce complex configuration to fake sameness.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Why this principle matters
-
-Uniform systems tend to break under real-world pressure.
-
-Consistent systems adapt.
-
-By prioritizing consistency over uniformity:
-
-- teams gain flexibility without fragmentation,
-- users develop stable mental models,
-- and the system remains usable as products evolve.
-
-This principle acknowledges a reality of design systems:
-**variation is inevitable; incoherence is optional.**
-  `}
-    />
-
-    <Markdown
-      content={`
-### Related References and Bibliography
-
----
-
-The distinction between consistency and uniformity is well established across design and software disciplines:
-
-**Jakob Nielsen** — Consistency and Standards — Emphasizes predictable behavior over strict visual sameness.
-
-**Alan Cooper** — About Face — Explores consistency as a foundation for usable interaction models.
-
-**Alla Kholmatova** — Design Systems — Discusses how over-unification leads to brittle systems.
-
-**Nathan Curtis** — Beyond Interface Inventory — Advocates for principled variation rather than forced standardization.
-
-**Brad Frost** — Atomic Design — Highlights composability and flexibility as core system qualities.
-
-**Luke Wroblewski** — Mobile First — Shows how context-driven variation is essential across devices and environments.
-
-These references support the principle conceptually, while the examples above reflect applied, real-world system design rather than theoretical uniformity.
-  `}
-    />
   </article>
 
   <PrincipleNav
