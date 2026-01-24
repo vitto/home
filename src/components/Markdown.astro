@@ -11,7 +11,10 @@ interface Props {
 const { content, class: className = 'grid grid-cols-full gap-400' } = Astro.props;
 
 function slugify(text: string) {
-  return text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+  return text
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '');
 }
 
 // <Button

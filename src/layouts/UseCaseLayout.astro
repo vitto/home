@@ -64,7 +64,7 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
               button.setAttribute('aria-label', `Copy link to ${titleText}`);
               button.setAttribute('title', `Copy link to ${titleText}`);
             }, linkCopiedDuration);
-            return
+            return;
           }
 
           if (button.classList.contains('mi/baseline/link')) {
