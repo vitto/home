@@ -80,16 +80,13 @@ In a production design system I worked on, Storybook was intentionally positione
         Allow arbitrary overrides that introduce uncontrolled divergence.
       </UsageItem>
     </Usage>
-    <Markdown>
-      {
-        `
-
+    <Markdown
+      content={`
   #### CI/CD pipelines as alignment mechanisms
 
   The build and deployment pipeline was used not only for distribution, but as a **mechanism for enforcing coherence** between design and development.
-    `
-      }
-    </Markdown>
+    `}
+    />
     <Usage>
       <UsageItem variant="do">Automate validation and publishing processes.</UsageItem>
       <UsageItem variant="dont">Rely on manual releases.</UsageItem>
@@ -100,6 +97,84 @@ In a production design system I worked on, Storybook was intentionally positione
         Allow discrepancies between documented components and shipped code.
       </UsageItem>
     </Usage>
+
+    <Markdown
+      content={`
+  #### Explicit processes for system changes
+
+  Design system evolution was handled through clearly defined and traceable processes.
+  `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Provide official channels for proposing new features or changes.
+      </UsageItem>
+      <UsageItem variant="dont">Accept informal or undocumented modifications.</UsageItem>
+      <UsageItem variant="do">Make decisions visible and shared across disciplines.</UsageItem>
+      <UsageItem variant="dont">Prioritize urgency over long-term system integrity.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+  #### Accessibility embedded in the source of truth
+
+  Accessibility requirements were integrated directly into the design system rather than treated as external guidelines.
+  `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Treat accessibility as a baseline requirement.</UsageItem>
+      <UsageItem variant="dont">Apply accessibility fixes downstream.</UsageItem>
+      <UsageItem variant="do">Make constraints visible to both designers and developers.</UsageItem>
+      <UsageItem variant="dont">
+        Separate accessibility rules from the components that implement them.
+      </UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+  #### Why this principle matters
+
+  A single source of truth is not about enforcing rigidity.
+
+  It is about:
+
+  - reducing decision noise,
+  - increasing confidence in the system,
+  - preventing the silent fragmentation that turns design systems into optional libraries.
+
+  Without this principle, a design system inevitably becomes:
+
+  - a theoretical reference,
+  - a partially adopted toolkit,
+  - or a document that teams gradually ignore.
+  `}
+    />
+
+    <Markdown
+      content={`
+  ### Related References and Bibliography
+
+  ---
+
+  The concepts behind this principle align with established thinking in design systems and software architecture:
+
+  **Brad Frost** — Atomic Design — Emphasizes composability and centralized systems as a way to manage complexity.
+
+  **Nathan Curtis** — Modular Design Systems — Discusses ownership, authority, and the importance of a clear system boundary.
+
+  **Alla Kholmatova** — Design Systems — Explores how systems fail when authority and documentation are unclear.
+
+  **Google Material Design Team** — Design Systems at Scale — Highlights the role of shared sources and tooling in cross-team alignment.
+
+  **Martin Fowler** — Patterns of Enterprise Application Architecture — Provides architectural grounding for treating systems as authoritative sources.
+
+  **Storybook Team** — Design Systems for Developers — Frames Storybook as infrastructure rather than presentation.
+
+  These references inform the principle, but the implementation described above is grounded in real-world application rather than theory.
+  `}
+    />
   </article>
 
   <PrincipleNav

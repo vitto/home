@@ -1,0 +1,214 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/design-systems.json';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Usage from '../../components/Usage.astro';
+import UsageItem from '../../components/UsageItem.astro';
+
+const principle = data.principles.find((p) => p.id === 'consistency-over-uniformity')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/design-systems';
+---
+
+<UseCaseLayout
+  title={`${principle.title} - Design Systems`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/design-systems"
+>
+  <article class="grid gap-600">
+    <Markdown
+      content={`
+When I work on design systems, I prioritize **consistency of behavior, meaning, and interaction** over rigid visual or structural uniformity.
+
+Uniformity optimizes for sameness; consistency optimizes for understanding.
+
+In complex products and multi-team environments, enforcing strict uniformity often leads to:
+
+- fragile abstractions,
+- forced components,
+- and local workarounds that quietly undermine the system.
+
+A consistent system, instead, allows contextual variation while preserving:
+
+- predictable behaviors,
+- shared mental models,
+- and recognizable interaction patterns.
+
+The system defines **what must remain consistent** and **where variation is allowed**, making adaptability an explicit design decision rather than an accidental one.
+      `}
+    />
+
+    <Markdown
+      content={`
+  ## Real examples
+
+  ---
+
+  #### Shared behavior, contextual presentation
+
+  Components addressing similar needs were designed to behave consistently, even when their visual presentation differed based on context.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Keep interaction patterns (focus, keyboard navigation, error handling) consistent.
+      </UsageItem>
+      <UsageItem variant="dont">
+        Force identical layouts when context changes user intent.
+      </UsageItem>
+      <UsageItem variant="do">
+        Allow visual adaptations when context requires different emphasis or density.
+      </UsageItem>
+      <UsageItem variant="dont">Redesign interaction logic for each visual variant.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+  #### Semantic consistency over visual sameness
+
+  Similar UI elements were aligned semantically rather than visually.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Use the same component or pattern when the meaning and intent are the same.
+      </UsageItem>
+      <UsageItem variant="dont">
+        Create visually identical components with different meanings.
+      </UsageItem>
+      <UsageItem variant="do">
+        Let spacing, size, or hierarchy adapt to the surrounding layout.
+      </UsageItem>
+      <UsageItem variant="dont">Rely on appearance alone to communicate purpose.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+  #### Variant systems with clear intent
+
+  Similar UI elements were aligned semantically rather than visually.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Define variants around intent (e.g. emphasis, hierarchy, feedback).
+      </UsageItem>
+      <UsageItem variant="dont">Introduce variants to satisfy isolated design needs.</UsageItem>
+      <UsageItem variant="do">Document when and why each variant should be used.</UsageItem>
+      <UsageItem variant="dont">Allow uncontrolled variant proliferation.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+  #### Consistent constraints across flexible compositions
+
+  Composable components were allowed to combine freely, but within shared constraints.
+  `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Enforce consistent spacing, alignment rules, and accessibility constraints.
+      </UsageItem>
+      <UsageItem variant="dont">Let composability turn into arbitrary assembly.</UsageItem>
+      <UsageItem variant="do">
+        Allow different compositions as long as constraints are respected.
+      </UsageItem>
+      <UsageItem variant="dont">Break system rules to achieve local visual balance.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+  #### Interaction patterns over pixel perfection
+
+  User flows and interaction feedback were treated as the primary consistency surface.
+  `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Keep loading states, errors, confirmations, and focus management predictable.
+      </UsageItem>
+      <UsageItem variant="dont">
+        Optimize for pixel-level alignment at the expense of interaction clarity.
+      </UsageItem>
+      <UsageItem variant="do">Optimize for learned behavior across the product.</UsageItem>
+      <UsageItem variant="dont">Change interaction models for aesthetic reasons.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Avoiding forced abstraction
+
+Not all UI elements were merged into a single abstract component.
+`}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Accept multiple components when their responsibilities diverge.
+      </UsageItem>
+      <UsageItem variant="do">Keep abstractions shallow and intentional.</UsageItem>
+      <UsageItem variant="dont">
+        Force uniform components that hide meaningful differences.
+      </UsageItem>
+      <UsageItem variant="dont">Introduce complex configuration to fake sameness.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Uniform systems tend to break under real-world pressure.
+
+Consistent systems adapt.
+
+By prioritizing consistency over uniformity:
+
+- teams gain flexibility without fragmentation,
+- users develop stable mental models,
+- and the system remains usable as products evolve.
+
+This principle acknowledges a reality of design systems:
+**variation is inevitable; incoherence is optional.**
+  `}
+    />
+
+    <Markdown
+      content={`
+### Related References and Bibliography
+
+---
+
+The distinction between consistency and uniformity is well established across design and software disciplines:
+
+**Jakob Nielsen** — Consistency and Standards — Emphasizes predictable behavior over strict visual sameness.
+
+**Alan Cooper** — About Face — Explores consistency as a foundation for usable interaction models.
+
+**Alla Kholmatova** — Design Systems — Discusses how over-unification leads to brittle systems.
+
+**Nathan Curtis** — Beyond Interface Inventory — Advocates for principled variation rather than forced standardization.
+
+**Brad Frost** — Atomic Design — Highlights composability and flexibility as core system qualities.
+
+**Luke Wroblewski** — Mobile First — Shows how context-driven variation is essential across devices and environments.
+
+These references support the principle conceptually, while the examples above reflect applied, real-world system design rather than theoretical uniformity.
+  `}
+    />
+  </article>
+
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>
