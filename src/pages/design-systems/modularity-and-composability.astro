@@ -1,0 +1,168 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/design-systems.json';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Usage from '../../components/Usage.astro';
+import UsageItem from '../../components/UsageItem.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+
+const principle = data.principles.find((p) => p.id === 'modularity-and-composability')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/design-systems';
+---
+
+<UseCaseLayout
+  title={`${principle.title} - Design Systems`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/design-systems"
+>
+  <article class="grid gap-600">
+    <Markdown
+      content={`
+Design systems scale through **composition**, not complexity.
+
+Modularity and composability mean designing components as
+small, focused units that can be combined in predictable ways.
+
+A composable system enables teams to build diverse interfaces
+without introducing inconsistency or duplication.
+    `}
+    />
+
+    <Markdown
+      content={`
+## Approach
+
+---
+
+#### Design components with a single responsibility
+
+Each component should solve one problem well.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Create components with a clear, narrow purpose.</UsageItem>
+      <UsageItem variant="dont">
+        Bundle multiple responsibilities into a single component.
+      </UsageItem>
+      <UsageItem variant="do">Expose variation through composition, not branching logic.</UsageItem>
+      <UsageItem variant="dont">Add props to cover every possible layout scenario.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Prefer composition over configuration
+
+Composable systems grow horizontally, not vertically.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Compose layouts by combining smaller primitives.</UsageItem>
+      <UsageItem variant="dont">Rely on deeply nested configuration objects.</UsageItem>
+      <UsageItem variant="do">Use slots, children, or content injection patterns.</UsageItem>
+      <UsageItem variant="dont">Hardcode structure inside high-level components.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Establish clear layering and abstraction levels
+
+Not all components serve the same purpose.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Separate primitives, patterns, and compositions.</UsageItem>
+      <UsageItem variant="dont">Expose low-level details in high-level components.</UsageItem>
+      <UsageItem variant="do">Document intended usage and composition boundaries.</UsageItem>
+      <UsageItem variant="dont">Let teams guess how components should be combined.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Design for reuse across contexts
+
+A component should remain useful even when its context changes.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Keep components context-agnostic where possible.</UsageItem>
+      <UsageItem variant="dont">Couple components to specific pages or flows.</UsageItem>
+      <UsageItem variant="do">Use tokens and shared patterns for spacing and behavior.</UsageItem>
+      <UsageItem variant="dont">Bake layout assumptions into components.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Modularity reduces cognitive load, improves reuse, and makes systems easier to evolve.
+
+Composable design systems scale because they allow new interfaces
+to emerge without rewriting existing foundations.
+    `}
+    />
+  </article>
+
+  <Bibliography
+    opener="Modularity and composability are rooted in systems thinking, component-based architecture, and design system practice:"
+    closer="These sources explain why small, composable units are essential for scalable systems."
+  >
+    <BibliographySection type="books">
+      <BibliographyItem
+        author="Brad Frost"
+        title="Atomic Design"
+        description="Introduces a compositional model for building scalable design systems."
+        url="https://atomicdesign.bradfrost.com/"
+      />
+      <BibliographyItem
+        author="Eric Evans"
+        title="Domain-Driven Design"
+        description="Explores bounded contexts and modular thinking in system design."
+        url="https://www.domainlanguage.com/ddd/"
+      />
+      <BibliographyItem
+        author="Kent Beck"
+        title="Implementation Patterns"
+        description="Discusses small, composable units in software architecture."
+        url="https://martinfowler.com/books/implementationPatterns.html"
+      />
+    </BibliographySection>
+
+    <BibliographySection type="urls">
+      <BibliographyItem
+        author="Shopify"
+        title="Design Systems at Scale"
+        description="Shows how modular components enable large teams to move faster."
+        url="https://polaris.shopify.com/foundations/design/design-systems"
+      />
+      <BibliographyItem
+        author="Google"
+        title="Component-Based Design"
+        description="Explains principles behind reusable and composable UI components."
+        url="https://material.io/design/architecture/component-based.html"
+      />
+      <BibliographyItem
+        author="Smashing Magazine"
+        title="Designing For Composition"
+        description="Explores composition as a strategy for scalable interface design."
+        url="https://www.smashingmagazine.com/2019/02/designing-composable-systems/"
+      />
+    </BibliographySection>
+  </Bibliography>
+
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>

@@ -41,6 +41,70 @@
       "category": "Architecture",
       "icon": "mi/outline/tune",
       "description": "Define clear constraints so teams build consistent solutions without stifling flexibility."
+    },
+    {
+      "id": "documentation-as-a-product",
+      "draft": false,
+      "title": "Documentation as a Product",
+      "category": "Adoption",
+      "icon": "mi/outline/menu-book",
+      "description": "Treat documentation as a first-class product with ownership, roadmap, and quality standards."
+    },
+    {
+      "id": "modularity-and-composability",
+      "draft": false,
+      "title": "Modularity and Composability",
+      "category": "Component Design",
+      "icon": "mi/outline/widgets",
+      "description": "Build complex interfaces by composing smaller, focused components that work together predictably."
+    },
+    {
+      "id": "scalability-by-design",
+      "draft": false,
+      "title": "Scalability by Design",
+      "category": "Architecture",
+      "icon": "mi/outline/trending-up",
+      "description": "Design systems must grow with the organization, supporting new teams, products, and use cases without breaking existing implementations."
+    },
+    {
+      "id": "design-development-parity",
+      "draft": false,
+      "title": "Design–Development Parity",
+      "category": "Architecture",
+      "icon": "mi/outline/sync",
+      "description": "Keep design and development artifacts in sync, ensuring what is designed matches what is built and maintained."
+    },
+    {
+      "id": "clear-ownership-and-governance",
+      "draft": false,
+      "title": "Clear Ownership and Governance",
+      "category": "Maintenance",
+      "icon": "mi/outline/gavel",
+      "description": "Establish clear processes for contributions, reviews, and decision-making to ensure quality and consistency."
+    },
+    {
+      "id": "accessibility-as-a-baseline",
+      "draft": false,
+      "title": "Accessibility as a Baseline",
+      "category": "Adoption",
+      "icon": "mi/outline/accessibility-new",
+      "description": "Accessibility built into the foundation of every component, not added as an afterthought."
+    },
+    {
+      "id": "explicit-constraints",
+      "draft": false,
+      "title": "Explicit Constraints",
+      "category": "Architecture",
+      "icon": "mi/outline/rule",
+      "description": "Make constraints visible and documented so teams understand boundaries and can work within them effectively."
+    },
+    {
+      "id": "evolvability-and-versioning",
+      "draft": false,
+      "title": "Evolvability and Versioning",
+      "category": "Maintenance",
+      "icon": "mi/outline/update",
+      "description": "Maintain stable APIs while evolving the system, with clear versioning strategies and migration paths."
     }
   ]
 }

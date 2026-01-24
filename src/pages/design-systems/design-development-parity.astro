@@ -1,0 +1,169 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/design-systems.json';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Usage from '../../components/Usage.astro';
+import UsageItem from '../../components/UsageItem.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+
+const principle = data.principles.find((p) => p.id === 'design-development-parity')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/design-systems';
+---
+
+<UseCaseLayout
+  title={`${principle.title} - Design Systems`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/design-systems"
+>
+  <article class="grid gap-600">
+    <Markdown
+      content={`
+A design system breaks when design and code drift apart.
+
+Design–development parity means that **design decisions and implementation
+represent the same system**, expressed through different artifacts.
+
+When parity is lost, teams stop trusting the system and start working around it.
+    `}
+    />
+
+    <Markdown
+      content={`
+## Approach
+
+---
+
+#### Treat design and code as equal sources of truth
+
+Neither design nor code should lead in isolation.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Align design tokens with code tokens.</UsageItem>
+      <UsageItem variant="dont">Manually retranslate design values into code.</UsageItem>
+      <UsageItem variant="do">
+        Keep naming consistent across Figma, documentation, and APIs.
+      </UsageItem>
+      <UsageItem variant="dont">Use different terminology for the same concept.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Encode design decisions, not screenshots
+
+Implementation should express intent, not static visuals.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Implement components based on rules and constraints.</UsageItem>
+      <UsageItem variant="dont">
+        Recreate pixel-perfect snapshots without understanding behavior.
+      </UsageItem>
+      <UsageItem variant="do">Document states, interactions, and edge cases.</UsageItem>
+      <UsageItem variant="dont">Rely solely on static mockups for behavior.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Share a common mental model
+
+Designers and developers should reason about the system in the same way.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Define component anatomy and state models.</UsageItem>
+      <UsageItem variant="dont">Leave structure implicit or undocumented.</UsageItem>
+      <UsageItem variant="do">Review components together across disciplines.</UsageItem>
+      <UsageItem variant="dont">Hand off designs without discussion.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Automate parity where possible
+
+Manual synchronization does not scale.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Use tokens and schemas as shared artifacts.</UsageItem>
+      <UsageItem variant="dont">Rely on human memory to maintain alignment.</UsageItem>
+      <UsageItem variant="do">Validate implementations against documented specs.</UsageItem>
+      <UsageItem variant="dont">Accept silent divergence between design and code.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Design–development parity reduces friction, rework, and ambiguity.
+
+When design and code speak the same language,
+the system becomes predictable, trustworthy, and scalable.
+    `}
+    />
+  </article>
+
+  <Bibliography
+    opener="Design–development parity is rooted in design systems, front-end architecture, and cross-functional collaboration:"
+    closer="These sources explain why shared artifacts and alignment are critical for scalable systems."
+  >
+    <BibliographySection type="books">
+      <BibliographyItem
+        author="Dan Mall"
+        title="Design That Scales"
+        description="Explores collaboration models between design and engineering."
+        url="https://danmall.com/speaking/design-that-scales/"
+      />
+      <BibliographyItem
+        author="Brad Frost"
+        title="Atomic Design"
+        description="Shows how design and code can be structured around shared components."
+        url="https://atomicdesign.bradfrost.com/"
+      />
+      <BibliographyItem
+        author="Addy Osmani"
+        title="Learning JavaScript Design Patterns"
+        description="Connects implementation patterns to design intent."
+        url="https://addyosmani.com/resources/essentialjsdesignpatterns/book/"
+      />
+    </BibliographySection>
+
+    <BibliographySection type="urls">
+      <BibliographyItem
+        author="Salesforce"
+        title="Design Tokens in Lightning"
+        description="Demonstrates how tokens bridge design and code."
+        url="https://www.lightningdesignsystem.com/design-tokens/"
+      />
+      <BibliographyItem
+        author="Figma"
+        title="Design Systems and Code"
+        description="Explains workflows that keep design and development aligned."
+        url="https://www.figma.com/blog/design-systems-and-code/"
+      />
+      <BibliographyItem
+        author="Shopify"
+        title="Design Systems and Front-End Architecture"
+        description="Shows parity through shared abstractions."
+        url="https://shopify.engineering/design-systems-front-end-architecture"
+      />
+    </BibliographySection>
+  </Bibliography>
+
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>

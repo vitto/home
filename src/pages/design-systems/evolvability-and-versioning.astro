@@ -1,0 +1,166 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/design-systems.json';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Usage from '../../components/Usage.astro';
+import UsageItem from '../../components/UsageItem.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+
+const principle = data.principles.find((p) => p.id === 'evolvability-and-versioning')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/design-systems';
+---
+
+<UseCaseLayout
+  title={`${principle.title} - Design Systems`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/design-systems"
+>
+  <article class="grid gap-600">
+    <Markdown
+      content={`
+A design system that cannot evolve will eventually be replaced.
+
+Evolvability and versioning define how a system changes over time
+**without breaking the products that depend on it**.
+
+Change is inevitable.
+Unmanaged change is what causes fragmentation and loss of trust.
+    `}
+    />
+
+    <Markdown
+      content={`
+## Approach
+
+---
+
+#### Design for change, not permanence
+
+Every component and rule should be expected to evolve.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Assume components will need new variants and behaviors.</UsageItem>
+      <UsageItem variant="dont">Treat initial implementations as final.</UsageItem>
+      <UsageItem variant="do">Favor extension over replacement when possible.</UsageItem>
+      <UsageItem variant="dont">Introduce breaking changes for convenience.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Use explicit versioning strategies
+
+Versioning communicates impact and intent.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Adopt semantic versioning for the design system.</UsageItem>
+      <UsageItem variant="dont">Ship breaking changes without a major version bump.</UsageItem>
+      <UsageItem variant="do">Document changes clearly with release notes.</UsageItem>
+      <UsageItem variant="dont">Rely on informal communication for updates.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Manage deprecations deliberately
+
+Deprecation is part of a healthy system lifecycle.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Mark deprecated components and APIs explicitly.</UsageItem>
+      <UsageItem variant="dont">Remove features without warning.</UsageItem>
+      <UsageItem variant="do">Provide migration paths and timelines.</UsageItem>
+      <UsageItem variant="dont">Force immediate rewrites on consuming teams.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Balance stability and progress
+
+Not all parts of the system should evolve at the same pace.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Keep foundations stable while iterating on higher layers.</UsageItem>
+      <UsageItem variant="dont">Change tokens and primitives frequently.</UsageItem>
+      <UsageItem variant="do">Evaluate impact before introducing breaking changes.</UsageItem>
+      <UsageItem variant="dont">Optimize for short-term speed over long-term health.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Evolvability ensures the design system remains relevant and trusted.
+
+Clear versioning and deprecation strategies allow teams to adopt improvements
+without fear of unexpected breakage.
+    `}
+    />
+  </article>
+
+  <Bibliography
+    opener="Evolvability and versioning are grounded in software architecture, API design, and mature design system practices:"
+    closer="These sources explain how systems can evolve safely while supporting multiple consumers."
+  >
+    <BibliographySection type="books">
+      <BibliographyItem
+        author="Martin Fowler"
+        title="Refactoring (2nd Edition)"
+        description="Explains how systems can evolve incrementally without breaking behavior."
+        url="https://martinfowler.com/books/refactoring.html"
+      />
+      <BibliographyItem
+        author="Kent Beck"
+        title="Tidy First?"
+        description="Focuses on safe, incremental change in software systems."
+        url="https://tidyfirst.org/"
+      />
+      <BibliographyItem
+        author="Robert C. Martin"
+        title="Clean Architecture"
+        description="Discusses architectural boundaries that enable long-term evolution."
+        url="https://www.pearson.com/en-us/subject-catalog/p/clean-architecture/P200000003295/9780134494166"
+      />
+    </BibliographySection>
+
+    <BibliographySection type="urls">
+      <BibliographyItem
+        author="SemVer"
+        title="Semantic Versioning Specification"
+        description="Defines a clear contract for communicating breaking and non-breaking changes."
+        url="https://semver.org/"
+      />
+      <BibliographyItem
+        author="Shopify Engineering"
+        title="Versioning Polaris"
+        description="Describes how Shopify manages breaking changes in a large design system."
+        url="https://shopify.engineering/versioning-polaris"
+      />
+      <BibliographyItem
+        author="NNGroup"
+        title="Design Systems Need Versioning"
+        description="Explains why versioning is critical for adoption and trust."
+        url="https://www.nngroup.com/articles/design-system-versioning/"
+      />
+    </BibliographySection>
+  </Bibliography>
+
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>

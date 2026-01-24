@@ -1,0 +1,170 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/design-systems.json';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Usage from '../../components/Usage.astro';
+import UsageItem from '../../components/UsageItem.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+
+const principle = data.principles.find((p) => p.id === 'scalability-by-design')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/design-systems';
+---
+
+<UseCaseLayout
+  title={`${principle.title} - Design Systems`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/design-systems"
+>
+  <article class="grid gap-600">
+    <Markdown
+      content={`
+A design system that cannot scale is a short-lived asset.
+
+Scalability by design means building the system with the assumption
+that products, teams, and use cases **will grow and change**.
+
+Scalability is not achieved by adding more components,
+but by defining foundations that remain stable as complexity increases.
+    `}
+    />
+
+    <Markdown
+      content={`
+## Approach
+
+---
+
+#### Design foundations to outlive features
+
+Foundations should change slower than the products built on top of them.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Invest early in tokens, spacing, typography, and motion rules.
+      </UsageItem>
+      <UsageItem variant="dont">Tie foundations to a single product or feature.</UsageItem>
+      <UsageItem variant="do">Use semantic tokens instead of hardcoded values.</UsageItem>
+      <UsageItem variant="dont">Encode brand or layout decisions directly in components.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Anticipate variation, not specific solutions
+
+Scalable systems support change without knowing its exact form.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Design extension points and safe defaults.</UsageItem>
+      <UsageItem variant="dont">Optimize components for only current requirements.</UsageItem>
+      <UsageItem variant="do">Allow controlled variation through tokens and composition.</UsageItem>
+      <UsageItem variant="dont">Fork components to handle edge cases.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Separate global decisions from local ones
+
+Not every decision should scale at the same level.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Centralize rules that must remain consistent across products.
+      </UsageItem>
+      <UsageItem variant="dont">Force global decisions into local contexts.</UsageItem>
+      <UsageItem variant="do">Allow teams to adapt patterns within defined constraints.</UsageItem>
+      <UsageItem variant="dont">Lock every design choice at the system level.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Design for multiple teams and workflows
+
+A scalable design system supports parallel work without collisions.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Provide clear contribution and extension guidelines.</UsageItem>
+      <UsageItem variant="dont">Rely on tribal knowledge to evolve the system.</UsageItem>
+      <UsageItem variant="do">Use versioning and deprecation strategies.</UsageItem>
+      <UsageItem variant="dont">Introduce breaking changes without migration paths.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Scalability ensures the design system remains an enabler rather than a bottleneck.
+
+When growth is expected and designed for,
+the system can evolve without constant rewrites or fragmentation.
+    `}
+    />
+  </article>
+
+  <Bibliography
+    opener="Scalability by design draws from system architecture, platform thinking, and mature design system practices:"
+    closer="These sources explain how systems can grow without collapsing under their own complexity."
+  >
+    <BibliographySection type="books">
+      <BibliographyItem
+        author="Martin Fowler"
+        title="Patterns of Enterprise Application Architecture"
+        description="Explores architectural patterns that support growth and long-term evolution."
+        url="https://martinfowler.com/books/eaa.html"
+      />
+      <BibliographyItem
+        author="Allan Kelly"
+        title="Continuous Digital"
+        description="Discusses designing systems that adapt to change over time."
+        url="https://www.allankellyassociates.co.uk/books/continuous-digital/"
+      />
+      <BibliographyItem
+        author="Randy Shoup"
+        title="Scaling Up Design Systems"
+        description="Practical insights on growing design systems across teams and products."
+        url="https://www.infoq.com/presentations/scaling-design-systems/"
+      />
+    </BibliographySection>
+
+    <BibliographySection type="urls">
+      <BibliographyItem
+        author="Salesforce"
+        title="Lightning Design System: Principles"
+        description="Shows how scalable foundations support multiple products and teams."
+        url="https://www.lightningdesignsystem.com/guidelines/overview/"
+      />
+      <BibliographyItem
+        author="Shopify"
+        title="Evolving Polaris"
+        description="Explains how a design system evolves while supporting rapid growth."
+        url="https://shopify.engineering/evolving-polaris"
+      />
+      <BibliographyItem
+        author="Nielsen Norman Group"
+        title="Design Systems Are for Scaling UX"
+        description="Explains the role of design systems in scaling user experience."
+        url="https://www.nngroup.com/articles/design-systems-scale-ux/"
+      />
+    </BibliographySection>
+  </Bibliography>
+
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>

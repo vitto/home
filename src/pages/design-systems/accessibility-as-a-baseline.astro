@@ -1,0 +1,172 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/design-systems.json';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Usage from '../../components/Usage.astro';
+import UsageItem from '../../components/UsageItem.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+
+const principle = data.principles.find((p) => p.id === 'accessibility-as-a-baseline')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/design-systems';
+---
+
+<UseCaseLayout
+  title={`${principle.title} - Design Systems`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/design-systems"
+>
+  <article class="grid gap-600">
+    <Markdown
+      content={`
+Accessibility is not an enhancement.
+It is the **baseline quality bar** of a design system.
+
+When accessibility is treated as optional, it is postponed, fragmented,
+or removed under pressure.
+When treated as a baseline, it becomes invisible, reliable, and scalable.
+    `}
+    />
+
+    <Markdown
+      content={`
+## Approach
+
+---
+
+#### Design accessible by default
+
+Accessibility should be built into foundations and components from the start.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Use accessible color contrast as a non-negotiable constraint.
+      </UsageItem>
+      <UsageItem variant="dont">Rely on manual fixes after components are shipped.</UsageItem>
+      <UsageItem variant="do">Define focus, hover, and active states consistently.</UsageItem>
+      <UsageItem variant="dont">Leave interactive states undefined.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Encode accessibility into components
+
+Accessibility should be expressed through behavior, not documentation alone.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Bake ARIA roles and keyboard support into components.</UsageItem>
+      <UsageItem variant="dont">Expect consumers to add accessibility features manually.</UsageItem>
+      <UsageItem variant="do">Provide accessible defaults that work out of the box.</UsageItem>
+      <UsageItem variant="dont">
+        Ship components that require extra effort to be accessible.
+      </UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Treat accessibility as a system concern
+
+Accessibility issues multiply when handled at the product level.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Centralize accessibility patterns and decisions.</UsageItem>
+      <UsageItem variant="dont">
+        Solve the same accessibility problem in multiple products.
+      </UsageItem>
+      <UsageItem variant="do">Document accessibility guarantees per component.</UsageItem>
+      <UsageItem variant="dont">Leave accessibility expectations implicit.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Test and validate continuously
+
+Accessibility is not static and must be maintained over time.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Include keyboard and screen reader testing in reviews.</UsageItem>
+      <UsageItem variant="dont">Assume accessibility remains intact by default.</UsageItem>
+      <UsageItem variant="do">Use automated checks to catch regressions.</UsageItem>
+      <UsageItem variant="dont">Rely solely on manual audits.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Accessibility as a baseline ensures inclusivity, legal compliance,
+and long-term system resilience.
+
+When accessibility is built into the system,
+teams move faster because they don’t have to re-solve the same problems.
+    `}
+    />
+  </article>
+
+  <Bibliography
+    opener="Accessibility as a baseline is supported by standards, inclusive design practices, and system-level thinking:"
+    closer="These sources explain why accessibility must be foundational rather than optional."
+  >
+    <BibliographySection type="books">
+      <BibliographyItem
+        author="Heydon Pickering"
+        title="Inclusive Design Patterns"
+        description="Practical guidance on building accessible UI patterns."
+        url="https://inclusive-components.design/"
+      />
+      <BibliographyItem
+        author="Steve Krug"
+        title="Don't Make Me Think (Revisited)"
+        description="Highlights usability and accessibility as core quality attributes."
+        url="https://sensible.com/dont-make-me-think/"
+      />
+      <BibliographyItem
+        author="Sarah Horton & Whitney Quesenbery"
+        title="A Web for Everyone"
+        description="Explains inclusive design principles and accessibility foundations."
+        url="https://rosenfeldmedia.com/books/a-web-for-everyone/"
+      />
+    </BibliographySection>
+
+    <BibliographySection type="urls">
+      <BibliographyItem
+        author="W3C"
+        title="Web Content Accessibility Guidelines (WCAG)"
+        description="The global standard for accessible digital experiences."
+        url="https://www.w3.org/WAI/standards-guidelines/wcag/"
+      />
+      <BibliographyItem
+        author="GOV.UK"
+        title="Accessibility in Design Systems"
+        description="Shows how accessibility is treated as a baseline in a public-sector system."
+        url="https://design-system.service.gov.uk/accessibility/"
+      />
+      <BibliographyItem
+        author="NNGroup"
+        title="Accessibility Is Not Optional"
+        description="Explains why accessibility must be built into UX from the start."
+        url="https://www.nngroup.com/articles/accessibility-not-optional/"
+      />
+    </BibliographySection>
+  </Bibliography>
+
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>

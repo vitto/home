@@ -1,0 +1,163 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/design-systems.json';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Usage from '../../components/Usage.astro';
+import UsageItem from '../../components/UsageItem.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+
+const principle = data.principles.find((p) => p.id === 'documentation-as-a-product')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/design-systems';
+---
+
+<UseCaseLayout
+  title={`${principle.title} - Design Systems`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/design-systems"
+>
+  <article class="grid gap-600">
+    <Markdown
+      content={`
+Documentation is not a side effect of building a system.
+It is **a first-class product surface**.
+
+When documentation is treated as a product, it has:
+
+- clear ownership,
+- defined users and goals,
+- quality standards,
+- and a lifecycle.
+
+If documentation is neglected, the system becomes harder to adopt,
+decisions slow down, and trust erodes.
+    `}
+    />
+
+    <Markdown
+      content={`
+## Approach
+
+---
+
+#### Define documentation users and jobs-to-be-done
+
+Documentation should be designed for the people who rely on it to make decisions.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Identify primary audiences (designers, developers, product, support).
+      </UsageItem>
+      <UsageItem variant="dont">Assume documentation is “for everyone”.</UsageItem>
+      <UsageItem variant="do">Write task-oriented and decision-oriented content.</UsageItem>
+      <UsageItem variant="dont">Dump reference material without context or intent.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Treat documentation as part of the system interface
+
+Documentation defines how the system is understood and used.
+It is part of the public API.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Version documentation alongside components and tokens.</UsageItem>
+      <UsageItem variant="dont">Let documentation lag behind shipped behavior.</UsageItem>
+      <UsageItem variant="do">Align terminology between UI, code, and docs.</UsageItem>
+      <UsageItem variant="dont">Use inconsistent naming across surfaces.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Apply quality standards and review processes
+
+Documentation should meet the same quality bar as code and design.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Review documentation changes as part of pull requests.</UsageItem>
+      <UsageItem variant="dont">Ship features without updating related docs.</UsageItem>
+      <UsageItem variant="do">Define standards for clarity, structure, and tone.</UsageItem>
+      <UsageItem variant="dont">Treat documentation as optional or secondary.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Measure adoption and iterate continuously
+
+Documentation is never “done”, It should evolve based on real usage signals.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Track search terms, page views, and navigation paths.</UsageItem>
+      <UsageItem variant="dont">Assume usefulness without evidence.</UsageItem>
+      <UsageItem variant="do">Use support questions to identify documentation gaps.</UsageItem>
+      <UsageItem variant="dont">Only update docs during major redesigns.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Documentation-as-a-product reduces onboarding time,
+improves consistency of usage, and increases trust in the system.
+
+A design system without reliable documentation
+will not scale — regardless of how good the components are.
+    `}
+    />
+  </article>
+
+  <Bibliography
+    opener="Documentation-as-a-product is grounded in technical writing, platform thinking, and design system governance:"
+    closer="These sources explain why documentation needs ownership, standards, and continuous iteration."
+  >
+    <BibliographySection type="books">
+      <BibliographyItem
+        author="Christopher Gales"
+        title="The Product Is Docs"
+        description="Argues that documentation itself is a core part of the product experience."
+        url="https://idratherbewriting.com/2017/06/20/the-product-is-docs/"
+      />
+    </BibliographySection>
+
+    <BibliographySection type="urls">
+      <BibliographyItem
+        author="Anne Gentle"
+        title="Docs Like Code"
+        description="Explains how documentation benefits from product thinking and engineering workflows."
+        url="https://www.docslikecode.com/"
+      />
+      <BibliographyItem
+        author="Google"
+        title="Technical Writing Courses"
+        description="Practical guidance on clarity, structure, and audience-focused documentation."
+        url="https://developers.google.com/tech-writing"
+      />
+      <BibliographyItem
+        author="Write the Docs"
+        title="Documentation Guide"
+        description="Community-driven best practices for documentation as a product."
+        url="https://www.writethedocs.org/guide/"
+      />
+    </BibliographySection>
+  </Bibliography>
+
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>

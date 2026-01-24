@@ -1,0 +1,169 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/design-systems.json';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Usage from '../../components/Usage.astro';
+import UsageItem from '../../components/UsageItem.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+
+const principle = data.principles.find((p) => p.id === 'explicit-constraints')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/design-systems';
+---
+
+<UseCaseLayout
+  title={`${principle.title} - Design Systems`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/design-systems"
+>
+  <article class="grid gap-600">
+    <Markdown
+      content={`
+Design systems exist to **reduce decision entropy**.
+
+Explicit constraints define what is allowed, what is discouraged,
+and what is intentionally unsupported.
+
+Without constraints, flexibility turns into inconsistency
+and the system loses its ability to guide decisions.
+    `}
+    />
+
+    <Markdown
+      content={`
+## Approach
+
+---
+
+#### Make constraints visible and intentional
+
+Constraints must be explicit to be effective.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Document allowed variations and supported use cases.</UsageItem>
+      <UsageItem variant="dont">Assume constraints will be inferred from examples.</UsageItem>
+      <UsageItem variant="do">State unsupported patterns clearly.</UsageItem>
+      <UsageItem variant="dont">Leave teams guessing what is “out of bounds”.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Use constraints to guide, not restrict
+
+Good constraints enable faster and safer decisions.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Provide safe defaults that cover most use cases.</UsageItem>
+      <UsageItem variant="dont">
+        Expose unlimited configuration for the sake of flexibility.
+      </UsageItem>
+      <UsageItem variant="do">Limit variation through tokens and composition.</UsageItem>
+      <UsageItem variant="dont">Allow arbitrary overrides at the component level.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Encode constraints into the system
+
+Constraints should be enforced by the system, not by guidelines alone.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Restrict props and APIs to supported options.</UsageItem>
+      <UsageItem variant="dont">Rely on documentation to prevent misuse.</UsageItem>
+      <UsageItem variant="do">Use type systems and validation to enforce rules.</UsageItem>
+      <UsageItem variant="dont">Allow invalid combinations to fail silently.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Evolve constraints deliberately
+
+Constraints are not static and must adapt with the system.
+    `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Revisit constraints based on real usage and feedback.</UsageItem>
+      <UsageItem variant="dont">Remove constraints to solve isolated edge cases.</UsageItem>
+      <UsageItem variant="do">Document rationale behind constraints.</UsageItem>
+      <UsageItem variant="dont">Treat constraints as arbitrary rules.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Explicit constraints reduce cognitive load,
+increase consistency, and make systems easier to scale.
+
+By defining boundaries clearly,
+the design system empowers teams instead of limiting them.
+    `}
+    />
+  </article>
+
+  <Bibliography
+    opener="Constraints-driven design is rooted in systems thinking, cognitive psychology, and scalable interface design:"
+    closer="These sources explain how constraints improve usability, consistency, and decision-making."
+  >
+    <BibliographySection type="books">
+      <BibliographyItem
+        author="Don Norman"
+        title="The Design of Everyday Things"
+        description="Explains how constraints guide behavior and reduce errors."
+        url="https://jnd.org/books/the-design-of-everyday-things/"
+      />
+      <BibliographyItem
+        author="Barry Schwartz"
+        title="The Paradox of Choice"
+        description="Shows how too many options hinder decision-making."
+        url="https://www.harpercollins.com/products/the-paradox-of-choice-barry-schwartz"
+      />
+      <BibliographyItem
+        author="Alan Cooper"
+        title="About Face"
+        description="Discusses constraints as a core interaction design principle."
+        url="https://www.aboutfacebook.com/"
+      />
+    </BibliographySection>
+
+    <BibliographySection type="urls">
+      <BibliographyItem
+        author="NNGroup"
+        title="Design Constraints Improve UX"
+        description="Explains why constraints lead to better user experiences."
+        url="https://www.nngroup.com/articles/design-constraints/"
+      />
+      <BibliographyItem
+        author="GOV.UK"
+        title="Design System Principles"
+        description="Demonstrates how explicit constraints support consistency at scale."
+        url="https://design-system.service.gov.uk/design-system/"
+      />
+      <BibliographyItem
+        author="Smashing Magazine"
+        title="Designing with Constraints"
+        description="Explores constraint-driven approaches in UI design."
+        url="https://www.smashingmagazine.com/2019/01/designing-with-constraints/"
+      />
+    </BibliographySection>
+  </Bibliography>
+
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>
