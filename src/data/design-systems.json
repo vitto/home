@@ -19,6 +19,14 @@
       "description": "A centralized repository where all design decisions live, ensuring consistency across all platforms, tools and teams."
     },
     {
+      "id": "consistency-over-uniformity",
+      "draft": false,
+      "title": "Consistency Over Uniformity",
+      "category": "Component Design",
+      "icon": "mi/outline/verified",
+      "description": "Maintain predictable behavior and shared rules without forcing every interface to look identical."
+    },
+    {
       "id": "separation-of-semantics-and-presentation",
       "draft": true,
       "title": "Separation of Semantics and Presentation",

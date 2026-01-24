@@ -1,5 +1,7 @@
 ---
 import { marked } from 'marked';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
 
 interface Props {
   content?: string;
@@ -8,19 +10,40 @@ interface Props {
 
 const { content, class: className = 'grid grid-cols-full gap-400' } = Astro.props;
 
+function slugify(text: string) {
+  return text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+}
+
+// <Button
+//       data-copy-link
+//       data-article-id={articleId}
+//       variant="light"
+//       class="shrink-0 py-300 -mb-400"
+//       title={`Copy link to ${text}`}
+//     >
+//       <Icon name="mi/baseline/link" class="text-tone-neutral-04" />
+//     </Button>
+
 // Configura marked una sola volta (puoi anche spostarlo in un file separato)
 if (!marked.defaults.extensions) {
   marked.use({
     renderer: {
       heading(token) {
         // @ts-ignore - marked v17 API
+        const articleId = slugify(token.text);
         const text = this.parser.parseInline(token.tokens);
-        return `<h${token.depth} class="text-title-h${token.depth} max-w-full text-wrap ${token.depth < 5 ? 'mt-600' : ''}">${text}</h${token.depth}>\n`;
+        return `<div id="${articleId}" class="group flex items-start gap-200 justify-between scroll-mt-600 ${token.depth < 5 ? 'mt-600' : ''}"><h${token.depth} class="text-title-h${token.depth} max-w-full text-wrap">${text}</h${token.depth}><a href="#${articleId}" class="group-hover:opacity-100 group-hover:delay-0 delay-500 opacity-0 mi/baseline/link no-underline p-150 rounded-full hover:bg-tone-neutral-09 transition-cosmetic" title="Copy link to ${text}" data-copy-link data-article-id="${articleId}"></a></div>\n`;
       },
       paragraph(token) {
         // @ts-ignore - marked v17 API
         const text = this.parser.parseInline(token.tokens);
         return `<p class="text-info-paragraph">${text}</p>\n`;
+      },
+      list(token) {
+        const tag = token.ordered ? 'ol' : 'ul';
+        // @ts-ignore - marked v17 API
+        const body = token.items.map((item: any) => this.listitem(item)).join('');
+        return `<${tag} class="mt-0 mb-600">${body}</${tag}>\n`;
       },
       listitem(token) {
         // @ts-ignore - marked v17 API

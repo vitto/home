@@ -11,7 +11,7 @@
 }
 
 .markdown hr {
-  @apply border-0 w-full flex h-50 bg-tone-neutral-08 mt-600;
+  @apply border-0 w-full flex h-50 bg-tone-neutral-08;
 }
 
 .markdown p {

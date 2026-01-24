@@ -29,7 +29,6 @@ const articleId = title
       variant="light"
       class="shrink-0 py-300 -mb-400"
       title={`Copy link to ${title}`}
-      aria-label={`Copy link to ${title}`}
     >
       <Icon name="mi/baseline/link" class="text-tone-neutral-04" />
     </Button>
@@ -38,66 +37,6 @@ const articleId = title
 </article>
 
 <script define:vars={{ articleId }}>
-  function initCopyLink() {
-    const copyButtons = document.querySelectorAll('[data-copy-link]');
-
-    copyButtons.forEach((button) => {
-      button.addEventListener('click', async () => {
-        const articleId = button.getAttribute('data-article-id');
-        if (!articleId) return;
-
-        // Get current URL with hash
-        const url = new URL(window.location.href);
-        url.hash = articleId;
-        const urlWithHash = url.toString();
-
-        try {
-          // Copy to clipboard
-          await navigator.clipboard.writeText(urlWithHash);
-
-          // Update URL hash and scroll to anchor
-          window.location.hash = articleId;
-          const targetElement = document.getElementById(articleId);
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-
-          // Visual feedback: temporarily change icon
-          const icon = button.querySelector('.iconsauce-icon');
-          if (icon) {
-            icon.className = icon.className.replace(/mi\/baseline\/link/, 'mi/baseline/check');
-            button.setAttribute('aria-label', 'Link copied!');
-            button.setAttribute('title', 'Link copied!');
-
-            setTimeout(() => {
-              icon.className = icon.className.replace(/mi\/baseline\/check/, 'mi/baseline/link');
-              const article = button.closest('article');
-              const titleText = article?.querySelector('h3')?.textContent || '';
-              button.setAttribute('aria-label', `Copy link to ${titleText}`);
-              button.setAttribute('title', `Copy link to ${titleText}`);
-            }, 2000);
-          }
-        } catch (err) {
-          console.error('Failed to copy link:', err);
-        }
-      });
-    });
-  }
-
-  function scrollToHash() {
-    // Check if there's a hash in the URL
-    if (window.location.hash) {
-      const hash = window.location.hash.substring(1); // Remove the # symbol
-      const targetElement = document.getElementById(hash);
-      if (targetElement) {
-        // Small delay to ensure page is fully rendered
-        setTimeout(() => {
-          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }
-    }
-  }
-
   function initUseCaseCLS() {
     // Get the scope for this use case using the article ID
     const scope = window.getUseCaseScope?.(articleId);
@@ -121,13 +60,9 @@ const articleId = title
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      initCopyLink();
-      scrollToHash();
       initUseCaseCLS();
     });
   } else {
-    initCopyLink();
-    scrollToHash();
     initUseCaseCLS();
   }
 </script>
