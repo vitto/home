@@ -12,8 +12,9 @@
 @import './components/Button.css';
 @import './components/CodeSnippet.css';
 @import './components/Header.css';
-@import './components/Markdown.css';
 @import './components/Usage.css';
+@import './components/Markdown.css';
+@import './components/Bibliography.css';
 @import './components/PrincipleNav.css';
 
 .text-title-h1,
@@ -97,4 +98,18 @@ mds-usate {
 mds-img::part(media) {
   width: 100%;
   height: 100%;
+}
+
+@layer components {
+  .markdown-link {
+    @apply decoration-tone-neutral-07
+    decoration-2
+    focus-bounce
+    rounded-md
+    hover:decoration-tone-neutral-05
+    focus-visible:decoration-tone-neutral-05
+    transition-[text-decoration-color]
+    duration-200
+    underline-offset-2;
+  }
 }

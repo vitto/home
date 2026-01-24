@@ -1,0 +1,19 @@
+---
+interface Props {
+  author: string;
+  title: string;
+  description: string;
+  url: string;
+  class?: string;
+}
+
+const { author, title, description, url, class: className = '' } = Astro.props;
+---
+
+<article class={`grid gap-100 ${className}`}>
+  <h5 class="text-title-h5 max-w-full">{author} — {title}</h5>
+  <mds-text typography="caption" class="text-info-paragraph">{description}</mds-text>
+  <a href={url} title="Go to source" target="_blank" rel="noreferrer noopener">
+    {url}
+  </a>
+</article>
