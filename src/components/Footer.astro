@@ -26,7 +26,7 @@ const socialLinks = [
     name: 'Resume',
     icon: 'mi/outline/file-download',
     iconHover: 'group-[&:is(:hover,:focus-visible)]:text-label-yellow-04 transition',
-    url: '/assets/vittorio-vittori-ds-architect-ux-designer-resume.pdf',
+    url: `${baseUrl}/assets/vittorio-vittori-ds-architect-ux-designer-resume.pdf`,
   },
 ];
 ---
@@ -45,8 +45,9 @@ const socialLinks = [
         socialLinks.map((link) => (
           <a
             href={link.url}
-            target={link.url.startsWith('http') ? '_blank' : undefined}
-            rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+            target="_blank"
+            title={`Open ${link.name} in a new tab`}
+            rel="noopener noreferrer"
             class="relative group no-underline inline-flex max-w-4000 basis-0 grow focus-bounce rounded-lg p-400 py-600 mobile:p-200 mobile:py-400 bg-tone-neutral/60 hover:bg-tone-neutral backdrop-blur"
           >
             <div class="text-center flex flex-col items-center gap-200 transition w-full group-[&:is(:hover,:focus-visible)]:-translate-y-200 ease-out-expo duration-1000">
