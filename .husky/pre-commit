@@ -1,2 +1,2 @@
-# Run prettier check before commit
-npm run format
+# Run prettier on staged files before commit
+npm run format:staged
