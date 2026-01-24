@@ -1,0 +1,18 @@
+---
+interface Props {
+  type: 'books' | 'urls';
+  class?: string;
+}
+
+const { type, class: className = '' } = Astro.props;
+---
+
+<div class={`grid gap-600 bibliography-section ${className}`}>
+  <div class="text-title-h4">
+    {type === 'books' && 'Books'}
+    {type === 'urls' && 'Articles & Online Resources'}
+  </div>
+  <div class="grid gap-1200">
+    <slot />
+  </div>
+</div>

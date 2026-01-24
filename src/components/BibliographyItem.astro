@@ -4,10 +4,11 @@ interface Props {
   title: string;
   description: string;
   url?: string;
+  broken?: boolean;
   class?: string;
 }
 
-const { author, title, description, url, class: className = '' } = Astro.props;
+const { author, title, description, url, broken = false, class: className = '' } = Astro.props;
 ---
 
 <article class={`grid gap-100 ${className}`}>
@@ -15,7 +16,13 @@ const { author, title, description, url, class: className = '' } = Astro.props;
   <mds-text typography="caption" class="text-info-paragraph">{description}</mds-text>
   {
     url && (
-      <a href={url} title="Go to source" target="_blank" rel="noreferrer noopener">
+      <a
+        href={url}
+        class={`${broken && 'line-through decoration-tone-neutral-03 text-tone-neutral-06 hover:decoration-tone-neutral-03/30 focus-visible:decoration-tone-neutral-03/30 hover:text-tone-neutral-03 focus-visible:text-tone-neutral-03'}`}
+        title={`${broken ? 'Resource is no longer available' : 'Go to source'}`}
+        target="_blank"
+        rel="noreferrer noopener"
+      >
         {url}
       </a>
     )

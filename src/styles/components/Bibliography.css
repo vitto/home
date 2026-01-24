@@ -1,3 +1,7 @@
 .bibliographies a {
   @apply markdown-link;
 }
+
+.bibliography-section + .bibliography-section {
+  @apply border-t-2 border-tone-neutral-08 border-solid border-0 pt-1200;
+}
