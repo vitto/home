@@ -106,8 +106,8 @@ mds-img::part(media) {
     decoration-2
     focus-bounce
     rounded-md
-    hover:decoration-tone-neutral-05
-    focus-visible:decoration-tone-neutral-05
+    hover:decoration-tone-neutral-03
+    focus-visible:decoration-tone-neutral-03
     transition-[text-decoration-color]
     duration-200
     underline-offset-2;
