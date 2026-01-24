@@ -9,15 +9,17 @@ interface Props {
 const { opener, closer } = Astro.props;
 ---
 
-<Markdown
-  content={`
-### Related References and Bibliography
+<section class="grid gap-600">
+  <Markdown
+    content={`
+  ### Related References and Bibliography
 
----
-`}
-/>
-{opener && <p class="text-info-paragraph">{opener}</p>}
-<div class="bibliographies grid gap-1200">
-  <slot />
-</div>
-{closer && <p class="text-info-paragraph">{closer}</p>}
+  ---
+  `}
+  />
+  {opener && <p class="text-info-paragraph">{opener}</p>}
+  <div class="bibliographies grid gap-1200">
+    <slot />
+  </div>
+  {closer && <p class="text-info-paragraph">{closer}</p>}
+</section>
