@@ -40,8 +40,9 @@ const containerSizeClass = {
   href={brandUrl}
   target="_blank"
   rel="noreferrer noopener"
+  tabindex="0"
   title={`Go to ${brand.name} website`}
-  class={`inline-flex items-center justify-center bg-tone-neutral shadow-sm-sharp rounded-full ${containerSizeClass} ${className}`}
+  class={`inline-flex shrink-0 items-center focus-bounce justify-center bg-tone-neutral shadow-sm-sharp rounded-full ${containerSizeClass} ${className}`}
 >
   <img src={logoPath} alt={`${brand.name} logo`} class={logoSizeClass} />
 </a>
