@@ -105,6 +105,14 @@
       "category": "Maintenance",
       "icon": "mi/outline/update",
       "description": "Maintain stable APIs while evolving the system, with clear versioning strategies and migration paths."
+    },
+    {
+      "id": "feedback-driven-improvement",
+      "draft": false,
+      "title": "Feedback-Driven Improvement",
+      "category": "Maintenance",
+      "icon": "mi/outline/feedback",
+      "description": "Continuously improve the system based on real usage data, user feedback, and team needs."
     }
   ]
 }

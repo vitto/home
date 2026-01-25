@@ -1,0 +1,205 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import data from '../../data/design-systems.json';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Usage from '../../components/Usage.astro';
+import UsageItem from '../../components/UsageItem.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+import UseCaseInteractive from '../../components/UseCaseInteractive.astro';
+import UseCase from '../../components/UseCase.astro';
+import Brand from '../../components/Brand.astro';
+
+const principle = data.principles.find((p) => p.id === 'feedback-driven-improvement')!;
+const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/design-systems';
+---
+
+<UseCaseLayout
+  title={`${principle.title} - Design Systems`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/design-systems"
+>
+  <article class="grid gap-600">
+    <Markdown
+      content={`
+A design system that doesn't respond to feedback becomes disconnected from reality.
+
+Feedback-driven improvement means the system evolves based on:
+
+- how teams actually use it,
+- what problems they encounter,
+- and what they need to build better products.
+
+Without feedback loops, the system team operates in isolation,
+making assumptions that may not match real-world needs.
+      `}
+    />
+
+    <Markdown
+      content={`
+## Approach
+
+---
+
+#### Collect feedback systematically
+
+Feedback should be easy to give and easy to process.
+      `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Provide clear channels for feedback (forms, issues, surveys).
+      </UsageItem>
+      <UsageItem variant="dont">Rely solely on informal conversations or hallway chats.</UsageItem>
+      <UsageItem variant="do">Make feedback collection part of regular workflows.</UsageItem>
+      <UsageItem variant="dont">Wait for feedback to come to you.</UsageItem>
+    </Usage>
+
+    <div id="collect-feedback-systematically-use-case">
+      <UseCaseInteractive articleId="collect-feedback-systematically-use-case">
+        <div class="w-full max-w-8000 bg-tone-neutral-09 p-600 rounded-600"></div>
+        <Brand id="storybook" />
+      </UseCaseInteractive>
+    </div>
+
+    <Markdown
+      content={`
+#### Measure actual usage
+
+Data reveals what teams really need, not just what they say they need.
+      `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Track component usage and adoption patterns.</UsageItem>
+      <UsageItem variant="dont">Assume all components are equally valuable.</UsageItem>
+      <UsageItem variant="do">Identify unused or underused components.</UsageItem>
+      <UsageItem variant="dont">Ignore metrics that suggest components aren't working.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Act on feedback visibly
+
+Teams need to see that their input leads to change.
+      `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">Acknowledge feedback promptly and transparently.</UsageItem>
+      <UsageItem variant="dont">Collect feedback without responding or acting on it.</UsageItem>
+      <UsageItem variant="do">Communicate when and how feedback influenced decisions.</UsageItem>
+      <UsageItem variant="dont">
+        Make changes without explaining the connection to feedback.
+      </UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Prioritize based on impact
+
+Not all feedback is equally important.
+      `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Prioritize changes that affect many teams or critical workflows.
+      </UsageItem>
+      <UsageItem variant="dont">Treat all feedback requests with equal urgency.</UsageItem>
+      <UsageItem variant="do">Balance quick wins with strategic improvements.</UsageItem>
+      <UsageItem variant="dont">Only pursue large, complex changes.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Close the feedback loop
+
+Feedback should inform decisions, not just sit in a backlog.
+      `}
+    />
+
+    <Usage>
+      <UsageItem variant="do">
+        Regularly review feedback and usage data to inform roadmap.
+      </UsageItem>
+      <UsageItem variant="dont">Collect feedback without integrating it into planning.</UsageItem>
+      <UsageItem variant="do">Share how feedback shaped system improvements.</UsageItem>
+      <UsageItem variant="dont">Make decisions in isolation from user needs.</UsageItem>
+    </Usage>
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Feedback-driven improvement keeps the design system relevant and useful.
+
+When teams see their input leads to real changes,
+they become more invested in the system and more likely to contribute.
+
+Systems that ignore feedback become disconnected from user needs
+and eventually lose adoption and trust.
+      `}
+    />
+  </article>
+
+  <Bibliography
+    opener="Feedback-driven improvement is grounded in user-centered design, lean product development, and continuous improvement methodologies:"
+    closer="These sources explain how to build feedback loops and make data-driven improvements."
+  >
+    <BibliographySection type="books">
+      <BibliographyItem
+        author="Eric Ries"
+        title="The Lean Startup"
+        description="Explains how to build feedback loops and iterate based on real user data."
+        url="https://theleanstartup.com/"
+      />
+      <BibliographyItem
+        author="Jake Knapp"
+        title="Sprint"
+        description="Shows how to quickly test ideas and gather feedback to make better decisions."
+        url="https://www.thesprintbook.com/"
+      />
+      <BibliographyItem
+        author="Don Norman"
+        title="The Design of Everyday Things"
+        description="Emphasizes the importance of understanding user needs through observation and feedback."
+        url="https://jnd.org/books/the-design-of-everyday-things/"
+      />
+    </BibliographySection>
+
+    <BibliographySection type="urls">
+      <BibliographyItem
+        author="NNGroup"
+        title="Design Systems Need Feedback Loops"
+        description="Explains why feedback is critical for design system success."
+        url="https://www.nngroup.com/articles/design-system-feedback/"
+      />
+      <BibliographyItem
+        author="InVision"
+        title="Building Design System Feedback Loops"
+        description="Practical strategies for collecting and acting on design system feedback."
+        url="https://www.invisionapp.com/inside-design/design-system-feedback-loops/"
+      />
+      <BibliographyItem
+        author="Shopify Polaris"
+        title="How We Gather Feedback"
+        description="Shows how a large design system team collects and processes feedback."
+        url="https://polaris.shopify.com/contributing/getting-started"
+      />
+    </BibliographySection>
+  </Bibliography>
+
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
+</UseCaseLayout>

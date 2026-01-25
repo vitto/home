@@ -185,6 +185,27 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
     }
   };
 
+  window.initUseCaseCLS = function initUseCaseCLS(articleId) {
+    // Get the scope for this use case using the article ID
+    const scope = window.getUseCaseScope?.(articleId);
+    if (!scope || !scope.container) return;
+
+    // Initialize CLS prevention and viewport opacity for this use case
+    if (window.removeCLSPreventStyle) {
+      setTimeout(() => {
+        window.removeCLSPreventStyle(scope.container);
+      }, 100);
+      // Also try after a longer delay as fallback
+      setTimeout(() => {
+        window.removeCLSPreventStyle(scope.container);
+      }, 1000);
+    }
+
+    if (window.initViewportOpacity) {
+      window.initViewportOpacity(scope.container);
+    }
+  };
+
   // Function to initialize viewport opacity observer for a specific use case container
   window.initViewportOpacity = function initViewportOpacity(container) {
     if (!container) return;
