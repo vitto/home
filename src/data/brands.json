@@ -4,5 +4,17 @@
     "name": "Storybook",
     "logo": "logo-storybook.svg",
     "url": "https://storybook.js.org/"
+  },
+  {
+    "id": "amplitude",
+    "name": "Amplitude",
+    "logo": "logo-amplitude.svg",
+    "url": "https://amplitude.com/"
+  },
+  {
+    "id": "google-analytics",
+    "name": "Google Analytics",
+    "logo": "logo-google-analytics.svg",
+    "url": "https://analytics.google.com/"
   }
 ]
