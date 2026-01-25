@@ -2,26 +2,38 @@
 import brandsData from '../data/brands.json';
 
 interface Props {
-  id: string;
+  name: string;
   url?: string;
-  description?: string;
   class?: string;
+  size?: 'sm' | 'md' | 'lg';
 }
 
-const { id = 'storybook', url: urlOverride, description, class: className = '' } = Astro.props;
+const { name = 'storybook', url: urlOverride, size = 'md', class: className = '' } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const brandsPath = `${baseUrl}/assets/brands`;
 
 // Find brand by id
-const brand = brandsData.find((b) => b.id.toLowerCase() === id.toLowerCase());
+const brand = brandsData.find((b) => b.id.toLowerCase() === name.toLowerCase());
 
 if (!brand) {
-  throw new Error(`Brand with id "${id}" not found in brands.json`);
+  throw new Error(`Brand with id "${name}" not found in brands.json`);
 }
 
 // Use override url if provided, otherwise use default from JSON
 const brandUrl = urlOverride || brand.url;
 const logoPath = brand.logo ? `${brandsPath}/${brand.logo}` : null;
+
+const logoSizeClass = {
+  sm: 'w-auto h-400',
+  md: 'w-auto h-500',
+  lg: 'w-auto h-600',
+}[size];
+
+const containerSizeClass = {
+  sm: 'py-150 px-300',
+  md: 'py-200 px-400',
+  lg: 'py-300 px-500',
+}[size];
 ---
 
 <a
@@ -29,7 +41,7 @@ const logoPath = brand.logo ? `${brandsPath}/${brand.logo}` : null;
   target="_blank"
   rel="noreferrer noopener"
   title={`Go to ${brand.name} website`}
-  class="inline-flex items-center justify-center"
+  class={`inline-flex items-center justify-center bg-tone-neutral shadow-sm-sharp rounded-full ${containerSizeClass} ${className}`}
 >
-  <img src={logoPath} alt={`${brand.name} logo`} class="w-auto h-600" />
+  <img src={logoPath} alt={`${brand.name} logo`} class={logoSizeClass} />
 </a>

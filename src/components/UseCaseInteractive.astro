@@ -14,6 +14,7 @@ interface Props {
   label?: string;
   clsHeight?: number;
   toggle?: boolean;
+  size?: 'sm' | 'md';
   multiple?: boolean;
   overflowHidden?: boolean;
   articleId?: string;
@@ -29,6 +30,7 @@ const {
   label = null,
   toggle = false,
   multiple = false,
+  size = 'md',
   overflowHidden = true,
   articleId = null,
   bugExpected = null,
@@ -136,7 +138,7 @@ const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsH
     }
   </div>
   <div
-    class={`flex flex-col items-center justify-center gap-400 bg-tone-neutral ${overflowHidden ? 'overflow-hidden' : ''} p-600 tablet:py-1200 rounded-xl shadow-sm-sharp dark:border-solid dark:border-tone-neutral-07 dark:border w-full`}
+    class={`flex flex-col items-center justify-center gap-400 bg-tone-neutral ${overflowHidden ? 'overflow-hidden' : ''} p-600 rounded-xl shadow-sm-sharp dark:border-solid dark:border-tone-neutral-07 dark:border w-full ${size === 'md' ? 'tablet:py-1200' : ''}`}
   >
     <div
       class={`use-case-interactive-content flex flex-col transition-cosmetic w-full relative box-border delay-300 opacity-0 scale-90 ${contentClass}`}

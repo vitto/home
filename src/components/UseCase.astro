@@ -3,38 +3,49 @@ import Button from './Button.astro';
 import Icon from './Icon.astro';
 
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   class?: string;
 }
 
 const { title, description, class: className = '' } = Astro.props;
 
 // Generate id from title: lowercase, replace spaces with hyphens, remove special characters
+// If no title, generate a unique ID
 const articleId = title
-  .toLowerCase()
-  .replace(/[^a-z0-9]+/g, '-')
-  .replace(/^-+|-+$/g, '');
+  ? title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+  : `use-case-${crypto.randomUUID().split('-')[0]}`;
 ---
 
-<article id={articleId} class={`grid gap-600 scroll-m-1000 ${className}`}>
-  <div class="flex items-start gap-200 justify-between">
-    <div class="grid gap-200">
-      <h3 class="text-title-h3">{title}</h3>
-      <p class="text-info-detail">{description}</p>
+{
+  title ? (
+    <article id={articleId} class={`use-case grid gap-600 scroll-m-1000 ${className}`}>
+      <div class="flex items-start gap-200 justify-between">
+        <div class="grid gap-200">
+          <h3 class="text-title-h3">{title}</h3>
+          <p class="text-info-detail">{description}</p>
+        </div>
+        <Button
+          data-copy-link
+          data-article-id={articleId}
+          variant="light"
+          class="shrink-0 py-300 -mb-400"
+          title={`Copy link to ${title}`}
+        >
+          <Icon name="mi/baseline/link" class="text-tone-neutral-04" />
+        </Button>
+      </div>
+      <slot />
+    </article>
+  ) : (
+    <div id={articleId} class={`use-case grid gap-600 scroll-m-1000 ${className}`}>
+      <slot />
     </div>
-    <Button
-      data-copy-link
-      data-article-id={articleId}
-      variant="light"
-      class="shrink-0 py-300 -mb-400"
-      title={`Copy link to ${title}`}
-    >
-      <Icon name="mi/baseline/link" class="text-tone-neutral-04" />
-    </Button>
-  </div>
-  <slot />
-</article>
+  )
+}
 
 <script define:vars={{ articleId }}>
   if (document.readyState === 'loading') {
