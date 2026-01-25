@@ -5,10 +5,11 @@ import Icon from './Icon.astro';
 interface Props {
   title?: string;
   description?: string;
+  id?: string;
   class?: string;
 }
 
-const { title, description, class: className = '' } = Astro.props;
+const { title, description, id, class: className = '' } = Astro.props;
 
 // Generate id from title: lowercase, replace spaces with hyphens, remove special characters
 // If no title, generate a unique ID
@@ -22,7 +23,7 @@ const articleId = title
 
 {
   title ? (
-    <article id={articleId} class={`use-case grid gap-600 scroll-m-1000 ${className}`}>
+    <article id={id || articleId} class={`use-case grid gap-600 scroll-m-1000 ${className}`}>
       <div class="flex items-start gap-200 justify-between">
         <div class="grid gap-200">
           <h3 class="text-title-h3">{title}</h3>
@@ -41,18 +42,18 @@ const articleId = title
       <slot />
     </article>
   ) : (
-    <div id={articleId} class={`use-case grid gap-600 scroll-m-1000 ${className}`}>
+    <div id={id || articleId} class={`use-case grid gap-600 scroll-m-1000 ${className}`}>
       <slot />
     </div>
   )
 }
 
-<script define:vars={{ articleId }}>
+<script define:vars={{ articleId, id }}>
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      window.initUseCaseCLS(articleId);
+      window.initUseCaseCLS(id || articleId);
     });
   } else {
-    window.initUseCaseCLS(articleId);
+    window.initUseCaseCLS(id || articleId);
   }
 </script>
