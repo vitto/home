@@ -1,0 +1,35 @@
+---
+import brandsData from '../data/brands.json';
+
+interface Props {
+  id: string;
+  url?: string;
+  description?: string;
+  class?: string;
+}
+
+const { id = 'storybook', url: urlOverride, description, class: className = '' } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const brandsPath = `${baseUrl}/assets/brands`;
+
+// Find brand by id
+const brand = brandsData.find((b) => b.id.toLowerCase() === id.toLowerCase());
+
+if (!brand) {
+  throw new Error(`Brand with id "${id}" not found in brands.json`);
+}
+
+// Use override url if provided, otherwise use default from JSON
+const brandUrl = urlOverride || brand.url;
+const logoPath = brand.logo ? `${brandsPath}/${brand.logo}` : null;
+---
+
+<a
+  href={brandUrl}
+  target="_blank"
+  rel="noreferrer noopener"
+  title={`Go to ${brand.name} website`}
+  class="inline-flex items-center justify-center"
+>
+  <img src={logoPath} alt={`${brand.name} logo`} class="w-auto h-600" />
+</a>
