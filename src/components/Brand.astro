@@ -45,4 +45,5 @@ const containerSizeClass = {
   class={`inline-flex shrink-0 items-center focus-bounce justify-center bg-tone-neutral shadow-sm-sharp rounded-full ${containerSizeClass} ${className}`}
 >
   <img src={logoPath} alt={`${brand.name} logo`} class={logoSizeClass} />
+  <slot />
 </a>

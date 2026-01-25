@@ -8,10 +8,11 @@ import UsageItem from '../../components/UsageItem.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
-import UseCaseInteractive from '../../components/UseCaseInteractive.astro';
-import UseCase from '../../components/UseCase.astro';
-import Brand from '../../components/Brand.astro';
 import CollectFeedbackSystematically from '../../components/use-cases/design-systems/feedback-driven-improvement/collect-feedback-systematically.astro';
+import MeasureActualUsage from '../../components/use-cases/design-systems/feedback-driven-improvement/measure-actual-usage.astro';
+import ActOnFeedbackVisibly from '../../components/use-cases/design-systems/feedback-driven-improvement/act-on-feedback-visibly.astro';
+import PrioritizeBasedOnImpact from '../../components/use-cases/design-systems/feedback-driven-improvement/prioritize-based-on-impact.astro';
+import CloseTheFeedbackLoop from '../../components/use-cases/design-systems/feedback-driven-improvement/close-the-feedback-loop.astro';
 
 const principle = data.principles.find((p) => p.id === 'feedback-driven-improvement')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -50,72 +51,10 @@ making assumptions that may not match real-world needs.
     />
 
     <CollectFeedbackSystematically />
-
-    <Markdown
-      content={`
-#### Measure actual usage
-
-Data reveals what teams really need, not just what they say they need.
-      `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Track component usage and adoption patterns.</UsageItem>
-      <UsageItem variant="dont">Assume all components are equally valuable.</UsageItem>
-      <UsageItem variant="do">Identify unused or underused components.</UsageItem>
-      <UsageItem variant="dont">Ignore metrics that suggest components aren't working.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Act on feedback visibly
-
-Teams need to see that their input leads to change.
-      `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Acknowledge feedback promptly and transparently.</UsageItem>
-      <UsageItem variant="dont">Collect feedback without responding or acting on it.</UsageItem>
-      <UsageItem variant="do">Communicate when and how feedback influenced decisions.</UsageItem>
-      <UsageItem variant="dont">
-        Make changes without explaining the connection to feedback.
-      </UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Prioritize based on impact
-
-Not all feedback is equally important.
-      `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Prioritize changes that affect many teams or critical workflows.
-      </UsageItem>
-      <UsageItem variant="dont">Treat all feedback requests with equal urgency.</UsageItem>
-      <UsageItem variant="do">Balance quick wins with strategic improvements.</UsageItem>
-      <UsageItem variant="dont">Only pursue large, complex changes.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Close the feedback loop
-
-Feedback should inform decisions, not just sit in a backlog.
-      `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Regularly review feedback and usage data to inform roadmap.
-      </UsageItem>
-      <UsageItem variant="dont">Collect feedback without integrating it into planning.</UsageItem>
-      <UsageItem variant="do">Share how feedback shaped system improvements.</UsageItem>
-      <UsageItem variant="dont">Make decisions in isolation from user needs.</UsageItem>
-    </Usage>
+    <MeasureActualUsage />
+    <ActOnFeedbackVisibly />
+    <PrioritizeBasedOnImpact />
+    <CloseTheFeedbackLoop />
 
     <Markdown
       content={`

@@ -1,0 +1,87 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../../components/Markdown.astro';
+---
+
+<Markdown
+  content={`
+#### Prioritize based on impact
+
+Not all feedback is equally important.
+`}
+/>
+
+<Usage>
+  <UsageItem variant="do">
+    Prioritize changes that affect many teams or critical workflows.
+  </UsageItem>
+  <UsageItem variant="dont">Treat all feedback requests with equal urgency.</UsageItem>
+  <UsageItem variant="do">Balance quick wins with strategic improvements.</UsageItem>
+  <UsageItem variant="dont">Only pursue large, complex changes.</UsageItem>
+</Usage>
+
+<UseCase>
+  <UseCaseInteractive clsHeight={300} label="Feedback prioritization matrix">
+    <div class="w-full max-w-12000">
+      <mds-table>
+        <mds-table-header>
+          <mds-table-header-cell label="Feedback"></mds-table-header-cell>
+          <mds-table-header-cell label="Teams affected" sortable></mds-table-header-cell>
+          <mds-table-header-cell label="Impact" sortable></mds-table-header-cell>
+          <mds-table-header-cell label="Priority"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          <mds-table-row>
+            <mds-table-cell class="align-middle">
+              <div class="grid gap-100">
+                <mds-text typography="caption"><b>Button component mobile touch target</b></mds-text
+                >
+                <mds-text typography="caption">Touch targets too small on mobile devices</mds-text>
+              </div>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle" value="12">12 teams</mds-table-cell>
+            <mds-table-cell class="align-middle" value="3">
+              <mds-badge variant="error" tone="ghost" size="sm">High</mds-badge>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle">
+              <mds-badge variant="error" tone="weak" size="sm">P0</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell class="align-middle">
+              <div class="grid gap-100">
+                <mds-text typography="caption"><b>Table component sorting</b></mds-text>
+                <mds-text typography="caption">Add multi-column sorting capability</mds-text>
+              </div>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle" value="8">8 teams</mds-table-cell>
+            <mds-table-cell class="align-middle" value="2">
+              <mds-badge variant="warning" tone="ghost" size="sm">Medium</mds-badge>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle">
+              <mds-badge variant="warning" tone="weak" size="sm">P1</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell class="align-middle">
+              <div class="grid gap-100">
+                <mds-text typography="caption"><b>Accordion custom icon</b></mds-text>
+                <mds-text typography="caption">Allow custom icons for accordion items</mds-text>
+              </div>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle" value="2">2 teams</mds-table-cell>
+            <mds-table-cell class="align-middle" value="1">
+              <mds-badge variant="dark" tone="ghost" size="sm">Low</mds-badge>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle">
+              <mds-badge variant="dark" tone="ghost" size="sm">P2</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+        </mds-table-body>
+      </mds-table>
+    </div>
+  </UseCaseInteractive>
+</UseCase>

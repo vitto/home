@@ -1,0 +1,64 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../../components/Markdown.astro';
+---
+
+<Markdown
+  content={`
+#### Close the feedback loop
+
+Feedback should inform decisions, not just sit in a backlog.
+`}
+/>
+
+<Usage>
+  <UsageItem variant="do">Regularly review feedback and usage data to inform roadmap.</UsageItem>
+  <UsageItem variant="dont">Collect feedback without integrating it into planning.</UsageItem>
+  <UsageItem variant="do">Share how feedback shaped system improvements.</UsageItem>
+  <UsageItem variant="dont">Make decisions in isolation from user needs.</UsageItem>
+</Usage>
+
+<UseCase>
+  <UseCaseInteractive clsHeight={350} label="Feedback-driven roadmap">
+    <div class="w-full max-w-12000 grid gap-400">
+      <div class="grid gap-200">
+        <div class="flex items-center gap-200">
+          <mds-badge variant="success" tone="ghost" size="sm">Q1 2024</mds-badge>
+          <mds-text typography="caption">Completed</mds-text>
+        </div>
+        <mds-text typography="h6">Button component improvements</mds-text>
+        <mds-text typography="caption">
+          <b>Based on feedback:</b> 12 teams reported mobile touch target issues. Implemented larger touch
+          targets and improved mobile interaction patterns.
+        </mds-text>
+      </div>
+      <mds-hr class="w-full h-50 bg-tone-neutral-09"></mds-hr>
+      <div class="grid gap-200">
+        <div class="flex items-center gap-200">
+          <mds-badge variant="warning" tone="weak" size="sm">Q2 2024</mds-badge>
+          <mds-text typography="caption">In progress</mds-text>
+        </div>
+        <mds-text typography="h6">Table component enhancements</mds-text>
+        <mds-text typography="caption">
+          <b>Based on feedback:</b> 8 teams requested multi-column sorting. Currently implementing sorting
+          capabilities and mobile responsiveness improvements.
+        </mds-text>
+      </div>
+      <mds-hr class="w-full h-50 bg-tone-neutral-09"></mds-hr>
+      <div class="grid gap-200">
+        <div class="flex items-center gap-200">
+          <mds-badge variant="dark" tone="ghost" size="sm">Q3 2024</mds-badge>
+          <mds-text typography="caption">Planned</mds-text>
+        </div>
+        <mds-text typography="h6">Accessibility improvements</mds-text>
+        <mds-text typography="caption">
+          <b>Based on feedback:</b> Multiple teams highlighted keyboard navigation issues. Planning comprehensive
+          accessibility audit and improvements across all components.
+        </mds-text>
+      </div>
+    </div>
+  </UseCaseInteractive>
+</UseCase>

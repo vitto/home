@@ -1,0 +1,72 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../../components/Markdown.astro';
+---
+
+<Markdown
+  content={`
+#### Act on feedback visibly
+
+Teams need to see that their input leads to change.
+`}
+/>
+
+<Usage>
+  <UsageItem variant="do">Acknowledge feedback promptly and transparently.</UsageItem>
+  <UsageItem variant="dont">Collect feedback without responding or acting on it.</UsageItem>
+  <UsageItem variant="do">Communicate when and how feedback influenced decisions.</UsageItem>
+  <UsageItem variant="dont">Make changes without explaining the connection to feedback.</UsageItem>
+</Usage>
+
+<UseCase>
+  <UseCaseInteractive clsHeight={300} label="Feedback acknowledgment and implementation">
+    <div class="w-full max-w-12000 grid gap-400">
+      <div class="grid gap-200">
+        <div class="flex items-center gap-200">
+          <mds-badge variant="success" tone="ghost" size="sm">Implemented</mds-badge>
+          <mds-text typography="caption">2 days ago</mds-text>
+        </div>
+        <mds-text typography="h6">Button component feedback form</mds-text>
+        <mds-text typography="caption">
+          Feedback: "Add a feedback form directly on the component page"
+        </mds-text>
+        <mds-text typography="caption">
+          <b>Response:</b> Added inline feedback form with status bar. Users can now provide feedback
+          directly from the component documentation page.
+        </mds-text>
+      </div>
+      <mds-hr class="w-full h-50 bg-tone-neutral-09"></mds-hr>
+      <div class="grid gap-200">
+        <div class="flex items-center gap-200">
+          <mds-badge variant="warning" tone="weak" size="sm">In progress</mds-badge>
+          <mds-text typography="caption">1 week ago</mds-text>
+        </div>
+        <mds-text typography="h6">Table component mobile responsiveness</mds-text>
+        <mds-text typography="caption">
+          Feedback: "Table component doesn't work well on mobile devices"
+        </mds-text>
+        <mds-text typography="caption">
+          <b>Response:</b> Investigating mobile layout improvements. Expected completion in 2 weeks.
+        </mds-text>
+      </div>
+      <mds-hr class="w-full h-50 bg-tone-neutral-09"></mds-hr>
+      <div class="grid gap-200">
+        <div class="flex items-center gap-200">
+          <mds-badge variant="dark" tone="ghost" size="sm">Acknowledged</mds-badge>
+          <mds-text typography="caption">3 days ago</mds-text>
+        </div>
+        <mds-text typography="h6">Accordion component accessibility</mds-text>
+        <mds-text typography="caption">
+          Feedback: "Accordion needs better keyboard navigation"
+        </mds-text>
+        <mds-text typography="caption">
+          <b>Response:</b> Thank you for the feedback. We're reviewing accessibility improvements for
+          the next release.
+        </mds-text>
+      </div>
+    </div>
+  </UseCaseInteractive>
+</UseCase>

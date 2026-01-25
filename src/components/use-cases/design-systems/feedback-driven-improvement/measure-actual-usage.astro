@@ -1,0 +1,59 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../../components/Markdown.astro';
+---
+
+<Markdown
+  content={`
+#### Measure actual usage
+
+Data reveals what teams really need, not just what they say they need.
+`}
+/>
+
+<Usage>
+  <UsageItem variant="do">Track component usage and adoption patterns.</UsageItem>
+  <UsageItem variant="dont">Assume all components are equally valuable.</UsageItem>
+  <UsageItem variant="do">Identify unused or underused components.</UsageItem>
+  <UsageItem variant="dont">Ignore metrics that suggest components aren't working.</UsageItem>
+</Usage>
+
+<UseCase>
+  <UseCaseInteractive clsHeight={250} label="Design system usage trends">
+    <div class="w-full max-w-12000">
+      <mds-table>
+        <mds-table-header>
+          <mds-table-header-cell label="Component"></mds-table-header-cell>
+          <mds-table-header-cell label="Usage" sortable></mds-table-header-cell>
+          <mds-table-header-cell label="Trend" sortable></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          <mds-table-row>
+            <mds-table-cell class="align-middle">Button</mds-table-cell>
+            <mds-table-cell class="align-middle" value="12458">12,458</mds-table-cell>
+            <mds-table-cell class="align-middle">
+              <mds-badge variant="success" tone="ghost" value="15">+15%</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell class="align-middle">Input Field</mds-table-cell>
+            <mds-table-cell class="align-middle" value="8932">8,932</mds-table-cell>
+            <mds-table-cell class="align-middle">
+              <mds-badge variant="warning" tone="ghost" value="5">-5%</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell class="align-middle">Accordion</mds-table-cell>
+            <mds-table-cell class="align-middle" value="5678">5,678</mds-table-cell>
+            <mds-table-cell class="align-middle">
+              <mds-badge variant="error" tone="ghost" value="10">-10%</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+        </mds-table-body>
+      </mds-table>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
