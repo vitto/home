@@ -1,7 +1,7 @@
 {
   "title": "Design Systems",
   "description": "Building design ecosystems, based on a scalable and maintainable component libraries with clear documentation",
-  "categories": ["Architecture", "Component Design", "Maintenance", "Adoption", "Value"],
+  "categories": ["Architecture", "Component Design", "Maintenance", "Adoption"],
   "categoryColors": {
     "Architecture": "label-orange",
     "Component Design": "label-sky",
