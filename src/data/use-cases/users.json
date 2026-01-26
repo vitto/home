@@ -10,7 +10,11 @@
     "email": "mario.rossi@example.com",
     "phone": "+39 333 1234567",
     "status": "offline",
-    "medicalCertificate": "3918VW88DX7"
+    "medicalCertificate": "3918VW88DX7",
+    "publicationDate": "2023-05-15",
+    "publicationName": "Product Management Best Practices",
+    "publisher": "Tech Publications",
+    "publicationUrl": "https://example.com/publications/product-management-best-practices"
   },
   {
     "name": "Luigi Verdi",
@@ -23,7 +27,11 @@
     "email": "luigi.verdi@example.com",
     "phone": "+39 340 9876543",
     "status": "online",
-    "medicalCertificate": "8766AZ32FG1"
+    "medicalCertificate": "8766AZ32FG1",
+    "publicationDate": "2023-08-22",
+    "publicationName": "Design Systems in Practice",
+    "publisher": "Design Press",
+    "publicationUrl": "https://example.com/publications/design-systems-in-practice"
   },
   {
     "name": "Giulia Crippa",
@@ -36,7 +44,11 @@
     "email": "giulia.crippa@example.com",
     "phone": "+39 347 5551234",
     "status": "busy",
-    "medicalCertificate": "1099DD12DG9"
+    "medicalCertificate": "1099DD12DG9",
+    "publicationDate": "2023-11-10",
+    "publicationName": "Modern Frontend Development",
+    "publisher": "Code Books",
+    "publicationUrl": "https://example.com/publications/modern-frontend-development"
   },
   {
     "name": "Joan Baez",
@@ -49,7 +61,11 @@
     "email": "joan.baez@example.com",
     "phone": "+1 (555) 123-4567",
     "status": "offline",
-    "medicalCertificate": "2223TY04ZS0"
+    "medicalCertificate": "2223TY04ZS0",
+    "publicationDate": "2024-01-18",
+    "publicationName": "Scalable Backend Architecture",
+    "publisher": "Tech Books International",
+    "publicationUrl": "https://example.com/publications/scalable-backend-architecture"
   },
   {
     "name": "Jamie Oliver",
@@ -62,6 +78,10 @@
     "email": "jamie.oliver@example.com",
     "phone": "+44 20 7946 0958",
     "status": "online",
-    "medicalCertificate": "3334UX15RT2"
+    "medicalCertificate": "3334UX15RT2",
+    "publicationDate": "2024-03-05",
+    "publicationName": "Agile Product Ownership",
+    "publisher": "Business Publications Ltd",
+    "publicationUrl": "https://example.com/publications/agile-product-ownership"
   }
 ]

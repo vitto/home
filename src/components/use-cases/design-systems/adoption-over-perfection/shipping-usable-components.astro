@@ -7,6 +7,9 @@ import Separator from '../../../../components/Separator.astro';
 import Brand from '../../../Brand.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
+import usersData from '../../../../data/use-cases/users.json';
+
+const firstUser = usersData[0];
 ---
 
 <UseCase
@@ -16,22 +19,43 @@ import Products from '../../../Products.astro';
   <UseCaseInteractive
     label="Shipping usable components before ideal abstractions"
     overflowHidden={false}
-    clsHeight={100}
+    clsHeight={212}
+    toggle
   >
-    <mds-list>
-      <mds-list-item
-        >Button/alert/form component già pronta per casi reali prima di generalizzare tutta la
-        libreria</mds-list-item
+    <div class="grid gap-1200 w-full max-w-8000">
+      <mds-button icon="mi/baseline/emoji-events">Button</mds-button>
+      <mds-push-notification-item
+        icon="mi/outline/done"
+        message="Button component is the most used component in Magma Design System."
+        subject="Easy to draft"
+        variant="success"
       >
-      <mds-list-item
-        >UI pattern per header/footer rilasciati per onboarding progetti concreti</mds-list-item
+      </mds-push-notification-item>
+    </div>
+    <div class="grid gap-1200 w-full max-w-8000">
+      <mds-bibliography
+        author={firstUser.name}
+        date={firstUser.publicationDate}
+        location={firstUser.city}
+        name={firstUser.publicationName}
+        publisher={firstUser.publisher}
+        url={firstUser.publicationUrl}></mds-bibliography>
+      <mds-push-notification-item
+        icon="mi/outline/close"
+        message="I wrote mds-bibliography as the first component, but in reality no one uses it."
+        subject="Unexpected use case"
+        variant="error"
       >
-      <mds-list-item
-        >Componenti specifici per flussi ad alta frequenza (es. moduli login e ricerca)</mds-list-item
-      >
-    </mds-list>
+      </mds-push-notification-item>
+    </div>
   </UseCaseInteractive>
 </UseCase>
+
+<style>
+  mds-push-notification-item {
+    --mds-push-notification-item-message-line-clamp: 3;
+  }
+</style>
 
 <Usage>
   <UsageItem variant="do">Start from real use cases already present in the product.</UsageItem>
