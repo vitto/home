@@ -112,5 +112,23 @@
     "name": "Confluence",
     "logo": "logo-confluence.svg",
     "url": "https://www.atlassian.com/software/confluence"
+  },
+  {
+    "id": "axe-devtools",
+    "name": "Axe DevTools",
+    "logo": "logo-deque-axe-devtools.svg",
+    "url": "https://www.deque.com/axe-devtools/"
+  },
+  {
+    "id": "google-lighthouse",
+    "name": "Google Lighthouse",
+    "logo": "logo-google-lighthouse.svg",
+    "url": "https://developer.chrome.com/docs/lighthouse/"
+  },
+  {
+    "id": "ladle",
+    "name": "Ladle",
+    "logo": "logo-ladle.svg",
+    "url": "https://ladle.dev/"
   }
 ]
