@@ -1,5 +1,11 @@
 [
   {
+    "id": "none",
+    "name": "Vittorio Vittori",
+    "logo": "logo-vittorio-vittori.svg",
+    "url": "https://vitto.github.io/home/"
+  },
+  {
     "id": "storybook",
     "name": "Storybook",
     "logo": "logo-storybook.svg",
@@ -16,5 +22,29 @@
     "name": "Google Analytics",
     "logo": "logo-google-analytics.svg",
     "url": "https://analytics.google.com/"
+  },
+  {
+    "id": "changesets",
+    "name": "Changeset",
+    "logo": "unofficial-logo-changesets.svg",
+    "url": "https://changesets-docs.vercel.app/"
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "logo": "logo-github.svg",
+    "url": "https://github.com/"
+  },
+  {
+    "id": "slack",
+    "name": "Slack",
+    "logo": "logo-slack.svg",
+    "url": "https://slack.com/"
+  },
+  {
+    "id": "productboard",
+    "name": "Productboard",
+    "logo": "logo-productboard.svg",
+    "url": "https://productboard.com/"
   }
 ]
