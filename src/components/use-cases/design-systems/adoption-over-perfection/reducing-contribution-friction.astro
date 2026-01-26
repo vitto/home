@@ -1,0 +1,48 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Reducing contribution friction"
+  description="Contribution processes were designed to encourage participation rather than enforce gatekeeping."
+>
+  <UseCaseInteractive>[ examples ]</UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Lower the barrier to proposing changes or improvements.</UsageItem>
+  <UsageItem variant="dont">Require excessive upfront justification.</UsageItem>
+  <UsageItem variant="do">Make contribution paths visible and understandable.</UsageItem>
+  <UsageItem variant="dont">Treat contributions as exceptional events.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Templates">
+    <Brand
+      name="github"
+      label="GitHub templates"
+      url="https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates"
+    />
+    <Brand
+      name="mozilla"
+      label="CONTRIBUTING.md"
+      url="https://mozillascience.github.io/working-open-workshop/contributing/"
+    />
+  </ProductCategory>
+  <ProductCategory title="Automation">
+    <Brand
+      name="github"
+      label="Automated CI checks"
+      url="https://docs.github.com/en/apps/creating-github-apps/writing-code-for-a-github-app/building-ci-checks-with-a-github-app"
+    />
+  </ProductCategory>
+</Products>
+
+<Separator />

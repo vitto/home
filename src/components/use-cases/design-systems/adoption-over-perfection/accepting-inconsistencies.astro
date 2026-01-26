@@ -1,0 +1,39 @@
+---
+import UseCase from '../../../UseCase.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../../components/Markdown.astro';
+import Separator from '../../../../components/Separator.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+---
+
+<UseCase
+  title="Accepting inconsistencies to enable onboarding"
+  description="Some inconsistencies are tolerated temporarily to avoid breaking existing products or workflows."
+>
+  <UseCaseInteractive>[ example ]</UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Allow transitional states when migrating to the system.</UsageItem>
+  <UsageItem variant="dont">
+    Enforce strict compliance that blocks teams from adopting the system.
+  </UsageItem>
+  <UsageItem variant="do">Document known limitations and planned improvements.</UsageItem>
+  <UsageItem variant="dont">Introduce breaking changes prematurely.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Migration guides">
+    <Brand name="zeroheight" label="Zeroheight" />
+  </ProductCategory>
+  <ProductCategory title="Documentation tools">
+    <Brand name="notion" label="Notion" />
+    <Brand name="confluence" label="Confluence" />
+  </ProductCategory>
+</Products>
+
+<Separator />

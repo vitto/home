@@ -1,0 +1,46 @@
+---
+import UseCase from '../../../UseCase.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../../components/Markdown.astro';
+import Separator from '../../../../components/Separator.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+---
+
+<Markdown
+  content={`
+#### Measuring success through usage, not elegance
+
+System success was evaluated based on real adoption and impact.
+  `}
+/>
+
+<UseCase
+  title="Measuring success through usage, not elegance"
+  description="System success was evaluated based on real adoption and impact."
+>
+  <UseCaseInteractive>[ example ]</UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Observe how and where components are actually used.</UsageItem>
+  <UsageItem variant="dont">Optimize for internal elegance without external validation.</UsageItem>
+  <UsageItem variant="do">Use feedback to guide iteration and prioritization.</UsageItem>
+  <UsageItem variant="dont">Ignore usage data and qualitative feedback.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Metrics">
+    <Brand
+      icon="mi/outline/analytics"
+      label="Design system metrics"
+      url="https://thedesignsystem.guide/design-system-metrics"
+    />
+    <Brand name="npm" label="Usage analytics" url="https://npmtrends.com/tailwindcss" />
+  </ProductCategory>
+</Products>
+
+<Separator />

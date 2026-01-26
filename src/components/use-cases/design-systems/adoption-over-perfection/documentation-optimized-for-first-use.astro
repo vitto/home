@@ -1,0 +1,41 @@
+---
+import UseCase from '../../../UseCase.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Separator from '../../../../components/Separator.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+---
+
+<UseCase
+  title="Documentation optimized for first use, not completeness"
+  description="Documentation is written to help teams succeed quickly rather than to describe the entire system exhaustively."
+>
+  <UseCaseInteractive>[ example ]</UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Focus on common scenarios and recommended paths.</UsageItem>
+  <UsageItem variant="dont">
+    Prioritize exhaustive reference documentation over practical guidance.
+  </UsageItem>
+  <UsageItem variant="do">Provide examples that teams can apply immediately.</UsageItem>
+  <UsageItem variant="dont">Assume deep system knowledge from new adopters.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Pratical documentation">
+    <Brand name="zeroheight" label="Zeroheight" />
+  </ProductCategory>
+  <ProductCategory title="Static documentation">
+    <Brand name="docusaurus" label="Docusaurus" />
+    <Brand name="gatsby" label="Gatsby" />
+  </ProductCategory>
+  <ProductCategory title="Component testing">
+    <Brand name="storybook" label="Storybook" />
+  </ProductCategory>
+</Products>
+
+<Separator />
