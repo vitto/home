@@ -2,13 +2,24 @@
 import brandsData from '../data/brands.json';
 
 interface Props {
-  name: string;
+  name?: string;
   url?: string;
   class?: string;
+  variant?: 'shadow' | 'light';
+  label?: string;
+  icon?: string;
   size?: 'sm' | 'md' | 'lg';
 }
 
-const { name = 'storybook', url: urlOverride, size = 'md', class: className = '' } = Astro.props;
+const {
+  name = 'none',
+  icon = 'mi/outline/search',
+  url: urlOverride,
+  size = 'md',
+  variant = 'light',
+  label,
+  class: className = '',
+} = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const brandsPath = `${baseUrl}/assets/brands`;
 
@@ -34,16 +45,41 @@ const containerSizeClass = {
   md: 'py-200 px-400',
   lg: 'py-300 px-500',
 }[size];
+
+const variantClass = {
+  shadow:
+    'bg-tone-neutral shadow-outline-light-50 hover:shadow-outline-50 focus-visible:shadow-outline-50',
+  light: 'bg-tone-neutral hover:bg-tone-neutral-09 focus-visible:bg-tone-neutral-09',
+}[variant];
 ---
 
-<a
-  href={brandUrl}
-  target="_blank"
-  rel="noreferrer noopener"
-  tabindex="0"
-  title={`Go to ${brand.name} website`}
-  class={`inline-flex shrink-0 items-center focus-bounce justify-center bg-tone-neutral shadow-sm-sharp rounded-full ${containerSizeClass} ${className}`}
->
-  <img src={logoPath} alt={`${brand.name} logo`} class={logoSizeClass} />
-  <slot />
-</a>
+{
+  name !== 'none' ? (
+    <a
+      href={brandUrl}
+      target="_blank"
+      rel="noreferrer noopener"
+      tabindex="0"
+      title={`Go to ${brand.name} website`}
+      class={`inline-flex shrink-0 gap-200 items-center focus-bounce justify-center rounded-full no-underline ${variantClass} ${containerSizeClass} ${className}`}
+    >
+      <img src={logoPath} alt={`${brand.name} logo`} class={logoSizeClass} />
+      {label && (
+        <mds-text typography="caption">
+          <b>{label}</b>
+        </mds-text>
+      )}
+    </a>
+  ) : (
+    <div
+      class={`inline-flex shrink-0 gap-200 items-center focus-bounce justify-center rounded-full ${containerSizeClass} ${className}`}
+    >
+      <mds-icon name={icon} />
+      {label && (
+        <mds-text typography="caption">
+          <b>{label}</b>
+        </mds-text>
+      )}
+    </div>
+  )
+}

@@ -4,6 +4,9 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import Markdown from '../../../../components/Markdown.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
 ---
 
 <Markdown
@@ -70,3 +73,27 @@ Teams need to see that their input leads to change.
     </div>
   </UseCaseInteractive>
 </UseCase>
+
+<Products>
+  <ProductCategory title="Changelogs">
+    <Brand
+      name="github"
+      label="GitHub Releases"
+      url="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository"
+    />
+    <Brand name="changesets" label="Changelogs" />
+  </ProductCategory>
+  <ProductCategory title="Roadmaps">
+    <Brand
+      name="github"
+      label="GitHub Projects"
+      url="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects"
+    />
+    <Brand name="productboard" label="Productboard" />
+  </ProductCategory>
+  <ProductCategory title="Communication">
+    <Brand name="slack" label="Slack" />
+    <Brand icon="mi/outline/email" label="Via newsletter" />
+    <Brand icon="mi/outline/chat" label="Via chat" />
+  </ProductCategory>
+</Products>
