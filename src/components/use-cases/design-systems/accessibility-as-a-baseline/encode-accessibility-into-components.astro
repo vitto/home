@@ -1,0 +1,23 @@
+---
+import UseCase from '../../../UseCase.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../../components/Markdown.astro';
+---
+
+<Markdown
+  content={`
+#### Encode accessibility into components
+
+Accessibility should be expressed through behavior, not documentation alone.
+  `}
+/>
+
+<Usage>
+  <UsageItem variant="do">Bake ARIA roles and keyboard support into components.</UsageItem>
+  <UsageItem variant="dont">Expect consumers to add accessibility features manually.</UsageItem>
+  <UsageItem variant="do">Provide accessible defaults that work out of the box.</UsageItem>
+  <UsageItem variant="dont">Ship components that require extra effort to be accessible.</UsageItem>
+</Usage>
+
+<mds-hr class="h-50"></mds-hr>

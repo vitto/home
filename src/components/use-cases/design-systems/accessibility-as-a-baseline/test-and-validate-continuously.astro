@@ -1,0 +1,23 @@
+---
+import UseCase from '../../../UseCase.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../../components/Markdown.astro';
+---
+
+<Markdown
+  content={`
+#### Test and validate continuously
+
+Accessibility is not static and must be maintained over time.
+  `}
+/>
+
+<Usage>
+  <UsageItem variant="do">Include keyboard and screen reader testing in reviews.</UsageItem>
+  <UsageItem variant="dont">Assume accessibility remains intact by default.</UsageItem>
+  <UsageItem variant="do">Use automated checks to catch regressions.</UsageItem>
+  <UsageItem variant="dont">Rely solely on manual audits.</UsageItem>
+</Usage>
+
+<mds-hr class="h-50"></mds-hr>

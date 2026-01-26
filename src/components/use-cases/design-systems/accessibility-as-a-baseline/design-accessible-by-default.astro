@@ -1,0 +1,422 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../../components/Markdown.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+---
+
+<UseCase
+  title="Design accessible by default"
+  description="Accessibility should be built into foundations and components from the start."
+>
+  <UseCaseInteractive clsHeight={300} label="Accessible color contrast and states" toggle>
+    <div class="grid gap-600 grid-cols-3 mobile:grid-cols-1 w-full">
+      <div class="grid gap-600">
+        <div class="grid gap-200">
+          <mds-badge variant="orange" tone="strong" class="justify-self-start"
+            >badge strong</mds-badge
+          >
+          <div class="inline-flex gap-25 justify-self-start">
+            <div
+              class="bg-label-orange-01 flex w-400 h-400 items-center justify-center aspect-square rounded-l-md"
+            >
+            </div>
+            <div
+              class="bg-label-orange-02 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-03 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-04 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+              <div class="w-200 h-200 bg-tone-neutral rounded-full"></div>
+            </div>
+            <div
+              class="bg-label-orange-05 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-06 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-07 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-08 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-09 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-10 flex w-400 h-400 items-center justify-center aspect-square rounded-r-md"
+            >
+            </div>
+            <div
+              class="bg-tone-neutral flex w-400 h-400 items-center justify-center aspect-square rounded-md"
+            >
+              <div class="w-200 h-200 bg-tone-neutral-01 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+        <div class="grid gap-0 grid-cols-full">
+          <mds-text typography="caption"><b>Contrast ratio</b></mds-text>
+          <div class="flex items-center justify-start gap-200">
+            <mds-icon name="mi/baseline/done" class="fill-status-success-04"></mds-icon>
+            <mds-text typography="caption">6.71:1</mds-text>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-600">
+        <div class="grid gap-200">
+          <mds-badge variant="orange" tone="weak" class="justify-self-start">badge weak</mds-badge>
+          <div class="inline-flex gap-25 justify-self-start">
+            <div
+              class="bg-label-orange-01 flex w-400 h-400 items-center justify-center aspect-square rounded-l-md"
+            >
+            </div>
+            <div
+              class="bg-label-orange-02 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+              <div class="w-200 h-200 bg-tone-neutral rounded-full"></div>
+            </div>
+            <div
+              class="bg-label-orange-03 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-04 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-05 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-06 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-07 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-08 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-09 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+              <div class="w-200 h-200 bg-tone-neutral-01 rounded-full"></div>
+            </div>
+            <div
+              class="bg-label-orange-10 flex w-400 h-400 items-center justify-center aspect-square rounded-r-md"
+            >
+            </div>
+            <div
+              class="bg-tone-neutral flex w-400 h-400 items-center justify-center aspect-square rounded-md"
+            >
+            </div>
+          </div>
+        </div>
+        <div class="grid gap-0 grid-cols-full">
+          <mds-text typography="caption"><b>Contrast ratio</b></mds-text>
+          <div class="flex items-center justify-start gap-200">
+            <mds-icon name="mi/baseline/done-all" class="fill-status-success-04"></mds-icon>
+            <mds-text typography="caption">8.39:1</mds-text>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-600">
+        <div class="grid gap-200">
+          <mds-badge variant="orange" tone="ghost" class="justify-self-start"
+            >badge outline</mds-badge
+          >
+          <div class="inline-flex gap-25 justify-self-start">
+            <div
+              class="bg-label-orange-01 flex w-400 h-400 items-center justify-center aspect-square rounded-l-md"
+            >
+            </div>
+            <div
+              class="bg-label-orange-02 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-03 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-04 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+              <div class="w-200 h-200 bg-tone-neutral rounded-full"></div>
+            </div>
+            <div
+              class="bg-label-orange-05 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-06 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-07 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-08 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-09 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-10 flex w-400 h-400 items-center justify-center aspect-square rounded-r-md"
+            >
+            </div>
+            <div
+              class="bg-tone-neutral flex w-400 h-400 items-center justify-center aspect-square rounded-md"
+            >
+              <div class="w-200 h-200 bg-tone-neutral-01 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+        <div class="grid gap-0 grid-cols-full">
+          <mds-text typography="caption"><b>Contrast ratio</b></mds-text>
+          <div class="flex items-center justify-start gap-200">
+            <mds-icon name="mi/baseline/done" class="fill-status-success-04"></mds-icon>
+            <mds-text typography="caption">6.71:1</mds-text>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid gap-600 grid-cols-3 mobile:grid-cols-1 w-full">
+      <div class="grid gap-600">
+        <div class="grid gap-200">
+          <mds-badge
+            variant="orange"
+            tone="strong"
+            class="justify-self-start bg-label-orange-05 text-label-orange-09"
+            >badge strong</mds-badge
+          >
+          <div class="inline-flex gap-25 justify-self-start">
+            <div
+              class="bg-label-orange-01 flex w-400 h-400 items-center justify-center aspect-square rounded-l-md"
+            >
+            </div>
+            <div
+              class="bg-label-orange-02 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-03 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-04 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-05 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+              <div class="w-200 h-200 bg-tone-neutral rounded-full"></div>
+            </div>
+            <div
+              class="bg-label-orange-06 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-07 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-08 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-09 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+              <div class="w-200 h-200 bg-tone-neutral-01 rounded-full"></div>
+            </div>
+            <div
+              class="bg-label-orange-10 flex w-400 h-400 items-center justify-center aspect-square rounded-r-md"
+            >
+            </div>
+            <div
+              class="bg-tone-neutral flex w-400 h-400 items-center justify-center aspect-square rounded-md"
+            >
+            </div>
+          </div>
+        </div>
+        <div class="grid gap-0 grid-cols-full">
+          <mds-text typography="caption"><b>Contrast ratio</b></mds-text>
+          <div class="flex items-center justify-start gap-200">
+            <mds-icon name="mi/outline/warning-amber" class="fill-status-warning-04"></mds-icon>
+            <mds-text typography="caption">4.2:1</mds-text>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-600">
+        <div class="grid gap-200">
+          <mds-badge
+            variant="orange"
+            tone="weak"
+            class="justify-self-start bg-label-orange-08 text-label-orange-05">badge weak</mds-badge
+          >
+          <div class="inline-flex gap-25 justify-self-start">
+            <div
+              class="bg-label-orange-01 flex w-400 h-400 items-center justify-center aspect-square rounded-l-md"
+            >
+            </div>
+            <div
+              class="bg-label-orange-02 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-03 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-04 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-05 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+              <div class="w-200 h-200 bg-tone-neutral rounded-full"></div>
+            </div>
+            <div
+              class="bg-label-orange-06 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-07 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-08 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+              <div class="w-200 h-200 bg-tone-neutral-01 rounded-full"></div>
+            </div>
+            <div
+              class="bg-label-orange-09 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-10 flex w-400 h-400 items-center justify-center aspect-square rounded-r-md"
+            >
+            </div>
+            <div
+              class="bg-tone-neutral flex w-400 h-400 items-center justify-center aspect-square rounded-md"
+            >
+            </div>
+          </div>
+        </div>
+        <div class="grid gap-0 grid-cols-full">
+          <mds-text typography="caption"><b>Contrast ratio</b></mds-text>
+          <div class="flex items-center justify-start gap-200">
+            <mds-icon name="mi/outline/warning-amber" class="fill-status-warning-04"></mds-icon>
+            <mds-text typography="caption">3.61:1</mds-text>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-600">
+        <div class="grid gap-200">
+          <mds-badge variant="orange" tone="ghost" class="justify-self-start text-label-orange-06"
+            >badge outline</mds-badge
+          >
+          <div class="inline-flex gap-25 justify-self-start">
+            <div
+              class="bg-label-orange-01 flex w-400 h-400 items-center justify-center aspect-square rounded-l-md"
+            >
+            </div>
+            <div
+              class="bg-label-orange-02 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-03 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-04 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-05 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-06 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+              <div class="w-200 h-200 bg-tone-neutral rounded-full"></div>
+            </div>
+            <div
+              class="bg-label-orange-07 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-08 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-09 flex w-400 h-400 items-center justify-center aspect-square"
+            >
+            </div>
+            <div
+              class="bg-label-orange-10 flex w-400 h-400 items-center justify-center aspect-square rounded-r-md"
+            >
+            </div>
+            <div
+              class="bg-tone-neutral flex w-400 h-400 items-center justify-center aspect-square rounded-md"
+            >
+              <div class="w-200 h-200 bg-tone-neutral-01 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+        <div class="grid gap-0 grid-cols-full">
+          <mds-text typography="caption"><b>Contrast ratio</b></mds-text>
+          <div class="flex items-center justify-start gap-200">
+            <mds-icon name="mi/outline/warning-amber" class="fill-status-warning-04"></mds-icon>
+            <mds-text typography="caption">3.3:1</mds-text>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Use accessible color contrast as a non-negotiable constraint.</UsageItem>
+  <UsageItem variant="dont">Rely on manual fixes after components are shipped.</UsageItem>
+  <UsageItem variant="do">Define focus, hover, and active states consistently.</UsageItem>
+  <UsageItem variant="dont">Leave interactive states undefined.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Component explorers">
+    <Brand name="storybook" label="Storybook" />
+    <Brand name="ladle" label="Ladle" />
+  </ProductCategory>
+  <ProductCategory title="Accessibility auditing">
+    <Brand name="axe-devtools" label="Axe DevTools" />
+    <Brand name="google-lighthouse" label="Lighthouse" />
+    <Brand
+      name="storybook"
+      label="a11y addon"
+      url="https://github.com/storybookjs/storybook/tree/next/code/addons/a11y"
+    />
+  </ProductCategory>
+</Products>
+
+<mds-hr class="h-50"></mds-hr>

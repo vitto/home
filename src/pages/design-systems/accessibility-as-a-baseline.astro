@@ -3,11 +3,13 @@ import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
 import data from '../../data/design-systems.json';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
-import Usage from '../../components/Usage.astro';
-import UsageItem from '../../components/UsageItem.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import DesignAccessibleByDefault from '../../components/use-cases/design-systems/accessibility-as-a-baseline/design-accessible-by-default.astro';
+import EncodeAccessibilityIntoComponents from '../../components/use-cases/design-systems/accessibility-as-a-baseline/encode-accessibility-into-components.astro';
+import TreatAccessibilityAsSystemConcern from '../../components/use-cases/design-systems/accessibility-as-a-baseline/treat-accessibility-as-system-concern.astro';
+import TestAndValidateContinuously from '../../components/use-cases/design-systems/accessibility-as-a-baseline/test-and-validate-continuously.astro';
 
 const principle = data.principles.find((p) => p.id === 'accessibility-as-a-baseline')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -38,70 +40,13 @@ When treated as a baseline, it becomes invisible, reliable, and scalable.
 ## Approach
 
 ---
-
-#### Design accessible by default
-
-Accessibility should be built into foundations and components from the start.
-    `}
+`}
     />
 
-    <Usage>
-      <UsageItem variant="do">
-        Use accessible color contrast as a non-negotiable constraint.
-      </UsageItem>
-      <UsageItem variant="dont">Rely on manual fixes after components are shipped.</UsageItem>
-      <UsageItem variant="do">Define focus, hover, and active states consistently.</UsageItem>
-      <UsageItem variant="dont">Leave interactive states undefined.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Encode accessibility into components
-
-Accessibility should be expressed through behavior, not documentation alone.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Bake ARIA roles and keyboard support into components.</UsageItem>
-      <UsageItem variant="dont">Expect consumers to add accessibility features manually.</UsageItem>
-      <UsageItem variant="do">Provide accessible defaults that work out of the box.</UsageItem>
-      <UsageItem variant="dont">
-        Ship components that require extra effort to be accessible.
-      </UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Treat accessibility as a system concern
-
-Accessibility issues multiply when handled at the product level.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Centralize accessibility patterns and decisions.</UsageItem>
-      <UsageItem variant="dont">
-        Solve the same accessibility problem in multiple products.
-      </UsageItem>
-      <UsageItem variant="do">Document accessibility guarantees per component.</UsageItem>
-      <UsageItem variant="dont">Leave accessibility expectations implicit.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Test and validate continuously
-
-Accessibility is not static and must be maintained over time.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Include keyboard and screen reader testing in reviews.</UsageItem>
-      <UsageItem variant="dont">Assume accessibility remains intact by default.</UsageItem>
-      <UsageItem variant="do">Use automated checks to catch regressions.</UsageItem>
-      <UsageItem variant="dont">Rely solely on manual audits.</UsageItem>
-    </Usage>
+    <DesignAccessibleByDefault />
+    <EncodeAccessibilityIntoComponents />
+    <TreatAccessibilityAsSystemConcern />
+    <TestAndValidateContinuously />
 
     <Markdown
       content={`

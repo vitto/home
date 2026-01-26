@@ -1,0 +1,23 @@
+---
+import UseCase from '../../../UseCase.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../../components/Markdown.astro';
+---
+
+<Markdown
+  content={`
+#### Treat accessibility as a system concern
+
+Accessibility issues multiply when handled at the product level.
+  `}
+/>
+
+<Usage>
+  <UsageItem variant="do">Centralize accessibility patterns and decisions.</UsageItem>
+  <UsageItem variant="dont">Solve the same accessibility problem in multiple products.</UsageItem>
+  <UsageItem variant="do">Document accessibility guarantees per component.</UsageItem>
+  <UsageItem variant="dont">Leave accessibility expectations implicit.</UsageItem>
+</Usage>
+
+<mds-hr class="h-50"></mds-hr>
