@@ -2,15 +2,16 @@
 import UseCase from '../../../UseCase.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
-import Markdown from '../../../../components/Markdown.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
 ---
 
-<Markdown
-  content={`
-#### Test and validate continuously
-
-Accessibility is not static and must be maintained over time.
-  `}
+<UseCase
+  title="Test and validate continuously"
+  description="Accessibility is not static and must be maintained over time."
 />
 
 <Usage>
@@ -20,4 +21,26 @@ Accessibility is not static and must be maintained over time.
   <UsageItem variant="dont">Rely solely on manual audits.</UsageItem>
 </Usage>
 
-<mds-hr class="h-50"></mds-hr>
+<Products>
+  <ProductCategory title="Automated checks">
+    <Brand name="axe-devtools" label="Axe DevTools" />
+    <Brand name="google-lighthouse" label="Lighthouse" />
+  </ProductCategory>
+  <ProductCategory title="Automated checks">
+    <Brand icon="mi/outline/accessibility" label="NVDA" url="https://www.nvaccess.org/" />
+    <Brand
+      name="apple"
+      label="VoceOver"
+      url="https://support.apple.com/guide/voiceover/welcome/mac"
+    />
+  </ProductCategory>
+  <ProductCategory title="CI integration di audit">
+    <Brand
+      name="github"
+      label="GitHub Actions + Axe/Lighthouse"
+      url="https://bolonio.medium.com/automating-the-accessibility-tests-of-your-source-code-with-github-actions-63590cdc6860"
+    />
+  </ProductCategory>
+</Products>
+
+<Separator />

@@ -3,15 +3,25 @@ import UseCase from '../../../UseCase.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import Markdown from '../../../../components/Markdown.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
 ---
 
-<Markdown
-  content={`
-#### Encode accessibility into components
-
-Accessibility should be expressed through behavior, not documentation alone.
-  `}
-/>
+<UseCase
+  title="Encode accessibility into components"
+  description="Accessibility should be expressed through behavior, not documentation alone."
+>
+  <UseCaseInteractive label="Keyboard navigation" overflowHidden={false} clsHeight={100}>
+    <mds-button data-use-keyboard-to-navigate>Use keyboard to navigate</mds-button>
+    <mds-keyboard try>
+      <mds-keyboard-key name="tab"></mds-keyboard-key>
+    </mds-keyboard>
+    <mds-dropdown target="[data-use-keyboard-to-navigate]">This is a dropdown menu.</mds-dropdown>
+  </UseCaseInteractive>
+</UseCase>
 
 <Usage>
   <UsageItem variant="do">Bake ARIA roles and keyboard support into components.</UsageItem>
@@ -20,4 +30,33 @@ Accessibility should be expressed through behavior, not documentation alone.
   <UsageItem variant="dont">Ship components that require extra effort to be accessible.</UsageItem>
 </Usage>
 
-<mds-hr class="h-50"></mds-hr>
+<Products>
+  <ProductCategory title="Accessibility patterns">
+    <Brand
+      icon="mi/outline/accessibility"
+      label="WAI-ARIA Authoring Practices"
+      url="https://www.w3.org/WAI/ARIA/apg/"
+    />
+  </ProductCategory>
+  <ProductCategory title="Screenreader support">
+    <Brand
+      icon="mi/outline/accessibility"
+      label="WAI-ARIA Basics"
+      url="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility/WAI-ARIA_basics"
+    />
+    <Brand
+      icon="mi/outline/accessibility"
+      label="WAI-ARIA Authoring Practices"
+      url="https://www.w3.org/WAI/ARIA/apg/"
+    />
+  </ProductCategory>
+  <ProductCategory title="Keyboard support">
+    <Brand
+      icon="mi/outline/keyboard"
+      label="Keyboard navigation"
+      url="https://www.accessibilitychecker.org/blog/keyboard-navigation-accessibility/"
+    />
+  </ProductCategory>
+</Products>
+
+<Separator />

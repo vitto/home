@@ -3,11 +3,15 @@ import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
 import data from '../../data/design-systems.json';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
-import Usage from '../../components/Usage.astro';
-import UsageItem from '../../components/UsageItem.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import ShippingUsableComponents from '../../components/use-cases/design-systems/adoption-over-perfection/shipping-usable-components.astro';
+import ProgressiveRefinement from '../../components/use-cases/design-systems/adoption-over-perfection/progressive-refinement.astro';
+import AcceptingInconsistencies from '../../components/use-cases/design-systems/adoption-over-perfection/accepting-inconsistencies.astro';
+import DocumentationOptimizedForFirstUse from '../../components/use-cases/design-systems/adoption-over-perfection/documentation-optimized-for-first-use.astro';
+import ReducingContributionFriction from '../../components/use-cases/design-systems/adoption-over-perfection/reducing-contribution-friction.astro';
+import MeasuringSuccessThroughUsage from '../../components/use-cases/design-systems/adoption-over-perfection/measuring-success-through-usage.astro';
 
 const principle = data.principles.find((p) => p.id === 'adoption-over-perfection')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -51,104 +55,15 @@ The system must be usable, approachable, and immediately helpful—even if that 
 ## Approach
 
 ---
-
-#### Shipping usable components before ideal abstractions
-
-Early system components are designed to solve concrete, recurring problems rather than to establish a perfectly generalized model.
 `}
     />
 
-    <Usage>
-      <UsageItem variant="do">Start from real use cases already present in the product.</UsageItem>
-      <UsageItem variant="dont">Delay release waiting for a complete abstraction.</UsageItem>
-      <UsageItem variant="do">Ship components that reduce immediate friction for teams.</UsageItem>
-      <UsageItem variant="dont">Design components in isolation from real product needs.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Progressive refinement instead of upfront completeness
-
-The system is allowed to grow iteratively as new needs emerged.
-`}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Release a minimal, stable API and evolve it based on usage.
-      </UsageItem>
-      <UsageItem variant="dont">Attempt to predict every single future requirement.</UsageItem>
-      <UsageItem variant="do">
-        Treat missing features as opportunities for informed iteration.
-      </UsageItem>
-      <UsageItem variant="dont">Block adoption due to incomplete coverage.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-  #### Accepting inconsistencies to enable onboarding
-
-  Some inconsistencies are tolerated temporarily to avoid breaking existing products or workflows.
-  `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Allow transitional states when migrating to the system.</UsageItem>
-      <UsageItem variant="dont">
-        Enforce strict compliance that blocks teams from adopting the system.
-      </UsageItem>
-      <UsageItem variant="do">Document known limitations and planned improvements.</UsageItem>
-      <UsageItem variant="dont">Introduce breaking changes prematurely.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-  #### Documentation optimized for first use, not completeness
-
-  Documentation is written to help teams succeed quickly rather than to describe the entire system exhaustively.
-  `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Focus on common scenarios and recommended paths.</UsageItem>
-      <UsageItem variant="dont">
-        Prioritize exhaustive reference documentation over practical guidance.
-      </UsageItem>
-      <UsageItem variant="do">Provide examples that teams can apply immediately.</UsageItem>
-      <UsageItem variant="dont">Assume deep system knowledge from new adopters.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-  #### Reducing contribution friction
-
-  Contribution processes were designed to encourage participation rather than enforce gatekeeping.
-  `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Lower the barrier to proposing changes or improvements.</UsageItem>
-      <UsageItem variant="dont">Require excessive upfront justification.</UsageItem>
-      <UsageItem variant="do">Make contribution paths visible and understandable.</UsageItem>
-      <UsageItem variant="dont">Treat contributions as exceptional events.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-  #### Measuring success through usage, not elegance
-
-  System success was evaluated based on real adoption and impact.
-  `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Observe how and where components are actually used.</UsageItem>
-      <UsageItem variant="dont">
-        Optimize for internal elegance without external validation.
-      </UsageItem>
-      <UsageItem variant="do">Use feedback to guide iteration and prioritization.</UsageItem>
-      <UsageItem variant="dont">Ignore usage data and qualitative feedback.</UsageItem>
-    </Usage>
+    <ShippingUsableComponents />
+    <ProgressiveRefinement />
+    <AcceptingInconsistencies />
+    <DocumentationOptimizedForFirstUse />
+    <ReducingContributionFriction />
+    <MeasuringSuccessThroughUsage />
 
     <Markdown
       content={`

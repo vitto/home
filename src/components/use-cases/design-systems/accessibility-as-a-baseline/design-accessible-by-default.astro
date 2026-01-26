@@ -4,6 +4,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import Markdown from '../../../../components/Markdown.astro';
+import Separator from '../../../../components/Separator.astro';
 import Brand from '../../../Brand.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
@@ -410,6 +411,11 @@ import Products from '../../../Products.astro';
   </ProductCategory>
   <ProductCategory title="Accessibility auditing">
     <Brand name="axe-devtools" label="Axe DevTools" />
+    <Brand
+      icon="mi/outline/palette"
+      label="Color contrast checker"
+      url="https://www.accessibility.build/tools/contrast-checker"
+    />
     <Brand name="google-lighthouse" label="Lighthouse" />
     <Brand
       name="storybook"
@@ -419,4 +425,4 @@ import Products from '../../../Products.astro';
   </ProductCategory>
 </Products>
 
-<mds-hr class="h-50"></mds-hr>
+<Separator />
