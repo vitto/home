@@ -13,7 +13,7 @@ interface Props {
 
 const {
   name = 'none',
-  icon = 'mi/outline/search',
+  icon,
   url: urlOverride,
   size = 'md',
   variant = 'light',
@@ -54,16 +54,20 @@ const variantClass = {
 ---
 
 {
-  name !== 'none' ? (
+  brandUrl ? (
     <a
       href={brandUrl}
       target="_blank"
       rel="noreferrer noopener"
       tabindex="0"
-      title={`Go to ${brand.name} website`}
+      title={`Go to ${icon ? label + ' source' : brand.name + ' website'}`}
       class={`inline-flex shrink-0 gap-200 items-center focus-bounce justify-center rounded-full no-underline ${variantClass} ${containerSizeClass} ${className}`}
     >
-      <img src={logoPath} alt={`${brand.name} logo`} class={logoSizeClass} />
+      {!icon ? (
+        <img src={logoPath} alt={`${brand.name} logo`} class={logoSizeClass} />
+      ) : (
+        <mds-icon name={icon} />
+      )}
       {label && (
         <mds-text typography="caption">
           <b>{label}</b>
@@ -74,7 +78,11 @@ const variantClass = {
     <div
       class={`inline-flex shrink-0 gap-200 items-center focus-bounce justify-center rounded-full ${containerSizeClass} ${className}`}
     >
-      <mds-icon name={icon} />
+      {!icon ? (
+        <img src={logoPath} alt={`${brand.name} logo`} class={logoSizeClass} />
+      ) : (
+        <mds-icon name={icon} />
+      )}
       {label && (
         <mds-text typography="caption">
           <b>{label}</b>

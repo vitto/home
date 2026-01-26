@@ -3,7 +3,7 @@
     "id": "none",
     "name": "Vittorio Vittori",
     "logo": "logo-vittorio-vittori.svg",
-    "url": "https://vitto.github.io/home/"
+    "url": ""
   },
   {
     "id": "storybook",
@@ -22,6 +22,12 @@
     "name": "Google Analytics",
     "logo": "logo-google-analytics.svg",
     "url": "https://analytics.google.com/"
+  },
+  {
+    "id": "google-forms",
+    "name": "Google Forms",
+    "logo": "logo-google-forms.svg",
+    "url": "https://forms.google.com/"
   },
   {
     "id": "changesets",
@@ -46,5 +52,53 @@
     "name": "Productboard",
     "logo": "logo-productboard.svg",
     "url": "https://productboard.com/"
+  },
+  {
+    "id": "typeform",
+    "name": "Typeform",
+    "logo": "logo-typeform.svg",
+    "url": "https://typeform.com/"
+  },
+  {
+    "id": "hotjar",
+    "name": "Hotjar",
+    "logo": "logo-hotjar.svg",
+    "url": "https://hotjar.com/"
+  },
+  {
+    "id": "survicate",
+    "name": "Survicate",
+    "logo": "logo-survicate.svg",
+    "url": "https://survicate.com/"
+  },
+  {
+    "id": "jira",
+    "name": "Jira",
+    "logo": "logo-jira.svg",
+    "url": "https://www.atlassian.com/software/jira"
+  },
+  {
+    "id": "linear",
+    "name": "Linear",
+    "logo": "logo-linear.svg",
+    "url": "https://linear.app/"
+  },
+  {
+    "id": "grafana",
+    "name": "Grafana",
+    "logo": "logo-grafana.svg",
+    "url": "https://grafana.com/"
+  },
+  {
+    "id": "looker-studio",
+    "name": "Looker Studio",
+    "logo": "logo-google-looker-studio.svg",
+    "url": "https://lookerstudio.google.com/"
+  },
+  {
+    "id": "notion",
+    "name": "Notion",
+    "logo": "logo-notion.svg",
+    "url": "https://notion.so/"
   }
 ]
