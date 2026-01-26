@@ -102,10 +102,10 @@
     "url": "https://notion.so/"
   },
   {
-    "id": "docsaurus",
-    "name": "Docsaurus",
-    "logo": "logo-docsaurus.svg",
-    "url": "https://docsaurus.io/"
+    "id": "docusaurus",
+    "name": "Docusaurus",
+    "logo": "logo-docusaurus.svg",
+    "url": "https://docusaurus.io/"
   },
   {
     "id": "confluence",
@@ -160,5 +160,35 @@
     "name": "Figma",
     "logo": "logo-figma.svg",
     "url": "https://figma.com/"
+  },
+  {
+    "id": "chromatic",
+    "name": "Chromatic",
+    "logo": "logo-chromatic.svg",
+    "url": "https://www.chromatic.com/"
+  },
+  {
+    "id": "percy",
+    "name": "Percy",
+    "logo": "logo-percy.svg",
+    "url": "https://www.percy.io/"
+  },
+  {
+    "id": "gatsby",
+    "name": "Gatsby",
+    "logo": "logo-gatsby.svg",
+    "url": "https://www.gatsbyjs.com/"
+  },
+  {
+    "id": "mozilla",
+    "name": "Mozilla",
+    "logo": "logo-mozilla.svg",
+    "url": "https://www.mozilla.org/"
+  },
+  {
+    "id": "npm",
+    "name": "npm",
+    "logo": "logo-npm.svg",
+    "url": "https://www.npmjs.com/"
   }
 ]
