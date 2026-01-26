@@ -100,5 +100,17 @@
     "name": "Notion",
     "logo": "logo-notion.svg",
     "url": "https://notion.so/"
+  },
+  {
+    "id": "docsaurus",
+    "name": "Docsaurus",
+    "logo": "logo-docsaurus.svg",
+    "url": "https://docsaurus.io/"
+  },
+  {
+    "id": "confluence",
+    "name": "Confluence",
+    "logo": "logo-confluence.svg",
+    "url": "https://www.atlassian.com/software/confluence"
   }
 ]

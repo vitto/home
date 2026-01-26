@@ -4,24 +4,15 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import Markdown from '../../../../components/Markdown.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
 ---
 
-<Markdown
-  content={`
-#### Close the feedback loop
-
-Feedback should inform decisions, not just sit in a backlog.
-`}
-/>
-
-<Usage>
-  <UsageItem variant="do">Regularly review feedback and usage data to inform roadmap.</UsageItem>
-  <UsageItem variant="dont">Collect feedback without integrating it into planning.</UsageItem>
-  <UsageItem variant="do">Share how feedback shaped system improvements.</UsageItem>
-  <UsageItem variant="dont">Make decisions in isolation from user needs.</UsageItem>
-</Usage>
-
-<UseCase>
+<UseCase
+  title="Close the feedback loop"
+  description="Feedback should inform decisions, not just sit in a backlog."
+>
   <UseCaseInteractive clsHeight={350} label="Feedback-driven roadmap">
     <div class="w-full max-w-12000 grid gap-400">
       <div class="grid gap-200">
@@ -62,3 +53,27 @@ Feedback should inform decisions, not just sit in a backlog.
     </div>
   </UseCaseInteractive>
 </UseCase>
+
+<Usage>
+  <UsageItem variant="do">Regularly review feedback and usage data to inform roadmap.</UsageItem>
+  <UsageItem variant="dont">Collect feedback without integrating it into planning.</UsageItem>
+  <UsageItem variant="do">Share how feedback shaped system improvements.</UsageItem>
+  <UsageItem variant="dont">Make decisions in isolation from user needs.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Documentation platforms">
+    <Brand name="storybook" label="Storybook" />
+    <Brand name="docsaurus" label="Docsaurus" />
+  </ProductCategory>
+  <ProductCategory title="Knowledge bases">
+    <Brand name="notion" label="Notion" />
+    <Brand name="confluence" label="Confluence" />
+  </ProductCategory>
+  <ProductCategory title="Review cadences">
+    <Brand icon="mi/outline/meeting-room" label="Sprint reviews" />
+    <Brand icon="mi/outline/today" label="Quarterly planning" />
+  </ProductCategory>
+</Products>
+
+<mds-hr class="h-50"></mds-hr>

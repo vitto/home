@@ -9,22 +9,10 @@ import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
 ---
 
-<Markdown
-  content={`
-#### Act on feedback visibly
-
-Teams need to see that their input leads to change.
-`}
-/>
-
-<Usage>
-  <UsageItem variant="do">Acknowledge feedback promptly and transparently.</UsageItem>
-  <UsageItem variant="dont">Collect feedback without responding or acting on it.</UsageItem>
-  <UsageItem variant="do">Communicate when and how feedback influenced decisions.</UsageItem>
-  <UsageItem variant="dont">Make changes without explaining the connection to feedback.</UsageItem>
-</Usage>
-
-<UseCase>
+<UseCase
+  title="Act on feedback visibly"
+  description="Teams need to see that their input leads to change."
+>
   <UseCaseInteractive clsHeight={300} label="Feedback acknowledgment and implementation">
     <div class="w-full max-w-12000 grid gap-400">
       <div class="grid gap-200">
@@ -74,6 +62,13 @@ Teams need to see that their input leads to change.
   </UseCaseInteractive>
 </UseCase>
 
+<Usage>
+  <UsageItem variant="do">Acknowledge feedback promptly and transparently.</UsageItem>
+  <UsageItem variant="dont">Collect feedback without responding or acting on it.</UsageItem>
+  <UsageItem variant="do">Communicate when and how feedback influenced decisions.</UsageItem>
+  <UsageItem variant="dont">Make changes without explaining the connection to feedback.</UsageItem>
+</Usage>
+
 <Products>
   <ProductCategory title="Changelogs">
     <Brand
@@ -97,3 +92,5 @@ Teams need to see that their input leads to change.
     <Brand icon="mi/outline/chat" label="Via chat" />
   </ProductCategory>
 </Products>
+
+<mds-hr class="h-50"></mds-hr>
