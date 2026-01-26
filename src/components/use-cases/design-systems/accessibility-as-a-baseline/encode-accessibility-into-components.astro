@@ -14,7 +14,15 @@ import Separator from '../../../../components/Separator.astro';
   title="Encode accessibility into components"
   description="Accessibility should be expressed through behavior, not documentation alone."
 >
-  <UseCaseInteractive label="Keyboard navigation" overflowHidden={false} clsHeight={100}>
+  <UseCaseInteractive
+    label="Keyboard navigation"
+    overflowHidden={false}
+    clsHeight={100}
+    articleId="encode-accessibility-into-components"
+    bugComponent="mds-keyboard-key"
+    bugCurrent="If the keyboard is used to navigate and enter key is pressed, the try keyboard combination fails instantly."
+    bugExpected="Once enter key is pressed, the try keyboard combination test should start listening."
+  >
     <mds-button data-use-keyboard-to-navigate>Use keyboard to navigate</mds-button>
     <mds-keyboard try>
       <mds-keyboard-key name="tab"></mds-keyboard-key>

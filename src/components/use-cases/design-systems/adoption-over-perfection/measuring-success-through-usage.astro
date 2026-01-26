@@ -1,28 +1,33 @@
 ---
-import UseCase from '../../../UseCase.astro';
-import Usage from '../../../Usage.astro';
-import UsageItem from '../../../UsageItem.astro';
-import Markdown from '../../../../components/Markdown.astro';
-import Separator from '../../../../components/Separator.astro';
-import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Brand from '../../../Brand.astro';
+import Markdown from '../../../../components/Markdown.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
-
-<Markdown
-  content={`
-#### Measuring success through usage, not elegance
-
-System success was evaluated based on real adoption and impact.
-  `}
-/>
 
 <UseCase
   title="Measuring success through usage, not elegance"
   description="System success was evaluated based on real adoption and impact."
 >
-  <UseCaseInteractive>[ example ]</UseCaseInteractive>
+  <UseCaseInteractive clsHeight={100} label="example">
+    <mds-list>
+      <mds-list-item
+        >Button/alert/form component già pronta per casi reali prima di generalizzare tutta la
+        libreria</mds-list-item
+      >
+      <mds-list-item
+        >UI pattern per header/footer rilasciati per onboarding progetti concreti</mds-list-item
+      >
+      <mds-list-item
+        >Componenti specifici per flussi ad alta frequenza (es. moduli login e ricerca)</mds-list-item
+      >
+    </mds-list>
+  </UseCaseInteractive>
 </UseCase>
 
 <Usage>
