@@ -130,5 +130,35 @@
     "name": "Ladle",
     "logo": "logo-ladle.svg",
     "url": "https://ladle.dev/"
+  },
+  {
+    "id": "apple",
+    "name": "Apple",
+    "logo": "logo-apple.svg",
+    "url": "https://apple.com/"
+  },
+  {
+    "id": "shopify",
+    "name": "Shopify",
+    "logo": "logo-shopify.svg",
+    "url": "https://shopify.dev/"
+  },
+  {
+    "id": "ibm",
+    "name": "IBM",
+    "logo": "logo-ibm.svg",
+    "url": "https://www.ibm.com/design/language/accessibility/overview"
+  },
+  {
+    "id": "zeroheight",
+    "name": "Zeroheight",
+    "logo": "logo-zeroheight.svg",
+    "url": "https://zeroheight.com/"
+  },
+  {
+    "id": "figma",
+    "name": "Figma",
+    "logo": "logo-figma.svg",
+    "url": "https://figma.com/"
   }
 ]
