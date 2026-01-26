@@ -9,16 +9,21 @@ const { title = 'Tools & services', class: className = '' } = Astro.props;
 
 <mds-accordion>
   <mds-accordion-item label={title}>
-    <mds-text typography="detail">A list of tools and services related to this argument.</mds-text>
-    <mds-table class="mt-600">
-      <mds-table-header>
-        <mds-table-header-cell label="What"></mds-table-header-cell>
-        <mds-table-header-cell label="Tools, services or approach"></mds-table-header-cell>
-      </mds-table-header>
-      <mds-table-body>
-        <slot />
-      </mds-table-body>
-    </mds-table>
-    <mds-badge class="mt-600" variant="warning" tone="weak">it may be outdated</mds-badge>
+    <div class="grid grid-cols-full gap-600">
+      <mds-text typography="detail">A list of tools and services related to this argument.</mds-text
+      >
+      <mds-table>
+        <mds-table-header>
+          <mds-table-header-cell label="What"></mds-table-header-cell>
+          <mds-table-header-cell label="Tools, services or approach"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          <slot />
+        </mds-table-body>
+      </mds-table>
+      <mds-badge class="justify-self-start" variant="warning" tone="weak"
+        >it may be outdated</mds-badge
+      >
+    </div>
   </mds-accordion-item>
 </mds-accordion>
