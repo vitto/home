@@ -13,7 +13,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <div class="w-full">
       <div class="grid gap-600" data-configuration-panel>
         <mds-text typography="h5">Configuration</mds-text>
-        <div class="grid grid-cols-2 gap-600">
+        <div class="grid grid-cols-2 mobile:grid-cols-1 gap-600">
           <div class="p-600 bg-tone-neutral-10 rounded-xl">
             <mds-text
               class="preview-title block min-h-auto leading-[1.35]"
@@ -27,7 +27,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
               >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</mds-text
             >
           </div>
-          <div class="grid gap-600">
+          <div class="grid gap-600 mobile:-order-1">
             <mds-text typography="h6">Typography</mds-text>
             <mds-input-range value={28} min={20} max={36} step={4} data-headings-range>
               Headings
@@ -48,7 +48,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <div class="w-full">
       <div class="grid gap-600" data-configuration-panel>
         <mds-text typography="h5">Configuration</mds-text>
-        <div class="grid grid-cols-2 gap-600">
+        <div class="grid grid-cols-2 mobile:grid-cols-1 gap-600">
           <div class="p-600 bg-tone-neutral-10 rounded-xl">
             <mds-text
               class="preview-title block min-h-auto leading-[1.35]"
@@ -62,7 +62,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
               >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</mds-text
             >
           </div>
-          <div class="grid gap-600">
+          <div class="grid gap-600 mobile:-order-1">
             <mds-text typography="h6">Typography</mds-text>
             <mds-input-range value={20} min={20} max={36} step={4} data-headings-range>
               Headings
