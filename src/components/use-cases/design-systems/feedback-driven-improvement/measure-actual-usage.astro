@@ -4,24 +4,15 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import Markdown from '../../../../components/Markdown.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
 ---
 
-<Markdown
-  content={`
-#### Measure actual usage
-
-Data reveals what teams really need, not just what they say they need.
-`}
-/>
-
-<Usage>
-  <UsageItem variant="do">Track component usage and adoption patterns.</UsageItem>
-  <UsageItem variant="dont">Assume all components are equally valuable.</UsageItem>
-  <UsageItem variant="do">Identify unused or underused components.</UsageItem>
-  <UsageItem variant="dont">Ignore metrics that suggest components aren't working.</UsageItem>
-</Usage>
-
-<UseCase>
+<UseCase
+  title="Measure actual usage"
+  description="Data reveals what teams really need, not just what they say they need."
+>
   <UseCaseInteractive clsHeight={250} label="Design system usage trends">
     <div class="w-full max-w-12000">
       <mds-table>
@@ -57,3 +48,27 @@ Data reveals what teams really need, not just what they say they need.
     </div>
   </UseCaseInteractive>
 </UseCase>
+
+<Usage>
+  <UsageItem variant="do">Track component usage and adoption patterns.</UsageItem>
+  <UsageItem variant="dont">Assume all components are equally valuable.</UsageItem>
+  <UsageItem variant="do">Identify unused or underused components.</UsageItem>
+  <UsageItem variant="dont">Ignore metrics that suggest components aren't working.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Analytics">
+    <Brand name="google-analytics" label="Google Analytics" />
+    <Brand name="amplitude" label="Amplitude" />
+  </ProductCategory>
+  <ProductCategory title="Design system analytics">
+    <Brand icon="mi/outline/monitor-heart" label="Custom telemetry" />
+    <Brand icon="mi/outline/analytics" label="Build-time analysis" />
+  </ProductCategory>
+  <ProductCategory title="Dashboards">
+    <Brand name="grafana" label="Grafana" />
+    <Brand name="looker-studio" label="Looker Studio" />
+  </ProductCategory>
+</Products>
+
+<mds-hr class="h-50"></mds-hr>

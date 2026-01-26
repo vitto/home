@@ -6,27 +6,17 @@ import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import Markdown from '../../../../components/Markdown.astro';
 import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
 ---
 
-<Markdown
-  content={`
-#### Collect feedback systematically
-
-Feedback should be easy to give and easy to process.
-`}
-/>
-
-<Usage>
-  <UsageItem variant="do">Provide clear channels for feedback (forms, issues, surveys).</UsageItem>
-  <UsageItem variant="dont">Rely solely on informal conversations or hallway chats.</UsageItem>
-  <UsageItem variant="do">Make feedback collection part of regular workflows.</UsageItem>
-  <UsageItem variant="dont">Wait for feedback to come to you.</UsageItem>
-</Usage>
-
-<UseCase id="collect-feedback-systematically-use-case">
+<UseCase
+  title="Collect feedback systematically"
+  description="Feedback should be easy to give and easy to process."
+>
   <UseCaseInteractive
     clsHeight={320}
-    articleId="collect-feedback-systematically-use-case"
+    articleId="collect-feedback-systematically"
     label="Collect feedback systematically"
     size="sm"
     contentClass="justify-center items-center"
@@ -96,3 +86,33 @@ Feedback should be easy to give and easy to process.
     </script>
   </UseCaseInteractive>
 </UseCase>
+
+<Usage>
+  <UsageItem variant="do">Provide clear channels for feedback (forms, issues, surveys).</UsageItem>
+  <UsageItem variant="dont">Rely solely on informal conversations or hallway chats.</UsageItem>
+  <UsageItem variant="do">Make feedback collection part of regular workflows.</UsageItem>
+  <UsageItem variant="dont">Wait for feedback to come to you.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Survey tools">
+    <Brand name="typeform" label="Typeform" />
+    <Brand name="google-forms" label="Google Forms" />
+  </ProductCategory>
+  <ProductCategory title="In-app feedback tools">
+    <Brand name="hotjar" label="Hotjar" />
+    <Brand name="survicate" label="Survicate" />
+  </ProductCategory>
+  <ProductCategory title="Issue tracking">
+    <Brand name="github" label="Github Issues" />
+    <Brand name="jira" label="Jira" />
+    <Brand name="linear" label="Linear" />
+  </ProductCategory>
+  <ProductCategory title="Customer support">
+    <Brand name="slack" label="Slack" />
+    <Brand icon="mi/outline/email" label="Via newsletter" />
+    <Brand icon="mi/outline/chat" label="Via chat" />
+  </ProductCategory>
+</Products>
+
+<mds-hr class="h-50"></mds-hr>
