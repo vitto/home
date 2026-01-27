@@ -190,5 +190,17 @@
     "name": "npm",
     "logo": "logo-npm.svg",
     "url": "https://www.npmjs.com/"
+  },
+  {
+    "id": "omlet",
+    "name": "Omlet",
+    "logo": "logo-omlet.svg",
+    "url": "https://omlet.dev/"
+  },
+  {
+    "id": "componly",
+    "name": "Componly",
+    "logo": "logo-componly.png",
+    "url": "https://www.componly.co/"
   }
 ]
