@@ -21,7 +21,7 @@ const { menu = true } = Astro.props;
 ---
 
 <div>
-  <header class="flex items-center gap-400 justify-between">
+  <header class="flex items-center gap-400 justify-between group">
     <div class="inline-flex items-center gap-400 pb-600">
       <a
         title="Back to Home"
@@ -32,7 +32,12 @@ const { menu = true } = Astro.props;
       </a>
       <div class="grid mobile:hidden">
         <h1 class="text-title-h3">
-          Vittori<span class="inline-block animate-pulse-more">o</span>
+          Vittori<span class="inline-block animate-pulse-more"
+            >o <span
+              class="group-hover:opacity-100 group-focus-visible:opacity-100 opacity-0 duration-1000 transition-opacity"
+              >Vittori</span
+            ></span
+          >
         </h1>
         <p class="text-info-caption">{personalData.role}</p>
       </div>
