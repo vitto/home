@@ -1,0 +1,21 @@
+{
+  "magma": {
+    "title": "Magma Design System",
+    "description": "Magma is a design system for building web applications. It is a collection of components, patterns, and guidelines that help you build consistent and beautiful web applications.",
+    "repository": "https://gitlab.com/maggiolispa/ricerca-sviluppo-new-media/magma/design-system",
+    "links": {
+      "components": "https://magma.maggiolicloud.it/storybook/",
+      "docs": "https://magma.maggiolicloud.it/",
+      "website": "https://magma.maggiolicloud.it/"
+    }
+  },
+  "iconsauce": {
+    "title": "Iconsauce",
+    "description": "Iconsauce is a library of icons for building web applications. It is a collection of icons that help you build consistent and beautiful web applications.",
+    "repository": "https://github.com/iconsauce/iconsauce",
+    "links": {
+      "docs": "https://github.com/iconsauce/docs/wiki",
+      "website": "https://iconsauce.github.io/docs/"
+    }
+  }
+}
