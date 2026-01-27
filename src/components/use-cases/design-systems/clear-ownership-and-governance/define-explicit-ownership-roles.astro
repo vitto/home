@@ -1,0 +1,116 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
+---
+
+<UseCase
+  title="Define explicit ownership roles"
+  description="Ownership must be visible and understood across teams."
+>
+  <UseCaseInteractive clsHeight={300} label="Component ownership matrix">
+    <div class="w-full max-w-12000">
+      <mds-table>
+        <mds-table-header>
+          <mds-table-header-cell label="Component"></mds-table-header-cell>
+          <mds-table-header-cell label="Owner"></mds-table-header-cell>
+          <mds-table-header-cell label="Reviewers"></mds-table-header-cell>
+          <mds-table-header-cell label="Status"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          <mds-table-row>
+            <mds-table-cell>
+              <mds-text typography="caption">mds-button</mds-text>
+            </mds-table-cell>
+            <mds-table-cell>
+              <mds-text typography="caption">Design System Team</mds-text>
+            </mds-table-cell>
+            <mds-table-cell>
+              <mds-text typography="caption">Design, Engineering, QA</mds-text>
+            </mds-table-cell>
+            <mds-table-cell>
+              <mds-badge variant="success" tone="ghost" size="sm">Active</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell>
+              <mds-text typography="caption">mds-input-field</mds-text>
+            </mds-table-cell>
+            <mds-table-cell>
+              <mds-text typography="caption">Forms Team</mds-text>
+            </mds-table-cell>
+            <mds-table-cell>
+              <mds-text typography="caption">Design System Team</mds-text>
+            </mds-table-cell>
+            <mds-table-cell>
+              <mds-badge variant="info" tone="ghost" size="sm">Maintained</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell>
+              <mds-text typography="caption">mds-table</mds-text>
+            </mds-table-cell>
+            <mds-table-cell>
+              <mds-text typography="caption">Data Platform Team</mds-text>
+            </mds-table-cell>
+            <mds-table-cell>
+              <mds-text typography="caption">Design System Team</mds-text>
+            </mds-table-cell>
+            <mds-table-cell>
+              <mds-badge variant="info" tone="ghost" size="sm">Maintained</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell>
+              <mds-text typography="caption">mds-typography</mds-text>
+            </mds-table-cell>
+            <mds-table-cell>
+              <mds-text typography="caption">Design System Team</mds-text>
+            </mds-table-cell>
+            <mds-table-cell>
+              <mds-text typography="caption">Design, Content</mds-text>
+            </mds-table-cell>
+            <mds-table-cell>
+              <mds-badge variant="success" tone="ghost" size="sm">Active</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+        </mds-table-body>
+      </mds-table>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">
+    Assign clear owners for foundations, components, and documentation.
+  </UsageItem>
+  <UsageItem variant="dont">Assume collective ownership without accountability.</UsageItem>
+  <UsageItem variant="do">Make ownership discoverable in documentation.</UsageItem>
+  <UsageItem variant="dont">Rely on informal or implicit responsibility.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Managing ownership">
+    <Brand
+      name="github"
+      label="Github Codeowners"
+      url="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners"
+    />
+    <Brand
+      name="figma"
+      label="Figma Teams"
+      url="https://www.figma.com/best-practices/team-file-organization/"
+    />
+  </ProductCategory>
+  <ProductCategory title="Documenting ownership">
+    <Brand name="notion" label="Notion" />
+    <Brand name="confluence" label="Confluence" />
+  </ProductCategory>
+</Products>
+
+<Separator />

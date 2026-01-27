@@ -1,0 +1,68 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
+import CodeSnippet from '../../../CodeSnippet.astro';
+import ActionCard from '../../ActionCard.astro';
+---
+
+<UseCase
+  title="Make contribution paths explicit"
+  description="A system that cannot be extended will eventually be bypassed."
+>
+  <UseCaseInteractive clsHeight={300} label="Contribution options">
+    <div class="w-full max-w-12000 grid gap-600">
+      <mds-text typography="h6">Ways to Contribute</mds-text>
+      <div class="grid gap-300 grid-cols-2 mobile:grid-cols-full">
+        <ActionCard
+          icon="mi/outline/bug-report"
+          iconColor="text-status-error-04"
+          title="Report a bug"
+          description="Use the bug report template to document issues"
+        />
+        <ActionCard
+          icon="mi/outline/lightbulb"
+          iconColor="text-status-warning-04"
+          title="Propose a feature"
+          description="Submit a feature request with at least one use cases"
+        />
+        <ActionCard
+          icon="mi/outline/edit"
+          iconColor="text-status-info-04"
+          title="Improve documentation"
+          description="Fix typos, add examples, clarify instructions"
+        />
+        <ActionCard
+          icon="mi/outline/code"
+          iconColor="text-status-success-04"
+          title="Submit code changes"
+          description="Follow the contribution guide and submit a PR"
+        />
+      </div>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Provide clear contribution guidelines and templates.</UsageItem>
+  <UsageItem variant="dont">Require insider knowledge to contribute.</UsageItem>
+  <UsageItem variant="do">Review contributions with cross-disciplinary input.</UsageItem>
+  <UsageItem variant="dont">Limit governance to a single function or role.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Templates">
+    <Brand name="github" label="GitHub templates" />
+    <Brand name="mozilla" label="CONTRIBUTING.md" />
+  </ProductCategory>
+  <ProductCategory title="Automation">
+    <Brand name="github" label="Automated CI checks" />
+  </ProductCategory>
+</Products>
+
+<Separator />

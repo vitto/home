@@ -1,0 +1,69 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
+---
+
+<UseCase
+  title="Semantic consistency over visual sameness"
+  description="Similar UI elements were aligned semantically rather than visually."
+>
+  <UseCaseInteractive clsHeight={400} label="Semantic alignment">
+    <div class="w-full max-w-12000 grid gap-600">
+      <div class="grid gap-400">
+        <mds-text typography="h6">Same meaning, different visual treatment</mds-text>
+        <div class="grid gap-400">
+          <div class="grid gap-200 p-400 bg-tone-neutral-09 rounded-md">
+            <mds-text typography="caption" class="font-semibold">Primary action (Card)</mds-text>
+            <mds-button variant="primary" tone="strong">Save changes</mds-button>
+            <mds-text typography="caption" class="text-balance">
+              Prominent button in card context
+            </mds-text>
+          </div>
+          <div class="grid gap-200 p-400 bg-tone-neutral-09 rounded-md">
+            <mds-text typography="caption" class="font-semibold">Primary action (Modal)</mds-text>
+            <mds-button variant="primary" tone="weak" size="sm">Save changes</mds-button>
+            <mds-text typography="caption" class="text-balance">
+              Subtle button in modal footer, same semantic meaning
+            </mds-text>
+          </div>
+        </div>
+      </div>
+      <mds-banner headline="Key insight" icon="mi/outline/info" variant="primary">
+        <mds-text typography="caption">
+          Both buttons represent the same action (save changes) and behave identically, but adapt
+          their visual weight to the surrounding layout hierarchy.
+        </mds-text>
+      </mds-banner>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">
+    Use the same component or pattern when the meaning and intent are the same.
+  </UsageItem>
+  <UsageItem variant="dont">
+    Create visually identical components with different meanings.
+  </UsageItem>
+  <UsageItem variant="do">
+    Let spacing, size, or hierarchy adapt to the surrounding layout.
+  </UsageItem>
+  <UsageItem variant="dont">Rely on appearance alone to communicate purpose.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Design tools">
+    <Brand name="figma" label="Figma" />
+  </ProductCategory>
+  <ProductCategory title="Documentation">
+    <Brand name="zeroheight" label="Zeroheight" />
+  </ProductCategory>
+</Products>
+
+<Separator />

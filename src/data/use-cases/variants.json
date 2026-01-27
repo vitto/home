@@ -1,0 +1,170 @@
+[
+  {
+    "variant": "primary",
+    "tone": "strong",
+    "intent": "Primary action",
+    "usage": "Main action in a flow, primary CTA, it's the highest visual emphasis for the most important action",
+    "comment": ""
+  },
+  {
+    "variant": "primary",
+    "tone": "weak",
+    "intent": "Primary action (subtle)",
+    "usage": "Primary action in contexts requiring less visual weight, maintains primary status with reduced emphasis",
+    "comment": ""
+  },
+  {
+    "variant": "primary",
+    "tone": "ghost",
+    "intent": "Primary action (minimal)",
+    "usage": "Primary action in dense layouts or secondary contexts, preserves primary semantics with minimal visual footprint",
+    "comment": "Ghost variant will be renamed to outline in the future"
+  },
+  {
+    "variant": "primary",
+    "tone": "quiet",
+    "intent": "Primary action (quiet)",
+    "usage": "Primary action in low-emphasis contexts or sidebars, subtle primary action for non-critical paths",
+    "comment": "Quiet variant will be renamed to text in the future"
+  },
+  {
+    "variant": "ai",
+    "tone": "strong",
+    "intent": "AI-powered action",
+    "usage": "Actions that leverage AI features or AI-generated content, distinct visual treatment for AI-enhanced functionality",
+    "comment": ""
+  },
+  {
+    "variant": "ai",
+    "tone": "weak",
+    "intent": "AI-powered action (subtle)",
+    "usage": "AI features in contexts requiring less emphasis, AI action with reduced visual weight",
+    "comment": ""
+  },
+  {
+    "variant": "ai",
+    "tone": "ghost",
+    "intent": "AI-powered action (minimal)",
+    "usage": "AI features in dense interfaces or secondary positions, minimal AI action indicator",
+    "comment": "Ghost variant will be renamed to outline in the future"
+  },
+  {
+    "variant": "ai",
+    "tone": "quiet",
+    "intent": "AI-powered action (quiet)",
+    "usage": "AI features in low-emphasis contexts, subtle AI action for background features",
+    "comment": "Quiet variant will be renamed to text in the future"
+  },
+  {
+    "variant": "error",
+    "tone": "strong",
+    "intent": "Destructive action",
+    "usage": "Delete, remove, or irreversible destructive actions, highest emphasis for dangerous or permanent actions",
+    "comment": ""
+  },
+  {
+    "variant": "error",
+    "tone": "weak",
+    "intent": "Destructive action (subtle)",
+    "usage": "Destructive actions in contexts requiring less emphasis, destructive action with reduced visual weight",
+    "comment": ""
+  },
+  {
+    "variant": "error",
+    "tone": "ghost",
+    "intent": "Destructive action (minimal)",
+    "usage": "Destructive actions in dense layouts or secondary contexts, minimal destructive action indicator",
+    "comment": "Ghost variant will be renamed to outline in the future"
+  },
+  {
+    "variant": "error",
+    "tone": "quiet",
+    "intent": "Destructive action (quiet)",
+    "usage": "Destructive actions in low-emphasis contexts, subtle destructive action for less critical removals",
+    "comment": "Quiet variant will be renamed to text in the future"
+  },
+  {
+    "variant": "info",
+    "tone": "strong",
+    "intent": "Informational action",
+    "usage": "Actions that provide information or guidance, clear emphasis for informational interactions",
+    "comment": ""
+  },
+  {
+    "variant": "info",
+    "tone": "weak",
+    "intent": "Informational action (subtle)",
+    "usage": "Informational actions in contexts requiring less emphasis, informational action with reduced visual weight",
+    "comment": ""
+  },
+  {
+    "variant": "info",
+    "tone": "ghost",
+    "intent": "Informational action (minimal)",
+    "usage": "Informational actions in dense interfaces or secondary positions, minimal informational action indicator",
+    "comment": "Ghost variant will be renamed to outline in the future"
+  },
+  {
+    "variant": "info",
+    "tone": "quiet",
+    "intent": "Informational action (quiet)",
+    "usage": "Informational actions in low-emphasis contexts, subtle informational action for background features",
+    "comment": "Quiet variant will be renamed to text in the future"
+  },
+  {
+    "variant": "success",
+    "tone": "strong",
+    "intent": "Success action",
+    "usage": "Actions that confirm success or positive outcomes, clear emphasis for successful or positive interactions",
+    "comment": ""
+  },
+  {
+    "variant": "success",
+    "tone": "weak",
+    "intent": "Success action (subtle)",
+    "usage": "Success actions in contexts requiring less emphasis, success action with reduced visual weight",
+    "comment": ""
+  },
+  {
+    "variant": "success",
+    "tone": "ghost",
+    "intent": "Success action (minimal)",
+    "usage": "Success actions in dense interfaces or secondary positions, minimal success action indicator",
+    "comment": "Ghost variant will be renamed to outline in the future"
+  },
+  {
+    "variant": "success",
+    "tone": "quiet",
+    "intent": "Success action (quiet)",
+    "usage": "Success actions in low-emphasis contexts, subtle success action for background confirmations",
+    "comment": "Quiet variant will be renamed to text in the future"
+  },
+  {
+    "variant": "warning",
+    "tone": "strong",
+    "intent": "Warning action",
+    "usage": "Actions that require caution or attention, clear emphasis for actions requiring user awareness",
+    "comment": ""
+  },
+  {
+    "variant": "warning",
+    "tone": "weak",
+    "intent": "Warning action (subtle)",
+    "usage": "Warning actions in contexts requiring less emphasis, warning action with reduced visual weight",
+    "comment": ""
+  },
+  {
+    "variant": "warning",
+    "tone": "ghost",
+    "intent": "Warning action (minimal)",
+    "usage": "Warning actions in dense interfaces or secondary positions, minimal warning action indicator",
+    "comment": "Ghost variant will be renamed to outline in the future"
+  },
+  {
+    "variant": "warning",
+    "tone": "quiet",
+    "intent": "Warning action (quiet)",
+    "usage": "Warning actions in low-emphasis contexts, subtle warning action for less critical alerts",
+    "comment": "Quiet variant will be renamed to text in the future"
+  }
+]

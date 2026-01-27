@@ -1,0 +1,85 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
+---
+
+<UseCase
+  title="Interaction patterns over pixel perfection"
+  description="User flows and interaction feedback were treated as the primary consistency surface."
+>
+  <UseCaseInteractive clsHeight={400} label="Consistent interaction patterns">
+    <div class="w-full max-w-12000 grid gap-600">
+      <div class="grid gap-400">
+        <mds-text typography="h6">Predictable interaction feedback</mds-text>
+        <div class="grid gap-400">
+          <div class="grid gap-200 p-400 bg-tone-neutral-09 rounded-md">
+            <mds-text typography="caption" class="font-semibold">Loading state</mds-text>
+            <mds-button variant="primary" tone="strong" disabled>
+              <mds-icon name="mi/outline/hourglass-empty" class="w-400 h-400"></mds-icon>
+              Processing...
+            </mds-button>
+            <mds-text typography="caption" class="text-balance">
+              Consistent loading feedback across all forms
+            </mds-text>
+          </div>
+          <div class="grid gap-200 p-400 bg-tone-neutral-09 rounded-md">
+            <mds-text typography="caption" class="font-semibold">Error state</mds-text>
+            <mds-input-field label="Email" error="Please enter a valid email address">
+              <mds-input type="email" placeholder="user@example.com" invalid></mds-input>
+            </mds-input-field>
+            <mds-text typography="caption" class="text-balance">
+              Same error pattern used throughout the system
+            </mds-text>
+          </div>
+          <div class="grid gap-200 p-400 bg-tone-neutral-09 rounded-md">
+            <mds-text typography="caption" class="font-semibold">Success state</mds-text>
+            <mds-push-notification-item
+              icon="mi/outline/check-circle"
+              message="Changes saved successfully"
+              variant="success"
+            >
+            </mds-push-notification-item>
+            <mds-text typography="caption" class="text-balance">
+              Consistent success feedback pattern
+            </mds-text>
+          </div>
+        </div>
+      </div>
+      <mds-banner headline="Key insight" icon="mi/outline/info" variant="primary">
+        <mds-text typography="caption">
+          Users learn these interaction patterns once and can apply that knowledge across the entire
+          product, regardless of visual differences.
+        </mds-text>
+      </mds-banner>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">
+    Keep loading states, errors, confirmations, and focus management predictable.
+  </UsageItem>
+  <UsageItem variant="dont">
+    Optimize for pixel-level alignment at the expense of interaction clarity.
+  </UsageItem>
+  <UsageItem variant="do">Optimize for learned behavior across the product.</UsageItem>
+  <UsageItem variant="dont">Change interaction models for aesthetic reasons.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Accessibility tools">
+    <Brand name="axe-devtools" label="Axe DevTools" />
+    <Brand name="google-lighthouse" label="Google Lighthouse" />
+  </ProductCategory>
+  <ProductCategory title="Testing">
+    <Brand name="chromatic" label="Chromatic" />
+  </ProductCategory>
+</Products>
+
+<Separator />

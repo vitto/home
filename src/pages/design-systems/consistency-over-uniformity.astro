@@ -3,11 +3,14 @@ import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
 import data from '../../data/design-systems.json';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
-import Usage from '../../components/Usage.astro';
-import UsageItem from '../../components/UsageItem.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import SharedBehaviorContextualPresentation from '../../components/use-cases/design-systems/consistency-over-uniformity/shared-behavior-contextual-presentation.astro';
+import SemanticConsistencyOverVisualSameness from '../../components/use-cases/design-systems/consistency-over-uniformity/semantic-consistency-over-visual-sameness.astro';
+import VariantSystemsWithClearIntent from '../../components/use-cases/design-systems/consistency-over-uniformity/variant-systems-with-clear-intent.astro';
+import ConsistentConstraintsAcrossFlexibleCompositions from '../../components/use-cases/design-systems/consistency-over-uniformity/consistent-constraints-across-flexible-compositions.astro';
+import InteractionPatternsOverPixelPerfection from '../../components/use-cases/design-systems/consistency-over-uniformity/interaction-patterns-over-pixel-perfection.astro';
 
 const principle = data.principles.find((p) => p.id === 'consistency-over-uniformity')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -46,104 +49,17 @@ The system defines **what must remain consistent** and **where variation is allo
 
     <Markdown
       content={`
-  ## Approach
+## Approach
 
-  ---
-
-  #### Shared behavior, contextual presentation
-
-  Components addressing similar needs were designed to behave consistently, even when their visual presentation differed based on context.
-    `}
+---
+`}
     />
 
-    <Usage>
-      <UsageItem variant="do">
-        Keep interaction patterns (focus, keyboard navigation, error handling) consistent.
-      </UsageItem>
-      <UsageItem variant="dont">
-        Force identical layouts when context changes user intent.
-      </UsageItem>
-      <UsageItem variant="do">
-        Allow visual adaptations when context requires different emphasis or density.
-      </UsageItem>
-      <UsageItem variant="dont">Redesign interaction logic for each visual variant.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-  #### Semantic consistency over visual sameness
-
-  Similar UI elements were aligned semantically rather than visually.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Use the same component or pattern when the meaning and intent are the same.
-      </UsageItem>
-      <UsageItem variant="dont">
-        Create visually identical components with different meanings.
-      </UsageItem>
-      <UsageItem variant="do">
-        Let spacing, size, or hierarchy adapt to the surrounding layout.
-      </UsageItem>
-      <UsageItem variant="dont">Rely on appearance alone to communicate purpose.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-  #### Variant systems with clear intent
-
-  Similar UI elements were aligned semantically rather than visually.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Define variants around intent (e.g. emphasis, hierarchy, feedback).
-      </UsageItem>
-      <UsageItem variant="dont">Introduce variants to satisfy isolated design needs.</UsageItem>
-      <UsageItem variant="do">Document when and why each variant should be used.</UsageItem>
-      <UsageItem variant="dont">Allow uncontrolled variant proliferation.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-  #### Consistent constraints across flexible compositions
-
-  Composable components were allowed to combine freely, but within shared constraints.
-  `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Enforce consistent spacing, alignment rules, and accessibility constraints.
-      </UsageItem>
-      <UsageItem variant="dont">Let composability turn into arbitrary assembly.</UsageItem>
-      <UsageItem variant="do">
-        Allow different compositions as long as constraints are respected.
-      </UsageItem>
-      <UsageItem variant="dont">Break system rules to achieve local visual balance.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-  #### Interaction patterns over pixel perfection
-
-  User flows and interaction feedback were treated as the primary consistency surface.
-  `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Keep loading states, errors, confirmations, and focus management predictable.
-      </UsageItem>
-      <UsageItem variant="dont">
-        Optimize for pixel-level alignment at the expense of interaction clarity.
-      </UsageItem>
-      <UsageItem variant="do">Optimize for learned behavior across the product.</UsageItem>
-      <UsageItem variant="dont">Change interaction models for aesthetic reasons.</UsageItem>
-    </Usage>
+    <SharedBehaviorContextualPresentation />
+    <SemanticConsistencyOverVisualSameness />
+    <VariantSystemsWithClearIntent />
+    <ConsistentConstraintsAcrossFlexibleCompositions />
+    <InteractionPatternsOverPixelPerfection />
   </article>
 
   <Bibliography

@@ -3,11 +3,13 @@ import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
 import data from '../../data/design-systems.json';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
-import Usage from '../../components/Usage.astro';
-import UsageItem from '../../components/UsageItem.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import DefineExplicitOwnershipRoles from '../../components/use-cases/design-systems/clear-ownership-and-governance/define-explicit-ownership-roles.astro';
+import EstablishDecisionMakingProcesses from '../../components/use-cases/design-systems/clear-ownership-and-governance/establish-decision-making-processes.astro';
+import BalanceControlAndAutonomy from '../../components/use-cases/design-systems/clear-ownership-and-governance/balance-control-and-autonomy.astro';
+import MakeContributionPathsExplicit from '../../components/use-cases/design-systems/clear-ownership-and-governance/make-contribution-paths-explicit.astro';
 
 const principle = data.principles.find((p) => p.id === 'clear-ownership-and-governance')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -34,73 +36,10 @@ and the system becomes a source of friction instead of alignment.
     `}
     />
 
-    <Markdown
-      content={`
-## Approach
-
----
-
-#### Define explicit ownership roles
-
-Ownership must be visible and understood across teams.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Assign clear owners for foundations, components, and documentation.
-      </UsageItem>
-      <UsageItem variant="dont">Assume collective ownership without accountability.</UsageItem>
-      <UsageItem variant="do">Make ownership discoverable in documentation.</UsageItem>
-      <UsageItem variant="dont">Rely on informal or implicit responsibility.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Establish decision-making processes
-
-Governance is about enabling decisions, not blocking them.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Define how changes are proposed, reviewed, and approved.</UsageItem>
-      <UsageItem variant="dont">Handle decisions ad hoc or in private channels.</UsageItem>
-      <UsageItem variant="do">Document acceptance criteria and design principles.</UsageItem>
-      <UsageItem variant="dont">Approve changes without shared evaluation standards.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Balance control and autonomy
-
-Strong governance creates alignment without centralizing every decision.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Centralize decisions that affect system-wide consistency.</UsageItem>
-      <UsageItem variant="dont">Micro-manage local or contextual adaptations.</UsageItem>
-      <UsageItem variant="do">
-        Allow teams to extend the system within defined boundaries.
-      </UsageItem>
-      <UsageItem variant="dont">Force one-size-fits-all solutions.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Make contribution paths explicit
-
-A system that cannot be extended will eventually be bypassed.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Provide clear contribution guidelines and templates.</UsageItem>
-      <UsageItem variant="dont">Require insider knowledge to contribute.</UsageItem>
-      <UsageItem variant="do">Review contributions with cross-disciplinary input.</UsageItem>
-      <UsageItem variant="dont">Limit governance to a single function or role.</UsageItem>
-    </Usage>
+    <DefineExplicitOwnershipRoles />
+    <EstablishDecisionMakingProcesses />
+    <BalanceControlAndAutonomy />
+    <MakeContributionPathsExplicit />
 
     <Markdown
       content={`

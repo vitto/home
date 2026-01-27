@@ -1,0 +1,76 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
+---
+
+<UseCase
+  title="Establish decision-making processes"
+  description="Governance is about enabling decisions, not blocking them."
+>
+  <UseCaseInteractive clsHeight={400} label="Decision workflow">
+    <div class="w-full max-w-12000 grid gap-600">
+      <div class="grid gap-400">
+        <mds-text typography="h6">Proposal Process</mds-text>
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-badge variant="info" tone="weak" size="sm">1</mds-badge>
+            <mds-text typography="caption">Create issue with proposal template</mds-text>
+          </div>
+          <div class="flex items-center gap-200">
+            <mds-badge variant="info" tone="weak" size="sm">2</mds-badge>
+            <mds-text typography="caption">Gather feedback from stakeholders</mds-text>
+          </div>
+          <div class="flex items-center gap-200">
+            <mds-badge variant="info" tone="weak" size="sm">3</mds-badge>
+            <mds-text typography="caption">Design review (if design change)</mds-text>
+          </div>
+          <div class="flex items-center gap-200">
+            <mds-badge variant="info" tone="weak" size="sm">4</mds-badge>
+            <mds-text typography="caption">Technical review (if code change)</mds-text>
+          </div>
+          <div class="flex items-center gap-200">
+            <mds-badge variant="success" tone="weak" size="sm">5</mds-badge>
+            <mds-text typography="caption">Approval from component owner</mds-text>
+          </div>
+        </div>
+      </div>
+      <mds-hr class="w-full h-50 bg-tone-neutral-09"></mds-hr>
+      <div class="grid gap-400">
+        <mds-text typography="h6">Acceptance Criteria</mds-text>
+        <div class="grid gap-200">
+          <mds-text typography="caption">✓ Aligns with design principles</mds-text>
+          <mds-text typography="caption">✓ Accessible (WCAG 2.1 AA minimum)</mds-text>
+          <mds-text typography="caption">✓ Documented with examples</mds-text>
+          <mds-text typography="caption">✓ Tested across browsers</mds-text>
+          <mds-text typography="caption">✓ Backward compatible or migration path provided</mds-text>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Define how changes are proposed, reviewed, and approved.</UsageItem>
+  <UsageItem variant="dont">Handle decisions ad hoc or in private channels.</UsageItem>
+  <UsageItem variant="do">Document acceptance criteria and design principles.</UsageItem>
+  <UsageItem variant="dont">Approve changes without shared evaluation standards.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Issue tracking">
+    <Brand name="github" label="GitHub" />
+    <Brand name="jira" label="Jira" />
+    <Brand name="linear" label="Linear" />
+  </ProductCategory>
+  <ProductCategory title="Communication tools">
+    <Brand name="slack" label="Slack" />
+  </ProductCategory>
+</Products>
+
+<Separator />

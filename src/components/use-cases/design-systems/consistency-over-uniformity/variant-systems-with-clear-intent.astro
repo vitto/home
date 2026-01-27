@@ -1,0 +1,137 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
+import variantsData from '../../../../data/use-cases/variants.json';
+
+// Capitalize first letter for button label
+const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
+
+// Get unique variants (remove duplicates)
+const uniqueVariants = [...new Set(variantsData.map((v) => v.variant))];
+
+// Group variants by variant name
+const variantsByType = uniqueVariants.map((variant) => ({
+  variant,
+  items: variantsData.filter((v) => v.variant === variant),
+}));
+
+// Default selected variant
+const defaultVariant = uniqueVariants[0];
+---
+
+<UseCase
+  title="Variant systems with clear intent"
+  description="Variants were defined around intent (e.g. emphasis, hierarchy, feedback) rather than isolated design needs."
+>
+  <UseCaseInteractive clsHeight={400} label="Variant system">
+    <div class="w-full max-w-12000 grid gap-600">
+      <div class="grid gap-400">
+        <div class="flex items-center gap-200 justify-between">
+          <mds-text typography="h6">Button variants organized by intent</mds-text>
+          <mds-input-select id="variant-select" value={defaultVariant}>
+            {
+              uniqueVariants.map((variant) => (
+                <option value={variant}>{capitalize(variant)}</option>
+              ))
+            }
+          </mds-input-select>
+        </div>
+        {
+          variantsByType.map(({ variant, items }) => (
+            <mds-table
+              id={`variant-table-${variant}`}
+              class={variant === defaultVariant ? '' : 'hidden'}
+            >
+              <mds-table-header>
+                <mds-table-header-cell label="Variant" />
+                <mds-table-header-cell label="Intent" />
+                <mds-table-header-cell label="Usage" />
+              </mds-table-header>
+              <mds-table-body>
+                {items.map((item) => (
+                  <mds-table-row>
+                    <mds-table-cell class="min-w-2800">
+                      <mds-button class="w-full" variant={item.variant} tone={item.tone} size="sm">
+                        {capitalize(item.variant)}
+                      </mds-button>
+                    </mds-table-cell>
+                    <mds-table-cell class="min-w-2800">
+                      <mds-text
+                        typography="caption"
+                        class={`whitespace-nowrap ${item.comment ? 'cursor-help' : ''}`}
+                        title={item.comment}
+                      >
+                        {capitalize(item.tone)}
+                      </mds-text>
+                    </mds-table-cell>
+                    <mds-table-cell class="w-full">
+                      <mds-text typography="caption">{item.usage}</mds-text>
+                    </mds-table-cell>
+                  </mds-table-row>
+                ))}
+              </mds-table-body>
+            </mds-table>
+          ))
+        }
+      </div>
+      <script define:vars={{ uniqueVariants }}>
+        function initVariantSelect() {
+          const select = document.getElementById('variant-select');
+          if (!select) return;
+
+          select.addEventListener('mdsInputSelectChange', (event) => {
+            const customEvent = event;
+            const selectedVariant = customEvent.detail?.value || select.value;
+
+            // Hide all tables
+            uniqueVariants.forEach((variant) => {
+              const table = document.getElementById(`variant-table-${variant}`);
+              if (table) {
+                table.classList.add('hidden');
+              }
+            });
+
+            // Show selected table
+            const selectedTable = document.getElementById(`variant-table-${selectedVariant}`);
+            if (selectedTable) {
+              selectedTable.classList.remove('hidden');
+            }
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initVariantSelect);
+        } else {
+          initVariantSelect();
+        }
+      </script>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">
+    Define variants around intent (e.g. emphasis, hierarchy, feedback).
+  </UsageItem>
+  <UsageItem variant="dont">Introduce variants to satisfy isolated design needs.</UsageItem>
+  <UsageItem variant="do">Document when and why each variant should be used.</UsageItem>
+  <UsageItem variant="dont">Allow uncontrolled variant proliferation.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Documentation">
+    <Brand name="zeroheight" label="Zeroheight" />
+    <Brand name="docusaurus" label="Docusaurus" />
+  </ProductCategory>
+  <ProductCategory title="Design tools as documentation">
+    <Brand name="figma" label="Figma" />
+  </ProductCategory>
+</Products>
+
+<Separator />
