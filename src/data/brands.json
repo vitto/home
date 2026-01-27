@@ -202,5 +202,11 @@
     "name": "Componly",
     "logo": "logo-componly.png",
     "url": "https://www.componly.co/"
+  },
+  {
+    "id": "amazon",
+    "name": "Amazon",
+    "logo": "logo-amazon.svg",
+    "url": "https://www.amazon.com/"
   }
 ]
