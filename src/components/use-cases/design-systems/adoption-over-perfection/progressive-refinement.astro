@@ -25,167 +25,176 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
           <mds-table-header-cell label="Type"></mds-table-header-cell>
           <mds-table-header-cell label="Changes"></mds-table-header-cell>
         </mds-table-header>
-        <mds-table-row>
-          <mds-table-cell class="w-3200"
-            ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
-            ></mds-table-cell
-          >
-          <mds-table-cell class="w-2400"
-            ><mds-badge class="whitespace-nowrap" variant="blue" tone="weak">style</mds-badge
-            ></mds-table-cell
-          >
-          <mds-table-cell class="w-full"
-            ><mds-text class="whitespace-nowrap" typography="caption"
-              >Fix wrong typography line height</mds-text
-            ></mds-table-cell
-          >
-        </mds-table-row>
-        <mds-table-row>
-          <mds-table-cell
-            ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
-            ></mds-table-cell
-          >
-          <mds-table-cell
-            ><mds-badge class="whitespace-nowrap" variant="info" tone="weak">feat</mds-badge
-            ></mds-table-cell
-          >
-          <mds-table-cell
-            ><mds-text class="whitespace-nowrap" typography="caption">Add new variant</mds-text
-            ></mds-table-cell
-          >
-        </mds-table-row>
+        <mds-table-body>
+          <mds-table-row>
+            <mds-table-cell class="w-3200"
+              ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
+              ></mds-table-cell
+            >
+            <mds-table-cell class="w-2400"
+              ><mds-badge class="whitespace-nowrap" variant="blue" tone="weak">style</mds-badge
+              ></mds-table-cell
+            >
+            <mds-table-cell class="w-full"
+              ><mds-text class="whitespace-nowrap" typography="caption"
+                >Fix wrong typography line height</mds-text
+              ></mds-table-cell
+            >
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell
+              ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
+              ></mds-table-cell
+            >
+            <mds-table-cell
+              ><mds-badge class="whitespace-nowrap" variant="info" tone="weak">feat</mds-badge
+              ></mds-table-cell
+            >
+            <mds-table-cell
+              ><mds-text class="whitespace-nowrap" typography="caption">Add new variant</mds-text
+              ></mds-table-cell
+            >
+          </mds-table-row>
+        </mds-table-body>
+      </mds-table>
+      <div class="flex items-baseline justify-start gap-200">
+        <mds-text typography="h5" tag="div">Magma v1.4.9</mds-text>
+        <mds-text typography="caption">2 days ago</mds-text>
+      </div>
+      <mds-table>
+        <mds-table-header>
+          <mds-table-header-cell label="Component"></mds-table-header-cell>
+          <mds-table-header-cell label="Type"></mds-table-header-cell>
+          <mds-table-header-cell label="Changes"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          <mds-table-row>
+            <mds-table-cell class="w-3200"
+              ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
+              ></mds-table-cell
+            >
+            <mds-table-cell class="w-2800"
+              ><mds-badge class="whitespace-nowrap" variant="warning" tone="weak">fix</mds-badge
+              ></mds-table-cell
+            >
+            <mds-table-cell class="w-full"
+              ><mds-text class="whitespace-nowrap" typography="caption"
+                >Event onMdsButtonClick now dispatching event with button value correctly</mds-text
+              ></mds-table-cell
+            >
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell
+              ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
+              ></mds-table-cell
+            >
+            <mds-table-cell
+              ><mds-badge class="whitespace-nowrap" variant="warning" tone="weak">fix</mds-badge
+              ></mds-table-cell
+            >
+            <mds-table-cell
+              ><mds-text class="whitespace-nowrap" typography="caption"
+                >slot triggers event correctly</mds-text
+              ></mds-table-cell
+            >
+          </mds-table-row>
+        </mds-table-body>
       </mds-table>
     </div>
-    <div class="flex items-baseline justify-start gap-200">
-      <mds-text typography="h5" tag="div">Magma v1.4.9</mds-text>
-      <mds-text typography="caption">2 days ago</mds-text>
+    <div class="grid gap-600 grid-cols-full w-full">
+      <div class="flex items-baseline justify-start gap-200">
+        <mds-text typography="h5" tag="div">Magma v6.0.0</mds-text>
+        <mds-text typography="caption">Yesterday</mds-text>
+      </div>
+      <mds-table>
+        <mds-table-header>
+          <mds-table-header-cell label="Component"></mds-table-header-cell>
+          <mds-table-header-cell label="Type"></mds-table-header-cell>
+          <mds-table-header-cell label="Changes"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          <mds-table-row>
+            <mds-table-cell class="w-3200"
+              ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
+              ></mds-table-cell
+            >
+            <mds-table-cell class="w-2400"
+              ><mds-badge class="whitespace-nowrap" variant="error" tone="strong">change</mds-badge
+              ></mds-table-cell
+            >
+            <mds-table-cell class="w-full"
+              ><mds-text class="whitespace-nowrap" typography="caption"
+                >Variant ghost is renamed to outline</mds-text
+              ></mds-table-cell
+            >
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell
+              ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
+              ></mds-table-cell
+            >
+            <mds-table-cell
+              ><mds-badge class="whitespace-nowrap" variant="error" tone="strong">change</mds-badge
+              ></mds-table-cell
+            >
+            <mds-table-cell
+              ><mds-text class="whitespace-nowrap" typography="caption"
+                >Removed attribute at-full-width</mds-text
+              ></mds-table-cell
+            >
+          </mds-table-row>
+        </mds-table-body>
+      </mds-table>
+      <div class="flex items-center justify-start gap-400">
+        <mds-text typography="h5" tag="div">Magma v5.0.0</mds-text>
+        <div
+          class="inline-flex items-center justify-start gap-100 text-status-warning-04 fill-status-warning-04 bg-status-warning-09 rounded-md px-200"
+        >
+          <mds-icon name="mi/baseline/warning-amber" class="w-400 h-400"></mds-icon>
+          <mds-text typography="caption">1 year ago</mds-text>
+        </div>
+      </div>
+      <mds-table>
+        <mds-table-header>
+          <mds-table-header-cell label="Component"></mds-table-header-cell>
+          <mds-table-header-cell label="Type"></mds-table-header-cell>
+          <mds-table-header-cell label="Changes"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          <mds-table-row>
+            <mds-table-cell class="w-3200"
+              ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
+              ></mds-table-cell
+            >
+            <mds-table-cell class="w-2400"
+              ><mds-badge class="whitespace-nowrap" variant="error" tone="strong">change</mds-badge
+              ></mds-table-cell
+            >
+            <mds-table-cell class="w-full"
+              ><mds-text class="whitespace-nowrap" typography="caption"
+                >Event onMdsButtonClicked is renamed to onMdsButtonClick</mds-text
+              ></mds-table-cell
+            >
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell
+              ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
+              ></mds-table-cell
+            >
+            <mds-table-cell
+              ><mds-badge class="whitespace-nowrap" variant="error" tone="strong">change</mds-badge
+              ></mds-table-cell
+            >
+            <mds-table-cell
+              ><mds-text class="whitespace-nowrap" typography="caption"
+                >Attribute animate is removed</mds-text
+              ></mds-table-cell
+            >
+          </mds-table-row>
+        </mds-table-body>
+      </mds-table>
     </div>
-    <mds-table>
-      <mds-table-header>
-        <mds-table-header-cell label="Component"></mds-table-header-cell>
-        <mds-table-header-cell label="Type"></mds-table-header-cell>
-        <mds-table-header-cell label="Changes"></mds-table-header-cell>
-      </mds-table-header>
-      <mds-table-body>
-        <mds-table-row>
-          <mds-table-cell class="w-3200"
-            ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
-            ></mds-table-cell
-          >
-          <mds-table-cell class="w-2800"
-            ><mds-badge class="whitespace-nowrap" variant="warning" tone="weak">fix</mds-badge
-            ></mds-table-cell
-          >
-          <mds-table-cell class="w-full"
-            ><mds-text class="whitespace-nowrap" typography="caption"
-              >Event onMdsButtonClick now dispatching event with button value correctly</mds-text
-            ></mds-table-cell
-          >
-        </mds-table-row>
-        <mds-table-row>
-          <mds-table-cell
-            ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
-            ></mds-table-cell
-          >
-          <mds-table-cell
-            ><mds-badge class="whitespace-nowrap" variant="warning" tone="weak">fix</mds-badge
-            ></mds-table-cell
-          >
-          <mds-table-cell
-            ><mds-text class="whitespace-nowrap" typography="caption"
-              >slot triggers event correctly</mds-text
-            ></mds-table-cell
-          >
-        </mds-table-row>
-      </mds-table-body>
-    </mds-table>
   </UseCaseInteractive>
-  <div class="grid gap-600 grid-cols-full w-full">
-    <div class="flex items-baseline justify-start gap-200">
-      <mds-text typography="h5" tag="div">Magma v6.0.0</mds-text>
-      <mds-text typography="caption">Yesterday</mds-text>
-    </div>
-    <mds-table>
-      <mds-table-header>
-        <mds-table-header-cell label="Component"></mds-table-header-cell>
-        <mds-table-header-cell label="Type"></mds-table-header-cell>
-        <mds-table-header-cell label="Changes"></mds-table-header-cell>
-      </mds-table-header>
-      <mds-table-row>
-        <mds-table-cell class="w-3200"
-          ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
-          ></mds-table-cell
-        >
-        <mds-table-cell class="w-2400"
-          ><mds-badge class="whitespace-nowrap" variant="error" tone="strong">change</mds-badge
-          ></mds-table-cell
-        >
-        <mds-table-cell class="w-full"
-          ><mds-text class="whitespace-nowrap" typography="caption"
-            >Variant ghost is renamed to outline</mds-text
-          ></mds-table-cell
-        >
-      </mds-table-row>
-      <mds-table-row>
-        <mds-table-cell
-          ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
-          ></mds-table-cell
-        >
-        <mds-table-cell
-          ><mds-badge class="whitespace-nowrap" variant="error" tone="strong">change</mds-badge
-          ></mds-table-cell
-        >
-        <mds-table-cell
-          ><mds-text class="whitespace-nowrap" typography="caption"
-            >Removed attribute at-full-width</mds-text
-          ></mds-table-cell
-        >
-      </mds-table-row>
-    </mds-table>
-  </div>
-  <div class="flex items-baseline justify-start gap-200">
-    <mds-text typography="h5" tag="div">Magma v5.0.0</mds-text>
-    <mds-text typography="caption">1 year ago</mds-text>
-  </div>
-  <mds-table>
-    <mds-table-header>
-      <mds-table-header-cell label="Component"></mds-table-header-cell>
-      <mds-table-header-cell label="Type"></mds-table-header-cell>
-      <mds-table-header-cell label="Changes"></mds-table-header-cell>
-    </mds-table-header>
-    <mds-table-body>
-      <mds-table-row>
-        <mds-table-cell class="w-3200"
-          ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
-          ></mds-table-cell
-        >
-        <mds-table-cell class="w-2400"
-          ><mds-badge class="whitespace-nowrap" variant="error" tone="strong">change</mds-badge
-          ></mds-table-cell
-        >
-        <mds-table-cell class="w-full"
-          ><mds-text class="whitespace-nowrap" typography="caption"
-            >Event onMdsButtonClicked is renamed to onMdsButtonClick</mds-text
-          ></mds-table-cell
-        >
-      </mds-table-row>
-      <mds-table-row>
-        <mds-table-cell
-          ><mds-text class="whitespace-nowrap" typography="caption">mds-button</mds-text
-          ></mds-table-cell
-        >
-        <mds-table-cell
-          ><mds-badge class="whitespace-nowrap" variant="error" tone="strong">change</mds-badge
-          ></mds-table-cell
-        >
-        <mds-table-cell
-          ><mds-text class="whitespace-nowrap" typography="caption"
-            >Attribute animate is removed</mds-text
-          ></mds-table-cell
-        >
-      </mds-table-row>
-    </mds-table-body>
-  </mds-table>
 </UseCase>
 
 <Usage>

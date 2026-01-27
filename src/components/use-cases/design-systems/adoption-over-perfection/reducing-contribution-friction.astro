@@ -7,19 +7,41 @@ import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import CodeSnippet from '../../../CodeSnippet.astro';
 ---
 
 <UseCase
   title="Reducing contribution friction"
   description="Contribution processes were designed to encourage participation rather than enforce gatekeeping."
 >
-  <UseCaseInteractive>
-    <mds-list>
-      <mds-list-item>Esempi UI di patch/PR per componenti incrementali</mds-list-item>
-      <mds-list-item>UI con template di issue/PR per contributi rapidi</mds-list-item>
-      <mds-list-item>Librerie di componenti con esempi di modifica live</mds-list-item>
-    </mds-list>
-  </UseCaseInteractive>
+  <CodeSnippet
+    title="Issue and Merge Request Templates"
+    code={`.gitlab
+  - issue_templates
+    - Default.md
+    - Accessibility.md
+    - Bug.md
+    - Documentation.md
+    - Feature.md
+    - Performance.md
+    - Refactor.md
+    - Security.md
+    - Style.md
+    - Test.md
+  - merge_request_templates
+    - Default.md
+    - Accessibility.md
+    - Bug.md
+    - Documentation.md
+    - Feature.md
+    - Performance.md
+    - Refactor.md
+    - Security.md
+    - Style.md
+    - Test.md
+  ...
+`}
+  />
 </UseCase>
 
 <Usage>

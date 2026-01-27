@@ -8,19 +8,38 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Brand from '../../../Brand.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
+import CodeSnippet from '../../../CodeSnippet.astro';
 ---
 
 <UseCase
   title="Accepting inconsistencies to enable onboarding"
   description="Some inconsistencies are tolerated temporarily to avoid breaking existing products or workflows."
 >
-  <UseCaseInteractive>
-    <mds-list>
-      <mds-list-item>UI kit con componenti che funzionano in contesti legacy</mds-list-item>
-      <mds-list-item>Versioni “bridge” di pattern per vecchi sistemi UI</mds-list-item>
-      <mds-list-item>Esempi di integrazione con codice esistente</mds-list-item>
-    </mds-list>
-  </UseCaseInteractive>
+  <CodeSnippet
+    title="If you are using React"
+    code={`<!--
+  In react options are not treated
+  with its standard attributes,
+  this breaks the component
+-->
+<MdsInputSelect>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</MdsInputSelect>
+
+<!--
+  Use the web-component directly
+  even if it doesn't benefit from
+  the react wrapper
+-->
+<mds-input-select>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</mds-input-select>
+`}
+  />
 </UseCase>
 
 <Usage>

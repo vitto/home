@@ -14,19 +14,68 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Measuring success through usage, not elegance"
   description="System success was evaluated based on real adoption and impact."
 >
-  <UseCaseInteractive clsHeight={100} label="example">
-    <mds-list>
-      <mds-list-item
-        >Button/alert/form component già pronta per casi reali prima di generalizzare tutta la
-        libreria</mds-list-item
-      >
-      <mds-list-item
-        >UI pattern per header/footer rilasciati per onboarding progetti concreti</mds-list-item
-      >
-      <mds-list-item
-        >Componenti specifici per flussi ad alta frequenza (es. moduli login e ricerca)</mds-list-item
-      >
-    </mds-list>
+  <UseCaseInteractive clsHeight={350} label="Component adoption metrics">
+    <div class="w-full max-w-12000 grid gap-400">
+      <mds-table>
+        <mds-table-header>
+          <mds-table-header-cell label="Component" sortable></mds-table-header-cell>
+          <mds-table-header-cell label="Teams adoption" sortable></mds-table-header-cell>
+          <mds-table-header-cell label="Status"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          <mds-table-row>
+            <mds-table-cell class="align-middle">
+              <mds-text typography="caption">mds-button</mds-text>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle" value="95">
+              <mds-benchmark-bar value="95" variant="success">24 out of 25</mds-benchmark-bar>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle">
+              <mds-badge variant="success" tone="ghost" size="sm">High impact</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell class="align-middle">
+              <mds-text typography="caption">mds-input-field</mds-text>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle" value="88">
+              <mds-benchmark-bar value="88" variant="success">22 out of 25</mds-benchmark-bar>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle">
+              <mds-badge variant="success" tone="ghost" size="sm">High impact</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell class="align-middle">
+              <mds-text typography="caption">mds-accordion</mds-text>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle" value="72">
+              <mds-benchmark-bar value="72" variant="warning">18 out of 25</mds-benchmark-bar>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle">
+              <mds-badge variant="info" tone="ghost" size="sm">Growing</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+          <mds-table-row>
+            <mds-table-cell class="align-middle">
+              <mds-text typography="caption">mds-bibliography</mds-text>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle" value="4">
+              <mds-benchmark-bar value="4" variant="error">1 out of 25</mds-benchmark-bar>
+            </mds-table-cell>
+            <mds-table-cell class="align-middle">
+              <mds-badge variant="error" tone="ghost" size="sm">Low usage</mds-badge>
+            </mds-table-cell>
+          </mds-table-row>
+        </mds-table-body>
+      </mds-table>
+      <mds-banner headline="Key insight" icon="mi/outline/lightbulb" variant="primary">
+        <mds-text typography="caption">
+          Simple, frequently-used components like <code>mds-button</code> drive more value than elegant
+          but rarely-used components like <code>mds-bibliography</code>.
+        </mds-text>
+      </mds-banner>
+    </div>
   </UseCaseInteractive>
 </UseCase>
 
@@ -39,12 +88,13 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 
 <Products>
   <ProductCategory title="Metrics">
+    <Brand name="omlet" label="Omlet" />
+    <Brand name="componly" label="Componly" />
     <Brand
       icon="mi/outline/analytics"
       label="Design system metrics"
       url="https://thedesignsystem.guide/design-system-metrics"
     />
-    <Brand name="npm" label="Usage analytics" url="https://npmtrends.com/tailwindcss" />
   </ProductCategory>
 </Products>
 
