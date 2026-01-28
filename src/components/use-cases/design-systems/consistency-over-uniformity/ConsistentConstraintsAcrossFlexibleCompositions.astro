@@ -1,0 +1,55 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
+---
+
+<UseCase
+  title="Consistent design language constraints across flexible compositions"
+  description="Composable components are allowed to combine freely, but within shared constraints."
+>
+  <UseCaseInteractive clsHeight={72} label="Flexible compositions" multiple>
+    <div class="w-full max-w-8000 grid gap-600">
+      <mds-input-field label="subscribe to our newsletter">
+        <mds-input type="email" placeholder="Ex: user@example.com"></mds-input>
+        <mds-button icon="mi/baseline/send" size="lg"></mds-button>
+      </mds-input-field>
+    </div>
+    <div class="w-full max-w-9600 grid gap-600">
+      <mds-banner headline="Subscribe to our newsletter" icon="mi/outline/email" variant="primary">
+        <mds-text typography="caption">
+          You'll receive updates about our products and services.
+        </mds-text>
+        <mds-input type="email" placeholder="Ex: user@example.com"></mds-input>
+        <mds-button slot="action" icon="mi/baseline/send">Subscribe now</mds-button>
+      </mds-banner>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">
+    Enforce consistent spacing, alignment rules, and accessibility constraints.
+  </UsageItem>
+  <UsageItem variant="dont">Let composability turn into arbitrary assembly.</UsageItem>
+  <UsageItem variant="do">
+    Allow different compositions as long as constraints are respected.
+  </UsageItem>
+  <UsageItem variant="dont">Break system rules to achieve local visual balance.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Design tokens">
+    <Brand name="amazon" label="Style Dictionary" url="https://styledictionary.com/" />
+  </ProductCategory>
+  <ProductCategory title="Component libraries">
+    <Brand name="storybook" label="Storybook" />
+  </ProductCategory>
+</Products>
+
+<Separator />
