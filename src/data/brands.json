@@ -208,5 +208,17 @@
     "name": "Amazon",
     "logo": "logo-amazon.svg",
     "url": "https://www.amazon.com/"
+  },
+  {
+    "id": "eslint",
+    "name": "ESLint",
+    "logo": "logo-eslint.svg",
+    "url": "https://eslint.org/"
+  },
+  {
+    "id": "typescript",
+    "name": "TypeScript",
+    "logo": "logo-typescript.svg",
+    "url": "https://www.typescriptlang.org/"
   }
 ]
