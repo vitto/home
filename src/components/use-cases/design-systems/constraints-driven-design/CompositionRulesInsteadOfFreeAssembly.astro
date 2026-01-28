@@ -1,0 +1,20 @@
+---
+import UseCase from '../../../UseCase.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Separator from '../../../../components/Separator.astro';
+---
+
+<UseCase
+  title="Composition rules instead of free assembly"
+  description="Composable components were governed by explicit composition rules."
+/>
+
+<Usage>
+  <UsageItem variant="do">Define which components can be nested or combined.</UsageItem>
+  <UsageItem variant="dont">Allow unrestricted component nesting.</UsageItem>
+  <UsageItem variant="do">Document supported compositions and known anti-patterns.</UsageItem>
+  <UsageItem variant="dont">Rely on visual review to catch invalid compositions.</UsageItem>
+</Usage>
+
+<Separator />

@@ -1,0 +1,38 @@
+---
+import UseCase from '../../../UseCase.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Separator from '../../../../components/Separator.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+---
+
+<UseCase
+  title="Limited and intentional component APIs"
+  description="Components were designed with intentionally constrained APIs to prevent misuse and uncontrolled variation."
+/>
+
+<Usage>
+  <UsageItem variant="do">
+    Expose only properties that support known and validated use cases.
+  </UsageItem>
+  <UsageItem variant="dont">Add configuration options to solve isolated problems.</UsageItem>
+  <UsageItem variant="do">
+    Treat every new prop as a design decision with long-term impact.
+  </UsageItem>
+  <UsageItem variant="dont">
+    Turn components into generic containers with unlimited flexibility.
+  </UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Curated component APIs">
+    <Brand name="eslint" label="ESLint" />
+  </ProductCategory>
+  <ProductCategory title="Robust API design">
+    <Brand name="typescript" label="TypeScript" />
+  </ProductCategory>
+</Products>
+
+<Separator />

@@ -1,0 +1,22 @@
+---
+import UseCase from '../../../UseCase.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Separator from '../../../../components/Separator.astro';
+---
+
+<UseCase
+  title="System-level defaults over local overrides"
+  description="Defaults were treated as part of the system's contract."
+/>
+
+<Usage>
+  <UsageItem variant="do">
+    Provide strong, opinionated defaults aligned with system goals.
+  </UsageItem>
+  <UsageItem variant="dont">Encourage local overrides for stylistic reasons.</UsageItem>
+  <UsageItem variant="do">Encourage teams to rely on defaults instead of customization.</UsageItem>
+  <UsageItem variant="dont">Allow silent deviations from system behavior.</UsageItem>
+</Usage>
+
+<Separator />

@@ -1,0 +1,22 @@
+---
+import UseCase from '../../../UseCase.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Separator from '../../../../components/Separator.astro';
+---
+
+<UseCase
+  title="Accessibility constraints as non-negotiable"
+  description="Accessibility requirements were encoded as hard constraints rather than guidelines."
+/>
+
+<Usage>
+  <UsageItem variant="do">
+    Enforce color contrast, focus management, and keyboard navigation by default.
+  </UsageItem>
+  <UsageItem variant="dont">Allow opt-out accessibility features.</UsageItem>
+  <UsageItem variant="do">Prevent configurations that violate accessibility standards.</UsageItem>
+  <UsageItem variant="dont">Treat accessibility as a downstream responsibility.</UsageItem>
+</Usage>
+
+<Separator />

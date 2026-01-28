@@ -3,11 +3,15 @@ import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
 import data from '../../data/design-systems.json';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
-import Usage from '../../components/Usage.astro';
-import UsageItem from '../../components/UsageItem.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import LimitedAndIntentionalComponentApis from '../../components/use-cases/design-systems/constraints-driven-design/LimitedAndIntentionalComponentApis.astro';
+import DesignTokensAsEnforcedBoundaries from '../../components/use-cases/design-systems/constraints-driven-design/DesignTokensAsEnforcedBoundaries.astro';
+import CompositionRulesInsteadOfFreeAssembly from '../../components/use-cases/design-systems/constraints-driven-design/CompositionRulesInsteadOfFreeAssembly.astro';
+import AccessibilityConstraintsAsNonNegotiable from '../../components/use-cases/design-systems/constraints-driven-design/AccessibilityConstraintsAsNonNegotiable.astro';
+import SystemLevelDefaultsOverLocalOverrides from '../../components/use-cases/design-systems/constraints-driven-design/SystemLevelDefaultsOverLocalOverrides.astro';
+import ExplicitOutOfScopeDecisions from '../../components/use-cases/design-systems/constraints-driven-design/ExplicitOutOfScopeDecisions.astro';
 
 const principle = data.principles.find((p) => p.id === 'constraints-driven-design')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -50,112 +54,15 @@ It defines not only what is possible, but also what is intentionally unsupported
 ## Approach
 
 ---
-
-#### Limited and intentional component APIs
-
-Components were designed with intentionally constrained APIs to prevent misuse and uncontrolled variation.
       `}
     />
 
-    <Usage>
-      <UsageItem variant="do">
-        Expose only properties that support known and validated use cases.
-      </UsageItem>
-      <UsageItem variant="dont">Add configuration options to solve isolated problems.</UsageItem>
-      <UsageItem variant="do">
-        Treat every new prop as a design decision with long-term impact.
-      </UsageItem>
-      <UsageItem variant="dont">
-        Turn components into generic containers with unlimited flexibility.
-      </UsageItem>
-    </Usage>
-    <Markdown
-      content={`
-#### Design tokens as enforced boundaries
-
-Design tokens were used to encode visual constraints directly into the system.
-      `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Use tokens to control spacing, color, typography, and motion.
-      </UsageItem>
-      <UsageItem variant="dont">Allow arbitrary values outside the token set.</UsageItem>
-      <UsageItem variant="do">
-        Make tokens the only supported way to express system values.
-      </UsageItem>
-      <UsageItem variant="dont">Treat tokens as optional or decorative abstractions.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Composition rules instead of free assembly
-
-Composable components were governed by explicit composition rules.
-      `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Define which components can be nested or combined.</UsageItem>
-      <UsageItem variant="dont">Allow unrestricted component nesting.</UsageItem>
-      <UsageItem variant="do">Document supported compositions and known anti-patterns.</UsageItem>
-      <UsageItem variant="dont">Rely on visual review to catch invalid compositions.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Accessibility constraints as non-negotiable
-
-  Accessibility requirements were encoded as hard constraints rather than guidelines.
-  `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Enforce color contrast, focus management, and keyboard navigation by default.
-      </UsageItem>
-      <UsageItem variant="dont">Allow opt-out accessibility features.</UsageItem>
-      <UsageItem variant="do">
-        Prevent configurations that violate accessibility standards.
-      </UsageItem>
-      <UsageItem variant="dont">Treat accessibility as a downstream responsibility.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### System-level defaults over local overrides
-
-Defaults were treated as part of the system’s contract.
-  `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Provide strong, opinionated defaults aligned with system goals.
-      </UsageItem>
-      <UsageItem variant="dont">Encourage local overrides for stylistic reasons.</UsageItem>
-      <UsageItem variant="do">
-        Encourage teams to rely on defaults instead of customization.
-      </UsageItem>
-      <UsageItem variant="dont">Allow silent deviations from system behavior.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Explicit “out of scope” decisions
-
-Some use cases were intentionally excluded from the system.`}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Clearly document what the system does not support.</UsageItem>
-      <UsageItem variant="dont">Attempt to cover every possible scenario.</UsageItem>
-      <UsageItem variant="do">Use exclusions to protect system integrity.</UsageItem>
-      <UsageItem variant="dont">
-        Expand the system reactively without evaluating systemic impact.
-      </UsageItem>
-    </Usage>
+    <LimitedAndIntentionalComponentApis />
+    <DesignTokensAsEnforcedBoundaries />
+    <CompositionRulesInsteadOfFreeAssembly />
+    <AccessibilityConstraintsAsNonNegotiable />
+    <SystemLevelDefaultsOverLocalOverrides />
+    <ExplicitOutOfScopeDecisions />
 
     <Markdown
       content={`

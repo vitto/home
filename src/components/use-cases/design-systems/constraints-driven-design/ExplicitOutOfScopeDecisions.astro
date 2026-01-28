@@ -1,0 +1,22 @@
+---
+import UseCase from '../../../UseCase.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Separator from '../../../../components/Separator.astro';
+---
+
+<UseCase
+  title='Explicit "out of scope" decisions'
+  description="Some use cases were intentionally excluded from the system."
+/>
+
+<Usage>
+  <UsageItem variant="do">Clearly document what the system does not support.</UsageItem>
+  <UsageItem variant="dont">Attempt to cover every possible scenario.</UsageItem>
+  <UsageItem variant="do">Use exclusions to protect system integrity.</UsageItem>
+  <UsageItem variant="dont">
+    Expand the system reactively without evaluating systemic impact.
+  </UsageItem>
+</Usage>
+
+<Separator />

@@ -1,0 +1,20 @@
+---
+import UseCase from '../../../UseCase.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Separator from '../../../../components/Separator.astro';
+---
+
+<UseCase
+  title="Design tokens as enforced boundaries"
+  description="Design tokens were used to encode visual constraints directly into the system."
+/>
+
+<Usage>
+  <UsageItem variant="do">Use tokens to control spacing, color, typography, and motion.</UsageItem>
+  <UsageItem variant="dont">Allow arbitrary values outside the token set.</UsageItem>
+  <UsageItem variant="do">Make tokens the only supported way to express system values.</UsageItem>
+  <UsageItem variant="dont">Treat tokens as optional or decorative abstractions.</UsageItem>
+</Usage>
+
+<Separator />
