@@ -13,34 +13,31 @@ import Separator from '../../../../components/Separator.astro';
   title="Semantic consistency over visual sameness"
   description="Similar UI elements were aligned semantically rather than visually."
 >
-  <UseCaseInteractive clsHeight={400} label="Semantic alignment">
-    <div class="w-full max-w-12000 grid gap-600">
-      <div class="grid gap-400">
-        <mds-text typography="h6">Same meaning, different visual treatment</mds-text>
-        <div class="grid gap-400">
-          <div class="grid gap-200 p-400 bg-tone-neutral-09 rounded-md">
-            <mds-text typography="caption" class="font-semibold">Primary action (Card)</mds-text>
-            <mds-button variant="primary" tone="strong">Save changes</mds-button>
-            <mds-text typography="caption" class="text-balance">
-              Prominent button in card context
-            </mds-text>
-          </div>
-          <div class="grid gap-200 p-400 bg-tone-neutral-09 rounded-md">
-            <mds-text typography="caption" class="font-semibold">Primary action (Modal)</mds-text>
-            <mds-button variant="primary" tone="weak" size="sm">Save changes</mds-button>
-            <mds-text typography="caption" class="text-balance">
-              Subtle button in modal footer, same semantic meaning
-            </mds-text>
-          </div>
-        </div>
-      </div>
-      <mds-banner headline="Key insight" icon="mi/outline/info" variant="primary">
-        <mds-text typography="caption">
-          Both buttons represent the same action (save changes) and behave identically, but adapt
-          their visual weight to the surrounding layout hierarchy.
-        </mds-text>
-      </mds-banner>
-    </div>
+  <UseCaseInteractive clsHeight={400} label="Semantic alignment" toggle>
+    <mds-banner
+      class="w-full max-w-9600"
+      headline="Semantic consistency"
+      icon="mi/outline/done"
+      variant="primary"
+    >
+      <mds-text typography="caption">
+        Different meanings should be represented by different component's variants.
+      </mds-text>
+      <mds-button variant="dark" tone="quiet" slot="action">Cancel</mds-button>
+      <mds-button variant="primary" tone="strong" slot="action">Save changes</mds-button>
+    </mds-banner>
+    <mds-banner
+      class="w-full max-w-9600"
+      headline="Visual sameness"
+      icon="mi/outline/close"
+      variant="primary"
+    >
+      <mds-text typography="caption">
+        Different meanings should be represented by different component's variants.
+      </mds-text>
+      <mds-button variant="primary" tone="strong" slot="action">Cancel</mds-button>
+      <mds-button variant="primary" tone="strong" slot="action">Save changes</mds-button>
+    </mds-banner>
   </UseCaseInteractive>
 </UseCase>
 

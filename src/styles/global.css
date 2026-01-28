@@ -83,6 +83,59 @@ mds-push-notification-item[data-avatar]::part(picture) {
   border-radius: 1000px;
 }
 
+mds-button[variant='dark'][tone='quiet'] {
+  &:hover,
+  &:focus-visible {
+    background-color: rgb(var(--tone-neutral-09));
+  }
+}
+
+mds-button[variant='primary'][tone='quiet'] {
+  &:hover,
+  &:focus-visible {
+    background-color: rgb(var(--variant-primary-09));
+  }
+}
+
+mds-button[variant='ai'][tone='quiet'] {
+  &:hover,
+  &:focus-visible {
+    background-color: rgb(var(--variant-ai-09));
+  }
+}
+
+mds-button[variant='error'][tone='quiet'] {
+  &:hover,
+  &:focus-visible {
+    background-color: rgb(var(--status-error-09));
+  }
+}
+
+mds-button {
+  --mds-button-border-default-opacity: 0.2;
+}
+
+mds-button[variant='success'][tone='quiet'] {
+  &:hover,
+  &:focus-visible {
+    background-color: rgb(var(--status-success-09));
+  }
+}
+
+mds-button[variant='info'][tone='quiet'] {
+  &:hover,
+  &:focus-visible {
+    background-color: rgb(var(--status-info-09));
+  }
+}
+
+mds-button[variant='warning'][tone='quiet'] {
+  &:hover,
+  &:focus-visible {
+    background-color: rgb(var(--status-warning-09));
+  }
+}
+
 mds-usage {
   min-height: 92px;
   /* justify-content: center; */
