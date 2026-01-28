@@ -1,6 +1,10 @@
 ---
 import Button from './Button.astro';
 import Icon from './Icon.astro';
+import categoriesData from '../data/categories.json';
+import designSystemsData from '../data/design-systems.json';
+import userCenteredDesignData from '../data/user-centered-design.json';
+import haxPrinciplesData from '../data/hax-principles.json';
 
 interface Props {
   baseUrl: string;
@@ -11,48 +15,167 @@ interface Props {
 
 const { baseUrl, currentPrincipleId, sectionPath, allPrinciples } = Astro.props;
 
+// Map section paths to their data
+const sectionDataMap: Record<string, { principles: Array<{ id: string; title: string }> }> = {
+  '/design-systems': designSystemsData,
+  '/user-centered-design': userCenteredDesignData,
+  '/hax-principles': haxPrinciplesData,
+};
+
+// Get all sections in order
+const allSections = categoriesData.map((cat) => cat.path);
+const currentSectionIndex = allSections.findIndex((path) => path === sectionPath);
+
 // Sort principles alphabetically by title
 const sortedPrinciples = [...allPrinciples].sort((a, b) => a.title.localeCompare(b.title));
 
 // Find current principle index in sorted array
 const currentIndex = sortedPrinciples.findIndex((p) => p.id === currentPrincipleId);
 
-// Calculate previous and next principle based on alphabetical order
-const prevPrinciple = currentIndex > 0 ? sortedPrinciples[currentIndex - 1] : null;
-const nextPrinciple =
+// Get current principle
+const currentPrinciple = sortedPrinciples[currentIndex];
+
+// Calculate page numbers (1-based)
+const currentPage = currentIndex + 1;
+const totalPages = sortedPrinciples.length;
+
+// Calculate percentage
+const percentage = Math.round((currentPage / totalPages) * 100);
+
+// Calculate previous and next principle within current section
+let prevPrinciple = currentIndex > 0 ? sortedPrinciples[currentIndex - 1] : null;
+let prevSectionPath = sectionPath;
+let nextPrinciple =
   currentIndex < sortedPrinciples.length - 1 ? sortedPrinciples[currentIndex + 1] : null;
+let nextSectionPath = sectionPath;
+
+// If at first page, try to get last principle from previous section (or wrap to last section)
+if (currentIndex === 0) {
+  if (currentSectionIndex > 0) {
+    // Go to previous section's last page
+    const targetSectionPath = allSections[currentSectionIndex - 1];
+    const targetSectionData = sectionDataMap[targetSectionPath];
+    if (targetSectionData && targetSectionData.principles.length > 0) {
+      const targetSectionSorted = [...targetSectionData.principles].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+      prevPrinciple = targetSectionSorted[targetSectionSorted.length - 1];
+      prevSectionPath = targetSectionPath;
+    }
+  } else {
+    // Wrap to last section's last page
+    const targetSectionPath = allSections[allSections.length - 1];
+    const targetSectionData = sectionDataMap[targetSectionPath];
+    if (targetSectionData && targetSectionData.principles.length > 0) {
+      const targetSectionSorted = [...targetSectionData.principles].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+      prevPrinciple = targetSectionSorted[targetSectionSorted.length - 1];
+      prevSectionPath = targetSectionPath;
+    }
+  }
+}
+
+// If at last page, try to get first principle from next section (or wrap to first section)
+if (currentIndex === sortedPrinciples.length - 1) {
+  if (currentSectionIndex < allSections.length - 1) {
+    // Go to next section's first page
+    const targetSectionPath = allSections[currentSectionIndex + 1];
+    const targetSectionData = sectionDataMap[targetSectionPath];
+    if (targetSectionData && targetSectionData.principles.length > 0) {
+      const targetSectionSorted = [...targetSectionData.principles].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+      nextPrinciple = targetSectionSorted[0];
+      nextSectionPath = targetSectionPath;
+    }
+  } else {
+    // Wrap to first section's first page
+    const targetSectionPath = allSections[0];
+    const targetSectionData = sectionDataMap[targetSectionPath];
+    if (targetSectionData && targetSectionData.principles.length > 0) {
+      const targetSectionSorted = [...targetSectionData.principles].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+      nextPrinciple = targetSectionSorted[0];
+      nextSectionPath = targetSectionPath;
+    }
+  }
+}
 
 // Build URLs
-const prevUrl = prevPrinciple ? `${baseUrl}${sectionPath}/${prevPrinciple.id}` : null;
-const nextUrl = nextPrinciple ? `${baseUrl}${sectionPath}/${nextPrinciple.id}` : null;
+const prevUrl = prevPrinciple ? `${baseUrl}${prevSectionPath}/${prevPrinciple.id}` : null;
+const nextUrl = nextPrinciple ? `${baseUrl}${nextSectionPath}/${nextPrinciple.id}` : null;
+
+// Determine if navigating to different sections
+const isPrevDifferentSection = prevSectionPath !== sectionPath;
+const isNextDifferentSection = nextSectionPath !== sectionPath;
+
+// Get icons for different sections
+const prevSection = isPrevDifferentSection
+  ? categoriesData.find((cat) => cat.path === prevSectionPath)
+  : null;
+const nextSection = isNextDifferentSection
+  ? categoriesData.find((cat) => cat.path === nextSectionPath)
+  : null;
+
+const prevIcon = isPrevDifferentSection && prevSection ? prevSection.icon : 'mdi/arrow-left';
+const nextIcon = isNextDifferentSection && nextSection ? nextSection.icon : 'mdi/arrow-right';
 ---
 
 <div
-  class="fixed inline-flex bottom-600 left-0 right-0 justify-center pointer-events-none z-20 animate-intro [animation-delay:2000ms]"
+  class="fixed inline-flex bottom-600 left-0 right-0 justify-center items-center gap-600 pointer-events-none z-20 px-600"
 >
   <div
-    class="pointer-events-auto inline-flex justify-center items-center bottom-0 gap-400 p-200 nav-outline-strong bg-tone-neutral/60 backdrop-blur rounded-full"
+    class="pointer-events-auto mobile:hidden inline-flex justify-center items-center bottom-0 gap-400 p-200 nav-outline-strong bg-tone-neutral/80 backdrop-blur rounded-full"
   >
-    {
-      prevUrl ? (
-        <Button href={prevUrl} variant="back" title="Go to previous principle" />
-      ) : (
-        <div class="w-1600 shrink-0" />
-      )
-    }
     <a
       title="Back to top"
       href="#"
       data-scroll-to-top
-      class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] hover:translate-y-[4px] focus-visible:rotate-[60deg] focus-visible:translate-y-[4px] ease-out-expo transition-transform duration-500 no-underline"
+      class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] focus-visible:rotate-[60deg] hover:translate-y-[4px] focus-visible:translate-y-[4px] ease-out-expo transition-transform duration-500 no-underline"
     >
       <Icon name="vv/logo" class="text-tone-neutral-01 text-[40px] justify-self-center" />
     </a>
+  </div>
+  <div
+    class="pointer-events-auto w-full max-w-9600 inline-flex justify-center items-center bottom-0 gap-400 p-200 nav-outline-strong bg-tone-neutral/80 backdrop-blur rounded-full"
+  >
     {
-      nextUrl ? (
-        <Button href={nextUrl} variant="next" title="Go to next principle" />
-      ) : (
-        <div class="w-1600 shrink-0" />
+      prevUrl && (
+        <Button
+          href={prevUrl}
+          variant="outline"
+          title={
+            isPrevDifferentSection
+              ? `Go to ${prevSection?.title || 'previous section'}`
+              : 'Go to previous principle'
+          }
+        >
+          <Icon name={prevIcon} />
+        </Button>
+      )
+    }
+    <mds-benchmark-bar
+      class="w-full min-h-700"
+      alias={`${currentPage} / ${totalPages}`}
+      value={percentage}
+    >
+      {currentPrinciple?.title || 'Page title'}
+    </mds-benchmark-bar>
+    {
+      nextUrl && (
+        <Button
+          href={nextUrl}
+          variant="outline"
+          title={
+            isNextDifferentSection
+              ? `Go to ${nextSection?.title || 'next section'}`
+              : 'Go to next principle'
+          }
+        >
+          <Icon name={nextIcon} />
+        </Button>
       )
     }
   </div>
