@@ -32,7 +32,7 @@ const categories = categoriesData.map((category) => ({
 >
   <Icon class={`mobile:text-[32px] transition-colors ${iconColor}`} name="mi/outline/menu" />
 </Button>
-<div class="header-nav" data-header-nav hidden>
+<div class="header-nav hidden" data-header-nav hidden>
   <nav class="header-nav-menu grid-cols-fill" data-header-nav-menu>
     <div class="flex items-center justify-between">
       <div class="grid text-tone-neutral-03">
@@ -44,7 +44,7 @@ const categories = categoriesData.map((category) => ({
       <Button title="Back to Home" href={baseUrl} variant="back" icon="mi/outline/home" />
     </div>
     <div class="h-50 bg-tone-neutral-03 w-full flex"></div>
-    <div class="grid gap-400 grid-cols-fit-lg mobile:grid-cols-full">
+    <div class="grid gap-400 grid-cols-fit-lg mobile:grid-cols-full" data-nav-buttons>
       {
         categories.map((category) => {
           const isSelected = currentSection?.id === category.id;
@@ -84,17 +84,22 @@ const categories = categoriesData.map((category) => ({
     const headerNavMenu = document.querySelector('[data-header-nav-menu]');
 
     if (!menuToggle || !headerNav || !headerNavMenu) return;
-
     headerNav.removeAttribute('hidden');
 
     const openMenu = () => {
-      headerNav.classList.add('header-nav--opened');
-      headerNavMenu.classList.add('header-nav-menu--opened');
+      headerNav.classList.remove('hidden');
+      setTimeout(() => {
+        headerNav.classList.add('header-nav--opened');
+        headerNavMenu.classList.add('header-nav-menu--opened');
+      }, 10);
     };
 
     const closeMenu = () => {
       headerNav.classList.remove('header-nav--opened');
       headerNavMenu.classList.remove('header-nav-menu--opened');
+      setTimeout(() => {
+        headerNav.classList.add('hidden');
+      }, 501);
     };
 
     const toggleMenu = () => {
