@@ -1,0 +1,79 @@
+---
+/**
+ * MobileDevice Component
+ *
+ * Aesthetically emulates an iPhone-like mobile device that wraps content
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ * @param {boolean} overflow - Whether to enable overflow (default: false)
+ */
+interface Props {
+  class?: string;
+  overflow?: boolean;
+}
+
+const { class: className = '', overflow = false } = Astro.props;
+---
+
+<div
+  class={`mobile-device box-border w-full max-w-[375px] flex flex-col items-center ${className}`}
+>
+  <!-- Device frame -->
+  <div
+    class="device-frame relative w-full rounded-[40px] overflow-hidden shadow-xl border-[8px] border-solid border-tone-neutral-02 bg-tone-neutral-02"
+  >
+    <!-- Notch -->
+    <div class="absolute top-0 left-0 right-0 flex items-center justify-center z-30 pt-200">
+      <div class="w-2400 bg-tone-neutral-02 rounded-full flex items-center justify-end p-100">
+        <div
+          class="relative size-300 box-border rounded-full bg-tone-neutral-08 bg-gradient-to-tl to-label-blue-05 from-label-orange-02"
+        >
+          <div
+            class="absolute inset-0 rounded-full border-b border-r border-solid border-tone-neutral-10/20 border-0 flex items-center justify-center"
+          >
+            <div class="absolute left-50 top-50 rounded-full size-100 bg-tone-neutral-10/10"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content area -->
+    <div
+      class={`device-content flex flex-col bg-tone-neutral-01 w-full ${overflow ? 'overflow-scroll' : 'overflow-hidden'} translate-x-0 translate-y-0`}
+    >
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  .device-content {
+    aspect-ratio: 9 / 19.5;
+  }
+
+  .device-content {
+    flex: 1;
+    min-height: 400px;
+  }
+
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .device-frame {
+      border-color: #1c1c1e;
+      background-color: #1c1c1e;
+    }
+
+    .notch {
+      background-color: #1c1c1e;
+    }
+
+    .status-bar {
+      background-color: #1c1c1e;
+    }
+
+    .home-indicator {
+      background-color: #1c1c1e;
+    }
+  }
+</style>

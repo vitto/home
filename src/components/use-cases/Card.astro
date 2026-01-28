@@ -14,17 +14,21 @@ const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <div
-  class={`@container relative overflow-hidden rounded-[32px] mobile:rounded-2xl aspect-card ${className}`}
+  class={`@container relative overflow-hidden rounded-[32px] mobile:rounded-2xl aspect-card shadow-md-sharp ${className}`}
 >
+  <div
+    class="absolute border-t border-solid border-tone-neutral-10/20 border-0 inset-0 rounded-[32px] mobile:rounded-2xl pointer-events-none z-20"
+  >
+  </div>
   <mds-img class="card object-cover w-full h-full absolute inset-0" src={`${baseUrl}${image}`}
   ></mds-img>
   <div
-    class="absolute text-tone-neutral rounded-b-2xl bottom-0 left-0 right-0 p-400 bg-gradient-to-b from-tone-neutral-01/0 to-tone-neutral-01/100"
+    class="absolute text-tone-neutral rounded-b-2xl bottom-0 left-0 right-0 p-400 bg-gradient-to-b from-tone-neutral-02/0 to-tone-neutral-02/100"
   >
     <div class="grid gap-300">
       <div class="grid gap-100">
         <mds-text typography="h5" class="text-shadow-sm">{name}</mds-text>
-        <mds-text typography="caption" class="text-shadow-sm hidden @md:flex"
+        <mds-text typography="caption" class="text-shadow-sm hidden @sm:flex"
           >{description}</mds-text
         >
       </div>

@@ -1,0 +1,113 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
+import BrowserWindow from '../../BrowserWindow.astro';
+import MobileDevice from '../../MobileDevice.astro';
+import Card from '../../Card.astro';
+import artistsData from '../../../../data/use-cases/artists.json';
+---
+
+<UseCase
+  title="Shared behavior, contextual presentation"
+  description="Components addressing similar needs were designed to behave consistently, even when their visual presentation differed based on context."
+>
+  <UseCaseInteractive clsHeight={350} label="Consistent behavior, different contexts" multiple>
+    <BrowserWindow title="Button component - Same behavior, different presentation">
+      <div class="flex flex-col gap-400 min-h-lg p-400 bg-tone-neutral">
+        <div
+          class="flex items-center justify-between w-full rounded-2xl p-600 shadow-sm-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09"
+        >
+          <mds-icon
+            name="vv/logo"
+            class="size-900 cursor-pointer fill-tone-neutral-02 focus-bounce rounded-lg hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
+            tabindex="0"></mds-icon>
+          <nav class="flex items-center gap-400">
+            <mds-button class="rounded-full" variant="dark" tone="strong">Add music</mds-button>
+            <mds-button class="rounded-full" icon="mi/baseline/menu" variant="dark" tone="quiet"
+            ></mds-button>
+          </nav>
+        </div>
+        <div class="grid grid-cols-2 mobile:grid-cols-1 gap-400">
+          {
+            artistsData
+              .slice(0, 2)
+              .map((artist) => (
+                <Card
+                  name={artist.name}
+                  description={artist.description}
+                  image={artist.image}
+                  followers={artist.followers}
+                  albums={artist.albums}
+                  singles={artist.singles}
+                />
+              ))
+          }
+        </div>
+      </div>
+    </BrowserWindow>
+    <MobileDevice class="justify-self-center">
+      <div class="flex flex-col gap-400 p-400 bg-tone-neutral relative">
+        <div class="flex items-center justify-between w-full px-400 py-300">
+          <mds-icon
+            name="vv/logo"
+            class="size-900 cursor-pointer fill-tone-neutral-02 focus-bounce rounded-lg"
+            tabindex="0"></mds-icon>
+          <nav class="flex items-center gap-200 shrink-0">
+            <mds-button class="rounded-full" icon="mi/baseline/menu" variant="dark" tone="quiet"
+            ></mds-button>
+          </nav>
+        </div>
+        <mds-button
+          class="rounded-full fixed bottom-600 right-600 z-30"
+          variant="dark"
+          tone="strong"
+          size="xl"
+          icon="mi/baseline/add"></mds-button>
+        <div class="grid grid-cols-1 gap-300">
+          {
+            artistsData
+              .slice(0, 2)
+              .map((artist) => (
+                <Card
+                  name={artist.name}
+                  description={artist.description}
+                  image={artist.image}
+                  followers={artist.followers}
+                  albums={artist.albums}
+                  singles={artist.singles}
+                />
+              ))
+          }
+        </div>
+      </div>
+    </MobileDevice>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">
+    Keep interaction patterns (focus, keyboard navigation, error handling) consistent.
+  </UsageItem>
+  <UsageItem variant="dont">Force identical layouts when context changes user intent.</UsageItem>
+  <UsageItem variant="do">
+    Allow visual adaptations when context requires different emphasis or density.
+  </UsageItem>
+  <UsageItem variant="dont">Redesign interaction logic for each visual variant.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Design tools">
+    <Brand name="figma" label="Figma" />
+  </ProductCategory>
+  <ProductCategory title="Component libraries">
+    <Brand name="storybook" label="Storybook" />
+  </ProductCategory>
+</Products>
+
+<Separator />
