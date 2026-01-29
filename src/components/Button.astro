@@ -56,6 +56,7 @@ Object.keys(Astro.props).forEach((key) => {
 // Map variant names to CSS classes
 const variants: Record<string, string> = {
   none: '',
+  icon: '',
   back: 'shrink-0 group hover:w-1600 focus-visible:w-1600 transition-cosmetic ease-out-expo duration-500 bg-tone-neutral button-outline hover:button-outline-strong focus-visible:button-outline-strong text-tone-neutral-03',
   next: 'shrink-0 group hover:w-1600 focus-visible:w-1600 transition-cosmetic ease-out-expo duration-500 bg-tone-neutral button-outline hover:button-outline-strong focus-visible:button-outline-strong text-tone-neutral-03',
   outline:
@@ -76,7 +77,9 @@ const justifyClass =
 const buttonClasses = [
   'button first-letter:uppercase no-underline inline-flex items-center',
   justifyClass,
-  variant === 'back' || variant === 'next' ? 'p-200 gap-200' : 'px-300 py-200 gap-200',
+  variant === 'back' || variant === 'next' || variant === 'icon'
+    ? 'p-200 gap-200'
+    : 'px-300 py-200 gap-200',
   'rounded-full border-box border-0 border-none',
   'cursor-pointer focus-bounce',
   variantClass,

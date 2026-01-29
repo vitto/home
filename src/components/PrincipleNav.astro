@@ -26,6 +26,10 @@ const sectionDataMap: Record<string, { principles: Array<{ id: string; title: st
 const allSections = categoriesData.map((cat) => cat.path);
 const currentSectionIndex = allSections.findIndex((path) => path === sectionPath);
 
+// Get current section info
+const currentSection = categoriesData.find((cat) => cat.path === sectionPath);
+const categorySectionUrl = `${baseUrl}${sectionPath}`;
+
 // Sort principles alphabetically by title
 const sortedPrinciples = [...allPrinciples].sort((a, b) => a.title.localeCompare(b.title));
 
@@ -124,19 +128,24 @@ const nextIcon = isNextDifferentSection && nextSection ? nextSection.icon : 'mdi
 ---
 
 <div
-  class="fixed inline-flex bottom-600 left-0 right-0 justify-center items-center gap-600 pointer-events-none z-20 px-600"
+  class="fixed inline-flex bottom-500 left-0 right-0 justify-center items-center gap-600 pointer-events-none z-20 px-500"
 >
   <div
     class="pointer-events-auto mobile:hidden inline-flex justify-center items-center bottom-0 gap-400 p-200 nav-outline-strong bg-tone-neutral/80 backdrop-blur rounded-full"
   >
-    <a
-      title="Back to top"
-      href="#"
-      data-scroll-to-top
-      class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] focus-visible:rotate-[60deg] hover:translate-y-[4px] focus-visible:translate-y-[4px] ease-out-expo transition-transform duration-500 no-underline"
+    <Button data-scroll-to-top-button href="#" variant="icon" title="Back to top">
+      <Icon name="mi/outline/arrow-upward" />
+    </Button>
+    <Button data-menu-toggle href="#" variant="icon" title="Show categories">
+      <Icon name="mi/outline/menu" />
+    </Button>
+    <Button
+      href={categorySectionUrl}
+      variant="icon"
+      title={`Back to ${currentSection?.title || 'section'}`}
     >
-      <Icon name="vv/logo" class="text-tone-neutral-01 text-[40px] justify-self-center" />
-    </a>
+      <Icon name="mi/outline/apps" />
+    </Button>
   </div>
   <div
     class="pointer-events-auto w-full max-w-9600 inline-flex justify-center items-center bottom-0 gap-400 p-200 nav-outline-strong bg-tone-neutral/80 backdrop-blur rounded-full"
@@ -145,7 +154,7 @@ const nextIcon = isNextDifferentSection && nextSection ? nextSection.icon : 'mdi
       prevUrl && (
         <Button
           href={prevUrl}
-          variant="outline"
+          variant="icon"
           title={
             isPrevDifferentSection
               ? `Go to ${prevSection?.title || 'previous section'}`
@@ -167,7 +176,7 @@ const nextIcon = isNextDifferentSection && nextSection ? nextSection.icon : 'mdi
       nextUrl && (
         <Button
           href={nextUrl}
-          variant="outline"
+          variant="icon"
           title={
             isNextDifferentSection
               ? `Go to ${nextSection?.title || 'next section'}`
