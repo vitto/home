@@ -46,7 +46,9 @@ const { menu = true } = Astro.props;
       menu ? (
         <HeaderMenu />
       ) : (
-        <Button href={baseUrl} variant="back" title="Back to Home" class="mr-500" />
+        <Button href={baseUrl} variant="light" class="shrink-0 py-300" title="Back to Home">
+          <Icon name="mi/outline/home" class="text-tone-neutral-04" />
+        </Button>
       )
     }
   </header>
