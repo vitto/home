@@ -1,5 +1,5 @@
 ---
-import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
 import data from '../../data/design-systems.json';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 
@@ -20,7 +20,7 @@ const { principle } = Astro.props;
 const sectionPath = '/design-systems';
 ---
 
-<UseCaseLayout
+<PrincipleLayout
   title={`${principle.title} - Design Systems`}
   principle={principle}
   categoryColors={data.categoryColors}
@@ -34,4 +34,4 @@ const sectionPath = '/design-systems';
     sectionPath={sectionPath}
     allPrinciples={data.principles}
   />
-</UseCaseLayout>
+</PrincipleLayout>

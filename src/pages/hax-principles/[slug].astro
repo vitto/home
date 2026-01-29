@@ -1,5 +1,5 @@
 ---
-import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
 import data from '../../data/hax-principles.json';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 
@@ -20,7 +20,7 @@ const { principle } = Astro.props;
 const sectionPath = '/hax-principles';
 ---
 
-<UseCaseLayout
+<PrincipleLayout
   title={`${principle.title} - HAX Principles`}
   principle={principle}
   categoryColors={data.categoryColors}
@@ -34,4 +34,4 @@ const sectionPath = '/hax-principles';
     sectionPath={sectionPath}
     allPrinciples={data.principles}
   />
-</UseCaseLayout>
+</PrincipleLayout>

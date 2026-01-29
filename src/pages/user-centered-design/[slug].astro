@@ -1,5 +1,5 @@
 ---
-import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
 import data from '../../data/user-centered-design.json';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 
@@ -20,7 +20,7 @@ const { principle } = Astro.props;
 const sectionPath = '/user-centered-design';
 ---
 
-<UseCaseLayout
+<PrincipleLayout
   title={`${principle.title} - User-Centered Design`}
   principle={principle}
   categoryColors={data.categoryColors}
@@ -34,4 +34,4 @@ const sectionPath = '/user-centered-design';
     sectionPath={sectionPath}
     allPrinciples={data.principles}
   />
-</UseCaseLayout>
+</PrincipleLayout>

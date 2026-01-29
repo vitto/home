@@ -1,5 +1,5 @@
 ---
-import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
 import data from '../../data/design-systems.json';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
@@ -17,7 +17,7 @@ const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
 ---
 
-<UseCaseLayout
+<PrincipleLayout
   title={`${principle.title} - Design Systems`}
   principle={principle}
   categoryColors={data.categoryColors}
@@ -150,4 +150,4 @@ The system defines **what must remain consistent** and **where variation is allo
     sectionPath={sectionPath}
     allPrinciples={data.principles}
   />
-</UseCaseLayout>
+</PrincipleLayout>

@@ -1,5 +1,5 @@
 ---
-import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
 import data from '../../data/user-centered-design.json';
 import CancelAndUndo from '../../components/use-cases/user-centered-design/user-control-and-freedom/CancelAndUndo.astro';
 import ClearExitPaths from '../../components/use-cases/user-centered-design/user-control-and-freedom/ClearExitPaths.astro';
@@ -15,7 +15,7 @@ const sectionPath = '/user-centered-design';
 const sectionName = 'User-Centered Design';
 ---
 
-<UseCaseLayout
+<PrincipleLayout
   title={`${principle.title} / ${sectionName}`}
   principle={principle}
   categoryColors={data.categoryColors}
@@ -34,4 +34,4 @@ const sectionName = 'User-Centered Design';
     sectionPath={sectionPath}
     allPrinciples={data.principles}
   />
-</UseCaseLayout>
+</PrincipleLayout>

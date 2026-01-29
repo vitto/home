@@ -1,5 +1,5 @@
 ---
-import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
 import data from '../../data/design-systems.json';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
@@ -14,7 +14,7 @@ const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
 ---
 
-<UseCaseLayout
+<PrincipleLayout
   title={`${principle.title} - Design Systems`}
   principle={principle}
   categoryColors={data.categoryColors}
@@ -166,4 +166,4 @@ the design system empowers teams instead of limiting them.
     sectionPath={sectionPath}
     allPrinciples={data.principles}
   />
-</UseCaseLayout>
+</PrincipleLayout>
