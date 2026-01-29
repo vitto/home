@@ -12,6 +12,8 @@
     "build": "npm run icons && npm run copy-vendor && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "toolbar:hide": "astro preferences disable devToolbar",
+    "toolbar:show": "astro preferences enable devToolbar",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "format:staged": "lint-staged --allow-empty",
