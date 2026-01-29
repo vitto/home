@@ -2,9 +2,12 @@
 import CategoryLayout from '../layouts/CategoryLayout.astro';
 import PrincipleCard from '../components/PrincipleCard.astro';
 import Principles from '../components/Principles.astro';
+import Nav from '../components/Nav.astro';
+import SectionNav from '../components/SectionNav.astro';
 import data from '../data/design-systems.json';
 
 const baseUrl = import.meta.env.BASE_URL;
+const sectionPath = '/design-systems';
 
 // Sort principles by title
 const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompare(b.title));
@@ -36,4 +39,7 @@ const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompa
         ))
     }
   </Principles>
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} principles={false} />
+  </Nav>
 </CategoryLayout>

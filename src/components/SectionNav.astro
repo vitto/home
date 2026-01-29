@@ -1,0 +1,66 @@
+---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import categoriesData from '../data/categories.json';
+
+interface Props {
+  baseUrl: string;
+  sectionPath: string;
+  principles?: boolean;
+}
+
+const { baseUrl, sectionPath, principles = true } = Astro.props;
+
+// Get current section info
+const currentSection = categoriesData.find((cat) => cat.path === sectionPath);
+const categorySectionUrl = `${baseUrl}${sectionPath}`;
+---
+
+<div
+  class="pointer-events-auto mobile:hidden inline-flex justify-center items-center bottom-0 gap-400 p-200 nav-outline-strong bg-tone-neutral/80 backdrop-blur rounded-full"
+>
+  <Button data-scroll-to-top-button href="#" variant="icon" title="Back to top">
+    <Icon name="mi/outline/arrow-upward" />
+  </Button>
+  <Button data-menu-toggle href="#" variant="icon" title="Show categories">
+    <Icon name="mi/outline/menu" />
+  </Button>
+  {
+    principles && (
+      <Button
+        href={categorySectionUrl}
+        variant="icon"
+        title={`Back to ${currentSection?.title || 'section'}`}
+      >
+        <Icon name="mi/outline/apps" />
+      </Button>
+    )
+  }
+</div>
+
+<script>
+  function initScrollToTop() {
+    const scrollToTopButton = document.querySelector('[data-scroll-to-top-button]');
+    if (!scrollToTopButton) return;
+
+    scrollToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // Remove hash from URL if present
+      if (window.location.hash) {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollToTop);
+  } else {
+    initScrollToTop();
+  }
+</script>
