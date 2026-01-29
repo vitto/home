@@ -88,10 +88,13 @@ const categoryColorClass = colorClasses[categoryColor] || '';
     </div>
     <Button
       href={categorySectionUrl}
-      variant="back"
+      variant="light"
+      class="shrink-0 py-300"
       icon="mi/outline/apps"
       title={`Back to ${sectionName}`}
-    />
+    >
+      <Icon name="mi/outline/apps" class="text-tone-neutral-04" />
+    </Button>
   </div>
   <div class="grid gap-200">
     <h1 class="text-title-h1">{principle.title}</h1>

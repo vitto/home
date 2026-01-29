@@ -33,7 +33,7 @@ const categories = categoriesData.map((category) => ({
   <Icon class={`mobile:text-[32px] transition-colors ${iconColor}`} name="mi/outline/menu" />
 </Button>
 <div class="header-nav hidden" data-header-nav hidden>
-  <nav class="header-nav-menu grid-cols-fill" data-header-nav-menu>
+  <nav class="header-nav-menu grid-cols-fill auto-rows-min" data-header-nav-menu>
     <div class="flex items-center justify-between">
       <div class="grid text-tone-neutral-03">
         <h2 class="text-title-h3">
@@ -41,7 +41,9 @@ const categories = categoriesData.map((category) => ({
         </h2>
         <p class="text-info-tip">{personalData.role}</p>
       </div>
-      <Button title="Back to Home" href={baseUrl} variant="back" icon="mi/outline/home" />
+      <Button href={baseUrl} variant="light" class="shrink-0 py-300" title="Back to Home">
+        <Icon name="mi/outline/home" class="text-tone-neutral-04" />
+      </Button>
     </div>
     <div class="h-50 bg-tone-neutral-03 w-full flex"></div>
     <div class="grid gap-400 grid-cols-fit-lg mobile:grid-cols-full" data-nav-buttons>
