@@ -3,7 +3,11 @@
 ---
 
 <div
-  class="fixed inline-flex mobile:flex-col mobile:items-start mobile:h-1/2 mobile:justify-between bottom-500 left-0 right-0 justify-center items-end gap-600 pointer-events-none z-20 px-500"
+  class="inline-flex justify-center items-end px-500 fixed bottom-500 left-0 right-0 pointer-events-none z-20"
 >
-  <slot />
+  <div
+    class="inline-flex mobile:flex-col mobile:items-start mobile:justify-between gap-600 w-full max-w-[640px]"
+  >
+    <slot />
+  </div>
 </div>
