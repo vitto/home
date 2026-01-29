@@ -8,6 +8,7 @@ interface Props {
   iconHover: string;
   title: string;
   description: string;
+  menu?: boolean;
   selected?: boolean;
   selectedClass?: string;
   headerIconSelected?: string;
@@ -20,6 +21,7 @@ const {
   iconHover,
   title,
   description,
+  menu = false,
   selected = false,
   selectedClass = '',
   headerIconSelected = '',
@@ -41,11 +43,13 @@ const {
       <Icon name={icon} />
     </div>
     <h2 class="mb-300 text-title-h2 tablet-max:text-title-h3">{title}</h2>
-    <p class="text-info-detail">{description}</p>
-    <div
-      class="mt-600 opacity-0 group-[&:is(:hover,:focus-visible)]/card:opacity-100 group-[&:is(:hover,:focus-visible)]/card:translate-y-0 transition translate-y-200 h-600"
-    >
-      <mds-text text="→" animation="yugop" data-category-text={id}></mds-text>
-    </div>
+    {!menu && <p class="text-info-detail">{description}</p>}
+    {
+      !menu && (
+        <div class="mt-600 opacity-0 group-[&:is(:hover,:focus-visible)]/card:opacity-100 group-[&:is(:hover,:focus-visible)]/card:translate-y-0 transition translate-y-200 h-600">
+          <mds-text text="→" animation="yugop" data-category-text={id} />
+        </div>
+      )
+    }
   </div>
 </a>

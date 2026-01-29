@@ -52,6 +52,7 @@ const categories = categoriesData.map((category) => ({
             <CategoryCardItem
               id={category.id}
               link={category.link}
+              menu={true}
               icon={category.icon}
               iconHover={category.iconHover}
               title={category.title}
@@ -79,11 +80,20 @@ const categories = categoriesData.map((category) => ({
 
 <script>
   function initHeaderMenu() {
-    const menuToggle = document.querySelector('[data-menu-toggle]');
+    const menuToggles = document.querySelectorAll('[data-menu-toggle]');
     const headerNav = document.querySelector('[data-header-nav]');
     const headerNavMenu = document.querySelector('[data-header-nav-menu]');
 
-    if (!menuToggle || !headerNav || !headerNavMenu) return;
+    if (!menuToggles || !headerNav || !headerNavMenu) return;
+
+    // Toggle menu on button click
+    menuToggles.forEach((menuToggle) => {
+      menuToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleMenu();
+      });
+    });
+
     headerNav.removeAttribute('hidden');
 
     const openMenu = () => {
@@ -110,12 +120,6 @@ const categories = categoriesData.map((category) => ({
         openMenu();
       }
     };
-
-    // Toggle menu on button click
-    menuToggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      toggleMenu();
-    });
 
     // Close menu when clicking on header-nav (but not on the menu itself)
     headerNav.addEventListener('click', (e) => {
