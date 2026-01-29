@@ -7,6 +7,8 @@ import ExplicitRecoveryGuidance from '../../components/use-cases/user-centered-d
 import ErrorPreventionFeedback from '../../components/use-cases/user-centered-design/error-recovery/ErrorPreventionFeedback.astro';
 import GracefulRecoveryActions from '../../components/use-cases/user-centered-design/error-recovery/GracefulRecoveryActions.astro';
 import VisibleErrorContext from '../../components/use-cases/user-centered-design/error-recovery/VisibleErrorContext.astro';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 
 const principle = data.principles.find(
@@ -30,10 +32,13 @@ const sectionName = 'User-Centered Design';
   <ExplicitRecoveryGuidance />
   <GracefulRecoveryActions />
   <VisibleErrorContext />
-  <PrincipleNav
-    baseUrl={baseUrl}
-    currentPrincipleId={principle.id}
-    sectionPath={sectionPath}
-    allPrinciples={data.principles}
-  />
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
 </PrincipleLayout>

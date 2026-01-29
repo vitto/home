@@ -1,6 +1,8 @@
 ---
 import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
 import data from '../../data/design-systems.json';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
 import Usage from '../../components/Usage.astro';
@@ -161,10 +163,13 @@ the system can evolve without constant rewrites or fragmentation.
     </BibliographySection>
   </Bibliography>
 
-  <PrincipleNav
-    baseUrl={baseUrl}
-    currentPrincipleId={principle.id}
-    sectionPath={sectionPath}
-    allPrinciples={data.principles}
-  />
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
 </PrincipleLayout>

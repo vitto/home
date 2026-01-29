@@ -8,6 +8,8 @@ import DomainAlignedConcepts from '../../components/use-cases/user-centered-desi
 import LogicalInformationOrder from '../../components/use-cases/user-centered-design/match-between-system-and-real-world/LogicalInformationOrder.astro';
 import MeaningfulFeedback from '../../components/use-cases/user-centered-design/match-between-system-and-real-world/MeaningfulFeedback.astro';
 import HumanTimeAndUnits from '../../components/use-cases/user-centered-design/match-between-system-and-real-world/HumanTimeAndUnits.astro';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 
 const principle = data.principles.find((p) => p.id === 'match-between-system-and-real-world')!;
@@ -30,10 +32,13 @@ const sectionName = 'User-Centered Design';
   <MeaningfulFeedback />
   <NaturalMapping />
   <RealWorldMetaphors />
-  <PrincipleNav
-    baseUrl={baseUrl}
-    currentPrincipleId={principle.id}
-    sectionPath={sectionPath}
-    allPrinciples={data.principles}
-  />
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
 </PrincipleLayout>

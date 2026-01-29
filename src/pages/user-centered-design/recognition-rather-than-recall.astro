@@ -6,6 +6,8 @@ import PreFilledInformation from '../../components/use-cases/user-centered-desig
 import RecognitionBasedNavigation from '../../components/use-cases/user-centered-design/recognition-rather-than-recall/RecognitionBasedNavigation.astro';
 import RecognitionOverCommands from '../../components/use-cases/user-centered-design/recognition-rather-than-recall/RecognitionOverCommands.astro';
 import VisibleOptions from '../../components/use-cases/user-centered-design/recognition-rather-than-recall/VisibleOptions.astro';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 
 const principle = data.principles.find((p) => p.id === 'recognition-rather-than-recall')!;
@@ -26,10 +28,13 @@ const sectionName = 'User-Centered Design';
   <RecognitionBasedNavigation />
   <RecognitionOverCommands />
   <VisibleOptions />
-  <PrincipleNav
-    baseUrl={baseUrl}
-    currentPrincipleId={principle.id}
-    sectionPath={sectionPath}
-    allPrinciples={data.principles}
-  />
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
 </PrincipleLayout>

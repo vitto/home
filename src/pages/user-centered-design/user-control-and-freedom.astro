@@ -7,6 +7,8 @@ import NonLinearNavigation from '../../components/use-cases/user-centered-design
 import ReversibleStateChanges from '../../components/use-cases/user-centered-design/user-control-and-freedom/ReversibleStateChanges.astro';
 import RespectForUserIntent from '../../components/use-cases/user-centered-design/user-control-and-freedom/RespectForUserIntent.astro';
 import ForgivingInteraction from '../../components/use-cases/user-centered-design/user-control-and-freedom/ForgivingInteraction.astro';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 
 const principle = data.principles.find((p) => p.id === 'user-control-and-freedom')!;
@@ -28,10 +30,13 @@ const sectionName = 'User-Centered Design';
   <NonLinearNavigation />
   <RespectForUserIntent />
   <!-- <ReversibleStateChanges /> -->
-  <PrincipleNav
-    baseUrl={baseUrl}
-    currentPrincipleId={principle.id}
-    sectionPath={sectionPath}
-    allPrinciples={data.principles}
-  />
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
 </PrincipleLayout>
