@@ -1,16 +1,8 @@
 ---
-import SectionLayout from '../layouts/SectionLayout.astro';
+import CategoryLayout from '../layouts/CategoryLayout.astro';
 import PrincipleCard from '../components/PrincipleCard.astro';
-import CategoryFilter from '../components/CategoryFilter.astro';
 import Principles from '../components/Principles.astro';
-import Section from '../components/Section.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
 import data from '../data/design-systems.json';
-import Button from '../components/Button.astro';
-import Icon from '../components/Icon.astro';
-import SectionFooter from '../components/SectionFooter.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -18,12 +10,12 @@ const baseUrl = import.meta.env.BASE_URL;
 const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompare(b.title));
 ---
 
-<SectionLayout title="Design Systems - Vittorio's Portfolio">
-  <Section contentClass="gap-1200 mobile:gap-600">
-    <Header />
-    <SectionHeader title={data.title} description={data.description} />
-    <CategoryFilter categories={data.categories} />
-  </Section>
+<CategoryLayout
+  title="Design Systems - Vittorio's Portfolio"
+  sectionTitle={data.title}
+  sectionDescription={data.description}
+  categories={data.categories as string[]}
+>
   <Principles>
     {
       sortedPrinciples
@@ -44,7 +36,4 @@ const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompa
         ))
     }
   </Principles>
-  <SectionFooter />
-</SectionLayout>
-
-<Footer />
+</CategoryLayout>

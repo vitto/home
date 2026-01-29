@@ -1,0 +1,29 @@
+---
+import SectionLayout from './SectionLayout.astro';
+import Section from '../components/Section.astro';
+import Header from '../components/Header.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import CategoryFilter from '../components/CategoryFilter.astro';
+import SectionFooter from '../components/SectionFooter.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  sectionTitle: string;
+  sectionDescription: string;
+  categories: string[];
+}
+
+const { title, sectionTitle, sectionDescription, categories } = Astro.props;
+---
+
+<SectionLayout title={title}>
+  <Section contentClass="gap-1200 mobile:gap-600">
+    <Header />
+    <SectionHeader title={sectionTitle} description={sectionDescription} />
+    <CategoryFilter categories={categories} />
+  </Section>
+  <slot />
+  <SectionFooter />
+  <Footer />
+</SectionLayout>
