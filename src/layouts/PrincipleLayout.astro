@@ -4,8 +4,6 @@ import Section from '../components/Section.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PrincipleHeader from '../components/PrincipleHeader.astro';
-import Button from '../components/Button.astro';
-import Icon from '../components/Icon.astro';
 import SectionFooter from '../components/SectionFooter.astro';
 interface Props {
   title: string;
@@ -374,6 +372,75 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
 
     // Initially show first element, hide others
     showElement(0);
+
+    // Add touch/swipe gesture support for mobile
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+    const swipeThreshold = 50; // Minimum distance for a swipe
+
+    function handleTouchStart(e) {
+      const touch = e.touches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+    }
+
+    function handleTouchMove(e) {
+      // Prevent default scrolling while swiping horizontally
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        const deltaX = Math.abs(touch.clientX - touchStartX);
+        const deltaY = Math.abs(touch.clientY - touchStartY);
+
+        // If horizontal movement is greater than vertical, prevent default scrolling
+        if (deltaX > deltaY && deltaX > 10) {
+          e.preventDefault();
+        }
+      }
+    }
+
+    function handleTouchEnd(e) {
+      const touch = e.changedTouches[0];
+      touchEndX = touch.clientX;
+      touchEndY = touch.clientY;
+      handleSwipe();
+    }
+
+    function handleSwipe() {
+      const swipeDistanceX = touchEndX - touchStartX;
+      const swipeDistanceY = Math.abs(touchEndY - touchStartY);
+
+      // Check if horizontal swipe is more significant than vertical
+      if (Math.abs(swipeDistanceX) < swipeThreshold || Math.abs(swipeDistanceX) < swipeDistanceY) {
+        return;
+      }
+
+      if (swipeDistanceX > 0) {
+        // Swipe right - go to previous
+        if (currentIndex > 0) {
+          showElement(currentIndex - 1);
+        } else {
+          // Wrap to last element
+          showElement(children.length - 1);
+        }
+      } else {
+        // Swipe left - go to next
+        if (currentIndex < children.length - 1) {
+          showElement(currentIndex + 1);
+        } else {
+          // Wrap to first element
+          showElement(0);
+        }
+      }
+    }
+
+    // Add touch event listeners only on mobile devices
+    if (window.innerWidth <= 768 || 'ontouchstart' in window) {
+      multipleContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+      multipleContainer.addEventListener('touchmove', handleTouchMove, { passive: false });
+      multipleContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
+    }
   };
 
   // Initialize all toggles on page load
