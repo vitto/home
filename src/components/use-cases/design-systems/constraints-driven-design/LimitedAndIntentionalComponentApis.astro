@@ -1,17 +1,226 @@
 ---
-import UseCase from '../../../UseCase.astro';
-import Usage from '../../../Usage.astro';
-import UsageItem from '../../../UsageItem.astro';
-import Separator from '../../../../components/Separator.astro';
 import Brand from '../../../Brand.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
+import Separator from '../../../../components/Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import documentationData from '../../../../data/use-cases/documentation.json';
+
+// Extract mds-button component data
+const componentName = 'mds-modal';
+const buttonComponent = documentationData.components.find((comp) => comp.tag === componentName);
+
+// Filter out private props and get main API props
+const mainProps =
+  buttonComponent?.props
+    .filter((prop) => {
+      const isPrivate = prop.docsTags?.some((tag) => tag.name === 'private');
+      return !isPrivate && prop.name !== 'hasText';
+    })
+    .slice(0, 10) || []; // Limit to first 10 props for display
+
+// Get events API
+const events = buttonComponent?.events || [];
+
+// Get CSS custom properties API
+const cssCustomProperties = buttonComponent?.styles || [];
 ---
 
 <UseCase
   title="Limited and intentional component APIs"
   description="Components were designed with intentionally constrained APIs to prevent misuse and uncontrolled variation."
-/>
+>
+  <UseCaseInteractive clsHeight={72} label="Flexible compositions" multiple>
+    <div class="w-full grid gap-600">
+      <div class="grid">
+        <mds-text typography="h4">{componentName}</mds-text>
+        <mds-text typography="caption">Attrubutes API</mds-text>
+      </div>
+      <mds-table class="w-full">
+        <mds-table-header>
+          <mds-table-header-cell label="Property"></mds-table-header-cell>
+          <mds-table-header-cell label="Attribute"></mds-table-header-cell>
+          <mds-table-header-cell label="Type"></mds-table-header-cell>
+          <mds-table-header-cell label="Default"></mds-table-header-cell>
+          <mds-table-header-cell label="Description"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          {
+            mainProps.map((prop: any) => {
+              const typeDisplay = prop.type.replace(/\| undefined/g, '').trim();
+              const defaultRawValue = (prop as any).default;
+              const hasDefault = defaultRawValue && defaultRawValue !== '-';
+              const defaultValueClean = hasDefault
+                ? String(defaultRawValue).replace(/^['"]|['"]$/g, '')
+                : null;
+              const enumValues = prop.values
+                ?.filter((v: any) => v.value && typeof v.value === 'string')
+                .map((v: any) => v.value);
+              const isEnum = enumValues && enumValues.length > 0;
+
+              // Determine badge variant based on type
+              let badgeVariant = 'info';
+              if (typeDisplay.includes('boolean')) {
+                badgeVariant = 'lime';
+              } else if (typeDisplay.includes('string')) {
+                badgeVariant = 'orchid';
+              } else if (typeDisplay.includes('number')) {
+                badgeVariant = 'blue';
+              } else if (isEnum) {
+                badgeVariant = 'violet';
+              }
+
+              return (
+                <mds-table-row>
+                  <mds-table-cell>
+                    <span class="whitespace-nowrap text-code-snippet font-medium">{prop.attr}</span>
+                  </mds-table-cell>
+                  <mds-table-cell>
+                    <span class="whitespace-nowrap text-code-snippet font-medium">{prop.name}</span>
+                  </mds-table-cell>
+                  <mds-table-cell>
+                    <div class="flex items-center gap-200 whitespace-nowrap">
+                      <mds-badge
+                        class="whitespace-nowrap"
+                        variant={badgeVariant}
+                        tone="weak"
+                        size="sm"
+                      >
+                        {isEnum ? 'enum' : typeDisplay}
+                      </mds-badge>
+                      {isEnum && (
+                        <span class="text-tone-neutral-04 text-info-caption">
+                          ({enumValues.join(', ')})
+                        </span>
+                      )}
+                    </div>
+                  </mds-table-cell>
+                  <mds-table-cell>
+                    {hasDefault ? (
+                      <mds-badge variant="light" tone="weak" size="sm" class="whitespace-nowrap">
+                        {defaultValueClean}
+                      </mds-badge>
+                    ) : (
+                      <span class="text-tone-neutral-04">-</span>
+                    )}
+                  </mds-table-cell>
+                  <mds-table-cell>
+                    <mds-text class="min-w-8000">{prop.docs || '-'}</mds-text>
+                  </mds-table-cell>
+                </mds-table-row>
+              );
+            })
+          }
+        </mds-table-body>
+      </mds-table>
+    </div>
+    <div class="w-full grid gap-600">
+      <div class="grid">
+        <mds-text typography="h4">{componentName}</mds-text>
+        <mds-text typography="caption">Events API</mds-text>
+      </div>
+      <mds-table class="w-full">
+        <mds-table-header>
+          <mds-table-header-cell label="Event"></mds-table-header-cell>
+          <mds-table-header-cell label="Detail Type"></mds-table-header-cell>
+          <mds-table-header-cell label="Bubbles"></mds-table-header-cell>
+          <mds-table-header-cell label="Cancelable"></mds-table-header-cell>
+          <mds-table-header-cell label="Description"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          {
+            events.length > 0 ? (
+              events.map((event: any) => (
+                <mds-table-row>
+                  <mds-table-cell>
+                    <span class="whitespace-nowrap text-code-snippet font-medium">
+                      {event.event}
+                    </span>
+                  </mds-table-cell>
+                  <mds-table-cell>
+                    <code class="whitespace-nowrap text-tone-neutral-04">
+                      {event.detail || '-'}
+                    </code>
+                  </mds-table-cell>
+                  <mds-table-cell>
+                    <mds-badge
+                      variant={event.bubbles ? 'green' : 'light'}
+                      tone="weak"
+                      size="sm"
+                      class="whitespace-nowrap"
+                    >
+                      {String(event.bubbles)}
+                    </mds-badge>
+                  </mds-table-cell>
+                  <mds-table-cell>
+                    <mds-badge
+                      variant={event.cancelable ? 'green' : 'light'}
+                      tone="weak"
+                      size="sm"
+                      class="whitespace-nowrap"
+                    >
+                      {String(event.cancelable)}
+                    </mds-badge>
+                  </mds-table-cell>
+                  <mds-table-cell>
+                    <mds-text class="min-w-8000">{event.docs || '-'}</mds-text>
+                  </mds-table-cell>
+                </mds-table-row>
+              ))
+            ) : (
+              <mds-table-row>
+                <mds-table-cell colspan="5">
+                  <mds-text class="text-tone-neutral-04 text-center">No events available</mds-text>
+                </mds-table-cell>
+              </mds-table-row>
+            )
+          }
+        </mds-table-body>
+      </mds-table>
+    </div>
+    <div class="w-full grid gap-600">
+      <div class="grid">
+        <mds-text typography="h4">{componentName}</mds-text>
+        <mds-text typography="caption">CSS Custom Properties API</mds-text>
+      </div>
+      <mds-table class="w-full">
+        <mds-table-header>
+          <mds-table-header-cell label="Property"></mds-table-header-cell>
+          <mds-table-header-cell label="Description"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          {
+            cssCustomProperties.length > 0 ? (
+              cssCustomProperties.map((cssProp: any) => (
+                <mds-table-row>
+                  <mds-table-cell>
+                    <span class="whitespace-nowrap text-code-snippet font-medium">
+                      {cssProp.name}
+                    </span>
+                  </mds-table-cell>
+                  <mds-table-cell>
+                    <mds-text class="min-w-8000">{cssProp.docs || '-'}</mds-text>
+                  </mds-table-cell>
+                </mds-table-row>
+              ))
+            ) : (
+              <mds-table-row>
+                <mds-table-cell colspan="3">
+                  <mds-text class="text-tone-neutral-04 text-center">
+                    No CSS custom properties available
+                  </mds-text>
+                </mds-table-cell>
+              </mds-table-row>
+            )
+          }
+        </mds-table-body>
+      </mds-table>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
 
 <Usage>
   <UsageItem variant="do">
@@ -27,6 +236,14 @@ import Products from '../../../Products.astro';
 </Usage>
 
 <Products>
+  <ProductCategory title="Documentation tools">
+    <Brand icon="mi/outline/auto-stories" label="Kompendium" url="https://docs.kompendium.dev/" />
+    <Brand
+      name="stenciljs"
+      label="StencilJS documentation"
+      url="https://stenciljs.com/docs/doc-generation"
+    />
+  </ProductCategory>
   <ProductCategory title="Curated component APIs">
     <Brand name="eslint" label="ESLint" />
   </ProductCategory>
