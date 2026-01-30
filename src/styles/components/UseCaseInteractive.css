@@ -1,7 +1,7 @@
 .use-case-interactive-content {
   transition-behavior: allow-discrete;
   transition: height 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  transform-origin: center;
+  transform-origin: center center;
 
   @starting-style {
     opacity: 0;
@@ -9,18 +9,27 @@
   }
 }
 
+:root {
+  --use-case-interactive-animation-duration: 0.325s;
+  --use-case-interactive-animation-easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --use-case-interactive-animation-scale: scale(0.9);
+}
+
 .use-case-from-left-animation {
-  animation: use-case-from-left 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  /* @apply ease-out-back; */
+  animation: use-case-from-left var(--use-case-interactive-animation-duration)
+    var(--use-case-interactive-animation-easing);
 }
 
 .use-case-from-right-animation {
-  animation: use-case-from-right 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  animation: use-case-from-right var(--use-case-interactive-animation-duration)
+    var(--use-case-interactive-animation-easing);
 }
 
 @keyframes use-case-from-left {
   from {
-    opacity: 0;
-    transform: translateX(-24px) scale(0.9);
+    opacity: 0.5;
+    transform: translateX(-24px) var(--use-case-interactive-animation-scale);
   }
   to {
     opacity: 1;
@@ -30,8 +39,8 @@
 
 @keyframes use-case-from-right {
   from {
-    opacity: 0;
-    transform: translateX(24px) scale(0.9);
+    opacity: 0.5;
+    transform: translateX(24px) var(--use-case-interactive-animation-scale);
   }
   to {
     opacity: 1;

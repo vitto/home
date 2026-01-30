@@ -322,19 +322,49 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
     if (children.length < 2) return;
 
     let currentIndex = 0;
+    let lastSwipeDirection = null; // Track last swipe direction for wrapping
 
     // Function to show a specific element and hide others
-    function showElement(index) {
+    function showElement(index, swipeDirection = null) {
+      // Determine animation direction
+      let animationDirection = null;
+
+      if (swipeDirection) {
+        // Use swipe direction if provided (for wrapping cases)
+        lastSwipeDirection = swipeDirection;
+        animationDirection = swipeDirection === 'next' ? 'from-right' : 'from-left';
+      } else {
+        // Normal case: determine from index comparison
+        if (currentIndex < index) {
+          animationDirection = 'from-right';
+        } else if (currentIndex > index) {
+          animationDirection = 'from-left';
+        } else {
+          // Same index, no animation needed
+          animationDirection = null;
+        }
+      }
+
       children.forEach((child, i) => {
         if (i === index) {
           child.classList.remove('hidden');
-          if (currentIndex < index) {
+          // Remove any existing animation classes
+          child.classList.remove('use-case-from-right-animation', 'use-case-from-left-animation');
+
+          if (animationDirection === 'from-right') {
             child.classList.add('use-case-from-right-animation');
-          } else if (currentIndex > index) {
+          } else if (animationDirection === 'from-left') {
             child.classList.add('use-case-from-left-animation');
           }
+
+          // Remove animation class after animation completes
+          setTimeout(() => {
+            child.classList.remove('use-case-from-right-animation', 'use-case-from-left-animation');
+          }, 500);
         } else {
           child.classList.add('hidden');
+          // Remove animation classes from hidden elements
+          child.classList.remove('use-case-from-right-animation', 'use-case-from-left-animation');
         }
       });
 
@@ -424,18 +454,18 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
       if (swipeDistanceX > 0) {
         // Swipe right - go to previous
         if (currentIndex > 0) {
-          showElement(currentIndex - 1);
+          showElement(currentIndex - 1, 'prev');
         } else {
-          // Wrap to last element
-          showElement(children.length - 1);
+          // Wrap to last element (swipe right means going backwards)
+          showElement(children.length - 1, 'prev');
         }
       } else {
         // Swipe left - go to next
         if (currentIndex < children.length - 1) {
-          showElement(currentIndex + 1);
+          showElement(currentIndex + 1, 'next');
         } else {
-          // Wrap to first element
-          showElement(0);
+          // Wrap to first element (swipe left means going forwards)
+          showElement(0, 'next');
         }
       }
     }
