@@ -5,6 +5,7 @@ import CategoryCardItem from './CategoryCardItem.astro';
 import Footer from './Footer.astro';
 import categoriesData from '../data/categories.json';
 import personalData from '../data/personal.json';
+import HeaderMenuCategoryCard from './HeaderMenuCategoryCard.astro';
 
 interface Props {
   iconColor?: string;
@@ -51,10 +52,9 @@ const categories = categoriesData.map((category) => ({
         categories.map((category) => {
           const isSelected = currentSection?.id === category.id;
           return (
-            <CategoryCardItem
+            <HeaderMenuCategoryCard
               id={category.id}
               link={category.link}
-              menu={true}
               icon={category.icon}
               iconHover={category.iconHover}
               title={category.title}
