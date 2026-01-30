@@ -220,5 +220,29 @@
     "name": "TypeScript",
     "logo": "logo-typescript.svg",
     "url": "https://www.typescriptlang.org/"
+  },
+  {
+    "id": "stenciljs",
+    "name": "StencilJS",
+    "logo": "logo-stenciljs.svg",
+    "url": "https://stenciljs.com/"
+  },
+  {
+    "id": "supernova",
+    "name": "Supernova",
+    "logo": "logo-supernova.svg",
+    "url": "https://supernova.io/"
+  },
+  {
+    "id": "knapsack",
+    "name": "Knapsack",
+    "logo": "logo-knapsack.svg",
+    "url": "https://knapsack.io/"
+  },
+  {
+    "id": "specify",
+    "name": "Specify",
+    "logo": "logo-specify.svg",
+    "url": "https://specifyapp.com/"
   }
 ]

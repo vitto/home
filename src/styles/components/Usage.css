@@ -2,6 +2,10 @@
   background-color: rgb(var(--tone-neutral));
 }
 
+.usage mds-usage[variant='do'] {
+  @apply mobile:order-first;
+}
+
 .usage mds-usage[variant='dont'] {
   @apply mobile:order-last;
 }

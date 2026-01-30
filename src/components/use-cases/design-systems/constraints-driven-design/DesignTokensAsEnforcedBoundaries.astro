@@ -3,18 +3,101 @@ import UseCase from '../../../UseCase.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import Separator from '../../../../components/Separator.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import tokensData from '../../../../data/use-cases/tokens.json';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+
+// Get tokens from 10 to 20
+const sizeTokens = tokensData.css?.size || {};
+const tokens10to20 = Object.entries(sizeTokens)
+  .slice(15, 20)
+  .map(([key, value]: [string, any]) => {
+    const rawValue = value.value;
+    // Extract numeric value from px (e.g., "4px" -> 4)
+    const pxMatch = rawValue.match(/(\d+(?:\.\d+)?)px/);
+    const valueInRem = pxMatch
+      ? `${(parseFloat(pxMatch[1]) / 16).toFixed(4).replace(/\.?0+$/, '')}rem`
+      : rawValue; // Keep original if not in px format
+
+    return {
+      key,
+      value: rawValue,
+      valueInRem,
+      class: `w-${key}`,
+    };
+  });
 ---
 
 <UseCase
   title="Design tokens as enforced boundaries"
   description="Design tokens were used to encode visual constraints directly into the system."
-/>
+>
+  <UseCaseInteractive clsHeight={72} label="Design tokens as enforced boundaries" multiple>
+    <div class="w-full grid gap-600">
+      <div class="grid">
+        <mds-text typography="h4">Size Tokens</mds-text>
+        <mds-text typography="caption">From 15 to 20</mds-text>
+      </div>
+      <mds-table class="w-full">
+        <mds-table-header>
+          <mds-table-header-cell label="Token"></mds-table-header-cell>
+          <mds-table-header-cell label="Preview"></mds-table-header-cell>
+          <mds-table-header-cell label="Class"></mds-table-header-cell>
+          <mds-table-header-cell label="Value"></mds-table-header-cell>
+          <mds-table-header-cell label="Value (rem)"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          {
+            tokens10to20.map((token) => (
+              <mds-table-row>
+                <mds-table-cell>
+                  <mds-badge variant="dark" tone="ghost" class="whitespace-nowrap">
+                    {token.key}
+                  </mds-badge>
+                </mds-table-cell>
+                <mds-table-cell>
+                  <div
+                    class="h-300 rounded bg-label-sky-06"
+                    style={`width: ${token.valueInRem};`}
+                  />
+                </mds-table-cell>
+                <mds-table-cell>
+                  <code class="whitespace-nowrap">{token.class}</code>
+                </mds-table-cell>
+                <mds-table-cell>
+                  <code class="whitespace-nowrap text-tone-neutral-04">{token.value}</code>
+                </mds-table-cell>
+                <mds-table-cell>
+                  <code class="whitespace-nowrap text-tone-neutral-04">{token.valueInRem}</code>
+                </mds-table-cell>
+              </mds-table-row>
+            ))
+          }
+        </mds-table-body>
+      </mds-table>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
 
 <Usage>
   <UsageItem variant="do">Use tokens to control spacing, color, typography, and motion.</UsageItem>
-  <UsageItem variant="dont">Allow arbitrary values outside the token set.</UsageItem>
+  <UsageItem variant="warn">Allow arbitrary values outside the token set.</UsageItem>
   <UsageItem variant="do">Make tokens the only supported way to express system values.</UsageItem>
   <UsageItem variant="dont">Treat tokens as optional or decorative abstractions.</UsageItem>
 </Usage>
+
+<Products>
+  <ProductCategory title="Tokens documentation">
+    <Brand name="zeroheight" label="Zeroheight" />
+    <Brand name="supernova" label="Supernova" />
+    <Brand name="knapsack" label="Knapsack" />
+    <Brand name="specify" label="Specify" />
+  </ProductCategory>
+  <ProductCategory title="Tokens tools">
+    <Brand name="amazon" label="Style Dictionary" url="https://styledictionary.com/" />
+  </ProductCategory>
+</Products>
 
 <Separator />
