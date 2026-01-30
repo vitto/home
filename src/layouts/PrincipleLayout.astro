@@ -328,6 +328,11 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
       children.forEach((child, i) => {
         if (i === index) {
           child.classList.remove('hidden');
+          if (currentIndex < index) {
+            child.classList.add('use-case-from-right-animation');
+          } else if (currentIndex > index) {
+            child.classList.add('use-case-from-left-animation');
+          }
         } else {
           child.classList.add('hidden');
         }
