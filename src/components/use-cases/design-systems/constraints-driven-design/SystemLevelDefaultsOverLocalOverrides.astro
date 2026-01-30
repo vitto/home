@@ -3,11 +3,54 @@ import UseCase from '../../../UseCase.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import Separator from '../../../../components/Separator.astro';
+import CodeSnippet from '../../../CodeSnippet.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
 ---
 
 <UseCase
   title="System-level defaults over local overrides"
   description="Defaults were treated as part of the system's contract."
+>
+  <CodeSnippet
+    title="Using component attributes as defaults"
+    variant="do"
+    code={`<mds-modal
+  headline="Modal title"
+  icon="mi/outline/info"
+  tone="weak"
+  variant="primary"
+>
+  <mds-text typography="caption">This is a modal text content.</mds-text>
+  <mds-button
+    icon="mi/outline/email"
+    slot="action"
+    tone="strong"
+    variant="primary"
+  >
+    Send email
+  </mds-button>
+</mds-modal>`}
+  />
+</UseCase>
+
+<CodeSnippet
+  title="Skipping attributes for out of scope customization"
+  variant="dont"
+  code={`<mds-banner
+  icon="mi/outline/info"
+  class="bg-tone-neutral text-tone-neutral-01 fill-variant-primary-03"
+>
+  <mds-text typography="caption">This is a modal text content.</mds-text>
+  <mds-button
+    icon="mi/outline/email"
+    slot="action"
+    class="bg-variant-primary-03 fill-tone-neutral text-variant-primary-10"
+  >
+    Send email
+  </mds-button>
+</mds-banner>`}
 />
 
 <Usage>
@@ -18,5 +61,15 @@ import Separator from '../../../../components/Separator.astro';
   <UsageItem variant="do">Encourage teams to rely on defaults instead of customization.</UsageItem>
   <UsageItem variant="dont">Allow silent deviations from system behavior.</UsageItem>
 </Usage>
+
+<Products>
+  <ProductCategory title="Pratical documentation">
+    <Brand name="zeroheight" label="Zeroheight" />
+    <Brand name="docusaurus" label="Docusaurus" />
+  </ProductCategory>
+  <ProductCategory title="Component testing">
+    <Brand name="storybook" label="Storybook" />
+  </ProductCategory>
+</Products>
 
 <Separator />

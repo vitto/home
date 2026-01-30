@@ -11,11 +11,13 @@ import documentationData from '../../../../data/use-cases/documentation.json';
 
 // Extract mds-button component data
 const componentName = 'mds-modal';
-const buttonComponent = documentationData.components.find((comp) => comp.tag === componentName);
+const documentationComponent = documentationData.components.find(
+  (comp) => comp.tag === componentName
+);
 
 // Filter out private props and get main API props
 const mainProps =
-  buttonComponent?.props
+  documentationComponent?.props
     .filter((prop) => {
       const isPrivate = prop.docsTags?.some((tag) => tag.name === 'private');
       return !isPrivate && prop.name !== 'hasText';
@@ -23,10 +25,10 @@ const mainProps =
     .slice(0, 10) || []; // Limit to first 10 props for display
 
 // Get events API
-const events = buttonComponent?.events || [];
+const events = documentationComponent?.events || [];
 
 // Get CSS custom properties API
-const cssCustomProperties = buttonComponent?.styles || [];
+const cssCustomProperties = documentationComponent?.styles || [];
 ---
 
 <UseCase
@@ -41,8 +43,8 @@ const cssCustomProperties = buttonComponent?.styles || [];
       </div>
       <mds-table class="w-full">
         <mds-table-header>
-          <mds-table-header-cell label="Property"></mds-table-header-cell>
           <mds-table-header-cell label="Attribute"></mds-table-header-cell>
+          <mds-table-header-cell label="Property"></mds-table-header-cell>
           <mds-table-header-cell label="Type"></mds-table-header-cell>
           <mds-table-header-cell label="Default"></mds-table-header-cell>
           <mds-table-header-cell label="Description"></mds-table-header-cell>

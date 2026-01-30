@@ -3,12 +3,47 @@ import UseCase from '../../../UseCase.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import Separator from '../../../../components/Separator.astro';
+import CodeSnippet from '../../../CodeSnippet.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
 ---
 
 <UseCase
   title="Composition rules instead of free assembly"
   description="Composable components were governed by explicit composition rules."
-/>
+>
+  <CodeSnippet
+    title="Documentation from codebase"
+    code={`// StencilJS component documentation
+/**
+ * @slot default - Add \`text string\`, \`HTML elements\` or \`components\` to this slot.
+ * @slot action - Add \`HTML elements\` or \`components\`, it is **recommended** to use \`mds-button\` element.
+ */`}
+  />
+  <CodeSnippet
+    title="Component composition"
+    code={`<mds-modal>
+  <mds-banner
+    headline="Modal title"
+    icon="mi/outline/info"
+    slot="window"
+    tone="weak"
+    variant="primary"
+  >
+    <mds-text typography="caption">This is a modal text content.</mds-text>
+    <mds-button
+      icon="mi/outline/email"
+      slot="action"
+      tone="strong"
+      variant="primary"
+    >
+      Proceed
+    </mds-button>
+  </mds-banner>
+</mds-modal>`}
+  />
+</UseCase>
 
 <Usage>
   <UsageItem variant="do">Define which components can be nested or combined.</UsageItem>
@@ -16,5 +51,16 @@ import Separator from '../../../../components/Separator.astro';
   <UsageItem variant="do">Document supported compositions and known anti-patterns.</UsageItem>
   <UsageItem variant="dont">Rely on visual review to catch invalid compositions.</UsageItem>
 </Usage>
+
+<Products>
+  <ProductCategory title="Documentation tools">
+    <Brand icon="mi/outline/auto-stories" label="Kompendium" url="https://docs.kompendium.dev/" />
+    <Brand
+      name="stenciljs"
+      label="StencilJS documentation"
+      url="https://stenciljs.com/docs/doc-generation"
+    />
+  </ProductCategory>
+</Products>
 
 <Separator />

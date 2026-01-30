@@ -3,12 +3,42 @@ import UseCase from '../../../UseCase.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import Separator from '../../../../components/Separator.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
 
 <UseCase
   title="Accessibility constraints as non-negotiable"
   description="Accessibility requirements were encoded as hard constraints rather than guidelines."
-/>
+>
+  <UseCaseInteractive clsHeight={228} label="Use tab to navigate">
+    <mds-tab class="w-full max-w-8000" fill>
+      <mds-tab-item selected>News</mds-tab-item>
+      <mds-tab-item>Sports</mds-tab-item>
+      <mds-tab-item>Weather</mds-tab-item>
+      <div
+        slot="content"
+        class="min-h-4000 mt-400 flex flex-col rounded-lg items-center justify-center bg-label-blue-10 fill-label-blue-04 text-label-blue-04"
+      >
+        <mds-icon name="mdi/newspaper"></mds-icon>
+        <mds-text typography="detail">News</mds-text>
+      </div>
+      <div
+        slot="content"
+        class="min-h-4000 mt-400 flex flex-col rounded-lg items-center justify-center bg-label-orange-10 fill-label-orange-04 text-label-orange-04"
+      >
+        <mds-icon name="mdi/basketball"></mds-icon>
+        <mds-text typography="detail">Sports</mds-text>
+      </div>
+      <div
+        slot="content"
+        class="min-h-4000 mt-400 flex flex-col rounded-lg items-center justify-center bg-label-green-10 fill-label-green-04 text-label-green-04"
+      >
+        <mds-icon name="mdi/weather-sunny"></mds-icon>
+        <mds-text typography="detail">Weather</mds-text>
+      </div>
+    </mds-tab>
+  </UseCaseInteractive>
+</UseCase>
 
 <Usage>
   <UsageItem variant="do">

@@ -11,7 +11,7 @@ import Products from '../../../Products.astro';
 
 // Get tokens from 10 to 20
 const sizeTokens = tokensData.css?.size || {};
-const tokens10to20 = Object.entries(sizeTokens)
+const limitedTokens = Object.entries(sizeTokens)
   .slice(15, 20)
   .map(([key, value]: [string, any]) => {
     const rawValue = value.value;
@@ -50,7 +50,7 @@ const tokens10to20 = Object.entries(sizeTokens)
         </mds-table-header>
         <mds-table-body>
           {
-            tokens10to20.map((token) => (
+            limitedTokens.map((token) => (
               <mds-table-row>
                 <mds-table-cell>
                   <mds-badge variant="dark" tone="ghost" class="whitespace-nowrap">

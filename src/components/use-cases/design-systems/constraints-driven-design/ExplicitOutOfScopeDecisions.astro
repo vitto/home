@@ -3,12 +3,27 @@ import UseCase from '../../../UseCase.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import Separator from '../../../../components/Separator.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
 ---
 
 <UseCase
   title='Explicit "out of scope" decisions'
   description="Some use cases were intentionally excluded from the system."
-/>
+>
+  <UseCaseInteractive clsHeight={228} label="Design system documentation">
+    <Usage>
+      <UsageItem variant="do">
+        All component's attributes will be treated as web standards attributes.
+      </UsageItem>
+      <UsageItem variant="dont">
+        We will not create custom attributes to solve react or other frameworks specific needs.
+      </UsageItem>
+    </Usage>
+  </UseCaseInteractive>
+</UseCase>
 
 <Usage>
   <UsageItem variant="do">Clearly document what the system does not support.</UsageItem>
@@ -18,5 +33,15 @@ import Separator from '../../../../components/Separator.astro';
     Expand the system reactively without evaluating systemic impact.
   </UsageItem>
 </Usage>
+
+<Products>
+  <ProductCategory title="Issue templates">
+    <Brand
+      name="github"
+      label="GitHub templates"
+      url="https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates"
+    />
+  </ProductCategory>
+</Products>
 
 <Separator />
