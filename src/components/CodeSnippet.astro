@@ -14,11 +14,18 @@ import { codeToHtml } from 'shiki';
 interface Props {
   language?: string;
   code: string;
+  variant?: 'none' | 'do' | 'dont' | 'warn';
   title?: string;
   class?: string;
 }
 
-const { language = 'html', code: rawCode, title, class: className = '' } = Astro.props;
+const {
+  language = 'html',
+  code: rawCode,
+  title,
+  class: className = '',
+  variant = 'none',
+} = Astro.props;
 
 // Trim initial and final newlines and whitespace
 const code = rawCode.trim();
@@ -40,13 +47,36 @@ const uniqueId = `code-${Math.random().toString(36).substring(2, 9)}`;
 ---
 
 <div class={`code-snippet-container mobile:rounded-none ${className}`}>
-  {
-    title && (
-      <p class="justify-self-center text-info-option text-tone-neutral-09 dark:text-tone-neutral-01">
-        {title}
-      </p>
-    )
-  }
+  <div class="flex items-center justify-center gap-200">
+    {
+      variant === 'do' && (
+        <mds-badge variant="success" tone="strong">
+          allowed
+        </mds-badge>
+      )
+    }
+    {
+      variant === 'dont' && (
+        <mds-badge variant="error" tone="strong">
+          not allowed
+        </mds-badge>
+      )
+    }
+    {
+      variant === 'warn' && (
+        <mds-badge variant="warning" tone="strong">
+          warning
+        </mds-badge>
+      )
+    }
+    {
+      title && (
+        <p class="justify-self-center text-info-option text-tone-neutral-09 dark:text-tone-neutral-01">
+          {title}
+        </p>
+      )
+    }
+  </div>
   <pre
     class="code-snippet-pre shiki github-dark"><code class={`code-snippet-code language-${normalizedLanguage}`} id={uniqueId} data-language={normalizedLanguage} set:html={codeContent} /></pre>
 </div>
