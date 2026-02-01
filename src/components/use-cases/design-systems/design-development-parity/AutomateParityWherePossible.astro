@@ -1,0 +1,194 @@
+---
+import Brand from '../../../Brand.astro';
+import Markdown from '../../../Markdown.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Automate parity where possible"
+  description="Manual synchronization does not scale."
+>
+  <UseCaseInteractive clsHeight={516} label="Tokens generation and export">
+    <div class="grid gap-600 w-full max-w-8000 min-h-[516px] auto-rows-min">
+      <div class="grid gap-400">
+        <mds-benchmark-bar
+          class="min-h-[28px] max-w-8000 w-full"
+          value="0"
+          max="100"
+          variant="primary"
+          alias="Ready"
+          data-progress-bar
+        >
+          <span data-progress-text>Ready to export tokens</span>
+        </mds-benchmark-bar>
+        <mds-button class="max-w-8000 w-full" data-save-button>Export tokens</mds-button>
+      </div>
+      <div
+        class="gap-400 grid-cols-full grid p-600 rounded-2xl bg-tone-slate-10 relative"
+        data-files-container
+      >
+        <div class="absolute inset-0 p-600 flex items-center justify-center">
+          <mds-text>Tokens will be exported here</mds-text>
+        </div>
+        <mds-file class="pointer-events-none scale-0 transition-transform" filename="tokens.json"
+        ></mds-file>
+        <mds-file
+          class="pointer-events-none scale-0 transition-transform"
+          filename="figma-tokens.json"
+          description="Figma variables"></mds-file>
+        <mds-file
+          class="pointer-events-none scale-0 transition-transform"
+          filename="tailwind-config.js"
+          description="Tailwind 3 configuration"></mds-file>
+        <mds-file
+          class="pointer-events-none scale-0 transition-transform"
+          filename="theme-tokens.css"
+          description="Tailwind 4 configuration"></mds-file>
+        <mds-file
+          class="pointer-events-none scale-0 transition-transform"
+          filename="tokens.css"
+          description="Cascading stylesheet"></mds-file>
+      </div>
+    </div>
+    <script>
+      function initSaveDataDemo() {
+        // Get the UseCase scope (article and container) for this script
+        // Can pass id explicitly or let it find automatically
+        const scope = (window as any).getUseCaseScope?.('automate-parity-where-possible');
+        if (!scope) return;
+
+        const { container } = scope;
+
+        // Scope all queries to the container
+        const saveButton = container.querySelector('[data-save-button]');
+        const progressBar = container.querySelector('[data-progress-bar]');
+        const progressText = container.querySelector('[data-progress-text]');
+        const filesContainer = container.querySelector('[data-files-container]');
+        const files = filesContainer.querySelectorAll('mds-file');
+
+        if (!saveButton || !progressBar || !progressText || !filesContainer) return;
+
+        const progressStates = [
+          { value: 0, alias: '', text: 'Ready to export tokens' },
+          { value: 20, alias: '1 / 5', text: 'Design tokens' },
+          { value: 40, alias: '2 / 5', text: 'Figma variables' },
+          { value: 60, alias: '3 / 5', text: 'Tailwind 3 configuration' },
+          { value: 80, alias: '4 / 5', text: 'Tailwind 4 configuration' },
+          { value: 100, alias: '5 / 5', text: 'CSS variable tokens' },
+        ];
+
+        let isSaving = false;
+        let currentStateIndex = 0;
+
+        const resetDemo = () => {
+          isSaving = false;
+          currentStateIndex = 0;
+          saveButton.removeAttribute('await');
+          saveButton.setAttribute('tabindex', '0');
+          saveButton.removeAttribute('icon');
+          saveButton.setAttribute('variant', 'primary');
+          saveButton.textContent = 'Proceed';
+          progressBar.setAttribute('value', '0');
+          progressBar.setAttribute('alias', 'Ready');
+          progressText.textContent = 'Ready to export tokens';
+          // filesContainer.classList.remove('grid');
+          // filesContainer.classList.add('hidden');
+          files.forEach((file: any) => {
+            file.classList.add('scale-0');
+            file.classList.remove('scale-100');
+          });
+        };
+
+        const updateProgress = () => {
+          const state = progressStates[currentStateIndex];
+          progressBar.setAttribute('value', String(state.value));
+          progressBar.setAttribute('alias', state.alias);
+          progressText.textContent = state.text;
+          files[currentStateIndex - 1].classList.remove('scale-0');
+          files[currentStateIndex - 1].classList.add('scale-100');
+
+          // Update button when reaching 100%
+          if (state.value === 100) {
+            saveButton.textContent = 'Complete';
+            saveButton.setAttribute('icon', 'mi/baseline/done');
+            saveButton.removeAttribute('await');
+            saveButton.setAttribute('variant', 'success');
+            // filesContainer.classList.remove('hidden');
+            // filesContainer.classList.add('grid');
+          }
+
+          currentStateIndex++;
+
+          if (currentStateIndex < progressStates.length) {
+            // Random delay between 600-1000ms for each step
+            const randomDelay = Math.floor(Math.random() * (1000 - 600 + 1)) + 600;
+            setTimeout(updateProgress, randomDelay);
+          } else {
+            // Wait 1 second at 100% before resetting
+            setTimeout(() => {
+              resetDemo();
+            }, 2000);
+          }
+        };
+
+        saveButton.addEventListener('click', () => {
+          if (isSaving) return;
+
+          isSaving = true;
+          saveButton.setAttribute('await', 'true');
+          saveButton.blur();
+          saveButton.setAttribute('tabindex', '-1');
+          saveButton.textContent = 'Please wait...';
+          currentStateIndex = 1; // Start from first progress state
+          updateProgress();
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSaveDataDemo);
+      } else {
+        initSaveDataDemo();
+      }
+    </script>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Use tokens and schemas as shared artifacts.</UsageItem>
+  <UsageItem variant="dont">Rely on human memory to maintain alignment.</UsageItem>
+  <UsageItem variant="do">Validate implementations against documented specs.</UsageItem>
+  <UsageItem variant="dont">Accept silent divergence between design and code.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Documentation">
+    <Brand
+      name="figma"
+      label="Figma variables"
+      url="https://help.figma.com/hc/en-us/articles/15339657135383-Guide-to-variables-in-Figma"
+    />
+  </ProductCategory>
+  <ProductCategory title="Exporters">
+    <Brand name="amazon" label="Style Dictionary" url="https://styledictionary.com" />
+  </ProductCategory>
+  <ProductCategory title="Importers">
+    <Brand
+      name="figma"
+      label="Tokens Studio"
+      url="https://www.figma.com/community/plugin/843461159747178978/tokens-studio-for-figma"
+    />
+    <Brand
+      name="figma"
+      label="Import to token"
+      url="https://www.figma.com/community/plugin/1575458419344987858/import-to-token"
+    />
+  </ProductCategory>
+</Products>
+
+<Separator />

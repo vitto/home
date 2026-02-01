@@ -5,11 +5,14 @@ import Nav from '../../components/Nav.astro';
 import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
-import Usage from '../../components/Usage.astro';
-import UsageItem from '../../components/UsageItem.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import TreatDesignAndCodeAsEqualSourcesOfTruth from '../../components/use-cases/design-systems/design-development-parity/TreatDesignAndCodeAsEqualSourcesOfTruth.astro';
+import EncodeDesignDecisionsNotScreenshots from '../../components/use-cases/design-systems/design-development-parity/EncodeDesignDecisionsNotScreenshots.astro';
+import ShareACommonMentalModel from '../../components/use-cases/design-systems/design-development-parity/ShareACommonMentalModel.astro';
+import AutomateParityWherePossible from '../../components/use-cases/design-systems/design-development-parity/AutomateParityWherePossible.astro';
+import Separator from '../../components/Separator.astro';
 
 const principle = data.principles.find((p) => p.id === 'design-development-parity')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -28,86 +31,26 @@ const sectionPath = '/design-systems';
       content={`
 A design system breaks when design and code drift apart.
 
-Design–development parity means that **design decisions and implementation
+Design-development parity means that **design decisions and implementation
 represent the same system**, expressed through different artifacts.
 
 When parity is lost, teams stop trusting the system and start working around it.
+
     `}
     />
 
-    <Markdown
-      content={`
-## Approach
+    <Separator class="mt-600" />
 
----
-
-#### Treat design and code as equal sources of truth
-
-Neither design nor code should lead in isolation.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Align design tokens with code tokens.</UsageItem>
-      <UsageItem variant="dont">Manually retranslate design values into code.</UsageItem>
-      <UsageItem variant="do">
-        Keep naming consistent across Figma, documentation, and APIs.
-      </UsageItem>
-      <UsageItem variant="dont">Use different terminology for the same concept.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Encode design decisions, not screenshots
-
-Implementation should express intent, not static visuals.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Implement components based on rules and constraints.</UsageItem>
-      <UsageItem variant="dont">
-        Recreate pixel-perfect snapshots without understanding behavior.
-      </UsageItem>
-      <UsageItem variant="do">Document states, interactions, and edge cases.</UsageItem>
-      <UsageItem variant="dont">Rely solely on static mockups for behavior.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Share a common mental model
-
-Designers and developers should reason about the system in the same way.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Define component anatomy and state models.</UsageItem>
-      <UsageItem variant="dont">Leave structure implicit or undocumented.</UsageItem>
-      <UsageItem variant="do">Review components together across disciplines.</UsageItem>
-      <UsageItem variant="dont">Hand off designs without discussion.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Automate parity where possible
-
-Manual synchronization does not scale.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Use tokens and schemas as shared artifacts.</UsageItem>
-      <UsageItem variant="dont">Rely on human memory to maintain alignment.</UsageItem>
-      <UsageItem variant="do">Validate implementations against documented specs.</UsageItem>
-      <UsageItem variant="dont">Accept silent divergence between design and code.</UsageItem>
-    </Usage>
+    <TreatDesignAndCodeAsEqualSourcesOfTruth />
+    <EncodeDesignDecisionsNotScreenshots />
+    <ShareACommonMentalModel />
+    <AutomateParityWherePossible />
 
     <Markdown
       content={`
 #### Why this principle matters
 
-Design–development parity reduces friction, rework, and ambiguity.
+Design-development parity reduces friction, rework, and ambiguity.
 
 When design and code speak the same language,
 the system becomes predictable, trustworthy, and scalable.
@@ -116,7 +59,7 @@ the system becomes predictable, trustworthy, and scalable.
   </article>
 
   <Bibliography
-    opener="Design–development parity is rooted in design systems, front-end architecture, and cross-functional collaboration:"
+    opener="Design-development parity is rooted in design systems, front-end architecture, and cross-functional collaboration:"
     closer="These sources explain why shared artifacts and alignment are critical for scalable systems."
   >
     <BibliographySection type="books">
@@ -155,9 +98,9 @@ the system becomes predictable, trustworthy, and scalable.
       />
       <BibliographyItem
         author="Shopify"
-        title="Design Systems and Front-End Architecture"
+        title="App Design Guidelines"
         description="Shows parity through shared abstractions."
-        url="https://shopify.engineering/design-systems-front-end-architecture"
+        url="https://shopify.dev/docs/apps/design"
       />
     </BibliographySection>
   </Bibliography>

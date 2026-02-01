@@ -1,0 +1,108 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+/*
+bg-variant-primary-01
+bg-variant-primary-02
+bg-variant-primary-03
+bg-variant-primary-04
+bg-variant-primary-05
+bg-variant-primary-06
+bg-variant-primary-07
+bg-variant-primary-08
+bg-variant-primary-09
+bg-variant-primary-10
+*/
+---
+
+<UseCase
+  title="Treat design and code as equal sources of truth"
+  description="Neither design nor code should lead in isolation."
+>
+  <UseCaseInteractive clsHeight={228} label="Multi-platform tokens">
+    <div class="w-full grid gap-600">
+      <mds-table class="w-full">
+        <mds-table-header>
+          <mds-table-header-cell label="Preview"></mds-table-header-cell>
+          <mds-table-header-cell label="Token"></mds-table-header-cell>
+          <mds-table-header-cell label="Figma"></mds-table-header-cell>
+          <mds-table-header-cell label="CSS"></mds-table-header-cell>
+          <mds-table-header-cell label="Tailwind"></mds-table-header-cell>
+        </mds-table-header>
+        <mds-table-body>
+          {
+            Array.from({ length: 10 }, (_, i) => {
+              const num = String(i + 1).padStart(2, '0');
+              const tokenName = `variant.primary.${num}`;
+              const figmaName = `Variant/Primary/${num}`;
+              const tailwindName = `bg-variant-primary-${num}`;
+              const cssName = `--variant-primary-${num}`;
+
+              return (
+                <mds-table-row>
+                  <mds-table-cell class="align-middle">
+                    <div class={`w-full h-600 rounded-lg ${tailwindName}`} />
+                  </mds-table-cell>
+                  <mds-table-cell class="align-middle">
+                    <mds-badge variant="dark" tone="ghost" class="whitespace-nowrap">
+                      {tokenName}
+                    </mds-badge>
+                  </mds-table-cell>
+                  <mds-table-cell class="align-middle">
+                    <code class="whitespace-nowrap text-sm">{figmaName}</code>
+                  </mds-table-cell>
+                  <mds-table-cell class="align-middle">
+                    <code class="whitespace-nowrap text-sm">{cssName}</code>
+                  </mds-table-cell>
+                  <mds-table-cell class="align-middle">
+                    <code class="whitespace-nowrap text-sm">{tailwindName}</code>
+                  </mds-table-cell>
+                </mds-table-row>
+              );
+            })
+          }
+        </mds-table-body>
+      </mds-table>
+    </div>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Align design tokens with code tokens.</UsageItem>
+  <UsageItem variant="dont">Manually retranslate design values into code.</UsageItem>
+  <UsageItem variant="do">Keep naming consistent across Figma, documentation, and APIs.</UsageItem>
+  <UsageItem variant="dont">Use different terminology for the same concept.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Documentation">
+    <Brand
+      name="figma"
+      label="Figma variables"
+      url="https://help.figma.com/hc/en-us/articles/15339657135383-Guide-to-variables-in-Figma"
+    />
+  </ProductCategory>
+  <ProductCategory title="Exporters">
+    <Brand name="amazon" label="Style Dictionary" url="https://styledictionary.com" />
+  </ProductCategory>
+  <ProductCategory title="Importers">
+    <Brand
+      name="figma"
+      label="Tokens Studio"
+      url="https://www.figma.com/community/plugin/843461159747178978/tokens-studio-for-figma"
+    />
+    <Brand
+      name="figma"
+      label="Import to token"
+      url="https://www.figma.com/community/plugin/1575458419344987858/import-to-token"
+    />
+  </ProductCategory>
+</Products>
+
+<Separator />
