@@ -33,6 +33,14 @@ const code = rawCode.trim();
 // Normalize language names (js -> javascript)
 const normalizedLanguage = language === 'js' ? 'javascript' : language;
 
+const languageBadgeVariant: Record<string, string> = {
+  javascript: 'amaranth',
+  html: 'violet',
+  css: 'blue',
+  json: 'yellow',
+  text: 'blue',
+};
+
 // Highlight the code using Shiki
 const highlightedCode = await codeToHtml(code, {
   lang: normalizedLanguage,
@@ -77,6 +85,13 @@ const uniqueId = `code-${Math.random().toString(36).substring(2, 9)}`;
       )
     }
   </div>
-  <pre
-    class="code-snippet-pre shiki github-dark"><code class={`code-snippet-code language-${normalizedLanguage}`} id={uniqueId} data-language={normalizedLanguage} set:html={codeContent} /></pre>
+  <div class="relative grid">
+    <mds-badge
+      variant={languageBadgeVariant[normalizedLanguage]}
+      tone="weak"
+      class="absolute top-400 right-400">{normalizedLanguage}</mds-badge
+    >
+    <pre
+      class="code-snippet-pre shiki github-dark"><code class={`code-snippet-code language-${normalizedLanguage} ${language === 'text' ? 'text-tone-neutral' : ''}`} id={uniqueId} data-language={normalizedLanguage} set:html={codeContent} /></pre>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 ---
 import Brand from '../../../Brand.astro';
-import Markdown from '../../../Markdown.astro';
+import CodeSnippet from '../../../CodeSnippet.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
 import Separator from '../../../Separator.astro';
@@ -14,9 +14,32 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Share a common mental model"
   description="Designers and developers should reason about the system in the same way."
 >
-  <UseCaseInteractive clsHeight={516} label="Tokens generation and export">
-    [ example of a shared mental model ]
-  </UseCaseInteractive>
+  <CodeSnippet
+    title="Button component anatomy"
+    language="text"
+    code={`
+Button
+├─ Interaction Container
+│
+├─ Content
+│  ├─ Icon (optional)
+│  │  └─ Icon Element (mds-icon)
+│  │     └─ part="icon"
+│  │
+│  ├─ Label (required)
+│  │  └─ Text Element (mds-text)
+│  │     └─ part="label"
+│  │
+│  └─ Notification Slot (optional)
+│     └─ Slot "notification"
+│        └─ Notification Component (recommended: mds-notification)
+│
+├─ Await / Loading Layer (conditional)
+│  └─ Spinner (mds-spinner)
+│
+└─ Focus / Interaction Layer
+`}
+  />
 </UseCase>
 
 <Usage>
@@ -27,7 +50,22 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 </Usage>
 
 <Products>
-  <ProductCategory title="Documentation platforms">
+  <ProductCategory title="Interactive documentation">
+    <Brand name="storybook" label="Storybook" url="https://storybook.js.org" />
+  </ProductCategory>
+  <ProductCategory title="Addons">
+    <Brand
+      name="storybook"
+      label="Figma Designs"
+      url="https://storybook.js.org/addons/@storybook/addon-designs"
+    />
+  </ProductCategory>
+  <ProductCategory title="Documentation">
+    <Brand
+      name="anima"
+      label="Anima"
+      url="https://www.animaapp.com/blog/product-updates/design-system-automation-is-now-available-to-individuals/"
+    />
     <Brand name="notion" label="Notion" />
     <Brand name="confluence" label="Confluence" />
   </ProductCategory>
