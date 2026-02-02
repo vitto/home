@@ -1,0 +1,68 @@
+---
+import Brand from '../../../Brand.astro';
+import CodeSnippet from '../../../CodeSnippet.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Prefer composition over configuration"
+  description="Composable systems grow horizontally, not vertically."
+>
+  <CodeSnippet
+    title="Composition"
+    variant="do"
+    code={`<mds-modal
+  headline="Modal title"
+  icon="mi/outline/info"
+  tone="weak"
+  variant="primary"
+>
+  <mds-text typography="caption">This is a modal text content.</mds-text>
+  <mds-button
+    icon="mi/outline/email"
+    slot="action"
+    tone="strong"
+    variant="primary"
+  >
+    Send email
+  </mds-button>
+</mds-modal>`}
+  />
+
+  <CodeSnippet
+    title="Configuration"
+    variant="dont"
+    language="json"
+    code={`{
+  "layout": {
+    "type": "grid",
+    "columns": 3,
+    "spacing": "md"
+  }
+}`}
+  />
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Compose layouts by combining smaller primitives.</UsageItem>
+  <UsageItem variant="dont">Rely on deeply nested configuration objects.</UsageItem>
+  <UsageItem variant="do">Use slots, children, or content injection patterns.</UsageItem>
+  <UsageItem variant="dont">Hardcode structure inside high-level components.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Component frameworks">
+    <Brand name="storybook" label="Storybook" />
+  </ProductCategory>
+  <ProductCategory title="Documentation">
+    <Brand name="zeroheight" label="Zeroheight" />
+  </ProductCategory>
+</Products>
+
+<Separator />

@@ -1,0 +1,98 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Establish clear layering and abstraction levels"
+  description="Not all components serve the same purpose."
+>
+  <UseCaseInteractive clsHeight={320} label="Abstraction layers">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Layer"></mds-table-header-cell>
+        <mds-table-header-cell label="Purpose"></mds-table-header-cell>
+        <mds-table-header-cell label="Examples"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Primitives</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Basic building blocks</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">mds-button</code>, <code class="text-sm">mds-icon</code>, <code
+                class="text-sm">mds-text</code
+              >
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Patterns</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Common compositions</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">mds-card</code>, <code class="text-sm">mds-modal</code>, <code
+                class="text-sm">mds-form</code
+              >
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Compositions</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Complex, context-specific</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">UserProfile</code>, <code class="text-sm">CheckoutFlow</code>
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Boundaries</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Documented usage limits</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Primitives → Patterns → Compositions</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Separate primitives, patterns, and compositions.</UsageItem>
+  <UsageItem variant="dont">Expose low-level details in high-level components.</UsageItem>
+  <UsageItem variant="do">Document intended usage and composition boundaries.</UsageItem>
+  <UsageItem variant="dont">Let teams guess how components should be combined.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Documentation platforms">
+    <Brand name="zeroheight" label="Zeroheight" />
+    <Brand name="supernova" label="Supernova" />
+    <Brand name="knapsack" label="Knapsack" />
+  </ProductCategory>
+</Products>
+
+<Separator />

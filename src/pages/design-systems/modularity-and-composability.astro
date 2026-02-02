@@ -5,11 +5,14 @@ import Nav from '../../components/Nav.astro';
 import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
-import Usage from '../../components/Usage.astro';
-import UsageItem from '../../components/UsageItem.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import Separator from '../../components/Separator.astro';
+import DesignComponentsWithASingleResponsibility from '../../components/use-cases/design-systems/modularity-and-composability/DesignComponentsWithASingleResponsibility.astro';
+import PreferCompositionOverConfiguration from '../../components/use-cases/design-systems/modularity-and-composability/PreferCompositionOverConfiguration.astro';
+import EstablishClearLayeringAndAbstractionLevels from '../../components/use-cases/design-systems/modularity-and-composability/EstablishClearLayeringAndAbstractionLevels.astro';
+import DesignForReuseAcrossContexts from '../../components/use-cases/design-systems/modularity-and-composability/DesignForReuseAcrossContexts.astro';
 
 const principle = data.principles.find((p) => p.id === 'modularity-and-composability')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -36,71 +39,12 @@ without introducing inconsistency or duplication.
     `}
     />
 
-    <Markdown
-      content={`
-## Approach
+    <Separator class="my-600" />
 
----
-
-#### Design components with a single responsibility
-
-Each component should solve one problem well.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Create components with a clear, narrow purpose.</UsageItem>
-      <UsageItem variant="dont">
-        Bundle multiple responsibilities into a single component.
-      </UsageItem>
-      <UsageItem variant="do">Expose variation through composition, not branching logic.</UsageItem>
-      <UsageItem variant="dont">Add props to cover every possible layout scenario.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Prefer composition over configuration
-
-Composable systems grow horizontally, not vertically.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Compose layouts by combining smaller primitives.</UsageItem>
-      <UsageItem variant="dont">Rely on deeply nested configuration objects.</UsageItem>
-      <UsageItem variant="do">Use slots, children, or content injection patterns.</UsageItem>
-      <UsageItem variant="dont">Hardcode structure inside high-level components.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Establish clear layering and abstraction levels
-
-Not all components serve the same purpose.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Separate primitives, patterns, and compositions.</UsageItem>
-      <UsageItem variant="dont">Expose low-level details in high-level components.</UsageItem>
-      <UsageItem variant="do">Document intended usage and composition boundaries.</UsageItem>
-      <UsageItem variant="dont">Let teams guess how components should be combined.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Design for reuse across contexts
-
-A component should remain useful even when its context changes.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Keep components context-agnostic where possible.</UsageItem>
-      <UsageItem variant="dont">Couple components to specific pages or flows.</UsageItem>
-      <UsageItem variant="do">Use tokens and shared patterns for spacing and behavior.</UsageItem>
-      <UsageItem variant="dont">Bake layout assumptions into components.</UsageItem>
-    </Usage>
+    <DesignComponentsWithASingleResponsibility />
+    <PreferCompositionOverConfiguration />
+    <EstablishClearLayeringAndAbstractionLevels />
+    <DesignForReuseAcrossContexts />
 
     <Markdown
       content={`

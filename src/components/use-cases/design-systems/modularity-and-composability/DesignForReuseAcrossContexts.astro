@@ -1,0 +1,99 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Design for reuse across contexts"
+  description="A component should remain useful even when its context changes."
+>
+  <UseCaseInteractive clsHeight={320} label="Context-agnostic design">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Component"></mds-table-header-cell>
+        <mds-table-header-cell label="Design Approach"></mds-table-header-cell>
+        <mds-table-header-cell label="Reusability"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">mds-button</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Uses tokens, no layout assumptions</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              ✓ High
+            </mds-badge>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">mds-card</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Flexible content slots, token-based spacing</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              ✓ High
+            </mds-badge>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">mds-input-field</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Context-agnostic, works in forms, modals, pages
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              ✓ High
+            </mds-badge>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">CheckoutButton</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Coupled to checkout flow, hardcoded layout</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="error" tone="weak" size="sm" class="whitespace-nowrap">
+              ✗ Low
+            </mds-badge>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Keep components context-agnostic where possible.</UsageItem>
+  <UsageItem variant="dont">Couple components to specific pages or flows.</UsageItem>
+  <UsageItem variant="do">Use tokens and shared patterns for spacing and behavior.</UsageItem>
+  <UsageItem variant="dont">Bake layout assumptions into components.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Tokens tools">
+    <Brand name="amazon" label="Style Dictionary" url="https://styledictionary.com/" />
+  </ProductCategory>
+  <ProductCategory title="Component frameworks">
+    <Brand name="storybook" label="Storybook" />
+  </ProductCategory>
+</Products>
+
+<Separator />
