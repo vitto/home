@@ -244,5 +244,11 @@
     "name": "Specify",
     "logo": "logo-specify.svg",
     "url": "https://specifyapp.com/"
+  },
+  {
+    "id": "anima",
+    "name": "Anima",
+    "logo": "logo-anima.svg",
+    "url": "https://animaapp.com/"
   }
 ]
