@@ -16,61 +16,72 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   <UseCaseInteractive clsHeight={320} label="Documented constraints">
     <mds-table class="w-full">
       <mds-table-header>
+        <mds-table-header-cell label="Preview"></mds-table-header-cell>
         <mds-table-header-cell label="Pattern"></mds-table-header-cell>
         <mds-table-header-cell label="Status"></mds-table-header-cell>
         <mds-table-header-cell label="Documentation"></mds-table-header-cell>
       </mds-table-header>
       <mds-table-body>
         <mds-table-row>
-          <mds-table-cell>
-            <mds-text typography="caption">Button with icon and label</mds-text>
+          <mds-table-cell class="align-middle">
+            <mds-button icon="mi/outline/email" variant="primary">Email</mds-button>
           </mds-table-cell>
-          <mds-table-cell>
+          <mds-table-cell class="align-middle">
+            <mds-text typography="caption" class="whitespace-nowrap"
+              >Button with icon and label</mds-text
+            >
+          </mds-table-cell>
+          <mds-table-cell class="align-middle">
             <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
               ✓ Supported
             </mds-badge>
           </mds-table-cell>
-          <mds-table-cell>
-            <mds-text typography="caption">Primary use case, fully documented</mds-text>
+          <mds-table-cell class="align-middle">
+            <mds-text typography="caption" class="whitespace-nowrap"
+              >Primary use case, fully documented</mds-text
+            >
           </mds-table-cell>
         </mds-table-row>
         <mds-table-row>
-          <mds-table-cell>
-            <mds-text typography="caption">Button with only icon</mds-text>
+          <mds-table-cell class="align-middle">
+            <mds-button icon="mi/outline/email" variant="primary"></mds-button>
           </mds-table-cell>
-          <mds-table-cell>
+          <mds-table-cell class="align-middle">
+            <mds-text typography="caption" class="whitespace-nowrap">Button with only icon</mds-text
+            >
+          </mds-table-cell>
+          <mds-table-cell class="align-middle">
             <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
               ✓ Supported
             </mds-badge>
           </mds-table-cell>
-          <mds-table-cell>
-            <mds-text typography="caption">Icon-only variant documented</mds-text>
+          <mds-table-cell class="align-middle">
+            <mds-text typography="caption" class="whitespace-nowrap"
+              >Icon-only variant documented</mds-text
+            >
           </mds-table-cell>
         </mds-table-row>
         <mds-table-row>
-          <mds-table-cell>
-            <mds-text typography="caption">Custom button styling</mds-text>
+          <mds-table-cell class="align-middle">
+            <mds-button
+              icon="mi/outline/email"
+              variant="primary"
+              style="background-color: #a4f001; color: #fff;">Email</mds-button
+            >
           </mds-table-cell>
-          <mds-table-cell>
+          <mds-table-cell class="align-middle">
+            <mds-text typography="caption" class="whitespace-nowrap">Custom button styling</mds-text
+            >
+          </mds-table-cell>
+          <mds-table-cell class="align-middle">
             <mds-badge variant="error" tone="weak" size="sm" class="whitespace-nowrap">
-              ✗ Not supported
+              ✗ Not allowed
             </mds-badge>
           </mds-table-cell>
-          <mds-table-cell>
-            <mds-text typography="caption">Explicitly stated: use design tokens instead</mds-text>
-          </mds-table-cell>
-        </mds-table-row>
-        <mds-table-row>
-          <mds-table-cell>
-            <mds-text typography="caption">Multiple buttons in a row</mds-text>
-          </mds-table-cell>
-          <mds-table-cell>
-            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
-              ✓ Supported
-            </mds-badge>
-          </mds-table-cell>
-          <mds-table-cell>
-            <mds-text typography="caption">Composition pattern documented</mds-text>
+          <mds-table-cell class="align-middle">
+            <mds-text typography="caption" class="whitespace-nowrap"
+              >Explicitly stated: use design tokens instead</mds-text
+            >
           </mds-table-cell>
         </mds-table-row>
       </mds-table-body>

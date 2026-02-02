@@ -6,12 +6,64 @@ import Separator from '../../../Separator.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 ---
 
 <UseCase
   title="Use constraints to guide, not restrict"
   description="Good constraints enable faster and safer decisions."
-/>
+>
+  <UseCaseInteractive clsHeight={320} label="Safe defaults">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Component"></mds-table-header-cell>
+        <mds-table-header-cell label="Default"></mds-table-header-cell>
+        <mds-table-header-cell label="Covers"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">mds-button</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">variant="primary"</code>, <code class="text-sm">size="md"</code>
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">85% of use cases</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">mds-input-field</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">type="text"</code>, <code class="text-sm">size="md"</code>
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">90% of use cases</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">mds-card</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">elevation="1"</code>, <code class="text-sm">padding="md"</code>
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">80% of use cases</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
 
 <Usage>
   <UsageItem variant="do">Provide safe defaults that cover most use cases.</UsageItem>
