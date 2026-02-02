@@ -1,0 +1,96 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Make constraints visible and intentional"
+  description="Constraints must be explicit to be effective."
+>
+  <UseCaseInteractive clsHeight={320} label="Documented constraints">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Pattern"></mds-table-header-cell>
+        <mds-table-header-cell label="Status"></mds-table-header-cell>
+        <mds-table-header-cell label="Documentation"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption">Button with icon and label</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              ✓ Supported
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Primary use case, fully documented</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption">Button with only icon</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              ✓ Supported
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Icon-only variant documented</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption">Custom button styling</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="error" tone="weak" size="sm" class="whitespace-nowrap">
+              ✗ Not supported
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Explicitly stated: use design tokens instead</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption">Multiple buttons in a row</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              ✓ Supported
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Composition pattern documented</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Document allowed variations and supported use cases.</UsageItem>
+  <UsageItem variant="dont">Assume constraints will be inferred from examples.</UsageItem>
+  <UsageItem variant="do">State unsupported patterns clearly.</UsageItem>
+  <UsageItem variant="dont">Leave teams guessing what is "out of bounds".</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Documentation platforms">
+    <Brand name="zeroheight" label="Zeroheight" />
+    <Brand name="supernova" label="Supernova" />
+    <Brand name="knapsack" label="Knapsack" />
+  </ProductCategory>
+</Products>
+
+<Separator />

@@ -1,0 +1,110 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Evolve constraints deliberately"
+  description="Constraints are not static and must adapt with the system."
+>
+  <UseCaseInteractive clsHeight={320} label="Constraint evolution">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Version"></mds-table-header-cell>
+        <mds-table-header-cell label="Constraint Change"></mds-table-header-cell>
+        <mds-table-header-cell label="Rationale"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-badge variant="info" tone="weak" size="sm" class="whitespace-nowrap">
+              v2.0.0
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Added <code class="text-sm">size="xl"</code> option
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">High demand from 15+ teams for larger buttons</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-badge variant="warning" tone="weak" size="sm" class="whitespace-nowrap">
+              v1.8.0
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Removed <code class="text-sm">variant="custom"</code>
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Caused inconsistency, only used by 1 team</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              v1.5.0
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Added <code class="text-sm">disabled</code> state constraint
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Standardize disabled behavior across components
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-badge variant="error" tone="weak" size="sm" class="whitespace-nowrap">
+              v1.0.0
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Initial constraint: <code class="text-sm">variant</code> limited to 3 values
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Reduce decision complexity for common use cases
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Revisit constraints based on real usage and feedback.</UsageItem>
+  <UsageItem variant="dont">Remove constraints to solve isolated edge cases.</UsageItem>
+  <UsageItem variant="do">Document rationale behind constraints.</UsageItem>
+  <UsageItem variant="dont">Treat constraints as arbitrary rules.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Version control">
+    <Brand name="github" label="GitHub" />
+  </ProductCategory>
+  <ProductCategory title="Documentation platforms">
+    <Brand name="zeroheight" label="Zeroheight" />
+    <Brand name="supernova" label="Supernova" />
+  </ProductCategory>
+</Products>
+
+<Separator />

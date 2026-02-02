@@ -5,11 +5,14 @@ import Nav from '../../components/Nav.astro';
 import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
-import Usage from '../../components/Usage.astro';
-import UsageItem from '../../components/UsageItem.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import Separator from '../../components/Separator.astro';
+import MakeConstraintsVisibleAndIntentional from '../../components/use-cases/design-systems/explicit-constraints/MakeConstraintsVisibleAndIntentional.astro';
+import UseConstraintsToGuideNotRestrict from '../../components/use-cases/design-systems/explicit-constraints/UseConstraintsToGuideNotRestrict.astro';
+import EncodeConstraintsIntoTheSystem from '../../components/use-cases/design-systems/explicit-constraints/EncodeConstraintsIntoTheSystem.astro';
+import EvolveConstraintsDeliberately from '../../components/use-cases/design-systems/explicit-constraints/EvolveConstraintsDeliberately.astro';
 
 const principle = data.principles.find((p) => p.id === 'explicit-constraints')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -36,71 +39,12 @@ and the system loses its ability to guide decisions.
     `}
     />
 
-    <Markdown
-      content={`
-## Approach
+    <Separator class="my-600" />
 
----
-
-#### Make constraints visible and intentional
-
-Constraints must be explicit to be effective.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Document allowed variations and supported use cases.</UsageItem>
-      <UsageItem variant="dont">Assume constraints will be inferred from examples.</UsageItem>
-      <UsageItem variant="do">State unsupported patterns clearly.</UsageItem>
-      <UsageItem variant="dont">Leave teams guessing what is “out of bounds”.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Use constraints to guide, not restrict
-
-Good constraints enable faster and safer decisions.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Provide safe defaults that cover most use cases.</UsageItem>
-      <UsageItem variant="dont">
-        Expose unlimited configuration for the sake of flexibility.
-      </UsageItem>
-      <UsageItem variant="do">Limit variation through tokens and composition.</UsageItem>
-      <UsageItem variant="dont">Allow arbitrary overrides at the component level.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Encode constraints into the system
-
-Constraints should be enforced by the system, not by guidelines alone.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Restrict props and APIs to supported options.</UsageItem>
-      <UsageItem variant="dont">Rely on documentation to prevent misuse.</UsageItem>
-      <UsageItem variant="do">Use type systems and validation to enforce rules.</UsageItem>
-      <UsageItem variant="dont">Allow invalid combinations to fail silently.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Evolve constraints deliberately
-
-Constraints are not static and must adapt with the system.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Revisit constraints based on real usage and feedback.</UsageItem>
-      <UsageItem variant="dont">Remove constraints to solve isolated edge cases.</UsageItem>
-      <UsageItem variant="do">Document rationale behind constraints.</UsageItem>
-      <UsageItem variant="dont">Treat constraints as arbitrary rules.</UsageItem>
-    </Usage>
+    <MakeConstraintsVisibleAndIntentional />
+    <UseConstraintsToGuideNotRestrict />
+    <EncodeConstraintsIntoTheSystem />
+    <EvolveConstraintsDeliberately />
 
     <Markdown
       content={`

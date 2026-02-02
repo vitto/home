@@ -1,0 +1,112 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Encode constraints into the system"
+  description="Constraints should be enforced by the system, not by guidelines alone."
+>
+  <UseCaseInteractive clsHeight={320} label="Type-safe constraints">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Property"></mds-table-header-cell>
+        <mds-table-header-cell label="Allowed Values"></mds-table-header-cell>
+        <mds-table-header-cell label="Enforcement"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">variant</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <div class="flex gap-200 whitespace-nowrap">
+              <mds-badge variant="primary" tone="weak" size="sm">primary</mds-badge>
+              <mds-badge variant="success" tone="weak" size="sm">success</mds-badge>
+              <mds-badge variant="error" tone="weak" size="sm">error</mds-badge>
+            </div>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm whitespace-nowrap"
+                >type Variant = 'primary' | 'success' | 'error'</code
+              >
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">size</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <div class="flex gap-200 whitespace-nowrap">
+              <mds-badge variant="info" tone="weak" size="sm">sm</mds-badge>
+              <mds-badge variant="info" tone="weak" size="sm">md</mds-badge>
+              <mds-badge variant="info" tone="weak" size="sm">lg</mds-badge>
+            </div>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm whitespace-nowrap">type Size = 'sm' | 'md' | 'lg'</code>
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">disabled</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <div class="flex gap-200 whitespace-nowrap">
+              <mds-badge variant="green" tone="weak" size="sm">true</mds-badge>
+              <mds-badge variant="green" tone="weak" size="sm">false</mds-badge>
+            </div>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm whitespace-nowrap">boolean</code>
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">invalid</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption" class="text-tone-neutral-04">
+              <code class="text-sm line-through">'custom'</code>
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="error" tone="weak" size="sm" class="whitespace-nowrap">
+              Type error
+            </mds-badge>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Restrict props and APIs to supported options.</UsageItem>
+  <UsageItem variant="dont">Rely on documentation to prevent misuse.</UsageItem>
+  <UsageItem variant="do">Use type systems and validation to enforce rules.</UsageItem>
+  <UsageItem variant="dont">Allow invalid combinations to fail silently.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Type systems">
+    <Brand name="typescript" label="TypeScript" />
+  </ProductCategory>
+  <ProductCategory title="Validation tools">
+    <Brand name="eslint" label="ESLint" />
+  </ProductCategory>
+</Products>
+
+<Separator />
