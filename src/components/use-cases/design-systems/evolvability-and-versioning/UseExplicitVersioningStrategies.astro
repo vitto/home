@@ -1,0 +1,124 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Use explicit versioning strategies"
+  description="Versioning communicates impact and intent."
+>
+  <UseCaseInteractive clsHeight={320} label="Semantic versioning">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Version"></mds-table-header-cell>
+        <mds-table-header-cell label="Type"></mds-table-header-cell>
+        <mds-table-header-cell label="Change Example"></mds-table-header-cell>
+        <mds-table-header-cell label="Impact"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-badge variant="error" tone="weak" size="sm" class="whitespace-nowrap">
+              v2.0.0
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="error" tone="strong" size="sm" class="whitespace-nowrap">
+              Major
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Removed <code class="text-sm">variant="ghost"</code>
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Breaking change</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-badge variant="info" tone="weak" size="sm" class="whitespace-nowrap">
+              v1.5.0
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="info" tone="weak" size="sm" class="whitespace-nowrap">
+              Minor
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Added <code class="text-sm">size="xl"</code> option
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">New feature</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              v1.4.1
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              Patch
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Fixed button focus state</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Bug fix</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              v1.4.0
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="info" tone="weak" size="sm" class="whitespace-nowrap">
+              Minor
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Added <code class="text-sm">loading</code> state
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">New feature</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Adopt semantic versioning for the design system.</UsageItem>
+  <UsageItem variant="dont">Ship breaking changes without a major version bump.</UsageItem>
+  <UsageItem variant="do">Document changes clearly with release notes.</UsageItem>
+  <UsageItem variant="dont">Rely on informal communication for updates.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Semantic versioning">
+    <Brand icon="mi/outline/commit" label="Semver" url="https://semver.org/" />
+  </ProductCategory>
+  <ProductCategory title="Version management">
+    <Brand name="changesets" label="Changesets" />
+  </ProductCategory>
+</Products>
+
+<Separator />

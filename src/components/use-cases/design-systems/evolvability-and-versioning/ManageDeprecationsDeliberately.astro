@@ -1,0 +1,117 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Manage deprecations deliberately"
+  description="Deprecation is part of a healthy system lifecycle."
+>
+  <UseCaseInteractive clsHeight={320} label="Deprecation timeline">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Component"></mds-table-header-cell>
+        <mds-table-header-cell label="Status"></mds-table-header-cell>
+        <mds-table-header-cell label="Deprecated"></mds-table-header-cell>
+        <mds-table-header-cell label="Migration"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">variant="ghost"</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="warning" tone="weak" size="sm" class="whitespace-nowrap">
+              Deprecated
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">v1.8.0</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Use <code class="text-sm">variant="outline"</code>
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">at-full-width</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="warning" tone="weak" size="sm" class="whitespace-nowrap">
+              Deprecated
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">v1.5.0</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Use <code class="text-sm">class="w-full"</code>
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">onMdsButtonClicked</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="error" tone="weak" size="sm" class="whitespace-nowrap">
+              Removed
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">v2.0.0</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Use <code class="text-sm">onMdsButtonClick</code>
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">animate</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="error" tone="weak" size="sm" class="whitespace-nowrap">
+              Removed
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">v2.0.0</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Use CSS transitions instead</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Mark deprecated components and APIs explicitly.</UsageItem>
+  <UsageItem variant="dont">Remove features without warning.</UsageItem>
+  <UsageItem variant="do">Provide migration paths and timelines.</UsageItem>
+  <UsageItem variant="dont">Force immediate rewrites on consuming teams.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Documentation platforms">
+    <Brand name="zeroheight" label="Zeroheight" />
+    <Brand name="supernova" label="Supernova" />
+  </ProductCategory>
+  <ProductCategory title="Version control">
+    <Brand name="github" label="GitHub" />
+  </ProductCategory>
+</Products>
+
+<Separator />

@@ -5,11 +5,14 @@ import Nav from '../../components/Nav.astro';
 import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
-import Usage from '../../components/Usage.astro';
-import UsageItem from '../../components/UsageItem.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import Separator from '../../components/Separator.astro';
+import DesignForChangeNotPermanence from '../../components/use-cases/design-systems/evolvability-and-versioning/DesignForChangeNotPermanence.astro';
+import UseExplicitVersioningStrategies from '../../components/use-cases/design-systems/evolvability-and-versioning/UseExplicitVersioningStrategies.astro';
+import ManageDeprecationsDeliberately from '../../components/use-cases/design-systems/evolvability-and-versioning/ManageDeprecationsDeliberately.astro';
+import BalanceStabilityAndProgress from '../../components/use-cases/design-systems/evolvability-and-versioning/BalanceStabilityAndProgress.astro';
 
 const principle = data.principles.find((p) => p.id === 'evolvability-and-versioning')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -36,69 +39,12 @@ Unmanaged change is what causes fragmentation and loss of trust.
     `}
     />
 
-    <Markdown
-      content={`
-## Approach
+    <Separator class="my-600" />
 
----
-
-#### Design for change, not permanence
-
-Every component and rule should be expected to evolve.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Assume components will need new variants and behaviors.</UsageItem>
-      <UsageItem variant="dont">Treat initial implementations as final.</UsageItem>
-      <UsageItem variant="do">Favor extension over replacement when possible.</UsageItem>
-      <UsageItem variant="dont">Introduce breaking changes for convenience.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Use explicit versioning strategies
-
-Versioning communicates impact and intent.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Adopt semantic versioning for the design system.</UsageItem>
-      <UsageItem variant="dont">Ship breaking changes without a major version bump.</UsageItem>
-      <UsageItem variant="do">Document changes clearly with release notes.</UsageItem>
-      <UsageItem variant="dont">Rely on informal communication for updates.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Manage deprecations deliberately
-
-Deprecation is part of a healthy system lifecycle.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Mark deprecated components and APIs explicitly.</UsageItem>
-      <UsageItem variant="dont">Remove features without warning.</UsageItem>
-      <UsageItem variant="do">Provide migration paths and timelines.</UsageItem>
-      <UsageItem variant="dont">Force immediate rewrites on consuming teams.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-#### Balance stability and progress
-
-Not all parts of the system should evolve at the same pace.
-    `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Keep foundations stable while iterating on higher layers.</UsageItem>
-      <UsageItem variant="dont">Change tokens and primitives frequently.</UsageItem>
-      <UsageItem variant="do">Evaluate impact before introducing breaking changes.</UsageItem>
-      <UsageItem variant="dont">Optimize for short-term speed over long-term health.</UsageItem>
-    </Usage>
+    <DesignForChangeNotPermanence />
+    <UseExplicitVersioningStrategies />
+    <ManageDeprecationsDeliberately />
+    <BalanceStabilityAndProgress />
 
     <Markdown
       content={`
