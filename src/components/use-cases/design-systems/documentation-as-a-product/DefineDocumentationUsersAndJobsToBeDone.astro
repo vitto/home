@@ -1,0 +1,108 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Define documentation users and jobs-to-be-done"
+  description="Documentation should be designed for the people who rely on it to make decisions."
+>
+  <UseCaseInteractive clsHeight={320} label="Documentation audiences">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Audience"></mds-table-header-cell>
+        <mds-table-header-cell label="Primary Job-to-be-Done"></mds-table-header-cell>
+        <mds-table-header-cell label="What They Need"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-badge variant="orchid" tone="weak" size="sm" class="whitespace-nowrap">
+              Designer
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Choose the right component for a design</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Visual examples, usage guidelines, design tokens
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-badge variant="blue" tone="weak" size="sm" class="whitespace-nowrap">
+              Developer
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Implement components correctly</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              API reference, code examples, props documentation
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-badge variant="green" tone="weak" size="sm" class="whitespace-nowrap">
+              Product Manager
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Make informed product decisions</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Design principles, usage patterns, best practices
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-badge variant="violet" tone="weak" size="sm" class="whitespace-nowrap">
+              Support
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Answer user questions accurately</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Troubleshooting guides, FAQ, common patterns</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">
+    Identify primary audiences (designers, developers, product, support).
+  </UsageItem>
+  <UsageItem variant="dont">Assume documentation is "for everyone".</UsageItem>
+  <UsageItem variant="do">Write task-oriented and decision-oriented content.</UsageItem>
+  <UsageItem variant="dont">Dump reference material without context or intent.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Documentation platforms">
+    <Brand name="zeroheight" label="Zeroheight" />
+    <Brand name="supernova" label="Supernova" />
+    <Brand name="knapsack" label="Knapsack" />
+  </ProductCategory>
+  <ProductCategory title="Documentation tools">
+    <Brand name="notion" label="Notion" />
+    <Brand name="confluence" label="Confluence" />
+  </ProductCategory>
+</Products>
+
+<Separator />

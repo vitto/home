@@ -1,0 +1,119 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Apply quality standards and review processes"
+  description="Documentation should meet the same quality bar as code and design."
+>
+  <UseCaseInteractive clsHeight={320} label="Quality checklist">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Standard"></mds-table-header-cell>
+        <mds-table-header-cell label="Criteria"></mds-table-header-cell>
+        <mds-table-header-cell label="Required"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Clarity</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Clear, concise language. No jargon without explanation.
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="green" tone="weak" size="sm" class="whitespace-nowrap">
+              ✓ Required
+            </mds-badge>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Structure</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Consistent headings, code examples, and formatting.
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="green" tone="weak" size="sm" class="whitespace-nowrap">
+              ✓ Required
+            </mds-badge>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Tone</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Professional, helpful, and consistent with brand voice.
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="green" tone="weak" size="sm" class="whitespace-nowrap">
+              ✓ Required
+            </mds-badge>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Accuracy</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Matches current implementation. No outdated examples.
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="green" tone="weak" size="sm" class="whitespace-nowrap">
+              ✓ Required
+            </mds-badge>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Completeness</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">All props, events, and use cases documented.</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="green" tone="weak" size="sm" class="whitespace-nowrap">
+              ✓ Required
+            </mds-badge>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Review documentation changes as part of pull requests.</UsageItem>
+  <UsageItem variant="dont">Ship features without updating related docs.</UsageItem>
+  <UsageItem variant="do">Define standards for clarity, structure, and tone.</UsageItem>
+  <UsageItem variant="dont">Treat documentation as optional or secondary.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Version control">
+    <Brand name="github" label="GitHub" />
+  </ProductCategory>
+  <ProductCategory title="Documentation platforms">
+    <Brand name="zeroheight" label="Zeroheight" />
+    <Brand name="supernova" label="Supernova" />
+  </ProductCategory>
+</Products>
+
+<Separator />
