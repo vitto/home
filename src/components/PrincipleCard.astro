@@ -43,7 +43,24 @@ const {
 } = Astro.props;
 
 // Map color names to CSS classes
-const colorClasses: Record<string, string> = {
+const iconColorClasses: Record<string, string> = {
+  'status-success': 'text-status-success-05 bg-status-success-10',
+  'status-info': 'text-status-info-05 bg-status-info-10',
+  'status-error': 'text-status-error-05 bg-status-error-10',
+  'status-warning': 'text-status-warning-05 bg-status-warning-10',
+  'label-amaranth': 'text-label-amaranth-05 bg-label-amaranth-10',
+  'label-orchid': 'text-label-orchid-05 bg-label-orchid-10',
+  'label-violet': 'text-label-violet-05 bg-label-violet-10',
+  'label-blue': 'text-label-blue-05 bg-label-blue-10',
+  'label-sky': 'text-label-sky-05 bg-label-sky-10',
+  'label-aqua': 'text-label-aqua-05 bg-label-aqua-10',
+  'label-green': 'text-label-green-05 bg-label-green-10',
+  'label-lime': 'text-label-lime-05 bg-label-lime-10',
+  'label-yellow': 'text-label-yellow-05 bg-label-yellow-10',
+  'label-orange': 'text-label-orange-05 bg-label-orange-10',
+};
+
+const cardColorClasses: Record<string, string> = {
   'status-success':
     'group-[&:is(:hover,:focus-visible)]:bg-status-success-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-status-success-05 bg-status-success-10',
   'status-info':
@@ -74,7 +91,8 @@ const colorClasses: Record<string, string> = {
     'group-[&:is(:hover,:focus-visible)]:bg-label-orange-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-orange-05 bg-label-orange-10',
 };
 
-const categoryColorClass = colorClasses[color] || 'bg-tone-neutral-09 text-tone-neutral-05';
+const categoryColorClass = iconColorClasses[color] || 'bg-tone-neutral-09 text-tone-neutral-05';
+const cardColorClass = cardColorClasses[color] || 'bg-tone-neutral-09 text-tone-neutral-05';
 ---
 
 <a
@@ -84,7 +102,7 @@ const categoryColorClass = colorClasses[color] || 'bg-tone-neutral-09 text-tone-
   data-category={category}
 >
   <div
-    class="principle-card grid gap-200 tablet:aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_auto_1fr_auto] tablet:grid-rows-[auto_1fr_auto] text-tone-neutral-03 p-600 desktop:p-400 group-hover:-translate-y-200 shadow-sm-sharp transition bg-tone-neutral dark:bg-tone-neutral-09 group-[&:is(:hover,:focus-visible)]:bg-tone-neutral dark:group-[&:is(:hover,:focus-visible)]:bg-tone-neutral-08 ease-out-expo duration-500"
+    class={`principle-card grid gap-200 tablet:aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_auto_1fr_auto] tablet:grid-rows-[auto_1fr_auto] p-600 desktop:p-400 group-hover:-translate-y-200 transition ease-out-expo duration-500 [bg-tone-neutral shadow-sm-sharp] text-tone-neutral-03 dark:bg-tone-neutral-09 ${cardColorClass}`}
   >
     <div
       class={`p-200 rounded-full inline-flex justify-self-start transition-[color,background-color,border-color,padding,border-radius] group-[&:is(:hover,:focus-visible)]:px-600 ease-out-expo duration-500 ${categoryColorClass}`}

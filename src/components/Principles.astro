@@ -14,7 +14,7 @@ interface Props {
 const { class: className = '' } = Astro.props;
 
 const baseClasses =
-  'priciples-section w-full max-w-screen-desktop grid grid-cols-1 tablet:grid-cols-3 desktop:grid-cols-4 gap-600 desktop:gap-400 mobile:bg-tone-neutral-09 bg-tone-neutral-10 p-600 tablet:rounded-[48px]';
+  'priciples-section w-full max-w-screen-desktop grid grid-cols-1 tablet:grid-cols-3 desktop:grid-cols-4 gap-600 desktop:gap-400 tablet:rounded-[48px]';
 const combinedClasses = `${baseClasses} ${className}`.trim();
 ---
 
