@@ -1,0 +1,84 @@
+---
+import Brand from '../Brand.astro';
+import UseCaseInteractive from '../UseCaseInteractive.astro';
+
+interface Props {
+  showProps?: boolean;
+  highlightProps?: boolean;
+}
+
+const { showProps = true, highlightProps = false } = Astro.props;
+---
+
+<UseCaseInteractive
+  clsHeight={320}
+  label="Interactive documentation"
+  size="sm"
+  contentClass="justify-center items-center"
+  padding={false}
+>
+  <div
+    class={`grid relative min-h-8000 mobile:grid-cols-full w-full grid-cols-[180px_1fr] bg-tone-neutral`}
+    data-feedback-container
+  >
+    <div
+      class={`bg-label-sky-10 border-r border-label-sky-09 border-0 border-solid p-600 gap-600 grid auto-rows-min mobile:hidden`}
+    >
+      <Brand name="storybook" label="Storybook" class="bg-transparent hover:bg-label-sky-09" />
+      <div class="grid gap-100">
+        <div class="px-400 py-100"><mds-text typography="caption"><b>Banner</b></mds-text></div>
+        <div class="px-400 py-100 rounded-md bg-label-sky-04 text-tone-neutral-10">
+          <mds-text typography="caption"><b>Button</b></mds-text>
+        </div>
+        <div class="px-400 py-100"><mds-text typography="caption"><b>Modal</b></mds-text></div>
+        <div class="px-400 py-100"><mds-text typography="caption"><b>Table</b></mds-text></div>
+      </div>
+    </div>
+    <div
+      class={`grid mobile:col-span-2 w-full ${showProps ? 'grid-cols-[1fr_auto] mobile:grid-cols-full' : 'grid-cols-full'}`}
+    >
+      <div class="p-600">
+        <mds-button class="shrink-0" variant="primary" tone="strong" icon="mi/baseline/check-circle"
+          >Button component</mds-button
+        >
+      </div>
+    </div>
+    {
+      showProps && (
+        <div
+          class={`tablet:absolute inset-0 flex justify-end pointer-events-none ${highlightProps ? 'bg-tone-neutral-01/40' : ''}`}
+        >
+          <div class="mobile:w-full shadow-outline-light-50 p-600 grid grid-cols-[auto_1fr] gap-600 auto-rows-min bg-tone-neutral">
+            <div class="col-span-2 flex tablet:hidden">
+              <Brand
+                name="storybook"
+                label="Storybook"
+                class="bg-transparent hover:bg-label-sky-09 mobile:px-0 mobile:hover:bg-transparent"
+              />
+            </div>
+            <mds-text typography="label">Attrubute</mds-text>
+            <mds-text typography="label">Value</mds-text>
+            <mds-text typography="caption">
+              <b>variant</b>
+            </mds-text>
+            <mds-text typography="caption">
+              <b>primary</b>
+            </mds-text>
+            <mds-text typography="caption">
+              <b>tone</b>
+            </mds-text>
+            <mds-text typography="caption">
+              <b>strong</b>
+            </mds-text>
+            <mds-text typography="caption">
+              <b>icon</b>
+            </mds-text>
+            <mds-text typography="caption">
+              <b>mi/baseline/check-circle</b>
+            </mds-text>
+          </div>
+        </div>
+      )
+    }
+  </div>
+</UseCaseInteractive>

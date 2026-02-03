@@ -6,46 +6,14 @@ import Separator from '../../../Separator.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
-import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import UseCaseInteractiveStorybook from '../../UseCaseInteractiveStorybook.astro';
 ---
 
 <UseCase
   title="Encode design decisions, not screenshots"
   description="Implementation should express intent, not static visuals."
 >
-  <UseCaseInteractive
-    clsHeight={320}
-    label="Interactive documentation"
-    size="sm"
-    contentClass="justify-center items-center"
-    padding={false}
-  >
-    <div
-      class="grid min-h-8000 grid-cols-[180px_1fr] mobile:grid-cols-full w-full"
-      data-feedback-container
-    >
-      <div
-        class="bg-label-sky-10 border-r border-label-sky-09 border-0 border-solid p-600 gap-600 grid auto-rows-min mobile:hidden"
-      >
-        <Brand name="storybook" />
-        <div class="grid gap-100">
-          <div class="px-400 py-100"><mds-text typography="caption"><b>Banner</b></mds-text></div>
-          <div class="px-400 py-100 rounded-md bg-label-sky-04 text-tone-neutral-10">
-            <mds-text typography="caption"><b>Button</b></mds-text>
-          </div>
-          <div class="px-400 py-100"><mds-text typography="caption"><b>Modal</b></mds-text></div>
-          <div class="px-400 py-100"><mds-text typography="caption"><b>Table</b></mds-text></div>
-        </div>
-      </div>
-      <div
-        class="p-600 flex items-start justify-start mobile:justify-center mobile:col-span-2 w-full"
-      >
-        <mds-button class="shrink-0" variant="primary" tone="strong" icon="mi/baseline/check-circle"
-          >Button component</mds-button
-        >
-      </div>
-    </div>
-  </UseCaseInteractive>
+  <UseCaseInteractiveStorybook />
 </UseCase>
 
 <Usage>
