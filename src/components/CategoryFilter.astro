@@ -101,14 +101,25 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
       // Filter cards
       principleCards.forEach((card) => {
         const cardCategory = card.getAttribute('data-category');
+        const innerCard = card.querySelector('.principle-card');
         const shouldShow = filterValue === 'all' || cardCategory === filterValue;
 
         if (shouldShow) {
-          card.classList.remove('hidden');
+          card.classList.add('order-first');
+          innerCard.setAttribute('data-filtered', 'true');
         } else {
-          card.classList.add('hidden');
+          card.classList.remove('order-first');
+          innerCard.setAttribute('data-filtered', 'false');
+          innerCard.classList.add('delay-500');
         }
       });
+
+      setTimeout(() => {
+        principleCards.forEach((card) => {
+          const innerCard = card.querySelector('.principle-card');
+          innerCard.classList.remove('delay-500');
+        });
+      }, 500);
     };
 
     // Check for category query parameter first (takes precedence over saved filter)

@@ -62,37 +62,41 @@ const iconColorClasses: Record<string, string> = {
 
 const cardColorClasses: Record<string, string> = {
   'status-success':
-    'group-[&:is(:hover,:focus-visible)]:bg-status-success-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-status-success-05 bg-status-success-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-status-success-05 group-[&:is(:hover,:focus-visible)]:text-status-success-10 text-status-success-01 bg-status-success-10',
   'status-info':
-    'group-[&:is(:hover,:focus-visible)]:bg-status-info-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-status-info-05 bg-status-info-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-status-info-05 group-[&:is(:hover,:focus-visible)]:text-status-info-10 text-status-info-01 bg-status-info-10',
   'status-error':
-    'group-[&:is(:hover,:focus-visible)]:bg-status-error-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-status-error-05 bg-status-error-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-status-error-05 group-[&:is(:hover,:focus-visible)]:text-status-error-10 text-status-error-01 bg-status-error-10',
   'status-warning':
-    'group-[&:is(:hover,:focus-visible)]:bg-status-warning-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-status-warning-05 bg-status-warning-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-status-warning-05 group-[&:is(:hover,:focus-visible)]:text-status-warning-10 text-status-warning-01 bg-status-warning-10',
   'label-amaranth':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-amaranth-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-amaranth-05 bg-label-amaranth-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-amaranth-05 group-[&:is(:hover,:focus-visible)]:text-label-amaranth-10 text-label-amaranth-01 bg-label-amaranth-10',
   'label-orchid':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-orchid-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-orchid-05 bg-label-orchid-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-orchid-05 group-[&:is(:hover,:focus-visible)]:text-label-orchid-10 text-label-orchid-01 bg-label-orchid-10',
   'label-violet':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-violet-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-violet-05 bg-label-violet-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-violet-05 group-[&:is(:hover,:focus-visible)]:text-label-violet-10 text-label-violet-01 bg-label-violet-10',
   'label-blue':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-blue-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-blue-05 bg-label-blue-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-blue-05 group-[&:is(:hover,:focus-visible)]:text-label-blue-10 text-label-blue-01 bg-label-blue-10',
   'label-sky':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-sky-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-sky-05 bg-label-sky-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-sky-05 group-[&:is(:hover,:focus-visible)]:text-label-sky-10 text-label-sky-01 bg-label-sky-10',
   'label-aqua':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-aqua-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-aqua-05 bg-label-aqua-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-aqua-05 group-[&:is(:hover,:focus-visible)]:text-label-aqua-10 text-label-aqua-01 bg-label-aqua-10',
   'label-green':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-green-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-green-05 bg-label-green-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-green-05 group-[&:is(:hover,:focus-visible)]:text-label-green-10 text-label-green-01 bg-label-green-10',
   'label-lime':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-lime-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-lime-05 bg-label-lime-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-lime-05 group-[&:is(:hover,:focus-visible)]:text-label-lime-10 text-label-lime-01 bg-label-lime-10',
   'label-yellow':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-yellow-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-yellow-05 bg-label-yellow-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-yellow-05 group-[&:is(:hover,:focus-visible)]:text-label-yellow-10 text-label-yellow-01 bg-label-yellow-10',
   'label-orange':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-orange-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral text-label-orange-05 bg-label-orange-10',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-orange-05 group-[&:is(:hover,:focus-visible)]:text-label-orange-10 text-label-orange-01 bg-label-orange-10',
 };
 
 const categoryColorClass = iconColorClasses[color] || 'bg-tone-neutral-09 text-tone-neutral-05';
 const cardColorClass = cardColorClasses[color] || 'bg-tone-neutral-09 text-tone-neutral-05';
+const iconHoverClass =
+  'group-hover:rounded-b-3xl group-hover:rounded-t-md group-hover:px-600 group-hover:-translate-y-250';
+const iconFocusClass =
+  'group-focus-visible:rounded-b-3xl group-focus-visible:rounded-t-md group-focus-visible:px-600 group-focus-visible:-translate-y-250';
 ---
 
 <a
@@ -102,10 +106,10 @@ const cardColorClass = cardColorClasses[color] || 'bg-tone-neutral-09 text-tone-
   data-category={category}
 >
   <div
-    class={`principle-card grid gap-200 tablet:aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_auto_1fr_auto] tablet:grid-rows-[auto_1fr_auto] p-600 desktop:p-400 group-hover:-translate-y-200 transition ease-out-expo duration-500 [bg-tone-neutral shadow-sm-sharp] text-tone-neutral-03 dark:bg-tone-neutral-09 ${cardColorClass}`}
+    class={`principle-card grid gap-200 tablet:aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_auto_1fr_auto] tablet:grid-rows-[auto_1fr_auto] p-600 desktop:p-400 group-hover:-translate-y-200 transition ease-out-expo duration-500 [bg-tone-neutral shadow-sm-sharp] text-tone-neutral-03 dark:bg-tone-neutral-09 ${cardColorClass} data-[filtered=false]:bg-tone-neutral`}
   >
     <div
-      class={`p-200 rounded-full inline-flex justify-self-start transition-[color,background-color,border-color,padding,border-radius] group-[&:is(:hover,:focus-visible)]:px-600 ease-out-expo duration-500 ${categoryColorClass}`}
+      class={`p-200 rounded-3xl inline-flex justify-self-start transition-cosmetic ease-out-expo duration-500 ${categoryColorClass} ${iconHoverClass} ${iconFocusClass}`}
     >
       <Icon name={icon} />
     </div>
@@ -117,7 +121,7 @@ const cardColorClass = cardColorClasses[color] || 'bg-tone-neutral-09 text-tone-
     </p>
     <div class="flex gap-400 items-center">
       <Badge
-        class={`shrink-0 ease-out-expo duration-500 transition-[background-color,color,padding] group-[&:is(:hover,:focus-visible)]:px-200 ${categoryColorClass}`}
+        class={`shrink-0 ease-out-expo duration-500 transition-cosmetic group-[&:is(:hover,:focus-visible)]:px-200 ${categoryColorClass}`}
       >
         {category}
       </Badge>
