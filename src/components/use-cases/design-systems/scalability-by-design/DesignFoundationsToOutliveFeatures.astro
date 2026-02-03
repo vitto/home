@@ -1,0 +1,107 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Design foundations to outlive features"
+  description="Foundations should change slower than the products built on top of them."
+>
+  <UseCaseInteractive clsHeight={320} label="Foundation stability">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Foundation"></mds-table-header-cell>
+        <mds-table-header-cell label="Change Rate"></mds-table-header-cell>
+        <mds-table-header-cell label="Example"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Design Tokens</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              Very Stable
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">spacing-400</code>, <code class="text-sm">color-primary-01</code
+              >
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Typography Scale</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              Stable
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">h1</code>, <code class="text-sm">h2</code>, <code
+                class="text-sm">body</code
+              >
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Motion Rules</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              Stable
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">duration-300</code>, <code class="text-sm">ease-out</code>
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Components</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="info" tone="weak" size="sm" class="whitespace-nowrap">
+              Evolving
+            </mds-badge>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Built on foundations, change more frequently</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Invest early in tokens, spacing, typography, and motion rules.</UsageItem>
+  <UsageItem variant="dont">Tie foundations to a single product or feature.</UsageItem>
+  <UsageItem variant="do">Use semantic tokens instead of hardcoded values.</UsageItem>
+  <UsageItem variant="dont">Encode brand or layout decisions directly in components.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Tokens tools">
+    <Brand name="amazon" label="Style Dictionary" url="https://styledictionary.com/" />
+  </ProductCategory>
+  <ProductCategory title="Tokens documentation">
+    <Brand name="zeroheight" label="Zeroheight" />
+    <Brand name="supernova" label="Supernova" />
+  </ProductCategory>
+</Products>
+
+<Separator />

@@ -1,0 +1,94 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Design for multiple teams and workflows"
+  description="A scalable design system supports parallel work without collisions."
+>
+  <UseCaseInteractive clsHeight={320} label="Parallel workflows">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Team"></mds-table-header-cell>
+        <mds-table-header-cell label="Work"></mds-table-header-cell>
+        <mds-table-header-cell label="Support"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Team A</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Building new component</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Contribution guidelines, versioning</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Team B</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Extending existing component</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Extension guidelines, deprecation docs</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Team C</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Updating documentation</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Documentation standards, review process</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>All Teams</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Working in parallel</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-badge variant="success" tone="weak" size="sm" class="whitespace-nowrap">
+              No collisions
+            </mds-badge>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Provide clear contribution and extension guidelines.</UsageItem>
+  <UsageItem variant="dont">Rely on tribal knowledge to evolve the system.</UsageItem>
+  <UsageItem variant="do">Use versioning and deprecation strategies.</UsageItem>
+  <UsageItem variant="dont">Introduce breaking changes without migration paths.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Version control">
+    <Brand name="github" label="GitHub" />
+  </ProductCategory>
+  <ProductCategory title="Semantic versioning">
+    <Brand icon="mi/outline/commit" label="Semver" url="https://semver.org/" />
+  </ProductCategory>
+  <ProductCategory title="Documentation platforms">
+    <Brand name="zeroheight" label="Zeroheight" />
+  </ProductCategory>
+</Products>
+
+<Separator />

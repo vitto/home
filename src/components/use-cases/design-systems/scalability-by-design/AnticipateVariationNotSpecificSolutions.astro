@@ -1,0 +1,109 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Anticipate variation, not specific solutions"
+  description="Scalable systems support change without knowing its exact form."
+>
+  <UseCaseInteractive clsHeight={320} label="Extension points">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Component"></mds-table-header-cell>
+        <mds-table-header-cell label="Extension Point"></mds-table-header-cell>
+        <mds-table-header-cell label="Default"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">mds-button</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">variant</code>, <code class="text-sm">size</code>, <code
+                class="text-sm">icon</code
+              > slot
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">variant="primary"</code>, <code class="text-sm">size="md"</code>
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">mds-card</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Content slots, <code class="text-sm">elevation</code>, <code class="text-sm"
+                >padding</code
+              >
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">elevation="1"</code>, <code class="text-sm">padding="md"</code>
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">mds-modal</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Header/content/footer slots, <code class="text-sm">size</code>, <code class="text-sm"
+                >variant</code
+              >
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              <code class="text-sm">size="md"</code>, <code class="text-sm">variant="primary"</code>
+            </mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <code class="whitespace-nowrap text-sm">Composition</code>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">
+              Combine primitives: Button + Icon + Text + Card
+            </mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Flexible, no hardcoded structure</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Design extension points and safe defaults.</UsageItem>
+  <UsageItem variant="dont">Optimize components for only current requirements.</UsageItem>
+  <UsageItem variant="do">Allow controlled variation through tokens and composition.</UsageItem>
+  <UsageItem variant="dont">Fork components to handle edge cases.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Component frameworks">
+    <Brand name="storybook" label="Storybook" />
+  </ProductCategory>
+  <ProductCategory title="Tokens tools">
+    <Brand name="amazon" label="Style Dictionary" url="https://styledictionary.com/" />
+  </ProductCategory>
+</Products>
+
+<Separator />
