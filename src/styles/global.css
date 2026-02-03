@@ -168,3 +168,7 @@ mds-img::part(media) {
     underline-offset-2;
   }
 }
+
+mds-table-cell {
+  vertical-align: middle;
+}

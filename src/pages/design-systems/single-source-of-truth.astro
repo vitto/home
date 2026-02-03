@@ -5,11 +5,15 @@ import Nav from '../../components/Nav.astro';
 import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
-import Usage from '../../components/Usage.astro';
-import UsageItem from '../../components/UsageItem.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import Separator from '../../components/Separator.astro';
+import StorybookAsThePrimaryReference from '../../components/use-cases/design-systems/single-source-of-truth/StorybookAsThePrimaryReference.astro';
+import ComponentsDesignedAsPublicApis from '../../components/use-cases/design-systems/single-source-of-truth/ComponentsDesignedAsPublicApis.astro';
+import CicdPipelinesAsAlignmentMechanisms from '../../components/use-cases/design-systems/single-source-of-truth/CicdPipelinesAsAlignmentMechanisms.astro';
+import ExplicitProcessesForSystemChanges from '../../components/use-cases/design-systems/single-source-of-truth/ExplicitProcessesForSystemChanges.astro';
+import AccessibilityEmbeddedInTheSourceOfTruth from '../../components/use-cases/design-systems/single-source-of-truth/AccessibilityEmbeddedInTheSourceOfTruth.astro';
 const principle = data.principles.find((p) => p.id === 'single-source-of-truth')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
@@ -41,101 +45,13 @@ Every extension or change must pass through the system itself, in an explicit, d
 The goal is not control, but **clarity**: enabling teams to trust the system and focus on product work rather than interpretation and reconciliation.
     `}
     />
-    <Markdown
-      content={`
-## Approach
+    <Separator class="my-600" />
 
----
-
-#### Storybook as the primary reference
-
-In a production design system I worked on, Storybook was intentionally positioned as the **operational source of truth**, not as a secondary showcase.
-
-[Magma Design System Storybook](https://magma.maggiolicloud.it/storybook/)`}
-    />
-    <Usage>
-      <UsageItem variant="do">
-        Centralize components, variants, and states in a single, shared environment.
-      </UsageItem>
-      <UsageItem variant="dont">
-        Treat design files or screenshots as the primary authority.
-      </UsageItem>
-      <UsageItem variant="do">
-        Use Storybook as a common reference for designers and developers.
-      </UsageItem>
-      <UsageItem variant="dont">
-        Consider documentation as something derived after implementation rather than part of the
-        system itself.
-      </UsageItem>
-    </Usage>
-    <Markdown
-      content={`
-  #### Components designed as public APIs
-
-  Components were defined as stable contracts rather than flexible local implementations.
-    `}
-    />
-    <Usage>
-      <UsageItem variant="do">Expose a limited and intentional set of properties.</UsageItem>
-      <UsageItem variant="dont">Expose internal implementation details for convenience.</UsageItem>
-      <UsageItem variant="do">
-        Document supported behaviors and constraints as part of the public API.
-      </UsageItem>
-      <UsageItem variant="dont">
-        Allow arbitrary overrides that introduce uncontrolled divergence.
-      </UsageItem>
-    </Usage>
-    <Markdown
-      content={`
-  #### CI/CD pipelines as alignment mechanisms
-
-  The build and deployment pipeline was used not only for distribution, but as a **mechanism for enforcing coherence** between design and development.
-    `}
-    />
-    <Usage>
-      <UsageItem variant="do">Automate validation and publishing processes.</UsageItem>
-      <UsageItem variant="dont">Rely on manual releases.</UsageItem>
-      <UsageItem variant="do">
-        Separate environments to make the actual state of the system explicit.
-      </UsageItem>
-      <UsageItem variant="dont">
-        Allow discrepancies between documented components and shipped code.
-      </UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-  #### Explicit processes for system changes
-
-  Design system evolution was handled through clearly defined and traceable processes.
-  `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">
-        Provide official channels for proposing new features or changes.
-      </UsageItem>
-      <UsageItem variant="dont">Accept informal or undocumented modifications.</UsageItem>
-      <UsageItem variant="do">Make decisions visible and shared across disciplines.</UsageItem>
-      <UsageItem variant="dont">Prioritize urgency over long-term system integrity.</UsageItem>
-    </Usage>
-
-    <Markdown
-      content={`
-  #### Accessibility embedded in the source of truth
-
-  Accessibility requirements were integrated directly into the design system rather than treated as external guidelines.
-  `}
-    />
-
-    <Usage>
-      <UsageItem variant="do">Treat accessibility as a baseline requirement.</UsageItem>
-      <UsageItem variant="dont">Apply accessibility fixes downstream.</UsageItem>
-      <UsageItem variant="do">Make constraints visible to both designers and developers.</UsageItem>
-      <UsageItem variant="dont">
-        Separate accessibility rules from the components that implement them.
-      </UsageItem>
-    </Usage>
+    <StorybookAsThePrimaryReference />
+    <ComponentsDesignedAsPublicApis />
+    <CicdPipelinesAsAlignmentMechanisms />
+    <ExplicitProcessesForSystemChanges />
+    <AccessibilityEmbeddedInTheSourceOfTruth />
 
     <Markdown
       content={`

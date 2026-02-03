@@ -1,0 +1,118 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Accessibility embedded in the source of truth"
+  description="Accessibility requirements were integrated directly into the design system rather than treated as external guidelines."
+>
+  <UseCaseInteractive clsHeight={320} label="Accessibility integrated in components">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Component"></mds-table-header-cell>
+        <mds-table-header-cell label="A11y Feature"></mds-table-header-cell>
+        <mds-table-header-cell label="Status" class="text-center"></mds-table-header-cell>
+        <mds-table-header-cell label="Documentation"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>mds-button</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">ARIA roles, keyboard navigation</mds-text>
+          </mds-table-cell>
+          <mds-table-cell class="text-center">
+            <mds-icon name="mi/baseline/check-circle" class="fill-status-success-05"></mds-icon>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Built-in, tested in Storybook</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>mds-input-field</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Label association, error announcements</mds-text>
+          </mds-table-cell>
+          <mds-table-cell class="text-center">
+            <mds-icon name="mi/baseline/check-circle" class="fill-status-success-05"></mds-icon>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">ARIA attributes documented</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>mds-modal</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Focus trap, ESC key handling</mds-text>
+          </mds-table-cell>
+          <mds-table-cell class="text-center">
+            <mds-icon name="mi/baseline/check-circle" class="fill-status-success-05"></mds-icon>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Behavior enforced in code</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Color tokens</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">WCAG AA contrast ratios</mds-text>
+          </mds-table-cell>
+          <mds-table-cell class="text-center">
+            <mds-icon name="mi/baseline/check-circle" class="fill-status-success-05"></mds-icon>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Validated in design tokens</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>All components</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Automated a11y testing</mds-text>
+          </mds-table-cell>
+          <mds-table-cell class="text-center">
+            <mds-icon name="mi/baseline/check-circle" class="fill-status-success-05"></mds-icon>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">CI/CD pipeline validation</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Treat accessibility as a baseline requirement.</UsageItem>
+  <UsageItem variant="dont">Apply accessibility fixes downstream.</UsageItem>
+  <UsageItem variant="do">Make constraints visible to both designers and developers.</UsageItem>
+  <UsageItem variant="dont">
+    Separate accessibility rules from the components that implement them.
+  </UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Accessibility testing">
+    <Brand name="storybook" label="Storybook A11y addon" />
+  </ProductCategory>
+  <ProductCategory title="Documentation">
+    <Brand name="storybook" label="Storybook" />
+  </ProductCategory>
+</Products>
+
+<Separator />

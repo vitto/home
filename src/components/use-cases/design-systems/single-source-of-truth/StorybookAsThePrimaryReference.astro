@@ -1,0 +1,39 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractiveStorybook from '../../UseCaseInteractiveStorybook.astro';
+---
+
+<UseCase
+  title="Tools like Storybook as a primary reference"
+  description="In a production design system I worked on, Storybook was intentionally positioned as the operational source of truth, not as a secondary showcase."
+>
+  <UseCaseInteractiveStorybook />
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">
+    Centralize components, variants, and states in a single, shared environment.
+  </UsageItem>
+  <UsageItem variant="dont">Treat design files or screenshots as the primary authority.</UsageItem>
+  <UsageItem variant="do">
+    Use Storybook as a common reference for designers and developers.
+  </UsageItem>
+  <UsageItem variant="dont">
+    Consider documentation as something derived after implementation rather than part of the system
+    itself.
+  </UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Interactive documentation">
+    <Brand name="storybook" label="Storybook" />
+  </ProductCategory>
+</Products>
+
+<Separator />

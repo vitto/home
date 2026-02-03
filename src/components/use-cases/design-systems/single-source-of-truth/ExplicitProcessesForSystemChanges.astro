@@ -1,0 +1,119 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+---
+
+<UseCase
+  title="Explicit processes for system changes"
+  description="Design system evolution was handled through clearly defined and traceable processes."
+>
+  <UseCaseInteractive clsHeight={320} label="Change proposal workflow">
+    <mds-table class="w-full">
+      <mds-table-header>
+        <mds-table-header-cell label="Stage"></mds-table-header-cell>
+        <mds-table-header-cell label="Status" class="text-center"></mds-table-header-cell>
+        <mds-table-header-cell label="Requirement"></mds-table-header-cell>
+        <mds-table-header-cell label="Visibility"></mds-table-header-cell>
+      </mds-table-header>
+      <mds-table-body>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Proposal</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell class="text-center">
+            <mds-icon name="mi/baseline/check-circle" class="fill-status-success-05"></mds-icon>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Use case, rationale, impact analysis</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Public issue tracker</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Review</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell class="text-center">
+            <mds-icon name="mi/baseline/check-circle" class="fill-status-success-05"></mds-icon>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Cross-disciplinary team input</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Comments visible to all</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Approval</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell class="text-center">
+            <mds-icon name="mi/baseline/check-circle" class="fill-status-success-05"></mds-icon>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Design + Dev + PM consensus</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Decision documented</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Implementation</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell class="text-center">
+            <mds-icon name="mi/baseline/check-circle" class="fill-status-success-05"></mds-icon>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Follow design system patterns</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">PR linked to issue</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+        <mds-table-row>
+          <mds-table-cell>
+            <mds-text typography="caption"><strong>Documentation</strong></mds-text>
+          </mds-table-cell>
+          <mds-table-cell class="text-center">
+            <mds-icon name="mi/baseline/check-circle" class="fill-status-success-05"></mds-icon>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Update docs, examples, changelog</mds-text>
+          </mds-table-cell>
+          <mds-table-cell>
+            <mds-text typography="caption">Versioned release notes</mds-text>
+          </mds-table-cell>
+        </mds-table-row>
+      </mds-table-body>
+    </mds-table>
+  </UseCaseInteractive>
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">
+    Provide official channels for proposing new features or changes.
+  </UsageItem>
+  <UsageItem variant="dont">Accept informal or undocumented modifications.</UsageItem>
+  <UsageItem variant="do">Make decisions visible and shared across disciplines.</UsageItem>
+  <UsageItem variant="dont">Prioritize urgency over long-term system integrity.</UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Version control">
+    <Brand name="github" label="GitHub" />
+  </ProductCategory>
+  <ProductCategory title="Issue tracking">
+    <Brand name="github" label="GitHub Issues" />
+    <Brand name="linear" label="Linear" />
+  </ProductCategory>
+</Products>
+
+<Separator />

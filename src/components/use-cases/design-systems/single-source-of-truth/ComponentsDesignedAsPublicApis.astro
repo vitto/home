@@ -1,0 +1,39 @@
+---
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+import Separator from '../../../Separator.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractiveStorybook from '../../UseCaseInteractiveStorybook.astro';
+---
+
+<UseCase
+  title="Components designed as public APIs"
+  description="Components were defined as stable contracts rather than flexible local implementations."
+>
+  <UseCaseInteractiveStorybook showProps={true} highlightProps={true} />
+</UseCase>
+
+<Usage>
+  <UsageItem variant="do">Expose a limited and intentional set of properties.</UsageItem>
+  <UsageItem variant="dont">Expose internal implementation details for convenience.</UsageItem>
+  <UsageItem variant="do">
+    Document supported behaviors and constraints as part of the public API.
+  </UsageItem>
+  <UsageItem variant="dont">
+    Allow arbitrary overrides that introduce uncontrolled divergence.
+  </UsageItem>
+</Usage>
+
+<Products>
+  <ProductCategory title="Type systems">
+    <Brand name="typescript" label="TypeScript" />
+  </ProductCategory>
+  <ProductCategory title="Documentation">
+    <Brand name="storybook" label="Storybook" />
+  </ProductCategory>
+</Products>
+
+<Separator />
