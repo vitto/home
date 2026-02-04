@@ -2,38 +2,34 @@
 import UseCase from '../../../UseCase.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
-import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Brand from '../../../Brand.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
-import Separator from '../../../../components/Separator.astro';
 ---
 
 <UseCase
   title="Treat accessibility as a system concern"
   description="Accessibility issues multiply when handled at the product level."
-/>
+>
+  <Usage>
+    <UsageItem variant="do">Centralize accessibility patterns and decisions.</UsageItem>
+    <UsageItem variant="dont">Solve the same accessibility problem in multiple products.</UsageItem>
+    <UsageItem variant="do">Document accessibility guarantees per component.</UsageItem>
+    <UsageItem variant="dont">Leave accessibility expectations implicit.</UsageItem>
+  </Usage>
 
-<Usage>
-  <UsageItem variant="do">Centralize accessibility patterns and decisions.</UsageItem>
-  <UsageItem variant="dont">Solve the same accessibility problem in multiple products.</UsageItem>
-  <UsageItem variant="do">Document accessibility guarantees per component.</UsageItem>
-  <UsageItem variant="dont">Leave accessibility expectations implicit.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Example docs">
-    <Brand
-      name="shopify"
-      label="Shopify Polaris"
-      url="https://shopify.dev/docs/apps/build/accessibility"
-    />
-    <Brand
-      name="ibm"
-      label="IBM Carbon"
-      url="https://carbondesignsystem.com/guidelines/accessibility/overview/"
-    />
-  </ProductCategory>
-</Products>
-
-<Separator />
+  <Products>
+    <ProductCategory title="Example docs">
+      <Brand
+        name="shopify"
+        label="Shopify Polaris"
+        url="https://shopify.dev/docs/apps/build/accessibility"
+      />
+      <Brand
+        name="ibm"
+        label="IBM Carbon"
+        url="https://carbondesignsystem.com/guidelines/accessibility/overview/"
+      />
+    </ProductCategory>
+  </Products>
+</UseCase>

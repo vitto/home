@@ -13,6 +13,7 @@ import DesignForChangeNotPermanence from '../../components/use-cases/design-syst
 import UseExplicitVersioningStrategies from '../../components/use-cases/design-systems/evolvability-and-versioning/UseExplicitVersioningStrategies.astro';
 import ManageDeprecationsDeliberately from '../../components/use-cases/design-systems/evolvability-and-versioning/ManageDeprecationsDeliberately.astro';
 import BalanceStabilityAndProgress from '../../components/use-cases/design-systems/evolvability-and-versioning/BalanceStabilityAndProgress.astro';
+import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'evolvability-and-versioning')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -26,7 +27,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <article class="grid gap-600">
+  <Article class="grid gap-600">
     <Markdown
       content={`
 A design system that cannot evolve will eventually be replaced.
@@ -56,7 +57,7 @@ Clear versioning and deprecation strategies allow teams to adopt improvements
 without fear of unexpected breakage.
     `}
     />
-  </article>
+  </Article>
 
   <Bibliography
     opener="Evolvability and versioning are grounded in software architecture, API design, and mature design system practices:"

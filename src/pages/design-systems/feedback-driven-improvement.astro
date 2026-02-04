@@ -15,6 +15,7 @@ import MeasureActualUsage from '../../components/use-cases/design-systems/feedba
 import ActOnFeedbackVisibly from '../../components/use-cases/design-systems/feedback-driven-improvement/ActOnFeedbackVisibly.astro';
 import PrioritizeBasedOnImpact from '../../components/use-cases/design-systems/feedback-driven-improvement/PrioritizeBasedOnImpact.astro';
 import CloseTheFeedbackLoop from '../../components/use-cases/design-systems/feedback-driven-improvement/CloseTheFeedbackLoop.astro';
+import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'feedback-driven-improvement')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -28,7 +29,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <article class="grid gap-600">
+  <Article class="grid gap-600">
     <Markdown
       content={`
 A design system that doesn't respond to feedback becomes disconnected from reality.
@@ -42,14 +43,6 @@ Feedback-driven improvement means the system evolves based on:
 Without feedback loops, the system team operates in isolation,
 making assumptions that may not match real-world needs.
       `}
-    />
-
-    <Markdown
-      content={`
-## Approach
-
----
-`}
     />
 
     <CollectFeedbackSystematically />
@@ -71,7 +64,7 @@ Systems that ignore feedback become disconnected from user needs
 and eventually lose adoption and trust.
       `}
     />
-  </article>
+  </Article>
 
   <Bibliography
     opener="Feedback-driven improvement is grounded in user-centered design, lean product development, and continuous improvement methodologies:"

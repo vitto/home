@@ -3,8 +3,6 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
-import Markdown from '../../../../components/Markdown.astro';
-import Separator from '../../../../components/Separator.astro';
 import Brand from '../../../Brand.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
@@ -395,34 +393,33 @@ import Products from '../../../Products.astro';
       </div>
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Use accessible color contrast as a non-negotiable constraint.
+    </UsageItem>
+    <UsageItem variant="dont">Rely on manual fixes after components are shipped.</UsageItem>
+    <UsageItem variant="do">Define focus, hover, and active states consistently.</UsageItem>
+    <UsageItem variant="dont">Leave interactive states undefined.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Component explorers">
+      <Brand name="storybook" label="Storybook" />
+      <Brand name="ladle" label="Ladle" />
+    </ProductCategory>
+    <ProductCategory title="Accessibility auditing">
+      <Brand name="axe-devtools" label="Axe DevTools" />
+      <Brand
+        icon="mi/outline/palette"
+        label="Color contrast checker"
+        url="https://www.accessibility.build/tools/contrast-checker"
+      />
+      <Brand name="google-lighthouse" label="Lighthouse" />
+      <Brand
+        name="storybook"
+        label="a11y addon"
+        url="https://github.com/storybookjs/storybook/tree/next/code/addons/a11y"
+      />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Use accessible color contrast as a non-negotiable constraint.</UsageItem>
-  <UsageItem variant="dont">Rely on manual fixes after components are shipped.</UsageItem>
-  <UsageItem variant="do">Define focus, hover, and active states consistently.</UsageItem>
-  <UsageItem variant="dont">Leave interactive states undefined.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Component explorers">
-    <Brand name="storybook" label="Storybook" />
-    <Brand name="ladle" label="Ladle" />
-  </ProductCategory>
-  <ProductCategory title="Accessibility auditing">
-    <Brand name="axe-devtools" label="Axe DevTools" />
-    <Brand
-      icon="mi/outline/palette"
-      label="Color contrast checker"
-      url="https://www.accessibility.build/tools/contrast-checker"
-    />
-    <Brand name="google-lighthouse" label="Lighthouse" />
-    <Brand
-      name="storybook"
-      label="a11y addon"
-      url="https://github.com/storybookjs/storybook/tree/next/code/addons/a11y"
-    />
-  </ProductCategory>
-</Products>
-
-<Separator />

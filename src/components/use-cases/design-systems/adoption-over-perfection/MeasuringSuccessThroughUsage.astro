@@ -1,9 +1,7 @@
 ---
 import Brand from '../../../Brand.astro';
-import Markdown from '../../../../components/Markdown.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
-import Separator from '../../../../components/Separator.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
@@ -77,25 +75,24 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-banner>
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Observe how and where components are actually used.</UsageItem>
+    <UsageItem variant="dont">
+      Optimize for internal elegance without external validation.
+    </UsageItem>
+    <UsageItem variant="do">Use feedback to guide iteration and prioritization.</UsageItem>
+    <UsageItem variant="dont">Ignore usage data and qualitative feedback.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Metrics">
+      <Brand name="omlet" label="Omlet" />
+      <Brand name="componly" label="Componly" />
+      <Brand
+        icon="mi/outline/analytics"
+        label="Design system metrics"
+        url="https://thedesignsystem.guide/design-system-metrics"
+      />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Observe how and where components are actually used.</UsageItem>
-  <UsageItem variant="dont">Optimize for internal elegance without external validation.</UsageItem>
-  <UsageItem variant="do">Use feedback to guide iteration and prioritization.</UsageItem>
-  <UsageItem variant="dont">Ignore usage data and qualitative feedback.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Metrics">
-    <Brand name="omlet" label="Omlet" />
-    <Brand name="componly" label="Componly" />
-    <Brand
-      icon="mi/outline/analytics"
-      label="Design system metrics"
-      url="https://thedesignsystem.guide/design-system-metrics"
-    />
-  </ProductCategory>
-</Products>
-
-<Separator />

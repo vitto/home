@@ -13,6 +13,7 @@ import MakeConstraintsVisibleAndIntentional from '../../components/use-cases/des
 import UseConstraintsToGuideNotRestrict from '../../components/use-cases/design-systems/explicit-constraints/UseConstraintsToGuideNotRestrict.astro';
 import EncodeConstraintsIntoTheSystem from '../../components/use-cases/design-systems/explicit-constraints/EncodeConstraintsIntoTheSystem.astro';
 import EvolveConstraintsDeliberately from '../../components/use-cases/design-systems/explicit-constraints/EvolveConstraintsDeliberately.astro';
+import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'explicit-constraints')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -26,7 +27,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <article class="grid gap-600">
+  <Article class="grid gap-600">
     <Markdown
       content={`
 Design systems exist to **reduce decision entropy**.
@@ -57,7 +58,7 @@ By defining boundaries clearly,
 the design system empowers teams instead of limiting them.
     `}
     />
-  </article>
+  </Article>
 
   <Bibliography
     opener="Constraints-driven design is rooted in systems thinking, cognitive psychology, and scalable interface design:"

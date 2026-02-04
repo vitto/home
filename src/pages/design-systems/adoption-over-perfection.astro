@@ -14,6 +14,8 @@ import AcceptingInconsistencies from '../../components/use-cases/design-systems/
 import DocumentationOptimizedForFirstUse from '../../components/use-cases/design-systems/adoption-over-perfection/DocumentationOptimizedForFirstUse.astro';
 import ReducingContributionFriction from '../../components/use-cases/design-systems/adoption-over-perfection/ReducingContributionFriction.astro';
 import MeasuringSuccessThroughUsage from '../../components/use-cases/design-systems/adoption-over-perfection/MeasuringSuccessThroughUsage.astro';
+import Separator from '../../components/Separator.astro';
+import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'adoption-over-perfection')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -27,7 +29,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <article class="grid gap-600">
+  <Article>
     <Markdown
       content={`
 When I design and evolve a design system, I prioritize **adoption over theoretical perfection**.
@@ -52,13 +54,7 @@ The system must be usable, approachable, and immediately helpful—even if that 
       `}
     />
 
-    <Markdown
-      content={`
-## Approach
-
----
-`}
-    />
+    <Separator />
 
     <ShippingUsableComponents />
     <ProgressiveRefinement />
@@ -86,7 +82,7 @@ Perfection is static.
 Adoption creates momentum.
   `}
     />
-  </article>
+  </Article>
 
   <Bibliography
     opener="Adoption-first design systems are well documented in practice and literature:"

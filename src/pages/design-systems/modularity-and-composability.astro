@@ -13,6 +13,7 @@ import DesignComponentsWithASingleResponsibility from '../../components/use-case
 import PreferCompositionOverConfiguration from '../../components/use-cases/design-systems/modularity-and-composability/PreferCompositionOverConfiguration.astro';
 import EstablishClearLayeringAndAbstractionLevels from '../../components/use-cases/design-systems/modularity-and-composability/EstablishClearLayeringAndAbstractionLevels.astro';
 import DesignForReuseAcrossContexts from '../../components/use-cases/design-systems/modularity-and-composability/DesignForReuseAcrossContexts.astro';
+import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'modularity-and-composability')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -26,7 +27,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <article class="grid gap-600">
+  <Article class="grid gap-600">
     <Markdown
       content={`
 Design systems scale through **composition**, not complexity.
@@ -56,7 +57,7 @@ Composable design systems scale because they allow new interfaces
 to emerge without rewriting existing foundations.
     `}
     />
-  </article>
+  </Article>
 
   <Bibliography
     opener="Modularity and composability are rooted in systems thinking, component-based architecture, and design system practice:"

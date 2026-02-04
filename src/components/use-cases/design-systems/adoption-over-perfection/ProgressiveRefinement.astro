@@ -2,7 +2,6 @@
 import UseCase from '../../../UseCase.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
-import Separator from '../../../../components/Separator.astro';
 import Brand from '../../../Brand.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
@@ -195,25 +194,22 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-table>
     </div>
   </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Release a minimal, stable API and evolve it based on usage.</UsageItem>
+    <UsageItem variant="dont">Attempt to predict every single future requirement.</UsageItem>
+    <UsageItem variant="do">
+      Treat missing features as opportunities for informed iteration.
+    </UsageItem>
+    <UsageItem variant="dont">Block adoption due to incomplete coverage.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Semantic versioning">
+      <Brand icon="mi/outline/commit" label="Semver" url="https://semver.org/" />
+    </ProductCategory>
+    <ProductCategory title="Visual regression testing">
+      <Brand name="chromatic" label="Chromatic" />
+      <Brand name="percy" label="Percy" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Release a minimal, stable API and evolve it based on usage.</UsageItem>
-  <UsageItem variant="dont">Attempt to predict every single future requirement.</UsageItem>
-  <UsageItem variant="do">
-    Treat missing features as opportunities for informed iteration.
-  </UsageItem>
-  <UsageItem variant="dont">Block adoption due to incomplete coverage.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Semantic versioning">
-    <Brand icon="mi/outline/commit" label="Semver" url="https://semver.org/" />
-  </ProductCategory>
-  <ProductCategory title="Visual regression testing">
-    <Brand name="chromatic" label="Chromatic" />
-    <Brand name="percy" label="Percy" />
-  </ProductCategory>
-</Products>
-
-<Separator />

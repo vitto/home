@@ -5,6 +5,10 @@ import Principles from '../components/Principles.astro';
 import Nav from '../components/Nav.astro';
 import SectionNav from '../components/SectionNav.astro';
 import data from '../data/design-systems.json';
+import Bibliography from '../components/Bibliography.astro';
+import BibliographyItem from '../components/BibliographyItem.astro';
+import BibliographySection from '../components/BibliographySection.astro';
+import Separator from '../components/Separator.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
@@ -39,6 +43,50 @@ const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompa
         ))
     }
   </Principles>
+  <div class="max-w-screen-desktop mx-auto mt-1200">
+    <Bibliography
+      opener="The concepts behind this principle align with established thinking in design systems and software architecture:"
+      closer="These references inform the principle, but the implementation described above is grounded in real-world application rather than theory."
+    >
+      <BibliographySection type="books">
+        <BibliographyItem
+          author="Brad Frost"
+          title="Atomic Design"
+          description="Emphasizes composability and centralized systems as a way to manage complexity."
+          url="https://atomicdesign.bradfrost.com/"
+        />
+      </BibliographySection>
+      <BibliographySection type="urls">
+        <BibliographyItem
+          author="Nathan Curtis"
+          title="Modular Design Systems"
+          description="Discusses ownership, authority, and the importance of a clear system boundary."
+          status="missing"
+          url="https://modulardesignsystem.com/"
+        />
+        <BibliographyItem
+          author="Alla Kholmatova"
+          title="Design Systems"
+          description="Explores how systems fail when authority and documentation are unclear."
+          url="https://www.smashingmagazine.com/design-systems-book/"
+        />
+        <BibliographyItem
+          author="Google Material Design Team"
+          title="Design Systems at Scale"
+          description="Highlights the role of shared sources and tooling in cross-team alignment."
+          status="missing"
+          url="https://material.io/design/systems/design-systems-at-scale.html"
+        />
+        <BibliographyItem
+          author="Storybook Team"
+          title="Design Systems for Developers"
+          description="Frames Storybook as infrastructure rather than presentation."
+          status="missing"
+          url="https://storybook.js.org/docs/design-systems-for-developers/"
+        />
+      </BibliographySection>
+    </Bibliography>
+  </div>
   <div class="h-50 bg-tone-neutral-03 max-w-screen-desktop mx-auto mt-1200"></div>
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} principles={false} />

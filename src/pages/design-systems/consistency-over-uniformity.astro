@@ -13,6 +13,7 @@ import SemanticConsistencyOverVisualSameness from '../../components/use-cases/de
 import VariantSystemsWithClearIntent from '../../components/use-cases/design-systems/consistency-over-uniformity/VariantSystemsWithClearIntent.astro';
 import ConsistentConstraintsAcrossFlexibleCompositions from '../../components/use-cases/design-systems/consistency-over-uniformity/ConsistentConstraintsAcrossFlexibleCompositions.astro';
 import InteractionPatternsOverPixelPerfection from '../../components/use-cases/design-systems/consistency-over-uniformity/InteractionPatternsOverPixelPerfection.astro';
+import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'consistency-over-uniformity')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -26,7 +27,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <article class="grid gap-600">
+  <Article class="grid gap-600">
     <Markdown
       content={`
 When I work on design systems, I prioritize **consistency of behavior, meaning, and interaction** over rigid visual or structural uniformity.
@@ -49,20 +50,12 @@ The system defines **what must remain consistent** and **where variation is allo
       `}
     />
 
-    <Markdown
-      content={`
-## Approach
-
----
-`}
-    />
-
     <SharedBehaviorContextualPresentation />
     <SemanticConsistencyOverVisualSameness />
     <VariantSystemsWithClearIntent />
     <ConsistentConstraintsAcrossFlexibleCompositions />
     <InteractionPatternsOverPixelPerfection />
-  </article>
+  </Article>
 
   <Bibliography
     opener="The distinction between consistency and uniformity is well established across design and software disciplines:"

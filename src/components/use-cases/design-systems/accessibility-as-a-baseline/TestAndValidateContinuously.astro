@@ -2,45 +2,41 @@
 import UseCase from '../../../UseCase.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
-import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Brand from '../../../Brand.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
-import Separator from '../../../../components/Separator.astro';
 ---
 
 <UseCase
   title="Test and validate continuously"
   description="Accessibility is not static and must be maintained over time."
-/>
+>
+  <Usage>
+    <UsageItem variant="do">Include keyboard and screen reader testing in reviews.</UsageItem>
+    <UsageItem variant="dont">Assume accessibility remains intact by default.</UsageItem>
+    <UsageItem variant="do">Use automated checks to catch regressions.</UsageItem>
+    <UsageItem variant="dont">Rely solely on manual audits.</UsageItem>
+  </Usage>
 
-<Usage>
-  <UsageItem variant="do">Include keyboard and screen reader testing in reviews.</UsageItem>
-  <UsageItem variant="dont">Assume accessibility remains intact by default.</UsageItem>
-  <UsageItem variant="do">Use automated checks to catch regressions.</UsageItem>
-  <UsageItem variant="dont">Rely solely on manual audits.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Automated checks">
-    <Brand name="axe-devtools" label="Axe DevTools" />
-    <Brand name="google-lighthouse" label="Lighthouse" />
-  </ProductCategory>
-  <ProductCategory title="Automated checks">
-    <Brand icon="mi/outline/accessibility" label="NVDA" url="https://www.nvaccess.org/" />
-    <Brand
-      name="apple"
-      label="VoceOver"
-      url="https://support.apple.com/guide/voiceover/welcome/mac"
-    />
-  </ProductCategory>
-  <ProductCategory title="CI integration di audit">
-    <Brand
-      name="github"
-      label="GitHub Actions + Axe/Lighthouse"
-      url="https://bolonio.medium.com/automating-the-accessibility-tests-of-your-source-code-with-github-actions-63590cdc6860"
-    />
-  </ProductCategory>
-</Products>
-
-<Separator />
+  <Products>
+    <ProductCategory title="Automated checks">
+      <Brand name="axe-devtools" label="Axe DevTools" />
+      <Brand name="google-lighthouse" label="Lighthouse" />
+    </ProductCategory>
+    <ProductCategory title="Automated checks">
+      <Brand icon="mi/outline/accessibility" label="NVDA" url="https://www.nvaccess.org/" />
+      <Brand
+        name="apple"
+        label="VoiceOver"
+        url="https://support.apple.com/guide/voiceover/welcome/mac"
+      />
+    </ProductCategory>
+    <ProductCategory title="CI integration di audit">
+      <Brand
+        name="github"
+        label="GitHub Actions + Axe/Lighthouse"
+        url="https://bolonio.medium.com/automating-the-accessibility-tests-of-your-source-code-with-github-actions-63590cdc6860"
+      />
+    </ProductCategory>
+  </Products>
+</UseCase>

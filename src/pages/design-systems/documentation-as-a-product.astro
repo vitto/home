@@ -13,6 +13,7 @@ import TreatDocumentationAsPartOfTheSystemInterface from '../../components/use-c
 import ApplyQualityStandardsAndReviewProcesses from '../../components/use-cases/design-systems/documentation-as-a-product/ApplyQualityStandardsAndReviewProcesses.astro';
 import MeasureAdoptionAndIterateContinuously from '../../components/use-cases/design-systems/documentation-as-a-product/MeasureAdoptionAndIterateContinuously.astro';
 import Separator from '../../components/Separator.astro';
+import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'documentation-as-a-product')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -26,7 +27,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <article class="grid gap-600">
+  <Article class="grid gap-600">
     <Markdown
       content={`
 Documentation is not a side effect of building a system.
@@ -62,7 +63,7 @@ A design system without reliable documentation
 will not scale — regardless of how good the components are.
     `}
     />
-  </article>
+  </Article>
 
   <Bibliography
     opener="Documentation-as-a-product is grounded in technical writing, platform thinking, and design system governance:"

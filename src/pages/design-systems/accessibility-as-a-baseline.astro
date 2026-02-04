@@ -12,6 +12,8 @@ import DesignAccessibleByDefault from '../../components/use-cases/design-systems
 import EncodeAccessibilityIntoComponents from '../../components/use-cases/design-systems/accessibility-as-a-baseline/EncodeAccessibilityIntoComponents.astro';
 import TreatAccessibilityAsSystemConcern from '../../components/use-cases/design-systems/accessibility-as-a-baseline/TreatAccessibilityAsSystemConcern.astro';
 import TestAndValidateContinuously from '../../components/use-cases/design-systems/accessibility-as-a-baseline/TestAndValidateContinuously.astro';
+import Separator from '../../components/Separator.astro';
+import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'accessibility-as-a-baseline')!;
 const baseUrl = import.meta.env.BASE_URL;
@@ -25,7 +27,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <article class="grid gap-600">
+  <Article>
     <Markdown
       content={`
 Accessibility is not an enhancement.
@@ -35,14 +37,6 @@ When accessibility is treated as optional, it is postponed, fragmented,
 or removed under pressure.
 When treated as a baseline, it becomes invisible, reliable, and scalable.
     `}
-    />
-
-    <Markdown
-      content={`
-## Approach
-
----
-`}
     />
 
     <DesignAccessibleByDefault />
@@ -58,10 +52,10 @@ Accessibility as a baseline ensures inclusivity, legal compliance,
 and long-term system resilience.
 
 When accessibility is built into the system,
-teams move faster because they don’t have to re-solve the same problems.
+teams move faster because they don't have to re-solve the same problems.
     `}
     />
-  </article>
+  </Article>
 
   <Bibliography
     opener="Accessibility as a baseline is supported by standards, inclusive design practices, and system-level thinking:"

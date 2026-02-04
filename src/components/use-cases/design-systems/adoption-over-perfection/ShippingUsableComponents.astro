@@ -3,7 +3,6 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
-import Separator from '../../../../components/Separator.astro';
 import Brand from '../../../Brand.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
@@ -49,31 +48,28 @@ const firstUser = usersData[0];
       </mds-push-notification-item>
     </div>
   </UseCaseInteractive>
+  <style>
+    mds-push-notification-item {
+      --mds-push-notification-item-message-line-clamp: 3;
+    }
+  </style>
+
+  <Usage>
+    <UsageItem variant="do">Start from real use cases already present in the product.</UsageItem>
+    <UsageItem variant="dont">Delay release waiting for a complete abstraction.</UsageItem>
+    <UsageItem variant="do">Ship components that reduce immediate friction for teams.</UsageItem>
+    <UsageItem variant="dont">Design components in isolation from real product needs.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Testable components">
+      <Brand name="storybook" label="Storybook" />
+    </ProductCategory>
+    <ProductCategory title="Documentation">
+      <Brand name="zeroheight" label="Zeroheight" />
+    </ProductCategory>
+    <ProductCategory title="Design & prototyping">
+      <Brand name="figma" label="Figma" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<style>
-  mds-push-notification-item {
-    --mds-push-notification-item-message-line-clamp: 3;
-  }
-</style>
-
-<Usage>
-  <UsageItem variant="do">Start from real use cases already present in the product.</UsageItem>
-  <UsageItem variant="dont">Delay release waiting for a complete abstraction.</UsageItem>
-  <UsageItem variant="do">Ship components that reduce immediate friction for teams.</UsageItem>
-  <UsageItem variant="dont">Design components in isolation from real product needs.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Testable components">
-    <Brand name="storybook" label="Storybook" />
-  </ProductCategory>
-  <ProductCategory title="Documentation">
-    <Brand name="zeroheight" label="Zeroheight" />
-  </ProductCategory>
-  <ProductCategory title="Design & prototyping">
-    <Brand name="figma" label="Figma" />
-  </ProductCategory>
-</Products>
-
-<Separator />

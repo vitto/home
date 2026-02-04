@@ -9,6 +9,7 @@ import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
 import Separator from '../../components/Separator.astro';
+import Article from '../../components/Article.astro';
 import StorybookAsThePrimaryReference from '../../components/use-cases/design-systems/single-source-of-truth/StorybookAsThePrimaryReference.astro';
 import ComponentsDesignedAsPublicApis from '../../components/use-cases/design-systems/single-source-of-truth/ComponentsDesignedAsPublicApis.astro';
 import CicdPipelinesAsAlignmentMechanisms from '../../components/use-cases/design-systems/single-source-of-truth/CicdPipelinesAsAlignmentMechanisms.astro';
@@ -26,7 +27,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <article class="grid gap-600">
+  <Article class="grid gap-600">
     <Markdown
       content={`
 When I design a design system, I treat it as the **single authoritative source** for components, patterns, accessibility rules, and behavioral decisions.
@@ -72,49 +73,7 @@ The goal is not control, but **clarity**: enabling teams to trust the system and
   - or a document that teams gradually ignore.
   `}
     />
-  </article>
-  <Bibliography
-    opener="The concepts behind this principle align with established thinking in design systems and software architecture:"
-    closer="These references inform the principle, but the implementation described above is grounded in real-world application rather than theory."
-  >
-    <BibliographySection type="books">
-      <BibliographyItem
-        author="Brad Frost"
-        title="Atomic Design"
-        description="Emphasizes composability and centralized systems as a way to manage complexity."
-        url="https://atomicdesign.bradfrost.com/"
-      />
-    </BibliographySection>
-    <BibliographySection type="urls">
-      <BibliographyItem
-        author="Nathan Curtis"
-        title="Modular Design Systems"
-        description="Discusses ownership, authority, and the importance of a clear system boundary."
-        status="missing"
-        url="https://modulardesignsystem.com/"
-      />
-      <BibliographyItem
-        author="Alla Kholmatova"
-        title="Design Systems"
-        description="Explores how systems fail when authority and documentation are unclear."
-        url="https://www.smashingmagazine.com/design-systems-book/"
-      />
-      <BibliographyItem
-        author="Google Material Design Team"
-        title="Design Systems at Scale"
-        description="Highlights the role of shared sources and tooling in cross-team alignment."
-        status="missing"
-        url="https://material.io/design/systems/design-systems-at-scale.html"
-      />
-      <BibliographyItem
-        author="Storybook Team"
-        title="Design Systems for Developers"
-        description="Frames Storybook as infrastructure rather than presentation."
-        status="missing"
-        url="https://storybook.js.org/docs/design-systems-for-developers/"
-      />
-    </BibliographySection>
-  </Bibliography>
+  </Article>
 
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
