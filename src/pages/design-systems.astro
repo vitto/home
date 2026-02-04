@@ -15,6 +15,36 @@ const sectionPath = '/design-systems';
 
 // Sort principles by title
 const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompare(b.title));
+
+// Merge all bibliography items from all principles, keeping track of type
+const allBooks: any[] = [];
+const allUrls: any[] = [];
+if (data.bibliography) {
+  Object.values(data.bibliography as any).forEach((principleBibliography: any) => {
+    if (principleBibliography.books) {
+      allBooks.push(...principleBibliography.books);
+    }
+    if (principleBibliography.urls) {
+      allUrls.push(...principleBibliography.urls);
+    }
+  });
+}
+
+// Remove duplicates based on URL and separate by type
+const uniqueBooks = Array.from(new Map(allBooks.map((item: any) => [item.url, item])).values());
+const uniqueUrls = Array.from(new Map(allUrls.map((item: any) => [item.url, item])).values());
+
+// Sort alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = sortBibliography(uniqueBooks);
+const sortedUrls = sortBibliography(uniqueUrls);
 ---
 
 <CategoryLayout
@@ -43,50 +73,40 @@ const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompa
         ))
     }
   </Principles>
-  <div class="max-w-screen-desktop mx-auto mt-1200">
-    <Bibliography
-      opener="The concepts behind this principle align with established thinking in design systems and software architecture:"
-      closer="These references inform the principle, but the implementation described above is grounded in real-world application rather than theory."
-    >
-      <BibliographySection type="books">
-        <BibliographyItem
-          author="Brad Frost"
-          title="Atomic Design"
-          description="Emphasizes composability and centralized systems as a way to manage complexity."
-          url="https://atomicdesign.bradfrost.com/"
-        />
-      </BibliographySection>
-      <BibliographySection type="urls">
-        <BibliographyItem
-          author="Nathan Curtis"
-          title="Modular Design Systems"
-          description="Discusses ownership, authority, and the importance of a clear system boundary."
-          status="missing"
-          url="https://modulardesignsystem.com/"
-        />
-        <BibliographyItem
-          author="Alla Kholmatova"
-          title="Design Systems"
-          description="Explores how systems fail when authority and documentation are unclear."
-          url="https://www.smashingmagazine.com/design-systems-book/"
-        />
-        <BibliographyItem
-          author="Google Material Design Team"
-          title="Design Systems at Scale"
-          description="Highlights the role of shared sources and tooling in cross-team alignment."
-          status="missing"
-          url="https://material.io/design/systems/design-systems-at-scale.html"
-        />
-        <BibliographyItem
-          author="Storybook Team"
-          title="Design Systems for Developers"
-          description="Frames Storybook as infrastructure rather than presentation."
-          status="missing"
-          url="https://storybook.js.org/docs/design-systems-for-developers/"
-        />
-      </BibliographySection>
-    </Bibliography>
-  </div>
+  {
+    (sortedBooks.length > 0 || sortedUrls.length > 0) && (
+      <div class="max-w-screen-desktop mx-auto mt-1200">
+        <Bibliography>
+          {sortedBooks.length > 0 && (
+            <BibliographySection type="books">
+              {sortedBooks.map((item: any) => (
+                <BibliographyItem
+                  author={item.author}
+                  title={item.title}
+                  description={item.description}
+                  url={item.url}
+                  status={item.status}
+                />
+              ))}
+            </BibliographySection>
+          )}
+          {sortedUrls.length > 0 && (
+            <BibliographySection type="urls">
+              {sortedUrls.map((item: any) => (
+                <BibliographyItem
+                  author={item.author}
+                  title={item.title}
+                  description={item.description}
+                  url={item.url}
+                  status={item.status}
+                />
+              ))}
+            </BibliographySection>
+          )}
+        </Bibliography>
+      </div>
+    )
+  }
   <div class="h-50 bg-tone-neutral-03 max-w-screen-desktop mx-auto mt-1200"></div>
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} principles={false} />

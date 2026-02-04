@@ -666,6 +666,45 @@
           "url": "https://www.smashingmagazine.com/2019/02/designing-composable-systems/"
         }
       ]
+    },
+    "single-source-of-truth": {
+      "books": [
+        {
+          "author": "Brad Frost",
+          "title": "Atomic Design",
+          "description": "Emphasizes composability and centralized systems as a way to manage complexity.",
+          "url": "https://atomicdesign.bradfrost.com/"
+        }
+      ],
+      "urls": [
+        {
+          "author": "Nathan Curtis",
+          "title": "Modular Design Systems",
+          "description": "Discusses ownership, authority, and the importance of a clear system boundary.",
+          "status": "missing",
+          "url": "https://modulardesignsystem.com/"
+        },
+        {
+          "author": "Alla Kholmatova",
+          "title": "Design Systems",
+          "description": "Explores how systems fail when authority and documentation are unclear.",
+          "url": "https://www.smashingmagazine.com/design-systems-book/"
+        },
+        {
+          "author": "Google Material Design Team",
+          "title": "Design Systems at Scale",
+          "description": "Highlights the role of shared sources and tooling in cross-team alignment.",
+          "status": "missing",
+          "url": "https://material.io/design/systems/design-systems-at-scale.html"
+        },
+        {
+          "author": "Storybook Team",
+          "title": "Design Systems for Developers",
+          "description": "Frames Storybook as infrastructure rather than presentation.",
+          "status": "missing",
+          "url": "https://storybook.js.org/docs/design-systems-for-developers/"
+        }
+      ]
     }
   }
 }
