@@ -19,6 +19,21 @@ const principle = data.principles.find((p) => p.id === 'aesthetic-and-minimalist
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/user-centered-design';
 const bibliography = (data.bibliography as any)?.[principle.id];
+const books = bibliography?.filter((item: any) => item.type === 'book') || [];
+const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+
+// Sort bibliography alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
+const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
+
 const sectionName = 'User-Centered Design';
 ---
 
@@ -39,9 +54,9 @@ const sectionName = 'User-Centered Design';
   {
     bibliography && (
       <Bibliography>
-        {bibliography.books && bibliography.books.length > 0 && (
+        {sortedBooks.length > 0 && (
           <BibliographySection type="books">
-            {bibliography.books.map((item: any) => (
+            {sortedBooks.map((item: any) => (
               <BibliographyItem
                 author={item.author}
                 title={item.title}
@@ -52,9 +67,9 @@ const sectionName = 'User-Centered Design';
             ))}
           </BibliographySection>
         )}
-        {bibliography.urls && bibliography.urls.length > 0 && (
+        {sortedUrls.length > 0 && (
           <BibliographySection type="urls">
-            {bibliography.urls.map((item: any) => (
+            {sortedUrls.map((item: any) => (
               <BibliographyItem
                 author={item.author}
                 title={item.title}
