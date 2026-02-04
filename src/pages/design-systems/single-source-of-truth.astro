@@ -8,7 +8,6 @@ import Markdown from '../../components/Markdown.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
-import Separator from '../../components/Separator.astro';
 import Article from '../../components/Article.astro';
 import StorybookAsThePrimaryReference from '../../components/use-cases/design-systems/single-source-of-truth/StorybookAsThePrimaryReference.astro';
 import ComponentsDesignedAsPublicApis from '../../components/use-cases/design-systems/single-source-of-truth/ComponentsDesignedAsPublicApis.astro';
@@ -27,7 +26,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <Article class="grid gap-600">
+  <Article>
     <Markdown
       content={`
 When I design a design system, I treat it as the **single authoritative source** for components, patterns, accessibility rules, and behavioral decisions.
@@ -46,7 +45,6 @@ Every extension or change must pass through the system itself, in an explicit, d
 The goal is not control, but **clarity**: enabling teams to trust the system and focus on product work rather than interpretation and reconciliation.
     `}
     />
-    <Separator class="my-600" />
 
     <StorybookAsThePrimaryReference />
     <ComponentsDesignedAsPublicApis />

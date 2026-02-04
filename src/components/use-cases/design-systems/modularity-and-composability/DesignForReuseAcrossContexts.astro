@@ -77,20 +77,20 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-table-body>
     </mds-table>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Keep components context-agnostic where possible.</UsageItem>
+    <UsageItem variant="dont">Couple components to specific pages or flows.</UsageItem>
+    <UsageItem variant="do">Use tokens and shared patterns for spacing and behavior.</UsageItem>
+    <UsageItem variant="dont">Bake layout assumptions into components.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Tokens tools">
+      <Brand name="amazon" label="Style Dictionary" url="https://styledictionary.com/" />
+    </ProductCategory>
+    <ProductCategory title="Component frameworks">
+      <Brand name="storybook" label="Storybook" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Keep components context-agnostic where possible.</UsageItem>
-  <UsageItem variant="dont">Couple components to specific pages or flows.</UsageItem>
-  <UsageItem variant="do">Use tokens and shared patterns for spacing and behavior.</UsageItem>
-  <UsageItem variant="dont">Bake layout assumptions into components.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Tokens tools">
-    <Brand name="amazon" label="Style Dictionary" url="https://styledictionary.com/" />
-  </ProductCategory>
-  <ProductCategory title="Component frameworks">
-    <Brand name="storybook" label="Storybook" />
-  </ProductCategory>
-</Products>

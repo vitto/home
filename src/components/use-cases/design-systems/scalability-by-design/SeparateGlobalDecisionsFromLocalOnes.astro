@@ -75,21 +75,23 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-table-body>
     </mds-table>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">
+      Centralize rules that must remain consistent across products.
+    </UsageItem>
+    <UsageItem variant="dont">Force global decisions into local contexts.</UsageItem>
+    <UsageItem variant="do">Allow teams to adapt patterns within defined constraints.</UsageItem>
+    <UsageItem variant="dont">Lock every design choice at the system level.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Documentation platforms">
+      <Brand name="zeroheight" label="Zeroheight" />
+      <Brand name="supernova" label="Supernova" />
+    </ProductCategory>
+    <ProductCategory title="Version control">
+      <Brand name="github" label="GitHub" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Centralize rules that must remain consistent across products.</UsageItem>
-  <UsageItem variant="dont">Force global decisions into local contexts.</UsageItem>
-  <UsageItem variant="do">Allow teams to adapt patterns within defined constraints.</UsageItem>
-  <UsageItem variant="dont">Lock every design choice at the system level.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Documentation platforms">
-    <Brand name="zeroheight" label="Zeroheight" />
-    <Brand name="supernova" label="Supernova" />
-  </ProductCategory>
-  <ProductCategory title="Version control">
-    <Brand name="github" label="GitHub" />
-  </ProductCategory>
-</Products>

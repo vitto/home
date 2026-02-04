@@ -69,23 +69,23 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-table-body>
     </mds-table>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Provide clear contribution and extension guidelines.</UsageItem>
+    <UsageItem variant="dont">Rely on tribal knowledge to evolve the system.</UsageItem>
+    <UsageItem variant="do">Use versioning and deprecation strategies.</UsageItem>
+    <UsageItem variant="dont">Introduce breaking changes without migration paths.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Version control">
+      <Brand name="github" label="GitHub" />
+    </ProductCategory>
+    <ProductCategory title="Semantic versioning">
+      <Brand icon="mi/outline/commit" label="Semver" url="https://semver.org/" />
+    </ProductCategory>
+    <ProductCategory title="Documentation platforms">
+      <Brand name="zeroheight" label="Zeroheight" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Provide clear contribution and extension guidelines.</UsageItem>
-  <UsageItem variant="dont">Rely on tribal knowledge to evolve the system.</UsageItem>
-  <UsageItem variant="do">Use versioning and deprecation strategies.</UsageItem>
-  <UsageItem variant="dont">Introduce breaking changes without migration paths.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Version control">
-    <Brand name="github" label="GitHub" />
-  </ProductCategory>
-  <ProductCategory title="Semantic versioning">
-    <Brand icon="mi/outline/commit" label="Semver" url="https://semver.org/" />
-  </ProductCategory>
-  <ProductCategory title="Documentation platforms">
-    <Brand name="zeroheight" label="Zeroheight" />
-  </ProductCategory>
-</Products>

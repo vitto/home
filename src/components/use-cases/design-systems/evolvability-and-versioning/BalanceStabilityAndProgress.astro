@@ -88,21 +88,21 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-table-body>
     </mds-table>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Keep foundations stable while iterating on higher layers.</UsageItem>
+    <UsageItem variant="dont">Change tokens and primitives frequently.</UsageItem>
+    <UsageItem variant="do">Evaluate impact before introducing breaking changes.</UsageItem>
+    <UsageItem variant="dont">Optimize for short-term speed over long-term health.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Semantic versioning">
+      <Brand icon="mi/outline/commit" label="Semver" url="https://semver.org/" />
+    </ProductCategory>
+    <ProductCategory title="Visual regression testing">
+      <Brand name="chromatic" label="Chromatic" />
+      <Brand name="percy" label="Percy" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Keep foundations stable while iterating on higher layers.</UsageItem>
-  <UsageItem variant="dont">Change tokens and primitives frequently.</UsageItem>
-  <UsageItem variant="do">Evaluate impact before introducing breaking changes.</UsageItem>
-  <UsageItem variant="dont">Optimize for short-term speed over long-term health.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Semantic versioning">
-    <Brand icon="mi/outline/commit" label="Semver" url="https://semver.org/" />
-  </ProductCategory>
-  <ProductCategory title="Visual regression testing">
-    <Brand name="chromatic" label="Chromatic" />
-    <Brand name="percy" label="Percy" />
-  </ProductCategory>
-</Products>

@@ -8,7 +8,6 @@ import Markdown from '../../components/Markdown.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
-import Separator from '../../components/Separator.astro';
 import DesignFoundationsToOutliveFeatures from '../../components/use-cases/design-systems/scalability-by-design/DesignFoundationsToOutliveFeatures.astro';
 import AnticipateVariationNotSpecificSolutions from '../../components/use-cases/design-systems/scalability-by-design/AnticipateVariationNotSpecificSolutions.astro';
 import SeparateGlobalDecisionsFromLocalOnes from '../../components/use-cases/design-systems/scalability-by-design/SeparateGlobalDecisionsFromLocalOnes.astro';
@@ -27,7 +26,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <Article class="grid gap-600">
+  <Article>
     <Markdown
       content={`
 A design system that cannot scale is a short-lived asset.
@@ -39,8 +38,6 @@ Scalability is not achieved by adding more components,
 but by defining foundations that remain stable as complexity increases.
     `}
     />
-
-    <Separator class="my-600" />
 
     <DesignFoundationsToOutliveFeatures />
     <AnticipateVariationNotSpecificSolutions />

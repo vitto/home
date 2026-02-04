@@ -12,7 +12,6 @@ import DefineDocumentationUsersAndJobsToBeDone from '../../components/use-cases/
 import TreatDocumentationAsPartOfTheSystemInterface from '../../components/use-cases/design-systems/documentation-as-a-product/TreatDocumentationAsPartOfTheSystemInterface.astro';
 import ApplyQualityStandardsAndReviewProcesses from '../../components/use-cases/design-systems/documentation-as-a-product/ApplyQualityStandardsAndReviewProcesses.astro';
 import MeasureAdoptionAndIterateContinuously from '../../components/use-cases/design-systems/documentation-as-a-product/MeasureAdoptionAndIterateContinuously.astro';
-import Separator from '../../components/Separator.astro';
 import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'documentation-as-a-product')!;
@@ -27,7 +26,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <Article class="grid gap-600">
+  <Article>
     <Markdown
       content={`
 Documentation is not a side effect of building a system.
@@ -44,8 +43,6 @@ If documentation is neglected, the system becomes harder to adopt,
 decisions slow down, and trust erodes.
     `}
     />
-
-    <Separator class="my-600" />
 
     <DefineDocumentationUsersAndJobsToBeDone />
     <TreatDocumentationAsPartOfTheSystemInterface />

@@ -42,22 +42,22 @@ import Products from '../../../Products.astro';
   </mds-banner>
 </mds-modal>`}
   />
+
+  <Usage>
+    <UsageItem variant="do">Define which components can be nested or combined.</UsageItem>
+    <UsageItem variant="dont">Allow unrestricted component nesting.</UsageItem>
+    <UsageItem variant="do">Document supported compositions and known anti-patterns.</UsageItem>
+    <UsageItem variant="dont">Rely on visual review to catch invalid compositions.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Documentation tools">
+      <Brand icon="mi/outline/auto-stories" label="Kompendium" url="https://docs.kompendium.dev/" />
+      <Brand
+        name="stenciljs"
+        label="StencilJS documentation"
+        url="https://stenciljs.com/docs/doc-generation"
+      />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Define which components can be nested or combined.</UsageItem>
-  <UsageItem variant="dont">Allow unrestricted component nesting.</UsageItem>
-  <UsageItem variant="do">Document supported compositions and known anti-patterns.</UsageItem>
-  <UsageItem variant="dont">Rely on visual review to catch invalid compositions.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Documentation tools">
-    <Brand icon="mi/outline/auto-stories" label="Kompendium" url="https://docs.kompendium.dev/" />
-    <Brand
-      name="stenciljs"
-      label="StencilJS documentation"
-      url="https://stenciljs.com/docs/doc-generation"
-    />
-  </ProductCategory>
-</Products>

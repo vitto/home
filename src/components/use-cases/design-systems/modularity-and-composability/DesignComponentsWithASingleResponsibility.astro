@@ -75,21 +75,21 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-table-body>
     </mds-table>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Create components with a clear, narrow purpose.</UsageItem>
+    <UsageItem variant="dont">Bundle multiple responsibilities into a single component.</UsageItem>
+    <UsageItem variant="do">Expose variation through composition, not branching logic.</UsageItem>
+    <UsageItem variant="dont">Add props to cover every possible layout scenario.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Component architecture">
+      <Brand name="storybook" label="Storybook" />
+    </ProductCategory>
+    <ProductCategory title="Documentation">
+      <Brand name="zeroheight" label="Zeroheight" />
+      <Brand name="supernova" label="Supernova" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Create components with a clear, narrow purpose.</UsageItem>
-  <UsageItem variant="dont">Bundle multiple responsibilities into a single component.</UsageItem>
-  <UsageItem variant="do">Expose variation through composition, not branching logic.</UsageItem>
-  <UsageItem variant="dont">Add props to cover every possible layout scenario.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Component architecture">
-    <Brand name="storybook" label="Storybook" />
-  </ProductCategory>
-  <ProductCategory title="Documentation">
-    <Brand name="zeroheight" label="Zeroheight" />
-    <Brand name="supernova" label="Supernova" />
-  </ProductCategory>
-</Products>

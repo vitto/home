@@ -8,7 +8,6 @@ import Markdown from '../../components/Markdown.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
-import Separator from '../../components/Separator.astro';
 import DesignForChangeNotPermanence from '../../components/use-cases/design-systems/evolvability-and-versioning/DesignForChangeNotPermanence.astro';
 import UseExplicitVersioningStrategies from '../../components/use-cases/design-systems/evolvability-and-versioning/UseExplicitVersioningStrategies.astro';
 import ManageDeprecationsDeliberately from '../../components/use-cases/design-systems/evolvability-and-versioning/ManageDeprecationsDeliberately.astro';
@@ -27,7 +26,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <Article class="grid gap-600">
+  <Article>
     <Markdown
       content={`
 A design system that cannot evolve will eventually be replaced.
@@ -39,8 +38,6 @@ Change is inevitable.
 Unmanaged change is what causes fragmentation and loss of trust.
     `}
     />
-
-    <Separator class="my-600" />
 
     <DesignForChangeNotPermanence />
     <UseExplicitVersioningStrategies />

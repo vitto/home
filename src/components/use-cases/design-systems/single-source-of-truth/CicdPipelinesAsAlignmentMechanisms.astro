@@ -94,24 +94,24 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-table-body>
     </mds-table>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Automate validation and publishing processes.</UsageItem>
+    <UsageItem variant="dont">Rely on manual releases.</UsageItem>
+    <UsageItem variant="do">
+      Separate environments to make the actual state of the system explicit.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Allow discrepancies between documented components and shipped code.
+    </UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="CI/CD">
+      <Brand name="github" label="GitHub Actions" />
+    </ProductCategory>
+    <ProductCategory title="Version management">
+      <Brand name="changesets" label="Changesets" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Automate validation and publishing processes.</UsageItem>
-  <UsageItem variant="dont">Rely on manual releases.</UsageItem>
-  <UsageItem variant="do">
-    Separate environments to make the actual state of the system explicit.
-  </UsageItem>
-  <UsageItem variant="dont">
-    Allow discrepancies between documented components and shipped code.
-  </UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="CI/CD">
-    <Brand name="github" label="GitHub Actions" />
-  </ProductCategory>
-  <ProductCategory title="Version management">
-    <Brand name="changesets" label="Changesets" />
-  </ProductCategory>
-</Products>

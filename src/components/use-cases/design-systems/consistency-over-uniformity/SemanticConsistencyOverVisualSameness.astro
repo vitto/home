@@ -38,26 +38,26 @@ import Products from '../../../Products.astro';
       <mds-button variant="primary" tone="strong" slot="action">Save changes</mds-button>
     </mds-banner>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">
+      Use the same component or pattern when the meaning and intent are the same.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Create visually identical components with different meanings.
+    </UsageItem>
+    <UsageItem variant="do">
+      Let spacing, size, or hierarchy adapt to the surrounding layout.
+    </UsageItem>
+    <UsageItem variant="dont">Rely on appearance alone to communicate purpose.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Design tools">
+      <Brand name="figma" label="Figma" />
+    </ProductCategory>
+    <ProductCategory title="Documentation">
+      <Brand name="zeroheight" label="Zeroheight" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">
-    Use the same component or pattern when the meaning and intent are the same.
-  </UsageItem>
-  <UsageItem variant="dont">
-    Create visually identical components with different meanings.
-  </UsageItem>
-  <UsageItem variant="do">
-    Let spacing, size, or hierarchy adapt to the surrounding layout.
-  </UsageItem>
-  <UsageItem variant="dont">Rely on appearance alone to communicate purpose.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Design tools">
-    <Brand name="figma" label="Figma" />
-  </ProductCategory>
-  <ProductCategory title="Documentation">
-    <Brand name="zeroheight" label="Zeroheight" />
-  </ProductCategory>
-</Products>

@@ -14,7 +14,6 @@ import AcceptingInconsistencies from '../../components/use-cases/design-systems/
 import DocumentationOptimizedForFirstUse from '../../components/use-cases/design-systems/adoption-over-perfection/DocumentationOptimizedForFirstUse.astro';
 import ReducingContributionFriction from '../../components/use-cases/design-systems/adoption-over-perfection/ReducingContributionFriction.astro';
 import MeasuringSuccessThroughUsage from '../../components/use-cases/design-systems/adoption-over-perfection/MeasuringSuccessThroughUsage.astro';
-import Separator from '../../components/Separator.astro';
 import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'adoption-over-perfection')!;
@@ -53,8 +52,6 @@ Instead, I treat adoption as a primary success metric.
 The system must be usable, approachable, and immediately helpful—even if that means accepting known limitations and planning to evolve them later.
       `}
     />
-
-    <Separator />
 
     <ShippingUsableComponents />
     <ProgressiveRefinement />

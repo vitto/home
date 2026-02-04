@@ -12,7 +12,6 @@ import TreatDesignAndCodeAsEqualSourcesOfTruth from '../../components/use-cases/
 import EncodeDesignDecisionsNotScreenshots from '../../components/use-cases/design-systems/design-development-parity/EncodeDesignDecisionsNotScreenshots.astro';
 import ShareACommonMentalModel from '../../components/use-cases/design-systems/design-development-parity/ShareACommonMentalModel.astro';
 import AutomateParityWherePossible from '../../components/use-cases/design-systems/design-development-parity/AutomateParityWherePossible.astro';
-import Separator from '../../components/Separator.astro';
 import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'design-development-parity')!;
@@ -27,7 +26,7 @@ const sectionPath = '/design-systems';
   sectionName={data.title}
   sectionPath="/design-systems"
 >
-  <Article class="grid gap-600">
+  <Article>
     <Markdown
       content={`
 A design system breaks when design and code drift apart.
@@ -39,8 +38,6 @@ When parity is lost, teams stop trusting the system and start working around it.
 
     `}
     />
-
-    <Separator class="mt-600" />
 
     <TreatDesignAndCodeAsEqualSourcesOfTruth />
     <EncodeDesignDecisionsNotScreenshots />

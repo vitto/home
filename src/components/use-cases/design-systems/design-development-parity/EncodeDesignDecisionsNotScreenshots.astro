@@ -13,41 +13,41 @@ import UseCaseInteractiveStorybook from '../../UseCaseInteractiveStorybook.astro
   description="Implementation should express intent, not static visuals."
 >
   <UseCaseInteractiveStorybook />
+
+  <Usage>
+    <UsageItem variant="do">Implement components based on rules and constraints.</UsageItem>
+    <UsageItem variant="dont">
+      Recreate pixel-perfect snapshots without understanding behavior.
+    </UsageItem>
+    <UsageItem variant="do">Document states, interactions, and edge cases.</UsageItem>
+    <UsageItem variant="dont">Rely solely on static mockups for behavior.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Interactive documentation">
+      <Brand name="storybook" label="Storybook" url="https://storybook.js.org" />
+    </ProductCategory>
+    <ProductCategory title="Addons">
+      <Brand
+        name="storybook"
+        label="Tag Badges"
+        url="https://storybook.js.org/addons/storybook-addon-tag-badges"
+      />
+      <Brand
+        name="storybook"
+        label="Figma Designs"
+        url="https://storybook.js.org/addons/@storybook/addon-designs"
+      />
+      <Brand
+        name="storybook"
+        label="Regression testing"
+        url="https://storybook.js.org/addons/chromatic"
+      />
+      <Brand
+        name="storybook"
+        label="Accessibility"
+        url="https://storybook.js.org/addons/@storybook/addon-a11y"
+      />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Implement components based on rules and constraints.</UsageItem>
-  <UsageItem variant="dont">
-    Recreate pixel-perfect snapshots without understanding behavior.
-  </UsageItem>
-  <UsageItem variant="do">Document states, interactions, and edge cases.</UsageItem>
-  <UsageItem variant="dont">Rely solely on static mockups for behavior.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Interactive documentation">
-    <Brand name="storybook" label="Storybook" url="https://storybook.js.org" />
-  </ProductCategory>
-  <ProductCategory title="Addons">
-    <Brand
-      name="storybook"
-      label="Tag Badges"
-      url="https://storybook.js.org/addons/storybook-addon-tag-badges"
-    />
-    <Brand
-      name="storybook"
-      label="Figma Designs"
-      url="https://storybook.js.org/addons/@storybook/addon-designs"
-    />
-    <Brand
-      name="storybook"
-      label="Regression testing"
-      url="https://storybook.js.org/addons/chromatic"
-    />
-    <Brand
-      name="storybook"
-      label="Accessibility"
-      url="https://storybook.js.org/addons/@storybook/addon-a11y"
-    />
-  </ProductCategory>
-</Products>

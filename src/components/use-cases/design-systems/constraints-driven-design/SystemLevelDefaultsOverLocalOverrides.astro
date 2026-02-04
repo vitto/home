@@ -50,23 +50,25 @@ import Products from '../../../Products.astro';
   </mds-button>
 </mds-banner>`}
   />
+
+  <Usage>
+    <UsageItem variant="do">
+      Provide strong, opinionated defaults aligned with system goals.
+    </UsageItem>
+    <UsageItem variant="dont">Encourage local overrides for stylistic reasons.</UsageItem>
+    <UsageItem variant="do">
+      Encourage teams to rely on defaults instead of customization.
+    </UsageItem>
+    <UsageItem variant="dont">Allow silent deviations from system behavior.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Pratical documentation">
+      <Brand name="zeroheight" label="Zeroheight" />
+      <Brand name="docusaurus" label="Docusaurus" />
+    </ProductCategory>
+    <ProductCategory title="Component testing">
+      <Brand name="storybook" label="Storybook" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">
-    Provide strong, opinionated defaults aligned with system goals.
-  </UsageItem>
-  <UsageItem variant="dont">Encourage local overrides for stylistic reasons.</UsageItem>
-  <UsageItem variant="do">Encourage teams to rely on defaults instead of customization.</UsageItem>
-  <UsageItem variant="dont">Allow silent deviations from system behavior.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Pratical documentation">
-    <Brand name="zeroheight" label="Zeroheight" />
-    <Brand name="docusaurus" label="Docusaurus" />
-  </ProductCategory>
-  <ProductCategory title="Component testing">
-    <Brand name="storybook" label="Storybook" />
-  </ProductCategory>
-</Products>

@@ -102,20 +102,20 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-table-body>
     </mds-table>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Adopt semantic versioning for the design system.</UsageItem>
+    <UsageItem variant="dont">Ship breaking changes without a major version bump.</UsageItem>
+    <UsageItem variant="do">Document changes clearly with release notes.</UsageItem>
+    <UsageItem variant="dont">Rely on informal communication for updates.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Semantic versioning">
+      <Brand icon="mi/outline/commit" label="Semver" url="https://semver.org/" />
+    </ProductCategory>
+    <ProductCategory title="Version management">
+      <Brand name="changesets" label="Changesets" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Adopt semantic versioning for the design system.</UsageItem>
-  <UsageItem variant="dont">Ship breaking changes without a major version bump.</UsageItem>
-  <UsageItem variant="do">Document changes clearly with release notes.</UsageItem>
-  <UsageItem variant="dont">Rely on informal communication for updates.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Semantic versioning">
-    <Brand icon="mi/outline/commit" label="Semver" url="https://semver.org/" />
-  </ProductCategory>
-  <ProductCategory title="Version management">
-    <Brand name="changesets" label="Changesets" />
-  </ProductCategory>
-</Products>

@@ -90,20 +90,20 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-table-body>
     </mds-table>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Restrict props and APIs to supported options.</UsageItem>
+    <UsageItem variant="dont">Rely on documentation to prevent misuse.</UsageItem>
+    <UsageItem variant="do">Use type systems and validation to enforce rules.</UsageItem>
+    <UsageItem variant="dont">Allow invalid combinations to fail silently.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Type systems">
+      <Brand name="typescript" label="TypeScript" />
+    </ProductCategory>
+    <ProductCategory title="Validation tools">
+      <Brand name="eslint" label="ESLint" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Restrict props and APIs to supported options.</UsageItem>
-  <UsageItem variant="dont">Rely on documentation to prevent misuse.</UsageItem>
-  <UsageItem variant="do">Use type systems and validation to enforce rules.</UsageItem>
-  <UsageItem variant="dont">Allow invalid combinations to fail silently.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Type systems">
-    <Brand name="typescript" label="TypeScript" />
-  </ProductCategory>
-  <ProductCategory title="Validation tools">
-    <Brand name="eslint" label="ESLint" />
-  </ProductCategory>
-</Products>

@@ -115,25 +115,25 @@ import Products from '../../../Products.astro';
       }
     </script>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">
+      Keep loading states, errors, confirmations, and focus management predictable.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Optimize for pixel-level alignment at the expense of interaction clarity.
+    </UsageItem>
+    <UsageItem variant="do">Optimize for learned behavior across the product.</UsageItem>
+    <UsageItem variant="dont">Change interaction models for aesthetic reasons.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Accessibility tools">
+      <Brand name="axe-devtools" label="Axe DevTools" />
+      <Brand name="google-lighthouse" label="Google Lighthouse" />
+    </ProductCategory>
+    <ProductCategory title="Testing">
+      <Brand name="chromatic" label="Chromatic" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">
-    Keep loading states, errors, confirmations, and focus management predictable.
-  </UsageItem>
-  <UsageItem variant="dont">
-    Optimize for pixel-level alignment at the expense of interaction clarity.
-  </UsageItem>
-  <UsageItem variant="do">Optimize for learned behavior across the product.</UsageItem>
-  <UsageItem variant="dont">Change interaction models for aesthetic reasons.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Accessibility tools">
-    <Brand name="axe-devtools" label="Axe DevTools" />
-    <Brand name="google-lighthouse" label="Google Lighthouse" />
-  </ProductCategory>
-  <ProductCategory title="Testing">
-    <Brand name="chromatic" label="Chromatic" />
-  </ProductCategory>
-</Products>

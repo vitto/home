@@ -87,21 +87,21 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-table-body>
     </mds-table>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Assume components will need new variants and behaviors.</UsageItem>
+    <UsageItem variant="dont">Treat initial implementations as final.</UsageItem>
+    <UsageItem variant="do">Favor extension over replacement when possible.</UsageItem>
+    <UsageItem variant="dont">Introduce breaking changes for convenience.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Version control">
+      <Brand name="github" label="GitHub" />
+    </ProductCategory>
+    <ProductCategory title="Visual regression testing">
+      <Brand name="chromatic" label="Chromatic" />
+      <Brand name="percy" label="Percy" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Assume components will need new variants and behaviors.</UsageItem>
-  <UsageItem variant="dont">Treat initial implementations as final.</UsageItem>
-  <UsageItem variant="do">Favor extension over replacement when possible.</UsageItem>
-  <UsageItem variant="dont">Introduce breaking changes for convenience.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Version control">
-    <Brand name="github" label="GitHub" />
-  </ProductCategory>
-  <ProductCategory title="Visual regression testing">
-    <Brand name="chromatic" label="Chromatic" />
-    <Brand name="percy" label="Percy" />
-  </ProductCategory>
-</Products>

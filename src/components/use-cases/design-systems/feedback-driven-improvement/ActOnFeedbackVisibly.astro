@@ -59,35 +59,37 @@ import Products from '../../../Products.astro';
       </div>
     </div>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Acknowledge feedback promptly and transparently.</UsageItem>
+    <UsageItem variant="dont">Collect feedback without responding or acting on it.</UsageItem>
+    <UsageItem variant="do">Communicate when and how feedback influenced decisions.</UsageItem>
+    <UsageItem variant="dont">
+      Make changes without explaining the connection to feedback.
+    </UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Changelogs">
+      <Brand
+        name="github"
+        label="GitHub Releases"
+        url="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository"
+      />
+      <Brand name="changesets" label="Changelogs" />
+    </ProductCategory>
+    <ProductCategory title="Roadmaps">
+      <Brand
+        name="github"
+        label="GitHub Projects"
+        url="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects"
+      />
+      <Brand name="productboard" label="Productboard" />
+    </ProductCategory>
+    <ProductCategory title="Communication">
+      <Brand name="slack" label="Slack" />
+      <Brand icon="mi/outline/email" label="Via newsletter" />
+      <Brand icon="mi/outline/chat" label="Via chat" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Acknowledge feedback promptly and transparently.</UsageItem>
-  <UsageItem variant="dont">Collect feedback without responding or acting on it.</UsageItem>
-  <UsageItem variant="do">Communicate when and how feedback influenced decisions.</UsageItem>
-  <UsageItem variant="dont">Make changes without explaining the connection to feedback.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Changelogs">
-    <Brand
-      name="github"
-      label="GitHub Releases"
-      url="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository"
-    />
-    <Brand name="changesets" label="Changelogs" />
-  </ProductCategory>
-  <ProductCategory title="Roadmaps">
-    <Brand
-      name="github"
-      label="GitHub Projects"
-      url="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects"
-    />
-    <Brand name="productboard" label="Productboard" />
-  </ProductCategory>
-  <ProductCategory title="Communication">
-    <Brand name="slack" label="Slack" />
-    <Brand icon="mi/outline/email" label="Via newsletter" />
-    <Brand icon="mi/outline/chat" label="Via chat" />
-  </ProductCategory>
-</Products>

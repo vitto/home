@@ -46,26 +46,26 @@ import Products from '../../../Products.astro';
       </mds-table>
     </div>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Track component usage and adoption patterns.</UsageItem>
+    <UsageItem variant="dont">Assume all components are equally valuable.</UsageItem>
+    <UsageItem variant="do">Identify unused or underused components.</UsageItem>
+    <UsageItem variant="dont">Ignore metrics that suggest components aren't working.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Analytics">
+      <Brand name="google-analytics" label="Google Analytics" />
+      <Brand name="amplitude" label="Amplitude" />
+    </ProductCategory>
+    <ProductCategory title="Design system analytics">
+      <Brand icon="mi/outline/monitor-heart" label="Custom telemetry" />
+      <Brand icon="mi/outline/analytics" label="Build-time analysis" />
+    </ProductCategory>
+    <ProductCategory title="Dashboards">
+      <Brand name="grafana" label="Grafana" />
+      <Brand name="looker-studio" label="Looker Studio" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Track component usage and adoption patterns.</UsageItem>
-  <UsageItem variant="dont">Assume all components are equally valuable.</UsageItem>
-  <UsageItem variant="do">Identify unused or underused components.</UsageItem>
-  <UsageItem variant="dont">Ignore metrics that suggest components aren't working.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Analytics">
-    <Brand name="google-analytics" label="Google Analytics" />
-    <Brand name="amplitude" label="Amplitude" />
-  </ProductCategory>
-  <ProductCategory title="Design system analytics">
-    <Brand icon="mi/outline/monitor-heart" label="Custom telemetry" />
-    <Brand icon="mi/outline/analytics" label="Build-time analysis" />
-  </ProductCategory>
-  <ProductCategory title="Dashboards">
-    <Brand name="grafana" label="Grafana" />
-    <Brand name="looker-studio" label="Looker Studio" />
-  </ProductCategory>
-</Products>

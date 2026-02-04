@@ -52,22 +52,22 @@ import Products from '../../../Products.astro';
       </div>
     </div>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Define how changes are proposed, reviewed, and approved.</UsageItem>
+    <UsageItem variant="dont">Handle decisions ad hoc or in private channels.</UsageItem>
+    <UsageItem variant="do">Document acceptance criteria and design principles.</UsageItem>
+    <UsageItem variant="dont">Approve changes without shared evaluation standards.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Issue tracking">
+      <Brand name="github" label="GitHub" />
+      <Brand name="jira" label="Jira" />
+      <Brand name="linear" label="Linear" />
+    </ProductCategory>
+    <ProductCategory title="Communication tools">
+      <Brand name="slack" label="Slack" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Define how changes are proposed, reviewed, and approved.</UsageItem>
-  <UsageItem variant="dont">Handle decisions ad hoc or in private channels.</UsageItem>
-  <UsageItem variant="do">Document acceptance criteria and design principles.</UsageItem>
-  <UsageItem variant="dont">Approve changes without shared evaluation standards.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Issue tracking">
-    <Brand name="github" label="GitHub" />
-    <Brand name="jira" label="Jira" />
-    <Brand name="linear" label="Linear" />
-  </ProductCategory>
-  <ProductCategory title="Communication tools">
-    <Brand name="slack" label="Slack" />
-  </ProductCategory>
-</Products>

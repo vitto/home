@@ -62,21 +62,23 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       </mds-table-body>
     </mds-table>
   </UseCaseInteractive>
+
+  <Usage>
+    <UsageItem variant="do">Provide safe defaults that cover most use cases.</UsageItem>
+    <UsageItem variant="dont">
+      Expose unlimited configuration for the sake of flexibility.
+    </UsageItem>
+    <UsageItem variant="do">Limit variation through tokens and composition.</UsageItem>
+    <UsageItem variant="dont">Allow arbitrary overrides at the component level.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Tokens tools">
+      <Brand name="amazon" label="Style Dictionary" url="https://styledictionary.com/" />
+    </ProductCategory>
+    <ProductCategory title="Tokens documentation">
+      <Brand name="zeroheight" label="Zeroheight" />
+      <Brand name="supernova" label="Supernova" />
+    </ProductCategory>
+  </Products>
 </UseCase>
-
-<Usage>
-  <UsageItem variant="do">Provide safe defaults that cover most use cases.</UsageItem>
-  <UsageItem variant="dont">Expose unlimited configuration for the sake of flexibility.</UsageItem>
-  <UsageItem variant="do">Limit variation through tokens and composition.</UsageItem>
-  <UsageItem variant="dont">Allow arbitrary overrides at the component level.</UsageItem>
-</Usage>
-
-<Products>
-  <ProductCategory title="Tokens tools">
-    <Brand name="amazon" label="Style Dictionary" url="https://styledictionary.com/" />
-  </ProductCategory>
-  <ProductCategory title="Tokens documentation">
-    <Brand name="zeroheight" label="Zeroheight" />
-    <Brand name="supernova" label="Supernova" />
-  </ProductCategory>
-</Products>
