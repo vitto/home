@@ -26,7 +26,10 @@
       "category": "Cognitive load",
       "icon": "mi/outline/language",
       "description": "The system should speak the users' language, with words, phrases and concepts familiar to the user, rather than system-oriented terms.",
-      "sources": []
+      "sources": [
+        "match-between-system-and-real-world-usability-heuristic-2",
+        "match-between-system-and-the-real-world"
+      ]
     },
     {
       "id": "user-control-and-freedom",
@@ -157,6 +160,14 @@
       "url": "https://www.uxpin.com/studio/blog/guide-design-consistency-best-practices-ui-ux-designers/",
       "type": "url",
       "id": "design-consistency-guide-ui-and-ux-best-practices"
+    },
+    {
+      "author": "Meganne Ohata",
+      "title": "Match Between System and Real World",
+      "description": "The design should speak the users’ language. Use words, phrases, and concepts familiar to the user, rather than internal jargon. Follow real-world conventions, making information appear in a natural and logical order.",
+      "url": "https://www.pencilandpaper.io/articles/match-between-system-and-the-real-world",
+      "type": "url",
+      "id": "match-between-system-and-the-real-world"
     },
     {
       "author": "Aurora Harley",
