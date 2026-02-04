@@ -15,16 +15,15 @@ const sectionPath = '/user-centered-design';
 // Sort principles by title
 const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompare(b.title));
 
-// Merge all bibliography items from all principles, keeping track of type
+// Filter bibliography items by type
 const allBooks: any[] = [];
 const allUrls: any[] = [];
-if (data.bibliography) {
-  Object.values(data.bibliography as any).forEach((principleBibliography: any) => {
-    if (principleBibliography.books) {
-      allBooks.push(...principleBibliography.books);
-    }
-    if (principleBibliography.urls) {
-      allUrls.push(...principleBibliography.urls);
+if (data.bibliography && Array.isArray(data.bibliography)) {
+  (data.bibliography as any[]).forEach((item: any) => {
+    if (item.type === 'book') {
+      allBooks.push(item);
+    } else if (item.type === 'url') {
+      allUrls.push(item);
     }
   });
 }

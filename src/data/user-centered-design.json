@@ -16,7 +16,8 @@
       "title": "Visibility of System Status",
       "category": "Cognitive load",
       "icon": "mi/outline/visibility",
-      "description": "The system should always keep users informed about what is going on, through appropriate feedback within reasonable time. If the user is asking \"is something happening?\", the system is failing this principle. If, however, the system consistently understands what is happening, when, and with what outcome, Visibility of System Status is respected."
+      "description": "The system should always keep users informed about what is going on, through appropriate feedback within reasonable time. If the user is asking \"is something happening?\", the system is failing this principle. If, however, the system consistently understands what is happening, when, and with what outcome, Visibility of System Status is respected.",
+      "sources": []
     },
     {
       "id": "match-between-system-and-real-world",
@@ -24,7 +25,8 @@
       "title": "Match Between the System and the Real World",
       "category": "Cognitive load",
       "icon": "mi/outline/language",
-      "description": "The system should speak the users' language, with words, phrases and concepts familiar to the user, rather than system-oriented terms."
+      "description": "The system should speak the users' language, with words, phrases and concepts familiar to the user, rather than system-oriented terms.",
+      "sources": []
     },
     {
       "id": "user-control-and-freedom",
@@ -32,7 +34,8 @@
       "title": "User Control and Freedom",
       "category": "Control",
       "icon": "mi/outline/exit-to-app",
-      "description": "Users often choose system functions by mistake and will need a clearly marked 'emergency exit' to leave the unwanted state without having to go through an extended dialogue."
+      "description": "Users often choose system functions by mistake and will need a clearly marked 'emergency exit' to leave the unwanted state without having to go through an extended dialogue.",
+      "sources": []
     },
     {
       "id": "consistency-and-standards",
@@ -40,7 +43,8 @@
       "title": "Consistency and Standards",
       "category": "Predictability",
       "icon": "mi/outline/rule",
-      "description": "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform conventions."
+      "description": "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform conventions.",
+      "sources": []
     },
     {
       "id": "error-prevention",
@@ -48,7 +52,8 @@
       "title": "Error Prevention",
       "category": "Error handling",
       "icon": "mi/outline/shield",
-      "description": "Even better than good error messages is a careful design which prevents a problem from occurring in the first place."
+      "description": "Even better than good error messages is a careful design which prevents a problem from occurring in the first place.",
+      "sources": []
     },
     {
       "id": "recognition-rather-than-recall",
@@ -56,7 +61,8 @@
       "title": "Recognition Rather than Recall",
       "category": "Cognitive load",
       "icon": "mi/outline/lightbulb",
-      "description": "Minimize the user's memory load by making objects, actions, and options visible. The user should not have to remember information from one part of the dialogue to another."
+      "description": "Minimize the user's memory load by making objects, actions, and options visible. The user should not have to remember information from one part of the dialogue to another.",
+      "sources": []
     },
     {
       "id": "flexibility-and-efficiency-of-use",
@@ -64,7 +70,8 @@
       "title": "Flexibility and Efficiency of Use",
       "category": "Control",
       "icon": "mi/outline/tune",
-      "description": "Accelerators, unseen by the novice user, may often speed up the interaction for the expert user such that the system can cater to both inexperienced and experienced users."
+      "description": "Accelerators, unseen by the novice user, may often speed up the interaction for the expert user such that the system can cater to both inexperienced and experienced users.",
+      "sources": []
     },
     {
       "id": "aesthetic-and-minimalist-design",
@@ -72,7 +79,18 @@
       "title": "Aesthetic and Minimalist Design",
       "category": "Cognitive load",
       "icon": "mi/outline/brush",
-      "description": "Dialogues should not contain information which is irrelevant or rarely needed. Every extra unit of information in a dialogue competes with the relevant units of information and diminishes their relative visibility."
+      "description": "Dialogues should not contain information which is irrelevant or rarely needed. Every extra unit of information in a dialogue competes with the relevant units of information and diminishes their relative visibility.",
+      "sources": [
+        "cognitive-load-and-ux",
+        "ease-cognitive-overload-in-ux-design",
+        "design-consistency-guide-ui-and-ux-best-practices",
+        "maintain-consistency-and-adhere-to-standards-usability-heuristic-4",
+        "design-principles-for-reducing-cognitive-load",
+        "user-centered-design-4-key-principles-phases-and-examples",
+        "what-is-user-centered-design-ucd",
+        "5-principles-of-visual-design-in-ux",
+        "why-visual-hierarchy-in-ux-is-key-expert-backed-tips-and-examples"
+      ]
     },
     {
       "id": "help-users-recognize-diagnose-and-recover-from-errors",
@@ -80,7 +98,8 @@
       "title": "Help Users Recognize, Diagnose, and Recover from Errors",
       "category": "Error handling",
       "icon": "mi/outline/error-outline",
-      "description": "Error messages should be expressed in plain language (no codes), precisely indicate the problem, and constructively suggest a solution."
+      "description": "Error messages should be expressed in plain language (no codes), precisely indicate the problem, and constructively suggest a solution.",
+      "sources": []
     },
     {
       "id": "help-and-documentation",
@@ -88,83 +107,82 @@
       "title": "Help and Documentation",
       "category": "Support",
       "icon": "mi/outline/help-outline",
-      "description": "Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation."
+      "description": "Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation.",
+      "sources": []
     }
   ],
-  "bibliography": {
-    "aesthetic-and-minimalist-design": [
-      {
-        "author": "Aguayo",
-        "title": "Cognitive Load and UX",
-        "description": "Learn how cognitive load affects user experience and discover effective strategies to minimize it in your UX designs.",
-        "url": "https://aguayo.co/en/blog-aguayo-user-experience/cognitive-load/",
-        "type": "url",
-        "id": "cognitive-load-and-ux"
-      },
-      {
-        "author": "Mailchimp",
-        "title": "Ease Cognitive Overload in UX Design",
-        "description": "Learn how taxing working memory causes cognitive overload and ways to improve UX design for a better user experience.",
-        "url": "https://mailchimp.com/resources/cognitive-overload/",
-        "type": "url",
-        "id": "ease-cognitive-overload-in-ux-design"
-      },
-      {
-        "author": "UXPin",
-        "title": "Design Consistency Guide UI and UX Best Practices",
-        "description": "One of the key design principles, no matter if your designing a mobile app or a desktop one, is to keep your UI consistent. But what does it mean?",
-        "url": "https://www.uxpin.com/studio/blog/guide-design-consistency-best-practices-ui-ux-designers/",
-        "type": "url",
-        "id": "design-consistency-guide-ui-and-ux-best-practices"
-      },
-      {
-        "author": "Rachel Krause",
-        "title": "Maintain Consistency and Adhere to Standards (Usability Heuristic #4)",
-        "description": "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.",
-        "url": "https://www.nngroup.com/articles/consistency-and-standards/",
-        "type": "url",
-        "id": "maintain-consistency-and-adhere-to-standards-usability-heuristic-4"
-      },
-      {
-        "author": "Jon Yablonski",
-        "title": "Design Principles for Reducing Cognitive Load",
-        "description": "Every time you visit a website, a process of learning is initiated in the brain. ",
-        "url": "https://jonyablonski.com/articles/2015/design-principles-for-reducing-cognitive-load/",
-        "type": "url",
-        "id": "design-principles-for-reducing-cognitive-load"
-      },
-      {
-        "author": "Armin Tanovic, Lorelei Whitman",
-        "title": "User-centered design: 4 key principles, phases, and examples",
-        "description": "The best products are shaped by the people who use them—user-centered design places them at the heart of your design process.",
-        "url": "https://maze.co/blog/user-centered-design/",
-        "type": "url",
-        "id": "user-centered-design-4-key-principles-phases-and-examples"
-      },
-      {
-        "author": "Interaction Design Foundation",
-        "title": "What is User Centered Design (UCD)?",
-        "description": "User-centered design (UCD) is an iterative design process in which designers focus on the users and their needs in each phase of the design process.",
-        "url": "https://www.interaction-design.org/literature/topics/user-centered-design",
-        "type": "url",
-        "id": "what-is-user-centered-design-ucd"
-      },
-      {
-        "author": "Kelley Gordon",
-        "title": "5 Principles of Visual Design in UX",
-        "description": "The principles of scale, visual hierarchy, balance, contrast, and Gestalt not only create beautiful designs, but also increase usability when applied correctly.",
-        "url": "https://www.nngroup.com/articles/principles-visual-design/",
-        "type": "url",
-        "id": "5-principles-of-visual-design-in-ux"
-      },
-      {
-        "author": "Stan Murash",
-        "title": "Why Visual Hierarchy in UX Is Key: Expert-Backed Tips and Examples",
-        "description": "What makes a design look messy and unprofessional? More often than not, it's a lack of visual hierarchy—a structured way to guide the user’s eye through an interface.",
-        "url": "https://www.eleken.co/blog-posts/visual-hierarchy-in-ux",
-        "type": "url",
-        "id": "why-visual-hierarchy-in-ux-is-key-expert-backed-tips-and-examples"
-      }
-    ]
-  }
+  "bibliography": [
+    {
+      "author": "Aguayo",
+      "title": "Cognitive Load and UX",
+      "description": "Learn how cognitive load affects user experience and discover effective strategies to minimize it in your UX designs.",
+      "url": "https://aguayo.co/en/blog-aguayo-user-experience/cognitive-load/",
+      "type": "url",
+      "id": "cognitive-load-and-ux"
+    },
+    {
+      "author": "Mailchimp",
+      "title": "Ease Cognitive Overload in UX Design",
+      "description": "Learn how taxing working memory causes cognitive overload and ways to improve UX design for a better user experience.",
+      "url": "https://mailchimp.com/resources/cognitive-overload/",
+      "type": "url",
+      "id": "ease-cognitive-overload-in-ux-design"
+    },
+    {
+      "author": "UXPin",
+      "title": "Design Consistency Guide UI and UX Best Practices",
+      "description": "One of the key design principles, no matter if your designing a mobile app or a desktop one, is to keep your UI consistent. But what does it mean?",
+      "url": "https://www.uxpin.com/studio/blog/guide-design-consistency-best-practices-ui-ux-designers/",
+      "type": "url",
+      "id": "design-consistency-guide-ui-and-ux-best-practices"
+    },
+    {
+      "author": "Rachel Krause",
+      "title": "Maintain Consistency and Adhere to Standards (Usability Heuristic #4)",
+      "description": "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.",
+      "url": "https://www.nngroup.com/articles/consistency-and-standards/",
+      "type": "url",
+      "id": "maintain-consistency-and-adhere-to-standards-usability-heuristic-4"
+    },
+    {
+      "author": "Jon Yablonski",
+      "title": "Design Principles for Reducing Cognitive Load",
+      "description": "Every time you visit a website, a process of learning is initiated in the brain. ",
+      "url": "https://jonyablonski.com/articles/2015/design-principles-for-reducing-cognitive-load/",
+      "type": "url",
+      "id": "design-principles-for-reducing-cognitive-load"
+    },
+    {
+      "author": "Armin Tanovic, Lorelei Whitman",
+      "title": "User-centered design: 4 key principles, phases, and examples",
+      "description": "The best products are shaped by the people who use them—user-centered design places them at the heart of your design process.",
+      "url": "https://maze.co/blog/user-centered-design/",
+      "type": "url",
+      "id": "user-centered-design-4-key-principles-phases-and-examples"
+    },
+    {
+      "author": "Interaction Design Foundation",
+      "title": "What is User Centered Design (UCD)?",
+      "description": "User-centered design (UCD) is an iterative design process in which designers focus on the users and their needs in each phase of the design process.",
+      "url": "https://www.interaction-design.org/literature/topics/user-centered-design",
+      "type": "url",
+      "id": "what-is-user-centered-design-ucd"
+    },
+    {
+      "author": "Kelley Gordon",
+      "title": "5 Principles of Visual Design in UX",
+      "description": "The principles of scale, visual hierarchy, balance, contrast, and Gestalt not only create beautiful designs, but also increase usability when applied correctly.",
+      "url": "https://www.nngroup.com/articles/principles-visual-design/",
+      "type": "url",
+      "id": "5-principles-of-visual-design-in-ux"
+    },
+    {
+      "author": "Stan Murash",
+      "title": "Why Visual Hierarchy in UX Is Key: Expert-Backed Tips and Examples",
+      "description": "What makes a design look messy and unprofessional? More often than not, it's a lack of visual hierarchy—a structured way to guide the user’s eye through an interface.",
+      "url": "https://www.eleken.co/blog-posts/visual-hierarchy-in-ux",
+      "type": "url",
+      "id": "why-visual-hierarchy-in-ux-is-key-expert-backed-tips-and-examples"
+    }
+  ]
 }

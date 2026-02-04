@@ -18,7 +18,8 @@ import BibliographySection from '../../components/BibliographySection.astro';
 const principle = data.principles.find((p) => p.id === 'consistency-and-standards')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/user-centered-design';
-const bibliography = (data.bibliography as any)?.[principle.id];
+const bibliography =
+  (data.bibliography as any[])?.filter((item: any) => principle.sources?.includes(item.id)) || [];
 const books = bibliography?.filter((item: any) => item.type === 'book') || [];
 const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
 
