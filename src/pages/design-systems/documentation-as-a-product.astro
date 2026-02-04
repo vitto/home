@@ -17,6 +17,7 @@ import Article from '../../components/Article.astro';
 const principle = data.principles.find((p) => p.id === 'documentation-as-a-product')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
+const bibliography = data.bibliography?.[principle.id as keyof typeof data.bibliography];
 ---
 
 <PrincipleLayout
@@ -62,40 +63,38 @@ will not scale — regardless of how good the components are.
     />
   </Article>
 
-  <Bibliography
-    opener="Documentation-as-a-product is grounded in technical writing, platform thinking, and design system governance:"
-    closer="These sources explain why documentation needs ownership, standards, and continuous iteration."
-  >
-    <BibliographySection type="books">
-      <BibliographyItem
-        author="Christopher Gales"
-        title="The Product Is Docs"
-        description="Argues that documentation itself is a core part of the product experience."
-        url="https://idratherbewriting.com/2017/06/20/the-product-is-docs/"
-      />
-    </BibliographySection>
-
-    <BibliographySection type="urls">
-      <BibliographyItem
-        author="Anne Gentle"
-        title="Docs Like Code"
-        description="Explains how documentation benefits from product thinking and engineering workflows."
-        url="https://www.docslikecode.com/"
-      />
-      <BibliographyItem
-        author="Google"
-        title="Technical Writing Courses"
-        description="Practical guidance on clarity, structure, and audience-focused documentation."
-        url="https://developers.google.com/tech-writing"
-      />
-      <BibliographyItem
-        author="Write the Docs"
-        title="Documentation Guide"
-        description="Community-driven best practices for documentation as a product."
-        url="https://www.writethedocs.org/guide/"
-      />
-    </BibliographySection>
-  </Bibliography>
+  {
+    bibliography && (
+      <Bibliography>
+        {bibliography.books && bibliography.books.length > 0 && (
+          <BibliographySection type="books">
+            {bibliography.books.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {bibliography.urls && bibliography.urls.length > 0 && (
+          <BibliographySection type="urls">
+            {bibliography.urls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
 
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />

@@ -17,6 +17,7 @@ import Article from '../../components/Article.astro';
 const principle = data.principles.find((p) => p.id === 'explicit-constraints')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
+const bibliography = data.bibliography?.[principle.id as keyof typeof data.bibliography];
 ---
 
 <PrincipleLayout
@@ -57,52 +58,38 @@ the design system empowers teams instead of limiting them.
     />
   </Article>
 
-  <Bibliography
-    opener="Constraints-driven design is rooted in systems thinking, cognitive psychology, and scalable interface design:"
-    closer="These sources explain how constraints improve usability, consistency, and decision-making."
-  >
-    <BibliographySection type="books">
-      <BibliographyItem
-        author="Don Norman"
-        title="The Design of Everyday Things"
-        description="Explains how constraints guide behavior and reduce errors."
-        url="https://jnd.org/books/the-design-of-everyday-things/"
-      />
-      <BibliographyItem
-        author="Barry Schwartz"
-        title="The Paradox of Choice"
-        description="Shows how too many options hinder decision-making."
-        url="https://www.harpercollins.com/products/the-paradox-of-choice-barry-schwartz"
-      />
-      <BibliographyItem
-        author="Alan Cooper"
-        title="About Face"
-        description="Discusses constraints as a core interaction design principle."
-        url="https://www.aboutfacebook.com/"
-      />
-    </BibliographySection>
-
-    <BibliographySection type="urls">
-      <BibliographyItem
-        author="NNGroup"
-        title="Design Constraints Improve UX"
-        description="Explains why constraints lead to better user experiences."
-        url="https://www.nngroup.com/articles/design-constraints/"
-      />
-      <BibliographyItem
-        author="GOV.UK"
-        title="Design System Principles"
-        description="Demonstrates how explicit constraints support consistency at scale."
-        url="https://design-system.service.gov.uk/design-system/"
-      />
-      <BibliographyItem
-        author="Smashing Magazine"
-        title="Designing with Constraints"
-        description="Explores constraint-driven approaches in UI design."
-        url="https://www.smashingmagazine.com/2019/01/designing-with-constraints/"
-      />
-    </BibliographySection>
-  </Bibliography>
+  {
+    bibliography && (
+      <Bibliography>
+        {bibliography.books && bibliography.books.length > 0 && (
+          <BibliographySection type="books">
+            {bibliography.books.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {bibliography.urls && bibliography.urls.length > 0 && (
+          <BibliographySection type="urls">
+            {bibliography.urls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
 
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />

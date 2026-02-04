@@ -17,6 +17,7 @@ import AccessibilityEmbeddedInTheSourceOfTruth from '../../components/use-cases/
 const principle = data.principles.find((p) => p.id === 'single-source-of-truth')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
+const bibliography = data.bibliography?.[principle.id as keyof typeof data.bibliography];
 ---
 
 <PrincipleLayout

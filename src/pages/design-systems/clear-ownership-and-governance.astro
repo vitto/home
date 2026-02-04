@@ -17,6 +17,7 @@ import Article from '../../components/Article.astro';
 const principle = data.principles.find((p) => p.id === 'clear-ownership-and-governance')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
+const bibliography = data.bibliography?.[principle.id as keyof typeof data.bibliography];
 ---
 
 <PrincipleLayout
@@ -56,52 +57,38 @@ support multiple teams, and remain trusted over time.
     />
   </Article>
 
-  <Bibliography
-    opener="Ownership and governance are foundational to sustainable design systems and platform organizations:"
-    closer="These sources explain how clear responsibility and decision frameworks support long-term system health."
-  >
-    <BibliographySection type="books">
-      <BibliographyItem
-        author="Jez Humble"
-        title="Team Topologies"
-        description="Explores ownership models and team boundaries for scalable systems."
-        url="https://teamtopologies.com/book"
-      />
-      <BibliographyItem
-        author="Randy Shoup"
-        title="Scaling Design Systems"
-        description="Discusses governance models for design systems across organizations."
-        url="https://www.infoq.com/presentations/scaling-design-systems/"
-      />
-      <BibliographyItem
-        author="Erin Meyer"
-        title="The Culture Map"
-        description="Provides insight into decision-making and ownership across teams."
-        url="https://erinmeyer.com/books/the-culture-map/"
-      />
-    </BibliographySection>
-
-    <BibliographySection type="urls">
-      <BibliographyItem
-        author="Salesforce"
-        title="Lightning Design System Governance"
-        description="Shows a real-world governance model for a large-scale design system."
-        url="https://www.lightningdesignsystem.com/guidelines/overview/"
-      />
-      <BibliographyItem
-        author="Atlassian"
-        title="Design System Governance"
-        description="Explains ownership, contribution, and decision models."
-        url="https://www.atlassian.design/guidelines/product/governance"
-      />
-      <BibliographyItem
-        author="NNGroup"
-        title="Design System Governance Models"
-        description="Analyzes different governance approaches and their trade-offs."
-        url="https://www.nngroup.com/articles/design-system-governance/"
-      />
-    </BibliographySection>
-  </Bibliography>
+  {
+    bibliography && (
+      <Bibliography>
+        {bibliography.books && bibliography.books.length > 0 && (
+          <BibliographySection type="books">
+            {bibliography.books.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {bibliography.urls && bibliography.urls.length > 0 && (
+          <BibliographySection type="urls">
+            {bibliography.urls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
 
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />

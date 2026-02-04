@@ -18,6 +18,7 @@ import Article from '../../components/Article.astro';
 const principle = data.principles.find((p) => p.id === 'consistency-over-uniformity')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
+const bibliography = data.bibliography?.[principle.id as keyof typeof data.bibliography];
 ---
 
 <PrincipleLayout
@@ -57,87 +58,38 @@ The system defines **what must remain consistent** and **where variation is allo
     <InteractionPatternsOverPixelPerfection />
   </Article>
 
-  <Bibliography
-    opener="The distinction between consistency and uniformity is well established across design and software disciplines:"
-    closer="These references support the principle conceptually, while the examples above reflect applied, real-world system design rather than theoretical uniformity."
-  >
-    <BibliographySection type="books">
-      <BibliographyItem
-        author="Jakob Nielsen"
-        title="Usability Engineering"
-        description="Foundational work on consistency as a usability principle focused on predictability rather than visual sameness."
-        url="https://www.nngroup.com/books/usability-engineering/"
-      />
-      <BibliographyItem
-        author="Jakob Nielsen & Rolf Molich"
-        title="Heuristic Evaluation of User Interfaces"
-        description="Introduces “Consistency and Standards” as behavioral alignment, not aesthetic uniformity."
-        url="https://dl.acm.org/doi/10.1145/97243.97281"
-      />
-      <BibliographyItem
-        author="Alan Cooper"
-        title="About Face: The Essentials of Interaction Design"
-        description="Explores consistency in interaction models and mental models, emphasizing meaning over appearance."
-        url="https://www.wiley.com/en-us/About+Face%3A+The+Essentials+of+Interaction+Design%2C+4th+Edition-p-9781118766576"
-      />
-      <BibliographyItem
-        author="Don Norman"
-        title="The Design of Everyday Things"
-        description="Reinforces the importance of consistent mappings and behaviors over visual repetition."
-        url="https://jnd.org/the-design-of-everyday-things-revised-and-expanded-edition/"
-      />
-
-      <BibliographyItem
-        author="Rachel Krause"
-        title="Consistency and Standards"
-        description="Clarifies that consistency is about reducing cognitive load, not visual duplication."
-        url="https://www.nngroup.com/articles/consistency-and-standards/"
-      />
-
-      <BibliographyItem
-        author="Luke Wroblewski"
-        title="Mobile First"
-        description="Demonstrates how context-driven variation is necessary while preserving consistent patterns."
-        url="https://abookapart.com/products/mobile-first"
-      />
-
-      <BibliographyItem
-        author="Material Design"
-        title="Adaptability and Theming"
-        description="Shows how a system can remain consistent while allowing contextual visual variation."
-        status="obsolete"
-        url="https://m3.material.io/foundations/adaptive-design/overview"
-      />
-
-      <BibliographyItem
-        author="GOV.UK Design System"
-        title="Styles and Patterns"
-        description="Real-world example of consistency through shared patterns rather than uniform components."
-        status="obsolete"
-        url="https://design-system.service.gov.uk/styles/"
-      />
-    </BibliographySection>
-    <BibliographySection type="urls">
-      <BibliographyItem
-        author="Alla Kholmatova"
-        title="Design Systems"
-        description="Explicitly discusses the risks of over-unification and brittle abstractions in large systems."
-        url="https://www.smashingmagazine.com/design-systems-book/"
-      />
-      <BibliographyItem
-        author="Nathan Curtis"
-        title="Beyond Interface Inventory"
-        description="Argues against forced uniformity and promotes principled variation within systems."
-        url="https://medium.com/eightshapes-llc/beyond-interface-inventory-92c15a4c7bfc"
-      />
-      <BibliographyItem
-        author="Brad Frost"
-        title="Atomic Design"
-        description="Supports composability and reuse without enforcing rigid sameness at higher abstraction levels."
-        url="https://atomicdesign.bradfrost.com/"
-      />
-    </BibliographySection>
-  </Bibliography>
+  {
+    bibliography && (
+      <Bibliography>
+        {bibliography.books && bibliography.books.length > 0 && (
+          <BibliographySection type="books">
+            {bibliography.books.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {bibliography.urls && bibliography.urls.length > 0 && (
+          <BibliographySection type="urls">
+            {bibliography.urls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
 
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />

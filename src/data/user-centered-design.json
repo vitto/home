@@ -90,5 +90,6 @@
       "icon": "mi/outline/help-outline",
       "description": "Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation."
     }
-  ]
+  ],
+  "bibliography": {}
 }

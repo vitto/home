@@ -17,6 +17,7 @@ import Article from '../../components/Article.astro';
 const principle = data.principles.find((p) => p.id === 'evolvability-and-versioning')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
+const bibliography = data.bibliography?.[principle.id as keyof typeof data.bibliography];
 ---
 
 <PrincipleLayout
@@ -56,52 +57,38 @@ without fear of unexpected breakage.
     />
   </Article>
 
-  <Bibliography
-    opener="Evolvability and versioning are grounded in software architecture, API design, and mature design system practices:"
-    closer="These sources explain how systems can evolve safely while supporting multiple consumers."
-  >
-    <BibliographySection type="books">
-      <BibliographyItem
-        author="Martin Fowler"
-        title="Refactoring (2nd Edition)"
-        description="Explains how systems can evolve incrementally without breaking behavior."
-        url="https://martinfowler.com/books/refactoring.html"
-      />
-      <BibliographyItem
-        author="Kent Beck"
-        title="Tidy First?"
-        description="Focuses on safe, incremental change in software systems."
-        url="https://tidyfirst.org/"
-      />
-      <BibliographyItem
-        author="Robert C. Martin"
-        title="Clean Architecture"
-        description="Discusses architectural boundaries that enable long-term evolution."
-        url="https://www.pearson.com/en-us/subject-catalog/p/clean-architecture/P200000003295/9780134494166"
-      />
-    </BibliographySection>
-
-    <BibliographySection type="urls">
-      <BibliographyItem
-        author="SemVer"
-        title="Semantic Versioning Specification"
-        description="Defines a clear contract for communicating breaking and non-breaking changes."
-        url="https://semver.org/"
-      />
-      <BibliographyItem
-        author="Shopify Engineering"
-        title="Versioning Polaris"
-        description="Describes how Shopify manages breaking changes in a large design system."
-        url="https://shopify.engineering/versioning-polaris"
-      />
-      <BibliographyItem
-        author="NNGroup"
-        title="Design Systems Need Versioning"
-        description="Explains why versioning is critical for adoption and trust."
-        url="https://www.nngroup.com/articles/design-system-versioning/"
-      />
-    </BibliographySection>
-  </Bibliography>
+  {
+    bibliography && (
+      <Bibliography>
+        {bibliography.books && bibliography.books.length > 0 && (
+          <BibliographySection type="books">
+            {bibliography.books.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {bibliography.urls && bibliography.urls.length > 0 && (
+          <BibliographySection type="urls">
+            {bibliography.urls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
 
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />

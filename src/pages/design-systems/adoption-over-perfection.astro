@@ -19,6 +19,7 @@ import Article from '../../components/Article.astro';
 const principle = data.principles.find((p) => p.id === 'adoption-over-perfection')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
+const bibliography = data.bibliography?.[principle.id as keyof typeof data.bibliography];
 ---
 
 <PrincipleLayout
@@ -81,65 +82,38 @@ Adoption creates momentum.
     />
   </Article>
 
-  <Bibliography
-    opener="Adoption-first design systems are well documented in practice and literature:"
-    closer="These references emphasize that adoption and utility are the real measures of system success."
-  >
-    <BibliographySection type="books">
-      <BibliographyItem
-        author="Marty Cagan"
-        title="Inspired"
-        description="Strong grounding in shipping usable solutions and iterating based on team and user feedback."
-        url="https://www.svpg.com/inspired-how-to-create-products-customers-love/"
-      />
-
-      <BibliographyItem
-        author="Kent Beck"
-        title="Extreme Programming Explained: Embrace Change"
-        description="Foundational work on incremental delivery, adaptability, and responding to real constraints."
-        url="https://www.oreilly.com/library/view/extreme-programming-explained/0201616416/"
-      />
-
-      <BibliographyItem
-        author="Alla Kholmatova"
-        title="Design Systems"
-        description="Addresses why rigid, over-designed systems struggle with adoption in real organizations."
-        url="https://www.smashingmagazine.com/design-systems-book/"
-      />
-    </BibliographySection>
-
-    <BibliographySection type="urls">
-      <BibliographyItem
-        author="Nathan Curtis"
-        title="Design System Maturity Models"
-        description="Adoption and usage are presented as key indicators of system health."
-        status="obsolete"
-        url="https://medium.com/eightshapes-llc/design-system-maturity-models-3f0c6a5b3b1a"
-      />
-
-      <BibliographyItem
-        author="Spotify Design Systems"
-        title="Designing for Scale"
-        description="Practical insights into balancing iteration, flexibility, and real-world constraints."
-        url="https://spotify.design/article/designing-for-scale"
-      />
-
-      <BibliographyItem
-        author="Atlassian Design System"
-        title="Adoption and Contribution"
-        description="Real-world examples of prioritizing adoption over theoretical perfection."
-        status="obsolete"
-        url="https://atlassian.design/foundations/design-system/"
-      />
-
-      <BibliographyItem
-        author="GOV.UK Design System"
-        title="Contributing and Iteration"
-        description="Demonstrates how imperfect systems evolve through use and contribution."
-        url="https://design-system.service.gov.uk/"
-      />
-    </BibliographySection>
-  </Bibliography>
+  {
+    bibliography && (
+      <Bibliography>
+        {bibliography.books && bibliography.books.length > 0 && (
+          <BibliographySection type="books">
+            {bibliography.books.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {bibliography.urls && bibliography.urls.length > 0 && (
+          <BibliographySection type="urls">
+            {bibliography.urls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
 
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />

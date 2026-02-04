@@ -20,6 +20,7 @@ import Article from '../../components/Article.astro';
 const principle = data.principles.find((p) => p.id === 'feedback-driven-improvement')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
+const bibliography = data.bibliography?.[principle.id as keyof typeof data.bibliography];
 ---
 
 <PrincipleLayout
@@ -66,52 +67,38 @@ and eventually lose adoption and trust.
     />
   </Article>
 
-  <Bibliography
-    opener="Feedback-driven improvement is grounded in user-centered design, lean product development, and continuous improvement methodologies:"
-    closer="These sources explain how to build feedback loops and make data-driven improvements."
-  >
-    <BibliographySection type="books">
-      <BibliographyItem
-        author="Eric Ries"
-        title="The Lean Startup"
-        description="Explains how to build feedback loops and iterate based on real user data."
-        url="https://theleanstartup.com/"
-      />
-      <BibliographyItem
-        author="Jake Knapp"
-        title="Sprint"
-        description="Shows how to quickly test ideas and gather feedback to make better decisions."
-        url="https://www.thesprintbook.com/"
-      />
-      <BibliographyItem
-        author="Don Norman"
-        title="The Design of Everyday Things"
-        description="Emphasizes the importance of understanding user needs through observation and feedback."
-        url="https://jnd.org/books/the-design-of-everyday-things/"
-      />
-    </BibliographySection>
-
-    <BibliographySection type="urls">
-      <BibliographyItem
-        author="NNGroup"
-        title="Design Systems Need Feedback Loops"
-        description="Explains why feedback is critical for design system success."
-        url="https://www.nngroup.com/articles/design-system-feedback/"
-      />
-      <BibliographyItem
-        author="InVision"
-        title="Building Design System Feedback Loops"
-        description="Practical strategies for collecting and acting on design system feedback."
-        url="https://www.invisionapp.com/inside-design/design-system-feedback-loops/"
-      />
-      <BibliographyItem
-        author="Shopify Polaris"
-        title="How We Gather Feedback"
-        description="Shows how a large design system team collects and processes feedback."
-        url="https://polaris.shopify.com/contributing/getting-started"
-      />
-    </BibliographySection>
-  </Bibliography>
+  {
+    bibliography && (
+      <Bibliography>
+        {bibliography.books && bibliography.books.length > 0 && (
+          <BibliographySection type="books">
+            {bibliography.books.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {bibliography.urls && bibliography.urls.length > 0 && (
+          <BibliographySection type="urls">
+            {bibliography.urls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
 
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />

@@ -17,6 +17,7 @@ import Article from '../../components/Article.astro';
 const principle = data.principles.find((p) => p.id === 'accessibility-as-a-baseline')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
+const bibliography = data.bibliography?.[principle.id as keyof typeof data.bibliography];
 ---
 
 <PrincipleLayout
@@ -56,52 +57,38 @@ teams move faster because they don't have to re-solve the same problems.
     />
   </Article>
 
-  <Bibliography
-    opener="Accessibility as a baseline is supported by standards, inclusive design practices, and system-level thinking:"
-    closer="These sources explain why accessibility must be foundational rather than optional."
-  >
-    <BibliographySection type="books">
-      <BibliographyItem
-        author="Heydon Pickering"
-        title="Inclusive Design Patterns"
-        description="Practical guidance on building accessible UI patterns."
-        url="https://inclusive-components.design/"
-      />
-      <BibliographyItem
-        author="Steve Krug"
-        title="Don't Make Me Think (Revisited)"
-        description="Highlights usability and accessibility as core quality attributes."
-        url="https://sensible.com/dont-make-me-think/"
-      />
-      <BibliographyItem
-        author="Sarah Horton & Whitney Quesenbery"
-        title="A Web for Everyone"
-        description="Explains inclusive design principles and accessibility foundations."
-        url="https://rosenfeldmedia.com/books/a-web-for-everyone/"
-      />
-    </BibliographySection>
-
-    <BibliographySection type="urls">
-      <BibliographyItem
-        author="W3C"
-        title="Web Content Accessibility Guidelines (WCAG)"
-        description="The global standard for accessible digital experiences."
-        url="https://www.w3.org/WAI/standards-guidelines/wcag/"
-      />
-      <BibliographyItem
-        author="GOV.UK"
-        title="Accessibility in Design Systems"
-        description="Shows how accessibility is treated as a baseline in a public-sector system."
-        url="https://design-system.service.gov.uk/accessibility/"
-      />
-      <BibliographyItem
-        author="NNGroup"
-        title="Accessibility Is Not Optional"
-        description="Explains why accessibility must be built into UX from the start."
-        url="https://www.nngroup.com/articles/accessibility-not-optional/"
-      />
-    </BibliographySection>
-  </Bibliography>
+  {
+    bibliography && (
+      <Bibliography>
+        {bibliography.books && bibliography.books.length > 0 && (
+          <BibliographySection type="books">
+            {bibliography.books.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {bibliography.urls && bibliography.urls.length > 0 && (
+          <BibliographySection type="urls">
+            {bibliography.urls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
 
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />

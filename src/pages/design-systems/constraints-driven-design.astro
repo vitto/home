@@ -19,6 +19,7 @@ import Article from '../../components/Article.astro';
 const principle = data.principles.find((p) => p.id === 'constraints-driven-design')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
+const bibliography = data.bibliography?.[principle.id as keyof typeof data.bibliography];
 ---
 
 <PrincipleLayout
@@ -74,76 +75,38 @@ By designing constraints intentionally, the system enables creativity within saf
     />
   </Article>
 
-  <Bibliography
-    opener="Constraints-driven systems are grounded in both design and software architecture practices:"
-    closer="These sources emphasize the value of constraints as a foundation for scalable design systems."
-  >
-    <BibliographySection type="books">
-      <BibliographyItem
-        author="Don Norman"
-        title="The Design of Everyday Things"
-        description="Explains how constraints guide user behavior and reduce error."
-        url="https://jnd.org/the-design-of-everyday-things-revised-and-expanded-edition/"
-      />
-      <BibliographyItem
-        author="Dan Saffer"
-        title="Microinteractions"
-        description="Demonstrates how constraints shape interaction behavior and feedback."
-        url="https://cdn.bookey.app/files/pdf/book/en/microinteractions.pdf"
-      />
-
-      <BibliographyItem
-        author="Eric Evans"
-        title="Domain-Driven Design"
-        description="Provides architectural grounding for explicit boundaries and constrained models."
-        url="https://www.domainlanguage.com/ddd/"
-      />
-      <BibliographyItem
-        author="Kent Beck"
-        title="Tidy First?"
-        description="Reinforces the idea of small, intentional constraints as a driver of sustainable systems."
-        url="https://www.amazon.com/Tidy-First-Personal-Exercise-Empirical/dp/1098151240"
-      />
-
-      <BibliographyItem
-        author="Alla Kholmatova"
-        title="Design Systems"
-        description="Discusses how explicit constraints prevent design system degradation."
-        url="https://www.smashingmagazine.com/design-systems-book/"
-      />
-
-      <BibliographyItem
-        author="Brad Frost"
-        title="Atomic Design"
-        description="Emphasizes constraints at different abstraction levels to maintain system integrity."
-        url="https://atomicdesign.bradfrost.com/"
-      />
-    </BibliographySection>
-
-    <BibliographySection type="urls">
-      <BibliographyItem
-        author="Nathan Curtis"
-        title="System Boundaries and Guardrails"
-        description="Focuses on guardrails as enablers rather than restrictions."
-        status="missing"
-        url="https://medium.com/eightshapes-llc/guardrails-not-guidelines-9c7a8fddae8a"
-      />
-
-      <BibliographyItem
-        author="Material Design"
-        title="Design Tokens and Constraints"
-        description="Shows how constraints are encoded through tokens and system rules."
-        url="https://m3.material.io/foundations/design-tokens/overview"
-      />
-
-      <BibliographyItem
-        author="GOV.UK Design System"
-        title="Accessibility Constraints"
-        description="Demonstrates non-negotiable constraints applied at system level."
-        url="https://design-system.service.gov.uk/accessibility/"
-      />
-    </BibliographySection>
-  </Bibliography>
+  {
+    bibliography && (
+      <Bibliography>
+        {bibliography.books && bibliography.books.length > 0 && (
+          <BibliographySection type="books">
+            {bibliography.books.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {bibliography.urls && bibliography.urls.length > 0 && (
+          <BibliographySection type="urls">
+            {bibliography.urls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
 
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />

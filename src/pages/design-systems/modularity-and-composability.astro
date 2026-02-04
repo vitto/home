@@ -17,6 +17,7 @@ import Article from '../../components/Article.astro';
 const principle = data.principles.find((p) => p.id === 'modularity-and-composability')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/design-systems';
+const bibliography = data.bibliography?.[principle.id as keyof typeof data.bibliography];
 ---
 
 <PrincipleLayout
@@ -56,52 +57,38 @@ to emerge without rewriting existing foundations.
     />
   </Article>
 
-  <Bibliography
-    opener="Modularity and composability are rooted in systems thinking, component-based architecture, and design system practice:"
-    closer="These sources explain why small, composable units are essential for scalable systems."
-  >
-    <BibliographySection type="books">
-      <BibliographyItem
-        author="Brad Frost"
-        title="Atomic Design"
-        description="Introduces a compositional model for building scalable design systems."
-        url="https://atomicdesign.bradfrost.com/"
-      />
-      <BibliographyItem
-        author="Eric Evans"
-        title="Domain-Driven Design"
-        description="Explores bounded contexts and modular thinking in system design."
-        url="https://www.domainlanguage.com/ddd/"
-      />
-      <BibliographyItem
-        author="Kent Beck"
-        title="Implementation Patterns"
-        description="Discusses small, composable units in software architecture."
-        url="https://martinfowler.com/books/implementationPatterns.html"
-      />
-    </BibliographySection>
-
-    <BibliographySection type="urls">
-      <BibliographyItem
-        author="Shopify"
-        title="Design Systems at Scale"
-        description="Shows how modular components enable large teams to move faster."
-        url="https://polaris.shopify.com/foundations/design/design-systems"
-      />
-      <BibliographyItem
-        author="Google"
-        title="Component-Based Design"
-        description="Explains principles behind reusable and composable UI components."
-        url="https://material.io/design/architecture/component-based.html"
-      />
-      <BibliographyItem
-        author="Smashing Magazine"
-        title="Designing For Composition"
-        description="Explores composition as a strategy for scalable interface design."
-        url="https://www.smashingmagazine.com/2019/02/designing-composable-systems/"
-      />
-    </BibliographySection>
-  </Bibliography>
+  {
+    bibliography && (
+      <Bibliography>
+        {bibliography.books && bibliography.books.length > 0 && (
+          <BibliographySection type="books">
+            {bibliography.books.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {bibliography.urls && bibliography.urls.length > 0 && (
+          <BibliographySection type="urls">
+            {bibliography.urls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
 
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
