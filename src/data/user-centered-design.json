@@ -99,8 +99,7 @@
         "description": "Learn how cognitive load affects user experience and discover effective strategies to minimize it in your UX designs.",
         "url": "https://aguayo.co/en/blog-aguayo-user-experience/cognitive-load/",
         "type": "url",
-        "id": "cognitive-load-and-ux",
-        "sources": ["aesthetic-and-minimalist-design"]
+        "id": "cognitive-load-and-ux"
       },
       {
         "author": "Mailchimp",
@@ -108,8 +107,7 @@
         "description": "Learn how taxing working memory causes cognitive overload and ways to improve UX design for a better user experience.",
         "url": "https://mailchimp.com/resources/cognitive-overload/",
         "type": "url",
-        "id": "ease-cognitive-overload-in-ux-design",
-        "sources": ["aesthetic-and-minimalist-design"]
+        "id": "ease-cognitive-overload-in-ux-design"
       },
       {
         "author": "UXPin",
@@ -117,8 +115,7 @@
         "description": "One of the key design principles, no matter if your designing a mobile app or a desktop one, is to keep your UI consistent. But what does it mean?",
         "url": "https://www.uxpin.com/studio/blog/guide-design-consistency-best-practices-ui-ux-designers/",
         "type": "url",
-        "id": "design-consistency-guide-ui-and-ux-best-practices",
-        "sources": ["aesthetic-and-minimalist-design"]
+        "id": "design-consistency-guide-ui-and-ux-best-practices"
       },
       {
         "author": "Rachel Krause",
@@ -126,8 +123,7 @@
         "description": "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.",
         "url": "https://www.nngroup.com/articles/consistency-and-standards/",
         "type": "url",
-        "id": "maintain-consistency-and-adhere-to-standards-usability-heuristic-4",
-        "sources": ["aesthetic-and-minimalist-design"]
+        "id": "maintain-consistency-and-adhere-to-standards-usability-heuristic-4"
       },
       {
         "author": "Jon Yablonski",
@@ -135,8 +131,7 @@
         "description": "Every time you visit a website, a process of learning is initiated in the brain. ",
         "url": "https://jonyablonski.com/articles/2015/design-principles-for-reducing-cognitive-load/",
         "type": "url",
-        "id": "design-principles-for-reducing-cognitive-load",
-        "sources": ["aesthetic-and-minimalist-design"]
+        "id": "design-principles-for-reducing-cognitive-load"
       },
       {
         "author": "Armin Tanovic, Lorelei Whitman",
@@ -144,8 +139,7 @@
         "description": "The best products are shaped by the people who use them—user-centered design places them at the heart of your design process.",
         "url": "https://maze.co/blog/user-centered-design/",
         "type": "url",
-        "id": "user-centered-design-4-key-principles-phases-and-examples",
-        "sources": ["aesthetic-and-minimalist-design"]
+        "id": "user-centered-design-4-key-principles-phases-and-examples"
       },
       {
         "author": "Interaction Design Foundation",
@@ -153,8 +147,7 @@
         "description": "User-centered design (UCD) is an iterative design process in which designers focus on the users and their needs in each phase of the design process.",
         "url": "https://www.interaction-design.org/literature/topics/user-centered-design",
         "type": "url",
-        "id": "what-is-user-centered-design-ucd",
-        "sources": ["aesthetic-and-minimalist-design"]
+        "id": "what-is-user-centered-design-ucd"
       },
       {
         "author": "Kelley Gordon",
@@ -162,8 +155,7 @@
         "description": "The principles of scale, visual hierarchy, balance, contrast, and Gestalt not only create beautiful designs, but also increase usability when applied correctly.",
         "url": "https://www.nngroup.com/articles/principles-visual-design/",
         "type": "url",
-        "id": "5-principles-of-visual-design-in-ux",
-        "sources": ["aesthetic-and-minimalist-design"]
+        "id": "5-principles-of-visual-design-in-ux"
       },
       {
         "author": "Stan Murash",
@@ -171,8 +163,7 @@
         "description": "What makes a design look messy and unprofessional? More often than not, it's a lack of visual hierarchy—a structured way to guide the user’s eye through an interface.",
         "url": "https://www.eleken.co/blog-posts/visual-hierarchy-in-ux",
         "type": "url",
-        "id": "why-visual-hierarchy-in-ux-is-key-expert-backed-tips-and-examples",
-        "sources": ["aesthetic-and-minimalist-design"]
+        "id": "why-visual-hierarchy-in-ux-is-key-expert-backed-tips-and-examples"
       }
     ]
   }

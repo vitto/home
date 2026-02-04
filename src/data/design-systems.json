@@ -124,8 +124,7 @@
         "description": "Foundational work on consistency as a usability principle focused on predictability rather than visual sameness.",
         "url": "https://www.nngroup.com/books/usability-engineering/",
         "type": "book",
-        "id": "usability-engineering",
-        "sources": ["consistency-over-uniformity"]
+        "id": "usability-engineering"
       },
       {
         "author": "Jakob Nielsen & Rolf Molich",
@@ -133,8 +132,7 @@
         "description": "Introduces “Consistency and Standards” as behavioral alignment, not aesthetic uniformity.",
         "url": "https://dl.acm.org/doi/10.1145/97243.97281",
         "type": "book",
-        "id": "heuristic-evaluation-of-user-interfaces",
-        "sources": ["consistency-over-uniformity"]
+        "id": "heuristic-evaluation-of-user-interfaces"
       },
       {
         "author": "Alan Cooper",
@@ -142,8 +140,7 @@
         "description": "Explores consistency in interaction models and mental models, emphasizing meaning over appearance.",
         "url": "https://www.wiley.com/en-us/About+Face%3A+The+Essentials+of+Interaction+Design%2C+4th+Edition-p-9781118766576",
         "type": "book",
-        "id": "about-face-the-essentials-of-interaction-design",
-        "sources": ["consistency-over-uniformity"]
+        "id": "about-face-the-essentials-of-interaction-design"
       },
       {
         "author": "Don Norman",
@@ -151,8 +148,7 @@
         "description": "Reinforces the importance of consistent mappings and behaviors over visual repetition.",
         "url": "https://jnd.org/the-design-of-everyday-things-revised-and-expanded-edition/",
         "type": "book",
-        "id": "the-design-of-everyday-things",
-        "sources": ["consistency-over-uniformity"]
+        "id": "the-design-of-everyday-things"
       },
       {
         "author": "Rachel Krause",
@@ -160,8 +156,7 @@
         "description": "Clarifies that consistency is about reducing cognitive load, not visual duplication.",
         "url": "https://www.nngroup.com/articles/consistency-and-standards/",
         "type": "book",
-        "id": "consistency-and-standards",
-        "sources": ["consistency-over-uniformity"]
+        "id": "consistency-and-standards"
       },
       {
         "author": "Luke Wroblewski",
@@ -169,8 +164,7 @@
         "description": "Demonstrates how context-driven variation is necessary while preserving consistent patterns.",
         "url": "https://abookapart.com/products/mobile-first",
         "type": "book",
-        "id": "mobile-first",
-        "sources": ["consistency-over-uniformity"]
+        "id": "mobile-first"
       },
       {
         "author": "Material Design",
@@ -179,8 +173,7 @@
         "url": "https://m3.material.io/foundations/adaptive-design/overview",
         "status": "obsolete",
         "type": "book",
-        "id": "adaptability-and-theming",
-        "sources": ["consistency-over-uniformity"]
+        "id": "adaptability-and-theming"
       },
       {
         "author": "GOV.UK Design System",
@@ -189,8 +182,7 @@
         "url": "https://design-system.service.gov.uk/styles/",
         "status": "obsolete",
         "type": "book",
-        "id": "styles-and-patterns",
-        "sources": ["consistency-over-uniformity"]
+        "id": "styles-and-patterns"
       },
       {
         "author": "Alla Kholmatova",
@@ -198,8 +190,7 @@
         "description": "Explicitly discusses the risks of over-unification and brittle abstractions in large systems.",
         "url": "https://www.smashingmagazine.com/design-systems-book/",
         "type": "url",
-        "id": "design-systems",
-        "sources": ["consistency-over-uniformity"]
+        "id": "design-systems"
       },
       {
         "author": "Nathan Curtis",
@@ -207,8 +198,7 @@
         "description": "Argues against forced uniformity and promotes principled variation within systems.",
         "url": "https://medium.com/eightshapes-llc/beyond-interface-inventory-92c15a4c7bfc",
         "type": "url",
-        "id": "beyond-interface-inventory",
-        "sources": ["consistency-over-uniformity"]
+        "id": "beyond-interface-inventory"
       },
       {
         "author": "Brad Frost",
@@ -216,8 +206,7 @@
         "description": "Supports composability and reuse without enforcing rigid sameness at higher abstraction levels.",
         "url": "https://atomicdesign.bradfrost.com/",
         "type": "url",
-        "id": "atomic-design",
-        "sources": ["consistency-over-uniformity"]
+        "id": "atomic-design"
       }
     ],
     "design-development-parity": [
@@ -227,8 +216,7 @@
         "description": "Explores collaboration models between design and engineering.",
         "url": "https://danmall.com/speaking/design-that-scales/",
         "type": "book",
-        "id": "design-that-scales",
-        "sources": ["designdevelopment-parity"]
+        "id": "design-that-scales"
       },
       {
         "author": "Brad Frost",
@@ -236,8 +224,7 @@
         "description": "Shows how design and code can be structured around shared components.",
         "url": "https://atomicdesign.bradfrost.com/",
         "type": "book",
-        "id": "atomic-design",
-        "sources": ["designdevelopment-parity"]
+        "id": "atomic-design"
       },
       {
         "author": "Addy Osmani",
@@ -245,8 +232,7 @@
         "description": "Connects implementation patterns to design intent.",
         "url": "https://addyosmani.com/resources/essentialjsdesignpatterns/book/",
         "type": "book",
-        "id": "learning-javascript-design-patterns",
-        "sources": ["designdevelopment-parity"]
+        "id": "learning-javascript-design-patterns"
       },
       {
         "author": "Salesforce",
@@ -254,8 +240,7 @@
         "description": "Demonstrates how tokens bridge design and code.",
         "url": "https://www.lightningdesignsystem.com/design-tokens/",
         "type": "url",
-        "id": "design-tokens-in-lightning",
-        "sources": ["designdevelopment-parity"]
+        "id": "design-tokens-in-lightning"
       },
       {
         "author": "Figma",
@@ -263,8 +248,7 @@
         "description": "Explains workflows that keep design and development aligned.",
         "url": "https://www.figma.com/blog/design-systems-and-code/",
         "type": "url",
-        "id": "design-systems-and-code",
-        "sources": ["designdevelopment-parity"]
+        "id": "design-systems-and-code"
       },
       {
         "author": "Shopify",
@@ -272,8 +256,7 @@
         "description": "Shows parity through shared abstractions.",
         "url": "https://shopify.dev/docs/apps/design",
         "type": "url",
-        "id": "app-design-guidelines",
-        "sources": ["designdevelopment-parity"]
+        "id": "app-design-guidelines"
       }
     ],
     "explicit-constraints": [
@@ -283,8 +266,7 @@
         "description": "Explains how constraints guide behavior and reduce errors.",
         "url": "https://jnd.org/books/the-design-of-everyday-things/",
         "type": "book",
-        "id": "the-design-of-everyday-things",
-        "sources": ["explicit-constraints"]
+        "id": "the-design-of-everyday-things"
       },
       {
         "author": "Barry Schwartz",
@@ -292,8 +274,7 @@
         "description": "Shows how too many options hinder decision-making.",
         "url": "https://www.harpercollins.com/products/the-paradox-of-choice-barry-schwartz",
         "type": "book",
-        "id": "the-paradox-of-choice",
-        "sources": ["explicit-constraints"]
+        "id": "the-paradox-of-choice"
       },
       {
         "author": "Alan Cooper",
@@ -301,8 +282,7 @@
         "description": "Discusses constraints as a core interaction design principle.",
         "url": "https://www.aboutfacebook.com/",
         "type": "book",
-        "id": "about-face",
-        "sources": ["explicit-constraints"]
+        "id": "about-face"
       },
       {
         "author": "NNGroup",
@@ -310,8 +290,7 @@
         "description": "Explains why constraints lead to better user experiences.",
         "url": "https://www.nngroup.com/articles/design-constraints/",
         "type": "url",
-        "id": "design-constraints-improve-ux",
-        "sources": ["explicit-constraints"]
+        "id": "design-constraints-improve-ux"
       },
       {
         "author": "GOV.UK",
@@ -319,8 +298,7 @@
         "description": "Demonstrates how explicit constraints support consistency at scale.",
         "url": "https://design-system.service.gov.uk/design-system/",
         "type": "url",
-        "id": "design-system-principles",
-        "sources": ["explicit-constraints"]
+        "id": "design-system-principles"
       },
       {
         "author": "Smashing Magazine",
@@ -328,8 +306,7 @@
         "description": "Explores constraint-driven approaches in UI design.",
         "url": "https://www.smashingmagazine.com/2019/01/designing-with-constraints/",
         "type": "url",
-        "id": "designing-with-constraints",
-        "sources": ["explicit-constraints"]
+        "id": "designing-with-constraints"
       }
     ],
     "clear-ownership-and-governance": [
@@ -339,8 +316,7 @@
         "description": "Explores ownership models and team boundaries for scalable systems.",
         "url": "https://teamtopologies.com/book",
         "type": "book",
-        "id": "team-topologies",
-        "sources": ["clear-ownership-and-governance"]
+        "id": "team-topologies"
       },
       {
         "author": "Randy Shoup",
@@ -348,8 +324,7 @@
         "description": "Discusses governance models for design systems across organizations.",
         "url": "https://www.infoq.com/presentations/scaling-design-systems/",
         "type": "book",
-        "id": "scaling-design-systems",
-        "sources": ["clear-ownership-and-governance"]
+        "id": "scaling-design-systems"
       },
       {
         "author": "Erin Meyer",
@@ -357,8 +332,7 @@
         "description": "Provides insight into decision-making and ownership across teams.",
         "url": "https://erinmeyer.com/books/the-culture-map/",
         "type": "book",
-        "id": "the-culture-map",
-        "sources": ["clear-ownership-and-governance"]
+        "id": "the-culture-map"
       },
       {
         "author": "Salesforce",
@@ -366,8 +340,7 @@
         "description": "Shows a real-world governance model for a large-scale design system.",
         "url": "https://www.lightningdesignsystem.com/guidelines/overview/",
         "type": "url",
-        "id": "lightning-design-system-governance",
-        "sources": ["clear-ownership-and-governance"]
+        "id": "lightning-design-system-governance"
       },
       {
         "author": "Atlassian",
@@ -375,8 +348,7 @@
         "description": "Explains ownership, contribution, and decision models.",
         "url": "https://www.atlassian.design/guidelines/product/governance",
         "type": "url",
-        "id": "design-system-governance",
-        "sources": ["clear-ownership-and-governance"]
+        "id": "design-system-governance"
       },
       {
         "author": "NNGroup",
@@ -384,8 +356,7 @@
         "description": "Analyzes different governance approaches and their trade-offs.",
         "url": "https://www.nngroup.com/articles/design-system-governance/",
         "type": "url",
-        "id": "design-system-governance-models",
-        "sources": ["clear-ownership-and-governance"]
+        "id": "design-system-governance-models"
       }
     ],
     "adoption-over-perfection": [
@@ -395,8 +366,7 @@
         "description": "Strong grounding in shipping usable solutions and iterating based on team and user feedback.",
         "url": "https://www.svpg.com/inspired-how-to-create-products-customers-love/",
         "type": "book",
-        "id": "inspired",
-        "sources": ["adoption-over-perfection"]
+        "id": "inspired"
       },
       {
         "author": "Kent Beck",
@@ -404,8 +374,7 @@
         "description": "Foundational work on incremental delivery, adaptability, and responding to real constraints.",
         "url": "https://www.oreilly.com/library/view/extreme-programming-explained/0201616416/",
         "type": "book",
-        "id": "extreme-programming-explained-embrace-change",
-        "sources": ["adoption-over-perfection"]
+        "id": "extreme-programming-explained-embrace-change"
       },
       {
         "author": "Alla Kholmatova",
@@ -413,8 +382,7 @@
         "description": "Addresses why rigid, over-designed systems struggle with adoption in real organizations.",
         "url": "https://www.smashingmagazine.com/design-systems-book/",
         "type": "book",
-        "id": "design-systems",
-        "sources": ["adoption-over-perfection"]
+        "id": "design-systems"
       },
       {
         "author": "Nathan Curtis",
@@ -423,8 +391,7 @@
         "url": "https://medium.com/eightshapes-llc/design-system-maturity-models-3f0c6a5b3b1a",
         "status": "obsolete",
         "type": "url",
-        "id": "design-system-maturity-models",
-        "sources": ["adoption-over-perfection"]
+        "id": "design-system-maturity-models"
       },
       {
         "author": "Spotify Design Systems",
@@ -432,8 +399,7 @@
         "description": "Practical insights into balancing iteration, flexibility, and real-world constraints.",
         "url": "https://spotify.design/article/designing-for-scale",
         "type": "url",
-        "id": "designing-for-scale",
-        "sources": ["adoption-over-perfection"]
+        "id": "designing-for-scale"
       },
       {
         "author": "Atlassian Design System",
@@ -442,8 +408,7 @@
         "url": "https://atlassian.design/foundations/design-system/",
         "status": "obsolete",
         "type": "url",
-        "id": "adoption-and-contribution",
-        "sources": ["adoption-over-perfection"]
+        "id": "adoption-and-contribution"
       },
       {
         "author": "GOV.UK Design System",
@@ -451,8 +416,7 @@
         "description": "Demonstrates how imperfect systems evolve through use and contribution.",
         "url": "https://design-system.service.gov.uk/",
         "type": "url",
-        "id": "contributing-and-iteration",
-        "sources": ["adoption-over-perfection"]
+        "id": "contributing-and-iteration"
       }
     ],
     "accessibility-as-a-baseline": [
@@ -462,8 +426,7 @@
         "description": "Practical guidance on building accessible UI patterns.",
         "url": "https://inclusive-components.design/",
         "type": "book",
-        "id": "inclusive-design-patterns",
-        "sources": ["accessibility-as-a-baseline"]
+        "id": "inclusive-design-patterns"
       },
       {
         "author": "Steve Krug",
@@ -471,8 +434,7 @@
         "description": "Highlights usability and accessibility as core quality attributes.",
         "url": "https://sensible.com/dont-make-me-think/",
         "type": "book",
-        "id": "dont-make-me-think-revisited",
-        "sources": ["accessibility-as-a-baseline"]
+        "id": "dont-make-me-think-revisited"
       },
       {
         "author": "Sarah Horton & Whitney Quesenbery",
@@ -480,8 +442,7 @@
         "description": "Explains inclusive design principles and accessibility foundations.",
         "url": "https://rosenfeldmedia.com/books/a-web-for-everyone/",
         "type": "book",
-        "id": "a-web-for-everyone",
-        "sources": ["accessibility-as-a-baseline"]
+        "id": "a-web-for-everyone"
       },
       {
         "author": "W3C",
@@ -489,8 +450,7 @@
         "description": "The global standard for accessible digital experiences.",
         "url": "https://www.w3.org/WAI/standards-guidelines/wcag/",
         "type": "url",
-        "id": "web-content-accessibility-guidelines-wcag",
-        "sources": ["accessibility-as-a-baseline"]
+        "id": "web-content-accessibility-guidelines-wcag"
       },
       {
         "author": "GOV.UK",
@@ -498,8 +458,7 @@
         "description": "Shows how accessibility is treated as a baseline in a public-sector system.",
         "url": "https://design-system.service.gov.uk/accessibility/",
         "type": "url",
-        "id": "accessibility-in-design-systems",
-        "sources": ["accessibility-as-a-baseline"]
+        "id": "accessibility-in-design-systems"
       },
       {
         "author": "NNGroup",
@@ -507,8 +466,7 @@
         "description": "Explains why accessibility must be built into UX from the start.",
         "url": "https://www.nngroup.com/articles/accessibility-not-optional/",
         "type": "url",
-        "id": "accessibility-is-not-optional",
-        "sources": ["accessibility-as-a-baseline"]
+        "id": "accessibility-is-not-optional"
       }
     ],
     "constraints-driven-design": [
@@ -518,8 +476,7 @@
         "description": "Explains how constraints guide user behavior and reduce error.",
         "url": "https://jnd.org/the-design-of-everyday-things-revised-and-expanded-edition/",
         "type": "book",
-        "id": "the-design-of-everyday-things",
-        "sources": ["constraints-driven-design"]
+        "id": "the-design-of-everyday-things"
       },
       {
         "author": "Dan Saffer",
@@ -527,8 +484,7 @@
         "description": "Demonstrates how constraints shape interaction behavior and feedback.",
         "url": "https://cdn.bookey.app/files/pdf/book/en/microinteractions.pdf",
         "type": "book",
-        "id": "microinteractions",
-        "sources": ["constraints-driven-design"]
+        "id": "microinteractions"
       },
       {
         "author": "Eric Evans",
@@ -536,8 +492,7 @@
         "description": "Provides architectural grounding for explicit boundaries and constrained models.",
         "url": "https://www.domainlanguage.com/ddd/",
         "type": "book",
-        "id": "domain-driven-design",
-        "sources": ["constraints-driven-design"]
+        "id": "domain-driven-design"
       },
       {
         "author": "Kent Beck",
@@ -545,8 +500,7 @@
         "description": "Reinforces the idea of small, intentional constraints as a driver of sustainable systems.",
         "url": "https://www.amazon.com/Tidy-First-Personal-Exercise-Empirical/dp/1098151240",
         "type": "book",
-        "id": "tidy-first",
-        "sources": ["constraints-driven-design"]
+        "id": "tidy-first"
       },
       {
         "author": "Alla Kholmatova",
@@ -554,8 +508,7 @@
         "description": "Discusses how explicit constraints prevent design system degradation.",
         "url": "https://www.smashingmagazine.com/design-systems-book/",
         "type": "book",
-        "id": "design-systems",
-        "sources": ["constraints-driven-design"]
+        "id": "design-systems"
       },
       {
         "author": "Brad Frost",
@@ -563,8 +516,7 @@
         "description": "Emphasizes constraints at different abstraction levels to maintain system integrity.",
         "url": "https://atomicdesign.bradfrost.com/",
         "type": "book",
-        "id": "atomic-design",
-        "sources": ["constraints-driven-design"]
+        "id": "atomic-design"
       },
       {
         "author": "Nathan Curtis",
@@ -573,8 +525,7 @@
         "url": "https://medium.com/eightshapes-llc/guardrails-not-guidelines-9c7a8fddae8a",
         "status": "missing",
         "type": "url",
-        "id": "system-boundaries-and-guardrails",
-        "sources": ["constraints-driven-design"]
+        "id": "system-boundaries-and-guardrails"
       },
       {
         "author": "Material Design",
@@ -582,8 +533,7 @@
         "description": "Shows how constraints are encoded through tokens and system rules.",
         "url": "https://m3.material.io/foundations/design-tokens/overview",
         "type": "url",
-        "id": "design-tokens-and-constraints",
-        "sources": ["constraints-driven-design"]
+        "id": "design-tokens-and-constraints"
       },
       {
         "author": "GOV.UK Design System",
@@ -591,8 +541,7 @@
         "description": "Demonstrates non-negotiable constraints applied at system level.",
         "url": "https://design-system.service.gov.uk/accessibility/",
         "type": "url",
-        "id": "accessibility-constraints",
-        "sources": ["constraints-driven-design"]
+        "id": "accessibility-constraints"
       }
     ],
     "scalability-by-design": [
@@ -602,8 +551,7 @@
         "description": "Explores architectural patterns that support growth and long-term evolution.",
         "url": "https://martinfowler.com/books/eaa.html",
         "type": "book",
-        "id": "patterns-of-enterprise-application-architecture",
-        "sources": ["scalability-by-design"]
+        "id": "patterns-of-enterprise-application-architecture"
       },
       {
         "author": "Allan Kelly",
@@ -611,8 +559,7 @@
         "description": "Discusses designing systems that adapt to change over time.",
         "url": "https://www.allankellyassociates.co.uk/books/continuous-digital/",
         "type": "book",
-        "id": "continuous-digital",
-        "sources": ["scalability-by-design"]
+        "id": "continuous-digital"
       },
       {
         "author": "Randy Shoup",
@@ -620,8 +567,7 @@
         "description": "Practical insights on growing design systems across teams and products.",
         "url": "https://www.infoq.com/presentations/scaling-design-systems/",
         "type": "book",
-        "id": "scaling-up-design-systems",
-        "sources": ["scalability-by-design"]
+        "id": "scaling-up-design-systems"
       },
       {
         "author": "Salesforce",
@@ -629,8 +575,7 @@
         "description": "Shows how scalable foundations support multiple products and teams.",
         "url": "https://www.lightningdesignsystem.com/guidelines/overview/",
         "type": "url",
-        "id": "lightning-design-system-principles",
-        "sources": ["scalability-by-design"]
+        "id": "lightning-design-system-principles"
       },
       {
         "author": "Shopify",
@@ -638,8 +583,7 @@
         "description": "Explains how a design system evolves while supporting rapid growth.",
         "url": "https://shopify.engineering/evolving-polaris",
         "type": "url",
-        "id": "evolving-polaris",
-        "sources": ["scalability-by-design"]
+        "id": "evolving-polaris"
       },
       {
         "author": "Nielsen Norman Group",
@@ -647,8 +591,7 @@
         "description": "Explains the role of design systems in scaling user experience.",
         "url": "https://www.nngroup.com/articles/design-systems-scale-ux/",
         "type": "url",
-        "id": "design-systems-are-for-scaling-ux",
-        "sources": ["scalability-by-design"]
+        "id": "design-systems-are-for-scaling-ux"
       }
     ],
     "feedback-driven-improvement": [
@@ -658,8 +601,7 @@
         "description": "Explains how to build feedback loops and iterate based on real user data.",
         "url": "https://theleanstartup.com/",
         "type": "book",
-        "id": "the-lean-startup",
-        "sources": ["feedback-driven-improvement"]
+        "id": "the-lean-startup"
       },
       {
         "author": "Jake Knapp",
@@ -667,8 +609,7 @@
         "description": "Shows how to quickly test ideas and gather feedback to make better decisions.",
         "url": "https://www.thesprintbook.com/",
         "type": "book",
-        "id": "sprint",
-        "sources": ["feedback-driven-improvement"]
+        "id": "sprint"
       },
       {
         "author": "Don Norman",
@@ -676,8 +617,7 @@
         "description": "Emphasizes the importance of understanding user needs through observation and feedback.",
         "url": "https://jnd.org/books/the-design-of-everyday-things/",
         "type": "book",
-        "id": "the-design-of-everyday-things",
-        "sources": ["feedback-driven-improvement"]
+        "id": "the-design-of-everyday-things"
       },
       {
         "author": "NNGroup",
@@ -685,8 +625,7 @@
         "description": "Explains why feedback is critical for design system success.",
         "url": "https://www.nngroup.com/articles/design-system-feedback/",
         "type": "url",
-        "id": "design-systems-need-feedback-loops",
-        "sources": ["feedback-driven-improvement"]
+        "id": "design-systems-need-feedback-loops"
       },
       {
         "author": "InVision",
@@ -694,8 +633,7 @@
         "description": "Practical strategies for collecting and acting on design system feedback.",
         "url": "https://www.invisionapp.com/inside-design/design-system-feedback-loops/",
         "type": "url",
-        "id": "building-design-system-feedback-loops",
-        "sources": ["feedback-driven-improvement"]
+        "id": "building-design-system-feedback-loops"
       },
       {
         "author": "Shopify Polaris",
@@ -703,8 +641,7 @@
         "description": "Shows how a large design system team collects and processes feedback.",
         "url": "https://polaris.shopify.com/contributing/getting-started",
         "type": "url",
-        "id": "how-we-gather-feedback",
-        "sources": ["feedback-driven-improvement"]
+        "id": "how-we-gather-feedback"
       }
     ],
     "evolvability-and-versioning": [
@@ -714,8 +651,7 @@
         "description": "Explains how systems can evolve incrementally without breaking behavior.",
         "url": "https://martinfowler.com/books/refactoring.html",
         "type": "book",
-        "id": "refactoring-2nd-edition",
-        "sources": ["evolvability-and-versioning"]
+        "id": "refactoring-2nd-edition"
       },
       {
         "author": "Kent Beck",
@@ -723,8 +659,7 @@
         "description": "Focuses on safe, incremental change in software systems.",
         "url": "https://tidyfirst.org/",
         "type": "book",
-        "id": "tidy-first",
-        "sources": ["evolvability-and-versioning"]
+        "id": "tidy-first"
       },
       {
         "author": "Robert C. Martin",
@@ -732,8 +667,7 @@
         "description": "Discusses architectural boundaries that enable long-term evolution.",
         "url": "https://www.pearson.com/en-us/subject-catalog/p/clean-architecture/P200000003295/9780134494166",
         "type": "book",
-        "id": "clean-architecture",
-        "sources": ["evolvability-and-versioning"]
+        "id": "clean-architecture"
       },
       {
         "author": "SemVer",
@@ -741,8 +675,7 @@
         "description": "Defines a clear contract for communicating breaking and non-breaking changes.",
         "url": "https://semver.org/",
         "type": "url",
-        "id": "semantic-versioning-specification",
-        "sources": ["evolvability-and-versioning"]
+        "id": "semantic-versioning-specification"
       },
       {
         "author": "Shopify Engineering",
@@ -750,8 +683,7 @@
         "description": "Describes how Shopify manages breaking changes in a large design system.",
         "url": "https://shopify.engineering/versioning-polaris",
         "type": "url",
-        "id": "versioning-polaris",
-        "sources": ["evolvability-and-versioning"]
+        "id": "versioning-polaris"
       },
       {
         "author": "NNGroup",
@@ -759,8 +691,7 @@
         "description": "Explains why versioning is critical for adoption and trust.",
         "url": "https://www.nngroup.com/articles/design-system-versioning/",
         "type": "url",
-        "id": "design-systems-need-versioning",
-        "sources": ["evolvability-and-versioning"]
+        "id": "design-systems-need-versioning"
       }
     ],
     "documentation-as-a-product": [
@@ -770,8 +701,7 @@
         "description": "Argues that documentation itself is a core part of the product experience.",
         "url": "https://idratherbewriting.com/2017/06/20/the-product-is-docs/",
         "type": "book",
-        "id": "the-product-is-docs",
-        "sources": ["documentation-as-a-product"]
+        "id": "the-product-is-docs"
       },
       {
         "author": "Anne Gentle",
@@ -779,8 +709,7 @@
         "description": "Explains how documentation benefits from product thinking and engineering workflows.",
         "url": "https://www.docslikecode.com/",
         "type": "url",
-        "id": "docs-like-code",
-        "sources": ["documentation-as-a-product"]
+        "id": "docs-like-code"
       },
       {
         "author": "Google",
@@ -788,8 +717,7 @@
         "description": "Practical guidance on clarity, structure, and audience-focused documentation.",
         "url": "https://developers.google.com/tech-writing",
         "type": "url",
-        "id": "technical-writing-courses",
-        "sources": ["documentation-as-a-product"]
+        "id": "technical-writing-courses"
       },
       {
         "author": "Write the Docs",
@@ -797,8 +725,7 @@
         "description": "Community-driven best practices for documentation as a product.",
         "url": "https://www.writethedocs.org/guide/",
         "type": "url",
-        "id": "documentation-guide",
-        "sources": ["documentation-as-a-product"]
+        "id": "documentation-guide"
       }
     ],
     "modularity-and-composability": [
@@ -808,8 +735,7 @@
         "description": "Introduces a compositional model for building scalable design systems.",
         "url": "https://atomicdesign.bradfrost.com/",
         "type": "book",
-        "id": "atomic-design",
-        "sources": ["modularity-and-composability"]
+        "id": "atomic-design"
       },
       {
         "author": "Eric Evans",
@@ -817,8 +743,7 @@
         "description": "Explores bounded contexts and modular thinking in system design.",
         "url": "https://www.domainlanguage.com/ddd/",
         "type": "book",
-        "id": "domain-driven-design",
-        "sources": ["modularity-and-composability"]
+        "id": "domain-driven-design"
       },
       {
         "author": "Kent Beck",
@@ -826,8 +751,7 @@
         "description": "Discusses small, composable units in software architecture.",
         "url": "https://martinfowler.com/books/implementationPatterns.html",
         "type": "book",
-        "id": "implementation-patterns",
-        "sources": ["modularity-and-composability"]
+        "id": "implementation-patterns"
       },
       {
         "author": "Shopify",
@@ -835,8 +759,7 @@
         "description": "Shows how modular components enable large teams to move faster.",
         "url": "https://polaris.shopify.com/foundations/design/design-systems",
         "type": "url",
-        "id": "design-systems-at-scale",
-        "sources": ["modularity-and-composability"]
+        "id": "design-systems-at-scale"
       },
       {
         "author": "Google",
@@ -844,8 +767,7 @@
         "description": "Explains principles behind reusable and composable UI components.",
         "url": "https://material.io/design/architecture/component-based.html",
         "type": "url",
-        "id": "component-based-design",
-        "sources": ["modularity-and-composability"]
+        "id": "component-based-design"
       },
       {
         "author": "Smashing Magazine",
@@ -853,8 +775,7 @@
         "description": "Explores composition as a strategy for scalable interface design.",
         "url": "https://www.smashingmagazine.com/2019/02/designing-composable-systems/",
         "type": "url",
-        "id": "designing-for-composition",
-        "sources": ["modularity-and-composability"]
+        "id": "designing-for-composition"
       }
     ],
     "single-source-of-truth": [
@@ -864,8 +785,7 @@
         "description": "Emphasizes composability and centralized systems as a way to manage complexity.",
         "url": "https://atomicdesign.bradfrost.com/",
         "type": "book",
-        "id": "atomic-design",
-        "sources": ["single-source-of-truth"]
+        "id": "atomic-design"
       },
       {
         "author": "Nathan Curtis",
@@ -874,8 +794,7 @@
         "status": "missing",
         "url": "https://modulardesignsystem.com/",
         "type": "url",
-        "id": "modular-design-systems",
-        "sources": ["single-source-of-truth"]
+        "id": "modular-design-systems"
       },
       {
         "author": "Alla Kholmatova",
@@ -883,8 +802,7 @@
         "description": "Explores how systems fail when authority and documentation are unclear.",
         "url": "https://www.smashingmagazine.com/design-systems-book/",
         "type": "url",
-        "id": "design-systems",
-        "sources": ["single-source-of-truth"]
+        "id": "design-systems"
       },
       {
         "author": "Google Material Design Team",
@@ -893,8 +811,7 @@
         "status": "missing",
         "url": "https://material.io/design/systems/design-systems-at-scale.html",
         "type": "url",
-        "id": "design-systems-at-scale",
-        "sources": ["single-source-of-truth"]
+        "id": "design-systems-at-scale"
       },
       {
         "author": "Storybook Team",
@@ -903,8 +820,7 @@
         "status": "missing",
         "url": "https://storybook.js.org/docs/design-systems-for-developers/",
         "type": "url",
-        "id": "design-systems-for-developers",
-        "sources": ["single-source-of-truth"]
+        "id": "design-systems-for-developers"
       }
     ]
   }
