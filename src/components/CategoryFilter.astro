@@ -92,6 +92,7 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
 
     // Apply filter (update UI and filter cards)
     const applyFilter = (filterValue) => {
+      console.log('applyFilter', filterValue);
       // Update active state - CSS handles styling via data-filter-active attribute
       filterButtons.forEach((btn) => {
         const isActive = btn.getAttribute('data-filter') === filterValue;
@@ -102,24 +103,24 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
       principleCards.forEach((card) => {
         const cardCategory = card.getAttribute('data-category');
         const innerCard = card.querySelector('.principle-card');
-        const shouldShow = filterValue === 'all' || cardCategory === filterValue;
+        const shouldShow = cardCategory === filterValue;
 
         if (shouldShow) {
           card.classList.add('order-first');
           innerCard.setAttribute('data-filtered', 'true');
         } else {
           card.classList.remove('order-first');
-          innerCard.setAttribute('data-filtered', 'false');
-          innerCard.classList.add('delay-500');
+          innerCard.removeAttribute('data-filtered');
         }
+        innerCard.classList.add('duration-0');
       });
 
       setTimeout(() => {
         principleCards.forEach((card) => {
           const innerCard = card.querySelector('.principle-card');
-          innerCard.classList.remove('delay-500');
+          innerCard.classList.remove('duration-0');
         });
-      }, 500);
+      }, 10);
     };
 
     // Check for category query parameter first (takes precedence over saved filter)
