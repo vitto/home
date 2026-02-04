@@ -76,7 +76,7 @@ support multiple teams, and remain trusted over time.
     bibliography && (
       <Bibliography>
         {sortedBooks.length > 0 && (
-          <BibliographySection type="books">
+          <BibliographySection type="book">
             {sortedBooks.map((item: any) => (
               <BibliographyItem
                 author={item.author}
@@ -89,7 +89,7 @@ support multiple teams, and remain trusted over time.
           </BibliographySection>
         )}
         {sortedUrls.length > 0 && (
-          <BibliographySection type="urls">
+          <BibliographySection type="url">
             {sortedUrls.map((item: any) => (
               <BibliographyItem
                 author={item.author}

@@ -50,7 +50,7 @@ const sectionName = 'User-Centered Design';
     bibliography && (
       <Bibliography>
         {sortedBooks.length > 0 && (
-          <BibliographySection type="books">
+          <BibliographySection type="book">
             {sortedBooks.map((item: any) => (
               <BibliographyItem
                 author={item.author}
@@ -63,7 +63,7 @@ const sectionName = 'User-Centered Design';
           </BibliographySection>
         )}
         {sortedUrls.length > 0 && (
-          <BibliographySection type="urls">
+          <BibliographySection type="url">
             {sortedUrls.map((item: any) => (
               <BibliographyItem
                 author={item.author}

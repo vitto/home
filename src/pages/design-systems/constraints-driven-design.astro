@@ -94,7 +94,7 @@ By designing constraints intentionally, the system enables creativity within saf
     bibliography && (
       <Bibliography>
         {sortedBooks.length > 0 && (
-          <BibliographySection type="books">
+          <BibliographySection type="book">
             {sortedBooks.map((item: any) => (
               <BibliographyItem
                 author={item.author}
@@ -107,7 +107,7 @@ By designing constraints intentionally, the system enables creativity within saf
           </BibliographySection>
         )}
         {sortedUrls.length > 0 && (
-          <BibliographySection type="urls">
+          <BibliographySection type="url">
             {sortedUrls.map((item: any) => (
               <BibliographyItem
                 author={item.author}

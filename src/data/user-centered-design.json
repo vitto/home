@@ -56,7 +56,11 @@
       "category": "Error handling",
       "icon": "mi/outline/shield",
       "description": "Even better than good error messages is a careful design which prevents a problem from occurring in the first place.",
-      "sources": []
+      "sources": [
+        "effective-practices-on-preventing-errors-in-user-interfaces",
+        "how-designers-can-prevent-user-errors",
+        "error-prevention-usability-heuristic-5"
+      ]
     },
     {
       "id": "recognition-rather-than-recall",
@@ -147,6 +151,30 @@
       "id": "design-consistency-guide-ui-and-ux-best-practices"
     },
     {
+      "author": "Aurora Harley",
+      "title": "Visibility of System Status (Usability Heuristic #1)",
+      "description": "Communicating the current state allows users to feel in control of the system, take appropriate actions to reach their goal, and ultimately trust the brand.",
+      "url": "https://www.nngroup.com/articles/visibility-system-status/",
+      "type": "url",
+      "id": "visibility-of-system-status-usability-heuristic-1"
+    },
+    {
+      "author": "Anna Kaley",
+      "title": "Match Between the System and the Real World (Usability Heuristic #2)",
+      "description": "Systems should speak the users' language with familiar words, phrases, and concepts rather than system-oriented terms. Interfaces that follow real-world conventions and make information appear in a natural and logical order demonstrate empathy and acknowledgement for users.",
+      "url": "https://www.nngroup.com/articles/match-system-real-world/",
+      "type": "url",
+      "id": "match-between-system-and-real-world-usability-heuristic-2"
+    },
+    {
+      "author": "Maria Rosala",
+      "title": "User Control and Freedom (Usability Heuristic #3)",
+      "description": "Users often make mistakes or change their minds. Allow them to exit a flow or undo their last action and go back to the system’s previous state.",
+      "url": "https://www.nngroup.com/articles/user-control-and-freedom/",
+      "type": "url",
+      "id": "user-control-and-freedom-usability-heuristic-3"
+    },
+    {
       "author": "Rachel Krause",
       "title": "Maintain Consistency and Adhere to Standards (Usability Heuristic #4)",
       "description": "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.",
@@ -155,12 +183,36 @@
       "id": "maintain-consistency-and-adhere-to-standards-usability-heuristic-4"
     },
     {
+      "author": "Katie Sherwin",
+      "title": "Usability Heuristic 5: Error Prevention",
+      "description": "No. 5 of the top 10 UX design heuristics is to prevent interaction problems from occurring in the first place: either eliminate error-prone conditions or check for them and present users with a confirmation dialog.",
+      "url": "https://www.nngroup.com/videos/usability-heuristic-error-prevention/",
+      "type": "video",
+      "id": "error-prevention-usability-heuristic-5"
+    },
+    {
       "author": "Page Laubheimer",
       "title": "Flexibility and Efficiency of Use (Usability Heuristic #7)",
       "description": "Shortcuts — unseen by the novice user — speed up the interaction for the expert users such that the system can cater to both inexperienced and experienced users.",
       "url": "https://www.nngroup.com/articles/flexibility-efficiency-heuristic/",
       "type": "url",
       "id": "flexibility-and-efficiency-of-use-usability-heuristic-7"
+    },
+    {
+      "author": "Therese Fessenden",
+      "title": "Aesthetic and Minimalist Design (Usability Heuristic #8)",
+      "description": "Aesthetically pleasing designs can provide memorable experiences that differentiate a brand. However, interfaces should only include necessary elements, with high informational value. Clarity will always win over visual flourish.",
+      "url": "https://www.nngroup.com/articles/aesthetic-minimalist-design/",
+      "type": "url",
+      "id": "aesthetic-and-minimalist-design-usability-heuristic-8"
+    },
+    {
+      "author": "Alita Kendrick",
+      "title": "Help and Documentation (Usability Heuristic #10)",
+      "description": "Interface help comes in two forms: proactive and reactive. Proactive help is intended to get users familiar with an interface while reactive help is meant for troubleshooting and gaining system proficiency.",
+      "url": "https://www.nngroup.com/articles/help-and-documentation/",
+      "type": "url",
+      "id": "help-and-documentation-usability-heuristic-10"
     },
     {
       "author": "Jakob Nielsen",
@@ -249,6 +301,22 @@
       "url": "https://www.nngroup.com/articles/principles-visual-design/",
       "type": "url",
       "id": "5-principles-of-visual-design-in-ux"
+    },
+    {
+      "author": "Tubik",
+      "title": "Effective Practices on Preventing Errors in User Interfaces",
+      "description": "No doubt, the best mistake is the one that wasn’t made. However, life isn’t like that, and user experience as well: mistakes are an integral part of both.",
+      "url": "https://medium.muz.li/effective-practices-on-preventing-errors-in-user-interfaces-83c0c329f29c",
+      "type": "url",
+      "id": "effective-practices-on-preventing-errors-in-user-interfaces"
+    },
+    {
+      "author": "Jordan Bowman",
+      "title": "How Designers Can Prevent User Errors",
+      "description": "The term “user error” implies that it’s the user’s fault when they do something wrong. But in the vast majority of cases, the fault actually rests with the designer for having created an interface that is confusing or makes it too easy for the user to make a mistake.",
+      "url": "https://www.uxtools.co/blog/how-designers-can-prevent-user-errors",
+      "type": "url",
+      "id": "how-designers-can-prevent-user-errors"
     },
     {
       "author": "Stan Murash",

@@ -75,7 +75,7 @@ const sortedUrls = sortBibliography(uniqueUrls);
       <div class="max-w-screen-desktop mx-auto mt-1200">
         <Bibliography>
           {sortedBooks.length > 0 && (
-            <BibliographySection type="books">
+            <BibliographySection type="book">
               {sortedBooks.map((item: any) => (
                 <BibliographyItem
                   author={item.author}
@@ -88,7 +88,7 @@ const sortedUrls = sortBibliography(uniqueUrls);
             </BibliographySection>
           )}
           {sortedUrls.length > 0 && (
-            <BibliographySection type="urls">
+            <BibliographySection type="url">
               {sortedUrls.map((item: any) => (
                 <BibliographyItem
                   author={item.author}

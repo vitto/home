@@ -76,7 +76,7 @@ teams move faster because they don't have to re-solve the same problems.
     bibliography && (
       <Bibliography>
         {sortedBooks.length > 0 && (
-          <BibliographySection type="books">
+          <BibliographySection type="book">
             {sortedBooks.map((item: any) => (
               <BibliographyItem
                 author={item.author}
@@ -89,7 +89,7 @@ teams move faster because they don't have to re-solve the same problems.
           </BibliographySection>
         )}
         {sortedUrls.length > 0 && (
-          <BibliographySection type="urls">
+          <BibliographySection type="url">
             {sortedUrls.map((item: any) => (
               <BibliographyItem
                 author={item.author}

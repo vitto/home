@@ -82,7 +82,7 @@ will not scale — regardless of how good the components are.
     bibliography && (
       <Bibliography>
         {sortedBooks.length > 0 && (
-          <BibliographySection type="books">
+          <BibliographySection type="book">
             {sortedBooks.map((item: any) => (
               <BibliographyItem
                 author={item.author}
@@ -95,7 +95,7 @@ will not scale — regardless of how good the components are.
           </BibliographySection>
         )}
         {sortedUrls.length > 0 && (
-          <BibliographySection type="urls">
+          <BibliographySection type="url">
             {sortedUrls.map((item: any) => (
               <BibliographyItem
                 author={item.author}
