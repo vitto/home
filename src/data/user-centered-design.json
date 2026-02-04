@@ -17,7 +17,7 @@
       "category": "Cognitive load",
       "icon": "mi/outline/visibility",
       "description": "The system should always keep users informed about what is going on, through appropriate feedback within reasonable time. If the user is asking \"is something happening?\", the system is failing this principle. If, however, the system consistently understands what is happening, when, and with what outcome, Visibility of System Status is respected.",
-      "sources": []
+      "sources": ["visibility-of-system-status-usability-heuristic-1"]
     },
     {
       "id": "match-between-system-and-real-world",
@@ -38,7 +38,7 @@
       "category": "Control",
       "icon": "mi/outline/exit-to-app",
       "description": "Users often choose system functions by mistake and will need a clearly marked 'emergency exit' to leave the unwanted state without having to go through an extended dialogue.",
-      "sources": []
+      "sources": ["user-control-and-freedom-usability-heuristic-3"]
     },
     {
       "id": "consistency-and-standards",
@@ -72,7 +72,10 @@
       "category": "Cognitive load",
       "icon": "mi/outline/lightbulb",
       "description": "Minimize the user's memory load by making objects, actions, and options visible. The user should not have to remember information from one part of the dialogue to another.",
-      "sources": []
+      "sources": [
+        "recognition-rather-than-recall-simplified-by-the-examples",
+        "jakob-nielsens-sixth-usability-heuristic-for-user-interface-design"
+      ]
     },
     {
       "id": "flexibility-and-efficiency-of-use",
@@ -240,6 +243,22 @@
       "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
       "type": "url",
       "id": "10-usability-heuristics-for-user-interface-design"
+    },
+    {
+      "author": "Harsh Gorasia",
+      "title": "Heuristics #6: Recognition Rather Than Recall-Simplified by the examples.",
+      "description": "The Jakob Nielsen’s 10 heuristics will be served as a series or as episodes to you all. I will publish each heuristic a week- Every Thursday.",
+      "url": "https://uxplanet.org/heuristics-6-recognition-rather-than-recall-simplified-by-the-examples-eb8b84fb04c6",
+      "type": "url",
+      "id": "recognition-rather-than-recall-simplified-by-the-examples"
+    },
+    {
+      "author": "Melissa Vela",
+      "title": "Jakob Nielsen’s sixth usability heuristic for user interface design",
+      "description": "Designers rely on heuristic evaluations to improve upon product usability. This article will focus on the sixth principle of Jakob Nielsen’s 10 general principles for interaction design which is Recognition Rather than Recall. ",
+      "url": "https://uxdesign.cc/jakob-nielsens-sixth-usability-heuristic-for-user-interface-design-ac88e7d58ec",
+      "type": "url",
+      "id": "jakob-nielsens-sixth-usability-heuristic-for-user-interface-design"
     },
     {
       "author": "Erik Fiala",
