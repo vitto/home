@@ -9,10 +9,10 @@ const { title, class: className = '' } = Astro.props;
 
 <mds-table-row>
   <mds-table-cell class="align-baseline">
-    <mds-text typography="h6" class="whitespace-nowrap pt-300">{title}</mds-text>
+    <mds-text typography="h6" class="whitespace-nowrap py-150">{title}</mds-text>
   </mds-table-cell>
   <mds-table-cell>
-    <div class="inline-flex mobile:flex-col mobile:items-start gap-400 p-200 min-w-max">
+    <div class="inline-flex mobile:flex-col mobile:items-start gap-400 min-w-max">
       <slot />
     </div>
   </mds-table-cell>
