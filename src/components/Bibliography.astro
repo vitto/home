@@ -1,5 +1,6 @@
 ---
 import Markdown from './Markdown.astro';
+import Separator from './Separator.astro';
 
 interface Props {
   opener?: string;
@@ -9,12 +10,12 @@ interface Props {
 const { opener, closer } = Astro.props;
 ---
 
+<Separator />
+
 <section class="grid gap-600">
   <Markdown
     content={`
   ### Related References and Bibliography
-
-  ---
   `}
   />
   {opener && <p class="text-info-paragraph">{opener}</p>}

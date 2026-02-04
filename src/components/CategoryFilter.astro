@@ -50,14 +50,14 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
       // Examples:
       // /home/user-centered-design -> user-centered-design
       // /home/design-systems -> design-systems
-      // /home/hax-principles -> hax-principles
+      // /home/human-centered-ai-design -> human-centered-ai-design
       const pathname = window.location.pathname;
       // Remove trailing slash and get last segment
       const segments = pathname.replace(/\/$/, '').split('/').filter(Boolean);
       const lastSegment = segments[segments.length - 1];
 
       // Known section names
-      const knownSections = ['user-centered-design', 'design-systems', 'hax-principles'];
+      const knownSections = ['user-centered-design', 'design-systems', 'human-centered-ai-design'];
       if (knownSections.includes(lastSegment)) {
         return lastSegment;
       }

@@ -24,8 +24,8 @@
     "path": "/design-systems"
   },
   {
-    "id": "hax-principles",
-    "title": "HAX Principles",
+    "id": "human-centered-ai-design",
+    "title": "Human-Centered AI Design",
     "button": "hover:bg-label-violet-09 focus-visible:bg-label-violet-09 hover:text-label-violet-05 focus-visible:text-label-violet-05 text-tone-neutral-02 border-transparent",
     "headerSelected": "bg-label-violet-09 text-label-violet-04",
     "headerIconSelected": "text-label-violet-06",
@@ -33,6 +33,6 @@
     "iconHover": "group-hover/card:bg-label-violet-09 group-focus-visible/card:bg-label-violet-09 group-hover/card:text-label-violet-05 group-focus-visible/card:text-label-violet-05",
     "description": "Designing transparent, predictable AI experiences following Microsoft HAX guidelines",
     "logo": "text-label-violet-08 mix-blend-multiply",
-    "path": "/hax-principles"
+    "path": "/human-centered-ai-design"
   }
 ]

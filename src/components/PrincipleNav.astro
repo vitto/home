@@ -5,7 +5,7 @@ import SectionNav from './SectionNav.astro';
 import categoriesData from '../data/categories.json';
 import designSystemsData from '../data/design-systems.json';
 import userCenteredDesignData from '../data/user-centered-design.json';
-import haxPrinciplesData from '../data/hax-principles.json';
+import humanCenteredAiDesignData from '../data/human-centered-ai-design.json';
 
 interface Props {
   baseUrl: string;
@@ -20,7 +20,7 @@ const { baseUrl, currentPrincipleId, sectionPath, allPrinciples } = Astro.props;
 const sectionDataMap: Record<string, { principles: Array<{ id: string; title: string }> }> = {
   '/design-systems': designSystemsData,
   '/user-centered-design': userCenteredDesignData,
-  '/hax-principles': haxPrinciplesData,
+  '/human-centered-ai-design': humanCenteredAiDesignData,
 };
 
 // Get all sections in order

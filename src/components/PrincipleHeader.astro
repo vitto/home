@@ -10,7 +10,7 @@ import Button from './Button.astro';
  *
  * Props:
  * @param {object} principle - Principle object with icon, color, category, title, description
- * @param {string} sectionName - Name of the section (e.g., "User-Centered Design", "Design Systems", "HAX Principles")
+ * @param {string} sectionName - Name of the section (e.g., "User-Centered Design", "Design Systems", "Human-Centered AI Design")
  * @param {string} sectionPath - Path to the section page (e.g., "/user-centered-design")
  * @param {string} class - Additional CSS classes
  */
@@ -32,7 +32,7 @@ const {
   categoryColors,
   sectionName,
   sectionPath,
-  class: className = 'grid gap-1200',
+  class: className = 'grid gap-200',
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -63,6 +63,10 @@ const categoryColorClass = colorClasses[categoryColor] || '';
 ---
 
 <div class={className}>
+  <div class="grid gap-200">
+    <h1 class="text-title-h1">{principle.title}</h1>
+    <p class="text-info-paragraph">{principle.description}</p>
+  </div>
   <div class="flex items-center gap-400 mobile:gap-200">
     <div class="flex items-center">
       <div
@@ -94,9 +98,5 @@ const categoryColorClass = colorClasses[categoryColor] || '';
     >
       <Icon name="mi/outline/apps" class="text-tone-neutral-04" />
     </Button>
-  </div>
-  <div class="grid gap-200">
-    <h1 class="text-title-h1">{principle.title}</h1>
-    <p class="text-info-paragraph">{principle.description}</p>
   </div>
 </div>
