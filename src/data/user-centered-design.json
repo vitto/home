@@ -113,7 +113,11 @@
       "category": "Error handling",
       "icon": "mi/outline/error-outline",
       "description": "Error messages should be expressed in plain language (no codes), precisely indicate the problem, and constructively suggest a solution.",
-      "sources": []
+      "sources": [
+        "no-one-likes-making-errors",
+        "error-message-guidelines",
+        "designing-better-error-messages-ux"
+      ]
     },
     {
       "id": "help-and-documentation",
@@ -122,7 +126,11 @@
       "category": "Support",
       "icon": "mi/outline/help-outline",
       "description": "Even though it is better if the system can be used without documentation, it may be necessary to provide help and documentation.",
-      "sources": ["personas-make-users-memorable", "experience-design-the-next-iteration-of-ux"]
+      "sources": [
+        "personas-make-users-memorable",
+        "experience-design-the-next-iteration-of-ux",
+        "help-and-documentation-usability-heuristic-10"
+      ]
     }
   ],
   "bibliography": [
@@ -245,6 +253,30 @@
       "url": "https://www.nngroup.com/articles/experience-design/",
       "type": "url",
       "id": "experience-design-the-next-iteration-of-ux"
+    },
+    {
+      "author": "Nielsen Norman Group",
+      "title": "No one likes making errors",
+      "description": "Even if they are mistakes, they can make you feel flustered, ashamed, or just be plain annoying.",
+      "url": "https://www.linkedin.com/posts/nielsen-norman-group_avoid-hostile-patterns-in-error-messages-activity-7213609807214194689-Se1M/",
+      "type": "url",
+      "id": "no-one-likes-making-errors"
+    },
+    {
+      "author": "Tim Neusesser, Evan Sunwall",
+      "title": "Error-Message Guidelines",
+      "description": "Design effective error messages by ensuring they are highly visible, provide constructive communication, and respect user effort.",
+      "url": "https://www.nngroup.com/articles/error-message-guidelines/",
+      "type": "url",
+      "id": "error-message-guidelines"
+    },
+    {
+      "author": "Vitaly Friedman",
+      "title": "Designing Better Error Messages UX",
+      "description": "Error messages need to be easy to spot, but they also need to be helpful. Let’s explore when error messages should live above input fields and why toast error messages are usually not a very good idea.",
+      "url": "https://www.smashingmagazine.com/2022/08/error-messages-ux-design/",
+      "type": "url",
+      "id": "designing-better-error-messages-ux"
     },
     {
       "author": "Krisztina Szerovay",
