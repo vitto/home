@@ -44,7 +44,10 @@
       "category": "Predictability",
       "icon": "mi/outline/rule",
       "description": "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform conventions.",
-      "sources": []
+      "sources": [
+        "why-ux-design-consistency-matters-and-how-to-achieve-it",
+        "design-system-coerenza-atomica"
+      ]
     },
     {
       "id": "error-prevention",
@@ -71,7 +74,14 @@
       "category": "Control",
       "icon": "mi/outline/tune",
       "description": "Accelerators, unseen by the novice user, may often speed up the interaction for the expert user such that the system can cater to both inexperienced and experienced users.",
-      "sources": []
+      "sources": [
+        "flexibility-and-efficiency-of-use-usability-heuristic-7",
+        "10-usability-heuristics-for-user-interface-design",
+        "the-psychology-of-default-options-in-user-interfaces",
+        "good-defaults-in-ux-design-ux-knowledge-piece-sketch-39",
+        "progressive-disclosure-in-ux-design-types-and-use-cases",
+        "scaling-design-impact-why-growing-companies-need-dedicated-ux-ui-expertise"
+      ]
     },
     {
       "id": "aesthetic-and-minimalist-design",
@@ -143,6 +153,70 @@
       "url": "https://www.nngroup.com/articles/consistency-and-standards/",
       "type": "url",
       "id": "maintain-consistency-and-adhere-to-standards-usability-heuristic-4"
+    },
+    {
+      "author": "Page Laubheimer",
+      "title": "Flexibility and Efficiency of Use (Usability Heuristic #7)",
+      "description": "Shortcuts — unseen by the novice user — speed up the interaction for the expert users such that the system can cater to both inexperienced and experienced users.",
+      "url": "https://www.nngroup.com/articles/flexibility-efficiency-heuristic/",
+      "type": "url",
+      "id": "flexibility-and-efficiency-of-use-usability-heuristic-7"
+    },
+    {
+      "author": "Jakob Nielsen",
+      "title": "10 Usability Heuristics for User Interface Design",
+      "description": "Jakob Nielsen's 10 general principles for interaction design. They are called \"heuristics\" because they are broad rules of thumb and not specific usability guidelines.",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      "type": "url",
+      "id": "10-usability-heuristics-for-user-interface-design"
+    },
+    {
+      "author": "Erik Fiala",
+      "title": "The Psychology of Default Options in User Interfaces",
+      "description": "Default options play a crucial role in user interface (UI) design, significantly influencing user behavior and decision-making processes.",
+      "url": "https://erikfiala.com/blog/psychology-default-options-user-interfaces",
+      "type": "url",
+      "id": "the-psychology-of-default-options-in-user-interfaces"
+    },
+    {
+      "author": "Krisztina Szerovay",
+      "title": "Good Defaults in UX design — UX Knowledge Piece Sketch #39",
+      "description": "A default is a ready-made decision for your users. You preselect values, settings or preferences for the user. As a result, you can avoid decision fatigue and reduce cognitive load.",
+      "url": "https://uxknowledgebase.com/good-defaults-in-ux-design-ux-knowledge-piece-sketch-39-4fd4516a49ca",
+      "type": "url",
+      "id": "good-defaults-in-ux-design-ux-knowledge-piece-sketch-39"
+    },
+    {
+      "author": "Eric Chung",
+      "title": "Progressive disclosure in UX design: Types and use cases",
+      "description": "Progressive disclosure is a UX design technique that reduces users’ cognitive load by gradually revealing information as needed. It’s commonly used in product design to simplify complex content or break down large amounts of information into digestible bits.",
+      "url": "https://blog.logrocket.com/ux-design/progressive-disclosure-ux-types-use-cases/",
+      "type": "url",
+      "id": "progressive-disclosure-in-ux-design-types-and-use-cases"
+    },
+    {
+      "author": "Shivangi Sharma",
+      "title": "Scaling Design Impact",
+      "description": "Why Growing Companies Need Dedicated UX/UI Expertise to Maintain Momentum.",
+      "url": "https://flexxited.com/blog/scaling-design-impact-why-growing-companies-need-dedicated-ux-ui-expertise",
+      "type": "url",
+      "id": "scaling-design-impact-why-growing-companies-need-dedicated-ux-ui-expertise"
+    },
+    {
+      "author": "Agustin Diaz",
+      "title": "Why UX design consistency matters and how to achieve it",
+      "description": "Consistency in UX design isn't about making everything look the same. It's about creating harmony that helps users feel at home.",
+      "url": "https://www.uxstudioteam.com/ux-blog/ux-design-consistency",
+      "type": "url",
+      "id": "why-ux-design-consistency-matters-and-how-to-achieve-it"
+    },
+    {
+      "author": "Damiano Dalla Lana",
+      "title": "DESIGN SYSTEM: COERENZA “ATOMICA”",
+      "description": "Come riutilizzare elementi autonomi per creare progetti scalabili.",
+      "url": "https://www.quamm.it/giornale/design-system-coerenza-atomica/",
+      "type": "url",
+      "id": "design-system-coerenza-atomica"
     },
     {
       "author": "Jon Yablonski",
