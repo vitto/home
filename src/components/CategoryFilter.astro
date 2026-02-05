@@ -24,7 +24,7 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
 ---
 
 <div class={`flex flex-wrap gap-200 scroll-mt-600 ${className}`} data-filter-container>
-  <Button data-filter="all" data-filter-active="false" variant="outline">All</Button>
+  <Button data-filter="all" data-filter-active="false" variant="filter">All</Button>
   {
     categories.map((category) => (
       <Button data-filter={category} data-filter-active="false">

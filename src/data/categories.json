@@ -1,38 +1,38 @@
 [
   {
-    "id": "user-centered-design",
-    "title": "User-Centered Design",
-    "icon": "mi/baseline/person",
     "button": "hover:bg-label-green-09 focus-visible:bg-label-green-09 hover:text-label-green-05 focus-visible:text-label-green-05 text-tone-neutral-02 border-transparent",
-    "headerSelected": "bg-label-green-09 text-label-green-04",
-    "headerIconSelected": "text-label-green-06",
-    "iconHover": "group-hover/card:bg-label-green-09 group-focus-visible/card:bg-label-green-09 group-hover/card:text-label-green-05 group-focus-visible/card:text-label-green-05",
     "description": "Applying NN/g usability heuristics to create intuitive, accessible interfaces",
+    "icon": "mi/baseline/person",
+    "id": "user-centered-design",
     "logo": "text-label-green-09 mix-blend-multiply",
-    "path": "/user-centered-design"
+    "path": "/user-centered-design",
+    "selectedClass": "bg-label-green-09 text-label-green-04",
+    "defaultClass": "hover:bg-label-green-10 hover:text-label-green-04",
+    "shortTitle": "UCD",
+    "title": "User-Centered Design"
   },
   {
-    "id": "design-systems",
-    "title": "Design Systems",
     "button": "hover:bg-label-amaranth-09 focus-visible:bg-label-amaranth-09 hover:text-label-amaranth-05 focus-visible:text-label-amaranth-05 text-tone-neutral-02 border-transparent",
-    "headerSelected": "bg-label-amaranth-09 text-label-amaranth-04",
-    "headerIconSelected": "text-label-amaranth-06",
-    "icon": "mi/baseline/palette",
-    "iconHover": "group-hover/card:bg-label-amaranth-09 group-focus-visible/card:bg-label-amaranth-09 group-hover/card:text-label-amaranth-05 group-focus-visible/card:text-label-amaranth-05",
     "description": "Building scalable, maintainable component libraries with clear documentation",
+    "icon": "mi/baseline/palette",
+    "id": "design-systems",
     "logo": "text-label-amaranth-08 mix-blend-multiply",
-    "path": "/design-systems"
+    "path": "/design-systems",
+    "selectedClass": "bg-label-amaranth-09 text-label-amaranth-04",
+    "defaultClass": "hover:bg-label-amaranth-10 hover:text-label-amaranth-04",
+    "shortTitle": "DS",
+    "title": "Design Systems"
   },
   {
-    "id": "human-centered-ai-design",
-    "title": "Human-Centered AI Design",
     "button": "hover:bg-label-violet-09 focus-visible:bg-label-violet-09 hover:text-label-violet-05 focus-visible:text-label-violet-05 text-tone-neutral-02 border-transparent",
-    "headerSelected": "bg-label-violet-09 text-label-violet-04",
-    "headerIconSelected": "text-label-violet-06",
-    "icon": "mgg/ai-chatbot",
-    "iconHover": "group-hover/card:bg-label-violet-09 group-focus-visible/card:bg-label-violet-09 group-hover/card:text-label-violet-05 group-focus-visible/card:text-label-violet-05",
     "description": "Designing transparent, predictable AI experiences following Microsoft HAX guidelines",
+    "icon": "mgg/ai-chatbot",
+    "id": "human-centered-ai-design",
     "logo": "text-label-violet-08 mix-blend-multiply",
-    "path": "/human-centered-ai-design"
+    "path": "/human-centered-ai-design",
+    "selectedClass": "bg-label-violet-09 text-label-violet-04",
+    "defaultClass": "hover:bg-label-violet-10 hover:text-label-violet-04",
+    "shortTitle": "HCAID",
+    "title": "Human-Centered AI Design"
   }
 ]

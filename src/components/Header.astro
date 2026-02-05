@@ -22,7 +22,7 @@ const { menu = true } = Astro.props;
 
 <div>
   <header class="flex items-center gap-400 justify-between group">
-    <div class="inline-flex items-center gap-400 pb-600">
+    <div class="inline-flex items-center gap-400 py-300 -translate-y-200">
       <a
         title="Back to Home"
         href={baseUrl}
@@ -30,7 +30,7 @@ const { menu = true } = Astro.props;
       >
         <Icon name="vv/logo" class="text-[64px] justify-self-center" />
       </a>
-      <div class="grid mobile:hidden">
+      <div class="hidden desktop:grid">
         <h1 class="text-title-h3">
           Vittori<span class="inline-block animate-pulse-more"
             >o <span
@@ -39,7 +39,7 @@ const { menu = true } = Astro.props;
             ></span
           >
         </h1>
-        <p class="text-info-caption">{personalData.role}</p>
+        <p class="text-info-option header-role">{personalData.role}</p>
       </div>
     </div>
     {

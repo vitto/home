@@ -1,17 +1,17 @@
 ---
 import Button from './Button.astro';
 import Icon from './Icon.astro';
-import CategoryCardItem from './CategoryCardItem.astro';
 import Footer from './Footer.astro';
 import categoriesData from '../data/categories.json';
 import personalData from '../data/personal.json';
-import HeaderMenuCategoryCard from './HeaderMenuCategoryCard.astro';
+import HeaderButton from './HeaderButton.astro';
 
 interface Props {
+  size?: 'sm' | 'lg';
   iconColor?: string;
 }
 
-const { iconColor = 'text-tone-neutral-03' } = Astro.props;
+const { size = 'lg', iconColor = 'text-tone-neutral-03' } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 
 // Determine current section from URL pathname
@@ -25,15 +25,34 @@ const categories = categoriesData.map((category) => ({
 }));
 ---
 
-<Button
-  data-menu-toggle
-  title="Toggle menu"
-  variant="light"
-  class="inline-flex group focus-bounce rounded-2xl shrink-0 no-underline bg-transparent border-none cursor-pointer size-1200"
->
-  <Icon class={`mobile:text-[32px] transition-colors ${iconColor}`} name="mi/outline/menu" />
-</Button>
-<div class="header-nav hidden" data-header-nav hidden>
+<div class="flex flex-wrap gap-200">
+  {
+    size === 'lg' &&
+      categories.map((category) => {
+        const isSelected = currentSection?.id === category.id;
+        return (
+          <HeaderButton
+            href={category.link}
+            class="mobile:hidden"
+            title={category.shortTitle}
+            description={category.title}
+            defaultClass={category.defaultClass}
+            selectedClass={category.selectedClass}
+            selected={isSelected}
+          />
+        );
+      })
+  }
+  <Button
+    data-menu-toggle
+    title="Toggle menu"
+    variant="light"
+    class="inline-flex group focus-bounce rounded-2xl shrink-0 no-underline bg-transparent border-none cursor-pointer size-1200"
+  >
+    <Icon class={`mobile:text-[32px] transition-colors ${iconColor}`} name="mi/outline/menu" />
+  </Button>
+</div>
+<div class="header-nav text-tone-neutral-02 hidden" data-header-nav hidden>
   <nav class="header-nav-menu grid-cols-fill auto-rows-min" data-header-nav-menu>
     <div class="flex items-center justify-between">
       <div class="grid text-tone-neutral-03">
@@ -46,22 +65,20 @@ const categories = categoriesData.map((category) => ({
         <Icon name="mi/outline/home" class="text-tone-neutral-04" />
       </Button>
     </div>
-    <div class="h-50 bg-tone-neutral-03 w-full flex"></div>
-    <div class="grid gap-400 grid-cols-fit-lg mobile:grid-cols-full" data-nav-buttons>
+    <div class="h-50 bg-tone-neutral-03 w-full flex tablet:hidden"></div>
+    <div class="grid gap-400 grid-cols-fit-lg mobile:grid-cols-full tablet:hidden" data-nav-buttons>
       {
         categories.map((category) => {
           const isSelected = currentSection?.id === category.id;
           return (
-            <HeaderMenuCategoryCard
-              id={category.id}
-              link={category.link}
+            <HeaderButton
               icon={category.icon}
-              iconHover={category.iconHover}
-              title={category.title}
-              description={category.description}
+              href={category.link}
+              title={category.shortTitle}
+              description={category.title}
+              defaultClass={category.defaultClass}
+              selectedClass={category.selectedClass}
               selected={isSelected}
-              headerIconSelected={isSelected ? category.headerIconSelected : ''}
-              selectedClass={isSelected ? category.headerSelected : ''}
             />
           );
         })
@@ -69,7 +86,7 @@ const categories = categoriesData.map((category) => ({
     </div>
     <div class="h-50 bg-tone-neutral-03 w-full"></div>
     <div class="inline-flex">
-      <mds-pref class="max-w-8000 w-full">
+      <mds-pref class="max-w-8000 w-full text-tone-neutral-03">
         <mds-pref-theme></mds-pref-theme>
         {/* <mds-pref-contrast /> */}
         {/* <mds-pref-animation /> */}

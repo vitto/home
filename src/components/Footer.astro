@@ -13,19 +13,19 @@ const socialLinks = [
   {
     name: 'LinkedIn',
     icon: 'mdi/linkedin',
-    iconHover: 'group-[&:is(:hover,:focus-visible)]:text-label-blue-05 transition',
+    iconHover: 'group-[&:is(:hover,:focus-visible)]/footer-link:text-label-blue-05 transition',
     url: 'https://linkedin.com/in/vittoriovittori',
   },
   {
     name: 'GitHub',
     icon: 'mdi/github',
-    iconHover: 'group-[&:is(:hover,:focus-visible)]:text-tone-neutral-03 transition',
+    iconHover: 'group-[&:is(:hover,:focus-visible)]/footer-link:text-tone-neutral-03 transition',
     url: 'https://github.com/vitto',
   },
   {
     name: 'Resume',
     icon: 'mi/outline/file-download',
-    iconHover: 'group-[&:is(:hover,:focus-visible)]:text-label-yellow-04 transition',
+    iconHover: 'group-[&:is(:hover,:focus-visible)]/footer-link:text-label-yellow-04 transition',
     url: `${baseUrl}/assets/vittorio-vittori-ds-architect-ux-designer-resume.pdf`,
   },
 ];
@@ -48,11 +48,11 @@ const socialLinks = [
             target="_blank"
             title={`Open ${link.name} in a new tab`}
             rel="noopener noreferrer"
-            class="relative group no-underline inline-flex max-w-4000 basis-0 grow focus-bounce rounded-lg p-400 py-600 mobile:p-200 mobile:py-400 bg-tone-neutral/60 hover:bg-tone-neutral backdrop-blur"
+            class="relative group/footer-link no-underline inline-flex max-w-4000 basis-0 grow focus-bounce rounded-lg p-400 py-600 mobile:p-200 mobile:py-400 bg-tone-neutral/60 hover:bg-tone-neutral backdrop-blur"
           >
-            <div class="text-center flex flex-col items-center gap-200 transition w-full group-[&:is(:hover,:focus-visible)]:-translate-y-200 ease-out-expo duration-1000">
+            <div class="text-center flex flex-col items-center gap-200 transition w-full group-[&:is(:hover,:focus-visible)]/footer-link:-translate-y-200 ease-out-expo duration-1000">
               <div
-                class={`p-200 bg-tone-neutral-09 rounded-lg inline-flex transition group-[&:is(:hover,:focus-visible)]:bg-tone-neutral group-[&:is(:hover,:focus-visible)]:shadow-sm-sharp ease-out-expo duration-1000 min-h-1000`}
+                class={`p-200 bg-tone-neutral-09 rounded-lg inline-flex transition group-[&:is(:hover,:focus-visible)]/footer-link:bg-tone-neutral group-[&:is(:hover,:focus-visible)]/footer-link:shadow-sm-sharp ease-out-expo duration-1000 min-h-1000`}
               >
                 <Icon class={link.iconHover} name={link.icon} />
               </div>

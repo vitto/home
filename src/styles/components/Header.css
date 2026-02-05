@@ -6,8 +6,8 @@
     fixed
     flex-col
     grid
-    grid-cols-[48px_auto]
-    h-full
+    grid-cols-[48px_1fr]
+    h-dvh
     items-start
     justify-start
     left-0
@@ -17,7 +17,7 @@
     p-600
     pointer-events-none
     right-0
-    tablet:grid-cols-2
+    tablet:grid-cols-[1fr_400px]
     text-left
     top-0
     transition-cosmetic
@@ -59,4 +59,10 @@
     opacity-100
     scale-100;
   }
+}
+
+.header-role,
+.header-button span {
+  text-box: trim-both cap alphabetic;
+  min-height: auto;
 }

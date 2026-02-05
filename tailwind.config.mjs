@@ -7,6 +7,9 @@ export default {
   content: ['./src/**/*.{astro,html,js,json,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      boxShadow: {
+        'inset-sm-sharp': '0 0 0 2px rgb(var(--tone-neutral-01) / 0.1) inset',
+      },
       containers: {
         '2xs': '6rem', // 96px
         xs: '8rem', // 128px
