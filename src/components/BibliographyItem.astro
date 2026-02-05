@@ -11,31 +11,33 @@ interface Props {
 const { author, title, description, url, status = 'active', class: className = '' } = Astro.props;
 ---
 
-<article class={`grid gap-100 grid-cols-full ${className}`}>
+<article class={`grid gap-200 grid-cols-full ${className}`}>
   <h5 class="text-title-h5 max-w-text">{author} — {title}</h5>
-  <mds-text typography="caption" class="text-info-detail text-pretty max-w-text"
-    >{description}</mds-text
-  >
-  {
-    url && (
-      <a
-        href={url}
-        class={`w-full min-w-0 max-w-min
-          ${status === 'obsolete' ? 'line-through decoration-wavy decoration-tone-neutral-03 text-tone-neutral-05 hover:decoration-tone-neutral-03/0 focus-visible:decoration-tone-neutral-03/0 hover:text-tone-neutral-03 focus-visible:text-tone-neutral-03' : ''}
-          ${status === 'missing' ? 'line-through decoration-solid decoration-tone-neutral-03 text-tone-neutral-05 hover:decoration-tone-neutral-03/0 focus-visible:decoration-tone-neutral-03/0 hover:text-tone-neutral-03 focus-visible:text-tone-neutral-03' : ''}
-        `.trim()}
-        title={`
-          ${status === 'obsolete' ? 'Source changed' : ''}
-          ${status === 'missing' ? 'Source reomved or no longer available' : ''}
-          ${status === 'active' ? 'Go to source' : ''}
-        `.trim()}
-        target="_blank"
-        rel="noreferrer noopener"
-      >
-        <mds-text typography="caption" class="w-full" truncate="word">
-          {url}
-        </mds-text>
-      </a>
-    )
-  }
+  <div class="grid gap-200">
+    <mds-text typography="caption" class="text-info-detail text-pretty max-w-text"
+      >{description}</mds-text
+    >
+    {
+      url && (
+        <a
+          href={url}
+          class={`w-full min-w-0 max-w-min
+            ${status === 'obsolete' ? 'line-through decoration-wavy decoration-tone-neutral-03 text-tone-neutral-05 hover:decoration-tone-neutral-03/0 focus-visible:decoration-tone-neutral-03/0 hover:text-tone-neutral-03 focus-visible:text-tone-neutral-03' : ''}
+            ${status === 'missing' ? 'line-through decoration-solid decoration-tone-neutral-03 text-tone-neutral-05 hover:decoration-tone-neutral-03/0 focus-visible:decoration-tone-neutral-03/0 hover:text-tone-neutral-03 focus-visible:text-tone-neutral-03' : ''}
+          `.trim()}
+          title={`
+            ${status === 'obsolete' ? 'Source changed' : ''}
+            ${status === 'missing' ? 'Source reomved or no longer available' : ''}
+            ${status === 'active' ? 'Go to source' : ''}
+          `.trim()}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <mds-text typography="caption" class="w-full" truncate="word">
+            {url}
+          </mds-text>
+        </a>
+      )
+    }
+  </div>
 </article>
