@@ -76,18 +76,11 @@
     "url": "https://design-system.service.gov.uk/",
     "type": "url"
   },
-  "beyond-interface-inventory": {
-    "author": "Nathan Curtis",
-    "title": "Beyond Interface Inventory",
-    "description": "Argues against forced uniformity and promotes principled variation within systems.",
-    "url": "https://medium.com/eightshapes-llc/beyond-interface-inventory-92c15a4c7bfc",
-    "type": "url"
-  },
   "design-that-scales": {
     "author": "Dan Mall",
     "title": "Design That Scales",
-    "description": "Explores collaboration models between design and engineering.",
-    "url": "https://danmall.com/speaking/design-that-scales/",
+    "description": "In Design That Scales, design systems expert Dan Mall draws on his extensive experience helping some of the world’s most recognizable brands create design practices that are truly sustainable.",
+    "url": "https://designsystem.university/books/design-that-scales",
     "type": "book"
   },
   "learning-javascript-design-patterns": {
@@ -97,26 +90,12 @@
     "url": "https://addyosmani.com/resources/essentialjsdesignpatterns/book/",
     "type": "book"
   },
-  "design-tokens-in-lightning": {
-    "author": "Salesforce",
-    "title": "Design Tokens in Lightning",
-    "description": "Demonstrates how tokens bridge design and code.",
-    "url": "https://www.lightningdesignsystem.com/design-tokens/",
-    "type": "url"
-  },
-  "design-systems-and-code": {
-    "author": "Figma",
-    "title": "Design Systems and Code",
-    "description": "Explains workflows that keep design and development aligned.",
-    "url": "https://www.figma.com/blog/design-systems-and-code/",
-    "type": "url"
-  },
-  "app-design-guidelines": {
-    "author": "Shopify",
-    "title": "App Design Guidelines",
-    "description": "Shows parity through shared abstractions.",
-    "url": "https://shopify.dev/docs/apps/design",
-    "type": "url"
+  "architecting-subcomponents": {
+    "author": "Nathan Curtis",
+    "title": "Architecting Subcomponents",
+    "description": "Playing constant catch up, adding prop after prop to support and maintain too many cases? Break larger components into flexible subcomponents so that users can solve their unique problems themselves.",
+    "url": "https://www.youtube.com/watch?v=NiDoqI_ZhvY",
+    "type": "video"
   },
   "the-paradox-of-choice": {
     "author": "Barry Schwartz",
@@ -125,32 +104,11 @@
     "url": "https://www.harpercollins.com/products/the-paradox-of-choice-barry-schwartz",
     "type": "book"
   },
-  "about-face": {
-    "author": "Alan Cooper",
-    "title": "About Face",
-    "description": "Discusses constraints as a core interaction design principle.",
-    "url": "https://www.aboutfacebook.com/",
-    "type": "book"
-  },
-  "design-constraints-improve-ux": {
-    "author": "NNGroup",
-    "title": "Design Constraints Improve UX",
-    "description": "Explains why constraints lead to better user experiences.",
-    "url": "https://www.nngroup.com/articles/design-constraints/",
-    "type": "url"
-  },
-  "design-system-principles": {
-    "author": "GOV.UK",
-    "title": "Design System Principles",
-    "description": "Demonstrates how explicit constraints support consistency at scale.",
-    "url": "https://design-system.service.gov.uk/design-system/",
-    "type": "url"
-  },
-  "designing-with-constraints": {
-    "author": "Smashing Magazine",
-    "title": "Designing with Constraints",
-    "description": "Explores constraint-driven approaches in UI design.",
-    "url": "https://www.smashingmagazine.com/2019/01/designing-with-constraints/",
+  "design-principles": {
+    "author": "Ben Brignell",
+    "title": "Design Principles",
+    "description": "An open source collection of Design Principles and methods.",
+    "url": "https://principles.design/",
     "type": "url"
   },
   "the-culture-map": {
@@ -174,11 +132,18 @@
     "url": "https://www.smashingmagazine.com/design-systems-book/",
     "type": "book"
   },
-  "contributing-and-iteration": {
+  "managing-design-systems-features-releases-to-roadmaps-and-backlogs": {
+    "author": "Nathan Curtis",
+    "title": "Managing Design Systems: Features & Releases to Roadmaps & Backlogs",
+    "description": "Making design system features is exciting. But what about managing assignments, tracking tasks, and discussing status? The momentum of emergent tokens and rapid Figma and code prototypes gives way to the dulling rigor of quality and collaboration across designers and developers wanting to operate independently.",
+    "url": "https://www.youtube.com/watch?v=hlY5G8kanxY",
+    "type": "video"
+  },
+  "gov-uk-community": {
     "author": "GOV.UK Design System",
-    "title": "Contributing and Iteration",
+    "title": "Community",
     "description": "Demonstrates how imperfect systems evolve through use and contribution.",
-    "url": "https://design-system.service.gov.uk/",
+    "url": "https://design-system.service.gov.uk/community/",
     "type": "url"
   },
   "inclusive-design-patterns": {
@@ -230,35 +195,6 @@
     "url": "https://jnd.org/the-design-of-everyday-things-revised-and-expanded-edition/",
     "type": "book"
   },
-  "microinteractions": {
-    "author": "Dan Saffer",
-    "title": "Microinteractions",
-    "description": "Demonstrates how constraints shape interaction behavior and feedback.",
-    "url": "https://cdn.bookey.app/files/pdf/book/en/microinteractions.pdf",
-    "type": "book"
-  },
-  "domain-driven-design": {
-    "author": "Eric Evans",
-    "title": "Domain-Driven Design",
-    "description": "Explores bounded contexts and modular thinking in system design.",
-    "url": "https://www.domainlanguage.com/ddd/",
-    "type": "book"
-  },
-  "tidy-first": {
-    "author": "Kent Beck",
-    "title": "Tidy First?",
-    "description": "Focuses on safe, incremental change in software systems.",
-    "url": "https://tidyfirst.org/",
-    "type": "book"
-  },
-  "system-boundaries-and-guardrails": {
-    "author": "Nathan Curtis",
-    "title": "System Boundaries and Guardrails",
-    "description": "Focuses on guardrails as enablers rather than restrictions.",
-    "url": "https://medium.com/eightshapes-llc/guardrails-not-guidelines-9c7a8fddae8a",
-    "type": "url",
-    "status": "missing"
-  },
   "design-tokens-and-constraints": {
     "author": "Material Design",
     "title": "Design Tokens and Constraints",
@@ -287,13 +223,6 @@
     "url": "https://www.lightningdesignsystem.com/guidelines/overview/",
     "type": "url"
   },
-  "the-lean-startup": {
-    "author": "Eric Ries",
-    "title": "The Lean Startup",
-    "description": "Explains how to build feedback loops and iterate based on real user data.",
-    "url": "https://theleanstartup.com/",
-    "type": "book"
-  },
   "sprint": {
     "author": "Jake Knapp",
     "title": "Sprint",
@@ -307,34 +236,6 @@
     "description": "Explains why feedback is critical for design system success.",
     "url": "https://www.nngroup.com/articles/design-system-feedback/",
     "type": "url"
-  },
-  "building-design-system-feedback-loops": {
-    "author": "InVision",
-    "title": "Building Design System Feedback Loops",
-    "description": "Practical strategies for collecting and acting on design system feedback.",
-    "url": "https://www.invisionapp.com/inside-design/design-system-feedback-loops/",
-    "type": "url"
-  },
-  "how-we-gather-feedback": {
-    "author": "Shopify Polaris",
-    "title": "How We Gather Feedback",
-    "description": "Shows how a large design system team collects and processes feedback.",
-    "url": "https://polaris.shopify.com/contributing/getting-started",
-    "type": "url"
-  },
-  "refactoring-2nd-edition": {
-    "author": "Martin Fowler",
-    "title": "Refactoring (2nd Edition)",
-    "description": "Explains how systems can evolve incrementally without breaking behavior.",
-    "url": "https://martinfowler.com/books/refactoring.html",
-    "type": "book"
-  },
-  "clean-architecture": {
-    "author": "Robert C. Martin",
-    "title": "Clean Architecture",
-    "description": "Discusses architectural boundaries that enable long-term evolution.",
-    "url": "https://www.pearson.com/en-us/subject-catalog/p/clean-architecture/P200000003295/9780134494166",
-    "type": "book"
   },
   "semantic-versioning-specification": {
     "author": "SemVer",
@@ -350,33 +251,19 @@
     "url": "https://shopify.engineering/versioning-polaris",
     "type": "url"
   },
-  "design-systems-need-versioning": {
-    "author": "NNGroup",
-    "title": "Design Systems Need Versioning",
-    "description": "Explains why versioning is critical for adoption and trust.",
-    "url": "https://www.nngroup.com/articles/design-system-versioning/",
+  "design-system-versioning-single-library-or-individual-components": {
+    "author": "Brad Frost",
+    "title": "Design system versioning: single library or individual components?",
+    "description": "This post breaks down the pros and cons of versioning the whole library vs individual components.",
+    "url": "https://bradfrost.com/blog/post/design-system-versioning-single-library-or-individual-components/",
     "type": "url"
-  },
-  "the-product-is-docs": {
-    "author": "Christopher Gales",
-    "title": "The Product Is Docs",
-    "description": "Argues that documentation itself is a core part of the product experience.",
-    "url": "https://idratherbewriting.com/2017/06/20/the-product-is-docs/",
-    "type": "book"
   },
   "docs-like-code": {
     "author": "Anne Gentle",
     "title": "Docs Like Code",
     "description": "Explains how documentation benefits from product thinking and engineering workflows.",
     "url": "https://www.docslikecode.com/",
-    "type": "url"
-  },
-  "technical-writing-courses": {
-    "author": "Google",
-    "title": "Technical Writing Courses",
-    "description": "Practical guidance on clarity, structure, and audience-focused documentation.",
-    "url": "https://developers.google.com/tech-writing",
-    "type": "url"
+    "type": "book"
   },
   "documentation-guide": {
     "author": "Write the Docs",
@@ -391,35 +278,6 @@
     "description": "Introduces a compositional model for building scalable design systems.",
     "url": "https://atomicdesign.bradfrost.com/",
     "type": "book"
-  },
-  "implementation-patterns": {
-    "author": "Kent Beck",
-    "title": "Implementation Patterns",
-    "description": "Discusses small, composable units in software architecture.",
-    "url": "https://martinfowler.com/books/implementationPatterns.html",
-    "type": "book"
-  },
-  "design-systems-at-scale": {
-    "author": "Google Material Design Team",
-    "title": "Design Systems at Scale",
-    "description": "Highlights the role of shared sources and tooling in cross-team alignment.",
-    "url": "https://material.io/design/systems/design-systems-at-scale.html",
-    "type": "url",
-    "status": "missing"
-  },
-  "component-based-design": {
-    "author": "Google",
-    "title": "Component-Based Design",
-    "description": "Explains principles behind reusable and composable UI components.",
-    "url": "https://material.io/design/architecture/component-based.html",
-    "type": "url"
-  },
-  "designing-for-composition": {
-    "author": "Smashing Magazine",
-    "title": "Designing For Composition",
-    "description": "Explores composition as a strategy for scalable interface design.",
-    "url": "https://www.smashingmagazine.com/2019/02/designing-composable-systems/",
-    "type": "url"
   },
   "modular-design-systems": {
     "author": "Nathan Curtis",

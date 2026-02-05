@@ -20,6 +20,7 @@ const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompa
 // Collect bibliography items from all principles using bibliographies.json
 const allBooks: any[] = [];
 const allUrls: any[] = [];
+const allVideos: any[] = [];
 const seenIds = new Set<string>();
 
 if (data.principles && bibliographies) {
@@ -31,8 +32,10 @@ if (data.principles && bibliographies) {
           const item = (bibliographies as any)[sourceId];
           if (item.type === 'book') {
             allBooks.push(item);
-          } else if (item.type === 'url' || item.type === 'video') {
+          } else if (item.type === 'url') {
             allUrls.push(item);
+          } else if (item.type === 'video') {
+            allVideos.push(item);
           }
         }
       });
@@ -43,6 +46,7 @@ if (data.principles && bibliographies) {
 // Remove duplicates based on URL and separate by type
 const uniqueBooks = Array.from(new Map(allBooks.map((item: any) => [item.url, item])).values());
 const uniqueUrls = Array.from(new Map(allUrls.map((item: any) => [item.url, item])).values());
+const uniqueVideos = Array.from(new Map(allVideos.map((item: any) => [item.url, item])).values());
 
 // Sort alphabetically by author, then by title
 const sortBibliography = (items: any[]) => {
@@ -55,6 +59,7 @@ const sortBibliography = (items: any[]) => {
 
 const sortedBooks = sortBibliography(uniqueBooks);
 const sortedUrls = sortBibliography(uniqueUrls);
+const sortedVideos = sortBibliography(uniqueVideos);
 ---
 
 <CategoryLayout
@@ -84,7 +89,7 @@ const sortedUrls = sortBibliography(uniqueUrls);
     }
   </Principles>
   {
-    (sortedBooks.length > 0 || sortedUrls.length > 0) && (
+    (sortedBooks.length > 0 || sortedUrls.length > 0 || sortedVideos.length > 0) && (
       <div class="mt-1200 px-600">
         <Bibliography>
           {sortedBooks.length > 0 && (
@@ -103,6 +108,19 @@ const sortedUrls = sortBibliography(uniqueUrls);
           {sortedUrls.length > 0 && (
             <BibliographySection type="url">
               {sortedUrls.map((item: any) => (
+                <BibliographyItem
+                  author={item.author}
+                  title={item.title}
+                  description={item.description}
+                  url={item.url}
+                  status={item.status}
+                />
+              ))}
+            </BibliographySection>
+          )}
+          {sortedVideos.length > 0 && (
+            <BibliographySection type="video">
+              {sortedVideos.map((item: any) => (
                 <BibliographyItem
                   author={item.author}
                   title={item.title}

@@ -105,6 +105,9 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
         const innerCard = card.querySelector('.principle-card');
         const shouldShow = cardCategory === filterValue;
 
+        innerCard.classList.remove('duration-500');
+        innerCard.classList.add('duration-0');
+
         if (shouldShow) {
           card.classList.add('order-first');
           innerCard.setAttribute('data-filtered', 'true');
@@ -112,13 +115,13 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
           card.classList.remove('order-first');
           innerCard.removeAttribute('data-filtered');
         }
-        innerCard.classList.add('duration-0');
       });
 
       setTimeout(() => {
         principleCards.forEach((card) => {
           const innerCard = card.querySelector('.principle-card');
           innerCard.classList.remove('duration-0');
+          innerCard.classList.add('duration-500');
         });
       }, 10);
     };

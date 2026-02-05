@@ -12,22 +12,14 @@
   "principles": [
     {
       "id": "single-source-of-truth",
-      "draft": false,
       "title": "Single Source of Truth",
       "category": "Architecture",
       "icon": "mi/outline/account-balance",
       "description": "A centralized repository where all design decisions live, ensuring consistency across all platforms, tools and teams.",
-      "sources": [
-        "atomic-design",
-        "modular-design-systems",
-        "design-systems",
-        "design-systems-at-scale",
-        "design-systems-for-developers"
-      ]
+      "sources": ["atomic-design", "design-systems"]
     },
     {
       "id": "consistency-over-uniformity",
-      "draft": false,
       "title": "Consistency Over Uniformity",
       "category": "Component Design",
       "icon": "mi/outline/verified",
@@ -40,13 +32,11 @@
         "mobile-first",
         "styles-and-patterns",
         "design-systems",
-        "beyond-interface-inventory",
         "atomic-design"
       ]
     },
     {
       "id": "adoption-over-perfection",
-      "draft": false,
       "title": "Adoption Over Perfection",
       "category": "Adoption",
       "icon": "mi/outline/rocket-launch",
@@ -55,65 +45,45 @@
         "the-component-adoption-gap-understanding-the-psychology-behind-design-system-success",
         "adopting-design-systems",
         "adopting-design-system-generations",
+        "gov-uk-community",
 
         "inspired",
         "extreme-programming-explained-embrace-change",
-        "design-systems",
-        "contributing-and-iteration"
+        "design-systems"
       ]
     },
     {
       "id": "constraints-driven-design",
-      "draft": false,
       "title": "Constraints-Driven Design",
       "category": "Architecture",
       "icon": "mi/outline/tune",
       "description": "Define clear constraints so teams build consistent solutions without stifling flexibility.",
       "sources": [
         "the-design-of-everyday-things",
-        "microinteractions",
-        "domain-driven-design",
-        "tidy-first",
         "design-systems",
         "atomic-design",
-        "system-boundaries-and-guardrails",
         "design-tokens-and-constraints",
         "accessibility-constraints"
       ]
     },
     {
       "id": "documentation-as-a-product",
-      "draft": false,
       "title": "Documentation as a Product",
       "category": "Adoption",
       "icon": "mi/outline/menu-book",
       "description": "Treat documentation as a first-class product with ownership, roadmap, and quality standards.",
-      "sources": [
-        "the-product-is-docs",
-        "docs-like-code",
-        "technical-writing-courses",
-        "documentation-guide"
-      ]
+      "sources": ["docs-like-code", "documentation-guide"]
     },
     {
       "id": "modularity-and-composability",
-      "draft": false,
       "title": "Modularity and Composability",
       "category": "Component Design",
       "icon": "mi/outline/widgets",
       "description": "Build complex interfaces by composing smaller, focused components that work together predictably.",
-      "sources": [
-        "atomic-design",
-        "domain-driven-design",
-        "implementation-patterns",
-        "design-systems-at-scale",
-        "component-based-design",
-        "designing-for-composition"
-      ]
+      "sources": ["atomic-design", "domain-driven-design"]
     },
     {
       "id": "scalability-by-design",
-      "draft": false,
       "title": "Scalability by Design",
       "category": "Architecture",
       "icon": "mi/outline/trending-up",
@@ -122,50 +92,48 @@
     },
     {
       "id": "design-development-parity",
-      "draft": false,
-      "title": "Design–Development Parity",
+      "title": "Design-Development Parity",
       "category": "Architecture",
       "icon": "mi/outline/sync",
       "description": "Keep design and development artifacts in sync, ensuring what is designed matches what is built and maintained.",
       "sources": [
         "design-that-scales",
+        "architecting-subcomponents",
         "atomic-design",
-        "learning-javascript-design-patterns",
-        "design-tokens-in-lightning",
-        "design-systems-and-code",
-        "app-design-guidelines"
+        "design-systems-and-code"
       ]
     },
     {
       "id": "clear-ownership-and-governance",
-      "draft": false,
       "title": "Clear Ownership and Governance",
       "category": "Maintenance",
       "icon": "mi/outline/gavel",
       "description": "Establish clear processes for contributions, reviews, and decision-making to ensure quality and consistency.",
-      "sources": ["the-culture-map"]
+      "sources": [
+        "the-culture-map",
+        "managing-design-systems-features-releases-to-roadmaps-and-backlogs"
+      ]
     },
     {
       "id": "accessibility-as-a-baseline",
-      "draft": false,
       "title": "Accessibility as a Baseline",
       "category": "Adoption",
       "icon": "mi/outline/accessibility-new",
       "description": "Accessibility built into the foundation of every component, not added as an afterthought.",
       "sources": [
+        "a-web-for-everyone",
+        "accessibility-constraints",
+        "accessibility-in-design-systems",
+        "accessibility-is-not-optional",
         "accessible-design-systems",
         "accessible-design-systems-dont-guarantee-accessible-products",
-        "inclusive-design-patterns",
         "dont-make-me-think-revisited",
-        "a-web-for-everyone",
-        "web-content-accessibility-guidelines-wcag",
-        "accessibility-in-design-systems",
-        "accessibility-is-not-optional"
+        "inclusive-design-patterns",
+        "web-content-accessibility-guidelines-wcag"
       ]
     },
     {
       "id": "explicit-constraints",
-      "draft": false,
       "title": "Explicit Constraints",
       "category": "Architecture",
       "icon": "mi/outline/rule",
@@ -173,42 +141,32 @@
       "sources": [
         "the-design-of-everyday-things",
         "the-paradox-of-choice",
-        "about-face",
-        "design-constraints-improve-ux",
-        "design-system-principles",
-        "designing-with-constraints"
+        "about-face-the-essentials-of-interaction-design",
+        "design-principles"
       ]
     },
     {
       "id": "evolvability-and-versioning",
-      "draft": false,
       "title": "Evolvability and Versioning",
       "category": "Maintenance",
       "icon": "mi/outline/update",
       "description": "Maintain stable APIs while evolving the system, with clear versioning strategies and migration paths.",
       "sources": [
-        "refactoring-2nd-edition",
-        "tidy-first",
-        "clean-architecture",
         "semantic-versioning-specification",
         "versioning-polaris",
-        "design-systems-need-versioning"
+        "design-system-versioning-single-library-or-individual-components"
       ]
     },
     {
       "id": "feedback-driven-improvement",
-      "draft": false,
       "title": "Feedback-Driven Improvement",
       "category": "Maintenance",
       "icon": "mi/outline/feedback",
       "description": "Continuously improve the system based on real usage data, user feedback, and team needs.",
       "sources": [
-        "the-lean-startup",
         "sprint",
         "the-design-of-everyday-things",
-        "design-systems-need-feedback-loops",
-        "building-design-system-feedback-loops",
-        "how-we-gather-feedback"
+        "building-design-system-feedback-loops"
       ]
     }
   ]

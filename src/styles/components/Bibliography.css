@@ -1,5 +1,16 @@
 .bibliographies a {
-  @apply markdown-link;
+  @apply transition-cosmetic ease-out-circ duration-500 focus-bounce;
+
+  justify-self: start;
+  display: inline-flex;
+  box-shadow: inset 0 -2px 0 rgb(var(--tone-neutral-08));
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+.bibliographies a:hover,
+.bibliographies a:focus-visible {
+  box-shadow: inset 0 -20px 0 rgb(var(--label-yellow-09));
 }
 
 .bibliography-section + .bibliography-section {

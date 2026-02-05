@@ -54,7 +54,7 @@ const codeContent = codeMatch ? codeMatch[1] : highlightedCode;
 const uniqueId = `code-${Math.random().toString(36).substring(2, 9)}`;
 ---
 
-<div class={`code-snippet-container mobile:rounded-none ${className}`}>
+<div class={`code-snippet-container select-none mobile:rounded-none ${className}`}>
   <div class="flex items-center justify-center gap-200">
     {
       variant === 'do' && (
