@@ -13,8 +13,8 @@ import Icon from './Icon.astro';
  * @param {string} defaultClass - Default CSS classes
  * @param {string} selectedClass - Selected CSS classes
  * @param {string} icon - Optional icon name
- * @param {boolean} selected - Optional selected state
  * @param {string} href - Link URL (defaults to "#")
+ * @param {boolean} selected - Optional selected state
  */
 interface Props {
   title: string;
@@ -31,7 +31,7 @@ const {
   title,
   description,
   defaultClass = 'hover:bg-tone-neutral-09',
-  selectedClass = '',
+  selectedClass,
   class: className = '',
   icon,
   selected = false,
@@ -42,7 +42,7 @@ const {
 <a
   href={href}
   title={`Go to ${description}`}
-  class={`header-button self-center focus-bounce inline-flex justify-start items-center gap-400 rounded-full px-600 p-300 no-underline ${className} ${defaultClass} ${selected ? (selectedClass ?? defaultSelectedClass) + ' pointer-events-none -z-10' : ''}`}
+  class={`header-button self-center focus-bounce inline-flex justify-start items-center gap-400 mobile:gap-300 rounded-full mobile:rounded-xl tablet:px-600 p-300 no-underline ${className} ${defaultClass} ${selected ? (selectedClass ?? defaultSelectedClass) + ' pointer-events-none -z-10' : ''}`}
 >
   {icon && <Icon name={icon} />}
   <div class="grid gap-200 auto-rows-min">

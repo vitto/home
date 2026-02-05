@@ -30,14 +30,14 @@ const categories = categoriesData.map((category) => ({
     size === 'lg' &&
       categories.map((category) => {
         const isSelected = currentSection?.id === category.id;
+        // defaultClass={category.defaultClass}
+        // selectedClass={category.selectedClass}
         return (
           <HeaderButton
             href={category.link}
             class="mobile:hidden"
             title={category.shortTitle}
             description={category.title}
-            defaultClass={category.defaultClass}
-            selectedClass={category.selectedClass}
             selected={isSelected}
           />
         );
@@ -55,29 +55,24 @@ const categories = categoriesData.map((category) => ({
 <div class="header-nav text-tone-neutral-02 hidden" data-header-nav hidden>
   <nav class="header-nav-menu grid-cols-fill auto-rows-min" data-header-nav-menu>
     <div class="flex items-center justify-between">
-      <div class="grid text-tone-neutral-03">
-        <h2 class="text-title-h3">
-          Vittori<span class="inline-block animate-pulse-more">o</span>
-        </h2>
-        <p class="text-info-tip">{personalData.role}</p>
-      </div>
+      <Icon name="vv/logo" class="text-[48px] justify-self-center" />
       <Button href={baseUrl} variant="light" class="shrink-0 py-300" title="Back to Home">
         <Icon name="mi/outline/home" class="text-tone-neutral-04" />
       </Button>
     </div>
     <div class="h-50 bg-tone-neutral-03 w-full flex tablet:hidden"></div>
-    <div class="grid gap-400 grid-cols-fit-lg mobile:grid-cols-full tablet:hidden" data-nav-buttons>
+    <div class="grid gap-200 grid-cols-fit-lg mobile:grid-cols-full tablet:hidden" data-nav-buttons>
       {
         categories.map((category) => {
           const isSelected = currentSection?.id === category.id;
+          // defaultClass={category.defaultClass}
+          // selectedClass={category.selectedClass}
           return (
             <HeaderButton
               icon={category.icon}
               href={category.link}
               title={category.shortTitle}
               description={category.title}
-              defaultClass={category.defaultClass}
-              selectedClass={category.selectedClass}
               selected={isSelected}
             />
           );

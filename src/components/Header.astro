@@ -28,11 +28,12 @@ const { menu = true } = Astro.props;
         href={baseUrl}
         class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] hover:translate-y-[8px] focus-visible:rotate-[60deg] focus-visible:translate-y-[8px] ease-out-expo transition-transform duration-500 no-underline"
       >
-        <Icon name="vv/logo" class="text-[64px] justify-self-center" />
+        <Icon name="vv/logo" class="text-[48px] justify-self-center" />
       </a>
       <div class="hidden desktop:grid">
-        <h1 class="text-title-h3">
+        <h1 class="text-title-h3" aria-label="Vittorio Vittori">
           Vittori<mds-text
+            aria-hidden="true"
             class="inline-block animate-pulse-more group-hover/header:opacity-100"
             tag="span"
             typography="h3"
