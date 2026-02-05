@@ -21,7 +21,7 @@ const { menu = true } = Astro.props;
 ---
 
 <div>
-  <header class="flex items-center gap-400 justify-between group">
+  <header class="flex items-center gap-400 justify-between group/header">
     <div class="inline-flex items-center gap-400 py-300 -translate-y-200">
       <a
         title="Back to Home"
@@ -32,12 +32,13 @@ const { menu = true } = Astro.props;
       </a>
       <div class="hidden desktop:grid">
         <h1 class="text-title-h3">
-          Vittori<span class="inline-block animate-pulse-more"
-            >o <span
-              class="group-hover:opacity-100 group-focus-visible:opacity-100 opacity-0 duration-1000 transition-opacity"
-              >Vittori</span
-            ></span
-          >
+          Vittori<mds-text
+            class="inline-block animate-pulse-more group-hover/header:opacity-100"
+            tag="span"
+            typography="h3"
+            animation="jugop"
+            text="o"
+            data-name></mds-text>
         </h1>
         <p class="text-info-option header-role">{personalData.role}</p>
       </div>
@@ -54,3 +55,27 @@ const { menu = true } = Astro.props;
   </header>
   <div class="h-50 bg-tone-neutral-03"></div>
 </div>
+
+<script>
+  function initHeaderHover() {
+    const header = document.querySelector('header');
+    const mdsText = document.querySelector('mds-text[data-name]');
+
+    if (!header || !mdsText) return;
+
+    header.addEventListener('mouseenter', () => {
+      mdsText.setAttribute('text', 'o Vittori');
+    });
+
+    header.addEventListener('mouseleave', () => {
+      mdsText.setAttribute('text', 'o');
+    });
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeaderHover);
+  } else {
+    initHeaderHover();
+  }
+</script>
