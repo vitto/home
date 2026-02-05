@@ -1,6 +1,7 @@
 ---
 import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
 import data from '../../data/user-centered-design.json';
+import bibliographies from '../../data/bibliographies.json';
 import ConcreteActionableGuidance from '../../components/use-cases/user-centered-design/help-and-documentation/ConcreteActionableGuidance.astro';
 import EasyToSearch from '../../components/use-cases/user-centered-design/help-and-documentation/EasyToSearch.astro';
 import FocusedOnUsersTask from '../../components/use-cases/user-centered-design/help-and-documentation/FocusedOnUsersTask.astro';
@@ -15,10 +16,18 @@ import BibliographySection from '../../components/BibliographySection.astro';
 const principle = data.principles.find((p) => p.id === 'help-and-documentation')!;
 const baseUrl = import.meta.env.BASE_URL;
 const sectionPath = '/user-centered-design';
-const bibliography =
-  (data.bibliography as any[])?.filter((item: any) => principle.sources?.includes(item.id)) || [];
+// Get bibliography items from bibliographies.json using principle.sources
+const bibliography: any[] = [];
+if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
+  principle.sources.forEach((sourceId: string) => {
+    if ((bibliographies as any)[sourceId]) {
+      bibliography.push((bibliographies as any)[sourceId]);
+    }
+  });
+}
 const books = bibliography?.filter((item: any) => item.type === 'book') || [];
-const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+const urls =
+  bibliography?.filter((item: any) => item.type === 'url' || item.type === 'video') || [];
 
 // Sort bibliography alphabetically by author, then by title
 const sortBibliography = (items: any[]) => {

@@ -1,0 +1,671 @@
+{
+  "accessible-design-systems": {
+    "author": "Henny Swan",
+    "title": "Accessible design systems",
+    "description": "A design system is a library of styles, components, and patterns used by product teams to consistently and efficiently launch new pages and features. A good system has accessibility embedded throughout and includes documentation, guidelines and implementation notes for accessibility.",
+    "url": "https://tetralogical.com/blog/2022/06/24/accessible-design-systems/",
+    "type": "url"
+  },
+  "accessible-design-systems-dont-guarantee-accessible-products": {
+    "author": "Nathan Curtis",
+    "title": "“Accessible” Design Systems Don’t Guarantee Accessible Products",
+    "description": "Accessibility is an Adopter’s Job Too, and They’ve Got Work To Do.",
+    "url": "https://medium.com/eightshapes-llc/accessible-design-systems-dont-guarantee-accessible-products-3478e3a462ba",
+    "type": "url"
+  },
+  "adopting-design-systems": {
+    "author": "Nathan Curtis",
+    "title": "Adopting Design Systems",
+    "description": "A Playbook for Working with Product Teams & Managers",
+    "url": "https://medium.com/eightshapes-llc/adopting-design-systems-71e599ff660a",
+    "type": "url"
+  },
+  "adopting-design-system-generations": {
+    "author": "Nathan Curtis",
+    "title": "Adopting Design System Generations",
+    "description": "How to face and reframe challenges of a changing system",
+    "url": "https://medium.com/eightshapes-llc/adopting-design-system-generations-900535442a16",
+    "type": "url"
+  },
+  "design-tokens-naming-playbook": {
+    "author": "Romina Kavcic",
+    "title": "Design Tokens Naming Playbook",
+    "description": "So, what are design tokens? Design tokens are nicknames for design elements.",
+    "url": "https://thedesignsystem.guide/design-tokens-naming-playbook",
+    "type": "url"
+  },
+  "the-component-adoption-gap-understanding-the-psychology-behind-design-system-success": {
+    "author": "Murphy Trueman",
+    "title": "The component adoption gap: Understanding the psychology behind design system success",
+    "description": "Why some elements become team favourites, while others gather digital dust –and what you can do about it.",
+    "url": "https://www.designsystemscollective.com/the-component-adoption-gap-understanding-the-psychology-behind-design-system-success-89d4f61ddb60",
+    "type": "url"
+  },
+  "usability-engineering": {
+    "author": "Jakob Nielsen",
+    "title": "Usability Engineering",
+    "description": "Foundational work on consistency as a usability principle focused on predictability rather than visual sameness.",
+    "url": "https://www.nngroup.com/books/usability-engineering/",
+    "type": "book"
+  },
+  "about-face-the-essentials-of-interaction-design": {
+    "author": "Alan Cooper",
+    "title": "About Face: The Essentials of Interaction Design",
+    "description": "Explores consistency in interaction models and mental models, emphasizing meaning over appearance.",
+    "url": "https://www.wiley.com/en-us/About+Face%3A+The+Essentials+of+Interaction+Design%2C+4th+Edition-p-9781118766576",
+    "type": "book"
+  },
+  "consistency-and-standards": {
+    "author": "Rachel Krause",
+    "title": "Consistency and Standards",
+    "description": "Clarifies that consistency is about reducing cognitive load, not visual duplication.",
+    "url": "https://www.nngroup.com/articles/consistency-and-standards/",
+    "type": "book"
+  },
+  "mobile-first": {
+    "author": "Luke Wroblewski",
+    "title": "Mobile First",
+    "description": "Demonstrates how context-driven variation is necessary while preserving consistent patterns.",
+    "url": "https://abookapart.com/products/mobile-first",
+    "type": "book"
+  },
+  "styles-and-patterns": {
+    "author": "GOV.UK Design System",
+    "title": "Design your service using GOV.UK styles, components and patterns",
+    "description": "Real-world example of consistency through shared patterns rather than uniform components.",
+    "url": "https://design-system.service.gov.uk/",
+    "type": "url"
+  },
+  "beyond-interface-inventory": {
+    "author": "Nathan Curtis",
+    "title": "Beyond Interface Inventory",
+    "description": "Argues against forced uniformity and promotes principled variation within systems.",
+    "url": "https://medium.com/eightshapes-llc/beyond-interface-inventory-92c15a4c7bfc",
+    "type": "url"
+  },
+  "design-that-scales": {
+    "author": "Dan Mall",
+    "title": "Design That Scales",
+    "description": "Explores collaboration models between design and engineering.",
+    "url": "https://danmall.com/speaking/design-that-scales/",
+    "type": "book"
+  },
+  "learning-javascript-design-patterns": {
+    "author": "Addy Osmani",
+    "title": "Learning JavaScript Design Patterns",
+    "description": "Connects implementation patterns to design intent.",
+    "url": "https://addyosmani.com/resources/essentialjsdesignpatterns/book/",
+    "type": "book"
+  },
+  "design-tokens-in-lightning": {
+    "author": "Salesforce",
+    "title": "Design Tokens in Lightning",
+    "description": "Demonstrates how tokens bridge design and code.",
+    "url": "https://www.lightningdesignsystem.com/design-tokens/",
+    "type": "url"
+  },
+  "design-systems-and-code": {
+    "author": "Figma",
+    "title": "Design Systems and Code",
+    "description": "Explains workflows that keep design and development aligned.",
+    "url": "https://www.figma.com/blog/design-systems-and-code/",
+    "type": "url"
+  },
+  "app-design-guidelines": {
+    "author": "Shopify",
+    "title": "App Design Guidelines",
+    "description": "Shows parity through shared abstractions.",
+    "url": "https://shopify.dev/docs/apps/design",
+    "type": "url"
+  },
+  "the-paradox-of-choice": {
+    "author": "Barry Schwartz",
+    "title": "The Paradox of Choice",
+    "description": "Shows how too many options hinder decision-making.",
+    "url": "https://www.harpercollins.com/products/the-paradox-of-choice-barry-schwartz",
+    "type": "book"
+  },
+  "about-face": {
+    "author": "Alan Cooper",
+    "title": "About Face",
+    "description": "Discusses constraints as a core interaction design principle.",
+    "url": "https://www.aboutfacebook.com/",
+    "type": "book"
+  },
+  "design-constraints-improve-ux": {
+    "author": "NNGroup",
+    "title": "Design Constraints Improve UX",
+    "description": "Explains why constraints lead to better user experiences.",
+    "url": "https://www.nngroup.com/articles/design-constraints/",
+    "type": "url"
+  },
+  "design-system-principles": {
+    "author": "GOV.UK",
+    "title": "Design System Principles",
+    "description": "Demonstrates how explicit constraints support consistency at scale.",
+    "url": "https://design-system.service.gov.uk/design-system/",
+    "type": "url"
+  },
+  "designing-with-constraints": {
+    "author": "Smashing Magazine",
+    "title": "Designing with Constraints",
+    "description": "Explores constraint-driven approaches in UI design.",
+    "url": "https://www.smashingmagazine.com/2019/01/designing-with-constraints/",
+    "type": "url"
+  },
+  "the-culture-map": {
+    "author": "Erin Meyer",
+    "title": "The Culture Map",
+    "description": "Provides insight into decision-making and ownership across teams.",
+    "url": "https://erinmeyer.com/books/the-culture-map/",
+    "type": "book"
+  },
+  "inspired": {
+    "author": "Marty Cagan",
+    "title": "Inspired",
+    "description": "Strong grounding in shipping usable solutions and iterating based on team and user feedback.",
+    "url": "https://www.svpg.com/inspired-how-to-create-products-customers-love/",
+    "type": "book"
+  },
+  "design-systems": {
+    "author": "Alla Kholmatova",
+    "title": "Design Systems",
+    "description": "Addresses why rigid, over-designed systems struggle with adoption in real organizations.",
+    "url": "https://www.smashingmagazine.com/design-systems-book/",
+    "type": "book"
+  },
+  "contributing-and-iteration": {
+    "author": "GOV.UK Design System",
+    "title": "Contributing and Iteration",
+    "description": "Demonstrates how imperfect systems evolve through use and contribution.",
+    "url": "https://design-system.service.gov.uk/",
+    "type": "url"
+  },
+  "inclusive-design-patterns": {
+    "author": "Heydon Pickering",
+    "title": "Inclusive Design Patterns",
+    "description": "Practical guidance on building accessible UI patterns.",
+    "url": "https://inclusive-components.design/",
+    "type": "book"
+  },
+  "dont-make-me-think-revisited": {
+    "author": "Steve Krug",
+    "title": "Don't Make Me Think (Revisited)",
+    "description": "Highlights usability and accessibility as core quality attributes.",
+    "url": "https://sensible.com/dont-make-me-think/",
+    "type": "book"
+  },
+  "a-web-for-everyone": {
+    "author": "Sarah Horton & Whitney Quesenbery",
+    "title": "A Web for Everyone",
+    "description": "Explains inclusive design principles and accessibility foundations.",
+    "url": "https://rosenfeldmedia.com/books/a-web-for-everyone/",
+    "type": "book"
+  },
+  "web-content-accessibility-guidelines-wcag": {
+    "author": "W3C",
+    "title": "Web Content Accessibility Guidelines (WCAG)",
+    "description": "The global standard for accessible digital experiences.",
+    "url": "https://www.w3.org/WAI/standards-guidelines/wcag/",
+    "type": "url"
+  },
+  "accessibility-in-design-systems": {
+    "author": "GOV.UK",
+    "title": "Accessibility in Design Systems",
+    "description": "Shows how accessibility is treated as a baseline in a public-sector system.",
+    "url": "https://design-system.service.gov.uk/accessibility/",
+    "type": "url"
+  },
+  "accessibility-is-not-optional": {
+    "author": "NNGroup",
+    "title": "Accessibility Is Not Optional",
+    "description": "Explains why accessibility must be built into UX from the start.",
+    "url": "https://www.nngroup.com/articles/accessibility-not-optional/",
+    "type": "url"
+  },
+  "the-design-of-everyday-things": {
+    "author": "Don Norman",
+    "title": "The Design of Everyday Things",
+    "description": "Explains how constraints guide user behavior and reduce error.",
+    "url": "https://jnd.org/the-design-of-everyday-things-revised-and-expanded-edition/",
+    "type": "book"
+  },
+  "microinteractions": {
+    "author": "Dan Saffer",
+    "title": "Microinteractions",
+    "description": "Demonstrates how constraints shape interaction behavior and feedback.",
+    "url": "https://cdn.bookey.app/files/pdf/book/en/microinteractions.pdf",
+    "type": "book"
+  },
+  "domain-driven-design": {
+    "author": "Eric Evans",
+    "title": "Domain-Driven Design",
+    "description": "Explores bounded contexts and modular thinking in system design.",
+    "url": "https://www.domainlanguage.com/ddd/",
+    "type": "book"
+  },
+  "tidy-first": {
+    "author": "Kent Beck",
+    "title": "Tidy First?",
+    "description": "Focuses on safe, incremental change in software systems.",
+    "url": "https://tidyfirst.org/",
+    "type": "book"
+  },
+  "system-boundaries-and-guardrails": {
+    "author": "Nathan Curtis",
+    "title": "System Boundaries and Guardrails",
+    "description": "Focuses on guardrails as enablers rather than restrictions.",
+    "url": "https://medium.com/eightshapes-llc/guardrails-not-guidelines-9c7a8fddae8a",
+    "type": "url",
+    "status": "missing"
+  },
+  "design-tokens-and-constraints": {
+    "author": "Material Design",
+    "title": "Design Tokens and Constraints",
+    "description": "Shows how constraints are encoded through tokens and system rules.",
+    "url": "https://m3.material.io/foundations/design-tokens/overview",
+    "type": "url"
+  },
+  "accessibility-constraints": {
+    "author": "GOV.UK Design System",
+    "title": "Accessibility Constraints",
+    "description": "Demonstrates non-negotiable constraints applied at system level.",
+    "url": "https://design-system.service.gov.uk/accessibility/",
+    "type": "url"
+  },
+  "scaling-up-design-systems": {
+    "author": "Randy Shoup",
+    "title": "Scaling Up Design Systems",
+    "description": "Practical insights on growing design systems across teams and products.",
+    "url": "https://www.infoq.com/presentations/scaling-design-systems/",
+    "type": "book"
+  },
+  "lightning-design-system-principles": {
+    "author": "Salesforce",
+    "title": "Lightning Design System: Principles",
+    "description": "Shows how scalable foundations support multiple products and teams.",
+    "url": "https://www.lightningdesignsystem.com/guidelines/overview/",
+    "type": "url"
+  },
+  "the-lean-startup": {
+    "author": "Eric Ries",
+    "title": "The Lean Startup",
+    "description": "Explains how to build feedback loops and iterate based on real user data.",
+    "url": "https://theleanstartup.com/",
+    "type": "book"
+  },
+  "sprint": {
+    "author": "Jake Knapp",
+    "title": "Sprint",
+    "description": "Shows how to quickly test ideas and gather feedback to make better decisions.",
+    "url": "https://www.thesprintbook.com/",
+    "type": "book"
+  },
+  "design-systems-need-feedback-loops": {
+    "author": "NNGroup",
+    "title": "Design Systems Need Feedback Loops",
+    "description": "Explains why feedback is critical for design system success.",
+    "url": "https://www.nngroup.com/articles/design-system-feedback/",
+    "type": "url"
+  },
+  "building-design-system-feedback-loops": {
+    "author": "InVision",
+    "title": "Building Design System Feedback Loops",
+    "description": "Practical strategies for collecting and acting on design system feedback.",
+    "url": "https://www.invisionapp.com/inside-design/design-system-feedback-loops/",
+    "type": "url"
+  },
+  "how-we-gather-feedback": {
+    "author": "Shopify Polaris",
+    "title": "How We Gather Feedback",
+    "description": "Shows how a large design system team collects and processes feedback.",
+    "url": "https://polaris.shopify.com/contributing/getting-started",
+    "type": "url"
+  },
+  "refactoring-2nd-edition": {
+    "author": "Martin Fowler",
+    "title": "Refactoring (2nd Edition)",
+    "description": "Explains how systems can evolve incrementally without breaking behavior.",
+    "url": "https://martinfowler.com/books/refactoring.html",
+    "type": "book"
+  },
+  "clean-architecture": {
+    "author": "Robert C. Martin",
+    "title": "Clean Architecture",
+    "description": "Discusses architectural boundaries that enable long-term evolution.",
+    "url": "https://www.pearson.com/en-us/subject-catalog/p/clean-architecture/P200000003295/9780134494166",
+    "type": "book"
+  },
+  "semantic-versioning-specification": {
+    "author": "SemVer",
+    "title": "Semantic Versioning Specification",
+    "description": "Defines a clear contract for communicating breaking and non-breaking changes.",
+    "url": "https://semver.org/",
+    "type": "url"
+  },
+  "versioning-polaris": {
+    "author": "Shopify Engineering",
+    "title": "Versioning Polaris",
+    "description": "Describes how Shopify manages breaking changes in a large design system.",
+    "url": "https://shopify.engineering/versioning-polaris",
+    "type": "url"
+  },
+  "design-systems-need-versioning": {
+    "author": "NNGroup",
+    "title": "Design Systems Need Versioning",
+    "description": "Explains why versioning is critical for adoption and trust.",
+    "url": "https://www.nngroup.com/articles/design-system-versioning/",
+    "type": "url"
+  },
+  "the-product-is-docs": {
+    "author": "Christopher Gales",
+    "title": "The Product Is Docs",
+    "description": "Argues that documentation itself is a core part of the product experience.",
+    "url": "https://idratherbewriting.com/2017/06/20/the-product-is-docs/",
+    "type": "book"
+  },
+  "docs-like-code": {
+    "author": "Anne Gentle",
+    "title": "Docs Like Code",
+    "description": "Explains how documentation benefits from product thinking and engineering workflows.",
+    "url": "https://www.docslikecode.com/",
+    "type": "url"
+  },
+  "technical-writing-courses": {
+    "author": "Google",
+    "title": "Technical Writing Courses",
+    "description": "Practical guidance on clarity, structure, and audience-focused documentation.",
+    "url": "https://developers.google.com/tech-writing",
+    "type": "url"
+  },
+  "documentation-guide": {
+    "author": "Write the Docs",
+    "title": "Documentation Guide",
+    "description": "Community-driven best practices for documentation as a product.",
+    "url": "https://www.writethedocs.org/guide/",
+    "type": "url"
+  },
+  "atomic-design": {
+    "author": "Brad Frost",
+    "title": "Atomic Design",
+    "description": "Introduces a compositional model for building scalable design systems.",
+    "url": "https://atomicdesign.bradfrost.com/",
+    "type": "book"
+  },
+  "implementation-patterns": {
+    "author": "Kent Beck",
+    "title": "Implementation Patterns",
+    "description": "Discusses small, composable units in software architecture.",
+    "url": "https://martinfowler.com/books/implementationPatterns.html",
+    "type": "book"
+  },
+  "design-systems-at-scale": {
+    "author": "Google Material Design Team",
+    "title": "Design Systems at Scale",
+    "description": "Highlights the role of shared sources and tooling in cross-team alignment.",
+    "url": "https://material.io/design/systems/design-systems-at-scale.html",
+    "type": "url",
+    "status": "missing"
+  },
+  "component-based-design": {
+    "author": "Google",
+    "title": "Component-Based Design",
+    "description": "Explains principles behind reusable and composable UI components.",
+    "url": "https://material.io/design/architecture/component-based.html",
+    "type": "url"
+  },
+  "designing-for-composition": {
+    "author": "Smashing Magazine",
+    "title": "Designing For Composition",
+    "description": "Explores composition as a strategy for scalable interface design.",
+    "url": "https://www.smashingmagazine.com/2019/02/designing-composable-systems/",
+    "type": "url"
+  },
+  "modular-design-systems": {
+    "author": "Nathan Curtis",
+    "title": "Modular Design Systems",
+    "description": "Discusses ownership, authority, and the importance of a clear system boundary.",
+    "url": "https://modulardesignsystem.com/",
+    "type": "url",
+    "status": "missing"
+  },
+  "design-systems-for-developers": {
+    "author": "Storybook Team",
+    "title": "Design Systems for Developers",
+    "description": "Frames Storybook as infrastructure rather than presentation.",
+    "url": "https://storybook.js.org/docs/design-systems-for-developers/",
+    "type": "url",
+    "status": "missing"
+  },
+  "cognitive-load-and-ux": {
+    "author": "Aguayo",
+    "title": "Cognitive Load and UX",
+    "description": "Learn how cognitive load affects user experience and discover effective strategies to minimize it in your UX designs.",
+    "url": "https://aguayo.co/en/blog-aguayo-user-experience/cognitive-load/",
+    "type": "url"
+  },
+  "ease-cognitive-overload-in-ux-design": {
+    "author": "Mailchimp",
+    "title": "Ease Cognitive Overload in UX Design",
+    "description": "Learn how taxing working memory causes cognitive overload and ways to improve UX design for a better user experience.",
+    "url": "https://mailchimp.com/resources/cognitive-overload/",
+    "type": "url"
+  },
+  "design-consistency-guide-ui-and-ux-best-practices": {
+    "author": "UXPin",
+    "title": "Design Consistency Guide UI and UX Best Practices",
+    "description": "One of the key design principles, no matter if your designing a mobile app or a desktop one, is to keep your UI consistent. But what does it mean?",
+    "url": "https://www.uxpin.com/studio/blog/guide-design-consistency-best-practices-ui-ux-designers/",
+    "type": "url"
+  },
+  "match-between-system-and-the-real-world": {
+    "author": "Meganne Ohata",
+    "title": "Match Between System and Real World",
+    "description": "The design should speak the users’ language. Use words, phrases, and concepts familiar to the user, rather than internal jargon. Follow real-world conventions, making information appear in a natural and logical order.",
+    "url": "https://www.pencilandpaper.io/articles/match-between-system-and-the-real-world",
+    "type": "url"
+  },
+  "visibility-of-system-status-usability-heuristic-1": {
+    "author": "Aurora Harley",
+    "title": "Visibility of System Status (Usability Heuristic #1)",
+    "description": "Communicating the current state allows users to feel in control of the system, take appropriate actions to reach their goal, and ultimately trust the brand.",
+    "url": "https://www.nngroup.com/articles/visibility-system-status/",
+    "type": "url"
+  },
+  "match-between-system-and-real-world-usability-heuristic-2": {
+    "author": "Anna Kaley",
+    "title": "Match Between the System and the Real World (Usability Heuristic #2)",
+    "description": "Systems should speak the users' language with familiar words, phrases, and concepts rather than system-oriented terms. Interfaces that follow real-world conventions and make information appear in a natural and logical order demonstrate empathy and acknowledgement for users.",
+    "url": "https://www.nngroup.com/articles/match-system-real-world/",
+    "type": "url"
+  },
+  "user-control-and-freedom-usability-heuristic-3": {
+    "author": "Maria Rosala",
+    "title": "User Control and Freedom (Usability Heuristic #3)",
+    "description": "Users often make mistakes or change their minds. Allow them to exit a flow or undo their last action and go back to the system’s previous state.",
+    "url": "https://www.nngroup.com/articles/user-control-and-freedom/",
+    "type": "url"
+  },
+  "maintain-consistency-and-adhere-to-standards-usability-heuristic-4": {
+    "author": "Rachel Krause",
+    "title": "Maintain Consistency and Adhere to Standards (Usability Heuristic #4)",
+    "description": "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.",
+    "url": "https://www.nngroup.com/articles/consistency-and-standards/",
+    "type": "url"
+  },
+  "error-prevention-usability-heuristic-5": {
+    "author": "Katie Sherwin",
+    "title": "Usability Heuristic 5: Error Prevention",
+    "description": "No. 5 of the top 10 UX design heuristics is to prevent interaction problems from occurring in the first place: either eliminate error-prone conditions or check for them and present users with a confirmation dialog.",
+    "url": "https://www.nngroup.com/videos/usability-heuristic-error-prevention/",
+    "type": "video"
+  },
+  "flexibility-and-efficiency-of-use-usability-heuristic-7": {
+    "author": "Page Laubheimer",
+    "title": "Flexibility and Efficiency of Use (Usability Heuristic #7)",
+    "description": "Shortcuts — unseen by the novice user — speed up the interaction for the expert users such that the system can cater to both inexperienced and experienced users.",
+    "url": "https://www.nngroup.com/articles/flexibility-efficiency-heuristic/",
+    "type": "url"
+  },
+  "aesthetic-and-minimalist-design-usability-heuristic-8": {
+    "author": "Therese Fessenden",
+    "title": "Aesthetic and Minimalist Design (Usability Heuristic #8)",
+    "description": "Aesthetically pleasing designs can provide memorable experiences that differentiate a brand. However, interfaces should only include necessary elements, with high informational value. Clarity will always win over visual flourish.",
+    "url": "https://www.nngroup.com/articles/aesthetic-minimalist-design/",
+    "type": "url"
+  },
+  "help-and-documentation-usability-heuristic-10": {
+    "author": "Alita Kendrick",
+    "title": "Help and Documentation (Usability Heuristic #10)",
+    "description": "Interface help comes in two forms: proactive and reactive. Proactive help is intended to get users familiar with an interface while reactive help is meant for troubleshooting and gaining system proficiency.",
+    "url": "https://www.nngroup.com/articles/help-and-documentation/",
+    "type": "url"
+  },
+  "10-usability-heuristics-for-user-interface-design": {
+    "author": "Jakob Nielsen",
+    "title": "10 Usability Heuristics for User Interface Design",
+    "description": "Jakob Nielsen's 10 general principles for interaction design. They are called \"heuristics\" because they are broad rules of thumb and not specific usability guidelines.",
+    "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+    "type": "url"
+  },
+  "recognition-rather-than-recall-simplified-by-the-examples": {
+    "author": "Harsh Gorasia",
+    "title": "Heuristics #6: Recognition Rather Than Recall-Simplified by the examples.",
+    "description": "The Jakob Nielsen’s 10 heuristics will be served as a series or as episodes to you all. I will publish each heuristic a week- Every Thursday.",
+    "url": "https://uxplanet.org/heuristics-6-recognition-rather-than-recall-simplified-by-the-examples-eb8b84fb04c6",
+    "type": "url"
+  },
+  "jakob-nielsens-sixth-usability-heuristic-for-user-interface-design": {
+    "author": "Melissa Vela",
+    "title": "Jakob Nielsen’s sixth usability heuristic for user interface design",
+    "description": "Designers rely on heuristic evaluations to improve upon product usability. This article will focus on the sixth principle of Jakob Nielsen’s 10 general principles for interaction design which is Recognition Rather than Recall. ",
+    "url": "https://uxdesign.cc/jakob-nielsens-sixth-usability-heuristic-for-user-interface-design-ac88e7d58ec",
+    "type": "url"
+  },
+  "the-psychology-of-default-options-in-user-interfaces": {
+    "author": "Erik Fiala",
+    "title": "The Psychology of Default Options in User Interfaces",
+    "description": "Default options play a crucial role in user interface (UI) design, significantly influencing user behavior and decision-making processes.",
+    "url": "https://erikfiala.com/blog/psychology-default-options-user-interfaces",
+    "type": "url"
+  },
+  "personas-make-users-memorable": {
+    "author": "Taylor Dykes",
+    "title": "Personas Make Users Memorable",
+    "description": "Personas support user-centered design throughout a project’s lifecycle by making user groups feel real and tangible.",
+    "url": "https://www.nngroup.com/articles/persona/",
+    "type": "url"
+  },
+  "experience-design-the-next-iteration-of-ux": {
+    "author": "Kate Moran",
+    "title": "Experience Design: The Next Iteration of UX?",
+    "description": "As an umbrella term for UX/CX work, “experience design” reflects blended roles and core human-centered principles.",
+    "url": "https://www.nngroup.com/articles/experience-design/",
+    "type": "url"
+  },
+  "no-one-likes-making-errors": {
+    "author": "Nielsen Norman Group",
+    "title": "No one likes making errors",
+    "description": "Even if they are mistakes, they can make you feel flustered, ashamed, or just be plain annoying.",
+    "url": "https://www.linkedin.com/posts/nielsen-norman-group_avoid-hostile-patterns-in-error-messages-activity-7213609807214194689-Se1M/",
+    "type": "url"
+  },
+  "error-message-guidelines": {
+    "author": "Tim Neusesser, Evan Sunwall",
+    "title": "Error-Message Guidelines",
+    "description": "Design effective error messages by ensuring they are highly visible, provide constructive communication, and respect user effort.",
+    "url": "https://www.nngroup.com/articles/error-message-guidelines/",
+    "type": "url"
+  },
+  "designing-better-error-messages-ux": {
+    "author": "Vitaly Friedman",
+    "title": "Designing Better Error Messages UX",
+    "description": "Error messages need to be easy to spot, but they also need to be helpful. Let’s explore when error messages should live above input fields and why toast error messages are usually not a very good idea.",
+    "url": "https://www.smashingmagazine.com/2022/08/error-messages-ux-design/",
+    "type": "url"
+  },
+  "good-defaults-in-ux-design-ux-knowledge-piece-sketch-39": {
+    "author": "Krisztina Szerovay",
+    "title": "Good Defaults in UX design — UX Knowledge Piece Sketch #39",
+    "description": "A default is a ready-made decision for your users. You preselect values, settings or preferences for the user. As a result, you can avoid decision fatigue and reduce cognitive load.",
+    "url": "https://uxknowledgebase.com/good-defaults-in-ux-design-ux-knowledge-piece-sketch-39-4fd4516a49ca",
+    "type": "url"
+  },
+  "progressive-disclosure-in-ux-design-types-and-use-cases": {
+    "author": "Eric Chung",
+    "title": "Progressive disclosure in UX design: Types and use cases",
+    "description": "Progressive disclosure is a UX design technique that reduces users’ cognitive load by gradually revealing information as needed. It’s commonly used in product design to simplify complex content or break down large amounts of information into digestible bits.",
+    "url": "https://blog.logrocket.com/ux-design/progressive-disclosure-ux-types-use-cases/",
+    "type": "url"
+  },
+  "scaling-design-impact-why-growing-companies-need-dedicated-ux-ui-expertise": {
+    "author": "Shivangi Sharma",
+    "title": "Scaling Design Impact",
+    "description": "Why Growing Companies Need Dedicated UX/UI Expertise to Maintain Momentum.",
+    "url": "https://flexxited.com/blog/scaling-design-impact-why-growing-companies-need-dedicated-ux-ui-expertise",
+    "type": "url"
+  },
+  "why-ux-design-consistency-matters-and-how-to-achieve-it": {
+    "author": "Agustin Diaz",
+    "title": "Why UX design consistency matters and how to achieve it",
+    "description": "Consistency in UX design isn't about making everything look the same. It's about creating harmony that helps users feel at home.",
+    "url": "https://www.uxstudioteam.com/ux-blog/ux-design-consistency",
+    "type": "url"
+  },
+  "design-system-coerenza-atomica": {
+    "author": "Damiano Dalla Lana",
+    "title": "DESIGN SYSTEM: COERENZA “ATOMICA”",
+    "description": "Come riutilizzare elementi autonomi per creare progetti scalabili.",
+    "url": "https://www.quamm.it/giornale/design-system-coerenza-atomica/",
+    "type": "url"
+  },
+  "design-principles-for-reducing-cognitive-load": {
+    "author": "Jon Yablonski",
+    "title": "Design Principles for Reducing Cognitive Load",
+    "description": "Every time you visit a website, a process of learning is initiated in the brain. ",
+    "url": "https://jonyablonski.com/articles/2015/design-principles-for-reducing-cognitive-load/",
+    "type": "url"
+  },
+  "user-centered-design-4-key-principles-phases-and-examples": {
+    "author": "Armin Tanovic, Lorelei Whitman",
+    "title": "User-centered design: 4 key principles, phases, and examples",
+    "description": "The best products are shaped by the people who use them—user-centered design places them at the heart of your design process.",
+    "url": "https://maze.co/blog/user-centered-design/",
+    "type": "url"
+  },
+  "what-is-user-centered-design-ucd": {
+    "author": "Interaction Design Foundation",
+    "title": "What is User Centered Design (UCD)?",
+    "description": "User-centered design (UCD) is an iterative design process in which designers focus on the users and their needs in each phase of the design process.",
+    "url": "https://www.interaction-design.org/literature/topics/user-centered-design",
+    "type": "url"
+  },
+  "5-principles-of-visual-design-in-ux": {
+    "author": "Kelley Gordon",
+    "title": "5 Principles of Visual Design in UX",
+    "description": "The principles of scale, visual hierarchy, balance, contrast, and Gestalt not only create beautiful designs, but also increase usability when applied correctly.",
+    "url": "https://www.nngroup.com/articles/principles-visual-design/",
+    "type": "url"
+  },
+  "effective-practices-on-preventing-errors-in-user-interfaces": {
+    "author": "Tubik",
+    "title": "Effective Practices on Preventing Errors in User Interfaces",
+    "description": "No doubt, the best mistake is the one that wasn’t made. However, life isn’t like that, and user experience as well: mistakes are an integral part of both.",
+    "url": "https://medium.muz.li/effective-practices-on-preventing-errors-in-user-interfaces-83c0c329f29c",
+    "type": "url"
+  },
+  "how-designers-can-prevent-user-errors": {
+    "author": "Jordan Bowman",
+    "title": "How Designers Can Prevent User Errors",
+    "description": "The term “user error” implies that it’s the user’s fault when they do something wrong. But in the vast majority of cases, the fault actually rests with the designer for having created an interface that is confusing or makes it too easy for the user to make a mistake.",
+    "url": "https://www.uxtools.co/blog/how-designers-can-prevent-user-errors",
+    "type": "url"
+  },
+  "why-visual-hierarchy-in-ux-is-key-expert-backed-tips-and-examples": {
+    "author": "Stan Murash",
+    "title": "Why Visual Hierarchy in UX Is Key: Expert-Backed Tips and Examples",
+    "description": "What makes a design look messy and unprofessional? More often than not, it's a lack of visual hierarchy—a structured way to guide the user’s eye through an interface.",
+    "url": "https://www.eleken.co/blog-posts/visual-hierarchy-in-ux",
+    "type": "url"
+  }
+}

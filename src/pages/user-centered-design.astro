@@ -5,6 +5,7 @@ import Principles from '../components/Principles.astro';
 import Nav from '../components/Nav.astro';
 import SectionNav from '../components/SectionNav.astro';
 import data from '../data/user-centered-design.json';
+import bibliographies from '../data/bibliographies.json';
 import Bibliography from '../components/Bibliography.astro';
 import BibliographyItem from '../components/BibliographyItem.astro';
 import BibliographySection from '../components/BibliographySection.astro';
@@ -15,15 +16,25 @@ const sectionPath = '/user-centered-design';
 // Sort principles by title
 const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompare(b.title));
 
-// Filter bibliography items by type
+// Collect bibliography items from all principles using bibliographies.json
 const allBooks: any[] = [];
 const allUrls: any[] = [];
-if (data.bibliography && Array.isArray(data.bibliography)) {
-  (data.bibliography as any[]).forEach((item: any) => {
-    if (item.type === 'book') {
-      allBooks.push(item);
-    } else if (item.type === 'url') {
-      allUrls.push(item);
+const seenIds = new Set<string>();
+
+if (data.principles && bibliographies) {
+  data.principles.forEach((principle: any) => {
+    if (principle.sources && Array.isArray(principle.sources)) {
+      principle.sources.forEach((sourceId: string) => {
+        if (!seenIds.has(sourceId) && (bibliographies as any)[sourceId]) {
+          seenIds.add(sourceId);
+          const item = (bibliographies as any)[sourceId];
+          if (item.type === 'book') {
+            allBooks.push(item);
+          } else if (item.type === 'url' || item.type === 'video') {
+            allUrls.push(item);
+          }
+        }
+      });
     }
   });
 }
