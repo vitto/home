@@ -23,7 +23,7 @@ interface Props {
 const { categories, activeCategory = '', sectionId, class: className = '' } = Astro.props;
 ---
 
-<div class={`flex flex-wrap gap-200 ${className}`} data-filter-container>
+<div class={`flex flex-wrap gap-200 scroll-mt-600 ${className}`} data-filter-container>
   <Button data-filter="all" data-filter-active="false" variant="outline">All</Button>
   {
     categories.map((category) => (
@@ -155,6 +155,9 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
         const filterValue = button.getAttribute('data-filter');
         saveFilter(filterValue);
         applyFilter(filterValue);
+
+        // Scroll to top of filter container
+        filterContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
   }
