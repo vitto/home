@@ -28,7 +28,7 @@ const { menu = true } = Astro.props;
     <div class="inline-flex items-center gap-400 py-300 -translate-y-200">
       <a
         title="Back to Home"
-        href={baseUrl}
+        href={baseUrl || '/'}
         class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] hover:translate-y-[8px] focus-visible:rotate-[60deg] focus-visible:translate-y-[8px] ease-out-expo transition-transform duration-500 no-underline"
       >
         <Icon name="vv/logo" class="text-[48px] justify-self-center" />
@@ -51,7 +51,7 @@ const { menu = true } = Astro.props;
       menu ? (
         <HeaderMenu />
       ) : (
-        <Button href={baseUrl} variant="light" class="shrink-0 py-300" title="Back to Home">
+        <Button href={baseUrl || '/'} variant="light" class="shrink-0 py-300" title="Back to Home">
           <Icon name="mi/outline/home" class="text-tone-neutral-04" />
         </Button>
       )

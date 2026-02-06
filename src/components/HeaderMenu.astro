@@ -60,7 +60,7 @@ const categories = categoriesData.map((category) => ({
   <nav class="header-nav-menu grid-cols-fill auto-rows-min" data-header-nav-menu>
     <div class="flex items-center justify-between">
       <Icon name="vv/logo" class="text-[48px] justify-self-center" />
-      <Button href={baseUrl} variant="light" class="shrink-0 py-300" title="Back to Home">
+      <Button href={baseUrl || '/'} variant="light" class="shrink-0 py-300" title="Back to Home">
         <Icon name="mi/outline/home" class="text-tone-neutral-04" />
       </Button>
     </div>

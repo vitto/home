@@ -13,7 +13,7 @@ interface Props {
 // Remove trailing slash if present (except for root)
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
-const { href = baseUrl, title = 'Back to Home' } = Astro.props;
+const { href = baseUrl || '/', title = 'Back to Home' } = Astro.props;
 ---
 
 <Section>
