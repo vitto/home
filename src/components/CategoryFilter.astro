@@ -92,7 +92,6 @@ const { categories, activeCategory = '', sectionId, class: className = '' } = As
 
     // Apply filter (update UI and filter cards)
     const applyFilter = (filterValue) => {
-      console.log('applyFilter', filterValue);
       // Update active state - CSS handles styling via data-filter-active attribute
       filterButtons.forEach((btn) => {
         const isActive = btn.getAttribute('data-filter') === filterValue;
