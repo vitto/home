@@ -4,7 +4,10 @@ import CardTextAnimation from './CardTextAnimation.astro';
 import blobConfigs from '../data/blob-configs.json';
 import categoriesData from '../data/categories.json';
 
-const baseUrl = import.meta.env.BASE_URL;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 
 // Map categories data and add full link URLs
 const categories = categoriesData.map((category) => ({
