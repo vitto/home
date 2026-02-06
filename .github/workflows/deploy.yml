@@ -40,6 +40,15 @@ jobs:
           echo "safe: true" > ./dist/_config.yml
           echo "Created .nojekyll and _config.yml files in dist directory"
 
+      - name: Copy CNAME file if it exists
+        run: |
+          if [ -f ./CNAME ]; then
+            cp ./CNAME ./dist/CNAME
+            echo "Copied CNAME file to dist directory"
+          else
+            echo "No CNAME file found in root"
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
