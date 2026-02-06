@@ -1,31 +1,108 @@
 {
   "title": "Human-Centered AI Design",
   "description": "Designing transparent, predictable AI experiences following Microsoft HAX guidelines",
-  "categories": [
-    "Clarity",
-    "Context",
-    "Alignment",
-    "Recovery",
-    "Explainability",
-    "Adaptation",
-    "Governance"
-  ],
+  "categories": ["Transparency", "Agency", "Usability", "Trust"],
   "categoryColors": {
-    "Clarity": "label-sky",
-    "Context": "label-aqua",
-    "Alignment": "label-orange",
-    "Recovery": "label-yellow",
-    "Explainability": "label-blue",
-    "Adaptation": "label-orchid",
-    "Governance": "label-lime"
+    "Transparency": "label-sky",
+    "Agency": "label-orange",
+    "Usability": "label-orchid",
+    "Trust": "label-green"
   },
   "principles": [
     {
       "id": "make-the-ai-s-role-explicit",
       "title": "Make the AI’s role explicit",
-      "category": "Alignment",
+      "category": "Transparency",
+      "icon": "mi/outline/info",
+      "description": "Clearly show when AI is involved and what it does within the interaction flow.",
+      "sources": ["scope-services-when-in-doubt"]
+    },
+    {
+      "id": "design-for-uncertainty",
+      "title": "Design for uncertainty",
+      "category": "Transparency",
+      "icon": "mi/outline/help",
+      "description": "Expose uncertainty so users understand confidence, risk, and limitations of AI outputs.",
+      "sources": ["scope-services-when-in-doubt"]
+    },
+    {
+      "id": "provide-understandable-explanations",
+      "title": "Provide understandable explanations",
+      "category": "Transparency",
+      "icon": "mi/outline/chat-bubble",
+      "description": "Explain results in user-facing terms that support decisions, not model internals.",
+      "sources": ["scope-services-when-in-doubt"]
+    },
+    {
+      "id": "avoid-misleading-anthropomorphism",
+      "title": "Avoid misleading anthropomorphism",
+      "category": "Transparency",
+      "icon": "mi/outline/person-off",
+      "description": "Avoid human-like cues that inflate expectations or suggest intent or emotions.",
+      "sources": ["scope-services-when-in-doubt"]
+    },
+    {
+      "id": "preserve-user-agency",
+      "title": "Preserve user agency",
+      "category": "Agency",
       "icon": "mgg/ai-chatbot-outline",
-      "description": "Clearly state the AI's role in the interaction, whether it's a conversational agent, a decision support tool, or a creative assistant.",
+      "description": "Ensure users remain the final decision-makers, with AI acting as support.",
+      "sources": ["scope-services-when-in-doubt"]
+    },
+    {
+      "id": "enable-meaningful-user-control",
+      "title": "Enable meaningful user control",
+      "category": "Agency",
+      "icon": "mi/outline/how-to-reg",
+      "description": "Let users modify, override, pause, or undo AI actions easily.",
+      "sources": ["scope-services-when-in-doubt"]
+    },
+    {
+      "id": "support-human-in-the-loop-interaction",
+      "title": "Support human-in-the-loop interaction",
+      "category": "Agency",
+      "icon": "mi/outline/tune",
+      "description": "Design AI workflows that allow continuous human supervision and input.",
+      "sources": ["scope-services-when-in-doubt"]
+    },
+    {
+      "id": "handle-errors-and-failures-gracefully",
+      "title": "Handle errors and failures gracefully",
+      "category": "Usability",
+      "icon": "mi/outline/error",
+      "description": "Communicate AI errors clearly and offer safe recovery paths.",
+      "sources": ["scope-services-when-in-doubt"]
+    },
+    {
+      "id": "adapt-to-user-context-and-expertise",
+      "title": "Adapt to user context and expertise",
+      "category": "Usability",
+      "icon": "mi/outline/manage-accounts",
+      "description": "Adjust AI behavior and feedback to user goals, skills, and situations.",
+      "sources": ["scope-services-when-in-doubt"]
+    },
+    {
+      "id": "respect-user-time-and-cognitive-load",
+      "title": "Respect user time and cognitive load",
+      "category": "Usability",
+      "icon": "mi/outline/hourglass-empty",
+      "description": "Reduce mental effort with clear, progressive, and concise AI output.",
+      "sources": ["scope-services-when-in-doubt"]
+    },
+    {
+      "id": "design-for-trust-and-accountability",
+      "title": "Design for trust and accountability",
+      "category": "Trust",
+      "icon": "mi/outline/verified-user",
+      "description": "Make responsibility, provenance, and decision ownership transparent.",
+      "sources": ["scope-services-when-in-doubt"]
+    },
+    {
+      "id": "set-appropriate-expectations",
+      "title": "Set appropriate expectations",
+      "category": "Transparency",
+      "icon": "mi/outline/speed",
+      "description": "Align messaging with real capabilities to prevent overtrust or misuse.",
       "sources": ["scope-services-when-in-doubt"]
     }
   ]

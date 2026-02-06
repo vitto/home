@@ -6,7 +6,7 @@
     "Architecture": "label-orange",
     "Component Design": "label-sky",
     "Maintenance": "label-yellow",
-    "Adoption": "label-lime",
+    "Adoption": "label-green",
     "Value": "label-orchid"
   },
   "principles": [
