@@ -1,0 +1,76 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+---
+
+<UseCase
+  title="Explicit Handling of Uncertainty and Errors"
+  description="When the AI is uncertain or makes mistakes, it should communicate this clearly and provide recovery options."
+>
+  <UseCaseInteractive clsHeight={112} label="Uncertainty and error handling" toggle>
+    <div class="grid gap-600 w-full">
+      <div
+        class="grid gap-400 p-600 rounded-lg bg-status-warning-10 border border-status-warning-03"
+      >
+        <div class="flex items-center gap-200">
+          <mds-icon name="mi/outline/help-outline" class="text-status-warning-05"></mds-icon>
+          <mds-text typography="label"><b>Uncertain Response</b></mds-text>
+        </div>
+        <mds-text typography="body"
+          >I'm not entirely confident about this answer. Here's what I found, but you may want to
+          verify with official documentation.</mds-text
+        >
+        <div class="flex gap-200">
+          <mds-button variant="outline">Get human help</mds-button>
+          <mds-button variant="ghost">Continue anyway</mds-button>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="flex items-center gap-200">
+          <mds-icon name="mi/outline/error-outline" class="text-status-error-05"></mds-icon>
+          <mds-text typography="label"><b>Error Occurred</b></mds-text>
+        </div>
+        <mds-text typography="body"
+          >I encountered an error processing your request. This was my mistake, not yours.</mds-text
+        >
+        <div class="grid gap-200">
+          <mds-button variant="primary">Try again</mds-button>
+          <mds-button variant="outline">Report issue</mds-button>
+        </div>
+        <mds-text typography="caption" class="text-status-error-06"
+          >Error ID: AI-2024-03-15-1423</mds-text
+        >
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Acknowledge uncertainty and provide confidence indicators.</UsageItem>
+    <UsageItem variant="dont">
+      Present uncertain answers with the same confidence as certain ones.
+    </UsageItem>
+    <UsageItem variant="do">
+      Take responsibility for errors and provide clear recovery paths.
+    </UsageItem>
+    <UsageItem variant="dont">Blame users or external factors for AI mistakes.</UsageItem>
+  </Usage>
+
+  <!-- <Products>
+    <ProductCategory title="Error handling patterns">
+      <Brand
+        name="anthropic"
+        label="Anthropic Claude"
+        url="https://claude.ai"
+      />
+      <Brand
+        name="openai"
+        label="OpenAI ChatGPT"
+        url="https://openai.com/chatgpt"
+      />
+    </ProductCategory>
+  </Products> -->
+</UseCase>

@@ -1,0 +1,54 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+---
+
+<UseCase
+  title="Explainability at the Right Level"
+  description="Provide explanations that match the user's needs: high-level reasoning for most users, technical details for experts."
+>
+  <UseCaseInteractive clsHeight={112} label="Explanation levels" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="flex items-center justify-between">
+          <mds-text typography="label"><b>Simple Explanation</b></mds-text>
+          <mds-badge variant="neutral" tone="weak">Default</mds-badge>
+        </div>
+        <mds-text typography="body"
+          >I recommended this product because it matches your previous purchases and has high
+          ratings from similar customers.</mds-text
+        >
+        <mds-button variant="ghost" class="justify-self-start">Show technical details</mds-button>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="flex items-center justify-between">
+          <mds-text typography="label"><b>Technical Explanation</b></mds-text>
+          <mds-badge variant="neutral" tone="weak">Advanced</mds-badge>
+        </div>
+        <mds-text typography="body"
+          >Recommendation based on collaborative filtering: cosine similarity (0.87) with users in
+          your segment, weighted by recency (30-day window) and rating confidence (n=1,247 reviews).</mds-text
+        >
+        <mds-button variant="ghost" class="justify-self-start">Show simple view</mds-button>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">Provide simple, user-friendly explanations by default.</UsageItem>
+    <UsageItem variant="dont">Overwhelm users with technical details they don't need.</UsageItem>
+    <UsageItem variant="do">Offer progressive disclosure for users who want more detail.</UsageItem>
+    <UsageItem variant="dont">Hide explanations entirely or make them hard to find.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Explainable AI tools">
+      <Brand name="huggingface" label="Hugging Face" url="https://huggingface.co" />
+      <Brand name="tensorflow" label="TensorFlow" url="https://www.tensorflow.org/responsible_ai" />
+    </ProductCategory>
+  </Products>
+</UseCase>

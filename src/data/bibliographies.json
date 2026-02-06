@@ -279,22 +279,6 @@
     "url": "https://atomicdesign.bradfrost.com/",
     "type": "book"
   },
-  "modular-design-systems": {
-    "author": "Nathan Curtis",
-    "title": "Modular Design Systems",
-    "description": "Discusses ownership, authority, and the importance of a clear system boundary.",
-    "url": "https://modulardesignsystem.com/",
-    "type": "url",
-    "status": "missing"
-  },
-  "design-systems-for-developers": {
-    "author": "Storybook Team",
-    "title": "Design Systems for Developers",
-    "description": "Frames Storybook as infrastructure rather than presentation.",
-    "url": "https://storybook.js.org/docs/design-systems-for-developers/",
-    "type": "url",
-    "status": "missing"
-  },
   "cognitive-load-and-ux": {
     "author": "Aguayo",
     "title": "Cognitive Load and UX",
@@ -524,6 +508,13 @@
     "title": "Why Visual Hierarchy in UX Is Key: Expert-Backed Tips and Examples",
     "description": "What makes a design look messy and unprofessional? More often than not, it's a lack of visual hierarchy—a structured way to guide the user’s eye through an interface.",
     "url": "https://www.eleken.co/blog-posts/visual-hierarchy-in-ux",
+    "type": "url"
+  },
+  "scope-services-when-in-doubt": {
+    "author": "Microsoft",
+    "title": "Guideline 10: Scope services when in doubt",
+    "description": "Engage in disambiguation or gracefully degrade the AI system’s services when uncertain about a user’s goals.",
+    "url": "https://www.microsoft.com/en-us/haxtoolkit/guideline/scope-services-when-in-doubt/",
     "type": "url"
   }
 }

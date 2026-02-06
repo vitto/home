@@ -1,0 +1,50 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+---
+
+<UseCase
+  title="Clear Scope of AI Capabilities"
+  description="Users should understand what the AI can and cannot do, its limitations, and when it might need human assistance."
+>
+  <UseCaseInteractive clsHeight={112} label="Capability boundaries" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>What I can help with:</b></mds-text>
+          <ul class="list-disc list-inside grid gap-100 text-info-detail">
+            <li>Answer questions about product features</li>
+            <li>Help troubleshoot common issues</li>
+            <li>Provide documentation and guides</li>
+            <li>Generate code examples</li>
+          </ul>
+        </div>
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>What I cannot do:</b></mds-text>
+          <ul class="list-disc list-inside grid gap-100 text-info-detail">
+            <li>Access your account or personal data</li>
+            <li>Make purchases or process refunds</li>
+            <li>Handle billing or payment issues</li>
+            <li>Provide real-time system status</li>
+          </ul>
+        </div>
+        <div class="pt-200 border-t border-tone-neutral-03">
+          <mds-text typography="caption"
+            >For account-specific help, I can connect you with a human agent.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">List specific capabilities and limitations upfront.</UsageItem>
+    <UsageItem variant="dont">Make users discover limitations through trial and error.</UsageItem>
+    <UsageItem variant="do">Provide clear escalation paths when AI reaches its limits.</UsageItem>
+    <UsageItem variant="dont">Let the AI attempt tasks it cannot complete.</UsageItem>
+  </Usage>
+</UseCase>

@@ -1,0 +1,52 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Explicit AI Presence and Identity"
+  description="Users should immediately recognize when they're interacting with an AI system, not a human agent."
+>
+  <UseCaseInteractive clsHeight={112} label="AI identity indicators" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-200 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="flex items-center gap-200">
+          <mds-icon name="mgg/ai-chatbot" class="text-label-orange-05"></mds-icon>
+          <mds-text typography="label"><b>AI Assistant</b></mds-text>
+          <mds-badge variant="orange" tone="weak" class="text-label-orange-06"
+            >Powered by AI</mds-badge
+          >
+        </div>
+        <mds-text typography="body"
+          >I'm an AI assistant. I can help you with questions and tasks, but I may make mistakes.</mds-text
+        >
+      </div>
+      <div class="grid gap-200 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="flex items-center gap-200">
+          <mds-icon name="mi/baseline/person" class="text-tone-neutral-05"></mds-icon>
+          <mds-text typography="label"><b>Human Agent</b></mds-text>
+          <mds-badge variant="neutral" tone="weak" class="text-tone-neutral-06"
+            >Available now</mds-badge
+          >
+        </div>
+        <mds-text typography="body"
+          >Hi! I'm Sarah, a customer support specialist. How can I help you today?</mds-text
+        >
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Use clear visual indicators (icons, badges) to distinguish AI from human agents.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Hide or obscure the AI's identity to make it seem more human.
+    </UsageItem>
+    <UsageItem variant="do">State the AI's identity in the first interaction.</UsageItem>
+    <UsageItem variant="dont">
+      Use ambiguous language that could apply to either AI or humans.
+    </UsageItem>
+  </Usage>
+</UseCase>

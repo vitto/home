@@ -1,0 +1,65 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+import Brand from '../../../Brand.astro';
+import ProductCategory from '../../../ProductCategory.astro';
+import Products from '../../../Products.astro';
+---
+
+<UseCase
+  title="Clear Responsibility and Decision Ownership"
+  description="Users should know who is responsible for decisions: the AI makes suggestions, but the user retains final control."
+>
+  <UseCaseInteractive clsHeight={112} label="Decision ownership" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>AI Suggestion</b></mds-text>
+          <mds-text typography="body"
+            >Based on your preferences, I recommend scheduling the meeting for Tuesday at 2 PM.</mds-text
+          >
+        </div>
+        <div class="flex gap-200">
+          <mds-button variant="primary">Accept suggestion</mds-button>
+          <mds-button variant="outline">Choose different time</mds-button>
+        </div>
+        <mds-text typography="caption" class="text-tone-neutral-05"
+          >You have full control over the final decision.</mds-text
+        >
+      </div>
+      <div
+        class="grid gap-400 p-600 rounded-lg bg-status-warning-10 border border-status-warning-03"
+      >
+        <div class="flex items-center gap-200">
+          <mds-icon name="mi/outline/warning-amber" class="text-status-warning-05"></mds-icon>
+          <mds-text typography="label"><b>Automated Action</b></mds-text>
+        </div>
+        <mds-text typography="body"
+          >The AI will automatically send a follow-up email in 24 hours if no response is received.</mds-text
+        >
+        <mds-text typography="caption" class="text-status-warning-06"
+          >This action is automated. You can disable it in settings.</mds-text
+        >
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Clearly distinguish between AI suggestions and automated actions.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Let the AI make irreversible decisions without explicit user consent.
+    </UsageItem>
+    <UsageItem variant="do">Provide clear opt-out mechanisms for automated behaviors.</UsageItem>
+    <UsageItem variant="dont">Hide or obscure who is responsible for outcomes.</UsageItem>
+  </Usage>
+
+  <Products>
+    <ProductCategory title="Decision support systems">
+      <Brand name="notion" label="Notion AI" url="https://notion.so/product/ai" />
+      <Brand name="github" label="GitHub Copilot" url="https://github.com/features/copilot" />
+    </ProductCategory>
+  </Products>
+</UseCase>

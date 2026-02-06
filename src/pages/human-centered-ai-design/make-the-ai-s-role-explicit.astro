@@ -1,0 +1,166 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/human-centered-ai-design.json';
+import bibliographies from '../../data/bibliographies.json';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
+import ExplicitAIPresenceAndIdentity from '../../components/use-cases/human-centered-ai-design/make-the-ai-s-role-explicit/ExplicitAIPresenceAndIdentity.astro';
+import ClearScopeOfAICapabilities from '../../components/use-cases/human-centered-ai-design/make-the-ai-s-role-explicit/ClearScopeOfAICapabilities.astro';
+import ClearResponsibilityAndDecisionOwnership from '../../components/use-cases/human-centered-ai-design/make-the-ai-s-role-explicit/ClearResponsibilityAndDecisionOwnership.astro';
+import ExplainabilityAtTheRightLevel from '../../components/use-cases/human-centered-ai-design/make-the-ai-s-role-explicit/ExplainabilityAtTheRightLevel.astro';
+import ExplicitHandlingOfUncertaintyAndErrors from '../../components/use-cases/human-centered-ai-design/make-the-ai-s-role-explicit/ExplicitHandlingOfUncertaintyAndErrors.astro';
+
+const principle = data.principles.find((p) => p.id === 'make-the-ai-s-role-explicit')!;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const sectionPath = '/human-centered-ai-design';
+// Get bibliography items from bibliographies.json using principle.sources
+const bibliography: any[] = [];
+if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
+  principle.sources.forEach((sourceId: string) => {
+    if ((bibliographies as any)[sourceId]) {
+      bibliography.push((bibliographies as any)[sourceId]);
+    }
+  });
+}
+const books = bibliography?.filter((item: any) => item.type === 'book') || [];
+const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+const videos = bibliography?.filter((item: any) => item.type === 'video') || [];
+
+// Sort bibliography alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
+const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
+const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Human-Centered AI Design`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/human-centered-ai-design"
+>
+  <Article>
+    <Markdown
+      content={`
+Users should never have to guess whether they are interacting with an automated system, what that system is responsible for, or how much control it has over outcomes.
+Making the AI’s role explicit reduces cognitive load, prevents over-trust or under-trust, and establishes clear accountability boundaries between the system and the user.
+
+This principle is not about legal disclaimers or marketing labels. It is about **operational clarity**: what the AI does, when it acts, and where its responsibility ends.
+
+A system that hides or blurs the AI’s role may feel “magical” at first, but it quickly becomes unpredictable, hard to reason about, and difficult to trust.
+
+When I design AI-powered experiences, I make the **AI's role explicit** from the start.
+
+Users should immediately understand whether they're interacting with:
+- a conversational agent,
+- a decision support tool,
+- a creative assistant,
+- or another type of AI system.
+
+Ambiguity about the AI's role leads to:
+- mismatched expectations,
+- confusion about capabilities and limitations,
+- and reduced trust in the system.
+
+By clearly stating the AI's role, I set the right context for the interaction and help users form accurate mental models of what the system can and cannot do.
+      `}
+    />
+
+    <ExplicitAIPresenceAndIdentity />
+    <ClearScopeOfAICapabilities />
+    <ClearResponsibilityAndDecisionOwnership />
+    <ExplainabilityAtTheRightLevel />
+    <ExplicitHandlingOfUncertaintyAndErrors />
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Making the AI's role explicit is fundamental to building trust and setting appropriate expectations.
+
+When users understand the AI's role:
+- they can interact with it more effectively,
+- they have realistic expectations about its capabilities,
+- and they can make informed decisions about when to rely on it.
+
+Without clarity about the AI's role, users may:
+- overestimate or underestimate the system's capabilities,
+- use it in ways it wasn't designed for,
+- or lose trust when the system doesn't meet unstated expectations.
+      `}
+    />
+  </Article>
+
+  {
+    bibliography && (
+      <Bibliography>
+        {sortedBooks.length > 0 && (
+          <BibliographySection type="book">
+            {sortedBooks.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedUrls.length > 0 && (
+          <BibliographySection type="url">
+            {sortedUrls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedVideos.length > 0 && (
+          <BibliographySection type="video">
+            {sortedVideos.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
+
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
+</PrincipleLayout>
