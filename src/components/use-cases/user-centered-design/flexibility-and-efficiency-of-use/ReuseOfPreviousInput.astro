@@ -6,7 +6,10 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import userData from '../../../../data/use-cases/users.json';
 import videosData from '../../../../data/use-cases/videos.json';
 
-const baseUrl = import.meta.env.BASE_URL;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 const user = userData[0]; // Use first user from the data
 ---
 

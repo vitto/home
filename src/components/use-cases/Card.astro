@@ -10,7 +10,10 @@ interface Props {
 }
 
 const { name, description, image, followers, albums, singles, class: className = '' } = Astro.props;
-const baseUrl = import.meta.env.BASE_URL;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 ---
 
 <div

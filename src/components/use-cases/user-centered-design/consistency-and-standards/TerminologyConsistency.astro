@@ -5,7 +5,10 @@ import workspacesData from '../../../../data/use-cases/workspaces.json';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 
-const baseUrl = import.meta.env.BASE_URL;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 const workspaces = workspacesData.slice(0, 4);
 ---
 

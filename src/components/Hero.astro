@@ -5,7 +5,10 @@ import Button from './Button.astro';
 import HeaderMenu from './HeaderMenu.astro';
 import personalData from '../data/personal.json';
 // Get base URL from Astro config
-const baseUrl = import.meta.env.BASE_URL;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 ---
 
 <section class="flex items-start justify-center px-400 relative overflow-hidden z-20">
