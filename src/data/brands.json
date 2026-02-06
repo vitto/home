@@ -250,5 +250,17 @@
     "name": "Anima",
     "logo": "logo-anima.svg",
     "url": "https://animaapp.com/"
+  },
+  {
+    "id": "huggingface",
+    "name": "Hugging Face",
+    "logo": "logo-huggingface.svg",
+    "url": "https://huggingface.co/"
+  },
+  {
+    "id": "tensorflow",
+    "name": "TensorFlow",
+    "logo": "logo-tensorflow.svg",
+    "url": "https://www.tensorflow.org/"
   }
 ]
