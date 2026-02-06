@@ -44,7 +44,14 @@ const { menu = true } = Astro.props;
             text="o"
             data-name></mds-text>
         </h1>
-        <p class="text-info-option header-role">{personalData.role}</p>
+        <mds-text
+          tag="span"
+          class="header-role min-h-200"
+          typography="option"
+          data-role={personalData.claim}
+          text={personalData.role}
+          animation="jugop">{personalData.role}</mds-text
+        >
       </div>
     </div>
     {
@@ -64,15 +71,21 @@ const { menu = true } = Astro.props;
   function initHeaderHover() {
     const header = document.querySelector('header');
     const mdsText = document.querySelector('mds-text[data-name]');
+    const mdsTextRole = document.querySelector('[data-role]');
 
-    if (!header || !mdsText) return;
+    if (!header || !mdsText || !mdsTextRole) return;
+
+    const textRole = mdsTextRole.textContent;
+    const textClaim = mdsTextRole.getAttribute('data-role');
 
     header.addEventListener('mouseenter', () => {
       mdsText.setAttribute('text', 'o Vittori');
+      mdsTextRole.setAttribute('text', textClaim || '');
     });
 
     header.addEventListener('mouseleave', () => {
       mdsText.setAttribute('text', 'o');
+      mdsTextRole.setAttribute('text', textRole || '');
     });
   }
 
