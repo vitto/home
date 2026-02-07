@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { getPreferences } from '../utils/preferences';
 
 interface Props {
   title?: string;
@@ -15,10 +16,11 @@ const {
 // Remove trailing slash if present (except for root)
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const preferences = getPreferences(Astro.cookies);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class={preferences.theme.selector} style={preferences.theme.style}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
