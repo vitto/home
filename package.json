@@ -20,11 +20,12 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.2",
     "@astrojs/tailwind": "^5.1.0",
     "@maggioli-design-system/magma": "^1.10.7",
     "@maggioli-design-system/styles": "^15.11.0",
     "@react-three/drei": "^10.7.7",
-    "astro": "^4.0.0",
+    "astro": "^5.17.1",
     "easing-utils": "^1.0.0",
     "marked": "^17.0.1",
     "postcss-iconsauce": "^1.4.1",

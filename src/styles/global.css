@@ -172,3 +172,10 @@ mds-img::part(media) {
 mds-table-cell {
   vertical-align: middle;
 }
+
+/* Disable transitions on initial load to avoid flash when preferences are applied */
+html.prevent-animation *,
+html.prevent-animation *::before,
+html.prevent-animation *::after {
+  transition-duration: 0s !important;
+}

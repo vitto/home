@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { getPreferences } from '../utils/preferences';
+import PreventAnimation from '../components/PreventAnimation.astro';
 
 interface Props {
   title?: string;
@@ -20,9 +21,14 @@ const preferences = getPreferences(Astro.cookies);
 ---
 
 <!doctype html>
-<html lang="en" class={preferences.theme.selector} style={preferences.theme.style}>
+<html
+  lang="en"
+  class={`${preferences.theme.selector} prevent-animation`}
+  style={preferences.theme.style}
+>
   <head>
     <meta charset="UTF-8" />
+    <PreventAnimation />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href={`${baseUrl}/assets/favicon.svg`} />

@@ -1,0 +1,21 @@
+---
+
+---
+
+<script is:inline>
+  const theme = localStorage.getItem('mdsPrefTheme');
+  if (theme) {
+    document.cookie = `mdsPrefTheme=${theme}; path=/; SameSite=Lax; max-age=31536000;`;
+  }
+
+  function removePreventAnimation() {
+    document.documentElement.classList.remove('prevent-animation');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      setTimeout(removePreventAnimation, 100);
+    });
+  } else {
+    setTimeout(removePreventAnimation, 100);
+  }
+</script>
