@@ -3,19 +3,50 @@
 ---
 
 <script is:inline>
-  const theme = localStorage.getItem('mdsPrefTheme');
-  if (theme) {
-    document.cookie = `mdsPrefTheme=${theme}; path=/; SameSite=Lax; max-age=31536000;`;
-  }
+  (function () {
+    var KEY = 'mdsPrefTheme';
+    var path = document.documentElement.getAttribute('data-cookie-path') || '/';
+    var COOKIE_OPTS = 'path=' + path + '; SameSite=Lax; max-age=31536000';
 
-  function removePreventAnimation() {
-    document.documentElement.classList.remove('prevent-animation');
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
+    function setCookie(value) {
+      document.cookie = KEY + '=' + value + '; ' + COOKIE_OPTS;
+    }
+
+    var html = document.documentElement;
+    var localTheme = localStorage.getItem(KEY);
+    if (localTheme) {
+      var currentCookie = document.cookie.split('; ').find(function (row) {
+        return row.startsWith(KEY + '=');
+      });
+      var cookieValue = currentCookie ? currentCookie.split('=')[1] : null;
+      if (cookieValue !== localTheme) setCookie(localTheme);
+    }
+
+    window.__syncMdsPrefTheme = function () {
+      var value = localStorage.getItem(KEY);
+      if (value) setCookie(value);
+    };
+
+    function onMdsPrefChange(e) {
+      setTimeout(() => {
+        var value = e.target.getAttribute('mode');
+        if (value) setCookie(value);
+      }, 100);
+    }
+
+    function init() {
+      var el = document.querySelector('mds-pref-theme');
+      if (el) el.addEventListener('mdsPrefChange', onMdsPrefChange);
       setTimeout(removePreventAnimation, 100);
-    });
-  } else {
-    setTimeout(removePreventAnimation, 100);
-  }
+    }
+
+    function removePreventAnimation() {
+      html.classList.remove('prevent-animation');
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
 </script>
