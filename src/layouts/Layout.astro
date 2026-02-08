@@ -26,6 +26,7 @@ const preferences = getPreferences(Astro.cookies);
   class={`${preferences.theme.selector} prevent-animation`}
   style={preferences.theme.style}
   data-pref-theme={preferences.theme.value}
+  data-original-theme={preferences.theme.value}
 >
   <head>
     <meta charset="UTF-8" />

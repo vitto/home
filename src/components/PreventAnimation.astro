@@ -28,9 +28,15 @@
     };
 
     function onMdsPrefChange(e) {
-      setTimeout(() => {
+      setTimeout(function () {
         var value = e.target.getAttribute('mode');
-        if (value) setCookie(value);
+        console.log('value', value);
+        if (value) {
+          setCookie(value); // still set locally so next request has it
+          fetch('/api/sync-prefs?theme=' + encodeURIComponent(value), {
+            credentials: 'same-origin',
+          });
+        }
       }, 100);
     }
 
