@@ -19,11 +19,19 @@ const categories = visibleCategories.map((category) => ({
   ...category,
   link: `${baseUrl}${category.path}`,
 }));
+
+// Determine grid columns based on number of visible categories
+const gridColsClass =
+  categories.length === 1
+    ? 'grid-cols-1'
+    : categories.length === 2
+      ? 'grid-cols-1 tablet:grid-cols-2'
+      : 'grid-cols-1 tablet:grid-cols-3';
 ---
 
 <section class="pb-2000 px-600 desktop:px-1200 bg-white relative z-10">
   <div class="max-w-screen-wide w-full mx-auto">
-    <div class="grid grid-cols-1 tablet:grid-cols-3 desktop:gap-800 gap-600">
+    <div class={`grid ${gridColsClass} desktop:gap-800 gap-600`}>
       {
         categories.map((category) => (
           <CategoryCardItem
