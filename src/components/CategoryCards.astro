@@ -9,8 +9,13 @@ import categoriesData from '../data/categories.json';
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 
+// Filter out draft categories in production (show them in development)
+const visibleCategories = categoriesData.filter(
+  (category) => !(category as any).draft || !import.meta.env.PROD
+);
+
 // Map categories data and add full link URLs
-const categories = categoriesData.map((category) => ({
+const categories = visibleCategories.map((category) => ({
   ...category,
   link: `${baseUrl}${category.path}`,
 }));

@@ -23,8 +23,13 @@ const sectionDataMap: Record<string, { principles: Array<{ id: string; title: st
   '/human-centered-ai-design': humanCenteredAiDesignData,
 };
 
+// Filter out draft categories in production (show them in development)
+const visibleCategories = categoriesData.filter(
+  (category) => !(category as any).draft || !import.meta.env.PROD
+);
+
 // Get all sections in order
-const allSections = categoriesData.map((cat) => cat.path);
+const allSections = visibleCategories.map((cat) => cat.path);
 const currentSectionIndex = allSections.findIndex((path) => path === sectionPath);
 
 // Sort principles alphabetically by title
@@ -114,10 +119,10 @@ const isNextDifferentSection = nextSectionPath !== sectionPath;
 
 // Get icons for different sections
 const prevSection = isPrevDifferentSection
-  ? categoriesData.find((cat) => cat.path === prevSectionPath)
+  ? visibleCategories.find((cat) => cat.path === prevSectionPath)
   : null;
 const nextSection = isNextDifferentSection
-  ? categoriesData.find((cat) => cat.path === nextSectionPath)
+  ? visibleCategories.find((cat) => cat.path === nextSectionPath)
   : null;
 
 const prevIcon = isPrevDifferentSection && prevSection ? prevSection.icon : 'mdi/arrow-left';

@@ -18,12 +18,17 @@ const { size = 'lg', iconColor = 'text-tone-neutral-03' } = Astro.props;
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 
+// Filter out draft categories in production (show them in development)
+const visibleCategories = categoriesData.filter(
+  (category) => !(category as any).draft || !import.meta.env.PROD
+);
+
 // Determine current section from URL pathname
 const currentPath = Astro.url.pathname;
-const currentSection = categoriesData.find((category) => currentPath.includes(category.path));
+const currentSection = visibleCategories.find((category) => currentPath.includes(category.path));
 
 // Map categories data with full link URLs for CategoryCardItem
-const categories = categoriesData.map((category) => ({
+const categories = visibleCategories.map((category) => ({
   ...category,
   link: `${baseUrl}${category.path}`,
 }));

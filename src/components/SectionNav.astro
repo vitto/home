@@ -11,8 +11,13 @@ interface Props {
 
 const { baseUrl, sectionPath, principles = true } = Astro.props;
 
+// Filter out draft categories in production (show them in development)
+const visibleCategories = categoriesData.filter(
+  (category) => !(category as any).draft || !import.meta.env.PROD
+);
+
 // Get current section info
-const currentSection = categoriesData.find((cat) => cat.path === sectionPath);
+const currentSection = visibleCategories.find((cat) => cat.path === sectionPath);
 const categorySectionUrl = `${baseUrl}${sectionPath}`;
 ---
 
