@@ -1,0 +1,168 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/human-centered-ai-design.json';
+import bibliographies from '../../data/bibliographies.json';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
+import MakeUncertaintyVisible from '../../components/use-cases/human-centered-ai-design/design-for-uncertainty/MakeUncertaintyVisible.astro';
+import CommunicateAssumptionsAndDataGaps from '../../components/use-cases/human-centered-ai-design/design-for-uncertainty/CommunicateAssumptionsAndDataGaps.astro';
+import DesignForAmbiguousOrMultipleOutcomes from '../../components/use-cases/human-centered-ai-design/design-for-uncertainty/DesignForAmbiguousOrMultipleOutcomes.astro';
+import EncourageVerificationAndHumanJudgment from '../../components/use-cases/human-centered-ai-design/design-for-uncertainty/EncourageVerificationAndHumanJudgment.astro';
+
+const principle = data.principles.find((p) => p.id === 'design-for-uncertainty')!;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const sectionPath = '/human-centered-ai-design';
+// Get bibliography items from bibliographies.json using principle.sources
+const bibliography: any[] = [];
+if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
+  principle.sources.forEach((sourceId: string) => {
+    if ((bibliographies as any)[sourceId]) {
+      bibliography.push((bibliographies as any)[sourceId]);
+    }
+  });
+}
+const books = bibliography?.filter((item: any) => item.type === 'book') || [];
+const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+const videos = bibliography?.filter((item: any) => item.type === 'video') || [];
+
+// Sort bibliography alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
+const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
+const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Human-Centered AI Design`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/human-centered-ai-design"
+>
+  <Article>
+    <Markdown
+      content={`
+AI systems operate with inherent uncertainty. They make predictions, classifications, and recommendations based on probabilities, not certainties.
+
+Designing for uncertainty means explicitly acknowledging that AI systems can be wrong, incomplete, or ambiguous, and shaping interactions so users are not misled into false confidence.
+
+Uncertainty is not a flaw to hide, but a property to surface and manage.
+
+A human-centered approach avoids binary outcomes (“right/wrong”) and instead communicates confidence levels, assumptions, and limits, enabling users to make informed decisions and apply appropriate judgment.
+
+Users should understand:
+
+- how confident the AI is in its outputs,
+- what factors might affect accuracy,
+- and what the consequences of relying on uncertain information might be.
+
+Hiding uncertainty may make the system feel more confident, but it leads to:
+
+- over-reliance on potentially incorrect outputs,
+- poor decision-making when confidence is low,
+- and loss of trust when users discover the system was uncertain.
+
+By exposing uncertainty appropriately, I help users:
+
+- calibrate their trust in the system,
+- make better decisions based on confidence levels,
+- and understand when human judgment is needed.
+      `}
+    />
+
+    <MakeUncertaintyVisible />
+    <CommunicateAssumptionsAndDataGaps />
+    <DesignForAmbiguousOrMultipleOutcomes />
+    <EncourageVerificationAndHumanJudgment />
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Uncertainty is a fundamental characteristic of AI systems. Pretending it doesn't exist creates false confidence and poor decision-making.
+
+When users understand uncertainty:
+- they can weigh AI recommendations appropriately,
+- they know when to seek additional information or human input,
+- and they can make informed choices about risk tolerance.
+
+Without transparency about uncertainty, users may:
+- blindly trust outputs that are actually uncertain,
+- make critical decisions based on low-confidence predictions,
+- or lose trust when they discover the system was uncertain about something important.
+      `}
+    />
+  </Article>
+
+  {
+    bibliography && (
+      <Bibliography>
+        {sortedBooks.length > 0 && (
+          <BibliographySection type="book">
+            {sortedBooks.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedUrls.length > 0 && (
+          <BibliographySection type="url">
+            {sortedUrls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedVideos.length > 0 && (
+          <BibliographySection type="video">
+            {sortedVideos.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
+
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
+</PrincipleLayout>

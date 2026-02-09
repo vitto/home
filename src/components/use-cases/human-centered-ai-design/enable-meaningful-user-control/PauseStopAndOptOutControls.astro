@@ -1,0 +1,90 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Pause, Stop, and Opt-Out Controls"
+  description="Users should be able to pause, stop, or completely opt out of AI features at any time."
+>
+  <UseCaseInteractive clsHeight={112} label="Pause and stop controls" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>AI Processing with Controls</b></mds-text>
+          <mds-text typography="body">Analyzing your document... (45% complete)</mds-text>
+          <div class="grid gap-300">
+            <mds-progress-bar value={45} class="w-full"></mds-progress-bar>
+            <div class="flex gap-200">
+              <mds-button variant="outline" size="sm">
+                <mds-icon name="mi/outline/pause" slot="icon-start"></mds-icon>
+                Pause
+              </mds-button>
+              <mds-button variant="outline" size="sm">
+                <mds-icon name="mi/outline/stop" slot="icon-start"></mds-icon>
+                Stop
+              </mds-button>
+            </div>
+            <mds-text typography="caption" class="text-tone-neutral-05"
+              >Users can pause or stop AI processing at any time, maintaining control over when AI
+              runs.</mds-text
+            >
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>No Stop Option (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >Analyzing your document... Please wait. This process cannot be interrupted.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Users cannot pause or stop the AI process, forcing them to wait for completion even if
+            they change their mind.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Opt-Out Options</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Provide "Disable AI features" option in settings</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Allow users to pause or stop AI processes at any time</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Don't:</b> Force users to use AI features or make opt-out difficult</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Provide pause and stop controls for all AI processes that take time.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Force users to wait for AI processes to complete without interruption.
+    </UsageItem>
+    <UsageItem variant="do">
+      Allow users to completely opt out of AI features in settings.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Make opt-out options hard to find or require multiple steps to disable AI.
+    </UsageItem>
+  </Usage>
+</UseCase>

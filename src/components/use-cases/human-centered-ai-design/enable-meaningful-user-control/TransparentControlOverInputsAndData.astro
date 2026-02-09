@@ -1,0 +1,93 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Transparent Control Over Inputs and Data"
+  description="Users should understand what data the AI uses and be able to control or modify those inputs."
+>
+  <UseCaseInteractive clsHeight={112} label="Data control" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Data Sources and Control</b></mds-text>
+          <mds-text typography="body"><b>Recommendation based on:</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <div class="flex items-center justify-between">
+                <mds-text typography="caption">Your purchase history (12 items)</mds-text>
+                <mds-input-switch checked></mds-input-switch>
+              </div>
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <div class="flex items-center justify-between">
+                <mds-text typography="caption">Similar user preferences</mds-text>
+                <mds-input-switch checked></mds-input-switch>
+              </div>
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <div class="flex items-center justify-between">
+                <mds-text typography="caption">Current trends</mds-text>
+                <mds-input-switch></mds-input-switch>
+              </div>
+            </div>
+            <mds-text typography="caption" class="text-tone-neutral-05"
+              >Users can see what data is used and toggle data sources on or off to control
+              recommendations.</mds-text
+            >
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Hidden Data Sources (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body">Based on our analysis, we recommend this product.</mds-text>
+          <mds-text typography="caption" class="text-status-error-06"
+            >Users cannot see what data was used or control which data sources influence
+            recommendations, removing transparency and control.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Data Control Best Practices</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Show users what data sources are used for AI outputs</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Allow users to exclude specific data sources or inputs</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Don't:</b> Hide data sources or make them difficult to understand or control</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Show users what data sources and inputs the AI uses to generate outputs.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Hide data sources or make them difficult to understand or control.
+    </UsageItem>
+    <UsageItem variant="do">
+      Allow users to exclude specific data sources or modify inputs that influence AI behavior.
+    </UsageItem>
+    <UsageItem variant="dont">Use data sources without user awareness or consent.</UsageItem>
+  </Usage>
+</UseCase>

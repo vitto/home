@@ -1,0 +1,75 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Clarify Scope and Capabilities"
+  description="State clearly what the AI can and can't do, and for whom or in what context—so users don't assume it handles everything or works in every situation."
+>
+  <UseCaseInteractive clsHeight={112} label="Scope and capabilities" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Explicit Scope</b></mds-text>
+          <mds-text typography="body"
+            >This assistant helps you draft and summarize documents in English, Spanish, and French.
+            It does not give legal, medical, or financial advice. For those, consult a qualified
+            professional.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Users see what's in scope (languages, tasks) and what's out (advice domains).</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Context Where It Applies</b></mds-text>
+          <mds-text typography="body"
+            >Recommendations are based on your organization's policy and the data you've provided.
+            They may not apply to edge cases or regions we don't yet support. [See supported
+            scenarios]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Clarifies the conditions under which the AI is designed to work.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Vague or Absent Scope (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >"AI-powered assistant" or "Smart suggestions" with no description of what it does,
+            which languages or domains it supports, or what it doesn't do. Users assume it can
+            handle anything.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Leads to misuse in unsupported contexts and disappointment when the system fails
+            outside its scope.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Describe what the AI is designed to do, in what context (e.g. languages, domains, data), and
+      what it does not do.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Use generic labels like "AI-powered" or "Smart" without stating scope or limitations.
+    </UsageItem>
+    <UsageItem variant="do">
+      Call out high-stakes exclusions (e.g. not legal/medical/financial advice) in user-visible
+      copy.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Leave scope and boundaries implicit so users infer capabilities incorrectly.
+    </UsageItem>
+  </Usage>
+</UseCase>

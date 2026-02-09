@@ -1,0 +1,92 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Visual Personification (Avatars, Faces, Human Traits)"
+  description="Avoid visual design that makes AI systems appear human-like, which can create false expectations about capabilities and emotional connection."
+>
+  <UseCaseInteractive clsHeight={112} label="Visual design comparison" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Abstract/Functional Design (Appropriate)</b></mds-text>
+          <div class="flex items-center gap-400 p-400 rounded bg-tone-neutral-08">
+            <mds-icon name="mgg/ai-chatbot" class="text-label-orange-05 text-[32px]"></mds-icon>
+            <div class="grid gap-100">
+              <mds-text typography="label"><b>AI Assistant</b></mds-text>
+              <mds-text typography="caption" class="text-tone-neutral-05"
+                >Abstract icon clearly indicates this is an AI system, not a human.</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Human-like Avatar (Misleading)</b></mds-text>
+          </div>
+          <div class="flex items-center gap-400 p-400 rounded bg-status-error-10">
+            <div
+              class="size-800 rounded-full bg-label-orange-05 flex items-center justify-center text-white text-[24px]"
+            >
+              👤
+            </div>
+            <div class="grid gap-100">
+              <mds-text typography="label"><b>Sarah</b></mds-text>
+              <mds-text typography="caption" class="text-status-error-06"
+                >Human-like avatar with a name creates the impression of a real person, misleading
+                users about the nature of the interaction.</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Design Guidelines</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Avoid:</b> Human faces, realistic avatars, or anthropomorphic characters<br />
+                <b>Use:</b> Abstract icons, geometric shapes, or functional symbols</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Avoid:</b> Giving AI systems human names or personal identities<br />
+                <b>Use:</b> Descriptive labels like "AI Assistant" or "Chatbot"</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Avoid:</b> Visual cues that suggest emotions (smiling faces, expressive eyes)<br
+                />
+                <b>Use:</b> Neutral, functional visual design that doesn't imply sentience</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Use abstract icons or functional symbols to represent AI systems.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Use human-like avatars, faces, or anthropomorphic characters that suggest the AI is a person.
+    </UsageItem>
+    <UsageItem variant="do">
+      Clearly label AI systems with descriptive terms like "AI Assistant" or "Chatbot".
+    </UsageItem>
+    <UsageItem variant="dont">
+      Give AI systems human names or personal identities that create false expectations.
+    </UsageItem>
+  </Usage>
+</UseCase>

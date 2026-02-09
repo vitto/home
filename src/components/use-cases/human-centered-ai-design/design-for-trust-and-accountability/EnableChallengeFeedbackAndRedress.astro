@@ -1,0 +1,76 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Enable Challenge, Feedback, and Redress"
+  description="Give users ways to report issues, correct errors, or escalate when the AI is wrong or harmful—and make it clear that feedback is used to improve the system and that redress is available where appropriate."
+>
+  <UseCaseInteractive clsHeight={112} label="Challenge, feedback, redress" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Visible Feedback Paths</b></mds-text>
+          <mds-text typography="body"
+            >Was this helpful? [Yes] [No]. If not, [Report a problem] or [Request human review]. We
+            use feedback to improve and will respond to review requests within 2 business days.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Simple feedback plus a clear path to report or request review; sets expectation for
+            response.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Correction and Dispute</b></mds-text>
+          <mds-text typography="body"
+            >Think this result is wrong? [Dispute this decision]. You can attach evidence and
+            request a human review. See our [Appeals process] for timelines and next steps.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >When the output has consequences (e.g. eligibility, scoring), dispute and appeal are
+            explicit and linked.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>No Way to Challenge (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >AI decision with no "Report problem", no "Request review", and no link to appeal.
+            Contact info buried in footer. Users who are wronged have no clear path to correction or
+            redress.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Erodes trust and leaves users without recourse when the system makes a mistake or
+            causes harm.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Offer obvious ways to report errors, give feedback, and—where the output has
+      consequences—request review or appeal.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Present consequential AI output with no visible path to challenge, correct, or escalate.
+    </UsageItem>
+    <UsageItem variant="do">
+      Explain that feedback is used to improve the system and set expectations for response or
+      redress where applicable.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Collect feedback with no indication it is used or that users will get a response when they
+      need one.
+    </UsageItem>
+  </Usage>
+</UseCase>

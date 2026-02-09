@@ -1,0 +1,87 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Progressive Disclosure Based on Expertise"
+  description="Show simple, essential options first; reveal advanced or detailed options when users need them or indicate expertise."
+>
+  <UseCaseInteractive clsHeight={112} label="Progressive disclosure" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Simple View (Default)</b></mds-text>
+          <mds-text typography="body">Search: [________________]</mds-text>
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >One search box. No advanced filters unless the user asks.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Advanced Options (On Demand)</b></mds-text>
+          <mds-text typography="body">Search: [________________]</mds-text>
+          <mds-button variant="outline" size="sm">Show advanced filters</mds-button>
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Advanced filters (date range, file type, confidence threshold) appear when the user
+            expands "Show advanced filters", keeping the default experience simple.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Everything at Once (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >Search with 15 filter dropdowns, confidence sliders, model selection, and export
+            format—all visible by default.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Overwhelms novices and slows down experts who only need one or two options.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Expert Shortcuts</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Let users set "Always show advanced options" if they prefer</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Offer keyboard shortcuts or "Power user" mode for repeated tasks</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Don't:</b> Hide critical options; only defer advanced or rarely used ones</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Start with simple, essential controls; reveal advanced options on demand or via settings.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Show every option and control at once regardless of user expertise or task.
+    </UsageItem>
+    <UsageItem variant="do">
+      Let users opt into "advanced" or "expert" mode if they want more visible controls.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Hide options that are essential for basic tasks; only defer advanced or rarely used ones.
+    </UsageItem>
+  </Usage>
+</UseCase>

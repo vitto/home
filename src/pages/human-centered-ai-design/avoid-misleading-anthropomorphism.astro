@@ -1,0 +1,164 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/human-centered-ai-design.json';
+import bibliographies from '../../data/bibliographies.json';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
+import LanguageThatImpliesIntentOrEmotion from '../../components/use-cases/human-centered-ai-design/avoid-misleading-anthropomorphism/LanguageThatImpliesIntentOrEmotion.astro';
+import VisualPersonification from '../../components/use-cases/human-centered-ai-design/avoid-misleading-anthropomorphism/VisualPersonification.astro';
+import IllusionOfAgencyOrResponsibility from '../../components/use-cases/human-centered-ai-design/avoid-misleading-anthropomorphism/IllusionOfAgencyOrResponsibility.astro';
+import SimulatedEmpathyAndEmotionalManipulation from '../../components/use-cases/human-centered-ai-design/avoid-misleading-anthropomorphism/SimulatedEmpathyAndEmotionalManipulation.astro';
+
+const principle = data.principles.find((p) => p.id === 'avoid-misleading-anthropomorphism')!;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const sectionPath = '/human-centered-ai-design';
+// Get bibliography items from bibliographies.json using principle.sources
+const bibliography: any[] = [];
+if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
+  principle.sources.forEach((sourceId: string) => {
+    if ((bibliographies as any)[sourceId]) {
+      bibliography.push((bibliographies as any)[sourceId]);
+    }
+  });
+}
+const books = bibliography?.filter((item: any) => item.type === 'book') || [];
+const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+const videos = bibliography?.filter((item: any) => item.type === 'video') || [];
+
+// Sort bibliography alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
+const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
+const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Human-Centered AI Design`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/human-centered-ai-design"
+>
+  <Article>
+    <Markdown
+      content={`
+AI systems are tools, not people. When we make them seem more human-like than they are, we create false expectations and mislead users about their capabilities and limitations.
+
+Anthropomorphism—attributing human characteristics to non-human entities—can make AI feel more approachable, but it also inflates expectations and obscures the reality that AI systems don't have intentions, emotions, or agency.
+
+When I design AI-powered experiences, I **avoid misleading anthropomorphism** by being clear about what AI systems are: sophisticated tools that process data and generate outputs, not sentient beings with thoughts and feelings.
+
+Misleading anthropomorphism appears in several forms:
+- **Language** that suggests the AI has intentions, emotions, or personal preferences
+- **Visual design** that personifies the AI with human-like avatars or faces
+- **Behavior** that creates an illusion of agency or independent decision-making
+- **Emotional manipulation** that simulates empathy or emotional connection
+
+While some anthropomorphic elements can make interfaces more engaging, they become problematic when they:
+- suggest the AI has capabilities it doesn't (like understanding emotions or making independent choices),
+- create false expectations about how the system works,
+- or manipulate users into trusting or engaging with the system inappropriately.
+
+By avoiding misleading anthropomorphism, I help users:
+- form accurate mental models of what AI can and cannot do,
+- maintain appropriate expectations about system behavior,
+- and make informed decisions without being manipulated by false emotional cues.
+      `}
+    />
+
+    <LanguageThatImpliesIntentOrEmotion />
+    <VisualPersonification />
+    <IllusionOfAgencyOrResponsibility />
+    <SimulatedEmpathyAndEmotionalManipulation />
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Anthropomorphism can create a false sense of connection and understanding, leading users to overtrust AI systems or misunderstand their limitations.
+
+When anthropomorphism is avoided:
+- users have realistic expectations about AI capabilities,
+- they understand that AI outputs are generated, not "thought" or "felt",
+- and they can make decisions based on accurate understanding rather than emotional manipulation.
+
+Without care to avoid misleading anthropomorphism, users may:
+- attribute human-like understanding or intentions to systems that have neither,
+- overtrust AI recommendations because they feel emotionally connected,
+- or be manipulated into sharing information or making decisions they wouldn't otherwise make.
+      `}
+    />
+  </Article>
+
+  {
+    bibliography && (
+      <Bibliography>
+        {sortedBooks.length > 0 && (
+          <BibliographySection type="book">
+            {sortedBooks.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedUrls.length > 0 && (
+          <BibliographySection type="url">
+            {sortedUrls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedVideos.length > 0 && (
+          <BibliographySection type="video">
+            {sortedVideos.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
+
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
+</PrincipleLayout>

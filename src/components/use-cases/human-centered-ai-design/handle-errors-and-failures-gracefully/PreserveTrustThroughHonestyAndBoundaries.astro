@@ -1,0 +1,105 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Preserve Trust Through Honesty and Boundaries"
+  description="Be honest about what failed and what the system can and can't do. Don't blame the user or hide limitations; clear boundaries preserve trust."
+>
+  <UseCaseInteractive clsHeight={112} label="Honesty and boundaries" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/info" class="text-status-info-05"></mds-icon>
+            <mds-text typography="label"><b>Honest Failure Message</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >I couldn't complete this request. The AI service is currently overloaded—this happens
+            sometimes during peak use. Your request wasn't processed; nothing was saved or changed.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Clear about cause (overload), that it's a known type of failure, and that no side
+            effects occurred. No blame, no vagueness.</mds-text
+          >
+          <mds-button variant="outline" size="sm">Try again in a few minutes</mds-button>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Blaming or Vague (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >Your request could not be completed. Please check your input and try again.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Implies the user did something wrong when the failure may be on the system side.
+            Doesn't explain what actually failed.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Setting Boundaries</b></mds-text>
+          <mds-text typography="body"
+            >I can't answer that—it's outside what I'm designed to do. I can help with [X, Y, Z].
+            For this type of question, you might try [alternative].</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Honest about limitations, no false attempt to answer, and a constructive alternative.
+            Preserves trust by not overclaiming.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Trust-Building Practices</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Attribute failure to the right cause (system, service, input) without blaming
+                the user when it's not their fault</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> State what the system can and can't do when relevant to the failure</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Don't:</b> Use vague or user-blaming language ("check your input") when the failure
+                is internal</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Don't:</b> Pretend the system can do something it can't; decline clearly and suggest
+                alternatives</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Be honest about what failed and whether the cause is system, service, or input-related.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Blame the user for system or service failures with vague messages like "check your input".
+    </UsageItem>
+    <UsageItem variant="do">
+      State boundaries clearly when the system can't do something; offer alternatives when possible.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Hide limitations or overclaim capability; that erodes trust when failures or refusals occur.
+    </UsageItem>
+  </Usage>
+</UseCase>

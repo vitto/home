@@ -1,0 +1,91 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Explicit User Choice and Consent"
+  description="Users should explicitly choose when AI takes actions, especially for important or irreversible decisions."
+>
+  <UseCaseInteractive clsHeight={112} label="Explicit consent" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Explicit Consent Required</b></mds-text>
+          <mds-text typography="body"
+            >The AI has prepared a draft email based on your conversation. Review it before sending?</mds-text
+          >
+          <div class="grid gap-300">
+            <mds-text typography="caption" class="text-tone-neutral-05"
+              >Draft: "Thank you for your inquiry. I'll get back to you by Friday..."</mds-text
+            >
+            <div class="flex gap-200">
+              <mds-button variant="primary">Review and edit</mds-button>
+              <mds-button variant="outline">Discard</mds-button>
+            </div>
+            <mds-text typography="caption" class="text-tone-neutral-05"
+              >No action is taken until you explicitly choose to send.</mds-text
+            >
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Automatic Action (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >I've automatically sent a response email based on your conversation.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >The AI took action without explicit user consent, removing user agency over an
+            important communication.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>More Examples</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> "Would you like me to schedule this meeting?"<br />
+                <b>Don't:</b> Automatically schedule meetings without asking</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> "I can delete these old files. Proceed?"<br />
+                <b>Don't:</b> Delete files automatically without confirmation</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Show a confirmation dialog for irreversible actions<br />
+                <b>Don't:</b> Perform irreversible actions without explicit user approval</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Require explicit user consent before AI takes actions, especially for important or
+      irreversible decisions.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Allow AI to automatically perform actions without user approval.
+    </UsageItem>
+    <UsageItem variant="do">
+      Make it clear what action the AI wants to take and why before asking for consent.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Hide AI actions or make them difficult to prevent or cancel.
+    </UsageItem>
+  </Usage>
+</UseCase>

@@ -1,0 +1,73 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Progressive Disclosure and Information Prioritization"
+  description="Surface what matters most first; reveal supporting detail or secondary information on demand so users aren't overwhelmed."
+>
+  <UseCaseInteractive clsHeight={112} label="Progressive disclosure and prioritization" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Prioritized Summary First</b></mds-text>
+          <mds-text typography="body"
+            ><b>Summary:</b> 3 issues found. High: 1 (login timeout). Medium: 2 (rate limit, cache).</mds-text
+          >
+          <mds-button variant="outline" size="sm">Show details</mds-button>
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >User sees the headline and severity first; details expand on demand.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Layered Detail</b></mds-text>
+          <mds-text typography="body"
+            >Recommendation: Approve. Confidence: High. <span class="text-tone-neutral-05"
+              >Reasoning and sources →</span
+            ></mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Primary decision and confidence upfront; reasoning and citations available when the
+            user needs to verify.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Everything Up Front (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >Long block: full reasoning, all citations, raw scores, model name, timestamp, and 12
+            secondary metrics—before the user sees the actual recommendation.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Forces users to scan a wall of text to find the answer; increases cognitive load and
+            time to decision.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Lead with the answer, summary, or next step; put supporting detail behind "Show more" or
+      expandable sections.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Present long reasoning, citations, and metrics before the user sees the main result.
+    </UsageItem>
+    <UsageItem variant="do">
+      Order information by importance to the user's goal (e.g. "what to do" before "why").
+    </UsageItem>
+    <UsageItem variant="dont">
+      Treat all information as equal; avoid burying the key takeaway in the middle or end.
+    </UsageItem>
+  </Usage>
+</UseCase>

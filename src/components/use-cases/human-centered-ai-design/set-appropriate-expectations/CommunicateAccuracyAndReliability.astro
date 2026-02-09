@@ -1,0 +1,73 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Communicate Accuracy and Reliability"
+  description="Set expectations for how often the AI is right, when to double-check, and what might go wrong—so users know when to trust and when to verify."
+>
+  <UseCaseInteractive clsHeight={112} label="Accuracy and reliability" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>When to Verify</b></mds-text>
+          <mds-text typography="body"
+            >Suggestions are usually accurate for common cases but can be wrong. Always review
+            before applying, especially for important or unusual content. [Learn how we improve
+            accuracy]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Users are told to review; no claim of perfection.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Confidence in Context</b></mds-text>
+          <mds-text typography="body"
+            >We're less confident in this answer because the source material is limited. Consider
+            checking with a human expert before relying on it.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >When the system is uncertain, it says so and suggests verification.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Overstated Reliability (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >"Precise answers" or "Trust our AI" with no guidance on when to verify. No indication
+            when the model is uncertain. Users assume they can rely on every output.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Overtrust leads to uncritical use; one failure can shatter confidence because
+            expectations were wrong.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Tell users to review important outputs and that the AI can make mistakes; avoid implying it's
+      always correct.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Use language like "precise", "accurate", or "trust our AI" without guidance on when to verify.
+    </UsageItem>
+    <UsageItem variant="do">
+      When the system is uncertain or conditions are edge-case, say so and suggest human
+      verification.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Present all outputs with the same implied certainty; hide or downplay uncertainty.
+    </UsageItem>
+  </Usage>
+</UseCase>

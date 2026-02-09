@@ -1,0 +1,76 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Communicate Limitations and Risk Clearly"
+  description="State constraints and risks in user-facing terms—what the AI can and can't do, and when to be cautious—so users can make informed decisions."
+>
+  <UseCaseInteractive clsHeight={112} label="Limitations and risk" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Clear Boundaries</b></mds-text>
+          <mds-text typography="body"
+            >This tool works best with documents in English and under 20 pages. It may miss context
+            from images or handwritten notes. For legal or medical decisions, always get human
+            expert review.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Limitations and high-stakes caveats are stated upfront in plain language.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Risk When It Matters</b></mds-text>
+          <mds-text typography="body"
+            >This suggestion could affect eligibility. Please review carefully. [View full
+            explanation] [Talk to an advisor]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >When output has significant impact, the UI surfaces the risk and a path to human
+            support.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Hidden Limitations (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >AI presented as general-purpose with no mention of language, length, or domain limits.
+            No warning when the output might affect rights or benefits. Limitations only in a long
+            legal document.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Users assume the system is more capable or safer than it is; harm when limits are hit
+            or risk is high.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Describe what the AI is good at and where it may be wrong or inappropriate, in user-facing
+      language.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Present the AI as universally capable or hide limitations in fine print or legal text only.
+    </UsageItem>
+    <UsageItem variant="do">
+      When output can affect rights, benefits, or safety, surface the risk and suggest human review
+      or expert advice.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Treat high-stakes suggestions the same as low-stakes ones with no extra warning or path to
+      support.
+    </UsageItem>
+  </Usage>
+</UseCase>

@@ -1,0 +1,99 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Configurable Autonomy Levels"
+  description="Users should be able to configure how much autonomy the AI has, from fully manual to various levels of automation."
+>
+  <UseCaseInteractive clsHeight={112} label="Autonomy settings" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Autonomy Level Settings</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Manual:</b> AI only suggests, never acts automatically</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Assisted:</b> AI acts only after explicit approval</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Automated (low risk):</b> AI acts automatically for low-risk tasks only</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Automated (full):</b> AI acts automatically for all configured tasks</mds-text
+              >
+            </div>
+            <mds-input-switch>
+              <mds-text slot="label">Enable automatic actions</mds-text>
+            </mds-input-switch>
+            <mds-text typography="caption" class="text-tone-neutral-05"
+              >Users can choose the level of AI autonomy that matches their comfort and needs.</mds-text
+            >
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Fixed Autonomy (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >The AI automatically performs all actions based on its analysis. No settings available.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Users cannot adjust AI autonomy levels, forcing them to accept whatever level the
+            system uses by default.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Granular Controls</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Allow users to configure autonomy levels per feature or task type</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Provide clear descriptions of what each autonomy level means</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Don't:</b> Force all users into the same autonomy level</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Allow users to configure how much autonomy the AI has, from fully manual to various automation
+      levels.
+    </UsageItem>
+    <UsageItem variant="dont">Force all users to accept the same level of AI autonomy.</UsageItem>
+    <UsageItem variant="do">
+      Provide clear descriptions of what each autonomy level means and what actions it allows.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Hide autonomy settings or make them difficult to find or understand.
+    </UsageItem>
+  </Usage>
+</UseCase>

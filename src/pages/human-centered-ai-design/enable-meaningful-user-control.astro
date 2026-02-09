@@ -1,0 +1,165 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/human-centered-ai-design.json';
+import bibliographies from '../../data/bibliographies.json';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
+import AdjustableAutonomyLevels from '../../components/use-cases/human-centered-ai-design/enable-meaningful-user-control/AdjustableAutonomyLevels.astro';
+import ExplicitOverridesAndManualCorrections from '../../components/use-cases/human-centered-ai-design/enable-meaningful-user-control/ExplicitOverridesAndManualCorrections.astro';
+import ReversibilityAndUndo from '../../components/use-cases/human-centered-ai-design/enable-meaningful-user-control/ReversibilityAndUndo.astro';
+import PauseStopAndOptOutControls from '../../components/use-cases/human-centered-ai-design/enable-meaningful-user-control/PauseStopAndOptOutControls.astro';
+import TransparentControlOverInputsAndData from '../../components/use-cases/human-centered-ai-design/enable-meaningful-user-control/TransparentControlOverInputsAndData.astro';
+import ClearOwnershipOfFinalDecisions from '../../components/use-cases/human-centered-ai-design/enable-meaningful-user-control/ClearOwnershipOfFinalDecisions.astro';
+
+const principle = data.principles.find((p) => p.id === 'enable-meaningful-user-control')!;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const sectionPath = '/human-centered-ai-design';
+// Get bibliography items from bibliographies.json using principle.sources
+const bibliography: any[] = [];
+if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
+  principle.sources.forEach((sourceId: string) => {
+    if ((bibliographies as any)[sourceId]) {
+      bibliography.push((bibliographies as any)[sourceId]);
+    }
+  });
+}
+const books = bibliography?.filter((item: any) => item.type === 'book') || [];
+const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+const videos = bibliography?.filter((item: any) => item.type === 'video') || [];
+
+// Sort bibliography alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
+const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
+const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Human-Centered AI Design`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/human-centered-ai-design"
+>
+  <Article>
+    <Markdown
+      content={`
+Meaningful user control means giving users real power to modify, override, pause, or undo AI actions—not just the illusion of control.
+
+When I design AI-powered experiences, I **enable meaningful user control** by providing practical, accessible ways for users to influence AI behavior and outputs.
+
+Meaningful control includes:
+- **Adjustable autonomy:** Users configure how much the AI can do automatically
+- **Explicit overrides:** Users can modify or reject AI suggestions easily
+- **Reversibility:** Users can undo AI actions and return to previous states
+- **Pause and stop:** Users can interrupt or disable AI processes at any time
+- **Data control:** Users understand and control what data the AI uses
+- **Decision ownership:** Users know they own final decisions, not the AI
+
+Control that isn't meaningful is control in name only—options that are hidden, difficult to use, or don't actually change behavior. This creates frustration and reduces trust.
+
+By enabling meaningful user control, I help users:
+- customize AI behavior to match their needs and preferences,
+- correct mistakes and adjust outputs when needed,
+- and maintain confidence that they can always take control when necessary.
+      `}
+    />
+
+    <AdjustableAutonomyLevels />
+    <ExplicitOverridesAndManualCorrections />
+    <ReversibilityAndUndo />
+    <PauseStopAndOptOutControls />
+    <TransparentControlOverInputsAndData />
+    <ClearOwnershipOfFinalDecisions />
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Users need real control over AI systems, not just the appearance of control. When control is meaningful, users can adapt systems to their needs and correct problems.
+
+When meaningful control is enabled:
+- users can customize AI behavior to match their workflow and preferences,
+- they can correct mistakes and adjust outputs when AI gets things wrong,
+- and they maintain confidence that they can always take control when needed.
+
+Without meaningful control, users may:
+- feel trapped by AI decisions they can't change,
+- lose trust when they discover control options don't actually work,
+- or abandon the system because it doesn't adapt to their needs.
+      `}
+    />
+  </Article>
+
+  {
+    bibliography && (
+      <Bibliography>
+        {sortedBooks.length > 0 && (
+          <BibliographySection type="book">
+            {sortedBooks.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedUrls.length > 0 && (
+          <BibliographySection type="url">
+            {sortedUrls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedVideos.length > 0 && (
+          <BibliographySection type="video">
+            {sortedVideos.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
+
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
+</PrincipleLayout>

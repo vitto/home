@@ -1,0 +1,159 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/human-centered-ai-design.json';
+import bibliographies from '../../data/bibliographies.json';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
+import ProgressiveDisclosureAndInformationPrioritization from '../../components/use-cases/human-centered-ai-design/respect-user-time-and-cognitive-load/ProgressiveDisclosureAndInformationPrioritization.astro';
+import ConciseGoalOrientedAIOutput from '../../components/use-cases/human-centered-ai-design/respect-user-time-and-cognitive-load/ConciseGoalOrientedAIOutput.astro';
+import ReducingDecisionFatigue from '../../components/use-cases/human-centered-ai-design/respect-user-time-and-cognitive-load/ReducingDecisionFatigue.astro';
+import RespectingUserTimeInInteractionFlow from '../../components/use-cases/human-centered-ai-design/respect-user-time-and-cognitive-load/RespectingUserTimeInInteractionFlow.astro';
+
+const principle = data.principles.find((p) => p.id === 'respect-user-time-and-cognitive-load')!;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const sectionPath = '/human-centered-ai-design';
+// Get bibliography items from bibliographies.json using principle.sources
+const bibliography: any[] = [];
+if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
+  principle.sources.forEach((sourceId: string) => {
+    if ((bibliographies as any)[sourceId]) {
+      bibliography.push((bibliographies as any)[sourceId]);
+    }
+  });
+}
+const books = bibliography?.filter((item: any) => item.type === 'book') || [];
+const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+const videos = bibliography?.filter((item: any) => item.type === 'video') || [];
+
+// Sort bibliography alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
+const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
+const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Human-Centered AI Design`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/human-centered-ai-design"
+>
+  <Article>
+    <Markdown
+      content={`
+Users have limited attention and time. AI that dumps information, forces unnecessary decisions, or interrupts flow wastes both.
+
+When I design AI-powered experiences, I **respect user time and cognitive load** by keeping output clear and progressive, concise and goal-oriented, and by minimizing decision fatigue and friction in the interaction flow.
+
+Respecting time and cognitive load means:
+- **Progressive disclosure and prioritization:** Surface what matters first; defer detail until it's needed
+- **Concise, goal-oriented output:** Answer the user's question or support their task without walls of text or tangents
+- **Reducing decision fatigue:** Offer sensible defaults and fewer, clearer choices instead of overwhelming options
+- **Respecting flow:** Avoid unnecessary steps, interruptions, or wait states that don't serve the user's goal
+
+Dense, unfocused output and friction-heavy flows make users tune out or abandon the experience.
+
+By respecting user time and cognitive load, I help users:
+- find what they need quickly without wading through clutter,
+- make decisions with less stress and fewer unnecessary choices,
+- and stay in flow instead of being interrupted or delayed.
+      `}
+    />
+
+    <ProgressiveDisclosureAndInformationPrioritization />
+    <ConciseGoalOrientedAIOutput />
+    <ReducingDecisionFatigue />
+    <RespectingUserTimeInInteractionFlow />
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Cognitive overload and wasted time erode trust and adoption. Users who can't quickly get to the point will leave or work around the AI.
+
+When we respect time and cognitive load:
+- users accomplish tasks faster and with less mental effort,
+- they're more likely to use the AI again and to trust its output,
+- and the experience feels considerate rather than demanding.
+
+Without it, users may:
+- skip or ignore AI output because it's too long or unfocused,
+- feel exhausted by too many micro-decisions or unclear options,
+- or abandon flows that feel slow, interruptive, or repetitive.
+      `}
+    />
+  </Article>
+
+  {
+    bibliography && (
+      <Bibliography>
+        {sortedBooks.length > 0 && (
+          <BibliographySection type="book">
+            {sortedBooks.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedUrls.length > 0 && (
+          <BibliographySection type="url">
+            {sortedUrls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedVideos.length > 0 && (
+          <BibliographySection type="video">
+            {sortedVideos.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
+
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
+</PrincipleLayout>

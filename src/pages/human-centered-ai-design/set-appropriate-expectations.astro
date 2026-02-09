@@ -1,0 +1,160 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/human-centered-ai-design.json';
+import bibliographies from '../../data/bibliographies.json';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
+import ClarifyScopeAndCapabilities from '../../components/use-cases/human-centered-ai-design/set-appropriate-expectations/ClarifyScopeAndCapabilities.astro';
+import CommunicateAccuracyAndReliability from '../../components/use-cases/human-centered-ai-design/set-appropriate-expectations/CommunicateAccuracyAndReliability.astro';
+import ExplainTheRoleOfTheAIVsTheUser from '../../components/use-cases/human-centered-ai-design/set-appropriate-expectations/ExplainTheRoleOfTheAIVsTheUser.astro';
+import SetExpectationsOverTimeNotJustOnce from '../../components/use-cases/human-centered-ai-design/set-appropriate-expectations/SetExpectationsOverTimeNotJustOnce.astro';
+import AvoidOverpromisingInLanguageAndBranding from '../../components/use-cases/human-centered-ai-design/set-appropriate-expectations/AvoidOverpromisingInLanguageAndBranding.astro';
+
+const principle = data.principles.find((p) => p.id === 'set-appropriate-expectations')!;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const sectionPath = '/human-centered-ai-design';
+// Get bibliography items from bibliographies.json using principle.sources
+const bibliography: any[] = [];
+if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
+  principle.sources.forEach((sourceId: string) => {
+    if ((bibliographies as any)[sourceId]) {
+      bibliography.push((bibliographies as any)[sourceId]);
+    }
+  });
+}
+const books = bibliography?.filter((item: any) => item.type === 'book') || [];
+const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+const videos = bibliography?.filter((item: any) => item.type === 'video') || [];
+
+// Sort bibliography alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
+const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
+const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Human-Centered AI Design`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/human-centered-ai-design"
+>
+  <Article>
+    <Markdown
+      content={`
+Messaging that overstates what the AI can do leads to overtrust and misuse; messaging that is vague or absent leaves users guessing. Setting appropriate expectations aligns what users believe with what the system actually delivers.
+
+When I design AI-powered experiences, I **set appropriate expectations** by clarifying scope and capabilities, communicating accuracy and reliability, explaining the role of the AI vs the user, reinforcing expectations over time, and avoiding overpromising in language and branding.
+
+Setting appropriate expectations means:
+- **Clarify scope and capabilities:** What the AI can and can't do, and for whom or in what context
+- **Communicate accuracy and reliability:** How often it's right, when to double-check, and what might go wrong
+- **Explain the role of the AI vs the user:** Who does what—suggestion vs decision, draft vs final
+- **Set expectations over time:** Reinforce at key moments, not only at first use
+- **Avoid overpromising:** No "always accurate" or "fully automated" when the system has limits
+
+By setting appropriate expectations, I help users:
+- use the AI in the right situations and avoid misuse,
+- know when to trust and when to verify,
+- and maintain realistic trust instead of disappointment or overreliance.
+      `}
+    />
+
+    <ClarifyScopeAndCapabilities />
+    <CommunicateAccuracyAndReliability />
+    <ExplainTheRoleOfTheAIVsTheUser />
+    <SetExpectationsOverTimeNotJustOnce />
+    <AvoidOverpromisingInLanguageAndBranding />
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Overtrust leads to misuse and harm when users assume the AI is more capable than it is. Undertrust or confusion leads to underuse or frustration.
+
+When we set appropriate expectations:
+- users use the AI where it adds value and avoid relying on it where it doesn't,
+- they verify when it matters and feel less surprised when limits show up,
+- and trust stays aligned with reality instead of marketing.
+
+Without it, users may:
+- rely on the AI for tasks it wasn't designed for or isn't reliable at,
+- be shocked when it fails or discover too late that they misunderstood its role,
+- or dismiss it entirely because early messaging oversold and broke trust.
+      `}
+    />
+  </Article>
+
+  {
+    bibliography && (
+      <Bibliography>
+        {sortedBooks.length > 0 && (
+          <BibliographySection type="book">
+            {sortedBooks.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedUrls.length > 0 && (
+          <BibliographySection type="url">
+            {sortedUrls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedVideos.length > 0 && (
+          <BibliographySection type="video">
+            {sortedVideos.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
+
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
+</PrincipleLayout>

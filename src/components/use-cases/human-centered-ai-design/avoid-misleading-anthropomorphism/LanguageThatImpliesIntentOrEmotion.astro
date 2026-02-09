@@ -1,0 +1,85 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Language That Implies Intent or Emotion"
+  description="Avoid language that suggests the AI has intentions, feelings, preferences, or personal experiences."
+>
+  <UseCaseInteractive clsHeight={112} label="Language comparison" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Neutral Language (Appropriate)</b></mds-text>
+          <mds-text typography="body"
+            >Based on your preferences, this product matches your criteria. The system found 3
+            similar items.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Uses factual language that describes what the system did, not what it "wants" or
+            "feels".</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Anthropomorphic Language (Misleading)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >I think you'll love this! I found it especially for you because I know you like quality
+            products. I'm excited to show you these options!</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Implies the AI has thoughts ("I think"), emotions ("excited"), and personal knowledge
+            ("I know you"). This creates false expectations about the AI's capabilities.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>More Examples</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Avoid:</b> "I understand your frustration"<br />
+                <b>Use:</b> "I can help you resolve this issue"</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Avoid:</b> "I'm sorry, I made a mistake"<br />
+                <b>Use:</b> "An error occurred. Here's what happened:"</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Avoid:</b> "I believe this is the best option"<br />
+                <b>Use:</b> "This option matches your criteria most closely"</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Use factual language that describes system behavior and outputs.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Use language that suggests the AI has thoughts, feelings, or personal experiences.
+    </UsageItem>
+    <UsageItem variant="do">
+      Describe what the system did or found, not what it "wants" or "feels".
+    </UsageItem>
+    <UsageItem variant="dont">
+      Use phrases like "I think", "I feel", "I understand", or "I'm sorry" as if the AI has
+      emotions.
+    </UsageItem>
+  </Usage>
+</UseCase>

@@ -1,0 +1,65 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Encourage Verification and Human Judgment"
+  description="When uncertainty is high, explicitly prompt users to verify outputs and use their judgment rather than blindly accepting AI recommendations."
+>
+  <UseCaseInteractive clsHeight={112} label="Verification prompts" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>AI Translation</b></mds-text>
+          <mds-text typography="body">Translation: "Hello, how are you?"</mds-text>
+          <div class="p-400 rounded bg-status-warning-10 border border-status-warning-03">
+            <div class="flex items-start gap-200">
+              <mds-icon name="mi/outline/help" class="text-status-warning-05 mt-100"></mds-icon>
+              <div class="grid gap-100">
+                <mds-text typography="caption"><b>Please verify</b></mds-text>
+                <mds-text typography="caption" class="text-status-warning-06"
+                  >This translation has moderate confidence (72%). For important communications,
+                  please have a native speaker review it.</mds-text
+                >
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-200">
+            <mds-button variant="primary">Looks correct</mds-button>
+            <mds-button variant="outline">Request human review</mds-button>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>No Verification Prompt</b></mds-text>
+          </div>
+          <mds-text typography="body">Translation: "Hello, how are you?"</mds-text>
+          <mds-text typography="caption" class="text-status-error-06"
+            >This presents the translation without prompting verification, even though confidence is
+            moderate.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Prompt users to verify outputs when confidence is low or moderate.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Present uncertain outputs as if they're definitive and don't need verification.
+    </UsageItem>
+    <UsageItem variant="do">
+      Provide easy ways to request human review or additional verification.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Make it difficult for users to question or override AI outputs.
+    </UsageItem>
+  </Usage>
+</UseCase>

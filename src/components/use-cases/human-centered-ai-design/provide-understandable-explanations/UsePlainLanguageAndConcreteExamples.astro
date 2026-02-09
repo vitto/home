@@ -1,0 +1,72 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Use Plain Language and Concrete Examples"
+  description="Avoid technical jargon and abstract concepts. Use everyday language and specific examples that users can relate to."
+>
+  <UseCaseInteractive clsHeight={112} label="Plain language explanations" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Plain Language Explanation</b></mds-text>
+          <mds-text typography="body"
+            ><b>Why this email was flagged:</b> It asks you to click a link and enter your password, which
+            is a common sign of phishing. The sender's email address doesn't match the company it claims
+            to be from (it says "PayPal" but comes from "paypal-security@random-domain.com").</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Uses concrete examples (clicking links, entering passwords) and specific details (email
+            mismatch) that users can understand and verify.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Technical Jargon (Unhelpful)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >This message was classified as malicious based on anomaly detection algorithms
+            analyzing feature vectors including lexical patterns, domain reputation scores, and
+            behavioral heuristics. The classification confidence threshold exceeded 0.87.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Uses technical terms (anomaly detection, feature vectors, lexical patterns) that don't
+            help users understand why the email is suspicious or what they should do.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Concrete Example</b></mds-text>
+          <mds-text typography="body"
+            ><b>Example:</b> Instead of saying "the model identified semantic similarity," say "these
+            two documents discuss the same topic: both are about renewable energy policies."</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Provides a concrete example that shows what "semantic similarity" means in practical
+            terms.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Use everyday language and specific examples that users can relate to.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Use technical jargon, acronyms, or abstract concepts without explanation.
+    </UsageItem>
+    <UsageItem variant="do">
+      Show concrete examples of what the AI output means in practice.
+    </UsageItem>
+    <UsageItem variant="dont">Assume users understand technical terms or AI/ML concepts.</UsageItem>
+  </Usage>
+</UseCase>

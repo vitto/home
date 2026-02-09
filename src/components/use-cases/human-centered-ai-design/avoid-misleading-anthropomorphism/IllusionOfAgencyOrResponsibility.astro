@@ -1,0 +1,86 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Illusion of Agency or Responsibility"
+  description="Avoid creating the impression that AI systems make independent decisions or have agency, when they actually follow programmed rules and user inputs."
+>
+  <UseCaseInteractive clsHeight={112} label="Agency and responsibility" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Clear System Behavior (Appropriate)</b></mds-text>
+          <mds-text typography="body"
+            >Based on your settings and preferences, the system has automatically organized your
+            emails into these folders.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Clearly explains that the action was based on user settings and system rules, not
+            independent decision-making.</mds-text
+          >
+          <mds-button variant="outline" size="sm">Review settings</mds-button>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>False Agency (Misleading)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >I decided to organize your emails this way because I thought it would be helpful. I
+            took the liberty of creating these folders for you.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Creates the illusion that the AI made an independent decision ("I decided", "I
+            thought") and took action on its own ("I took the liberty"), when it actually followed
+            programmed rules.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>More Examples</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Avoid:</b> "I chose this for you"<br />
+                <b>Use:</b> "This matches your preferences"</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Avoid:</b> "I think we should..."<br />
+                <b>Use:</b> "Based on your criteria, this option..."</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Avoid:</b> "I'm responsible for this decision"<br />
+                <b>Use:</b> "This action was performed based on your settings"</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Explain that AI actions are based on user inputs, settings, and programmed rules.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Create the impression that AI systems make independent decisions or have agency.
+    </UsageItem>
+    <UsageItem variant="do">
+      Make it clear that users control settings and can modify or override AI behavior.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Use language that suggests the AI "decided" or "chose" something independently.
+    </UsageItem>
+  </Usage>
+</UseCase>

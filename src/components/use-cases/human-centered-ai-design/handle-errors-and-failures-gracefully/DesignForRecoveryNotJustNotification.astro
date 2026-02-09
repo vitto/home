@@ -1,0 +1,91 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Design for Recovery, Not Just Notification"
+  description="Every error state should offer a path to recover—retry, alternative action, or safe fallback—not just inform the user that something failed."
+>
+  <UseCaseInteractive clsHeight={112} label="Recovery options" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Analysis Failed</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >The AI couldn't analyze this document. The file may be too large or in an unsupported
+            format.</mds-text
+          >
+          <div class="flex flex-wrap gap-200">
+            <mds-button variant="primary" size="sm">Try again</mds-button>
+            <mds-button variant="outline" size="sm">Upload a different file</mds-button>
+            <mds-button variant="outline" size="sm">Continue without analysis</mds-button>
+          </div>
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Users have clear recovery paths: retry, change input, or continue without the feature.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Notification Only (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body">The AI couldn't analyze this document.</mds-text>
+          <mds-text typography="caption" class="text-status-error-06"
+            >No retry, no alternative, no way to continue—user is stuck with no recovery path.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Recovery Best Practices</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Offer "Try again" for transient failures</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Provide alternatives (e.g. different file, manual input)</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Allow continuing without the failed feature when possible</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Don't:</b> Leave users with only an error message and no next step</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Provide at least one clear recovery path for every error (retry, alternative, or safe
+      fallback).
+    </UsageItem>
+    <UsageItem variant="dont">
+      Show only an error message with no way to recover or continue.
+    </UsageItem>
+    <UsageItem variant="do">
+      Match recovery options to the type of failure (e.g. retry for timeouts, different input for
+      invalid data).
+    </UsageItem>
+    <UsageItem variant="dont">
+      Make recovery actions hard to find or require multiple steps when one would suffice.
+    </UsageItem>
+  </Usage>
+</UseCase>

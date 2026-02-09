@@ -1,0 +1,159 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/human-centered-ai-design.json';
+import bibliographies from '../../data/bibliographies.json';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
+import ProgressiveDisclosureBasedOnExpertise from '../../components/use-cases/human-centered-ai-design/adapt-to-user-context-and-expertise/ProgressiveDisclosureBasedOnExpertise.astro';
+import LanguageAndExplanationAdaptation from '../../components/use-cases/human-centered-ai-design/adapt-to-user-context-and-expertise/LanguageAndExplanationAdaptation.astro';
+import ContextAwareDefaultsAndRecommendations from '../../components/use-cases/human-centered-ai-design/adapt-to-user-context-and-expertise/ContextAwareDefaultsAndRecommendations.astro';
+import LearningFromTheUserWithoutLockIn from '../../components/use-cases/human-centered-ai-design/adapt-to-user-context-and-expertise/LearningFromTheUserWithoutLockIn.astro';
+
+const principle = data.principles.find((p) => p.id === 'adapt-to-user-context-and-expertise')!;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const sectionPath = '/human-centered-ai-design';
+// Get bibliography items from bibliographies.json using principle.sources
+const bibliography: any[] = [];
+if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
+  principle.sources.forEach((sourceId: string) => {
+    if ((bibliographies as any)[sourceId]) {
+      bibliography.push((bibliographies as any)[sourceId]);
+    }
+  });
+}
+const books = bibliography?.filter((item: any) => item.type === 'book') || [];
+const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+const videos = bibliography?.filter((item: any) => item.type === 'video') || [];
+
+// Sort bibliography alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
+const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
+const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Human-Centered AI Design`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/human-centered-ai-design"
+>
+  <Article>
+    <Markdown
+      content={`
+Users differ in goals, skills, and context. AI experiences that adapt to those differences are more useful and less frustrating than one-size-fits-all interfaces.
+
+When I design AI-powered experiences, I **adapt to user context and expertise** by tailoring behavior, language, and defaults to the user's situation and level of expertise.
+
+Adaptation includes:
+- **Progressive disclosure:** Show simple options first; reveal advanced or detailed options when users need or ask for them
+- **Language and explanations:** Match terminology and explanation depth to the user's expertise
+- **Context-aware defaults:** Use context (task, role, history) to set sensible defaults and recommendations
+- **Learning without lock-in:** Improve with use while letting users correct, override, or reset personalization
+
+Adaptation should reduce cognitive load for novices and avoid constraining experts. It should feel helpful, not presumptuous or opaque.
+
+By adapting to user context and expertise, I help users:
+- get the right level of detail and control for their needs,
+- work faster with context-appropriate defaults and suggestions,
+- and stay in control when the system learns from their behavior.
+      `}
+    />
+
+    <ProgressiveDisclosureBasedOnExpertise />
+    <LanguageAndExplanationAdaptation />
+    <ContextAwareDefaultsAndRecommendations />
+    <LearningFromTheUserWithoutLockIn />
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+One size fits none. Users who get too much detail are overwhelmed; users who get too little feel limited. Context-blind defaults feel random.
+
+When the system adapts to context and expertise:
+- novices get guidance without being overwhelmed,
+- experts get power and shortcuts without wading through basics,
+- and everyone benefits from defaults and recommendations that match their situation.
+
+Without adaptation, users may:
+- abandon the system because it doesn't match their workflow or skill level,
+- waste time overriding inappropriate defaults,
+- or feel that personalization is opaque or hard to control.
+      `}
+    />
+  </Article>
+
+  {
+    bibliography && (
+      <Bibliography>
+        {sortedBooks.length > 0 && (
+          <BibliographySection type="book">
+            {sortedBooks.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedUrls.length > 0 && (
+          <BibliographySection type="url">
+            {sortedUrls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedVideos.length > 0 && (
+          <BibliographySection type="video">
+            {sortedVideos.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
+
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
+</PrincipleLayout>

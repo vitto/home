@@ -1,0 +1,73 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Set Expectations Over Time, Not Just Once"
+  description="Reinforce what the AI can do and what the user's role is at key moments—not only on first use. Remind when context changes or when the stakes are high."
+>
+  <UseCaseInteractive clsHeight={112} label="Expectations over time" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Reinforce at Key Moments</b></mds-text>
+          <mds-text typography="body"
+            >Before sending: This will go to 12 people. Review the suggested text—you're responsible
+            for what you send. [Edit] [Send]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Just-in-time reminder of scope and user responsibility when the action is
+            consequential.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>When Stakes or Context Change</b></mds-text>
+          <mds-text typography="body"
+            >You're about to use this in a legal document. Our suggestions are drafts only; have a
+            qualified professional review before relying on them. [Continue] [Learn more]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >When the user enters a high-stakes context, expectations are restated.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Only on First Use (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >One-time onboarding: "The AI suggests; you decide." Then no reminder when sending to
+            hundreds of people or when the user switches to a high-risk domain. Users forget or
+            never read the fine print.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Expectations fade; users slip into overtrust or forget their role when it matters most.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Repeat or reinforce scope, reliability, and user role at important moments (e.g. before send,
+      before high-stakes use).
+    </UsageItem>
+    <UsageItem variant="dont">
+      Rely only on first-use or one-time messaging; assume users will remember.
+    </UsageItem>
+    <UsageItem variant="do">
+      When the context becomes higher-stakes (e.g. legal, external audience), restate limitations
+      and user responsibility.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Treat every interaction the same; avoid reminding when the cost of misunderstanding is high.
+    </UsageItem>
+  </Usage>
+</UseCase>

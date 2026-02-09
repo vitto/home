@@ -1,0 +1,169 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/human-centered-ai-design.json';
+import bibliographies from '../../data/bibliographies.json';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
+import ExplainOutcomesNotAlgorithms from '../../components/use-cases/human-centered-ai-design/provide-understandable-explanations/ExplainOutcomesNotAlgorithms.astro';
+import MatchExplanationDepthToUserContext from '../../components/use-cases/human-centered-ai-design/provide-understandable-explanations/MatchExplanationDepthToUserContext.astro';
+import ClarifyUncertaintyAndLimitationsExplicitly from '../../components/use-cases/human-centered-ai-design/provide-understandable-explanations/ClarifyUncertaintyAndLimitationsExplicitly.astro';
+import UsePlainLanguageAndConcreteExamples from '../../components/use-cases/human-centered-ai-design/provide-understandable-explanations/UsePlainLanguageAndConcreteExamples.astro';
+
+const principle = data.principles.find((p) => p.id === 'provide-understandable-explanations')!;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const sectionPath = '/human-centered-ai-design';
+// Get bibliography items from bibliographies.json using principle.sources
+const bibliography: any[] = [];
+if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
+  principle.sources.forEach((sourceId: string) => {
+    if ((bibliographies as any)[sourceId]) {
+      bibliography.push((bibliographies as any)[sourceId]);
+    }
+  });
+}
+const books = bibliography?.filter((item: any) => item.type === 'book') || [];
+const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+const videos = bibliography?.filter((item: any) => item.type === 'video') || [];
+
+// Sort bibliography alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
+const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
+const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Human-Centered AI Design`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/human-centered-ai-design"
+>
+  <Article>
+    <Markdown
+      content={`
+Providing understandable explanations means making AI behavior, outputs, and limitations clear enough for users to form accurate mental models.
+
+Explanations should help users answer three core questions: What is the system doing? Why did it do this? What can I do next?
+
+The goal is not technical transparency for its own sake, but practical clarity that supports trust, decision-making, and error recovery without increasing cognitive load.
+
+Well-designed explanations are contextual, proportional to user needs, and expressed in plain language. Over-explaining can be as harmful as not explaining at all.
+
+Explanations should be:
+
+- **User-focused:** Explain outcomes and implications, not algorithms or model architecture.
+- **Context-appropriate:** Match the depth and detail to the user's needs and expertise level.
+- **Clear about limitations:** Explicitly state what the AI doesn't know or can't do.
+- **Accessible:** Use plain language and concrete examples instead of technical jargon.
+
+Technical explanations about neural networks, training data, or model parameters don't help most users make better decisions. What they need is understanding of:
+
+- what the AI output means for their situation,
+- why the AI made a particular recommendation,
+- and what factors influenced the result.
+
+By providing understandable explanations, I help users:
+
+- trust the system appropriately,
+- make informed decisions based on AI outputs,
+- and understand when to question or verify results.
+      `}
+    />
+
+    <ExplainOutcomesNotAlgorithms />
+    <MatchExplanationDepthToUserContext />
+    <ClarifyUncertaintyAndLimitationsExplicitly />
+    <UsePlainLanguageAndConcreteExamples />
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Explanations are only useful if users can understand them. Technical accuracy means nothing if it doesn't help users make better decisions.
+
+When explanations are understandable:
+- users can evaluate AI outputs critically,
+- they can make informed choices about when to trust the system,
+- and they understand the implications of AI recommendations.
+
+Without understandable explanations, users may:
+- blindly trust outputs they don't understand,
+- ignore useful information because it's presented in technical terms,
+- or lose confidence in the system because explanations are confusing or unhelpful.
+      `}
+    />
+  </Article>
+
+  {
+    bibliography && (
+      <Bibliography>
+        {sortedBooks.length > 0 && (
+          <BibliographySection type="book">
+            {sortedBooks.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedUrls.length > 0 && (
+          <BibliographySection type="url">
+            {sortedUrls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedVideos.length > 0 && (
+          <BibliographySection type="video">
+            {sortedVideos.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
+
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
+</PrincipleLayout>

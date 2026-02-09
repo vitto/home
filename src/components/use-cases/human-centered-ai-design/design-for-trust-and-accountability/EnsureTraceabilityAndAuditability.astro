@@ -1,0 +1,74 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Ensure Traceability and Auditability"
+  description="Enable decisions and outputs to be traced and reviewed when needed—for debugging, compliance, or dispute—without exposing unnecessary internal detail to every user."
+>
+  <UseCaseInteractive clsHeight={112} label="Traceability and auditability" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Provenance and References</b></mds-text>
+          <mds-text typography="body"
+            >Recommendation ID: rec-2024-02-07-a1b2. Based on policy version 2.1 and input received
+            on 6 Feb 2024. [View audit log] [Export for review]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Stable reference and key inputs; audit trail available for authorized users or
+            compliance.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Export and History</b></mds-text>
+          <mds-text typography="body"
+            >Conversation and suggestions from this session can be exported (PDF/JSON) for your
+            records or for escalation. [Export] [View session summary]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Users can retain evidence of what the system said and did; supports dispute and review.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>No Trail (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >AI recommendations with no ID, no record of inputs or model version, and no way to
+            export or retrieve the decision later. "Session cleared" with no option to save.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >When something goes wrong, users and organizations cannot reconstruct what happened or
+            provide evidence.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Assign stable identifiers to important outputs and link to inputs, policy version, or session
+      so they can be traced.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Produce outputs with no reference ID or way to retrieve the context of the decision later.
+    </UsageItem>
+    <UsageItem variant="do">
+      Offer export or audit log (for the right roles) so decisions can be reviewed or used in
+      dispute.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Clear or hide session data without giving users a way to save or export when they need a
+      record.
+    </UsageItem>
+  </Usage>
+</UseCase>

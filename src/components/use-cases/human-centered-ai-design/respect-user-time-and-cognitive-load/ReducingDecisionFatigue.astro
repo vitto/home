@@ -1,0 +1,69 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Reducing Decision Fatigue"
+  description="Offer sensible defaults and fewer, clearer choices so users aren't worn down by too many micro-decisions or unclear options."
+>
+  <UseCaseInteractive clsHeight={112} label="Reducing decision fatigue" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>One Clear Default</b></mds-text>
+          <mds-text typography="body"
+            >Send summary to team? <b>Yes, use default</b> (same as last time) — or [Customize]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >One primary action with a sensible default; customization optional.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Small, Meaningful Choice Set</b></mds-text>
+          <mds-text typography="body"
+            >How detailed should the report be? ○ Brief (1 page) ● Standard (3–5 pages) ○ Full (with
+            appendix)</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Three distinct options with clear outcomes; no endless sliders or obscure settings.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Decision Overload (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >Choose: tone (8 options), length (slider), audience (12 options), format (5 options),
+            language (20), detail level (5), include citations (yes/no), include disclaimer
+            (yes/no). All required before generating.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Too many choices with no clear default; users abandon or pick randomly.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Provide a single recommended path or default; let users override when they need to.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Require many small decisions before the user can proceed, with no sensible default.
+    </UsageItem>
+    <UsageItem variant="do">
+      Keep choice sets small (e.g. 2–4 options) and label them so outcomes are clear.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Present long lists of similar options or technical settings without guidance.
+    </UsageItem>
+  </Usage>
+</UseCase>

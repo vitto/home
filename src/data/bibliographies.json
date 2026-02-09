@@ -510,6 +510,20 @@
     "url": "https://www.eleken.co/blog-posts/visual-hierarchy-in-ux",
     "type": "url"
   },
+  "ai-chatbots-discourage-error-checking": {
+    "author": "Pavel Samsonov",
+    "title": "AI Chatbots Discourage Error Checking",
+    "description": "AI hallucinations threaten the usefulness of LLM-generated text in professional environments, but today’s LLMs encourage users to take outputs at face value.",
+    "url": "https://www.nngroup.com/articles/ai-chatbots-discourage-error-checking/",
+    "type": "url"
+  },
+  "ai-hallucinations": {
+    "author": "Page Laubheimer",
+    "title": "AI Hallucinations: What Designers Need to Know",
+    "description": "Plausible but incorrect AI responses create design challenges and user distrust. Discover evidence-based UI patterns to help users identify fabrications.",
+    "url": "https://www.nngroup.com/articles/ai-hallucinations/",
+    "type": "url"
+  },
   "scope-services-when-in-doubt": {
     "author": "Microsoft",
     "title": "Guideline 10: Scope services when in doubt",

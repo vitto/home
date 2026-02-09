@@ -1,0 +1,83 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Context-Aware Defaults and Recommendations"
+  description="Use context—task, role, time, or history—to set sensible defaults and recommendations, while still allowing easy override."
+>
+  <UseCaseInteractive clsHeight={112} label="Context-aware defaults" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Context-Aware Suggestion</b></mds-text>
+          <mds-text typography="body"
+            >You're editing a contract. Suggested tone: Formal. Language: English (US).</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Defaults reflect the current document type and locale. User can change them with one
+            click.</mds-text
+          >
+          <div class="flex gap-200">
+            <mds-button variant="primary" size="sm">Use suggestion</mds-button>
+            <mds-button variant="outline" size="sm">Choose different</mds-button>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Task-Based Defaults</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>In email composer:</b> Default "Reply" when the user is in a thread; "New message"
+                when starting from inbox</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>In calendar:</b> Suggest meeting length based on invite type and past meetings</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Always:</b> Show why this default was chosen; make override obvious</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Context-Blind Defaults (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >Same generic defaults for every document: tone "Neutral", language "English", no
+            indication why.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Ignores document type, user role, and locale. Users must override every time instead of
+            getting a helpful starting point.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Use task, role, document type, or locale to set relevant defaults and recommendations.
+    </UsageItem>
+    <UsageItem variant="dont">Use the same generic defaults for every context.</UsageItem>
+    <UsageItem variant="do">
+      Explain briefly why a default or recommendation was chosen; make override easy.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Force context-based defaults without a clear way to change them.
+    </UsageItem>
+  </Usage>
+</UseCase>

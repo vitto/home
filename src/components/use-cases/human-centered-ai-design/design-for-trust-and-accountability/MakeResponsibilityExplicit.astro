@@ -1,0 +1,73 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Make Responsibility Explicit"
+  description="Clearly state who is accountable for the AI's behavior and outcomes—the provider, the deployer, or the user—so users know whom to hold responsible and where to turn for support."
+>
+  <UseCaseInteractive clsHeight={112} label="Make responsibility explicit" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Clear Ownership in UI</b></mds-text>
+          <mds-text typography="body"
+            >This suggestion is provided by [Product Name]. You decide whether to apply it. For
+            questions or issues, contact support@company.com or see our Responsible AI statement.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >User sees who provides the AI, that they remain in control, and where to get help.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Decision Ownership</b></mds-text>
+          <mds-text typography="body"
+            >Recommendation: Approve. This is a suggestion only; you are responsible for the final
+            decision. [Approve] [Reject] [Get help]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Makes clear that the human is the decision-maker; the AI supports, not replaces,
+            accountability.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Unclear Responsibility (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >AI output with no indication of who provides it, who is accountable for errors, or how
+            to escalate. "Powered by AI" with no link to terms, support, or governance.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Users don't know who to hold responsible or where to turn when something goes wrong.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      State who provides the AI, who is accountable for outcomes, and how to get support or
+      escalate.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Present AI output without indicating provider, accountability, or path to support.
+    </UsageItem>
+    <UsageItem variant="do">
+      Clarify that the user (or designated role) is responsible for the final decision when the AI
+      suggests one.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Imply that the AI or the system alone is responsible for decisions that have human
+      consequences.
+    </UsageItem>
+  </Usage>
+</UseCase>

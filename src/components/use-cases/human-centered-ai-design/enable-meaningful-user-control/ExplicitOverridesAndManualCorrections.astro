@@ -1,0 +1,88 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Explicit Overrides and Manual Corrections"
+  description="Make it easy for users to override AI suggestions and make manual corrections at any point."
+>
+  <UseCaseInteractive clsHeight={112} label="Override and corrections" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>AI Suggestion with Override</b></mds-text>
+          <mds-text typography="body"
+            >Suggested email subject: "Follow-up: Project Discussion"</mds-text
+          >
+          <div class="grid gap-300">
+            <mds-input-text value="Follow-up: Project Discussion" placeholder="Email subject"
+            ></mds-input-text>
+            <div class="flex gap-200">
+              <mds-button variant="outline" size="sm">Use suggestion</mds-button>
+              <mds-button variant="outline" size="sm">Edit manually</mds-button>
+              <mds-button variant="outline" size="sm">Ignore</mds-button>
+            </div>
+            <mds-text typography="caption" class="text-tone-neutral-05"
+              >Users can accept, edit, or completely ignore the AI suggestion. Manual editing is
+              always available.</mds-text
+            >
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>No Override Option (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >Subject: "Follow-up: Project Discussion" (AI-generated, cannot be edited)</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >The AI suggestion is locked and cannot be modified, removing user control over their
+            own content.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Best Practices</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Make all AI outputs editable or overrideable</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Provide clear "Edit manually" or "Override" buttons</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Don't:</b> Lock AI outputs or make manual editing difficult</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Make all AI suggestions and outputs editable or overrideable.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Lock AI outputs or make them difficult to modify or override.
+    </UsageItem>
+    <UsageItem variant="do">
+      Provide clear, accessible options to edit manually or ignore suggestions.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Hide override options or make manual control secondary or hard to find.
+    </UsageItem>
+  </Usage>
+</UseCase>

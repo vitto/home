@@ -1,0 +1,72 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Concise, Goal-Oriented AI Output"
+  description="Keep AI responses focused on the user's question or task—concise and actionable, without unnecessary preamble, repetition, or tangents."
+>
+  <UseCaseInteractive clsHeight={112} label="Concise, goal-oriented output" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Direct Answer</b></mds-text>
+          <mds-text typography="body"
+            >Yes. Your refund will be processed in 3–5 business days. Track it in Orders → [Order
+            #123].</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Answers the question first; one line of next step. No filler.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Task-Focused Summary</b></mds-text>
+          <mds-text typography="body"
+            >Here are the 3 changes suggested for your draft: (1) Fix typo in §2. (2) Shorten the
+            intro. (3) Add a citation for the claim in §4. [Apply all] [Review one by one]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Numbered, scannable list tied to actions; user can apply or drill in.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Verbose, Unfocused (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >"Thank you for asking! Refunds are an important part of our policy. Generally speaking,
+            we aim to process refunds as quickly as possible. In your case, after reviewing your
+            request, I can confirm that yes, your refund will be processed. Typically this takes 3–5
+            business days, though it can vary. You can track your order in the Orders section. Is
+            there anything else I can help with?"</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Preamble, repetition, and polite filler obscure the answer and next step; wastes time.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Lead with the answer or outcome; keep text short and tied to the user's goal.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Pad responses with long preambles, repeated phrasing, or tangents that don't support the task.
+    </UsageItem>
+    <UsageItem variant="do">
+      Use lists, bullets, or short paragraphs so users can scan and act quickly.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Default to long prose when a few lines or a structured summary would suffice.
+    </UsageItem>
+  </Usage>
+</UseCase>

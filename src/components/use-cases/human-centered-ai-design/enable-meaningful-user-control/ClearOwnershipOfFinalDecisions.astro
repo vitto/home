@@ -1,0 +1,90 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Clear Ownership of Final Decisions"
+  description="Users should understand that they own final decisions, not the AI, especially for important choices."
+>
+  <UseCaseInteractive clsHeight={112} label="Decision ownership" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Clear Decision Ownership</b></mds-text>
+          <mds-text typography="body"
+            ><b>AI Recommendation:</b> Based on your criteria, this investment option matches your risk
+            profile.</mds-text
+          >
+          <div class="p-400 rounded bg-status-info-10 border border-status-info-03">
+            <mds-text typography="caption"
+              ><b>Your decision:</b> This is a recommendation only. You are responsible for reviewing
+              all details, understanding risks, and making the final investment decision. The AI does
+              not provide financial advice.</mds-text
+            >
+          </div>
+          <div class="flex gap-200">
+            <mds-button variant="primary">Review details</mds-button>
+            <mds-button variant="outline">Get human advisor</mds-button>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Unclear Ownership (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            ><b>AI Recommendation:</b> This is the best investment option for you. I've analyzed everything
+            and this is what you should choose.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >The language suggests the AI is making the decision ("this is what you should choose")
+            and doesn't clarify that the user is responsible for the final decision.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Ownership Best Practices</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Explicitly state that users own final decisions</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Clarify the AI's role (support, suggestion) versus user's role (decision-making)</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Don't:</b> Use language that suggests the AI is making decisions or taking responsibility</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Clearly state that users are responsible for final decisions, especially for important
+      choices.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Use language that suggests the AI is making decisions or taking responsibility for outcomes.
+    </UsageItem>
+    <UsageItem variant="do">
+      Explain what the AI's role is (support, suggestion, analysis) versus the user's role
+      (decision-making).
+    </UsageItem>
+    <UsageItem variant="dont">
+      Blur responsibility boundaries or make it unclear who is accountable for decisions.
+    </UsageItem>
+  </Usage>
+</UseCase>

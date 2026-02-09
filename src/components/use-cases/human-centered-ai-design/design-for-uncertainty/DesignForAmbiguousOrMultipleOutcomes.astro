@@ -1,0 +1,71 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Design for Ambiguous or Multiple Outcomes"
+  description="When the AI is uncertain or multiple interpretations are possible, present all reasonable options rather than forcing a single answer."
+>
+  <UseCaseInteractive clsHeight={112} label="Multiple outcomes" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Text Analysis</b></mds-text>
+          <mds-text typography="body">The sentiment could be interpreted in multiple ways:</mds-text
+          >
+          <div class="grid gap-300 mt-200">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Option 1 (60% confidence):</b> Positive sentiment</mds-text
+              >
+              <mds-text typography="caption" class="text-tone-neutral-05"
+                >The language suggests satisfaction with the product.</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Option 2 (35% confidence):</b> Neutral with caution</mds-text
+              >
+              <mds-text typography="caption" class="text-tone-neutral-05"
+                >The tone is measured, possibly indicating reservations.</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"><b>Option 3 (5% confidence):</b> Sarcastic</mds-text>
+              <mds-text typography="caption" class="text-tone-neutral-05"
+                >Unlikely, but possible given context.</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Single Answer (Incorrect)</b></mds-text>
+          </div>
+          <mds-text typography="body"><b>Sentiment: Positive</b></mds-text>
+          <mds-text typography="caption" class="text-status-error-06"
+            >This presents only one interpretation, hiding the ambiguity that exists in the text.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Present multiple reasonable interpretations when the AI is uncertain.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Force a single answer when multiple outcomes are equally plausible.
+    </UsageItem>
+    <UsageItem variant="do">
+      Show confidence levels for each possible outcome or interpretation.
+    </UsageItem>
+    <UsageItem variant="dont">Hide ambiguity by presenting only the most likely outcome.</UsageItem>
+  </Usage>
+</UseCase>

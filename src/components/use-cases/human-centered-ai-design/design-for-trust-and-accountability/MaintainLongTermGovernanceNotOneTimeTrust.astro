@@ -1,0 +1,101 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Maintain Long-Term Governance, Not One-Time Trust"
+  description="Treat trust as something sustained through ongoing oversight, updates, and responsiveness—not a one-time promise. Design for continuous monitoring, improvement, and communication about how the system is governed."
+>
+  <UseCaseInteractive clsHeight={112} label="Long-term governance" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Ongoing Transparency</b></mds-text>
+          <mds-text typography="body"
+            >How we govern this AI: We review feedback weekly, publish incident summaries quarterly,
+            and update our model and policies when we find issues. [Governance overview] [Latest
+            report]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Users see that the system is actively monitored and updated; governance is visible, not
+            static.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Updates and Change Communication</b></mds-text>
+          <mds-text typography="body"
+            >We've updated our recommendation logic (March 2024) based on user feedback and new
+            policy. [What changed] [Contact us with questions]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >When behavior or policy changes, users are informed and can understand the impact.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Set-and-Forget (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >"We're committed to responsible AI" on launch, but no public updates on incidents,
+            model changes, or policy. No way to see if feedback led to improvements. Trust is
+            assumed, not maintained.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Trust degrades when users see no evidence of ongoing oversight or improvement after the
+            first promise.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Governance in Practice</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Publish or link to governance practices, incident summaries, and how feedback
+                is used</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Communicate when models or policies change in ways that affect user-facing
+                behavior</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Don't:</b> Rely on a one-time "Responsible AI" statement with no follow-through or
+                visibility</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Provide ongoing visibility into how the AI is monitored, updated, and governed—e.g. reports,
+      change logs, or governance pages.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Treat trust as established once at launch with no further communication about oversight or
+      improvement.
+    </UsageItem>
+    <UsageItem variant="do">
+      When models or policies change in ways that affect users, communicate what changed and where
+      to learn more.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Deploy updates or policy changes silently when they can affect user expectations or outcomes.
+    </UsageItem>
+  </Usage>
+</UseCase>

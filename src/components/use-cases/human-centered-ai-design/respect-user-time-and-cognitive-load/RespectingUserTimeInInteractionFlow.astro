@@ -1,0 +1,95 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Respecting User Time in Interaction Flow"
+  description="Minimize unnecessary steps, interruptions, and wait states; keep the flow aligned with the user's goal and avoid repetitive or redundant prompts."
+>
+  <UseCaseInteractive clsHeight={112} label="Respecting time in flow" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Inline, Non-Blocking</b></mds-text>
+          <mds-text typography="body"
+            >Suggestions appear as you type. No "Submit" required for quick fixes; apply with one
+            click. Background sync—no full-page reload.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >AI supports the flow instead of inserting extra steps or blocking the UI.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Clear Wait States</b></mds-text>
+          <mds-text typography="body"
+            >Analyzing document… About 10 seconds. You can keep editing; we'll update when ready.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >User knows how long to expect and that they can do something else; no mysterious
+            spinner.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Flow Friction (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >User must: confirm intent → choose model → confirm again → wait on full-page loader →
+            then see result. Same confirmation dialog every time. No estimate for wait.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Extra steps and repeated confirmations slow the user down; opaque wait increases
+            frustration.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Best Practices</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Remember recent choices and skip redundant confirmations when safe</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Show progress or time estimates for operations that take more than a couple
+                of seconds</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Don't:</b> Add steps or dialogs that don't clearly serve the user's goal</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Keep the path to the user's goal short; use inline feedback and background work where
+      possible.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Insert unnecessary confirmations, full-page loads, or repeated prompts that don't add value.
+    </UsageItem>
+    <UsageItem variant="do">
+      Show progress or time estimates for longer operations so users can decide to wait or switch
+      context.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Leave users with an indefinite spinner or no indication of how long an action will take.
+    </UsageItem>
+  </Usage>
+</UseCase>

@@ -1,0 +1,159 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/human-centered-ai-design.json';
+import bibliographies from '../../data/bibliographies.json';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
+import MakeFailuresExplicitAndUnderstandable from '../../components/use-cases/human-centered-ai-design/handle-errors-and-failures-gracefully/MakeFailuresExplicitAndUnderstandable.astro';
+import DesignForRecoveryNotJustNotification from '../../components/use-cases/human-centered-ai-design/handle-errors-and-failures-gracefully/DesignForRecoveryNotJustNotification.astro';
+import FailProportionallyAndWithoutDrama from '../../components/use-cases/human-centered-ai-design/handle-errors-and-failures-gracefully/FailProportionallyAndWithoutDrama.astro';
+import PreserveTrustThroughHonestyAndBoundaries from '../../components/use-cases/human-centered-ai-design/handle-errors-and-failures-gracefully/PreserveTrustThroughHonestyAndBoundaries.astro';
+
+const principle = data.principles.find((p) => p.id === 'handle-errors-and-failures-gracefully')!;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const sectionPath = '/human-centered-ai-design';
+// Get bibliography items from bibliographies.json using principle.sources
+const bibliography: any[] = [];
+if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
+  principle.sources.forEach((sourceId: string) => {
+    if ((bibliographies as any)[sourceId]) {
+      bibliography.push((bibliographies as any)[sourceId]);
+    }
+  });
+}
+const books = bibliography?.filter((item: any) => item.type === 'book') || [];
+const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+const videos = bibliography?.filter((item: any) => item.type === 'video') || [];
+
+// Sort bibliography alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
+const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
+const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Human-Centered AI Design`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/human-centered-ai-design"
+>
+  <Article>
+    <Markdown
+      content={`
+AI systems will fail sometimes—timeouts, wrong answers, service unavailability, or unexpected inputs. How we communicate and handle those failures shapes user trust and their ability to recover.
+
+When I design AI-powered experiences, I **handle errors and failures gracefully** by making failures explicit, offering safe recovery paths, and avoiding drama or blame.
+
+Handling errors gracefully means:
+- **Explicit and understandable:** Users know something went wrong and what it means
+- **Recovery-focused:** Design for getting users back on track, not just notifying them
+- **Proportional:** Match the tone and prominence of the error to its severity
+- **Honest and bounded:** Be clear about what failed and what the system can and can't do
+
+Errors that are hidden, vague, or leave users stuck damage trust. So do over-the-top error messages that treat minor issues like catastrophes.
+
+By handling errors and failures gracefully, I help users:
+- understand what went wrong and what they can do next,
+- recover without losing work or confidence,
+- and maintain appropriate trust in the system.
+      `}
+    />
+
+    <MakeFailuresExplicitAndUnderstandable />
+    <DesignForRecoveryNotJustNotification />
+    <FailProportionallyAndWithoutDrama />
+    <PreserveTrustThroughHonestyAndBoundaries />
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+How systems fail is as important as how they succeed. Poor error handling creates confusion, lost work, and eroded trust.
+
+When errors are handled gracefully:
+- users understand what happened and what to do next,
+- they can recover without feeling stuck or blamed,
+- and they maintain appropriate trust in the system.
+
+Without graceful error handling, users may:
+- not realize the AI failed or produced wrong output,
+- lose work or time because recovery paths are unclear,
+- or lose trust when errors are hidden, vague, or overdramatic.
+      `}
+    />
+  </Article>
+
+  {
+    bibliography && (
+      <Bibliography>
+        {sortedBooks.length > 0 && (
+          <BibliographySection type="book">
+            {sortedBooks.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedUrls.length > 0 && (
+          <BibliographySection type="url">
+            {sortedUrls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedVideos.length > 0 && (
+          <BibliographySection type="video">
+            {sortedVideos.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
+
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
+</PrincipleLayout>

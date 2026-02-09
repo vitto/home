@@ -1,0 +1,60 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Make Uncertainty Visible"
+  description="Show confidence levels, probability scores, or uncertainty indicators so users understand how certain the AI is about its outputs."
+>
+  <UseCaseInteractive clsHeight={112} label="Confidence indicators" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <div class="flex items-center justify-between">
+            <mds-text typography="label"><b>Document Classification</b></mds-text>
+            <mds-badge variant="success" tone="weak">High confidence (92%)</mds-badge>
+          </div>
+          <mds-text typography="body"
+            >This document appears to be a <b>contract</b> based on language patterns and structure.</mds-text
+          >
+          <mds-progress-bar value={92} class="w-full"></mds-progress-bar>
+        </div>
+      </div>
+      <div
+        class="grid gap-400 p-600 rounded-lg bg-status-warning-10 border border-status-warning-03"
+      >
+        <div class="grid gap-200">
+          <div class="flex items-center justify-between">
+            <mds-text typography="label"><b>Document Classification</b></mds-text>
+            <mds-badge variant="warning" tone="weak">Low confidence (45%)</mds-badge>
+          </div>
+          <mds-text typography="body"
+            >This document might be a <b>contract</b> or <b>legal brief</b>. Please review
+            carefully.</mds-text
+          >
+          <mds-progress-bar value={45} class="w-full"></mds-progress-bar>
+          <mds-text typography="caption" class="text-status-warning-06"
+            >Low confidence - human review recommended</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Display confidence scores or probability indicators for AI outputs.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Present uncertain outputs with the same visual weight as high-confidence ones.
+    </UsageItem>
+    <UsageItem variant="do">
+      Use visual indicators (colors, badges, progress bars) to communicate confidence levels.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Hide uncertainty behind technical jargon or bury it in fine print.
+    </UsageItem>
+  </Usage>
+</UseCase>

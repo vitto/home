@@ -1,0 +1,74 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Match Explanation Depth to User Context"
+  description="Adjust the level of detail in explanations based on the user's expertise, the decision's importance, and their current needs."
+>
+  <UseCaseInteractive clsHeight={112} label="Context-appropriate explanations" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Quick Summary (Casual User)</b></mds-text>
+          <mds-text typography="body"
+            >This route avoids traffic and saves about 10 minutes compared to the fastest route.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Simple, actionable explanation for everyday use.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Detailed Explanation (Power User)</b></mds-text>
+          <mds-text typography="body"
+            >This route avoids traffic and saves about 10 minutes compared to the fastest route.</mds-text
+          >
+          <mds-text typography="caption"
+            ><b>Details:</b> Based on current traffic data (updated 2 min ago), historical patterns for
+            this time/day, and real-time incident reports. Estimated time: 18 min vs 28 min. Fuel savings:
+            ~15%. Alternative routes available.</mds-text
+          >
+          <mds-button variant="outline" size="sm">Show route options</mds-button>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>One-Size-Fits-All (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >Route calculated using Dijkstra's algorithm on a weighted graph with real-time traffic
+            data integration via REST API, considering 47 variables including road type, speed
+            limits, historical congestion patterns...</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Too technical for casual users, but also not detailed enough for power users who want
+            specific data points.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Provide simple summaries for quick decisions and detailed explanations when users need more
+      context.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Use the same explanation depth for all users regardless of their expertise or needs.
+    </UsageItem>
+    <UsageItem variant="do">
+      Allow users to expand or collapse explanations to get more or less detail as needed.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Overwhelm casual users with technical details or frustrate experts with oversimplified
+      explanations.
+    </UsageItem>
+  </Usage>
+</UseCase>

@@ -1,0 +1,160 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/human-centered-ai-design.json';
+import bibliographies from '../../data/bibliographies.json';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
+import MakeResponsibilityExplicit from '../../components/use-cases/human-centered-ai-design/design-for-trust-and-accountability/MakeResponsibilityExplicit.astro';
+import EnsureTraceabilityAndAuditability from '../../components/use-cases/human-centered-ai-design/design-for-trust-and-accountability/EnsureTraceabilityAndAuditability.astro';
+import CommunicateLimitationsAndRiskClearly from '../../components/use-cases/human-centered-ai-design/design-for-trust-and-accountability/CommunicateLimitationsAndRiskClearly.astro';
+import EnableChallengeFeedbackAndRedress from '../../components/use-cases/human-centered-ai-design/design-for-trust-and-accountability/EnableChallengeFeedbackAndRedress.astro';
+import MaintainLongTermGovernanceNotOneTimeTrust from '../../components/use-cases/human-centered-ai-design/design-for-trust-and-accountability/MaintainLongTermGovernanceNotOneTimeTrust.astro';
+
+const principle = data.principles.find((p) => p.id === 'design-for-trust-and-accountability')!;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const sectionPath = '/human-centered-ai-design';
+// Get bibliography items from bibliographies.json using principle.sources
+const bibliography: any[] = [];
+if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
+  principle.sources.forEach((sourceId: string) => {
+    if ((bibliographies as any)[sourceId]) {
+      bibliography.push((bibliographies as any)[sourceId]);
+    }
+  });
+}
+const books = bibliography?.filter((item: any) => item.type === 'book') || [];
+const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+const videos = bibliography?.filter((item: any) => item.type === 'video') || [];
+
+// Sort bibliography alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
+const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
+const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Human-Centered AI Design`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/human-centered-ai-design"
+>
+  <Article>
+    <Markdown
+      content={`
+Trust in AI systems depends on clear responsibility, traceability, and the ability to challenge or correct outcomes. Design that hides who is accountable or blocks feedback undermines trust.
+
+When I design AI-powered experiences, I **design for trust and accountability** by making responsibility explicit, enabling traceability and auditability, communicating limitations and risk clearly, and supporting challenge, feedback, and long-term governance.
+
+Designing for trust and accountability means:
+- **Make responsibility explicit:** Who is accountable for the AI's behavior and outcomes—the provider, the deployer, or the user?
+- **Ensure traceability and auditability:** Can decisions and outputs be traced and reviewed when needed?
+- **Communicate limitations and risk clearly:** Are constraints and risks stated in user-facing terms?
+- **Enable challenge, feedback, and redress:** Can users report issues, correct errors, or escalate when things go wrong?
+- **Maintain long-term governance:** Trust is sustained through ongoing oversight, updates, and responsiveness—not a one-time promise.
+
+By designing for trust and accountability, I help users:
+- understand who is responsible and how to get help,
+- verify and audit outcomes when it matters,
+- and challenge or correct the system when it fails or misbehaves.
+      `}
+    />
+
+    <MakeResponsibilityExplicit />
+    <EnsureTraceabilityAndAuditability />
+    <CommunicateLimitationsAndRiskClearly />
+    <EnableChallengeFeedbackAndRedress />
+    <MaintainLongTermGovernanceNotOneTimeTrust />
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Trust is earned when responsibility is clear, behavior is traceable, and users have a path to challenge or redress. Without that, one failure can erase confidence.
+
+When we design for trust and accountability:
+- users know who to hold accountable and how to get support,
+- organizations can audit and improve AI behavior over time,
+- and the system can be corrected and governed rather than appearing as a black box.
+
+Without it, users may:
+- not know who to contact when the AI is wrong or harmful,
+- lack evidence to dispute automated decisions,
+- or assume the system is unaccountable and stop trusting it.
+      `}
+    />
+  </Article>
+
+  {
+    bibliography && (
+      <Bibliography>
+        {sortedBooks.length > 0 && (
+          <BibliographySection type="book">
+            {sortedBooks.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedUrls.length > 0 && (
+          <BibliographySection type="url">
+            {sortedUrls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedVideos.length > 0 && (
+          <BibliographySection type="video">
+            {sortedVideos.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
+
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
+</PrincipleLayout>

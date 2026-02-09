@@ -1,0 +1,73 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Explain the Role of the AI vs the User"
+  description="Make clear who does what—suggestion vs decision, draft vs final—so users understand they are in control and where their responsibility lies."
+>
+  <UseCaseInteractive clsHeight={112} label="AI vs user role" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Suggest, Don't Decide</b></mds-text>
+          <mds-text typography="body"
+            >Suggested reply (you can edit or send as is): "Thanks for your message. I'll review and
+            get back by Friday." You decide whether to send. [Edit] [Send] [Discard]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >AI proposes; user approves or changes. Role is explicit in the UI.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Draft vs Final</b></mds-text>
+          <mds-text typography="body"
+            >This is a draft summary for your review. It has not been approved for publication. You
+            are responsible for accuracy and compliance before sharing.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Draft status and user responsibility are stated clearly.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Blurred Roles (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >AI sends replies or publishes content without a clear "you approve" step. "Automated
+            response" with no indication that the user is still responsible. Users assume the system
+            has decided or that they're off the hook.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Confusion about who decided what; users may not realize they're accountable or may
+            over-delegate.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      State that the AI suggests or drafts and that the user decides, approves, or is responsible
+      for the final outcome.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Let the AI take actions (e.g. send, publish) without making the user's approval and
+      responsibility clear.
+    </UsageItem>
+    <UsageItem variant="do">
+      Use consistent language (e.g. "suggestion", "draft") so the division of roles is obvious.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Use wording that implies the AI has made the decision or that the user is not accountable.
+    </UsageItem>
+  </Usage>
+</UseCase>

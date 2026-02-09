@@ -1,0 +1,92 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Reversibility and Undo"
+  description="Provide undo functionality for AI actions so users can return to previous states when needed."
+>
+  <UseCaseInteractive clsHeight={112} label="Undo functionality" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>AI Action with Undo</b></mds-text>
+          <mds-text typography="body"
+            >The AI has organized your emails into folders based on your preferences.</mds-text
+          >
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-status-success-10 border border-status-success-03">
+              <mds-text typography="caption"
+                >✓ 15 emails moved to "Work"<br />
+                ✓ 8 emails moved to "Personal"<br />
+                ✓ 3 emails moved to "Archive"</mds-text
+              >
+            </div>
+            <div class="flex gap-200">
+              <mds-button variant="outline" size="sm">
+                <mds-icon name="mi/outline/undo" slot="icon-start"></mds-icon>
+                Undo organization
+              </mds-button>
+              <mds-button variant="primary" size="sm">Keep changes</mds-button>
+            </div>
+            <mds-text typography="caption" class="text-tone-neutral-05"
+              >Users can immediately undo the AI action and return to the previous state.</mds-text
+            >
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>No Undo Available (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >The AI has permanently deleted 12 old emails to free up space.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >The action cannot be undone, and users had no opportunity to review what was deleted
+            before the action occurred.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Undo Best Practices</b></mds-text>
+          <div class="grid gap-300">
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Provide undo for all AI actions that modify content</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Do:</b> Show what will be changed before irreversible actions</mds-text
+              >
+            </div>
+            <div class="p-400 rounded bg-tone-neutral-08">
+              <mds-text typography="caption"
+                ><b>Don't:</b> Perform irreversible actions without user review and explicit consent</mds-text
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Provide undo functionality for all AI actions that modify or delete content.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Perform irreversible actions without giving users a chance to undo them.
+    </UsageItem>
+    <UsageItem variant="do">
+      Make undo options visible and easily accessible after AI actions.
+    </UsageItem>
+    <UsageItem variant="dont">Hide undo options or make them difficult to find or use.</UsageItem>
+  </Usage>
+</UseCase>

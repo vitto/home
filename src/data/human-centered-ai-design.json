@@ -23,7 +23,11 @@
       "category": "Transparency",
       "icon": "mi/outline/help",
       "description": "Expose uncertainty so users understand confidence, risk, and limitations of AI outputs.",
-      "sources": ["scope-services-when-in-doubt"]
+      "sources": [
+        "scope-services-when-in-doubt",
+        "ai-chatbots-discourage-error-checking",
+        "ai-hallucinations"
+      ]
     },
     {
       "id": "provide-understandable-explanations",
@@ -31,7 +35,11 @@
       "category": "Transparency",
       "icon": "mi/outline/chat-bubble",
       "description": "Explain results in user-facing terms that support decisions, not model internals.",
-      "sources": ["scope-services-when-in-doubt"]
+      "sources": [
+        "cognitive-load-and-ux",
+        "atomic-design",
+        "error-prevention-usability-heuristic-5"
+      ]
     },
     {
       "id": "avoid-misleading-anthropomorphism",
@@ -47,7 +55,7 @@
       "category": "Agency",
       "icon": "mgg/ai-chatbot-outline",
       "description": "Ensure users remain the final decision-makers, with AI acting as support.",
-      "sources": ["scope-services-when-in-doubt"]
+      "sources": ["error-prevention-usability-heuristic-5"]
     },
     {
       "id": "enable-meaningful-user-control",

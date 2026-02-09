@@ -1,0 +1,59 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Explain Outcomes, Not Algorithms"
+  description="Focus explanations on what the AI did and why it matters to the user, not on technical details about how the model works."
+>
+  <UseCaseInteractive clsHeight={112} label="Outcome-focused explanations" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Recommendation Explanation</b></mds-text>
+          <mds-text typography="body"
+            ><b>Why this product:</b> It matches your preferences for price range ($50-100) and has high
+            ratings (4.8/5) from users with similar needs. It's also currently on sale.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >This explanation focuses on what matters to you: price, quality, and value.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Technical Explanation (Unhelpful)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >This recommendation was generated using a collaborative filtering algorithm with cosine
+            similarity on a 128-dimensional embedding space. The model was trained on 10M user
+            interactions using stochastic gradient descent with a learning rate of 0.001.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >This technical explanation doesn't help users understand why this product was
+            recommended or whether they should trust it.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Explain what the AI output means for the user's situation or decision.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Describe model architecture, training methods, or technical implementation details.
+    </UsageItem>
+    <UsageItem variant="do">
+      Focus on factors that influenced the output and why they matter.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Use technical jargon that requires AI/ML expertise to understand.
+    </UsageItem>
+  </Usage>
+</UseCase>
