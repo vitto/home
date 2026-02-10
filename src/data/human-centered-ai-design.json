@@ -44,10 +44,7 @@
       "sources": [
         "designing-ai-user-interfaces-that-foster-trust-and-transparency",
         "explainable-ai-ensuring-design-decisions-are-transparent-and-accountable",
-        "ai-ux-design-creating-transparency-trust-in-ai-products",
-        "cognitive-load-and-ux",
-        "atomic-design",
-        "error-prevention-usability-heuristic-5"
+        "ai-ux-design-creating-transparency-trust-in-ai-products"
       ]
     },
     {
@@ -128,7 +125,13 @@
       "category": "Usability",
       "icon": "mi/outline/hourglass-empty",
       "description": "Reduce mental effort with clear, progressive, and concise AI output.",
-      "sources": ["scope-services-when-in-doubt"]
+      "sources": [
+        "the-effect-of-interface-consistency-and-cognitive-load-on-user-performance-in-an-information-search-task",
+        "scope-services-when-in-doubt",
+        "ux-must-alleviate-the-cognitive-burden-of-time",
+        "achieve-better-ux-and-design-usability-by-reducing-cognitive-load",
+        "user-experience-design"
+      ]
     },
     {
       "id": "design-for-trust-and-accountability",

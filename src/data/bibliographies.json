@@ -581,7 +581,7 @@
     "type": "url"
   },
   "embrace-ai-s-uncertainty-in-ux": {
-    "author": "Jacob Nielsen",
+    "author": "Jakob Nielsen",
     "title": "Embrace AI’s Uncertainty in UX",
     "description": "AI’s probabilistic nature changes all areas of user experience, impacting users, UX researchers, and designers. This article presents strategies for mitigating the downsides of AI uncertainty while leveraging its potential for creativity.",
     "url": "https://jakobnielsenphd.substack.com/p/ai-uncertainty-ux",
@@ -684,6 +684,34 @@
     "description": "Ever felt frustrated using an AI product that feels like a black box? You’re not alone. Users crave clarity—knowing why an AI makes certain decisions builds confidence and trust.",
     "url": "https://www.wildnetedge.com/blogs/ai-ux-design-creating-transparency-trust-in-ai-products",
     "type": "url"
+  },
+  "ux-must-alleviate-the-cognitive-burden-of-time": {
+    "author": "Jakob Nielsen",
+    "title": "UX must alleviate the cognitive burden of time",
+    "description": "Next-generation AI-UX design must deliver human handoff harmony, with seamless transitions between machine execution and user cognition that recognize people’s limited mental processing budgets across different time periods. Includes 23 UX design patterns that support cognitive latency.",
+    "url": "https://jakobnielsenphd.substack.com/p/think-time-ux",
+    "type": "url"
+  },
+  "achieve-better-ux-and-design-usability-by-reducing-cognitive-load": {
+    "author": "Katarzyna Łanecka",
+    "title": "Achieve better UX and design usability by reducing cognitive load",
+    "description": "This blog explains how minimizing cognitive load​​ and burnout improves user experience and design usability faster.",
+    "url": "https://design.kellton.com/achieve-better-ux",
+    "type": "url"
+  },
+  "user-experience-design": {
+    "author": "Yvonne Earnshaw, Andrew A. Tawfik, & Matthew Schmidt",
+    "title": "User Experience Design",
+    "description": "The principles of HCI and UCD have implications for the design of learning environments. While the LIDT field has historically focused on learning theories to guide design.",
+    "url": "https://open.byu.edu/lidtfoundations/user_experience_design",
+    "type": "book"
+  },
+  "the-effect-of-interface-consistency-and-cognitive-load-on-user-performance-in-an-information-search-task": {
+    "author": "Jeremy Mendel",
+    "title": "The Effect of Interface Consistency and Cognitive Load on User Performance in an Information Search Task",
+    "description": "Although interface consistency is theorized to increase performance and user satisfaction, previous research has found mixed and often non-significant results. The source of this discrepancy may be due to varying levels of task difficulty employed in these past studies.",
+    "url": "https://open.clemson.edu/cgi/viewcontent.cgi?article=2052&context=all_theses",
+    "type": "book"
   },
   "rethinking-ai-anthropomorphism": {
     "author": "Yingwei (Wayne) Xu, Christina G. Chi, Dogan Gursoy, Ruiying (Raine) Cai",
