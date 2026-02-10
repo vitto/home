@@ -70,9 +70,9 @@ const categoryColorClass = colorClasses[categoryColor] || '';
     <h1 class="text-title-h1">{principle.title}</h1>
     <p class="text-info-paragraph">{principle.description}</p>
   </div>
-  <div class="flex items-center justify-between gap-400 mobile:gap-200">
+  <div class="flex items-center justify-start gap-400 mobile:gap-200">
     <a
-      class={`inline-flex no-underline items-center gap-400 rounded-full py-400 px-800 pl-600 text-tone-neutral ${categoryColorClass}`}
+      class={`inline-flex no-underline items-center gap-400 rounded-full py-300 px-600 text-tone-neutral ${categoryColorClass}`}
       href={categoryUrl}
       title={`Back to ${sectionName} and set category to ${principle.category}`}
     >
