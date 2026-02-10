@@ -70,29 +70,18 @@ const categoryColorClass = colorClasses[categoryColor] || '';
     <h1 class="text-title-h1">{principle.title}</h1>
     <p class="text-info-paragraph">{principle.description}</p>
   </div>
-  <div class="flex items-center gap-400 mobile:gap-200">
-    <div class="flex items-center">
-      <div
-        class={`inline-flex p-200 tablet:px-600 rounded-full text-tone-neutral ${categoryColorClass}`}
-      >
-        <Icon name={principle.icon} />
+  <div class="flex items-center justify-between gap-400 mobile:gap-200">
+    <a
+      class={`inline-flex no-underline items-center gap-400 rounded-full py-400 px-800 pl-600 text-tone-neutral ${categoryColorClass}`}
+      href={categoryUrl}
+      title={`Back to ${sectionName} and set category to ${principle.category}`}
+    >
+      <Icon name={principle.icon} />
+      <div class="grid grow gap-200">
+        <div class="text-title-h6 text-box-trim-both-cap-alphabetic">{sectionName}</div>
+        <span class="text-info-option text-box-trim-both-cap-alphabetic">{principle.category}</span>
       </div>
-    </div>
-    <div class="grid grow">
-      <div class="text-title-h6 truncate">{sectionName}</div>
-      <a
-        href={categoryUrl}
-        title={`Back to ${sectionName} and set category to ${principle.category}`}
-        class="inline-flex no-underline focus-bounce justify-self-start rounded-md"
-      >
-        <Badge
-          class={`px-200 text-tone-neutral justify-self-start ${categoryColorClass}`}
-          font="text-info-option"
-        >
-          {principle.category}
-        </Badge>
-      </a>
-    </div>
+    </a>
     <Button
       href={categorySectionUrl}
       variant="light"

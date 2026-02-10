@@ -167,6 +167,11 @@ mds-img::part(media) {
     duration-200
     underline-offset-2;
   }
+
+  .text-box-trim-both-cap-alphabetic {
+    text-box: trim-both cap alphabetic;
+    min-height: auto;
+  }
 }
 
 mds-table-cell {
