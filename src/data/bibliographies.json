@@ -664,6 +664,27 @@
     "url": "https://anshadameenza.com/blog/technology/preserving-human-agency-ai-era",
     "type": "url"
   },
+  "designing-ai-user-interfaces-that-foster-trust-and-transparency": {
+    "author": "Magnus Eriksen",
+    "title": "Designing AI User Interfaces That Foster Trust and Transparency",
+    "description": "We need transparency and ethical design choices to create experiences that clearly show how algorithms work, how systems handle data, and how AIs make decisions—all while addressing concerns such as users’ skepticism, fear of automation, and privacy needs.",
+    "url": "https://www.uxmatters.com/mt/archives/2025/04/designing-ai-user-interfaces-that-foster-trust-and-transparency.php",
+    "type": "url"
+  },
+  "explainable-ai-ensuring-design-decisions-are-transparent-and-accountable": {
+    "author": "Adam Fard",
+    "title": "Explainable AI: Ensuring Design Decisions are Transparent and Accountable",
+    "description": "Explainable AI (XAI) is an evolving field that seeks to demystify the inner workings of artificial intelligence models. In essence, XAI aims to make AI decisions transparent and understandable to humans. This is particularly crucial in design, where decisions can significantly impact user experiences and business outcomes.",
+    "url": "https://adamfard.com/blog/explainable-ai",
+    "type": "url"
+  },
+  "ai-ux-design-creating-transparency-trust-in-ai-products": {
+    "author": "Nitin Agarwal",
+    "title": "AI UX Design: Creating Transparency & Trust in AI Products",
+    "description": "Ever felt frustrated using an AI product that feels like a black box? You’re not alone. Users crave clarity—knowing why an AI makes certain decisions builds confidence and trust.",
+    "url": "https://www.wildnetedge.com/blogs/ai-ux-design-creating-transparency-trust-in-ai-products",
+    "type": "url"
+  },
   "rethinking-ai-anthropomorphism": {
     "author": "Yingwei (Wayne) Xu, Christina G. Chi, Dogan Gursoy, Ruiying (Raine) Cai",
     "title": "Rethinking AI anthropomorphism: A holistic conceptualization and scale across AI systems and service contexts",

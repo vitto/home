@@ -42,6 +42,9 @@
       "icon": "mi/outline/chat-bubble",
       "description": "Explain results in user-facing terms that support decisions, not model internals.",
       "sources": [
+        "designing-ai-user-interfaces-that-foster-trust-and-transparency",
+        "explainable-ai-ensuring-design-decisions-are-transparent-and-accountable",
+        "ai-ux-design-creating-transparency-trust-in-ai-products",
         "cognitive-load-and-ux",
         "atomic-design",
         "error-prevention-usability-heuristic-5"
