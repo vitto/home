@@ -546,11 +546,11 @@
     "type": "url"
   },
   "dynamic-context-aware-prompt-recommendation-for-domain-specific-ai-applications": {
-    "author": "Arxiv",
+    "author": "Xinye Tang, Haijun Zhai, Chaitanya Belwal, Vineeth Thayanithi, Philip Baumann, Yogesh K Roy",
     "title": "Dynamic Context-Aware Prompt Recommendation for Domain-Specific AI Applications",
     "description": "As organizations race to build AI systems that can reason, plan, and act autonomously, they’re discovering a counterintuitive truth: agents get dumber when you give them too much information upfront.",
     "url": "https://arxiv.org/html/2506.20815v1",
-    "type": "url"
+    "type": "scientific-paper"
   },
   "breaking-the-illusion-the-case-against-anthropomorphizing-ai-systems": {
     "author": "Raimund Laqua",
@@ -566,12 +566,152 @@
     "url": "https://uxdesign.cc/daring-more-raw-ai-ness-a-critique-of-personified-voice-assistants-a700ec8cc7fe",
     "type": "url"
   },
+  "designing-ai-transparency-trust": {
+    "author": "Robin Dhanwani",
+    "title": "Designing for AI Transparency and Trust: Guide (2026)",
+    "description": "Explore design strategies to promote AI transparency and trust, ensuring users understand and trust AI decisions.",
+    "url": "https://www.parallelhq.com/blog/designing-ai-transparency-trust",
+    "type": "url"
+  },
+  "building-trust-in-ai-systems": {
+    "author": "Chai",
+    "title": "Building Trust in AI Systems: Key Principles for Ethical and Reliable AI",
+    "description": "Artificial Intelligence (AI) is rapidly transforming industries, offering unprecedented opportunities for innovation and efficiency.",
+    "url": "https://www.chaione.com/blog/building-trust-in-ai-systems",
+    "type": "url"
+  },
+  "embrace-ai-s-uncertainty-in-ux": {
+    "author": "Jacob Nielsen",
+    "title": "Embrace AI’s Uncertainty in UX",
+    "description": "AI’s probabilistic nature changes all areas of user experience, impacting users, UX researchers, and designers. This article presents strategies for mitigating the downsides of AI uncertainty while leveraging its potential for creativity.",
+    "url": "https://jakobnielsenphd.substack.com/p/ai-uncertainty-ux",
+    "type": "url"
+  },
+  "designing-interfaces-that-let-users-disagree-with-ai": {
+    "author": "Bernardo Palos",
+    "title": "Designing interfaces that let users disagree with AI",
+    "description": "When designing AI interfaces, creating spaces where users can easily and effectively disagree with the AI is essential for fostering trust, maintaining control, and ensuring user autonomy.",
+    "url": "https://palospublishing.com/designing-interfaces-that-let-users-disagree-with-ai/",
+    "type": "url"
+  },
+  "designing-for-recovery-and-forgiveness-after-ai-mistakes": {
+    "author": "Bernardo Palos",
+    "title": "Designing for recovery and forgiveness after AI mistakes",
+    "description": "When designing AI systems, one of the essential yet often overlooked factors is how these systems can support recovery and forgiveness when they make mistakes.",
+    "url": "https://palospublishing.com/designing-for-recovery-and-forgiveness-after-ai-mistakes/",
+    "type": "url"
+  },
+  "designing-ux-for-ai-errors-how-to-handle-failures-the-right-way": {
+    "author": "Sukashish Kaur",
+    "title": "Designing UX for AI Errors: How to Handle Failures the Right Way",
+    "description": "Artificial Intelligence (AI) has quickly evolved from a niche technology to a ubiquitous part of our digital lives. Whether you’re asking Alexa about the weather, receiving recommendations on Netflix, or relying on AI-powered tools in healthcare or finance, AI is making decisions or suggestions on your behalf. But what happens when AI gets it wrong?",
+    "url": "https://f1studioz.com/blog/designing-ux-for-ai-errors-how-to-handle-failures-the-right-way/",
+    "type": "url"
+  },
+  "provide-paths-forward-from-failure": {
+    "author": "Pair with Google",
+    "title": "Provide paths forward from failure",
+    "description": "Show users what steps to take to get back on track",
+    "url": "https://pair.withgoogle.com/guidebook/chapters/errors-and-graceful-failures/provide-paths-forward-from-failure",
+    "type": "url"
+  },
+  "building-trust-in-ai-the-role-of-transparency-and-accountability": {
+    "author": "Jeremy Werner",
+    "title": "Building Trust in AI: The Role of Transparency and Accountability",
+    "description": "In today’s digital landscape, artificial intelligence (AI) is revolutionizing industries and transforming the way businesses operate. However, with the growing adoption of AI comes an increased need for transparency and accountability.",
+    "url": "https://babl.ai/building-trust-in-ai-the-role-of-transparency-and-accountability/",
+    "type": "url"
+  },
+  "when-the-ai-sounds-confident-and-everyone-gets-nervous": {
+    "author": "Dave Erickson",
+    "title": "When the AI Sounds Confident… and Everyone Gets Nervous",
+    "description": "Artificial intelligence has an uncanny habit of sounding very sure of itself (kind of like this article ;-). It recommends a product, flags a transaction, denies a loan, or predicts customer churn - all with the calm authority of someone who definitely knows what they’re doing. The problem? Users often have no idea why the AI made that call.",
+    "url": "https://www.screamingbox.net/blog/designing-ai-interfaces-users-can-trust-how-transparency-ux-and-explainability-build-confidence",
+    "type": "url"
+  },
+  "transparent-ai-in-customer-service-building-trust-with-customers": {
+    "author": "Cobbai",
+    "title": "Transparent AI in Customer Service: Building Trust with Customers",
+    "description": "AI transparency customer service is becoming a critical focus as businesses integrate artificial intelligence into their support channels. Customers expect clarity about how AI tools collect, use, and interpret their data during interactions.",
+    "url": "https://www.screamingbox.net/blog/designing-ai-interfaces-users-can-trust-how-transparency-ux-and-explainability-build-confidence",
+    "type": "url"
+  },
+  "preserving-user-control-ai-agents": {
+    "author": "Christian Crowley",
+    "title": "Agency by design: Preserving user control in a post-interface world",
+    "description": "For decades, new layers of abstraction have defined how users interact with technology. Programming languages abstracted away machine code. The command line gave way to the graphical user interface, then to the mobile app and the API. Each shift abstracted more complexity away from the user — but left the human firmly in the loop.",
+    "url": "https://a16zcrypto.com/posts/article/preserving-user-control-ai-agents/",
+    "type": "url"
+  },
+  "the-human-side-of-ai-control-and-choice": {
+    "author": "Erin Young",
+    "title": "The Human Side of AI: Control and Choice",
+    "description": "Users want control, especially when it comes to new tech. After all, AI is not about replacing humans, but enhancing their capabilities. ",
+    "url": "https://slideux.com/blog/the-human-side-of-ai-control-and-choice",
+    "type": "url"
+  },
+  "designing-for-ai-errors-turning-mistakes-into-user-friendly-solutions": {
+    "author": "Cristian Pineda",
+    "title": "Designing for AI Errors: Turning Mistakes into User-Friendly Solutions",
+    "description": "Learn key techniques for identifying, addressing, and resolving AI errors while maintaining a user-centered approach. Includes a hands-on Figjam workshop for practical application.",
+    "url": "https://www.uxsidequest.com/p/designing-for-ai-errors-turning-mistakes",
+    "type": "url"
+  },
+  "preserving-human-agency-ai-era": {
+    "author": "Anshad Ameenza",
+    "title": "Meaningful Control: Preserving Human Agency in an AI-Driven World",
+    "description": "How we can maintain meaningful human control and decision-making power as AI systems become increasingly capable, and why agency preservation may be the defining challenge of the AI revolution.",
+    "url": "https://anshadameenza.com/blog/technology/preserving-human-agency-ai-era",
+    "type": "url"
+  },
   "rethinking-ai-anthropomorphism": {
     "author": "Yingwei (Wayne) Xu, Christina G. Chi, Dogan Gursoy, Ruiying (Raine) Cai",
     "title": "Rethinking AI anthropomorphism: A holistic conceptualization and scale across AI systems and service contexts",
     "description": "Building on Gestalt theory, this research introduces a holistic framework for defining artificial intelligence (AI) anthropomorphism, which guides the development of a parsimonious Scale of AI Anthropomorphism (SAIA).",
     "url": "https://www.sciencedirect.com/science/article/pii/S0160791X25003793",
     "type": "scientific-paper"
+  },
+  "designing-for-responsible-trust-in-ai-systems": {
+    "author": "Q. Vera Liao, S. Shyam Sundar",
+    "title": "Designing for Responsible Trust in AI Systems: A Communication Perspective",
+    "description": "With the popularity of complex AI systems used to augment or automate tasks that can affect many people’s lives and have a long-lasting impact, trust is often cited as a key requirement for people to adopt AI technologies.",
+    "url": "https://arxiv.org/pdf/2204.13828",
+    "type": "scientific-paper"
+  },
+  "ai-transparency-in-the-age-of-llms": {
+    "author": "Q. Vera Liao, Jennifer Wortman Vaughan",
+    "title": "AI Transparency in the Age of LLMs: A Human-Centered Research Roadmap",
+    "description": "The rise of powerful large language models (LLMs) brings about tremendous opportunities for innovation but also looming risks for individuals and society at large.",
+    "url": "https://hdsr.mitpress.mit.edu/pub/aelql9qy/release/2",
+    "type": "scientific-paper"
+  },
+  "let-me-decide-increasing-user-autonomy": {
+    "author": "Lior Fink, Leorre Newman, Uriel Haran",
+    "title": "Let me decide: Increasing user autonomy increases recommendation acceptance",
+    "description": "The use of algorithm assistance for decision making is vastly increasing in recent years, largely in online settings wherein users receive advice from recommendation systems.",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0747563224001122?dgcid=rss_sd_all#bib56",
+    "type": "scientific-paper"
+  },
+  "on-the-purpose-of-meaningful-human-control-of-ai": {
+    "author": "Jovana Davidovic",
+    "title": "On the purpose of meaningful human control of AI",
+    "description": "Meaningful human control over AI is exalted as a key tool for assuring safety, dignity, and responsibility for AI and automated decision-systems.",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9868906/#s2",
+    "type": "scientific-paper"
+  },
+  "meaningful-human-control-over-ai-systems-beyond-talking-the-talk": {
+    "author": "Maria Luce Lupetti, Evgeni Aizenberg, Niek Beckers, Arkady Zgonnikov, Herman Veluwenkamp, David Abbink, Elisa Giaccardi, Geert-Jan Houben, Catholijn M. Jonker, Jeroen van den Hoven, Deborah Forster, Reginald L. Lagendijk",
+    "title": "Meaningful human control over ai systems: Beyond talking the talk",
+    "description": "How can humans remain in control of artificial intelligence (AI)-based systems designed to have autonomous capabilities? Such systems are increasingly ubiquitous, creating benefits - but also undesirable situations where moral responsibility for their actions cannot be properly attributed to any particular person or group.",
+    "url": "https://arxiv.org/pdf/2112.01298v1",
+    "type": "scientific-paper"
+  },
+  "four-principles-of-explainable-artificial-intelligence": {
+    "author": "P. Jonathon Phillips, Carina A. Hahn, Peter C. Fontana, Amy N. Yates, Kristen Greene, David A. Broniatowski, Mark A. Przybocki",
+    "title": "Four Principles of Explainable Artificial Intelligence",
+    "description": "We introduce four principles for explainable artificial intelligence (AI) that comprise fundamental properties for explainable AI systems. We propose that explainable AI systems deliver accompanying evidence or reasons for outcomes and processes; provide explanations that are understandable to individual users; provide explanations that correctly reflect the system’s process for generating the output; and that a system only operates under conditions for which it was designed and when it reaches sufficient confidence in its output.",
+    "url": "https://nvlpubs.nist.gov/nistpubs/ir/2021/NIST.IR.8312.pdf",
+    "type": "book"
   },
   "scope-services-when-in-doubt": {
     "author": "Microsoft",

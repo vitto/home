@@ -15,7 +15,11 @@
       "category": "Transparency",
       "icon": "mi/outline/info",
       "description": "Clearly show when AI is involved and what it does within the interaction flow.",
-      "sources": ["scope-services-when-in-doubt"]
+      "sources": [
+        "building-trust-in-ai-the-role-of-transparency-and-accountability",
+        "when-the-ai-sounds-confident-and-everyone-gets-nervous",
+        "transparent-ai-in-customer-service-building-trust-with-customers"
+      ]
     },
     {
       "id": "design-for-uncertainty",
@@ -25,8 +29,10 @@
       "description": "Expose uncertainty so users understand confidence, risk, and limitations of AI outputs.",
       "sources": [
         "scope-services-when-in-doubt",
+        "embrace-ai-s-uncertainty-in-ux",
         "ai-chatbots-discourage-error-checking",
-        "ai-hallucinations"
+        "ai-hallucinations",
+        "ai-transparency-in-the-age-of-llms"
       ]
     },
     {
@@ -59,7 +65,11 @@
       "category": "Agency",
       "icon": "mgg/ai-chatbot-outline",
       "description": "Ensure users remain the final decision-makers, with AI acting as support.",
-      "sources": ["error-prevention-usability-heuristic-5"]
+      "sources": [
+        "preserving-human-agency-ai-era",
+        "preserving-user-control-ai-agents",
+        "four-principles-of-explainable-artificial-intelligence"
+      ]
     },
     {
       "id": "enable-meaningful-user-control",
@@ -67,7 +77,13 @@
       "category": "Agency",
       "icon": "mi/outline/how-to-reg",
       "description": "Let users modify, override, pause, or undo AI actions easily.",
-      "sources": ["scope-services-when-in-doubt"]
+      "sources": [
+        "the-human-side-of-ai-control-and-choice",
+        "designing-interfaces-that-let-users-disagree-with-ai",
+        "let-me-decide-increasing-user-autonomy",
+        "on-the-purpose-of-meaningful-human-control-of-ai",
+        "meaningful-human-control-over-ai-systems-beyond-talking-the-talk"
+      ]
     },
     {
       "id": "support-human-in-the-loop-interaction",
@@ -83,7 +99,12 @@
       "category": "Usability",
       "icon": "mi/outline/error",
       "description": "Communicate AI errors clearly and offer safe recovery paths.",
-      "sources": ["scope-services-when-in-doubt"]
+      "sources": [
+        "designing-for-recovery-and-forgiveness-after-ai-mistakes",
+        "designing-for-ai-errors-turning-mistakes-into-user-friendly-solutions",
+        "designing-ux-for-ai-errors-how-to-handle-failures-the-right-way",
+        "provide-paths-forward-from-failure"
+      ]
     },
     {
       "id": "adapt-to-user-context-and-expertise",
@@ -112,7 +133,11 @@
       "category": "Trust",
       "icon": "mi/outline/verified-user",
       "description": "Make responsibility, provenance, and decision ownership transparent.",
-      "sources": ["scope-services-when-in-doubt"]
+      "sources": [
+        "designing-for-responsible-trust-in-ai-systems",
+        "designing-ai-transparency-trust",
+        "building-trust-in-ai-systems"
+      ]
     },
     {
       "id": "set-appropriate-expectations",
