@@ -91,7 +91,11 @@
       "category": "Agency",
       "icon": "mi/outline/tune",
       "description": "Design AI workflows that allow continuous human supervision and input.",
-      "sources": ["scope-services-when-in-doubt"]
+      "sources": [
+        "how-to-be-the-designer-in-the-ai-loop",
+        "human-in-the-loop",
+        "human-in-the-loop-design-when-ai-needs-a-teammate"
+      ]
     },
     {
       "id": "handle-errors-and-failures-gracefully",
@@ -101,6 +105,7 @@
       "description": "Communicate AI errors clearly and offer safe recovery paths.",
       "sources": [
         "designing-for-recovery-and-forgiveness-after-ai-mistakes",
+        "ai-assistance-in-enterprise-ux-design-workflows-enhancing-design-brief-creation-for-designers",
         "designing-for-ai-errors-turning-mistakes-into-user-friendly-solutions",
         "designing-ux-for-ai-errors-how-to-handle-failures-the-right-way",
         "provide-paths-forward-from-failure"

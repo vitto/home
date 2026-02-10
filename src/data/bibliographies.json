@@ -692,6 +692,34 @@
     "url": "https://www.wildnetedge.com/blogs/human-centered-design-for-ai-enhancing-ux-of-ml-and-transparency",
     "type": "url"
   },
+  "human-in-the-loop": {
+    "author": "Agentic Design",
+    "title": "Human-in-the-Loop",
+    "description": "Strategic integration of human judgment at critical decision points in AI workflows",
+    "url": "https://agentic-design.ai/patterns/ui-ux-patterns/human-in-the-loop",
+    "type": "url"
+  },
+  "human-in-the-loop-design-when-ai-needs-a-teammate": {
+    "author": "Sean Brennan",
+    "title": "Human-in-the-Loop Design: When AI Needs a Teammate",
+    "description": "Great AI doesn't always mean full automation. Learn how to design workflows where humans intervene at the right time for quality, ethics, or trust.",
+    "url": "https://seanbrennan.com.au/blog/human-in-the-loop/",
+    "type": "url"
+  },
+  "how-to-be-the-designer-in-the-ai-loop": {
+    "author": "Darren Yeo",
+    "title": "How to be the designer in the AI Loop",
+    "description": "Exploring the evolving relationship between humans and AI in product design",
+    "url": "https://uxdesign.cc/how-to-be-the-designer-in-the-ai-loop-e14a5fb8c375",
+    "type": "url"
+  },
+  "ai-assistance-in-enterprise-ux-design-workflows-enhancing-design-brief-creation-for-designers": {
+    "author": "Darren Yeo",
+    "title": "AI assistance in enterprise UX design workflows: enhancing design brief creation for designers",
+    "description": "The study explores the impact of AI tools on the daily tasks of designers in corporate environments, with a focus on the creation and evaluation processes of design briefs. Given ChatGPT’s advanced natural language processing capabilities and its potential to meet the complex communication and analysis needs of design work, this tool was selected to investigate its application in designers’ workflows.",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11588748/",
+    "type": "scientific-paper"
+  },
   "ai-transparency-through-design-5-practical-lessons-from-the-field": {
     "author": "Kateryna Mayka",
     "title": "AI Transparency Through Design: 5 Practical Lessons from the Field",
