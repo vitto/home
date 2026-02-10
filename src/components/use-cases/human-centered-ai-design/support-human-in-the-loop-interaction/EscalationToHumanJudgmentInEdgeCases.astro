@@ -1,0 +1,75 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Escalation to Human Judgment in Edge Cases"
+  description="When the AI is uncertain, encounters edge cases, or reaches its limits, escalate to human decision-makers rather than guessing or proceeding with low confidence."
+>
+  <UseCaseInteractive clsHeight={112} label="Escalation in edge cases" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Uncertainty Escalation</b></mds-text>
+          <mds-text typography="body"
+            >I'm not confident about this recommendation because the input is unusual. [Request
+            human review] [Proceed anyway]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >When confidence is low, the system escalates rather than proceeding with uncertainty.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Edge Case Detection</b></mds-text>
+          <mds-text typography="body"
+            >This case falls outside our standard scenarios. [Escalate to human expert] [See why
+            this needs review]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >The system recognizes when it's outside its designed scope and escalates appropriately.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"
+              ><b>Proceeding Despite Uncertainty (Problematic)</b></mds-text
+            >
+          </div>
+          <mds-text typography="body"
+            >AI proceeds with low-confidence recommendations or edge cases without escalating. Users
+            discover problems later when the output is wrong or inappropriate.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Errors propagate because the system doesn't recognize when to ask for help; users lose
+            trust when the AI guesses incorrectly.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      When confidence is low or cases are edge/unusual, escalate to human review rather than
+      proceeding with uncertainty.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Proceed automatically with low-confidence outputs or edge cases without offering escalation.
+    </UsageItem>
+    <UsageItem variant="do">
+      Explain why escalation is needed (e.g. "unusual input", "outside standard scenarios") so users
+      understand the reason.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Hide uncertainty or proceed as if confident when the system is actually uncertain or outside
+      its scope.
+    </UsageItem>
+  </Usage>
+</UseCase>

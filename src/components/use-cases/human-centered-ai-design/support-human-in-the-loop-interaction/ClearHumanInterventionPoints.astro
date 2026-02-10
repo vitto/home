@@ -1,0 +1,72 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Clear Human Intervention Points"
+  description="Make it obvious when and where users can step in, review, modify, or override AI behavior—so they know they can intervene at any point, not just approve final results."
+>
+  <UseCaseInteractive clsHeight={112} label="Clear intervention points" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Visible Review Steps</b></mds-text>
+          <mds-text typography="body"
+            >Step 1: AI suggests draft → [Review & Edit] Step 2: AI refines → [Review & Edit] Step
+            3: Final → [Approve]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Each step shows a clear "Review & Edit" option; users can intervene at any point.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Inline Edit Controls</b></mds-text>
+          <mds-text typography="body"
+            >AI-generated text appears with [Edit] buttons on each paragraph. Users can modify any
+            part without rejecting the whole.</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Intervention is granular and immediate; no need to wait until the end.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"
+              ><b>Hidden or End-Only Intervention (Problematic)</b></mds-text
+            >
+          </div>
+          <mds-text typography="body"
+            >AI runs through all steps automatically; users only see "Approve" or "Reject" at the
+            very end. No way to intervene mid-process or edit specific parts.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Users can't catch errors early or guide the AI; they must accept or reject everything.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Show clear "Review", "Edit", or "Modify" options at each step where users can intervene.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Hide intervention points or only offer approve/reject at the very end of the process.
+    </UsageItem>
+    <UsageItem variant="do">
+      Make intervention granular—let users edit specific parts (e.g. paragraphs, sections) without
+      rejecting the whole output.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Force all-or-nothing approval; avoid making users wait until completion to intervene.
+    </UsageItem>
+  </Usage>
+</UseCase>

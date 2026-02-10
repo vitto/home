@@ -1,0 +1,70 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Human Oversight as Default, Not Exception"
+  description="Design workflows assuming humans will review and guide—make review the expected path, not an optional extra or exception."
+>
+  <UseCaseInteractive clsHeight={112} label="Oversight as default" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Review Before Proceeding</b></mds-text>
+          <mds-text typography="body"
+            >AI has completed step 1. [Review before continuing] [Skip review] (not recommended)</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Review is the primary action; skipping is secondary and marked as not recommended.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Pause for Human Input</b></mds-text>
+          <mds-text typography="body"
+            >AI is waiting for your input on these items before proceeding: [3 items need review]
+            [Continue when ready]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >The workflow pauses naturally for human review; it doesn't proceed automatically.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Auto-Proceed by Default (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >AI completes all steps automatically; review is hidden behind "Advanced options" or
+            only available if users explicitly enable it. Most users never see review opportunities.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Human oversight becomes the exception; users miss opportunities to catch errors or
+            guide the AI.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Make review the primary, expected path—pause workflows for human input rather than
+      auto-proceeding.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Auto-proceed through all steps with review as an optional or hidden feature.
+    </UsageItem>
+    <UsageItem variant="do">
+      Design workflows that naturally pause at decision points where human judgment adds value.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Treat human oversight as an exception or advanced feature that most users won't need.
+    </UsageItem>
+  </Usage>
+</UseCase>

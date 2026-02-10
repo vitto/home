@@ -1,0 +1,175 @@
+---
+import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
+import data from '../../data/human-centered-ai-design.json';
+import bibliographies from '../../data/bibliographies.json';
+import Nav from '../../components/Nav.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
+import Bibliography from '../../components/Bibliography.astro';
+import BibliographyItem from '../../components/BibliographyItem.astro';
+import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
+import ClearHumanInterventionPoints from '../../components/use-cases/human-centered-ai-design/support-human-in-the-loop-interaction/ClearHumanInterventionPoints.astro';
+import HumanOversightAsDefaultNotException from '../../components/use-cases/human-centered-ai-design/support-human-in-the-loop-interaction/HumanOversightAsDefaultNotException.astro';
+import EditableAndReversibleAIOutputs from '../../components/use-cases/human-centered-ai-design/support-human-in-the-loop-interaction/EditableAndReversibleAIOutputs.astro';
+import FeedbackLoopsBetweenHumansAndAI from '../../components/use-cases/human-centered-ai-design/support-human-in-the-loop-interaction/FeedbackLoopsBetweenHumansAndAI.astro';
+import EscalationToHumanJudgmentInEdgeCases from '../../components/use-cases/human-centered-ai-design/support-human-in-the-loop-interaction/EscalationToHumanJudgmentInEdgeCases.astro';
+
+const principle = data.principles.find((p) => p.id === 'support-human-in-the-loop-interaction')!;
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const sectionPath = '/human-centered-ai-design';
+// Get bibliography items from bibliographies.json using principle.sources
+const bibliography: any[] = [];
+if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
+  principle.sources.forEach((sourceId: string) => {
+    if ((bibliographies as any)[sourceId]) {
+      bibliography.push((bibliographies as any)[sourceId]);
+    }
+  });
+}
+const books = bibliography?.filter((item: any) => item.type === 'book') || [];
+const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
+const videos = bibliography?.filter((item: any) => item.type === 'video') || [];
+const scientificPapers =
+  bibliography?.filter((item: any) => item.type === 'scientific-paper') || [];
+
+// Sort bibliography alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
+const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
+const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
+const sortedScientificPapers =
+  scientificPapers.length > 0 ? sortBibliography([...scientificPapers]) : [];
+---
+
+<PrincipleLayout
+  title={`${principle.title} - Human-Centered AI Design`}
+  principle={principle}
+  categoryColors={data.categoryColors}
+  sectionName={data.title}
+  sectionPath="/human-centered-ai-design"
+>
+  <Article>
+    <Markdown
+      content={`
+Supporting human-in-the-loop (HITL) interaction means explicitly designing AI systems where human judgment is not an afterthought, but an integral part of the decision-making flow. The AI contributes speed, scale, and pattern recognition; the human provides context, values, accountability, and final responsibility. This principle is critical in high-stakes, ambiguous, or value-laden scenarios, where fully automated decisions would be fragile, opaque, or ethically risky. Good HITL design makes human intervention easy, timely, and meaningful, not merely possible in theory.
+
+Supporting human-in-the-loop interaction means:
+- **Clear human intervention points:** Users know when and where they can step in, review, or modify AI behavior
+- **Human oversight as default:** Design assumes humans will review and guide, not just approve final results
+- **Editable and reversible outputs:** AI outputs can be modified, corrected, or undone without starting over
+- **Feedback loops:** Human corrections and preferences inform future AI behavior
+- **Escalation to human judgment:** When the AI is uncertain or encounters edge cases, it escalates to human decision-makers
+
+By supporting human-in-the-loop interaction, we help users to:
+- maintain control and confidence throughout the workflow,
+- catch and correct errors before they propagate,
+- and build trust through continuous collaboration rather than blind delegation.
+      `}
+    />
+
+    <ClearHumanInterventionPoints />
+    <HumanOversightAsDefaultNotException />
+    <EditableAndReversibleAIOutputs />
+    <FeedbackLoopsBetweenHumansAndAI />
+    <EscalationToHumanJudgmentInEdgeCases />
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Human-in-the-loop interaction prevents errors from propagating and builds trust through continuous collaboration. When humans can intervene at any point, they catch problems early and feel in control.
+
+When we support human-in-the-loop interaction:
+- users can review and guide AI behavior throughout the process, not just at the end,
+- errors are caught and corrected before they cause harm or require rework,
+- and trust grows through visible collaboration rather than opaque automation.
+
+Without it, users may:
+- discover problems only after the AI has completed its work,
+- feel powerless to correct or guide the AI mid-process,
+- or lose trust when they can't intervene when something goes wrong.
+      `}
+    />
+  </Article>
+
+  {
+    bibliography && (
+      <Bibliography>
+        {sortedBooks.length > 0 && (
+          <BibliographySection type="book">
+            {sortedBooks.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedUrls.length > 0 && (
+          <BibliographySection type="url">
+            {sortedUrls.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedVideos.length > 0 && (
+          <BibliographySection type="video">
+            {sortedVideos.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedScientificPapers.length > 0 && (
+          <BibliographySection type="scientific-paper">
+            {sortedScientificPapers.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+      </Bibliography>
+    )
+  }
+
+  <Nav>
+    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+    <PrincipleNav
+      baseUrl={baseUrl}
+      currentPrincipleId={principle.id}
+      sectionPath={sectionPath}
+      allPrinciples={data.principles}
+    />
+  </Nav>
+</PrincipleLayout>

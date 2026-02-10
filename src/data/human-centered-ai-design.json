@@ -141,6 +141,7 @@
       "description": "Make responsibility, provenance, and decision ownership transparent.",
       "sources": [
         "designing-for-responsible-trust-in-ai-systems",
+        "ai-transparency-through-design-5-practical-lessons-from-the-field",
         "designing-ai-transparency-trust",
         "building-trust-in-ai-systems"
       ]
@@ -151,7 +152,13 @@
       "category": "Transparency",
       "icon": "mi/outline/speed",
       "description": "Align messaging with real capabilities to prevent overtrust or misuse.",
-      "sources": ["scope-services-when-in-doubt"]
+      "sources": [
+        "ai-ux-design-creating-transparency-trust-in-ai-products",
+        "ai-transparency-through-design-5-practical-lessons-from-the-field",
+        "designing-ai-transparency-trust",
+        "human-centered-design-for-ai-enhancing-ux-of-ml-and-transparency",
+        "artificial-intelligence-shapes-how-we-think-feel-and-behave"
+      ]
     }
   ]
 }

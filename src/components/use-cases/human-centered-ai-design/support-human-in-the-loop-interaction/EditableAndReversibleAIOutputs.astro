@@ -1,0 +1,72 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Editable and Reversible AI Outputs"
+  description="Let users modify, correct, or undo AI outputs without starting over—make AI suggestions editable, not fixed."
+>
+  <UseCaseInteractive clsHeight={112} label="Editable and reversible outputs" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Inline Editing</b></mds-text>
+          <mds-text typography="body"
+            >AI suggestion: "The meeting will be on Monday." [Edit] → User edits to "Tuesday" →
+            [Save] [Undo]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Users can edit AI output directly; changes are saved and reversible.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Version History</b></mds-text>
+          <mds-text typography="body"
+            >You've edited this AI suggestion. [View original] [Restore previous version] [See all
+            changes]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Users can see what changed and revert to earlier versions if needed.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>Fixed Outputs (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >AI generates output that can only be "Accepted" or "Rejected"—no editing. If rejected,
+            users must start over from scratch. No undo or version history.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Users waste time rejecting and regenerating when small edits would suffice; no way to
+            refine AI output incrementally.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Make AI outputs editable—let users modify suggestions directly without rejecting and
+      regenerating.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Force users to accept or reject AI output with no option to edit or refine it.
+    </UsageItem>
+    <UsageItem variant="do">
+      Provide undo/redo and version history so users can revert changes or see what the AI
+      originally suggested.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Make edits irreversible or hide the original AI output after modification.
+    </UsageItem>
+  </Usage>
+</UseCase>

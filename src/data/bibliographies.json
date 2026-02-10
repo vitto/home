@@ -685,6 +685,27 @@
     "url": "https://www.wildnetedge.com/blogs/ai-ux-design-creating-transparency-trust-in-ai-products",
     "type": "url"
   },
+  "human-centered-design-for-ai-enhancing-ux-of-ml-and-transparency": {
+    "author": "Nitin Agarwal",
+    "title": "Human-Centered Design for AI: Enhancing UX of ML and Transparency",
+    "description": "Ever felt frustrated interacting with AI that just doesn’t get you? If AI interfaces confuse more than help, it’s often because they lack a human touch. That’s where Human-Centered Design for AI comes in. By focusing on real people’s needs and experiences, we can radically improve AI’s UX of ML, boost transparency, and tackle bias handling head-on. Ready to transform your AI interfaces? Let’s dive deep into what makes HCD essential for AI success.",
+    "url": "https://www.wildnetedge.com/blogs/human-centered-design-for-ai-enhancing-ux-of-ml-and-transparency",
+    "type": "url"
+  },
+  "ai-transparency-through-design-5-practical-lessons-from-the-field": {
+    "author": "Kateryna Mayka",
+    "title": "AI Transparency Through Design: 5 Practical Lessons from the Field",
+    "description": "AI transparency isn’t just about algorithms — it’s about design. This article explores five practical lessons from Eleken designer Julia Haievska’s work on the AI marketing platform Aampe, showing how thoughtful UX decisions make AI systems more understandable, reliable, and ethical. You’ll learn how to visualize AI behavior, guide users through complexity, build trust through communication, support learning by doing, and adapt transparency as your product evolves.",
+    "url": "https://www.eleken.co/blog-posts/ai-transparency#what-is-ai-transparency-and-why-does-it-matter",
+    "type": "url"
+  },
+  "artificial-intelligence-shapes-how-we-think-feel-and-behave": {
+    "author": "Lennart Ziburski",
+    "title": "Artificial Intelligence shapes how we think, feel and behave. It drives the decisions that define our future.",
+    "description": "We have the responsibility to use this potential for humane technology. Building an AI based on our diverse values and needs requires thoughtful design.",
+    "url": "https://uxofai.com/",
+    "type": "url"
+  },
   "ux-must-alleviate-the-cognitive-burden-of-time": {
     "author": "Jakob Nielsen",
     "title": "UX must alleviate the cognitive burden of time",

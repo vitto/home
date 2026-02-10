@@ -1,0 +1,73 @@
+---
+import UseCase from '../../../UseCase.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import Usage from '../../../Usage.astro';
+import UsageItem from '../../../UsageItem.astro';
+---
+
+<UseCase
+  title="Feedback Loops Between Humans and AI"
+  description="Use human corrections, edits, and preferences to improve future AI behavior—create a cycle where human input makes the AI better over time."
+>
+  <UseCaseInteractive clsHeight={112} label="Feedback loops" toggle>
+    <div class="grid gap-600 w-full">
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Learning from Edits</b></mds-text>
+          <mds-text typography="body"
+            >You edited "Monday" to "Tuesday" in this context. We'll remember this preference for
+            similar meetings. [Learn more about how we use feedback]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >The system acknowledges edits and explains how they improve future suggestions.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
+        <div class="grid gap-200">
+          <mds-text typography="label"><b>Visible Improvement</b></mds-text>
+          <mds-text typography="body"
+            >Based on your previous edits, we've adjusted our suggestions. [See what changed] [Reset
+            preferences]</mds-text
+          >
+          <mds-text typography="caption" class="text-tone-neutral-05"
+            >Users see that their feedback is being used and can review or reset if needed.</mds-text
+          >
+        </div>
+      </div>
+      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
+        <div class="grid gap-200">
+          <div class="flex items-center gap-200">
+            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
+            <mds-text typography="label"><b>No Feedback Loop (Problematic)</b></mds-text>
+          </div>
+          <mds-text typography="body"
+            >Users repeatedly edit the same things (e.g. always changing "Monday" to "Tuesday"), but
+            the AI keeps suggesting "Monday" every time. No indication that edits are used to
+            improve suggestions.</mds-text
+          >
+          <mds-text typography="caption" class="text-status-error-06"
+            >Frustrating repetition; users feel their input is ignored; the AI doesn't improve with
+            use.</mds-text
+          >
+        </div>
+      </div>
+    </div>
+  </UseCaseInteractive>
+  <Usage>
+    <UsageItem variant="do">
+      Use human edits and corrections to improve future AI suggestions; acknowledge when feedback is
+      being used.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Ignore repeated user corrections or make no visible use of feedback to improve suggestions.
+    </UsageItem>
+    <UsageItem variant="do">
+      Show users how their feedback improved the system and let them review or reset learned
+      preferences.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Learn from feedback invisibly without showing users that their input matters or how it's used.
+    </UsageItem>
+  </Usage>
+</UseCase>
