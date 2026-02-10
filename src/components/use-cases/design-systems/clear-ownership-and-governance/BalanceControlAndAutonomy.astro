@@ -13,28 +13,31 @@ import Products from '../../../Products.astro';
   description="Strong governance creates alignment without centralizing every decision."
 >
   <UseCaseInteractive clsHeight={350} label="Governance boundaries">
-    <div class="w-full max-w-12000 grid gap-1200">
-      <div class="grid gap-400">
-        <mds-text typography="h6" tag="div">Centralized Decisions</mds-text>
-        <mds-list>
-          <mds-list-item icon="mi/outline/palette"
-            >Design tokens (colors, spacing, typography)</mds-list-item
-          >
-          <mds-list-item icon="mi/outline/code">Core component APIs and props</mds-list-item>
-          <mds-list-item icon="mi/outline/accessibility">Accessibility standards</mds-list-item>
-          <mds-list-item icon="mi/outline/warning-amber">Breaking changes</mds-list-item>
-        </mds-list>
-      </div>
-      <div class="grid gap-400">
-        <mds-text typography="h6" tag="div">Team Autonomy</mds-text>
-        <mds-list>
-          <mds-list-item icon="mi/outline/auto-awesome-mosaic"
-            >Component composition and layout</mds-list-item
-          >
-          <mds-list-item icon="mi/outline/brush">Local styling within design tokens</mds-list-item>
-          <mds-list-item icon="mi/outline/extension">Product-specific extensions</mds-list-item>
-          <mds-list-item icon="mi/outline/border-color">Contextual adaptations</mds-list-item>
-        </mds-list>
+    <div class="w-full grid gap-1200">
+      <div class="w-full grid gap-1200 grid-cols-1 tablet:grid-cols-2">
+        <div class="grid gap-400">
+          <mds-text typography="h6" tag="div">Centralized Decisions</mds-text>
+          <mds-list>
+            <mds-list-item icon="mi/outline/palette"
+              >Design tokens (colors, spacing, typography)</mds-list-item
+            >
+            <mds-list-item icon="mi/outline/code">Core component APIs and props</mds-list-item>
+            <mds-list-item icon="mi/outline/accessibility">Accessibility standards</mds-list-item>
+            <mds-list-item icon="mi/outline/warning-amber">Breaking changes</mds-list-item>
+          </mds-list>
+        </div>
+        <div class="grid gap-400">
+          <mds-text typography="h6" tag="div">Team Autonomy</mds-text>
+          <mds-list>
+            <mds-list-item icon="mi/outline/auto-awesome-mosaic"
+              >Component composition and layout</mds-list-item
+            >
+            <mds-list-item icon="mi/outline/brush">Local styling within design tokens</mds-list-item
+            >
+            <mds-list-item icon="mi/outline/extension">Product-specific extensions</mds-list-item>
+            <mds-list-item icon="mi/outline/border-color">Contextual adaptations</mds-list-item>
+          </mds-list>
+        </div>
       </div>
       <mds-banner headline="Guideline" icon="mi/outline/info" variant="primary">
         <mds-text typography="caption">
