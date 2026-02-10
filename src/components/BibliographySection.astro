@@ -2,16 +2,17 @@
 import Icon from './Icon.astro';
 
 interface Props {
-  type: 'book' | 'url' | 'video';
+  type: 'book' | 'url' | 'video' | 'scientific-paper';
   class?: string;
 }
 
 const { type, class: className = '' } = Astro.props;
 
 const icon = {
-  book: 'mi/outline/menu-book',
+  book: 'mgg/google-book-large-outline',
   url: 'mi/outline/desktop-windows',
   video: 'mi/outline/local-movies',
+  'scientific-paper': 'mi/outline/school',
 };
 ---
 
@@ -19,8 +20,9 @@ const icon = {
   <Icon class="text-3xl" name={icon[type]} />
   <div class="text-title-h4">
     {type === 'book' && 'Books'}
-    {type === 'url' && 'Articles & Online Resources'}
+    {type === 'url' && 'Articles & Posts'}
     {type === 'video' && 'Videos'}
+    {type === 'scientific-paper' && 'Scientific Papers'}
   </div>
   <div class="grid gap-1200">
     <slot />

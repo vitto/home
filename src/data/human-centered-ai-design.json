@@ -47,7 +47,11 @@
       "category": "Transparency",
       "icon": "mi/outline/person-off",
       "description": "Avoid human-like cues that inflate expectations or suggest intent or emotions.",
-      "sources": ["scope-services-when-in-doubt"]
+      "sources": [
+        "breaking-the-illusion-the-case-against-anthropomorphizing-ai-systems",
+        "daring-more-raw-ai-ness-a-critique-of-personified-voice-assistants",
+        "rethinking-ai-anthropomorphism"
+      ]
     },
     {
       "id": "preserve-user-agency",
@@ -87,7 +91,12 @@
       "category": "Usability",
       "icon": "mi/outline/manage-accounts",
       "description": "Adjust AI behavior and feedback to user goals, skills, and situations.",
-      "sources": ["scope-services-when-in-doubt"]
+      "sources": [
+        "creating-ai-that-adapts-to-user-context-and-goals",
+        "progressive-disclosure-for-ai-agents",
+        "dynamic-context-aware-prompt-recommendation-for-domain-specific-ai-applications",
+        "human-centered-design-through-ai-assisted-usability-testing"
+      ]
     },
     {
       "id": "respect-user-time-and-cognitive-load",

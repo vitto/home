@@ -5,6 +5,10 @@ import Principles from '../components/Principles.astro';
 import Nav from '../components/Nav.astro';
 import SectionNav from '../components/SectionNav.astro';
 import data from '../data/human-centered-ai-design.json';
+import bibliographies from '../data/bibliographies.json';
+import Bibliography from '../components/Bibliography.astro';
+import BibliographyItem from '../components/BibliographyItem.astro';
+import BibliographySection from '../components/BibliographySection.astro';
 // import Blob from '../components/Blob.astro';
 // import blobConfigs from '../data/blob-configs.json';
 // const blobConfig = blobConfigs['human-centered-ai-design'];
@@ -17,6 +21,57 @@ const sectionPath = '/human-centered-ai-design';
 
 // Sort principles by title
 const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompare(b.title));
+
+// Collect bibliography items from all principles using bibliographies.json
+const allBooks: any[] = [];
+const allUrls: any[] = [];
+const allVideos: any[] = [];
+const allScientificPapers: any[] = [];
+const seenIds = new Set<string>();
+
+if (data.principles && bibliographies) {
+  data.principles.forEach((principle: any) => {
+    if (principle.sources && Array.isArray(principle.sources)) {
+      principle.sources.forEach((sourceId: string) => {
+        if (!seenIds.has(sourceId) && (bibliographies as any)[sourceId]) {
+          seenIds.add(sourceId);
+          const item = (bibliographies as any)[sourceId];
+          if (item.type === 'book') {
+            allBooks.push(item);
+          } else if (item.type === 'url') {
+            allUrls.push(item);
+          } else if (item.type === 'video') {
+            allVideos.push(item);
+          } else if (item.type === 'scientific-paper') {
+            allScientificPapers.push(item);
+          }
+        }
+      });
+    }
+  });
+}
+
+// Remove duplicates based on URL and separate by type
+const uniqueBooks = Array.from(new Map(allBooks.map((item: any) => [item.url, item])).values());
+const uniqueUrls = Array.from(new Map(allUrls.map((item: any) => [item.url, item])).values());
+const uniqueVideos = Array.from(new Map(allVideos.map((item: any) => [item.url, item])).values());
+const uniqueScientificPapers = Array.from(
+  new Map(allScientificPapers.map((item: any) => [item.url, item])).values()
+);
+
+// Sort alphabetically by author, then by title
+const sortBibliography = (items: any[]) => {
+  return items.sort((a: any, b: any) => {
+    const authorCompare = (a.author || '').localeCompare(b.author || '');
+    if (authorCompare !== 0) return authorCompare;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+};
+
+const sortedBooks = sortBibliography(uniqueBooks);
+const sortedUrls = sortBibliography(uniqueUrls);
+const sortedVideos = sortBibliography(uniqueVideos);
+const sortedScientificPapers = sortBibliography(uniqueScientificPapers);
 ---
 
 <CategoryLayout
@@ -44,6 +99,69 @@ const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompa
         ))
     }
   </Principles>
+  {
+    (sortedBooks.length > 0 ||
+      sortedUrls.length > 0 ||
+      sortedVideos.length > 0 ||
+      sortedScientificPapers.length > 0) && (
+      <div class="mt-1200 px-600">
+        <Bibliography>
+          {sortedBooks.length > 0 && (
+            <BibliographySection type="book">
+              {sortedBooks.map((item: any) => (
+                <BibliographyItem
+                  author={item.author}
+                  title={item.title}
+                  description={item.description}
+                  url={item.url}
+                  status={item.status}
+                />
+              ))}
+            </BibliographySection>
+          )}
+          {sortedUrls.length > 0 && (
+            <BibliographySection type="url">
+              {sortedUrls.map((item: any) => (
+                <BibliographyItem
+                  author={item.author}
+                  title={item.title}
+                  description={item.description}
+                  url={item.url}
+                  status={item.status}
+                />
+              ))}
+            </BibliographySection>
+          )}
+          {sortedVideos.length > 0 && (
+            <BibliographySection type="video">
+              {sortedVideos.map((item: any) => (
+                <BibliographyItem
+                  author={item.author}
+                  title={item.title}
+                  description={item.description}
+                  url={item.url}
+                  status={item.status}
+                />
+              ))}
+            </BibliographySection>
+          )}
+          {sortedScientificPapers.length > 0 && (
+            <BibliographySection type="scientific-paper">
+              {sortedScientificPapers.map((item: any) => (
+                <BibliographyItem
+                  author={item.author}
+                  title={item.title}
+                  description={item.description}
+                  url={item.url}
+                  status={item.status}
+                />
+              ))}
+            </BibliographySection>
+          )}
+        </Bibliography>
+      </div>
+    )
+  }
   <div class="h-50 bg-tone-neutral-03 max-w-screen-desktop mx-auto mt-1200"></div>
   <Nav>
     <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} principles={false} />

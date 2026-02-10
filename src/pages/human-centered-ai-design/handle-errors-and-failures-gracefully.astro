@@ -33,6 +33,8 @@ if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
 const books = bibliography?.filter((item: any) => item.type === 'book') || [];
 const urls = bibliography?.filter((item: any) => item.type === 'url') || [];
 const videos = bibliography?.filter((item: any) => item.type === 'video') || [];
+const scientificPapers =
+  bibliography?.filter((item: any) => item.type === 'scientific-paper') || [];
 
 // Sort bibliography alphabetically by author, then by title
 const sortBibliography = (items: any[]) => {
@@ -46,6 +48,8 @@ const sortBibliography = (items: any[]) => {
 const sortedBooks = books.length > 0 ? sortBibliography([...books]) : [];
 const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
 const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
+const sortedScientificPapers =
+  scientificPapers.length > 0 ? sortBibliography([...scientificPapers]) : [];
 ---
 
 <PrincipleLayout
@@ -133,6 +137,19 @@ Without graceful error handling, users may:
         {sortedVideos.length > 0 && (
           <BibliographySection type="video">
             {sortedVideos.map((item: any) => (
+              <BibliographyItem
+                author={item.author}
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                status={item.status}
+              />
+            ))}
+          </BibliographySection>
+        )}
+        {sortedScientificPapers.length > 0 && (
+          <BibliographySection type="scientific-paper">
+            {sortedScientificPapers.map((item: any) => (
               <BibliographyItem
                 author={item.author}
                 title={item.title}

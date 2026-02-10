@@ -24,6 +24,7 @@ const sortedPrinciples = [...data.principles].sort((a, b) => a.title.localeCompa
 const allBooks: any[] = [];
 const allUrls: any[] = [];
 const allVideos: any[] = [];
+const allScientificPapers: any[] = [];
 const seenIds = new Set<string>();
 
 if (data.principles && bibliographies) {
@@ -39,6 +40,8 @@ if (data.principles && bibliographies) {
             allUrls.push(item);
           } else if (item.type === 'video') {
             allVideos.push(item);
+          } else if (item.type === 'scientific-paper') {
+            allScientificPapers.push(item);
           }
         }
       });
@@ -50,6 +53,9 @@ if (data.principles && bibliographies) {
 const uniqueBooks = Array.from(new Map(allBooks.map((item: any) => [item.url, item])).values());
 const uniqueUrls = Array.from(new Map(allUrls.map((item: any) => [item.url, item])).values());
 const uniqueVideos = Array.from(new Map(allVideos.map((item: any) => [item.url, item])).values());
+const uniqueScientificPapers = Array.from(
+  new Map(allScientificPapers.map((item: any) => [item.url, item])).values()
+);
 
 // Sort alphabetically by author, then by title
 const sortBibliography = (items: any[]) => {
@@ -63,6 +69,7 @@ const sortBibliography = (items: any[]) => {
 const sortedBooks = sortBibliography(uniqueBooks);
 const sortedUrls = sortBibliography(uniqueUrls);
 const sortedVideos = sortBibliography(uniqueVideos);
+const sortedScientificPapers = sortBibliography(uniqueScientificPapers);
 ---
 
 <CategoryLayout
@@ -78,7 +85,6 @@ const sortedVideos = sortBibliography(uniqueVideos);
         .map((principle) => (
           <PrincipleCard
             id={principle.id}
-            draft={principle.draft}
             title={principle.title}
             description={principle.description}
             category={principle.category}
@@ -92,7 +98,10 @@ const sortedVideos = sortBibliography(uniqueVideos);
     }
   </Principles>
   {
-    (sortedBooks.length > 0 || sortedUrls.length > 0 || sortedVideos.length > 0) && (
+    (sortedBooks.length > 0 ||
+      sortedUrls.length > 0 ||
+      sortedVideos.length > 0 ||
+      sortedScientificPapers.length > 0) && (
       <div class="mt-1200 px-600">
         <Bibliography>
           {sortedBooks.length > 0 && (
@@ -124,6 +133,19 @@ const sortedVideos = sortBibliography(uniqueVideos);
           {sortedVideos.length > 0 && (
             <BibliographySection type="video">
               {sortedVideos.map((item: any) => (
+                <BibliographyItem
+                  author={item.author}
+                  title={item.title}
+                  description={item.description}
+                  url={item.url}
+                  status={item.status}
+                />
+              ))}
+            </BibliographySection>
+          )}
+          {sortedScientificPapers.length > 0 && (
+            <BibliographySection type="scientific-paper">
+              {sortedScientificPapers.map((item: any) => (
                 <BibliographyItem
                   author={item.author}
                   title={item.title}

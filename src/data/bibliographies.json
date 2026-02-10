@@ -524,6 +524,55 @@
     "url": "https://www.nngroup.com/articles/ai-hallucinations/",
     "type": "url"
   },
+  "creating-ai-that-adapts-to-user-context-and-goals": {
+    "author": "Bernardo Palos",
+    "title": "Creating AI that adapts to user context and goals",
+    "description": "Designing AI systems that adapt to user context and goals is crucial to ensuring that AI tools are truly useful and intuitive.",
+    "url": "https://palospublishing.com/creating-ai-that-adapts-to-user-context-and-goals/",
+    "type": "url"
+  },
+  "progressive-disclosure-for-ai-agents": {
+    "author": "Honra",
+    "title": "Progressive Disclosure for AI Agents: Why Less Context Means Smarter Systems",
+    "description": "As organizations race to build AI systems that can reason, plan, and act autonomously, they’re discovering a counterintuitive truth: agents get dumber when you give them too much information upfront.",
+    "url": "https://www.honra.ai/articles/progressive-disclosure-for-ai-agents",
+    "type": "url"
+  },
+  "human-centered-design-through-ai-assisted-usability-testing": {
+    "author": "Eduard Kuric",
+    "title": "Human-Centered Design Through AI-Assisted Usability Testing: Reality Or Fiction?",
+    "description": "Could AI assist UX researchers by dynamically asking follow-up questions based on participant responses? Eduard Kuric discusses the significance of context in the creation of relevant follow-up questions for unmoderated usability testing, how an AI tasked with interactive follow-up should be validated, and the potential — along with the risks — of AI interaction in usability testing.",
+    "url": "https://www.smashingmagazine.com/2025/02/human-centered-design-ai-assisted-usability-testing/",
+    "type": "url"
+  },
+  "dynamic-context-aware-prompt-recommendation-for-domain-specific-ai-applications": {
+    "author": "Arxiv",
+    "title": "Dynamic Context-Aware Prompt Recommendation for Domain-Specific AI Applications",
+    "description": "As organizations race to build AI systems that can reason, plan, and act autonomously, they’re discovering a counterintuitive truth: agents get dumber when you give them too much information upfront.",
+    "url": "https://arxiv.org/html/2506.20815v1",
+    "type": "url"
+  },
+  "breaking-the-illusion-the-case-against-anthropomorphizing-ai-systems": {
+    "author": "Raimund Laqua",
+    "title": "Breaking the Illusion: The Case Against Anthropomorphizing AI Systems",
+    "description": "Artificial intelligence (AI) has become increasingly prevalent in our lives, and as we interact more and more with these systems, it's tempting to anthropomorphize them, or attribute human-like characteristics to them.",
+    "url": "https://www.leancompliance.ca/post/breaking-the-illusion-the-case-against-anthropomorphizing-ai-systems",
+    "type": "url"
+  },
+  "daring-more-raw-ai-ness-a-critique-of-personified-voice-assistants": {
+    "author": "Alexa Steinbrück",
+    "title": "Daring more raw AI-ness, a critique of personified voice assistants",
+    "description": "Personality and gender in voice assistants is not something that emerges due to the nature of “AI systems”. Rather, it is intentionally created based on the logic of market demand, gender biases, and prevalent unrealistic narratives about AI.",
+    "url": "https://uxdesign.cc/daring-more-raw-ai-ness-a-critique-of-personified-voice-assistants-a700ec8cc7fe",
+    "type": "url"
+  },
+  "rethinking-ai-anthropomorphism": {
+    "author": "Yingwei (Wayne) Xu, Christina G. Chi, Dogan Gursoy, Ruiying (Raine) Cai",
+    "title": "Rethinking AI anthropomorphism: A holistic conceptualization and scale across AI systems and service contexts",
+    "description": "Building on Gestalt theory, this research introduces a holistic framework for defining artificial intelligence (AI) anthropomorphism, which guides the development of a parsimonious Scale of AI Anthropomorphism (SAIA).",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0160791X25003793",
+    "type": "scientific-paper"
+  },
   "scope-services-when-in-doubt": {
     "author": "Microsoft",
     "title": "Guideline 10: Scope services when in doubt",
