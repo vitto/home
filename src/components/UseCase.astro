@@ -23,21 +23,24 @@ const articleId = title
 
 {
   title ? (
-    <article id={id || articleId} class={`use-case grid gap-600 scroll-m-1000 ${className}`}>
-      <div class="flex items-start gap-200 justify-between">
-        <div class="grid gap-200">
+    <article
+      id={id || articleId}
+      class={`use-case grid gap-600 mobile:-scroll-m-600 -scroll-m-1200 ${className}`}
+    >
+      <div class="grid gap-400">
+        <div class="flex items-start gap-200 justify-between">
           <h3 class="text-title-h3">{title}</h3>
-          <p class="text-info-detail">{description}</p>
+          <Button
+            data-copy-link
+            data-article-id={articleId}
+            variant="light"
+            class="shrink-0 py-300 -mb-400"
+            title={`Copy link to ${title}`}
+          >
+            <Icon name="mi/baseline/link" class="text-tone-neutral-04" />
+          </Button>
         </div>
-        <Button
-          data-copy-link
-          data-article-id={articleId}
-          variant="light"
-          class="shrink-0 py-300 -mb-400"
-          title={`Copy link to ${title}`}
-        >
-          <Icon name="mi/baseline/link" class="text-tone-neutral-04" />
-        </Button>
+        <p class="text-info-paragraph">{description}</p>
       </div>
       <slot />
     </article>
