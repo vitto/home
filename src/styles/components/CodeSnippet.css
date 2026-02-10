@@ -20,22 +20,20 @@
   overflow: hidden;
 }
 
-.code-snippet-pre {
+/* Style Shiki’s pre/code (injected as full HTML to avoid set:html on <code> breaking mobile) */
+.code-snippet-pre-wrap pre {
   @apply m-0 overflow-x-auto rounded-2xl bg-tone-neutral-02 dark:bg-tone-neutral-08;
   min-width: 0;
   max-width: 100%;
-  /* Improve touch scrolling on iOS */
   -webkit-overflow-scrolling: touch;
 }
 
-.code-snippet-code {
+.code-snippet-pre-wrap code {
   @apply block p-400 mr-400 box-border;
   font-size: 0.875rem;
-
   white-space: pre;
 }
 
-/* Shiki styles are handled by the library */
-.shiki {
+.code-snippet-pre-wrap .shiki {
   @apply m-0;
 }

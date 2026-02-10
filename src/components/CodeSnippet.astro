@@ -47,11 +47,15 @@ const highlightedCode = await codeToHtml(code, {
   theme: 'github-dark',
 });
 
-// Extract just the code content (remove the pre wrapper that Shiki adds)
-const codeMatch = highlightedCode.match(/<pre[^>]*><code[^>]*>(.*?)<\/code><\/pre>/s);
-const codeContent = codeMatch ? codeMatch[1] : highlightedCode;
-
 const uniqueId = `code-${Math.random().toString(36).substring(2, 9)}`;
+const codeClass =
+  `code-snippet-code language-${normalizedLanguage} ${language === 'text' ? 'text-tone-neutral' : ''}`.trim();
+// Inject full Shiki output into one container (avoids set:html on <code> which can break
+// DOM parsing on iOS/Android when inner content contains entity-encoded tags like </code>)
+const highlightedCodeWithId = highlightedCode.replace(
+  /<code[^>]*/,
+  `<code id="${uniqueId}" data-language="${normalizedLanguage}" class="${codeClass}"`
+);
 ---
 
 <div
@@ -93,9 +97,6 @@ const uniqueId = `code-${Math.random().toString(36).substring(2, 9)}`;
       tone="weak"
       class="absolute top-400 right-400">{normalizedLanguage}</mds-badge
     >
-    <div class="code-snippet-pre-wrap">
-      <pre
-        class="code-snippet-pre shiki github-dark"><code class={`code-snippet-code language-${normalizedLanguage} ${language === 'text' ? 'text-tone-neutral' : ''}`} id={uniqueId} data-language={normalizedLanguage} set:html={codeContent} /></pre>
-    </div>
+    <div class="code-snippet-pre-wrap" set:html={highlightedCodeWithId} />
   </div>
 </div>
