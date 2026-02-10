@@ -22,7 +22,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.2",
     "@astrojs/tailwind": "^5.1.0",
-    "@maggioli-design-system/magma": "^1.10.7",
+    "@maggioli-design-system/magma": "^1.10.12",
     "@maggioli-design-system/styles": "^15.11.0",
     "@react-three/drei": "^10.7.7",
     "astro": "^5.17.1",
