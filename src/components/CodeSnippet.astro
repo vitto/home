@@ -85,13 +85,15 @@ const uniqueId = `code-${Math.random().toString(36).substring(2, 9)}`;
       )
     }
   </div>
-  <div class="relative grid">
+  <div class="relative grid min-w-0 w-full">
     <mds-badge
       variant={languageBadgeVariant[normalizedLanguage]}
       tone="weak"
       class="absolute top-400 right-400">{normalizedLanguage}</mds-badge
     >
-    <pre
-      class="code-snippet-pre shiki github-dark"><code class={`code-snippet-code language-${normalizedLanguage} ${language === 'text' ? 'text-tone-neutral' : ''}`} id={uniqueId} data-language={normalizedLanguage} set:html={codeContent} /></pre>
+    <div class="code-snippet-pre-wrap">
+      <pre
+        class="code-snippet-pre shiki github-dark"><code class={`code-snippet-code language-${normalizedLanguage} ${language === 'text' ? 'text-tone-neutral' : ''}`} id={uniqueId} data-language={normalizedLanguage} set:html={codeContent} /></pre>
+    </div>
   </div>
 </div>

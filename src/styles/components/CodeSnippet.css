@@ -1,5 +1,8 @@
 .code-snippet-container {
-  @apply bg-[#000000] dark:bg-tone-neutral-09 p-600 pt-400 grid gap-400 grid-cols-full rounded-[28px] mobile:-mx-600;
+  @apply bg-[#000000] dark:bg-tone-neutral-09 p-600 pt-400 grid gap-400 grid-cols-full w-full rounded-[28px] mobile:-mx-600;
+  /* Prevent grid from expanding past viewport on mobile (iOS Safari/Chrome) */
+  min-width: 0;
+  width: auto;
 }
 
 .code-snippet-header {
@@ -10,8 +13,19 @@
   @apply inline-flex items-center justify-center p-100 rounded focus-bounce cursor-pointer text-tone-neutral-04 hover:text-tone-neutral-02 hover:bg-tone-neutral-07 transition-colors;
 }
 
+/* Wrapper constrains width so overflow-x works on mobile without breaking layout */
+.code-snippet-pre-wrap {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .code-snippet-pre {
   @apply m-0 overflow-x-auto rounded-2xl bg-tone-neutral-02 dark:bg-tone-neutral-08;
+  min-width: 0;
+  max-width: 100%;
+  /* Improve touch scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
 }
 
 .code-snippet-code {
