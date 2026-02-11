@@ -11,8 +11,9 @@
 @import './iconsauce.css';
 @import './components/Button.css';
 @import './components/CodeSnippet.css';
-@import './components/Header.css';
 @import './components/Usage.css';
+@import './components/Header.css';
+@import './components/PageFader.css';
 @import './components/Nav.css';
 @import './components/UseCaseInteractive.css';
 @import './components/Markdown.css';
@@ -171,6 +172,10 @@ mds-img::part(media) {
   .text-box-trim-both-cap-alphabetic {
     text-box: trim-both cap alphabetic;
     min-height: auto;
+  }
+
+  .read-size {
+    @apply max-w-screen-tablet mx-auto w-full;
   }
 
   .size-spacer {

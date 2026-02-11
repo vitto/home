@@ -1,0 +1,38 @@
+---
+/**
+ * Fragment: intercepts same-origin link clicks, adds change-page class to body,
+ * waits 500ms, then navigates. Include in layout(s) for page transition behavior.
+ */
+---
+
+<script>
+  (function () {
+    const DELAY_MS = 500;
+    const BODY_CLASS = 'fade-out';
+
+    document.addEventListener('click', (e) => {
+      const target = e.target as Element | null;
+      const link = target?.closest('a[href]');
+      if (!link || !(link instanceof HTMLAnchorElement)) return;
+
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:'))
+        return;
+      if (link.target === '_blank' || link.rel?.includes('external')) return;
+
+      try {
+        const url = new URL(link.href, window.location.origin);
+        if (url.origin !== window.location.origin) return;
+      } catch {
+        return;
+      }
+
+      e.preventDefault();
+      document.body.classList.add(BODY_CLASS);
+
+      setTimeout(() => {
+        window.location.href = link.getAttribute('href') || href;
+      }, DELAY_MS);
+    });
+  })();
+</script>
