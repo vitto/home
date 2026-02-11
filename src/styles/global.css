@@ -172,6 +172,14 @@ mds-img::part(media) {
     text-box: trim-both cap alphabetic;
     min-height: auto;
   }
+
+  .size-spacer {
+    background-image: url(/assets/size-spacer-16x16.svg);
+    background-size: 16px 16px;
+    background-position: 0 0;
+    background-repeat: repeat;
+    @apply h-300 bg-tone-neutral-10/20 dark:bg-tone-neutral-01/20;
+  }
 }
 
 mds-table-cell {
