@@ -6,40 +6,135 @@ import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import CodeSnippet from '../../../CodeSnippet.astro';
+import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import ActionCard from '../../ActionCard.astro';
+
+const templates = [
+  {
+    name: 'Accessibility',
+    icon: 'mi/outline/accessibility',
+    issue_description: 'Report a problem related to accessibility',
+    merge_request_description: 'Improve accessibility',
+  },
+  {
+    name: 'Bug',
+    icon: 'mi/outline/bug-report',
+    issue_description: 'Report a problem related to a bug',
+    merge_request_description: 'Fix the bug',
+  },
+  {
+    name: 'Documentation',
+    icon: 'mi/outline/edit',
+    issue_description: 'Improve or add content to the documentation',
+    merge_request_description: 'Improve or add content to the documentation',
+  },
+  {
+    name: 'Feature',
+    icon: 'mi/outline/lightbulb',
+    issue_description: 'Propose a new feature',
+    merge_request_description: 'Implement the feature',
+  },
+  {
+    name: 'Performance',
+    icon: 'mi/outline/speed',
+    issue_description: 'Improve speed and efficiency',
+    merge_request_description: 'Improve speed and efficiency',
+  },
+  {
+    name: 'Refactor',
+    icon: 'mi/outline/code',
+    issue_description: 'Refactor code to improve readability and maintainability',
+    merge_request_description: 'Refactor code to improve readability and maintainability',
+  },
+  {
+    name: 'Security',
+    icon: 'mi/outline/security',
+    issue_description: 'Report a security issue',
+    merge_request_description: 'Fix the security issue',
+  },
+  {
+    name: 'Style',
+    icon: 'mi/outline/format-paint',
+    issue_description: 'Report a style issue',
+    merge_request_description: 'Fix the style issue',
+  },
+  {
+    name: 'Test',
+    icon: 'mi/outline/science',
+    issue_description: 'Report a test issue',
+    merge_request_description: 'Fix the test issue',
+  },
+];
 ---
 
 <UseCase
   title="Reducing contribution friction"
   description="Contribution processes were designed to encourage participation rather than enforce gatekeeping."
 >
-  <CodeSnippet
-    title="Issue and Merge Request Templates"
-    code={`.gitlab
-  - issue_templates
-    - Default.md
-    - Accessibility.md
-    - Bug.md
-    - Documentation.md
-    - Feature.md
-    - Performance.md
-    - Refactor.md
-    - Security.md
-    - Style.md
-    - Test.md
-  - merge_request_templates
-    - Default.md
-    - Accessibility.md
-    - Bug.md
-    - Documentation.md
-    - Feature.md
-    - Performance.md
-    - Refactor.md
-    - Security.md
-    - Style.md
-    - Test.md
-  ...
-`}
-  />
+  <UseCaseInteractive multiple>
+    <div class="flex flex-col gap-600 items-center justify-center w-full">
+      <div class="flex flex-col gap-200 items-center justify-center">
+        <div class="inline-flex items-center gap-600">
+          <img
+            src="/assets/brands/logo-github.svg"
+            alt="Issues templates"
+            loading="lazy"
+            class="size-1200"
+          />
+          <img
+            src="/assets/brands/logo-gitlab.svg"
+            alt="Issues templates"
+            loading="lazy"
+            class="size-1200"
+          />
+        </div>
+        <mds-text typography="h5">Issues templates</mds-text>
+      </div>
+      <div class="grid gap-300 grid-cols-3 mobile:grid-cols-full auto-rows-min">
+        {
+          templates.map((template) => (
+            <ActionCard
+              class="flex-col self-start"
+              icon={template.icon}
+              title={template.name}
+              description={template.issue_description}
+            />
+          ))
+        }
+      </div>
+    </div>
+    <div class="flex flex-col gap-600 items-center justify-center w-full">
+      <div class="flex flex-col gap-200 items-center justify-center">
+        <div class="inline-flex items-center gap-600">
+          <img
+            src="/assets/brands/logo-github.svg"
+            alt="Issues templates"
+            loading="lazy"
+            class="size-1200"
+          />
+          <img
+            src="/assets/brands/logo-gitlab.svg"
+            alt="Issues templates"
+            loading="lazy"
+            class="size-1200"
+          />
+        </div>
+        <mds-text typography="h5">Merge request templates</mds-text>
+      </div>
+      <div class="grid gap-300 grid-cols-3 mobile:grid-cols-full auto-rows-min">
+        {
+          templates.map((template) => (
+            <ActionCard
+              class="flex-col self-start"
+              icon={template.icon}
+              title={template.name}
+              description={template.merge_request_description}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </UseCaseInteractive>
   <Usage>
     <UsageItem variant="do">Lower the barrier to proposing changes or improvements.</UsageItem>
     <UsageItem variant="dont">Require excessive upfront justification.</UsageItem>
@@ -53,6 +148,11 @@ import CodeSnippet from '../../../CodeSnippet.astro';
         name="github"
         label="GitHub templates"
         url="https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates"
+      />
+      <Brand
+        name="gitlab"
+        label="GitLab templates"
+        url="https://docs.gitlab.com/ee/user/project/description_templates.html"
       />
       <Brand
         name="mozilla"
