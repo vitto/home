@@ -1,13 +1,11 @@
 ---
-import { codeToHtml } from 'shiki';
-
 /**
  * CodeSnippet Component
  *
- * Displays formatted code snippets with syntax highlighting using Shiki
+ * Displays formatted code snippets
  *
  * Props:
- * @param {string} language - Language of the code ('html' | 'javascript' | 'js' | any Shiki supported language)
+ * @param {string} language - Language of the code (for badge display)
  * @param {string} code - The code content to display
  * @param {string} title - Optional title for the code block
  */
@@ -36,26 +34,15 @@ const normalizedLanguage = language === 'js' ? 'javascript' : language;
 const languageBadgeVariant: Record<string, string> = {
   javascript: 'amaranth',
   html: 'violet',
+  markdown: 'sky',
   css: 'blue',
   json: 'yellow',
   text: 'blue',
 };
 
-// Highlight the code using Shiki
-const highlightedCode = await codeToHtml(code, {
-  lang: normalizedLanguage,
-  theme: 'github-dark',
-});
-
 const uniqueId = `code-${Math.random().toString(36).substring(2, 9)}`;
 const codeClass =
-  `code-snippet-code language-${normalizedLanguage} ${language === 'text' ? 'text-tone-neutral' : ''}`.trim();
-// Inject full Shiki output into one container (avoids set:html on <code> which can break
-// DOM parsing on iOS/Android when inner content contains entity-encoded tags like </code>)
-const highlightedCodeWithId = highlightedCode.replace(
-  /<code[^>]*/,
-  `<code id="${uniqueId}" data-language="${normalizedLanguage}" class="${codeClass}"`
-);
+  `code-snippet-code language-${normalizedLanguage} ${language === 'text' ? 'text-tone-neutral' : 'text-tone-neutral'}`.trim();
 ---
 
 <div
@@ -94,9 +81,14 @@ const highlightedCodeWithId = highlightedCode.replace(
   <div class="relative grid min-w-0 w-full">
     <mds-badge
       variant={languageBadgeVariant[normalizedLanguage]}
-      tone="weak"
-      class="absolute top-400 right-400">{normalizedLanguage}</mds-badge
+      tone="strong"
+      class="absolute top-200 right-200 rounded-xl">{normalizedLanguage}</mds-badge
     >
-    <div class="code-snippet-pre-wrap" set:html={highlightedCodeWithId} />
+    <div class="code-snippet-pre-wrap">
+      <pre
+        class="code-snippet-pre flex">
+        <code id={uniqueId} data-language={normalizedLanguage} class={codeClass}>{code}</code>
+      </pre>
+    </div>
   </div>
 </div>
