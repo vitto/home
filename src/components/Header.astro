@@ -23,49 +23,46 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 const { menu = true } = Astro.props;
 ---
 
-<div>
-  <header class="flex items-center gap-400 justify-between group/header">
-    <div class="inline-flex items-center gap-400 py-300 -translate-y-200">
-      <a
-        title="Back to Home"
-        href={baseUrl || '/'}
-        class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] hover:translate-y-[8px] focus-visible:rotate-[60deg] focus-visible:translate-y-[8px] ease-out-expo transition-transform duration-500 no-underline"
-      >
-        <Icon name="vv/logo" class="text-[48px] justify-self-center" />
-      </a>
-      <div class="hidden desktop:grid">
-        <h1 class="text-title-h3" aria-label="Vittorio Vittori">
-          Vittori<mds-text
-            aria-hidden="true"
-            class="inline-block animate-pulse-more group-hover/header:opacity-100"
-            tag="span"
-            typography="h3"
-            animation="jugop"
-            text="o"
-            data-name></mds-text>
-        </h1>
-        <mds-text
+<header class="flex items-center gap-400 justify-between group/header">
+  <div class="inline-flex items-center gap-400">
+    <a
+      title="Back to Home"
+      href={baseUrl || '/'}
+      class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] hover:translate-y-[8px] focus-visible:rotate-[60deg] focus-visible:translate-y-[8px] ease-out-expo transition-transform duration-500 no-underline"
+    >
+      <Icon name="vv/logo" class="text-[48px] justify-self-center" />
+    </a>
+    <div class="hidden desktop:grid">
+      <h1 class="text-title-h3" aria-label="Vittorio Vittori">
+        Vittori<mds-text
+          aria-hidden="true"
+          class="inline-block animate-pulse-more group-hover/header:opacity-100"
           tag="span"
-          class="header-role min-h-200"
-          typography="option"
-          data-claim={personalData.claim}
-          data-roles={personalData.role}
-          text={personalData.role.split('/')[0]}
-          animation="jugop"></mds-text>
-      </div>
+          typography="h3"
+          animation="jugop"
+          text="o"
+          data-name></mds-text>
+      </h1>
+      <mds-text
+        tag="span"
+        class="header-role min-h-200"
+        typography="option"
+        data-claim={personalData.claim}
+        data-roles={personalData.role}
+        text={personalData.role.split('/')[0]}
+        animation="jugop"></mds-text>
     </div>
-    {
-      menu ? (
-        <HeaderMenu />
-      ) : (
-        <Button href={baseUrl || '/'} variant="light" class="shrink-0 py-300" title="Back to Home">
-          <Icon name="mi/outline/home" class="text-tone-neutral-04" />
-        </Button>
-      )
-    }
-  </header>
-  <div class="h-50 bg-tone-neutral-03"></div>
-</div>
+  </div>
+  {
+    menu ? (
+      <HeaderMenu />
+    ) : (
+      <Button href={baseUrl || '/'} variant="light" class="shrink-0 py-300" title="Back to Home">
+        <Icon name="mi/outline/home" class="text-tone-neutral-04" />
+      </Button>
+    )
+  }
+</header>
 
 <script>
   function initHeaderHover() {

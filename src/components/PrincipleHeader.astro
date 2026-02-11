@@ -32,7 +32,7 @@ const {
   categoryColors,
   sectionName,
   sectionPath,
-  class: className = 'grid gap-200',
+  class: className = 'grid gap-600',
 } = Astro.props;
 
 // Get base URL from Astro config and normalize it
@@ -61,34 +61,97 @@ const colorClasses: Record<string, string> = {
   'label-orange': 'bg-label-orange-05',
 };
 
+const colorIconClasses: Record<string, string> = {
+  'status-success': 'fill-status-success-05 text-status-success-01',
+  'status-info': 'fill-status-info-05 text-status-info-01',
+  'status-error': 'fill-status-error-05 text-status-error-01',
+  'status-warning': 'fill-status-warning-05 text-status-warning-01',
+  'label-amaranth': 'fill-label-amaranth-05 text-label-amaranth-01',
+  'label-orchid': 'fill-label-orchid-05 text-label-orchid-01',
+  'label-violet': 'fill-label-violet-05 text-label-violet-01',
+  'label-blue': 'fill-label-blue-05 text-label-blue-01',
+  'label-sky': 'fill-label-sky-05 text-label-sky-01',
+  'label-aqua': 'fill-label-aqua-05 text-label-aqua-01',
+  'label-green': 'fill-label-green-05 text-label-green-01',
+  'label-lime': 'fill-label-lime-05 text-label-lime-01',
+  'label-yellow': 'fill-label-yellow-05 text-label-yellow-01',
+  'label-orange': 'fill-label-orange-05 text-label-orange-01',
+};
+
+const colorBackgroundClasses: Record<string, string> = {
+  'status-success': 'bg-status-success-10', // mobile:shadow-none shadow-xl shadow-status-success-04/10
+  'status-info': 'bg-status-info-10', // mobile:shadow-none shadow-xl shadow-status-info-04/10
+  'status-error': 'bg-status-error-10', // mobile:shadow-none shadow-xl shadow-status-error-04/10
+  'status-warning': 'bg-status-warning-10', // mobile:shadow-none shadow-xl shadow-status-warning-04/10
+  'label-amaranth': 'bg-label-amaranth-10', // mobile:shadow-none shadow-xl shadow-label-amaranth-04/10
+  'label-orchid': 'bg-label-orchid-10', // mobile:shadow-none shadow-xl shadow-label-orchid-04/10
+  'label-violet': 'bg-label-violet-10', // mobile:shadow-none shadow-xl shadow-label-violet-04/10
+  'label-blue': 'bg-label-blue-10', // mobile:shadow-none shadow-xl shadow-label-blue-04/10
+  'label-sky': 'bg-label-sky-10', // mobile:shadow-none shadow-xl shadow-label-sky-04/10
+  'label-aqua': 'bg-label-aqua-10', // mobile:shadow-none shadow-xl shadow-label-aqua-04/10
+  'label-green': 'bg-label-green-10', // mobile:shadow-none shadow-xl shadow-label-green-04/10
+  'label-lime': 'bg-label-lime-10', // mobile:shadow-none shadow-xl shadow-label-lime-04/10
+  'label-yellow': 'bg-label-yellow-10', // mobile:shadow-none shadow-xl shadow-label-yellow-04/10
+  'label-orange': 'bg-label-orange-10', // mobile:shadow-none shadow-xl shadow-label-orange-04/10
+};
+
+const colorButtonClasses: Record<string, string> = {
+  'status-success': 'bg-status-success-09 hover:bg-status-success-08 text-status-success-03',
+  'status-info': 'bg-status-info-09 hover:bg-status-info-08 text-status-info-03',
+  'status-error': 'bg-status-error-09 hover:bg-status-error-08 text-status-error-03',
+  'status-warning': 'bg-status-warning-09 hover:bg-status-warning-08 text-status-warning-03',
+  'label-amaranth': 'bg-label-amaranth-09 hover:bg-label-amaranth-08 text-label-amaranth-03',
+  'label-orchid': 'bg-label-orchid-09 hover:bg-label-orchid-08 text-label-orchid-03',
+  'label-violet': 'bg-label-violet-09 hover:bg-label-violet-08 text-label-violet-03',
+  'label-blue': 'bg-label-blue-09 hover:bg-label-blue-08 text-label-blue-03',
+  'label-sky': 'bg-label-sky-09 hover:bg-label-sky-08 text-label-sky-03',
+  'label-aqua': 'bg-label-aqua-09 hover:bg-label-aqua-08 text-label-aqua-03',
+  'label-green': 'bg-label-green-09 hover:bg-label-green-08 text-label-green-03',
+  'label-lime': 'bg-label-lime-09 hover:bg-label-lime-08 text-label-lime-03',
+  'label-yellow': 'bg-label-yellow-09 hover:bg-label-yellow-08 text-label-yellow-03',
+  'label-orange': 'bg-label-orange-09 hover:bg-label-orange-08 text-label-orange-03',
+};
+
 const categoryColor = (categoryColors[principle.category] as string | undefined) || '';
 const categoryColorClass = colorClasses[categoryColor] || '';
+const categoryColorBackgroundClass = colorBackgroundClasses[categoryColor] || '';
+const categoryColorButtonClass = colorButtonClasses[categoryColor] || '';
+const categoryColorIconClass = colorIconClasses[categoryColor] || '';
 ---
 
-<div class={className}>
-  <div class="grid gap-200">
-    <h1 class="text-title-h1">{principle.title}</h1>
-    <p class="text-info-paragraph">{principle.description}</p>
+<div
+  class={`${className} ${categoryColorBackgroundClass} p-1200 mobile:p-600 rounded-[48px] mobile:rounded-none -mx-600 mobile:-mt-600`}
+>
+  <div class="flex items-start justify-between gap-400 mobile:gap-200">
+    <div class="grid gap-200">
+      <h1 class="text-title-h1 mobile:text-title-h2">{principle.title}</h1>
+      <p class={`${categoryColorIconClass} text-info-paragraph max-w-title`}>
+        {principle.description}
+      </p>
+    </div>
+    <mds-icon name={principle.icon} class={`${categoryColorIconClass} size-1200 mobile:size-900`}
+    ></mds-icon>
+    <!-- <Icon name={principle.icon} class="w-800 h-800" /> -->
   </div>
-  <div class="flex items-center justify-start gap-400 mobile:gap-200">
+  <div class="flex items-center justify-start mobile:justify-between gap-400 mobile:gap-200">
     <a
-      class={`inline-flex no-underline items-center gap-400 rounded-full py-300 px-600 text-tone-neutral ${categoryColorClass}`}
+      class={`inline-flex no-underline focus-bounce items-center gap-400 rounded-full py-300 px-600 text-tone-neutral ${categoryColorClass}`}
       href={categoryUrl}
       title={`Back to ${sectionName} and set category to ${principle.category}`}
     >
-      <Icon name={principle.icon} />
+      <!-- <Icon name={principle.icon} /> -->
       <div class="grid grow gap-200">
-        <div class="text-title-h6 text-box-trim-both-cap-alphabetic">{sectionName}</div>
-        <span class="text-info-option text-box-trim-both-cap-alphabetic">{principle.category}</span>
+        <div class="text-title-h6 text-box-trim-both-cap-alphabetic">{principle.category}</div>
+        <span class="text-info-option text-box-trim-both-cap-alphabetic">{sectionName}</span>
       </div>
     </a>
     <Button
       href={categorySectionUrl}
-      variant="light"
-      class="shrink-0 py-300"
+      variant="none"
+      class={`${categoryColorButtonClass} shrink-0 py-300`}
       title={`Back to ${sectionName}`}
     >
-      <Icon name="mi/outline/apps" class="text-tone-neutral-04" />
+      <Icon name="mi/outline/apps" />
     </Button>
   </div>
 </div>

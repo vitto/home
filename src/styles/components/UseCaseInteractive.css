@@ -1,6 +1,6 @@
 .use-case:not(:first-child) {
   &::before {
-    @apply mb-1600 mobile:mb-600;
+    @apply mb-1600 mobile:mb-600 tablet:mb-800;
     content: '';
     display: block;
     width: 100%;

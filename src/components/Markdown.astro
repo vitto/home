@@ -70,7 +70,7 @@ const htmlContent = markdownContent ? marked(markdownContent) : '';
 
 {
   htmlContent && (
-    <div set:html={htmlContent} class={`markdown ${className}`}>
+    <div set:html={htmlContent} class={`markdown read-size ${className}`}>
       <slot />
     </div>
   )

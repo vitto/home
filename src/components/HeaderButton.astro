@@ -26,7 +26,7 @@ interface Props {
   selected?: boolean;
   href?: string;
 }
-const defaultSelectedClass = 'bg-tone-neutral-03 text-tone-neutral';
+const defaultSelectedClass = 'bg-tone-neutral-03 hover:bg-tone-neutral-01 text-tone-neutral';
 const {
   title,
   description,
@@ -42,7 +42,7 @@ const {
 <a
   href={href}
   title={`Go to ${description}`}
-  class={`header-button self-center focus-bounce inline-flex justify-start items-center gap-400 mobile:gap-300 rounded-full tablet:px-600 p-300 no-underline ${className} ${defaultClass} ${selected ? (selectedClass ?? defaultSelectedClass) + ' pointer-events-none -z-10' : ''}`}
+  class={`header-button self-center focus-bounce inline-flex justify-start items-center gap-400 mobile:gap-300 rounded-full tablet:px-600 p-300 no-underline ${className} ${selected ? (selectedClass ?? defaultSelectedClass) + ' -z-10' : defaultClass}`}
 >
   {icon && <Icon name={icon} />}
   <div class="grid gap-200 auto-rows-min">
