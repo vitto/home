@@ -6,6 +6,7 @@ import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import TextCode from '../../../TextCode.astro';
 ---
 
 <UseCase
@@ -16,6 +17,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <mds-table class="w-full">
       <mds-table-header>
         <mds-table-header-cell label="Component"></mds-table-header-cell>
+        <mds-table-header-cell label="Previously"></mds-table-header-cell>
         <mds-table-header-cell label="Status"></mds-table-header-cell>
         <mds-table-header-cell label="Deprecated"></mds-table-header-cell>
         <mds-table-header-cell label="Migration"></mds-table-header-cell>
@@ -23,7 +25,10 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       <mds-table-body>
         <mds-table-row>
           <mds-table-cell>
-            <code class="whitespace-nowrap text-sm">variant="ghost"</code>
+            <TextCode text="mds-button" />
+          </mds-table-cell>
+          <mds-table-cell>
+            <TextCode text='variant="ghost"' />
           </mds-table-cell>
           <mds-table-cell>
             <mds-badge variant="warning" tone="weak" size="sm" class="whitespace-nowrap">
@@ -41,25 +46,10 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
         </mds-table-row>
         <mds-table-row>
           <mds-table-cell>
-            <code class="whitespace-nowrap text-sm">at-full-width</code>
+            <TextCode text="mds-button" />
           </mds-table-cell>
           <mds-table-cell>
-            <mds-badge variant="warning" tone="weak" size="sm" class="whitespace-nowrap">
-              Deprecated
-            </mds-badge>
-          </mds-table-cell>
-          <mds-table-cell>
-            <mds-text typography="caption">v1.5.0</mds-text>
-          </mds-table-cell>
-          <mds-table-cell>
-            <mds-text typography="caption">
-              Use <code class="text-sm">class="w-full"</code>
-            </mds-text>
-          </mds-table-cell>
-        </mds-table-row>
-        <mds-table-row>
-          <mds-table-cell>
-            <code class="whitespace-nowrap text-sm">onMdsButtonClicked</code>
+            <TextCode text="onMdsButtonClicked" />
           </mds-table-cell>
           <mds-table-cell>
             <mds-badge variant="error" tone="weak" size="sm" class="whitespace-nowrap">
@@ -77,7 +67,10 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
         </mds-table-row>
         <mds-table-row>
           <mds-table-cell>
-            <code class="whitespace-nowrap text-sm">animate</code>
+            <TextCode text="mds-button" />
+          </mds-table-cell>
+          <mds-table-cell>
+            <TextCode text="animate" />
           </mds-table-cell>
           <mds-table-cell>
             <mds-badge variant="error" tone="weak" size="sm" class="whitespace-nowrap">

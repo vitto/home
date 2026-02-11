@@ -7,6 +7,7 @@ import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import documentationData from '../../../../data/use-cases/documentation.json';
+import TextCode from '../../../TextCode.astro';
 
 // Extract mds-button component data
 const componentName = 'mds-modal';
@@ -77,10 +78,10 @@ const cssCustomProperties = documentationComponent?.styles || [];
               return (
                 <mds-table-row>
                   <mds-table-cell>
-                    <code class="whitespace-nowrap text-tone-neutral-04">{prop.attr}</code>
+                    <TextCode text={prop.attr} />
                   </mds-table-cell>
                   <mds-table-cell>
-                    <code class="whitespace-nowrap text-tone-neutral-04">{prop.name}</code>
+                    <TextCode text={prop.name} />
                   </mds-table-cell>
                   <mds-table-cell>
                     <div class="flex items-center gap-200 whitespace-nowrap">
@@ -137,12 +138,10 @@ const cssCustomProperties = documentationComponent?.styles || [];
               events.map((event: any) => (
                 <mds-table-row>
                   <mds-table-cell>
-                    <code class="whitespace-nowrap text-tone-neutral-04">{event.event}</code>
+                    <TextCode text={event.event} />
                   </mds-table-cell>
                   <mds-table-cell>
-                    <code class="whitespace-nowrap text-tone-neutral-04">
-                      {event.detail || '-'}
-                    </code>
+                    <TextCode text={event.detail || '-'} />
                   </mds-table-cell>
                   <mds-table-cell>
                     <mds-badge
@@ -196,7 +195,7 @@ const cssCustomProperties = documentationComponent?.styles || [];
               cssCustomProperties.map((cssProp: any) => (
                 <mds-table-row>
                   <mds-table-cell>
-                    <code class="whitespace-nowrap text-tone-neutral-04">{cssProp.name}</code>
+                    <TextCode text={cssProp.name} />
                   </mds-table-cell>
                   <mds-table-cell>
                     <mds-text class="min-w-8000">{cssProp.docs || '-'}</mds-text>

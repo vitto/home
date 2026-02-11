@@ -8,6 +8,8 @@ export default {
   theme: {
     extend: {
       boxShadow: {
+        'inset-xs-sharp-light': '0 0 0 1px rgb(var(--tone-neutral-01) / 0.05) inset',
+        'inset-xs-sharp': '0 0 0 1px rgb(var(--tone-neutral-01) / 0.1) inset',
         'inset-sm-sharp': '0 0 0 2px rgb(var(--tone-neutral-01) / 0.1) inset',
       },
       containers: {

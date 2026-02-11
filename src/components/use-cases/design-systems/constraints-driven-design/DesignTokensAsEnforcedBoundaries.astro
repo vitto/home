@@ -7,6 +7,7 @@ import tokensData from '../../../../data/use-cases/tokens.json';
 import Brand from '../../../Brand.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
+import TextCode from '../../../TextCode.astro';
 
 // Get tokens from 10 to 20
 const sizeTokens = tokensData.css?.size || {};
@@ -60,13 +61,13 @@ const limitedTokens = Object.entries(sizeTokens)
                   <div class="size-spacer" style={`width: ${token.valueInRem};`} />
                 </mds-table-cell>
                 <mds-table-cell>
-                  <code class="whitespace-nowrap text-tone-neutral-04">{token.class}</code>
+                  <TextCode text={token.class} />
                 </mds-table-cell>
                 <mds-table-cell>
-                  <code class="whitespace-nowrap text-tone-neutral-04">{token.value}</code>
+                  <TextCode text={token.value} />
                 </mds-table-cell>
                 <mds-table-cell>
-                  <code class="whitespace-nowrap text-tone-neutral-04">{token.valueInRem}</code>
+                  <TextCode text={token.valueInRem} />
                 </mds-table-cell>
               </mds-table-row>
             ))

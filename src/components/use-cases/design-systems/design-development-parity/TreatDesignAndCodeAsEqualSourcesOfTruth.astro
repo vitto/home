@@ -6,6 +6,7 @@ import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import TextCode from '../../../TextCode.astro';
 /*
 bg-variant-primary-01
 bg-variant-primary-02
@@ -46,7 +47,7 @@ bg-variant-primary-10
               return (
                 <mds-table-row>
                   <mds-table-cell class="align-middle">
-                    <div class={`w-full h-600 rounded-lg ${tailwindName}`} />
+                    <div class={`w-full h-600 rounded-md ${tailwindName}`} />
                   </mds-table-cell>
                   <mds-table-cell class="align-middle">
                     <mds-badge variant="dark" tone="ghost" class="whitespace-nowrap">
@@ -54,13 +55,13 @@ bg-variant-primary-10
                     </mds-badge>
                   </mds-table-cell>
                   <mds-table-cell class="align-middle">
-                    <code class="whitespace-nowrap text-sm">{figmaName}</code>
+                    <TextCode text={figmaName} />
                   </mds-table-cell>
                   <mds-table-cell class="align-middle">
-                    <code class="whitespace-nowrap text-sm">{cssName}</code>
+                    <TextCode text={cssName} />
                   </mds-table-cell>
                   <mds-table-cell class="align-middle">
-                    <code class="whitespace-nowrap text-sm">{tailwindName}</code>
+                    <TextCode text={tailwindName} />
                   </mds-table-cell>
                 </mds-table-row>
               );

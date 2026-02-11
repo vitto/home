@@ -1,0 +1,19 @@
+---
+/**
+ * TextCode Component
+ *
+ * Displays inline code text with consistent styling
+ *
+ * Props:
+ * @param {string} text - The code text to display
+ * @param {string} class - Optional additional CSS classes
+ */
+interface Props {
+  text: string;
+  class?: string;
+}
+
+const { text, class: className = '' } = Astro.props;
+---
+
+<code class={`whitespace-nowrap text-sm text-tone-neutral-03 ${className}`}>{text}</code>
