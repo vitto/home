@@ -262,5 +262,11 @@
     "name": "TensorFlow",
     "logo": "logo-tensorflow.svg",
     "url": "https://www.tensorflow.org/"
+  },
+  {
+    "id": "gitlab",
+    "name": "GitLab",
+    "logo": "logo-gitlab.svg",
+    "url": "https://gitlab.com/"
   }
 ]
