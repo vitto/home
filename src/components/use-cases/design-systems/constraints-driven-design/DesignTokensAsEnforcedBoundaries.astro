@@ -57,13 +57,10 @@ const limitedTokens = Object.entries(sizeTokens)
                   </mds-badge>
                 </mds-table-cell>
                 <mds-table-cell>
-                  <div
-                    class="h-300 rounded bg-label-sky-06"
-                    style={`width: ${token.valueInRem};`}
-                  />
+                  <div class="size-spacer" style={`width: ${token.valueInRem};`} />
                 </mds-table-cell>
                 <mds-table-cell>
-                  <code class="whitespace-nowrap">{token.class}</code>
+                  <code class="whitespace-nowrap text-tone-neutral-04">{token.class}</code>
                 </mds-table-cell>
                 <mds-table-cell>
                   <code class="whitespace-nowrap text-tone-neutral-04">{token.value}</code>
