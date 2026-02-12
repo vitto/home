@@ -776,4 +776,30 @@
       --theme-default-07-primary-background: 0 0 0;
     }
   }
+
+  html.pref-theme-dark {
+    background-color: rgb(var(--tone-neutral));
+    color: rgb(var(--tone-neutral-02));
+    color-scheme: light;
+  }
+
+  html.pref-theme-light {
+    background-color: rgb(var(--tone-neutral));
+    color: rgb(var(--tone-neutral-02));
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: rgb(var(--tone-neutral));
+    color: rgb(var(--tone-neutral-02));
+  }
+
+  html body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-color: rgb(var(--tone-neutral));
+    z-index: 1000;
+    pointer-events: none;
+  }
 </style>
