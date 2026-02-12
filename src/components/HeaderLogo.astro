@@ -16,7 +16,7 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 <a
   title="Back to Home"
   href={baseUrl || '/'}
-  class={`inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] hover:translate-y-[4px] focus-visible:rotate-[60deg] focus-visible:translate-y-[4px] ease-out-expo transition-transform duration-500 no-underline ${className}`}
+  class={`inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] focus-visible:rotate-[60deg] -translate-y-50 ease-out-expo transition-transform duration-500 no-underline ${className}`}
 >
   <Icon name="vv/logo" class="text-[48px] justify-self-center" />
 </a>
