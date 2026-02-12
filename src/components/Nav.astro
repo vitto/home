@@ -1,13 +1,17 @@
 ---
+interface Props {
+  position?: 'bottom' | 'top';
+  [key: string]: any;
+}
 
+const { position = 'bottom', ...rest } = Astro.props;
+
+const positionClass = position === 'bottom' ? 'bottom-0' : 'top-0';
 ---
 
 <div
-  class="bottom-nav inline-flex justify-center items-end px-500 fixed bottom-500 left-0 right-0 pointer-events-none z-20"
+  class={`inline-flex justify-center items-center px-500 mobile:py-100 py-500 fixed left-0 right-0 pointer-events-none transition-transform duration-500 ease-out-expo z-20 ${positionClass}`}
+  {...rest}
 >
-  <div
-    class="inline-flex mobile:flex-col mobile:items-start mobile:justify-between justify-center gap-600 w-full max-w-[640px]"
-  >
-    <slot />
-  </div>
+  <slot />
 </div>

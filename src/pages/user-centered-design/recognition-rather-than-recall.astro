@@ -7,8 +7,6 @@ import PreFilledInformation from '../../components/use-cases/user-centered-desig
 import RecognitionBasedNavigation from '../../components/use-cases/user-centered-design/recognition-rather-than-recall/RecognitionBasedNavigation.astro';
 import RecognitionOverCommands from '../../components/use-cases/user-centered-design/recognition-rather-than-recall/RecognitionOverCommands.astro';
 import VisibleOptions from '../../components/use-cases/user-centered-design/recognition-rather-than-recall/VisibleOptions.astro';
-import Nav from '../../components/Nav.astro';
-import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
@@ -124,13 +122,10 @@ const sectionName = 'User-Centered Design';
     )
   }
 
-  <Nav>
-    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
-    <PrincipleNav
-      baseUrl={baseUrl}
-      currentPrincipleId={principle.id}
-      sectionPath={sectionPath}
-      allPrinciples={data.principles}
-    />
-  </Nav>
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
 </PrincipleLayout>

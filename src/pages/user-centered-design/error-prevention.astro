@@ -9,8 +9,6 @@ import ClearAffordances from '../../components/use-cases/user-centered-design/er
 import ErrorResistantFlows from '../../components/use-cases/user-centered-design/error-prevention/ErrorResistantFlows.astro';
 import DestructiveActionProtection from '../../components/use-cases/user-centered-design/error-prevention/DestructiveActionProtection.astro';
 import ClearInputExpectations from '../../components/use-cases/user-centered-design/error-prevention/ClearInputExpectations.astro';
-import Nav from '../../components/Nav.astro';
-import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
@@ -128,13 +126,10 @@ const sectionName = 'User-Centered Design';
     )
   }
 
-  <Nav>
-    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
-    <PrincipleNav
-      baseUrl={baseUrl}
-      currentPrincipleId={principle.id}
-      sectionPath={sectionPath}
-      allPrinciples={data.principles}
-    />
-  </Nav>
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
 </PrincipleLayout>

@@ -8,8 +8,6 @@ import EfficientDefaults from '../../components/use-cases/user-centered-design/f
 import ProgressiveDisclosure from '../../components/use-cases/user-centered-design/flexibility-and-efficiency-of-use/ProgressiveDisclosure.astro';
 import ReuseOfPreviousInput from '../../components/use-cases/user-centered-design/flexibility-and-efficiency-of-use/ReuseOfPreviousInput.astro';
 import ScalabilityForExpertise from '../../components/use-cases/user-centered-design/flexibility-and-efficiency-of-use/ScalabilityForExpertise.astro';
-import Nav from '../../components/Nav.astro';
-import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
@@ -126,13 +124,10 @@ const sectionName = 'User-Centered Design';
     )
   }
 
-  <Nav>
-    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
-    <PrincipleNav
-      baseUrl={baseUrl}
-      currentPrincipleId={principle.id}
-      sectionPath={sectionPath}
-      allPrinciples={data.principles}
-    />
-  </Nav>
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
 </PrincipleLayout>

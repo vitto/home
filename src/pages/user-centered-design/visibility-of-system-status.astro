@@ -1,27 +1,24 @@
 ---
 import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
-import data from '../../data/user-centered-design.json';
+import data from '../../data/design-systems.json';
 import bibliographies from '../../data/bibliographies.json';
-import LoadingWaiting from '../../components/use-cases/user-centered-design/visibility-of-system-status/LoadingWaiting.astro';
-import UserActions from '../../components/use-cases/user-centered-design/visibility-of-system-status/UserActions.astro';
-import BackgroundProcesses from '../../components/use-cases/user-centered-design/visibility-of-system-status/BackgroundProcesses.astro';
-import ErrorsAndProblems from '../../components/use-cases/user-centered-design/visibility-of-system-status/ErrorsAndProblems.astro';
-import NavigationAndFlows from '../../components/use-cases/user-centered-design/visibility-of-system-status/NavigationAndFlows.astro';
-import InputAndValidation from '../../components/use-cases/user-centered-design/visibility-of-system-status/InputAndValidation.astro';
-import SystemAndSettings from '../../components/use-cases/user-centered-design/visibility-of-system-status/SystemAndSettings.astro';
-import Nav from '../../components/Nav.astro';
-import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
+import Markdown from '../../components/Markdown.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import DesignFoundationsToOutliveFeatures from '../../components/use-cases/design-systems/scalability-by-design/DesignFoundationsToOutliveFeatures.astro';
+import AnticipateVariationNotSpecificSolutions from '../../components/use-cases/design-systems/scalability-by-design/AnticipateVariationNotSpecificSolutions.astro';
+import SeparateGlobalDecisionsFromLocalOnes from '../../components/use-cases/design-systems/scalability-by-design/SeparateGlobalDecisionsFromLocalOnes.astro';
+import DesignForMultipleTeamsAndWorkflows from '../../components/use-cases/design-systems/scalability-by-design/DesignForMultipleTeamsAndWorkflows.astro';
+import Article from '../../components/Article.astro';
 
-const principle = data.principles.find((p) => p.id === 'visibility-of-system-status')!;
+const principle = data.principles.find((p) => p.id === 'scalability-by-design')!;
 // Get base URL from Astro config and normalize it
 // Remove trailing slash if present (except for root)
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
-const sectionPath = '/user-centered-design';
+const sectionPath = '/design-systems';
 // Get bibliography items from bibliographies.json using principle.sources
 const bibliography: any[] = [];
 if (principle.sources && Array.isArray(principle.sources) && bibliographies) {
@@ -51,24 +48,45 @@ const sortedUrls = urls.length > 0 ? sortBibliography([...urls]) : [];
 const sortedVideos = videos.length > 0 ? sortBibliography([...videos]) : [];
 const sortedScientificPapers =
   scientificPapers.length > 0 ? sortBibliography([...scientificPapers]) : [];
-
-const sectionName = 'User-Centered Design';
 ---
 
 <PrincipleLayout
-  title={`${principle.title} / ${sectionName}`}
+  title={`${principle.title} - Design Systems`}
   principle={principle}
   categoryColors={data.categoryColors}
   sectionName={data.title}
-  sectionPath={sectionPath}
+  sectionPath="/design-systems"
 >
-  <BackgroundProcesses />
-  <ErrorsAndProblems />
-  <InputAndValidation />
-  <LoadingWaiting />
-  <NavigationAndFlows />
-  <SystemAndSettings />
-  <UserActions />
+  <Article>
+    <Markdown
+      content={`
+A design system that cannot scale is a short-lived asset.
+
+Scalability by design means building the system with the assumption
+that products, teams, and use cases **will grow and change**.
+
+Scalability is not achieved by adding more components,
+but by defining foundations that remain stable as complexity increases.
+    `}
+    />
+
+    <DesignFoundationsToOutliveFeatures />
+    <AnticipateVariationNotSpecificSolutions />
+    <SeparateGlobalDecisionsFromLocalOnes />
+    <DesignForMultipleTeamsAndWorkflows />
+
+    <Markdown
+      content={`
+#### Why this principle matters
+
+Scalability ensures the design system remains an enabler rather than a bottleneck.
+
+When growth is expected and designed for,
+the system can evolve without constant rewrites or fragmentation.
+    `}
+    />
+  </Article>
+
   {
     bibliography && (
       <Bibliography>
@@ -128,13 +146,10 @@ const sectionName = 'User-Centered Design';
     )
   }
 
-  <Nav>
-    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
-    <PrincipleNav
-      baseUrl={baseUrl}
-      currentPrincipleId={principle.id}
-      sectionPath={sectionPath}
-      allPrinciples={data.principles}
-    />
-  </Nav>
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
 </PrincipleLayout>

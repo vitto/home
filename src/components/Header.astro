@@ -1,6 +1,7 @@
 ---
 import Button from './Button.astro';
 import Icon from './Icon.astro';
+import HeaderLogo from './HeaderLogo.astro';
 import HeaderMenu from './HeaderMenu.astro';
 import personalData from '../data/personal.json';
 
@@ -23,15 +24,9 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 const { menu = true } = Astro.props;
 ---
 
-<header class="flex items-center gap-400 justify-between group/header">
+<header class="header flex items-center gap-400 justify-between group/header">
   <div class="inline-flex items-center gap-400">
-    <a
-      title="Back to Home"
-      href={baseUrl || '/'}
-      class="inline-flex focus-bounce rounded-full shrink-0 hover:rotate-[60deg] hover:translate-y-[8px] focus-visible:rotate-[60deg] focus-visible:translate-y-[8px] ease-out-expo transition-transform duration-500 no-underline"
-    >
-      <Icon name="vv/logo" class="text-[48px] justify-self-center" />
-    </a>
+    <HeaderLogo />
     <div class="hidden desktop:grid">
       <h1 class="text-title-h3" aria-label="Vittorio Vittori">
         Vittori<mds-text

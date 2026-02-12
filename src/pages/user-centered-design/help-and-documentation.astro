@@ -6,8 +6,6 @@ import ConcreteActionableGuidance from '../../components/use-cases/user-centered
 import EasyToSearch from '../../components/use-cases/user-centered-design/help-and-documentation/EasyToSearch.astro';
 import FocusedOnUsersTask from '../../components/use-cases/user-centered-design/help-and-documentation/FocusedOnUsersTask.astro';
 import NotTooLarge from '../../components/use-cases/user-centered-design/help-and-documentation/NotTooLarge.astro';
-import Nav from '../../components/Nav.astro';
-import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
@@ -122,13 +120,10 @@ const sectionName = 'User-Centered Design';
     )
   }
 
-  <Nav>
-    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
-    <PrincipleNav
-      baseUrl={baseUrl}
-      currentPrincipleId={principle.id}
-      sectionPath={sectionPath}
-      allPrinciples={data.principles}
-    />
-  </Nav>
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
 </PrincipleLayout>

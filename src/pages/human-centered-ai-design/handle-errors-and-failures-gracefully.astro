@@ -2,8 +2,6 @@
 import PrincipleLayout from '../../layouts/PrincipleLayout.astro';
 import data from '../../data/human-centered-ai-design.json';
 import bibliographies from '../../data/bibliographies.json';
-import Nav from '../../components/Nav.astro';
-import SectionNav from '../../components/SectionNav.astro';
 import PrincipleNav from '../../components/PrincipleNav.astro';
 import Markdown from '../../components/Markdown.astro';
 import Bibliography from '../../components/Bibliography.astro';
@@ -164,13 +162,10 @@ Without graceful error handling, users may:
     )
   }
 
-  <Nav>
-    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
-    <PrincipleNav
-      baseUrl={baseUrl}
-      currentPrincipleId={principle.id}
-      sectionPath={sectionPath}
-      allPrinciples={data.principles}
-    />
-  </Nav>
+  <PrincipleNav
+    baseUrl={baseUrl}
+    currentPrincipleId={principle.id}
+    sectionPath={sectionPath}
+    allPrinciples={data.principles}
+  />
 </PrincipleLayout>

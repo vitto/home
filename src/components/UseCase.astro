@@ -23,10 +23,7 @@ const articleId = title
 
 {
   title ? (
-    <article
-      id={id || articleId}
-      class={`use-case grid read-size gap-600 mobile:-scroll-m-600 -scroll-m-1200 ${className}`}
-    >
+    <article id={id || articleId} class={`use-case grid read-size gap-600 ${className}`}>
       <div class="grid gap-400">
         <div class="flex items-start gap-200 justify-between">
           <h3 class="text-title-h3">{title}</h3>

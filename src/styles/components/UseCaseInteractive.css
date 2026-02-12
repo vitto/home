@@ -1,4 +1,12 @@
-.use-case:not(:first-child) {
+.use-case {
+  @apply mobile:-scroll-m-600 -scroll-m-1000;
+}
+
+.use-case:first-of-type {
+  @apply scroll-m-600;
+}
+
+.use-case:not(:first-of-type) {
   &::before {
     @apply mb-1600 mobile:mb-600 tablet:mb-800;
     content: '';

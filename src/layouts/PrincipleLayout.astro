@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PrincipleHeader from '../components/PrincipleHeader.astro';
 import SectionFooter from '../components/SectionFooter.astro';
+import SectionNav from '../components/SectionNav.astro';
 interface Props {
   title: string;
   principle: {
@@ -575,6 +576,7 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
   </a>
 </template>
 <SectionLayout title={title}>
+  <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
   <Section contentClass="gap-2400 mobile:gap-1200 tablet:gap-1600">
     <Header />
     <PrincipleHeader

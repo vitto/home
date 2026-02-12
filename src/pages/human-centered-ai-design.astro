@@ -2,8 +2,6 @@
 import CategoryLayout from '../layouts/CategoryLayout.astro';
 import PrincipleCard from '../components/PrincipleCard.astro';
 import Principles from '../components/Principles.astro';
-import Nav from '../components/Nav.astro';
-import SectionNav from '../components/SectionNav.astro';
 import data from '../data/human-centered-ai-design.json';
 import bibliographies from '../data/bibliographies.json';
 import Bibliography from '../components/Bibliography.astro';
@@ -163,7 +161,4 @@ const sortedScientificPapers = sortBibliography(uniqueScientificPapers);
     )
   }
   <div class="h-50 bg-tone-neutral-03 max-w-screen-desktop mx-auto mt-1200"></div>
-  <Nav>
-    <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} principles={false} />
-  </Nav>
 </CategoryLayout>

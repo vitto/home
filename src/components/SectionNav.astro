@@ -2,6 +2,8 @@
 import Button from './Button.astro';
 import Icon from './Icon.astro';
 import categoriesData from '../data/categories.json';
+import HeaderLogo from './HeaderLogo.astro';
+import Nav from './Nav.astro';
 
 interface Props {
   baseUrl: string;
@@ -21,32 +23,58 @@ const currentSection = visibleCategories.find((cat) => cat.path === sectionPath)
 const categorySectionUrl = `${baseUrl}${sectionPath}`;
 ---
 
-<div
-  class="pointer-events-auto mobile:flex-col mobile:self-end mobile:gap-0 mobile:rounded-r-[32px]-mobile:rounded-l-none-mobile:-translate-x-600 inline-flex justify-center items-center bottom-0 gap-400 p-200 nav-outline-strong bg-tone-neutral/80 backdrop-blur rounded-full"
->
-  <Button data-scroll-to-top-button href="#" variant="icon" title="Back to top">
-    <Icon name="mi/outline/arrow-upward" />
-  </Button>
-  <Button data-menu-toggle href="#" variant="icon" title="Show categories">
-    <Icon name="mi/outline/menu" />
-  </Button>
-  {
-    principles && (
-      <Button
-        href={categorySectionUrl}
-        variant="icon"
-        title={`Back to ${currentSection?.title || 'section'}`}
-      >
-        <Icon name="mi/outline/apps" />
+<Nav position="top" data-top-nav>
+  <div
+    class="pointer-events-auto w-full max-w-lg mobile:gap-0 inline-flex justify-between items-center bottom-0 gap-400 p-200 px-400 nav-outline-strong bg-tone-neutral/80 backdrop-blur rounded-full"
+  >
+    <HeaderLogo />
+    <div class="inline-flex items-center gap-400">
+      <Button data-scroll-to-top-button href="#" variant="icon" title="Back to top">
+        <Icon name="mi/outline/arrow-upward" />
       </Button>
-    )
-  }
-  <Button href="#related-references-and-bibliography" variant="icon" title="Show bibliography">
-    <Icon name="mi/outline/library-books" />
-  </Button>
-</div>
-
+      <Button href="#related-references-and-bibliography" variant="icon" title="Show bibliography">
+        <!-- <Icon name="mi/outline/auto-stories" /> -->
+        <Icon name="mi/outline/arrow-downward" />
+      </Button>
+      {
+        principles && (
+          <Button
+            href={categorySectionUrl}
+            variant="icon"
+            title={`Back to ${currentSection?.title || 'section'}`}
+          >
+            <Icon name="mi/outline/apps" />
+          </Button>
+        )
+      }
+      <Button data-menu-toggle href="#" variant="icon" title="Show categories">
+        <Icon name="mi/outline/menu" />
+      </Button>
+    </div>
+  </div>
+</Nav>
 <script>
+  function initSectionNavVisibility() {
+    const sectionNav = document.querySelector('[data-top-nav]') as HTMLElement | null;
+    const targetElement = document.querySelector('.header') as HTMLElement | null;
+    if (!sectionNav || !targetElement) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          sectionNav.classList.add('-translate-y-2400');
+          sectionNav.classList.remove('translate-y-0');
+        } else {
+          sectionNav.classList.remove('-translate-y-2400');
+          sectionNav.classList.add('translate-y-0');
+        }
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(targetElement);
+  }
+
   function initScrollToTop() {
     const scrollToTopButton = document.querySelector('[data-scroll-to-top-button]');
     if (!scrollToTopButton) return;
@@ -67,8 +95,12 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initScrollToTop);
+    document.addEventListener('DOMContentLoaded', () => {
+      initSectionNavVisibility();
+      initScrollToTop();
+    });
   } else {
+    initSectionNavVisibility();
     initScrollToTop();
   }
 </script>
