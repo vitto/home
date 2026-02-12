@@ -188,13 +188,13 @@ const nextIcon =
 
     let lastScrollY = window.scrollY;
     let isScrollingUp = false;
-    let isTargetIntersecting = false;
+    let isHeaderIntersecting = false;
 
     function updateNavVisibility() {
       if (!bottomNav) return;
 
-      // Show nav only when scrolling up AND targetElement is not intersecting
-      const shouldShow = isScrollingUp && !isTargetIntersecting;
+      // Show nav when scrolling up OR when header is intersecting (prevent hiding when header is visible)
+      const shouldShow = isScrollingUp || isHeaderIntersecting;
 
       if (shouldShow) {
         bottomNav.classList.remove('translate-y-full');
@@ -219,7 +219,7 @@ const nextIcon =
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        isTargetIntersecting = entry.isIntersecting;
+        isHeaderIntersecting = entry.isIntersecting;
         updateNavVisibility();
       },
       { threshold: 0 }
