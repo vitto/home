@@ -30,7 +30,7 @@ const defaultSelectedClass = 'bg-tone-neutral-03 hover:bg-tone-neutral-01 text-t
 const {
   title,
   description,
-  defaultClass = 'hover:bg-tone-neutral-09',
+  defaultClass = 'hover:bg-tone-neutral-09 dark:hover:bg-tone-neutral-08',
   selectedClass,
   class: className = '',
   icon,
@@ -42,7 +42,7 @@ const {
 <a
   href={href}
   title={`Go to ${description}`}
-  class={`header-button self-center focus-bounce inline-flex justify-start items-center gap-400 mobile:gap-300 rounded-full tablet:px-600 p-300 no-underline ${className} ${selected ? (selectedClass ?? defaultSelectedClass) + ' -z-10' : defaultClass}`}
+  class={`header-button self-center focus-bounce inline-flex justify-start items-center gap-400 mobile:gap-300 rounded-full tablet:px-600 p-300 no-underline ${className} ${selected ? (selectedClass ?? defaultSelectedClass) : defaultClass + ' z-10'}`}
 >
   {icon && <Icon name={icon} />}
   <div class="grid gap-200 auto-rows-min">
