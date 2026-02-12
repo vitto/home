@@ -59,15 +59,41 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
     const targetElement = document.querySelector('.header') as HTMLElement | null;
     if (!sectionNav || !targetElement) return;
 
+    let lastScrollY = window.scrollY;
+    let isScrollingUp = false;
+    let isTargetIntersecting = false;
+
+    function updateNavVisibility() {
+      if (!sectionNav) return;
+
+      // Show nav only when scrolling up AND targetElement is not intersecting
+      const shouldShow = isScrollingUp && !isTargetIntersecting;
+
+      if (shouldShow) {
+        sectionNav.classList.remove('-translate-y-full');
+        sectionNav.classList.add('translate-y-0');
+      } else {
+        sectionNav.classList.add('-translate-y-full');
+        sectionNav.classList.remove('translate-y-0');
+      }
+    }
+
+    // Track scroll direction
+    window.addEventListener(
+      'scroll',
+      () => {
+        const currentScrollY = window.scrollY;
+        isScrollingUp = currentScrollY < lastScrollY;
+        lastScrollY = currentScrollY;
+        updateNavVisibility();
+      },
+      { passive: true }
+    );
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          sectionNav.classList.add('-translate-y-2400');
-          sectionNav.classList.remove('translate-y-0');
-        } else {
-          sectionNav.classList.remove('-translate-y-2400');
-          sectionNav.classList.add('translate-y-0');
-        }
+        isTargetIntersecting = entry.isIntersecting;
+        updateNavVisibility();
       },
       { threshold: 0 }
     );

@@ -177,3 +177,60 @@ const nextIcon =
     }
   </div>
 </Nav>
+<script>
+  function initBottomNavVisibility() {
+    const bottomNav = document.querySelector('[data-bottom-nav]') as HTMLElement | null;
+    const targetElement = document.querySelector('.header') as HTMLElement | null;
+    if (!bottomNav || !targetElement) return;
+
+    // Set initial hidden state
+    bottomNav.classList.add('translate-y-full');
+
+    let lastScrollY = window.scrollY;
+    let isScrollingUp = false;
+    let isTargetIntersecting = false;
+
+    function updateNavVisibility() {
+      if (!bottomNav) return;
+
+      // Show nav only when scrolling up AND targetElement is not intersecting
+      const shouldShow = isScrollingUp && !isTargetIntersecting;
+
+      if (shouldShow) {
+        bottomNav.classList.remove('translate-y-full');
+        bottomNav.classList.add('translate-y-0');
+      } else {
+        bottomNav.classList.add('translate-y-full');
+        bottomNav.classList.remove('translate-y-0');
+      }
+    }
+
+    // Track scroll direction
+    window.addEventListener(
+      'scroll',
+      () => {
+        const currentScrollY = window.scrollY;
+        isScrollingUp = currentScrollY < lastScrollY;
+        lastScrollY = currentScrollY;
+        updateNavVisibility();
+      },
+      { passive: true }
+    );
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isTargetIntersecting = entry.isIntersecting;
+        updateNavVisibility();
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(targetElement);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBottomNavVisibility);
+  } else {
+    initBottomNavVisibility();
+  }
+</script>
