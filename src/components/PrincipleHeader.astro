@@ -122,16 +122,15 @@ const categoryColorIconClass = colorIconClasses[categoryColor] || '';
 <div
   class={`${className} ${categoryColorBackgroundClass} principle-header p-1200 mobile:p-600 rounded-[48px] mobile:rounded-none -mx-600 mobile:-mt-600`}
 >
-  <div class="flex items-start justify-between gap-400 mobile:gap-200">
-    <div class="grid gap-600">
+  <div class="grid gap-600 grid-cols-full">
+    <div class="flex items-start justify-between gap-400 mobile:gap-200">
       <h1 class="text-title-h1 mobile:text-title-h2">{principle.title}</h1>
-      <p class={`${categoryColorIconClass} text-info-paragraph max-w-title`}>
-        {principle.description}
-      </p>
+      <mds-icon name={principle.icon} class={`${categoryColorIconClass} size-1200 mobile:size-900`}
+      ></mds-icon>
     </div>
-    <mds-icon name={principle.icon} class={`${categoryColorIconClass} size-1200 mobile:size-900`}
-    ></mds-icon>
-    <!-- <Icon name={principle.icon} class="w-800 h-800" /> -->
+    <p class={`${categoryColorIconClass} inline-flex text-info-paragraph max-w-title`}>
+      {principle.description}
+    </p>
   </div>
   <div class="flex items-center justify-start mobile:justify-between gap-400 mobile:gap-200">
     <a
