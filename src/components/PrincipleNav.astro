@@ -125,8 +125,12 @@ const nextSection = isNextDifferentSection
   ? visibleCategories.find((cat) => cat.path === nextSectionPath)
   : null;
 
-const prevIcon = isPrevDifferentSection && prevSection ? prevSection.icon : 'mdi/arrow-left';
-const nextIcon = isNextDifferentSection && nextSection ? nextSection.icon : 'mdi/arrow-right';
+// const prevIcon = isPrevDifferentSection && prevSection ? prevSection.icon : 'mi/outline/arrow-back';
+// const nextIcon = isNextDifferentSection && nextSection ? nextSection.icon : 'mi/outline/arrow-forward';
+const prevIcon =
+  isPrevDifferentSection && prevSection ? 'mi/outline/first-page' : 'mi/outline/arrow-back';
+const nextIcon =
+  isNextDifferentSection && nextSection ? 'mi/outline/last-page' : 'mi/outline/arrow-forward';
 ---
 
 <div
