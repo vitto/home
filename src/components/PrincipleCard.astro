@@ -111,14 +111,14 @@ const iconFocusClass =
     <div
       class={`p-200 rounded-3xl inline-flex justify-self-start transition-cosmetic ease-out-expo duration-500 ${categoryColorClass} ${iconHoverClass} ${iconFocusClass}`}
     >
-      <Icon name={icon} />
+      <Icon class="mobile:text-[36px]" name={icon} />
     </div>
     <h3 class="text-title-h2 tablet:text-title-h5 font-black principle-card-title">
       {title}
     </h3>
-    <p class="text-info-detail tablet:hidden">
+    <!-- <p class="text-info-detail tablet:hidden">
       {description}
-    </p>
+    </p> -->
     <div class="flex gap-400 items-center">
       <Badge
         class={`shrink-0 ease-out-expo duration-500 transition-cosmetic group-[&:is(:hover,:focus-visible)]:px-200 ${categoryColorClass}`}
