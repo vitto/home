@@ -8,9 +8,60 @@
   line-height: 1.2;
 }
 
+.bibliographies {
+  --shadow-color: var(--tone-neutral-09);
+}
+
 .bibliographies a:hover,
 .bibliographies a:focus-visible {
-  box-shadow: inset 0 -20px 0 rgb(var(--label-yellow-09));
+  box-shadow: inset 0 -20px 0 rgb(var(--shadow-color));
+}
+
+.label-green .bibliographies {
+  --shadow-color: var(--label-green-09);
+}
+
+.status-success .bibliographies {
+  --shadow-color: var(--status-success-09);
+}
+.status-info .bibliographies {
+  --shadow-color: var(--status-info-09);
+}
+.status-error .bibliographies {
+  --shadow-color: var(--status-error-09);
+}
+.status-warning .bibliographies {
+  --shadow-color: var(--status-warning-09);
+}
+.label-amaranth .bibliographies {
+  --shadow-color: var(--label-amaranth-09);
+}
+.label-orchid .bibliographies {
+  --shadow-color: var(--label-orchid-09);
+}
+.label-violet .bibliographies {
+  --shadow-color: var(--label-violet-09);
+}
+.label-blue .bibliographies {
+  --shadow-color: var(--label-blue-09);
+}
+.label-sky .bibliographies {
+  --shadow-color: var(--label-sky-09);
+}
+.label-aqua .bibliographies {
+  --shadow-color: var(--label-aqua-09);
+}
+.label-green .bibliographies {
+  --shadow-color: var(--label-green-09);
+}
+.label-lime .bibliographies {
+  --shadow-color: var(--label-lime-09);
+}
+.label-yellow .bibliographies {
+  --shadow-color: var(--label-yellow-09);
+}
+.label-orange .bibliographies {
+  --shadow-color: var(--label-orange-09);
 }
 
 .bibliography-section + .bibliography-section {
