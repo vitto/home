@@ -12,11 +12,12 @@ const { opener, closer } = Astro.props;
 
 <section class="grid gap-600 read-size" id="related-references-and-bibliography">
   <Separator />
-  <Markdown
-    content={`
-  ### Related References and Bibliography
-  `}
-  />
+  <div class="grid grid-cols-full gap-0">
+    <mds-text typography="h3">Related references and bibliography</mds-text>
+    <mds-badge class="justify-self-start select-none" variant="warning" tone="weak"
+      >it may be outdated</mds-badge
+    >
+  </div>
   {opener && <p class="text-info-paragraph">{opener}</p>}
   <div class="bibliographies grid gap-1200">
     <slot />
