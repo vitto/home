@@ -72,16 +72,20 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
       const scrollDistance = currentScrollY - lastShowScrollY;
 
       // Show nav when scrolling up AND targetElement is not intersecting
-      // Hide only when scrolling down AND scroll distance >= 300px AND targetElement is not intersecting
+      // Hide only when scrolling down AND scroll distance >= SCROLL_THRESHOLD AND targetElement is not intersecting
       let shouldShow = false;
 
-      if (isScrollingUp && !isTargetIntersecting) {
-        shouldShow = true;
-        lastShowScrollY = currentScrollY; // Reset threshold when showing
-      } else if (!isScrollingUp && !isTargetIntersecting && scrollDistance >= SCROLL_THRESHOLD) {
-        shouldShow = false; // Hide when scrolled down more than 300px
-      } else if (!isScrollingUp && !isTargetIntersecting && scrollDistance < SCROLL_THRESHOLD) {
-        shouldShow = true; // Show if scroll distance < 300px
+      if (!isTargetIntersecting) {
+        if (isScrollingUp) {
+          shouldShow = true;
+          lastShowScrollY = currentScrollY; // Reset threshold when showing
+        } else {
+          if (scrollDistance >= SCROLL_THRESHOLD) {
+            shouldShow = false; // Hide when scrolled down more than SCROLL_THRESHOLD
+          } else {
+            shouldShow = true; // Show if scroll distance < SCROLL_THRESHOLD
+          }
+        }
       }
 
       if (shouldShow) {
