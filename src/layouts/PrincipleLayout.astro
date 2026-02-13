@@ -577,7 +577,9 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
 </template>
 <SectionLayout title={title}>
   <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
-  <Section contentClass="gap-2400 mobile:gap-1200 tablet:gap-1600">
+  <Section
+    contentClass={`gap-2400 mobile:gap-1200 tablet:gap-1600 ${categoryColors[principle.category]}`}
+  >
     <Header />
     <PrincipleHeader
       principle={principle}

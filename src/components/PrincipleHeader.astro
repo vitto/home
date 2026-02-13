@@ -79,20 +79,20 @@ const colorIconClasses: Record<string, string> = {
 };
 
 const colorBackgroundClasses: Record<string, string> = {
-  'status-success': 'bg-status-success-10', // mobile:shadow-none shadow-xl shadow-status-success-04/10
-  'status-info': 'bg-status-info-10', // mobile:shadow-none shadow-xl shadow-status-info-04/10
-  'status-error': 'bg-status-error-10', // mobile:shadow-none shadow-xl shadow-status-error-04/10
-  'status-warning': 'bg-status-warning-10', // mobile:shadow-none shadow-xl shadow-status-warning-04/10
-  'label-amaranth': 'bg-label-amaranth-10', // mobile:shadow-none shadow-xl shadow-label-amaranth-04/10
-  'label-orchid': 'bg-label-orchid-10', // mobile:shadow-none shadow-xl shadow-label-orchid-04/10
-  'label-violet': 'bg-label-violet-10', // mobile:shadow-none shadow-xl shadow-label-violet-04/10
-  'label-blue': 'bg-label-blue-10', // mobile:shadow-none shadow-xl shadow-label-blue-04/10
-  'label-sky': 'bg-label-sky-10', // mobile:shadow-none shadow-xl shadow-label-sky-04/10
-  'label-aqua': 'bg-label-aqua-10', // mobile:shadow-none shadow-xl shadow-label-aqua-04/10
-  'label-green': 'bg-label-green-10', // mobile:shadow-none shadow-xl shadow-label-green-04/10
-  'label-lime': 'bg-label-lime-10', // mobile:shadow-none shadow-xl shadow-label-lime-04/10
-  'label-yellow': 'bg-label-yellow-10', // mobile:shadow-none shadow-xl shadow-label-yellow-04/10
-  'label-orange': 'bg-label-orange-10', // mobile:shadow-none shadow-xl shadow-label-orange-04/10
+  'status-success': 'bg-status-success-10 dark:bg-status-success-08', // mobile:shadow-none shadow-xl shadow-status-success-04/10
+  'status-info': 'bg-status-info-10 dark:bg-status-info-08', // mobile:shadow-none shadow-xl shadow-status-info-04/10
+  'status-error': 'bg-status-error-10 dark:bg-status-error-08', // mobile:shadow-none shadow-xl shadow-status-error-04/10
+  'status-warning': 'bg-status-warning-10 dark:bg-status-warning-08', // mobile:shadow-none shadow-xl shadow-status-warning-04/10
+  'label-amaranth': 'bg-label-amaranth-10 dark:bg-label-amaranth-08', // mobile:shadow-none shadow-xl shadow-label-amaranth-04/10
+  'label-orchid': 'bg-label-orchid-10 dark:bg-label-orchid-08', // mobile:shadow-none shadow-xl shadow-label-orchid-04/10
+  'label-violet': 'bg-label-violet-10 dark:bg-label-violet-08', // mobile:shadow-none shadow-xl shadow-label-violet-04/10
+  'label-blue': 'bg-label-blue-10 dark:bg-label-blue-08', // mobile:shadow-none shadow-xl shadow-label-blue-04/10
+  'label-sky': 'bg-label-sky-10 dark:bg-label-sky-08', // mobile:shadow-none shadow-xl shadow-label-sky-04/10
+  'label-aqua': 'bg-label-aqua-10 dark:bg-label-aqua-08', // mobile:shadow-none shadow-xl shadow-label-aqua-04/10
+  'label-green': 'bg-label-green-10 dark:bg-label-green-08', // mobile:shadow-none shadow-xl shadow-label-green-04/10
+  'label-lime': 'bg-label-lime-10 dark:bg-label-lime-08', // mobile:shadow-none shadow-xl shadow-label-lime-04/10
+  'label-yellow': 'bg-label-yellow-10 dark:bg-label-yellow-08', // mobile:shadow-none shadow-xl shadow-label-yellow-04/10
+  'label-orange': 'bg-label-orange-10 dark:bg-label-orange-08', // mobile:shadow-none shadow-xl shadow-label-orange-04/10
 };
 
 const colorButtonClasses: Record<string, string> = {
@@ -134,7 +134,7 @@ const categoryColorIconClass = colorIconClasses[categoryColor] || '';
   </div>
   <div class="flex items-center justify-start mobile:justify-between gap-400 mobile:gap-200">
     <a
-      class={`inline-flex no-underline focus-bounce items-center gap-400 rounded-full py-300 px-600 text-tone-neutral ${categoryColorClass}`}
+      class={`inline-flex select-none no-underline focus-bounce items-center gap-400 rounded-full py-300 px-600 text-tone-neutral ${categoryColorClass}`}
       href={categoryUrl}
       title={`Back to ${sectionName} and set category to ${principle.category}`}
     >

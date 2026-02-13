@@ -1,0 +1,3 @@
+.principle-header *::selection {
+  background-color: rgb(var(--tone-neutral)) !important;
+}
