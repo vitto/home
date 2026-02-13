@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vittoriovittori.com/sitemap-index.xml
