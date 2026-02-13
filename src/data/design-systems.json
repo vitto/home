@@ -16,7 +16,13 @@
       "category": "Architecture",
       "icon": "mi/outline/account-balance",
       "description": "A centralized repository where all design decisions live, ensuring consistency across all platforms, tools and teams.",
-      "sources": ["atomic-design", "design-systems"]
+      "sources": [
+        "single-source-truth-benefits",
+        "design-systems-surf-guides-single-source-of-truth",
+        "steady-flow-of-truth",
+        "atomic-design",
+        "design-systems"
+      ]
     },
     {
       "id": "consistency-over-uniformity",
@@ -25,6 +31,11 @@
       "icon": "mi/outline/verified",
       "description": "Maintain predictable behavior and shared rules without forcing every interface to look identical.",
       "sources": [
+        "bringing-context-to-design-systems",
+        "design-tokens-architecture",
+        "consistency-in-ui-ux-design-the-key-to-user-satisfaction",
+        "how-to-maintain-consistency-in-a-design-system-a-practical-guide",
+        "should-consistency-be-a-goal-for-design-systems",
         "usability-engineering",
         "about-face-the-essentials-of-interaction-design",
         "the-design-of-everyday-things",
@@ -59,6 +70,11 @@
       "icon": "mi/outline/tune",
       "description": "Define clear constraints so teams build consistent solutions without stifling flexibility.",
       "sources": [
+        "composable-component-apis",
+        "the-three-layer-rule-of-design-systems",
+        "unlocking-accessibility-through-design-systems",
+        "design-systems-and-accessibility-a-2024-retrospective",
+        "rethinking-design-systems-as-scalable-architecture",
         "the-design-of-everyday-things",
         "design-systems",
         "atomic-design",
@@ -72,7 +88,12 @@
       "category": "Adoption",
       "icon": "mi/outline/menu-book",
       "description": "Treat documentation as a first-class product with ownership, roadmap, and quality standards.",
-      "sources": ["docs-like-code", "documentation-guide"]
+      "sources": [
+        "docs-like-code",
+        "documentation-guide",
+        "design-systems-103-documentation-that-drives-adoption",
+        "tips-for-design-system-documentation-youll-actually-use"
+      ]
     },
     {
       "id": "modularity-and-composability",
@@ -80,7 +101,13 @@
       "category": "Component Design",
       "icon": "mi/outline/widgets",
       "description": "Build complex interfaces by composing smaller, focused components that work together predictably.",
-      "sources": ["atomic-design", "domain-driven-design"]
+      "sources": [
+        "composable-ux-what-it-is-and-how-to-put-it-into-practice",
+        "composable-ux-building-modular-user-experiences-in-the-era-of-micro-frontends",
+        "atomic-design",
+        "domain-driven-design",
+        "designing-modular-ui-systems-via-style-guide-driven-development"
+      ]
     },
     {
       "id": "scalability-by-design",
@@ -88,7 +115,12 @@
       "category": "Architecture",
       "icon": "mi/outline/trending-up",
       "description": "Design systems must grow with the organization, supporting new teams, products, and use cases without breaking existing implementations.",
-      "sources": ["design-tokens-naming-playbook", "lightning-design-system-principles"]
+      "sources": [
+        "design-systems-for-scalable-product-design-and-ui-libraries",
+        "design-tokens-naming-playbook",
+        "design-systems-the-blueprint-for-scalable-web-design",
+        "lightning-design-system-principles"
+      ]
     },
     {
       "id": "design-development-parity",
@@ -97,6 +129,8 @@
       "icon": "mi/outline/sync",
       "description": "Keep design and development artifacts in sync, ensuring what is designed matches what is built and maintained.",
       "sources": [
+        "a-system-built-on-parity-how-to-treat-all-of-your-users-equally",
+        "seamlessly-integrating-figma-design-tokens-across-multiple-platforms-with-style-dictionary",
         "design-that-scales",
         "architecting-subcomponents",
         "atomic-design",
@@ -111,7 +145,11 @@
       "description": "Establish clear processes for contributions, reviews, and decision-making to ensure quality and consistency.",
       "sources": [
         "the-culture-map",
-        "managing-design-systems-features-releases-to-roadmaps-and-backlogs"
+        "managing-design-systems-features-releases-to-roadmaps-and-backlogs",
+        "design-systems-collaborative-guide",
+        "design-systems-vs-style-guides",
+        "design-systems-103-documentation-that-drives-adoption",
+        "sustaining-excellence-governance-and-maintenance-of-design-systems"
       ]
     },
     {
@@ -139,6 +177,11 @@
       "icon": "mi/outline/rule",
       "description": "Make constraints visible and documented so teams understand boundaries and can work within them effectively.",
       "sources": [
+        "how-ai-is-transforming-ux-design-systems-patterns-trends-and-future-directions",
+        "design-systems-interaction-design-foundation",
+        "designing-for-constraints",
+        "dancing-with-chains",
+        "design-system-dilemmas-similar-looks-different-functions",
         "the-design-of-everyday-things",
         "the-paradox-of-choice",
         "about-face-the-essentials-of-interaction-design",
@@ -152,6 +195,8 @@
       "icon": "mi/outline/update",
       "description": "Maintain stable APIs while evolving the system, with clear versioning strategies and migration paths.",
       "sources": [
+        "8-examples-of-versioning-in-leading-design-systems",
+        "component-versioning-vs-design-system-versioning",
         "semantic-versioning-specification",
         "versioning-polaris",
         "design-system-versioning-single-library-or-individual-components"
@@ -164,9 +209,9 @@
       "icon": "mi/outline/feedback",
       "description": "Continuously improve the system based on real usage data, user feedback, and team needs.",
       "sources": [
+        "the-importance-of-user-feedback-and-data-in-ux-design",
         "sprint",
-        "the-design-of-everyday-things",
-        "building-design-system-feedback-loops"
+        "the-design-of-everyday-things"
       ]
     }
   ]

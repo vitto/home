@@ -258,6 +258,48 @@
     "url": "https://bradfrost.com/blog/post/design-system-versioning-single-library-or-individual-components/",
     "type": "url"
   },
+  "8-examples-of-versioning-in-leading-design-systems": {
+    "author": "Nezar Mansour",
+    "title": "8 Examples of Versioning in Leading Design Systems",
+    "description": "Explore how top companies like IBM, Google, and Twilio implement versioning in their design systems, ensuring consistency, clarity, and seamless updates with Semantic Versioning.",
+    "url": "https://www.supernova.io/blog/8-examples-of-versioning-in-leading-design-systems",
+    "type": "url"
+  },
+  "component-versioning-vs-design-system-versioning": {
+    "author": "Andrew Martin",
+    "title": "Component Versioning vs. Design System Versioning",
+    "description": "Component versioning and design system versioning are two key strategies for managing updates in design systems. Both approaches help teams maintain consistency, reduce errors, and streamline collaboration between design and development. But they serve different purposes and come with unique advantages and challenges.",
+    "url": "https://www.uxpin.com/studio/blog/component-versioning-vs-design-system-versioning/",
+    "type": "url"
+  },
+  "how-ai-is-transforming-ux-design-systems-patterns-trends-and-future-directions": {
+    "author": "Gabriela Nino",
+    "title": "How AI is Transforming UX Design Systems: Patterns, Trends, and Future Directions",
+    "description": "Artificial Intelligence is transforming industries, and UX design is no exception. From streamlining workflows to personalizing user experiences, AI is reshaping how designers approach problem-solving. But beyond just tools and automation, AI is becoming an integral part of design systems themselves.",
+    "url": "https://www.designsystemscollective.com/how-ai-is-transforming-ux-design-systems-patterns-trends-and-future-directions-88d4dc5d2a6e",
+    "type": "url"
+  },
+  "design-systems-interaction-design-foundation": {
+    "author": "Interaction Design Foundation",
+    "title": "Design Systems",
+    "description": "A design system is a set of standards to manage and scale design. It includes reusable components, design principles and guidelines to achieve consistency and efficiency across a company's digital products.",
+    "url": "https://www.interaction-design.org/literature/topics/design-systems",
+    "type": "url"
+  },
+  "designing-for-constraints": {
+    "author": "James Patrick Dempsey",
+    "title": "Designing for Constraints: Building Systems That Do More With Less",
+    "description": "As capital tightens and teams shrink, product design must shift from expansive ambition to deliberate constraint. Building focused, efficient systems is no longer optional — it’s the only way to deliver sustainable, high-impact value in a skeptical and resource-constrained world.",
+    "url": "https://profitably.io/r/designing-for-constraints",
+    "type": "url"
+  },
+  "design-system-dilemmas-similar-looks-different-functions": {
+    "author": "Dean Harrison",
+    "title": "Design system dilemmas: similar looks, different functions",
+    "description": "Have you ever been reviewing your design only to have one person pipe up and point out that you’re using the wrong component? Reminding you that you should be using a badge and not a pill, yet when you look at these two components, they look practically the same.",
+    "url": "https://uxdesign.cc/design-system-dilemmas-similar-looks-different-functions-36a2f0e2dcbb",
+    "type": "url"
+  },
   "docs-like-code": {
     "author": "Anne Gentle",
     "title": "Docs Like Code",
@@ -713,6 +755,132 @@
     "url": "https://uxdesign.cc/how-to-be-the-designer-in-the-ai-loop-e14a5fb8c375",
     "type": "url"
   },
+  "design-systems-vs-style-guides": {
+    "author": "Kelley Gordon",
+    "title": "Design Systems vs. Style Guides",
+    "description": "Design systems are a set of standards (like Google’s Material Design or IBM’s Carbon Design System) needed to manage design at scale. Style guides (like content or visual style guides) are just one piece in a design system.",
+    "url": "https://www.nngroup.com/articles/design-systems-vs-style-guides/",
+    "type": "url"
+  },
+  "bringing-context-to-design-systems": {
+    "author": "Hayley Hughes",
+    "title": "Bringing Context To Design Systems",
+    "description": "For the past seven years, I’ve worked on design systems at IBM, Airbnb, and Shopify. I’ve spent hundreds of hours with teams learning about how they use systems. My job, and the job of any good design system, is not to prescribe solutions. It’s to describe relationships between parts of a whole, to connect the dots between things so teams can make the best decisions possible.",
+    "url": "https://www.designsystemsforfigma.com/blog/bringing-context-to-design-systems",
+    "type": "url"
+  },
+  "how-to-maintain-consistency-in-a-design-system-a-practical-guide": {
+    "author": "Shane P Williams",
+    "title": "How to Maintain Consistency in a Design System: A Practical Guide",
+    "description": "If you’ve ever worked on a product team that’s scaling fast, you’ve probably heard something like this: “Why are the buttons on the login page blue, but they’re green on the dashboard?” Or worse, “Who added drop shadows to the modals?!” It’s the kind of chaos that can keep a design lead awake at night. The culprit? Inconsistent design systems — or no system at all. Press enter or click to view image in full size",
+    "url": "https://www.designsystemscollective.com/how-to-maintain-consistency-in-a-design-system-a-practical-guide-e0b2ff525f6a",
+    "type": "url"
+  },
+  "consistency-in-ui-ux-design-the-key-to-user-satisfaction": {
+    "author": "Rodolpho Henrique",
+    "title": "Consistency in UI/UX Design: The Key to User Satisfaction",
+    "description": "Consistency in UI/UX design isn’t just about aesthetics — it’s the key to user trust, efficiency, and engagement. When design elements align, users feel in control. But when they don’t? Confusion, frustration, and drop-offs follow. Discover why leading brands prioritize consistency and how AI and design systems can help maintain it at scale.",
+    "url": "https://uxmag.com/articles/consistency-in-ui-ux-design-the-key-to-user-satisfaction",
+    "type": "url"
+  },
+  "composable-component-apis": {
+    "author": "Nathan Power",
+    "title": "Composable component APIs",
+    "description": "Consistency in UI/UX design isn’t just about aesthetics — it’s the key to user trust, efficiency, and engagement. When design elements align, users feel in control. But when they don’t? Confusion, frustration, and drop-offs follow. Discover why leading brands prioritize consistency and how AI and design systems can help maintain it at scale.For those of us who have followed the evolution of UI component libraries in the React ecosystem, it’s hard not be inspired by the elegant composable APIs exemplified by react-aria and radix-ui. Is this also the approach we should follow when authoring internal component libraries, for example internal design-system implementations?",
+    "url": "https://nathanpower.dev/posts/composable-component-apis/#internal-apis-sometimes-benefit-from-opinions-over-flexibility",
+    "type": "url"
+  },
+  "the-three-layer-rule-of-design-systems": {
+    "author": "Pranay Kothapalli",
+    "title": "The Three-Layer Rule for Design Systems",
+    "description": "A framework for keeping your design system sane: Primitives, Components, and Compositions — where each layer lives and why mixing them creates chaos.",
+    "url": "https://blog.rad-ui.com/blog/design-systems/the-three-layer-rule-of-design-systems",
+    "type": "url"
+  },
+  "unlocking-accessibility-through-design-systems": {
+    "author": "Jon Daiello",
+    "title": "Unlocking Accessibility through Design Systems",
+    "description": "How wartime thinking transforms accessibility infrastructure",
+    "url": "https://www.jondaiello.com/posts/unlocking-accessibility-through-design-systems",
+    "type": "url"
+  },
+  "design-systems-and-accessibility-a-2024-retrospective": {
+    "author": "Matheus Cervo",
+    "title": "Design systems and accessibility—a 2024 retrospective",
+    "description": "What were the discussions and suggestions proposed by the international community in 2024?",
+    "url": "https://uxdesign.cc/design-systems-and-accessibility-a-2024-retrospective-e189ecfc2942",
+    "type": "url"
+  },
+  "rethinking-design-systems-as-scalable-architecture": {
+    "author": "Derek Niedringhaus",
+    "title": "Rethinking design systems as scalable architecture",
+    "description": "The current discourse stops short",
+    "url": "https://www.designsystemscollective.com/rethinking-design-systems-as-scalable-architecture-4dc56970be95",
+    "type": "url"
+  },
+  "design-tokens-architecture": {
+    "author": "Evan Carter",
+    "title": "Design Tokens: The Foundation of Your UI Arch",
+    "description": "Design tokens provide a single source of truth for colors, spacing, typography, and motion, enabling consistent theming and scalable UI architecture. This article explores how design tokens work, how to implement them with CSS variables, and why Feature-Sliced Design is a robust foundation for managing tokens in large frontend codebases.",
+    "url": "https://feature-sliced.design/ru/blog/design-tokens-architecture",
+    "type": "url"
+  },
+  "a-system-built-on-parity-how-to-treat-all-of-your-users-equally": {
+    "author": "Linzi Berry, Kathy Ma, Sam Soffes",
+    "title": "A system built on parity: How to treat all of your users equally",
+    "description": "Parity is at the heart of how Lyft builds its universal design system. We build parity heavily into every step of our process because we prioritize treating our users, designers, and engineers equally.",
+    "url": "https://www.designsystems.com/a-system-built-on-parity-how-to-treat-all-of-your-users-equally/",
+    "type": "url"
+  },
+  "seamlessly-integrating-figma-design-tokens-across-multiple-platforms-with-style-dictionary": {
+    "author": "Jacob Qvist",
+    "title": "Seamlessly Integrating Figma Design Tokens Across Multiple Platforms with Style Dictionary",
+    "description": "Imagine you’re a chef, and instead of rummaging through your pantry for every spice every time you cook, you have a magical spice rack that automatically refills and updates itself.",
+    "url": "https://www.jacobqvist.com/blog/design-tokens",
+    "type": "url"
+  },
+  "designing-modular-ui-systems-via-style-guide-driven-development": {
+    "author": "Adriana De La Cuadra",
+    "title": "Designing Modular UI Systems Via Style Guide-Driven Development",
+    "description": "Creating a flexible UI system that is consistent and easy to customize, while also scalable and cost-efficient, depends not only on how it is built, but on how it is designed. A library of components has very little value if every new design is created independently, ignoring established standards and patterns. In this article, Adriana De La Cuadra explains the value of modularity in UI design and how it ties into the process of style guide-driven development, which improves the implementation of flexible and user-friendly applications, while helping designers and developers collaborate more productively.",
+    "url": "https://www.smashingmagazine.com/2016/06/designing-modular-ui-systems-via-style-guide-driven-development/",
+    "type": "url"
+  },
+  "the-importance-of-user-feedback-and-data-in-ux-design": {
+    "author": "Syed Balkhi",
+    "title": "The Importance of User Feedback and Data in UX Design",
+    "description": "Users often surprise UX designers with their different expectations and reactions when using products or services.",
+    "url": "https://www.uxmatters.com/mt/archives/2023/12/the-importance-of-user-feedback-and-data-in-ux-design.php",
+    "type": "url"
+  },
+  "should-consistency-be-a-goal-for-design-systems": {
+    "author": "Amy Hupe",
+    "title": "Should consistency be a goal of design systems?",
+    "description": "It’s becoming increasingly unfashionable to cite “consistency” as a goal for design systems.",
+    "url": "https://amyhupe.co.uk/articles/should-consistency-be-a-goal-for-design-systems/",
+    "type": "url"
+  },
+  "design-systems-103-documentation-that-drives-adoption": {
+    "author": "Carly Ayres",
+    "title": "Design system 103: Design system documentation that drives adoption",
+    "description": "Clear documentation transforms abstract design principles into practical tools. Here’s how leading teams build and maintain living documentation that evolves alongside their design systems.",
+    "url": "https://www.figma.com/blog/design-systems-103-documentation-that-drives-adoption/#how-to-determine-your-source-of-truth",
+    "type": "url"
+  },
+  "sustaining-excellence-governance-and-maintenance-of-design-systems": {
+    "author": "Understanding Design Systems",
+    "title": "Sustaining Excellence: Governance & Maintenance of Design Systems",
+    "description": "Creating a design system is a significant achievement, but its long-term value depends on effective governance and diligent maintenance.",
+    "url": "https://understanding-design-systems.pages.dev/governance-and-maintenance",
+    "type": "url"
+  },
+  "tips-for-design-system-documentation-youll-actually-use": {
+    "author": "Neel Dozome",
+    "title": "Tips for design system documentation you’ll actually use",
+    "description": "You know that a design system is a centralized repository of design principles, guidelines, and reusable components that aid design decision-making.",
+    "url": "https://blog.logrocket.com/ux-design/design-system-documentation",
+    "type": "url"
+  },
   "ai-assistance-in-enterprise-ux-design-workflows-enhancing-design-brief-creation-for-designers": {
     "author": "Darren Yeo",
     "title": "AI assistance in enterprise UX design workflows: enhancing design brief creation for designers",
@@ -725,6 +893,48 @@
     "title": "AI Transparency Through Design: 5 Practical Lessons from the Field",
     "description": "AI transparency isn’t just about algorithms — it’s about design. This article explores five practical lessons from Eleken designer Julia Haievska’s work on the AI marketing platform Aampe, showing how thoughtful UX decisions make AI systems more understandable, reliable, and ethical. You’ll learn how to visualize AI behavior, guide users through complexity, build trust through communication, support learning by doing, and adapt transparency as your product evolves.",
     "url": "https://www.eleken.co/blog-posts/ai-transparency#what-is-ai-transparency-and-why-does-it-matter",
+    "type": "url"
+  },
+  "composable-ux-what-it-is-and-how-to-put-it-into-practice": {
+    "author": "Arizbé Ken",
+    "title": "Composable UX: What It Is and How to Put It Into Practice",
+    "description": "Composable UX is a user experience design approach based on creating independent, modular, and reusable components that can be flexibly combined to build complete digital experiences.",
+    "url": "https://www.gluo.mx/en-US/blog/composable-ux-que-es-y-como-implementarlo",
+    "type": "url"
+  },
+  "design-systems-for-scalable-product-design-and-ui-libraries": {
+    "author": "Nitin Agarwal",
+    "title": "Design Systems for Scalable Product Design and UI Libraries",
+    "description": "Ever feel like your UI/UX projects are slipping into chaos as they grow? Inconsistent elements, patchy styles, and reinventing the wheel with every new feature are productivity killers. That’s where design systems come in. They aren’t just style guides — they’re the backbone of scalable product design, ensuring every component fits perfectly no matter the size of your project. In this post, we’ll break down how design systems keep your UI libraries tight and your user experience flawless.",
+    "url": "https://www.wildnetedge.com/blogs/design-systems-for-scalable-product-design-and-ui-libraries",
+    "type": "url"
+  },
+  "steady-flow-of-truth": {
+    "author": "Lean Design System",
+    "title": "Steady Flow of Truth",
+    "description": "We set up central repositories for our design system artifacts and establish a steady flow of components and optimizations between them.",
+    "url": "https://docs.leandesignsystem.org/tactics/infrastructure/steady-flow-of-truth",
+    "type": "url"
+  },
+  "single-source-truth-benefits": {
+    "author": "UX Pin",
+    "title": "What is a Single Source of Truth, and Why Do You Need it?",
+    "description": "Lead designers need to make sure they keep their team members on the right path. Managers have tried several methods to reach this goal, including pattern libraries and style guides. While those options have a place to play within some organizations, they don’t always provide the single source of truth that you need to optimize design efficiency and avoid mistakes.",
+    "url": "https://www.uxpin.com/studio/blog/single-source-truth-benefits/",
+    "type": "url"
+  },
+  "design-systems-surf-guides-single-source-of-truth": {
+    "author": "Design Systems Surf",
+    "title": "What is a Single Source of Truth",
+    "description": "Single Source of Truth (SSOT) in a Design Systems refers to a centralized repository where all design tokens, components, and guidelines are stored and maintained. This ensures that everyone involved in the product development process—designers, developers, and stakeholders—has access to the most up-to-date information.",
+    "url": "https://designsystems.surf/guides/single-source-of-truth",
+    "type": "url"
+  },
+  "design-systems-the-blueprint-for-scalable-web-design": {
+    "author": "Dustin Heisey",
+    "title": "Design Systems: The Blueprint for Scalable Web Design",
+    "description": "In today's rapidly evolving digital world, it's crucial to have web designs that are effective, easier to scale, and adaptable. This brings us to the realm of design systems – a well-planned and creative strategy, often likened to the DNA of digital products. But what is a design system in web design? How does it enhance scalability in User Interface (UI) designs, and what are the advantages it provides? This article aims to unpack these questions, offering an in-depth understanding of design systems and their vital role in crafting scalable web design.",
+    "url": "https://dustinheisey.com/posts/design-systems-scalable-design/",
     "type": "url"
   },
   "artificial-intelligence-shapes-how-we-think-feel-and-behave": {
@@ -790,6 +1000,13 @@
     "url": "https://www.sciencedirect.com/science/article/abs/pii/S0747563224001122?dgcid=rss_sd_all#bib56",
     "type": "scientific-paper"
   },
+  "dancing-with-chains": {
+    "author": "Atefeh Shokrizadeh, Boniface Bahati Tadjuidje, Shivam Kumar, Sohan Kamble, Jinghui Cheng",
+    "title": "Dancing With Chains: Ideating Under Constraints With UIDEC in UI/UX Design",
+    "description": "UI/UX designers often work under constraints like brand identity, design norms, and industry guidelines. How these constraints impact designers’ ideation and exploration processes should be addressed in creativity-support tools for design.",
+    "url": "https://arxiv.org/html/2501.18748v1",
+    "type": "scientific-paper"
+  },
   "on-the-purpose-of-meaningful-human-control-of-ai": {
     "author": "Jovana Davidovic",
     "title": "On the purpose of meaningful human control of AI",
@@ -809,6 +1026,20 @@
     "title": "Four Principles of Explainable Artificial Intelligence",
     "description": "We introduce four principles for explainable artificial intelligence (AI) that comprise fundamental properties for explainable AI systems. We propose that explainable AI systems deliver accompanying evidence or reasons for outcomes and processes; provide explanations that are understandable to individual users; provide explanations that correctly reflect the system’s process for generating the output; and that a system only operates under conditions for which it was designed and when it reaches sufficient confidence in its output.",
     "url": "https://nvlpubs.nist.gov/nistpubs/ir/2021/NIST.IR.8312.pdf",
+    "type": "scientific-paper"
+  },
+  "composable-ux-building-modular-user-experiences-in-the-era-of-micro-frontends": {
+    "author": "European Modern Studies Journal",
+    "title": "Composable UX: Building Modular User Experiences in the Era of Micro Frontends",
+    "description": "Composable UX represents a transformative paradigm in web application architecture, building upon the foundation of micro frontend systems to create modular, adaptable user interfaces. By extending component-based engineering principles to the frontend domain, composable UX enables organizations to develop independent, reusable interface elements that combine to form cohesive experiences.",
+    "url": "https://lorojournals.com/index.php/emsj/article/view/1672",
+    "type": "scientific-paper"
+  },
+  "design-systems-collaborative-guide": {
+    "author": "propelland",
+    "title": "Design System Operations: A collaborative process",
+    "description": "As design and product leaders, we often come across posts on LinkedIn or attend UX conferences that praise the invaluable benefits of design systems.",
+    "url": "https://propelland.com/wp-content/uploads/2023/04/Design-Systems-Collaborative-Guide.pdf",
     "type": "book"
   },
   "scope-services-when-in-doubt": {
