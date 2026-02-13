@@ -14,7 +14,7 @@ const { author, title, description, url, status = 'active', class: className = '
 <article class={`grid gap-200 grid-cols-full ${className}`}>
   <h5 class="text-title-h5 max-w-text">{author} — {title}</h5>
   <div class="grid gap-200">
-    <mds-text typography="caption" class="text-info-detail text-pretty max-w-text"
+    <mds-text typography="caption" truncate="all" class="text-info-detail text-pretty max-w-text"
       >{description}</mds-text
     >
     {
