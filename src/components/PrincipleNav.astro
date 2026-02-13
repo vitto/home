@@ -146,7 +146,7 @@ const nextIcon =
           title={
             isPrevDifferentSection
               ? `Go to ${prevSection?.title || 'previous section'}`
-              : 'Go to previous principle'
+              : prevPrinciple?.title || 'Go to previous principle'
           }
         >
           <Icon name={prevIcon} />
@@ -168,7 +168,7 @@ const nextIcon =
           title={
             isNextDifferentSection
               ? `Go to ${nextSection?.title || 'next section'}`
-              : 'Go to next principle'
+              : nextPrinciple?.title || 'Go to next principle'
           }
         >
           <Icon name={nextIcon} />
@@ -187,14 +187,29 @@ const nextIcon =
     bottomNav.classList.add('translate-y-full');
 
     let lastScrollY = window.scrollY;
+    let lastShowScrollY = window.scrollY;
     let isScrollingUp = false;
     let isHeaderIntersecting = false;
+    const SCROLL_THRESHOLD = 300;
 
     function updateNavVisibility() {
       if (!bottomNav) return;
 
+      const currentScrollY = window.scrollY;
+      const scrollDistance = currentScrollY - lastShowScrollY;
+
       // Show nav when scrolling up OR when header is intersecting (prevent hiding when header is visible)
-      const shouldShow = isScrollingUp || isHeaderIntersecting;
+      // Hide only when scrolling down AND scroll distance >= 300px
+      let shouldShow = false;
+
+      if (isScrollingUp || isHeaderIntersecting) {
+        shouldShow = true;
+        lastShowScrollY = currentScrollY; // Reset threshold when showing
+      } else if (!isScrollingUp && scrollDistance >= SCROLL_THRESHOLD) {
+        shouldShow = false; // Hide when scrolled down more than 300px
+      } else {
+        shouldShow = true; // Show if scroll distance < 300px
+      }
 
       if (shouldShow) {
         bottomNav.classList.remove('translate-y-full');

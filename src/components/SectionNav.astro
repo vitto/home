@@ -60,14 +60,29 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
     if (!sectionNav || !targetElement) return;
 
     let lastScrollY = window.scrollY;
+    let lastShowScrollY = window.scrollY;
     let isScrollingUp = false;
     let isTargetIntersecting = false;
+    const SCROLL_THRESHOLD = 300;
 
     function updateNavVisibility() {
       if (!sectionNav) return;
 
-      // Show nav only when scrolling up AND targetElement is not intersecting
-      const shouldShow = isScrollingUp && !isTargetIntersecting;
+      const currentScrollY = window.scrollY;
+      const scrollDistance = currentScrollY - lastShowScrollY;
+
+      // Show nav when scrolling up AND targetElement is not intersecting
+      // Hide only when scrolling down AND scroll distance >= 300px AND targetElement is not intersecting
+      let shouldShow = false;
+
+      if (isScrollingUp && !isTargetIntersecting) {
+        shouldShow = true;
+        lastShowScrollY = currentScrollY; // Reset threshold when showing
+      } else if (!isScrollingUp && !isTargetIntersecting && scrollDistance >= SCROLL_THRESHOLD) {
+        shouldShow = false; // Hide when scrolled down more than 300px
+      } else if (!isScrollingUp && !isTargetIntersecting && scrollDistance < SCROLL_THRESHOLD) {
+        shouldShow = true; // Show if scroll distance < 300px
+      }
 
       if (shouldShow) {
         sectionNav.classList.remove('-translate-y-full');
