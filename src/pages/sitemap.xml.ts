@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import categoriesData from '../data/categories.json';
 import designSystemsData from '../data/design-systems.json';
 import userCenteredDesignData from '../data/user-centered-design.json';
 import humanCenteredAiDesignData from '../data/human-centered-ai-design.json';
@@ -20,19 +21,28 @@ function urlEntry(path: string): string {
 export const GET: APIRoute = async () => {
   const urls: string[] = ['/', '/privacy'];
 
-  urls.push('/design-systems');
-  for (const p of designSystemsData.principles) {
-    urls.push(`/design-systems/${p.id}`);
-  }
+  // Filter out draft categories
+  const visibleCategories = categoriesData.filter((category: any) => !category.draft);
 
-  urls.push('/user-centered-design');
-  for (const p of userCenteredDesignData.principles) {
-    urls.push(`/user-centered-design/${p.id}`);
-  }
+  // Map category IDs to their data
+  const categoryDataMap: Record<string, any> = {
+    'design-systems': designSystemsData,
+    'user-centered-design': userCenteredDesignData,
+    'human-centered-ai-design': humanCenteredAiDesignData,
+  };
 
-  urls.push('/human-centered-ai-design');
-  for (const p of humanCenteredAiDesignData.principles) {
-    urls.push(`/human-centered-ai-design/${p.id}`);
+  // Only include non-draft categories
+  for (const category of visibleCategories) {
+    const sectionPath = category.path;
+    const categoryId = category.id;
+    const data = categoryDataMap[categoryId];
+
+    if (data) {
+      urls.push(sectionPath);
+      for (const p of data.principles) {
+        urls.push(`${sectionPath}/${p.id}`);
+      }
+    }
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
