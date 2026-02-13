@@ -23,7 +23,7 @@ interface Props {
 const { categories, activeCategory = '', sectionId, class: className = '' } = Astro.props;
 ---
 
-<div class={`flex flex-wrap gap-200 scroll-mt-600 ${className}`} data-filter-container>
+<div class={`flex flex-wrap gap-200 scroll-mt-2800 ${className}`} data-filter-container>
   <Button data-filter="all" data-filter-active="false" variant="filter">All</Button>
   {
     categories.map((category) => (
