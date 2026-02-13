@@ -30,7 +30,6 @@
     function onMdsPrefChange(e) {
       setTimeout(function () {
         var value = e.target.getAttribute('mode');
-        console.log('value', value);
         if (value) {
           setCookie(value); // still set locally so next request has it
           fetch('/api/sync-prefs?theme=' + encodeURIComponent(value), {
