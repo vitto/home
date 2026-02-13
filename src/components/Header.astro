@@ -27,7 +27,7 @@ const { menu = true } = Astro.props;
 <header class="header flex items-center gap-400 justify-between group/header">
   <div class="inline-flex items-center gap-400">
     <HeaderLogo />
-    <div class="hidden desktop:grid">
+    <div class="hidden desktop:grid grid-cols-full grow min-w-0">
       <h1 class="text-title-h3" aria-label="Vittorio Vittori">
         Vittori<mds-text
           aria-hidden="true"
@@ -42,6 +42,7 @@ const { menu = true } = Astro.props;
         tag="span"
         class="header-role min-h-200"
         typography="option"
+        truncate="word"
         data-claims={JSON.stringify(personalData.claims)}
         data-roles={personalData.role}
         text={personalData.role.split('/')[0]}
