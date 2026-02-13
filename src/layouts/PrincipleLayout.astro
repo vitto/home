@@ -349,12 +349,12 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
           animationDirection = null;
         }
       }
-      multipleContainer.removeAttribute('style');
-      multipleContainer.style.height = `${multipleContainer.offsetHeight}px`;
 
       children.forEach((child, i) => {
         if (i === index) {
           child.classList.remove('hidden');
+          multipleContainer.style.height = `${child.offsetHeight}px`;
+
           // Remove any existing animation classes
           child.classList.remove('use-case-from-right-animation', 'use-case-from-left-animation');
 
@@ -363,8 +363,6 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
           } else if (animationDirection === 'from-left') {
             child.classList.add('use-case-from-left-animation');
           }
-
-          multipleContainer.style.height = `${child.offsetHeight}px`;
           // Remove animation class after animation completes
           setTimeout(() => {
             child.classList.remove('use-case-from-right-animation', 'use-case-from-left-animation');
@@ -408,13 +406,24 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
       indicator.setAttribute('data-multiple-index', index.toString());
       indicator.addEventListener('click', (e) => {
         e.preventDefault();
-        showElement(index);
+        multipleContainer.removeAttribute('style');
+        multipleContainer.style.height = multipleContainer.offsetHeight + 'px';
+        setTimeout(() => {
+          showElement(index);
+        }, 100);
       });
       indicatorsContainer.appendChild(indicator);
     });
 
     // Initially show first element, hide others
     showElement(0);
+
+    // On resize, clear inline height so container can reflow with new viewport
+    window.addEventListener('resize', () => {
+      if (multipleContainer.hasAttribute('style')) {
+        multipleContainer.removeAttribute('style');
+      }
+    });
 
     // Add touch/swipe gesture support for mobile
     let touchStartX = 0;
