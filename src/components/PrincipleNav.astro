@@ -146,7 +146,7 @@ const nextIcon =
           title={
             isPrevDifferentSection
               ? `Go to ${prevSection?.title || 'previous section'}`
-              : prevPrinciple?.title || 'Go to previous principle'
+              : `Previous: ${prevPrinciple?.title}` || 'Go to previous principle'
           }
         >
           <Icon name={prevIcon} />
@@ -168,7 +168,7 @@ const nextIcon =
           title={
             isNextDifferentSection
               ? `Go to ${nextSection?.title || 'next section'}`
-              : nextPrinciple?.title || 'Go to next principle'
+              : `Next: ${nextPrinciple?.title}` || 'Go to next principle'
           }
         >
           <Icon name={nextIcon} />
