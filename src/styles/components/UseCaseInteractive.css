@@ -28,6 +28,10 @@
   }
 }
 
+.use-case-interactive mds-table-cell > * {
+  white-space: nowrap;
+}
+
 :root {
   --use-case-interactive-animation-duration: 0.325s;
   --use-case-interactive-animation-easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
