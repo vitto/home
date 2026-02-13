@@ -300,6 +300,7 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
   // Function to initialize multiple examples functionality for use cases
   window.initMultiple = function initMultiple(articleId) {
     // Get articleId from parameter or find parent article
+    const HEIGHT_TRANSITION_DURATION = 500; // ms, must match UseCaseInteractive.css
     let id = articleId;
     if (!id) {
       const currentScript = document.currentScript;
@@ -348,6 +349,8 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
           animationDirection = null;
         }
       }
+      multipleContainer.removeAttribute('style');
+      multipleContainer.style.height = `${multipleContainer.offsetHeight}px`;
 
       children.forEach((child, i) => {
         if (i === index) {
@@ -361,10 +364,11 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
             child.classList.add('use-case-from-left-animation');
           }
 
+          multipleContainer.style.height = `${child.offsetHeight}px`;
           // Remove animation class after animation completes
           setTimeout(() => {
             child.classList.remove('use-case-from-right-animation', 'use-case-from-left-animation');
-          }, 500);
+          }, HEIGHT_TRANSITION_DURATION);
         } else {
           child.classList.add('hidden');
           // Remove animation classes from hidden elements
