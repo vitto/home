@@ -42,7 +42,7 @@ const { menu = true } = Astro.props;
         tag="span"
         class="header-role min-h-200"
         typography="option"
-        data-claim={personalData.claim}
+        data-claims={JSON.stringify(personalData.claims)}
         data-roles={personalData.role}
         text={personalData.role.split('/')[0]}
         animation="jugop"></mds-text>
@@ -69,18 +69,35 @@ const { menu = true } = Astro.props;
     if (!header || !mdsText || !mdsTextRole) return;
 
     const textRoles = mdsTextRole.getAttribute('data-roles')?.split('/') || [];
-    const textClaim = mdsTextRole.getAttribute('data-claim');
+    const claimsAttr = mdsTextRole.getAttribute('data-claims');
+    const parsedClaims = claimsAttr ? JSON.parse(claimsAttr) : [];
+
+    // Shuffle claims array to randomize order on each page load
+    const textClaims = [...parsedClaims];
+    for (let i = textClaims.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [textClaims[i], textClaims[j]] = [textClaims[j], textClaims[i]];
+    }
 
     if (textRoles.length === 0) return;
 
     let currentRoleIndex = 1;
+    let nextClaimIndex = -1; // Start at -1 so first hover shows index 0
     let roleInterval: number | null = null;
+    let claimInterval: number | null = null;
     let isHovering = false;
 
     function updateRoleText() {
       if (!isHovering && textRoles.length > 0 && mdsTextRole) {
         mdsTextRole.setAttribute('text', textRoles[currentRoleIndex] || '');
         currentRoleIndex = (currentRoleIndex + 1) % textRoles.length;
+      }
+    }
+
+    function updateClaimText() {
+      if (isHovering && textClaims.length > 0 && mdsTextRole) {
+        mdsTextRole.setAttribute('text', textClaims[nextClaimIndex] || '');
+        nextClaimIndex = (nextClaimIndex + 1) % textClaims.length;
       }
     }
 
@@ -96,18 +113,40 @@ const { menu = true } = Astro.props;
       }
     }
 
+    function startClaimRotation() {
+      if (claimInterval) return; // Already running
+      if (textClaims.length > 0) {
+        // Advance to next claim (first hover: -1 -> 0, second hover: 0 -> 1, etc.)
+        nextClaimIndex = (nextClaimIndex + 1) % textClaims.length;
+        // Show the current claim immediately
+        if (mdsTextRole) {
+          mdsTextRole.setAttribute('text', textClaims[nextClaimIndex] || '');
+        }
+        // Then cycle through the rest
+        claimInterval = window.setInterval(updateClaimText, duration);
+      }
+    }
+
+    function stopClaimRotation() {
+      if (claimInterval) {
+        clearInterval(claimInterval);
+        claimInterval = null;
+      }
+    }
+
     header.addEventListener('mouseenter', () => {
       isHovering = true;
       stopRoleRotation();
       mdsText.setAttribute('text', 'o Vittori');
-      mdsTextRole.setAttribute('text', textClaim || '');
+      // Show the next claim (will advance each hover, restarting after cycling through all)
+      startClaimRotation();
     });
 
     header.addEventListener('mouseleave', () => {
       isHovering = false;
+      stopClaimRotation();
       mdsText.setAttribute('text', 'o');
       // Reset to first role and start rotation
-      // currentRoleIndex = 0;
       updateRoleText();
       startRoleRotation();
     });
