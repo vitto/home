@@ -63,7 +63,8 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
     let lastShowScrollY = window.scrollY;
     let isScrollingUp = false;
     let isTargetIntersecting = false;
-    const SCROLL_THRESHOLD = 200;
+    const SCROLL_THRESHOLD = 400;
+    const SCROLL_TOP_THRESHOLD = SCROLL_THRESHOLD + 100;
 
     function updateNavVisibility() {
       if (!sectionNav) return;
@@ -75,7 +76,7 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
       // Hide only when scrolling down AND scroll distance >= SCROLL_THRESHOLD AND targetElement is not intersecting
       let shouldShow = false;
 
-      if (!isTargetIntersecting) {
+      if (!isTargetIntersecting && currentScrollY > SCROLL_TOP_THRESHOLD) {
         if (isScrollingUp) {
           shouldShow = true;
           lastShowScrollY = currentScrollY; // Reset threshold when showing

@@ -1,45 +1,45 @@
 .label-green *::selection {
-  @apply text-label-green-04 dark:text-label-green-02 bg-label-green-10 dark:bg-label-green-08;
+  @apply text-label-green-04 dark:text-label-green-02 bg-label-green-10 dark:bg-label-green-09;
 }
 .status-success *::selection {
-  @apply text-status-success-04 dark:text-status-success-02 bg-status-success-10 dark:bg-status-success-08;
+  @apply text-status-success-04 dark:text-status-success-02 bg-status-success-10 dark:bg-status-success-09;
 }
 .status-info *::selection {
-  @apply text-status-info-04 dark:text-status-info-02 bg-status-info-10 dark:bg-status-info-08;
+  @apply text-status-info-04 dark:text-status-info-02 bg-status-info-10 dark:bg-status-info-09;
 }
 .status-error *::selection {
-  @apply text-status-error-04 dark:text-status-error-02 bg-status-error-10 dark:bg-status-error-08;
+  @apply text-status-error-04 dark:text-status-error-02 bg-status-error-10 dark:bg-status-error-09;
 }
 .status-warning *::selection {
-  @apply text-status-warning-04 dark:text-status-warning-02 bg-status-warning-10 dark:bg-status-warning-08;
+  @apply text-status-warning-04 dark:text-status-warning-02 bg-status-warning-10 dark:bg-status-warning-09;
 }
 .label-amaranth *::selection {
-  @apply text-label-amaranth-04 dark:text-label-amaranth-02 bg-label-amaranth-10 dark:bg-label-amaranth-08;
+  @apply text-label-amaranth-04 dark:text-label-amaranth-02 bg-label-amaranth-10 dark:bg-label-amaranth-09;
 }
 .label-orchid *::selection {
-  @apply text-label-orchid-04 dark:text-label-orchid-02 bg-label-orchid-10 dark:bg-label-orchid-08;
+  @apply text-label-orchid-04 dark:text-label-orchid-02 bg-label-orchid-10 dark:bg-label-orchid-09;
 }
 .label-violet *::selection {
-  @apply text-label-violet-04 dark:text-label-violet-02 bg-label-violet-10 dark:bg-label-violet-08;
+  @apply text-label-violet-04 dark:text-label-violet-02 bg-label-violet-10 dark:bg-label-violet-09;
 }
 .label-blue *::selection {
-  @apply text-label-blue-04 dark:text-label-blue-02 bg-label-blue-10 dark:bg-label-blue-08;
+  @apply text-label-blue-04 dark:text-label-blue-02 bg-label-blue-10 dark:bg-label-blue-09;
 }
 .label-sky *::selection {
-  @apply text-label-sky-04 dark:text-label-sky-02 bg-label-sky-10 dark:bg-label-sky-08;
+  @apply text-label-sky-04 dark:text-label-sky-02 bg-label-sky-10 dark:bg-label-sky-09;
 }
 .label-aqua *::selection {
-  @apply text-label-aqua-04 dark:text-label-aqua-02 bg-label-aqua-10 dark:bg-label-aqua-08;
+  @apply text-label-aqua-04 dark:text-label-aqua-02 bg-label-aqua-10 dark:bg-label-aqua-09;
 }
 .label-green *::selection {
-  @apply text-label-green-04 dark:text-label-green-02 bg-label-green-10 dark:bg-label-green-08;
+  @apply text-label-green-04 dark:text-label-green-02 bg-label-green-10 dark:bg-label-green-09;
 }
 .label-lime *::selection {
-  @apply text-label-lime-04 dark:text-label-lime-02 bg-label-lime-10 dark:bg-label-lime-08;
+  @apply text-label-lime-04 dark:text-label-lime-02 bg-label-lime-10 dark:bg-label-lime-09;
 }
 .label-yellow *::selection {
-  @apply text-label-yellow-04 dark:text-label-yellow-02 bg-label-yellow-10 dark:bg-label-yellow-08;
+  @apply text-label-yellow-04 dark:text-label-yellow-02 bg-label-yellow-10 dark:bg-label-yellow-09;
 }
 .label-orange *::selection {
-  @apply text-label-orange-04 dark:text-label-orange-02 bg-label-orange-10 dark:bg-label-orange-08;
+  @apply text-label-orange-04 dark:text-label-orange-02 bg-label-orange-10 dark:bg-label-orange-09;
 }
