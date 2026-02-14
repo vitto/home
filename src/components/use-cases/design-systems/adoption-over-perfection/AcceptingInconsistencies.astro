@@ -16,9 +16,11 @@ import CodeSnippet from '../../../CodeSnippet.astro';
     title="If you are using React"
     language="html"
     code={`<!--
-  In react options are not treated
+  ⚠️
+  In react select is not treated
   with its standard attributes,
   this breaks the component
+  when it uses form with its standard specs.
 -->
 <MdsInputSelect>
   <option value="1">Option 1</option>
@@ -27,6 +29,7 @@ import CodeSnippet from '../../../CodeSnippet.astro';
 </MdsInputSelect>
 
 <!--
+  ✅
   Use the web-component directly
   even if it doesn't benefit from
   the react wrapper
