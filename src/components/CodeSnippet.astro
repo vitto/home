@@ -42,7 +42,7 @@ const languageBadgeVariant: Record<string, string> = {
 
 const uniqueId = `code-${Math.random().toString(36).substring(2, 9)}`;
 const codeClass =
-  `code-snippet-code language-${normalizedLanguage} ${language === 'text' ? 'text-tone-neutral' : 'text-tone-neutral'}`.trim();
+  `code-snippet-code dark:text-tone-neutral-01 text-tone-neutral-10 language-${normalizedLanguage}`.trim();
 ---
 
 <div
