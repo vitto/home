@@ -53,7 +53,7 @@ const privacySections = [
       },
       {
         icon: 'mi/outline/cookie',
-        text: 'No cookies (except those required by Cloudflare Pages for security)',
+        text: 'No cookies (except those required by GitHub Pages for security)',
       },
       {
         icon: 'mi/baseline/ads-click',
@@ -61,7 +61,7 @@ const privacySections = [
       },
       {
         icon: 'mi/outline/badge',
-        text: 'No data collection beyond what Cloudflare Pages requires for hosting',
+        text: 'No data collection beyond what GitHub Pages requires for hosting',
       },
     ],
   },
@@ -79,48 +79,19 @@ const privacySections = [
 ---
 
 <Layout
-  title="Privacy Policy - Vittorio Vittori"
+  title="Aobut - Vittorio Vittori"
   description="Privacy policy for Vittorio Vittori's portfolio website. This site respects your privacy by design."
 >
   <main class="px-400 desktop:px-1200 py-600">
     <div class="max-w-screen-desktop w-full mx-auto grid gap-2400">
       <Header menu={false} />
       <div class="grid gap-400 auto-rows-min">
-        <h1 class="text-title-h1">Privacy Policy</h1>
+        <h1 class="text-title-h1">About</h1>
         <p class="text-info-detail">
-          This site respects your privacy by design. No tracking. No ads. Just static HTML.
+          About page of Vittorio Vittori.
           <br />
           {`Last updated: ${latestUpdate}`}
         </p>
-      </div>
-
-      <div class="grid gap-1600">
-        {
-          privacySections.map((section) => (
-            <div class="grid gap-600">
-              <div class="grid gap-200">
-                <h4 class="text-title-h4" set:html={section.title} />
-                {section.description && (
-                  <p class="text-info-detail" set:html={section.description} />
-                )}
-                {section.list && (
-                  <List class="mt-200">
-                    {section.list.map((item) => (
-                      <ListItem icon={item.icon}>
-                        <p class="text-info-detail">{item.text}</p>
-                      </ListItem>
-                    ))}
-                  </List>
-                )}
-              </div>
-              {section.button && (
-                <Button href={section.button.href} variant="outline" class="justify-self-start">
-                  {section.button.label}
-                </Button>
-              )}
-            </div>
-          ))
-        }
       </div>
       <div class="h-50 w-full bg-tone-neutral-08"></div>
     </div>

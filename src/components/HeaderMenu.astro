@@ -63,11 +63,15 @@ const categories = visibleCategories.map((category) => ({
 </div>
 <div class="header-nav text-tone-neutral-02 hidden" data-header-nav hidden>
   <nav class="header-nav-menu grid-cols-fill auto-rows-min" data-header-nav-menu>
-    <div class="flex items-center justify-between">
-      <Icon name="vv/logo" class="text-[48px] justify-self-center" />
+    <div class="flex items-center gap-600 justify-between">
+      <!-- <Icon name="vv/logo" class="text-[48px] justify-self-center" /> -->
       <Button href={baseUrl || '/'} variant="light" class="shrink-0 py-300" title="Back to Home">
         <Icon name="mi/outline/home" class="text-tone-neutral-04" />
       </Button>
+      <!-- <Button href={baseUrl || '/about'} variant="light">
+        <Icon name="mi/outline/person" class="text-tone-neutral-04" />
+        <span>About</span>
+      </Button> -->
     </div>
     <div class="h-50 bg-tone-neutral-03 w-full flex tablet:hidden"></div>
     <div class="grid gap-200 grid-cols-fit-lg mobile:grid-cols-full tablet:hidden" data-nav-buttons>
