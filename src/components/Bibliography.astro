@@ -10,7 +10,10 @@ interface Props {
 const { opener, closer } = Astro.props;
 ---
 
-<section class="grid gap-600 read-size" id="related-references-and-bibliography">
+<section
+  class="grid gap-600 read-size desktop:scroll-mt-1000 scroll-mt-900"
+  id="related-references-and-bibliography"
+>
   <Separator />
   <div class="grid grid-cols-full gap-100">
     <mds-text typography="h3">Related references and bibliography</mds-text>

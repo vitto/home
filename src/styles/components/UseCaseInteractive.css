@@ -1,9 +1,9 @@
 .use-case {
-  @apply mobile:-scroll-m-600 -scroll-m-1000;
+  @apply mobile:scroll-mt-1200 scroll-mt-1400;
 }
 
 .use-case:first-of-type {
-  @apply scroll-m-600;
+  @apply mobile:scroll-mt-2400 scroll-mt-2400;
 }
 
 .use-case:not(:first-of-type) {
@@ -69,4 +69,13 @@
     opacity: 1;
     transform: translateX(0) scale(1);
   }
+}
+
+.use-case mds-modal {
+  @apply rounded-2xl overflow-hidden py-400;
+  --mds-modal-window-distance: 1rem;
+}
+
+.use-case mds-modal::part(window) {
+  @apply rounded-2xl p-600 box-border;
 }
