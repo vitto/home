@@ -118,6 +118,7 @@
       "icon": "mi/outline/manage-accounts",
       "description": "Adjust AI behavior and feedback to user goals, skills, and situations.",
       "sources": [
+        "progressive-disclosure-reduce-ai-token-usage-by-60",
         "creating-ai-that-adapts-to-user-context-and-goals",
         "progressive-disclosure-for-ai-agents",
         "dynamic-context-aware-prompt-recommendation-for-domain-specific-ai-applications",

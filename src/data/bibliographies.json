@@ -923,6 +923,20 @@
     "url": "https://www.uxpin.com/studio/blog/single-source-truth-benefits/",
     "type": "url"
   },
+  "progressive-disclosure-reduce-ai-token-usage-by-60": {
+    "author": "Chudi Nnorukam",
+    "title": "Progressive Disclosure: Reduce AI Token Usage by 60%",
+    "description": "I was burning through $50/month in Claude API costs before I realized the problem. Every session loaded the same 8,000 tokens of context--rules, skills, examples--whether I needed them or not.",
+    "url": "https://dev.to/chudi_nnorukam/progressive-disclosure-reduce-ai-token-usage-by-60-4ad7",
+    "type": "url"
+  },
+  "progressive-disclosure-10-great-examples-to-check": {
+    "author": "Flowmapp",
+    "title": "Progressive Disclosure: 10 Great Examples to Check",
+    "description": "When an interface is complex enough for users to understand it right away without any boring manuals, designers need to look for unique ways to present its functionality. In particular, they may resort to progressive disclosure. Below, we will tell you what it is and how to implement it in practice.",
+    "url": "https://medium.com/@Flowmapp/progressive-disclosure-10-great-examples-to-check-5e54c5e0b5b6",
+    "type": "url"
+  },
   "design-systems-surf-guides-single-source-of-truth": {
     "author": "Design Systems Surf",
     "title": "What is a Single Source of Truth",
