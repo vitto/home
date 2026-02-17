@@ -1,0 +1,24 @@
+---
+import HighlightContent from './HighlightContent.astro';
+
+/**
+ * Highlight Component
+ *
+ * Wrapper container for highlighted content, providing relative positioning context.
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ * @param {string} label - Label for the highlight
+ */
+interface Props {
+  class?: string;
+  label?: string;
+}
+
+const { class: className = '', label = '' } = Astro.props;
+---
+
+<div class={`relative highlight ${className}`} data-highlight-wrapper>
+  <slot />
+  <HighlightContent label={label} />
+</div>

@@ -1,0 +1,22 @@
+---
+/**
+ * AIInput Component
+ *
+ * Input message bubble for user messages in AI use cases.
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<mds-input
+  class={`rounded-full ${className}`}
+  type="text"
+  variant="ai"
+  placeholder="Ask something"
+  data-ai-input></mds-input>

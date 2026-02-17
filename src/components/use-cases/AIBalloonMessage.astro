@@ -1,0 +1,23 @@
+---
+/**
+ * AIBalloonMessage Component
+ *
+ * Message bubble for AI responses or suggestions in use cases.
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`grid grid-cols-[1fr_3fr] ${className}`} data-ai-balloon-message>
+  <div class="col-start-2 rounded-3xl bg-tone-neutral-09 px-400 py-200 rounded-br-none flex">
+    <mds-text typography="detail" class="text-tone-neutral-01">
+      <slot />
+    </mds-text>
+  </div>
+</div>

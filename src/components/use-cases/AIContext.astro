@@ -1,0 +1,69 @@
+---
+/**
+ * AIContext Component
+ *
+ * Container for context (e.g. user context, session, or scenario) in AI use cases.
+ *
+ * Props:
+ * @param {string} value - Value of the context
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  value?: number;
+  class?: string;
+}
+
+const { value = 0, class: className = '' } = Astro.props;
+---
+
+<div class={`flex items-center gap-200 ${className}`} data-ai-context>
+  <mds-benchmark-bar alias="high" value={value} typography="option" class="grow"
+    >Context</mds-benchmark-bar
+  >
+  <mds-button
+    icon="mi/outline/more-vert"
+    variant="dark"
+    tone="quiet"
+    class="shrink-0"
+    data-toggle-modal-button></mds-button>
+</div>
+<mds-modal data-modal position="right">ciao</mds-modal>
+
+<script>
+  function initModalToggle() {
+    const contextContainer = document.querySelector('[data-ai-context]');
+    if (!contextContainer) return;
+
+    const button = contextContainer.querySelector('[data-toggle-modal-button]');
+    // Find modal as next sibling or in parent container
+    const modal = contextContainer.nextElementSibling?.matches('[data-modal]')
+      ? (contextContainer.nextElementSibling as HTMLElement)
+      : contextContainer.parentElement?.querySelector('[data-modal]');
+
+    if (!button || !modal) return;
+
+    button.addEventListener('click', () => {
+      if (modal.hasAttribute('opened')) {
+        // modal.removeAttribute('opened');
+      } else {
+        modal.setAttribute('opened', '');
+      }
+    });
+  }
+
+  // Wait for web components to be defined before initializing
+  function waitForComponents() {
+    if (customElements.get('mds-button') && customElements.get('mds-modal')) {
+      initModalToggle();
+    } else {
+      setTimeout(waitForComponents, 100);
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForComponents);
+  } else {
+    waitForComponents();
+  }
+</script>

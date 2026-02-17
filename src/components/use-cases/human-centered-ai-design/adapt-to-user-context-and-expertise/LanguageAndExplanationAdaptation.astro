@@ -3,77 +3,84 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseFollowUp from '../../AIResponseFollowUp.astro';
+import AIResponseFollowUpAction from '../../AIResponseFollowUpAction.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import Highlight from '../../Highlight.astro';
 ---
 
 <UseCase
   title="Language and Explanation Adaptation"
   description="Match terminology and explanation depth to the user's expertise—plain language for general users, precise terms and more detail for experts when appropriate."
 >
-  <UseCaseInteractive clsHeight={112} label="Language adaptation" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Plain Language (General User)</b></mds-text>
-          <mds-text typography="body"
-            >This might not be right. I'm not very confident because the text is short and a bit
-            unclear. You may want to double-check.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Explains uncertainty in everyday terms without technical jargon.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Technical Summary (Expert)</b></mds-text>
-          <mds-text typography="body"
-            >Low confidence (0.42). Short input; NER coverage limited. Consider adding context or
-            using a domain-specific model.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Same situation, with precise terms and actionable technical guidance for users who
-            understand them.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>One Language for All (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="body"
-            >Inference confidence 0.42; token count below optimal; consider fine-tuned model for
-            domain.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Technical language by default confuses general users. No way to get a simpler
-            explanation.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Adaptation Options</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Let users choose "Simple" vs "Detailed" explanations in settings</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Provide "Explain in simple terms" or "Show more detail" on demand</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Don't:</b> Assume all users want the same level of technical detail</mds-text
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+  <UseCaseInteractive clsHeight={112} label="Progressive disclosure" multiple>
+    <div class="grid gap-600 w-full max-w-9600">
+      <!-- <mds-badge variant="warning" tone="weak" class="justify-self-center">Novice</mds-badge> -->
+      <Highlight label="Novice speech detection">
+        <AIBalloon>
+          <AIBalloonMessage>How can I start feeding birds in my garden?</AIBalloonMessage>
+        </AIBalloon>
+      </Highlight>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+To start feeding your baby birds, just follow a few simple steps:
+
+1. **Choose a basic feed:** Use sunflower
+2. **Position the feeder:** Hang it in a sheltered
+3. **Clean regularly:** Remove old or wet seeds to prevent mold.
+
+Want to know which birds you can attract or how to protect
+your food from rain?
+      `}
+        />
+        <!-- <AIResponseFollowUp>
+          <AIResponseFollowUpAction>
+            Find out which birds you might attract
+          </AIResponseFollowUpAction>
+          <AIResponseFollowUpAction>
+            Watch a video on how to hang the feeder
+          </AIResponseFollowUpAction>
+          <AIResponseFollowUpAction>Buy recommended seeds</AIResponseFollowUpAction>
+        </AIResponseFollowUp> -->
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <Highlight label="Expert speech detection">
+        <AIBalloon>
+          <AIBalloonMessage>
+            What seed mixes are best for attracting finches and tits in winter, considering the
+            presence of cats?
+          </AIBalloonMessage>
+        </AIBalloon>
+      </Highlight>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+For finches and tits in winter, where cats are present, I recommend:
+
+1. **Leftover mix:** Black sunflower seeds (rich in oil), niger (for finches), and unsalted peanuts (for tits).
+2. **Strategic placement:** Use a tube feeder with small holes (for finches) or a cage-style feeder (for tits), hung at least 1.8 meters high and away from branches where cats can climb.
+3. **Additional protection:** Add a baffle (plastic disc) over the feeder to deter cats.
+
+Want to learn more about managing seed cleaning in humid environments or how to incorporate nuts into their diet?
+      `}
+        />
+        <AIResponseFollowUp>
+          <AIResponseFollowUpAction>
+            Download the PDF guide on anti-predator feeders
+          </AIResponseFollowUpAction>
+          <AIResponseFollowUpAction>
+            Calculate the amount of seeds for the season
+          </AIResponseFollowUpAction>
+          <AIResponseFollowUpAction>Set up a monthly cleaning reminder</AIResponseFollowUpAction>
+        </AIResponseFollowUp>
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>

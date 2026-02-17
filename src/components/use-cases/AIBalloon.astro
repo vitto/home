@@ -1,0 +1,19 @@
+---
+/**
+ * AIBalloon Component
+ *
+ * Balloon-style container for User messages in use cases.
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`grid gap-400 ${className}`} data-ai-balloon>
+  <slot />
+</div>

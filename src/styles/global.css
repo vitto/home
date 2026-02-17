@@ -15,6 +15,7 @@
 @import './components/CodeSnippet.css';
 @import './components/Header.css';
 @import './components/Markdown.css';
+@import './components/Highlight.css';
 @import './components/Nav.css';
 @import './components/PageFader.css';
 @import './components/PrincipleHeader.css';

@@ -3,71 +3,87 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import AIResponseFollowUpAction from '../../AIResponseFollowUpAction.astro';
+import Markdown from '../../../Markdown.astro';
+import AIResponseFollowUp from '../../AIResponseFollowUp.astro';
+import Highlight from '../../Highlight.astro';
 ---
 
 <UseCase
   title="Progressive Disclosure Based on Expertise"
   description="Show simple, essential options first; reveal advanced or detailed options when users need them or indicate expertise."
 >
-  <UseCaseInteractive clsHeight={112} label="Progressive disclosure" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Simple View (Default)</b></mds-text>
-          <mds-text typography="body">Search: [________________]</mds-text>
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >One search box. No advanced filters unless the user asks.</mds-text
+  <UseCaseInteractive
+    clsHeight={112}
+    label="Progressive disclosure"
+    toggle
+    articleId="progressive-disclosure-based-on-expertise"
+    bugComponent="mds-details"
+    bugExpected="If there is no left icon set, the component should not have an empty space to its left."
+    bugCurrent="If there is no left icon set, the component has an empty space to its left."
+  >
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>How can I start feeding birds in my garden?</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+To start feeding your baby birds, just follow a few simple steps:
+
+1. **Choose a basic feed:** Use sunflower
+2. **Position the feeder:** Hang it in a sheltered
+3. **Clean regularly:** Remove old or wet seeds to prevent mold.
+        `}
+        />
+        <Highlight label="progressive disclosure" class="relative grid gap-600">
+          <mds-text
+            >Want to know which birds you can attract or how to protect your food from rain?</mds-text
           >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Advanced Options (On Demand)</b></mds-text>
-          <mds-text typography="body">Search: [________________]</mds-text>
-          <mds-button variant="outline" size="sm">Show advanced filters</mds-button>
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Advanced filters (date range, file type, confidence threshold) appear when the user
-            expands "Show advanced filters", keeping the default experience simple.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Everything at Once (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="body"
-            >Search with 15 filter dropdowns, confidence sliders, model selection, and export
-            format—all visible by default.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Overwhelms novices and slows down experts who only need one or two options.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Expert Shortcuts</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Let users set "Always show advanced options" if they prefer</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Offer keyboard shortcuts or "Power user" mode for repeated tasks</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Don't:</b> Hide critical options; only defer advanced or rarely used ones</mds-text
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+          <mds-details class="-ml-200">
+            <mds-text slot="title">More options</mds-text>
+            <AIResponseFollowUp>
+              <AIResponseFollowUpAction>
+                Find out which birds you might attract
+              </AIResponseFollowUpAction>
+              <AIResponseFollowUpAction>
+                Watch a video on how to hang the feeder
+              </AIResponseFollowUpAction>
+              <AIResponseFollowUpAction>Buy recommended seeds</AIResponseFollowUpAction>
+            </AIResponseFollowUp>
+          </mds-details>
+        </Highlight>
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>How can I start feeding birds in my garden?</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+To start feeding your baby birds, just follow a few simple steps:
+
+1. **Choose a basic feed:** Use sunflower
+2. **Position the feeder:** Hang it in a sheltered
+3. **Clean regularly:** Remove old or wet seeds to prevent mold.
+        `}
+        />
+        <!-- <AIResponseFollowUp>
+          <AIResponseFollowUpAction>
+            Find out which birds you might attract
+          </AIResponseFollowUpAction>
+          <AIResponseFollowUpAction>
+            Watch a video on how to hang the feeder
+          </AIResponseFollowUpAction>
+          <AIResponseFollowUpAction>Buy recommended seeds</AIResponseFollowUpAction>
+        </AIResponseFollowUp> -->
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>

@@ -1,0 +1,38 @@
+.animate-alarm-border {
+  animation: alarmBorder 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  transition: border-color 0.3s ease-out;
+}
+
+.highlight:hover .animate-alarm-border {
+  animation-play-state: running;
+  transition: border-color 0.3s ease-out;
+  border-color: rgb(var(--status-info-04));
+}
+
+/* border-color */
+
+.animate-alarm-element {
+  animation: alarmElement 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes alarmBorder {
+  0%,
+  50%,
+  100% {
+    border-color: transparent;
+  }
+  25% {
+    border-color: rgb(var(--status-info-04));
+  }
+}
+
+@keyframes alarmElement {
+  0%,
+  50%,
+  100% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+}

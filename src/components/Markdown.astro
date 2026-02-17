@@ -6,9 +6,20 @@ import Icon from './Icon.astro';
 interface Props {
   content?: string;
   class?: string;
+  typography?: 'detail' | 'paragraph' | 'caption';
 }
 
-const { content, class: className = 'grid grid-cols-full gap-400' } = Astro.props;
+const {
+  content,
+  class: className = 'grid grid-cols-full gap-400',
+  typography = 'paragraph',
+} = Astro.props;
+
+const typographyClasses = {
+  detail: 'text-info-detail',
+  paragraph: 'text-info-paragraph',
+  caption: 'text-info-caption',
+};
 
 function slugify(text: string) {
   return text
@@ -40,18 +51,18 @@ if (!marked.defaults.extensions) {
       paragraph(token) {
         // @ts-ignore - marked v17 API
         const text = this.parser.parseInline(token.tokens);
-        return `<p class="text-info-paragraph">${text}</p>\n`;
+        return `<p>${text}</p>\n`;
       },
       list(token) {
         const tag = token.ordered ? 'ol' : 'ul';
         // @ts-ignore - marked v17 API
         const body = token.items.map((item: any) => this.listitem(item)).join('');
-        return `<${tag} class="mt-0 mb-600">${body}</${tag}>\n`;
+        return `<${tag} class="m-0">${body}</${tag}>\n`;
       },
       listitem(token) {
         // @ts-ignore - marked v17 API
         const body = this.parser.parse(token.tokens);
-        return `<li class="text-info-paragraph">${body}</li>\n`;
+        return `<li class="mt-200 first:mt-0">${body}</li>\n`;
       },
     },
   });
@@ -70,7 +81,10 @@ const htmlContent = markdownContent ? marked(markdownContent) : '';
 
 {
   htmlContent && (
-    <div set:html={htmlContent} class={`markdown read-size ${className}`}>
+    <div
+      set:html={htmlContent}
+      class={`markdown read-size ${typographyClasses[typography]} ${className}`}
+    >
       <slot />
     </div>
   )

@@ -1,0 +1,19 @@
+---
+/**
+ * AIResponseMessage Component
+ *
+ * Chat bubble-style component for AI responses in use cases.
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`grid gap-600 ${className}`} data-ai-response-message>
+  <slot />
+</div>

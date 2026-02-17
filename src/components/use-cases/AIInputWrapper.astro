@@ -1,0 +1,19 @@
+---
+/**
+ * AIInputWrapper Component
+ *
+ * Wrapper container for AI input messages, providing layout context.
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`grid gap-200 ${className}`} data-ai-input-wrapper>
+  <slot />
+</div>

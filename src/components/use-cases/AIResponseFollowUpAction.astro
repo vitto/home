@@ -1,0 +1,27 @@
+---
+import Button from '../Button.astro';
+
+/**
+ * AIResponseFollowUpAction Component
+ *
+ * Follow-up action button or link that appears after an AI response message.
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ * @param {string} href - Optional href for link behavior
+ */
+interface Props {
+  class?: string;
+  href?: string;
+}
+
+const { class: className = 'text-info-caption', href } = Astro.props;
+---
+
+<div
+  tabindex="0"
+  class={`shadow-sm-sharp hover:shadow-md-sharp cursor-pointer focus-bounce focus-visible:shadow-sm-sharp-strong rounded-2xl px-400 py-100 no-underline ${className}`}
+  data-ai-response-follow-up-action
+>
+  <slot />
+</div>

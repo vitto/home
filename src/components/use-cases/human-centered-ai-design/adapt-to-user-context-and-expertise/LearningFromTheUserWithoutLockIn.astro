@@ -3,6 +3,14 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import Highlight from '../../Highlight.astro';
+import AIContext from '../../AIContext.astro';
+import AIInput from '../../AIInput.astro';
+import AIInputWrapper from '../../AIInputWrapper.astro';
 ---
 
 <UseCase
@@ -10,80 +18,28 @@ import UsageItem from '../../../UsageItem.astro';
   description="Improve suggestions and behavior from user feedback and behavior, but let users see, correct, or reset personalization so they don't feel locked in."
 >
   <UseCaseInteractive clsHeight={112} label="Learning without lock-in" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Transparent Personalization</b></mds-text>
-          <mds-text typography="body"
-            >Recommendations are based on: your recent projects, your saved preferences, and similar
-            tasks in your team.</mds-text
-          >
-          <div class="flex gap-200">
-            <mds-button variant="outline" size="sm">Edit preferences</mds-button>
-            <mds-button variant="outline" size="sm">Reset recommendations</mds-button>
-          </div>
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Users see what drives recommendations and can edit or reset without losing the product.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Corrections Improve Future Suggestions</b></mds-text>
-          <mds-text typography="body"
-            >When you reject or edit a suggestion, we use that to improve next time. You can review
-            and delete this feedback in Settings → Personalization.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Learning is explicit; users know their corrections are used and can review or clear
-            that data.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Opaque Lock-In (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="body"
-            >Recommendations get more personalized over time, but there's no way to see what we
-            learned, correct it, or reset. "Personalization" in settings only toggles ads.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Users feel trapped by invisible assumptions; wrong inferences are hard to fix; no way
-            to start fresh.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Best Practices</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Let users view, edit, or delete data used for personalization</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Provide "Reset recommendations" or "Start over" so users can clear learned
-                preferences</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Don't:</b> Learn from behavior in a way that's invisible or impossible to correct</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Don't:</b> Make personalization a permanent state with no opt-out or reset</mds-text
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+To start feeding your baby birds, just follow a few simple steps:
+
+1. **Choose a basic feed:** Use sunflower
+2. **Position the feeder:** Hang it in a sheltered
+3. **Clean regularly:** Remove old or wet seeds to prevent mold.
+
+Want to know which birds you can attract or how to protect
+your food from rain?
+      `}
+        />
+      </AIResponseMessage>
+      <AIInputWrapper>
+        <AIInput />
+        <Highlight label="Context management" class="relative grid gap-600">
+          <AIContext value={33} />
+        </Highlight>
+      </AIInputWrapper>
     </div>
   </UseCaseInteractive>
   <Usage>
