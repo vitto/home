@@ -18,7 +18,7 @@ interface Props {
 const { class: className = '', label = '' } = Astro.props;
 ---
 
-<div class={`relative highlight ${className}`} data-highlight-wrapper>
+<div class={`relative z-10 highlight ${className}`} data-highlight-wrapper>
   <slot />
   <HighlightContent label={label} />
 </div>

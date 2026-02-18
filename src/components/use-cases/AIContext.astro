@@ -14,20 +14,40 @@ interface Props {
 }
 
 const { value = 0, class: className = '' } = Astro.props;
+
+// Map value (0-100) to alias label
+const getAliasFromValue = (val: number): string => {
+  if (val === 0) return 'none';
+  if (val <= 25) return 'low';
+  if (val <= 50) return 'medium';
+  if (val <= 75) return 'high';
+  if (val <= 90) return 'very high';
+  return 'highest';
+};
+
+const alias = getAliasFromValue(value);
 ---
 
 <div class={`flex items-center gap-200 ${className}`} data-ai-context>
-  <mds-benchmark-bar alias="high" value={value} typography="option" class="grow"
+  <mds-benchmark-bar alias={alias} value={value} typography="option" class="grow"
     >Context</mds-benchmark-bar
   >
   <mds-button
-    icon="mi/outline/more-vert"
-    variant="dark"
-    tone="quiet"
     class="shrink-0"
+    icon="mi/outline/more-vert"
+    title="Manage context"
+    tone="quiet"
+    variant="dark"
     data-toggle-modal-button></mds-button>
 </div>
-<mds-modal data-modal position="right">ciao</mds-modal>
+<mds-modal data-modal position="right" overflow="manual">
+  <div class="flex flex-col gap-400">
+    <mds-benchmark-bar data-context-bar alias={alias} value={value} typography="label" class="grow"
+      >Manage context</mds-benchmark-bar
+    >
+    <slot />
+  </div>
+</mds-modal>
 
 <script>
   function initModalToggle() {
