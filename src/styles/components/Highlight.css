@@ -3,13 +3,34 @@
   transition: border-color 0.3s ease-out;
 }
 
+.highlight {
+  --highlight-color: var(--status-info-04);
+}
+.highlight--error {
+  --highlight-color: var(--status-error-04);
+}
+
+.highlight--info {
+  --highlight-color: var(--status-info-04);
+}
+
+.highlight--success {
+  --highlight-color: var(--status-success-04);
+}
+
+.highlight--warning {
+  --highlight-color: var(--status-warning-04);
+}
+
+.highlight-content-label {
+  background-color: rgb(var(--highlight-color) / 1);
+}
+
 .highlight:hover .animate-alarm-border {
   animation-play-state: running;
   transition: border-color 0.3s ease-out;
-  border-color: rgb(var(--status-info-04));
+  border-color: rgb(var(--highlight-color) / 1);
 }
-
-/* border-color */
 
 .animate-alarm-element {
   animation: alarmElement 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -19,10 +40,10 @@
   0%,
   50%,
   100% {
-    border-color: transparent;
+    border-color: rgb(var(--highlight-color) / 0);
   }
   25% {
-    border-color: rgb(var(--status-info-04));
+    border-color: rgb(var(--highlight-color) / 1);
   }
 }
 

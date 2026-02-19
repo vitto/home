@@ -9,16 +9,26 @@ import HighlightContent from './HighlightContent.astro';
  * Props:
  * @param {string} class - Additional CSS classes
  * @param {string} label - Label for the highlight
+ * @param {string} variant - Variant for the highlight
  */
 interface Props {
   class?: string;
   label?: string;
+  variant?: 'neutral' | 'success' | 'error' | 'warning' | 'info';
 }
 
-const { class: className = '', label = '' } = Astro.props;
+const { class: className = '', label = '', variant = 'neutral' } = Astro.props;
+
+const variantClass = {
+  error: 'highlight--error',
+  info: 'highlight--info',
+  neutral: 'highlight--neutral',
+  success: 'highlight--success',
+  warning: 'highlight--warning',
+};
 ---
 
-<div class={`relative z-10 highlight ${className}`} data-highlight-wrapper>
+<div class={`relative z-10 highlight ${className} ${variantClass[variant]}`} data-highlight-wrapper>
   <slot />
   <HighlightContent label={label} />
 </div>
