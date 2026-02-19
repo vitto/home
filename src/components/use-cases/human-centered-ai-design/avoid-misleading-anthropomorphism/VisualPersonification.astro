@@ -10,7 +10,10 @@ import UsageItem from '../../../UsageItem.astro';
   description="Avoid visual design that makes AI systems appear human-like, which can create false expectations about capabilities and emotional connection."
 >
   <UseCaseInteractive clsHeight={112} label="Visual design comparison" toggle>
-    <div class="flex flex-col items-center justify-center gap-400 w-full max-w-9600">
+    <div
+      class="flex flex-col items-center justify-center gap-400 w-full max-w-9600"
+      data-ai-chatbot-container
+    >
       <mds-emoji class="size-2400 m-auto" data-ai-chatbot></mds-emoji>
       <div class="flex flex-col gap-200 items-center justify-center">
         <mds-text typography="h3">Hexabot</mds-text>
@@ -32,20 +35,37 @@ import UsageItem from '../../../UsageItem.astro';
   </UseCaseInteractive>
   <script>
     function initAiChatbotBlinking() {
-      const el = document.querySelector('[data-ai-chatbot]');
-      if (!el) return;
-      const run = () => {
-        const emojiEl = el as unknown as {
-          startBlinking?: () => void;
-          startFollowMouse?: () => void;
-        };
-        if (typeof emojiEl.startBlinking === 'function') emojiEl.startBlinking.call(el);
-        if (typeof emojiEl.startFollowMouse === 'function') emojiEl.startFollowMouse.call(el);
+      const emojiEl = document.querySelector('[data-ai-chatbot]');
+      if (!emojiEl) return;
+
+      const api = emojiEl as unknown as {
+        startBlinking?: () => void;
+        startFollowMouse?: () => void;
+        stopFollowMouse?: () => void;
       };
+
+      const runBlinking = () => {
+        if (typeof api.startBlinking === 'function') api.startBlinking.call(emojiEl);
+      };
+
+      const runFollowMouse = () => {
+        if (typeof api.startFollowMouse === 'function') api.startFollowMouse.call(emojiEl);
+      };
+
+      const runStopFollowMouse = () => {
+        if (typeof api.stopFollowMouse === 'function') api.stopFollowMouse.call(emojiEl);
+      };
+
       if (customElements.get('mds-emoji')) {
-        run();
+        runBlinking();
       } else {
-        customElements.whenDefined('mds-emoji').then(run);
+        customElements.whenDefined('mds-emoji').then(runBlinking);
+      }
+
+      const interactiveContainer = emojiEl.closest('.use-case-interactive-content')?.parentElement;
+      if (interactiveContainer) {
+        interactiveContainer.addEventListener('mouseenter', runFollowMouse);
+        interactiveContainer.addEventListener('mouseleave', runStopFollowMouse);
       }
     }
 
