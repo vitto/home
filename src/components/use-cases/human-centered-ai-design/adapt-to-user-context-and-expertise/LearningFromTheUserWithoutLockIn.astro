@@ -71,24 +71,12 @@ const defaultLanguageToneMessage =
     label="Learning without lock-in"
     articleId="learning-from-the-user-without-lock-in"
     toggle
-    bugComponent="mds-input-select"
-    bugCurrent="The option slotted is not updated when the value is set maually"
-    bugExpected="The slotted option should be updated when the value is set maually"
   >
     <div class="grid gap-600 w-full max-w-9600">
       <AIBalloon>
         <AIBalloonMessage>Write an email to cancel an electricity supply contract</AIBalloonMessage>
       </AIBalloon>
       <AIResponseMessage>
-        <Markdown
-          typography="caption"
-          content={`I will use the following defaults:
-
-1. **Formal tone:** Suitable for legal communications.
-2. **Default structure:** Based on standard templates for withdrawals of your country.
-3. **Fields to be filled in:** Highlighted in [ ] for quick customization.
-          `}
-        />
         <Markdown
           typography="detail"
           content={`
@@ -100,7 +88,7 @@ Termination of the contract is requested effective from [date].
 Kind regards,
 
 [Name and user data]
-        `}
+      `}
         />
       </AIResponseMessage>
       <AIInputWrapper>
@@ -122,14 +110,8 @@ Kind regards,
             >
             <mds-separator></mds-separator>
             <mds-input-field label="tone" message={defaultLanguageToneMessage} data-tone-select>
-              <mds-input-select data-select-list>
-                {
-                  languageTones.map((tone) => (
-                    <option value={tone.value} selected={tone.value === defaultLanguageTone}>
-                      {tone.label}
-                    </option>
-                  ))
-                }
+              <mds-input-select data-select-list value={defaultLanguageTone}>
+                {languageTones.map((tone) => <option value={tone.value}>{tone.label}</option>)}
               </mds-input-select>
             </mds-input-field>
             <div class="h-full flex flex-col items-stretch justify-end gap-600">
@@ -140,31 +122,38 @@ Kind regards,
         </Highlight>
       </AIInputWrapper>
     </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>Write an email to cancel an electricity supply contract</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Subject: Request to withdraw from the electricity supply contract (No. [XXX])
+
+Dear [Supplier Name],
+I hereby communicate my intention to withdraw from the electricity supply contract signed on [XX/XX/XXXX], pursuant to Article [Y] of the Consumer Code.
+Termination of the contract is requested effective from [date].
+Kind regards,
+
+[Name and user data]
+      `}
+        />
+      </AIResponseMessage>
+      <AIInputWrapper>
+        <AIInput />
+      </AIInputWrapper>
+    </div>
   </UseCaseInteractive>
   <script define:vars={{ languageTones, defaultLanguageTone, defaultLanguageToneMessage }}>
     function setToneSelectValue(toneSelect, value) {
+      console.log('setToneSelectValue', value);
       const selectEl = toneSelect?.querySelector('[data-select-list]');
       if (!selectEl) return;
-
-      // Empty the select
-      while (selectEl.firstChild) {
-        selectEl.removeChild(selectEl.firstChild);
-      }
-
-      // Re-insert options with the correct selected state
-      languageTones.forEach((tone) => {
-        const opt = document.createElement('option');
-        opt.value = tone.value;
-        opt.textContent = tone.label;
-        if (tone.value === value) {
-          opt.setAttribute('selected', '');
-          opt.selected = true;
-        }
-        selectEl.appendChild(opt);
-      });
-
-      selectEl.value = value;
-      selectEl.dispatchEvent(new Event('change', { bubbles: true }));
+      selectEl.setValue(value);
+      // selectEl.value = value;
+      console.log('selectEl', selectEl);
       const message = languageTones.find((tone) => tone.value === value)?.message ?? '';
       toneSelect.setAttribute('message', message);
     }
