@@ -17,7 +17,7 @@ import Highlight from '../../Highlight.astro';
   description="Show simple, essential options first; reveal advanced or detailed options when users need them or indicate expertise."
 >
   <UseCaseInteractive
-    clsHeight={112}
+    clsHeight={384}
     label="Progressive disclosure"
     toggle
     articleId="progressive-disclosure-based-on-expertise"
@@ -44,18 +44,15 @@ To start feeding your baby birds, just follow a few simple steps:
           <mds-text
             >Want to know which birds you can attract or how to protect your food from rain?</mds-text
           >
-          <mds-details class="-ml-200">
-            <mds-text slot="title">More options</mds-text>
-            <AIResponseFollowUp>
-              <AIResponseFollowUpAction>
-                Find out which birds you might attract
-              </AIResponseFollowUpAction>
-              <AIResponseFollowUpAction>
-                Watch a video on how to hang the feeder
-              </AIResponseFollowUpAction>
-              <AIResponseFollowUpAction>Buy recommended seeds</AIResponseFollowUpAction>
-            </AIResponseFollowUp>
-          </mds-details>
+          <AIResponseFollowUp>
+            <AIResponseFollowUpAction>
+              Find out which birds you might attract
+            </AIResponseFollowUpAction>
+            <AIResponseFollowUpAction>
+              Watch a video on how to hang the feeder
+            </AIResponseFollowUpAction>
+            <AIResponseFollowUpAction>Buy recommended seeds</AIResponseFollowUpAction>
+          </AIResponseFollowUp>
         </Highlight>
       </AIResponseMessage>
     </div>

@@ -11,37 +11,282 @@ import Highlight from '../../Highlight.astro';
 import AIContext from '../../AIContext.astro';
 import AIInput from '../../AIInput.astro';
 import AIInputWrapper from '../../AIInputWrapper.astro';
+
+const languageTones = [
+  { value: '0', label: 'Automatic', message: 'The tone is automatically detected' },
+  {
+    value: '1',
+    label: 'Technical',
+    message: 'The TCP/IP protocol ensures reliable data packet transmission.',
+  },
+  { value: '2', label: 'Friendly', message: 'Hi there! How can I brighten your day? 😊' },
+  {
+    value: '3',
+    label: 'Formal',
+    message: 'Please submit the required documentation by February 20, 2026.',
+  },
+  { value: '4', label: 'Casual', message: 'Hey, what’s up? Let me know if you need anything!' },
+  {
+    value: '5',
+    label: 'Humorous',
+    message: 'If Wi-Fi were a superhero, today it would’ve lost its cape... 😅',
+  },
+  {
+    value: '6',
+    label: 'Educational',
+    message: 'Photosynthesis occurs in leaves using sunlight to produce energy.',
+  },
+  {
+    value: '7',
+    label: 'Informative',
+    message: 'The event will take place on February 25 at 3:00 PM in the Green Hall.',
+  },
+  {
+    value: '8',
+    label: 'Persuasive',
+    message: 'Discover how to save 30% on your bill—click here to learn more!',
+  },
+  {
+    value: '9',
+    label: 'Engaging',
+    message: 'Imagine a world without plastic—what would change for you? Share your thoughts!',
+  },
+  {
+    value: '10',
+    label: 'Inspiring',
+    message: 'Every small step counts: today is the perfect day to start believing in yourself.',
+  },
+];
+const defaultLanguageTone = '3';
+const defaultLanguageToneMessage =
+  languageTones.find((tone) => tone.value === defaultLanguageTone)?.message ?? '';
 ---
 
 <UseCase
   title="Learning From the User Without Lock-In"
   description="Improve suggestions and behavior from user feedback and behavior, but let users see, correct, or reset personalization so they don't feel locked in."
 >
-  <UseCaseInteractive clsHeight={112} label="Learning without lock-in" toggle>
+  <UseCaseInteractive
+    clsHeight={628}
+    label="Learning without lock-in"
+    articleId="learning-from-the-user-without-lock-in"
+    toggle
+    bugComponent="mds-input-select"
+    bugCurrent="The option slotted is not updated when the value is set maually"
+    bugExpected="The slotted option should be updated when the value is set maually"
+  >
     <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>Write an email to cancel an electricity supply contract</AIBalloonMessage>
+      </AIBalloon>
       <AIResponseMessage>
+        <Markdown
+          typography="caption"
+          content={`I will use the following defaults:
+
+1. **Formal tone:** Suitable for legal communications.
+2. **Default structure:** Based on standard templates for withdrawals of your country.
+3. **Fields to be filled in:** Highlighted in [ ] for quick customization.
+          `}
+        />
         <Markdown
           typography="detail"
           content={`
-To start feeding your baby birds, just follow a few simple steps:
+Subject: Request to withdraw from the electricity supply contract (No. [XXX])
 
-1. **Choose a basic feed:** Use sunflower
-2. **Position the feeder:** Hang it in a sheltered
-3. **Clean regularly:** Remove old or wet seeds to prevent mold.
+Dear [Supplier Name],
+I hereby communicate my intention to withdraw from the electricity supply contract signed on [XX/XX/XXXX], pursuant to Article [Y] of the Consumer Code.
+Termination of the contract is requested effective from [date].
+Kind regards,
 
-Want to know which birds you can attract or how to protect
-your food from rain?
-      `}
+[Name and user data]
+        `}
         />
       </AIResponseMessage>
       <AIInputWrapper>
         <AIInput />
         <Highlight label="Context management" class="relative grid gap-600">
-          <AIContext value={33} />
+          <AIContext value={76}>
+            <mds-separator></mds-separator>
+            <mds-input-switch data-use-personal-data class="flex-row-reverse justify-between"
+              >Use personal data</mds-input-switch
+            >
+            <mds-separator></mds-separator>
+            <mds-input-switch
+              checked
+              data-consider-previous-messages
+              class="flex-row-reverse justify-between"
+              >Consider previous messages <mds-badge class="ml-100" variant="dark" tone="ghost"
+                >14</mds-badge
+              ></mds-input-switch
+            >
+            <mds-separator></mds-separator>
+            <mds-input-field label="tone" message={defaultLanguageToneMessage} data-tone-select>
+              <mds-input-select data-select-list>
+                {
+                  languageTones.map((tone) => (
+                    <option value={tone.value} selected={tone.value === defaultLanguageTone}>
+                      {tone.label}
+                    </option>
+                  ))
+                }
+              </mds-input-select>
+            </mds-input-field>
+            <div class="h-full flex flex-col items-stretch justify-end gap-600">
+              <mds-text>This will affect only the current conversation</mds-text>
+              <mds-button variant="error" tone="weak" data-purge-context>Purge context</mds-button>
+            </div>
+          </AIContext>
         </Highlight>
       </AIInputWrapper>
     </div>
   </UseCaseInteractive>
+  <script define:vars={{ languageTones, defaultLanguageTone, defaultLanguageToneMessage }}>
+    function setToneSelectValue(toneSelect, value) {
+      const selectEl = toneSelect?.querySelector('[data-select-list]');
+      if (!selectEl) return;
+
+      // Empty the select
+      while (selectEl.firstChild) {
+        selectEl.removeChild(selectEl.firstChild);
+      }
+
+      // Re-insert options with the correct selected state
+      languageTones.forEach((tone) => {
+        const opt = document.createElement('option');
+        opt.value = tone.value;
+        opt.textContent = tone.label;
+        if (tone.value === value) {
+          opt.setAttribute('selected', '');
+          opt.selected = true;
+        }
+        selectEl.appendChild(opt);
+      });
+
+      selectEl.value = value;
+      selectEl.dispatchEvent(new Event('change', { bubbles: true }));
+      const message = languageTones.find((tone) => tone.value === value)?.message ?? '';
+      toneSelect.setAttribute('message', message);
+    }
+
+    function initLearningFromTheUserWithoutLockIn() {
+      const toneSelect = document.querySelector('[data-tone-select]');
+      if (toneSelect) {
+        toneSelect.addEventListener('mdsInputSelectChange', (event) => {
+          const message =
+            languageTones.find((tone) => tone.value === event.detail?.value)?.message ?? '';
+          toneSelect.setAttribute('message', message);
+        });
+      }
+
+      const purgeButton = document.querySelector('[data-purge-context]');
+      if (purgeButton) {
+        const originalButtonText = purgeButton.textContent || 'Purge context';
+        const originalContextBarValue = '76';
+        const originalContextBarAlias = 'very high';
+
+        purgeButton.addEventListener('click', () => {
+          // Store current state for rollback
+          const currentToneValue =
+            toneSelect?.querySelector('[data-select-list]')?.value || defaultLanguageTone;
+          const usePersonalDataChecked =
+            document.querySelector('[data-use-personal-data]')?.hasAttribute('checked') || false;
+          const considerPreviousMessagesChecked =
+            document.querySelector('[data-consider-previous-messages]')?.hasAttribute('checked') ||
+            true;
+
+          // Set loading state
+          purgeButton.setAttribute('await', '');
+          purgeButton.textContent = 'Purging...';
+
+          // Reset tone select to 0 (purge value)
+          if (toneSelect) {
+            setToneSelectValue(toneSelect, '0');
+          }
+
+          // Uncheck switches
+          const usePersonalDataSwitch = document.querySelector('[data-use-personal-data]');
+          if (usePersonalDataSwitch) {
+            usePersonalDataSwitch.removeAttribute('checked');
+            usePersonalDataSwitch.checked = false;
+          }
+
+          const considerPreviousMessagesSwitch = document.querySelector(
+            '[data-consider-previous-messages]'
+          );
+          if (considerPreviousMessagesSwitch) {
+            considerPreviousMessagesSwitch.removeAttribute('checked');
+            considerPreviousMessagesSwitch.checked = false;
+          }
+
+          // Reset context bar to 0 (none)
+          const contextBar = document.querySelector('[data-context-bar]');
+          if (contextBar) {
+            contextBar.setAttribute('value', '0');
+            contextBar.setAttribute('alias', 'none');
+          }
+
+          const modal = document.querySelector('[data-modal]');
+
+          const doRollback = () => {
+            purgeButton.removeAttribute('await');
+            purgeButton.textContent = originalButtonText;
+
+            if (toneSelect) {
+              setToneSelectValue(toneSelect, defaultLanguageTone);
+            }
+
+            if (usePersonalDataSwitch) {
+              if (usePersonalDataChecked) {
+                usePersonalDataSwitch.setAttribute('checked', '');
+                usePersonalDataSwitch.checked = true;
+              } else {
+                usePersonalDataSwitch.removeAttribute('checked');
+                usePersonalDataSwitch.checked = false;
+              }
+            }
+
+            if (considerPreviousMessagesSwitch) {
+              if (considerPreviousMessagesChecked) {
+                considerPreviousMessagesSwitch.setAttribute('checked', '');
+                considerPreviousMessagesSwitch.checked = true;
+              } else {
+                considerPreviousMessagesSwitch.removeAttribute('checked');
+                considerPreviousMessagesSwitch.checked = false;
+              }
+            }
+
+            if (contextBar) {
+              contextBar.setAttribute('value', originalContextBarValue);
+              contextBar.setAttribute('alias', originalContextBarAlias);
+            }
+          };
+
+          const onModalHide = () => {
+            modal.removeEventListener('mdsModalHide', onModalHide);
+            doRollback();
+          };
+
+          if (modal) {
+            modal.addEventListener('mdsModalHide', onModalHide);
+          }
+
+          // After 2000ms, close modal (rollback runs on mdsModalHide)
+          setTimeout(() => {
+            if (modal) {
+              modal.removeAttribute('opened');
+            }
+          }, 500);
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLearningFromTheUserWithoutLockIn);
+    } else {
+      initLearningFromTheUserWithoutLockIn();
+    }
+  </script>
   <Usage>
     <UsageItem variant="do">
       Use feedback and behavior to improve suggestions, and make that learning visible and editable.
