@@ -67,12 +67,12 @@ const defaultLanguageToneMessage =
   description="Improve suggestions and behavior from user feedback and behavior, but let users see, correct, or reset personalization so they don't feel locked in."
 >
   <UseCaseInteractive
-    clsHeight={628}
+    clsHeight={516}
     label="Learning without lock-in"
     articleId="learning-from-the-user-without-lock-in"
     toggle
   >
-    <div class="grid gap-600 w-full max-w-9600">
+    <div class="grid gap-600 w-full max-w-9600 py-800">
       <AIBalloon>
         <AIBalloonMessage>Write an email to cancel an electricity supply contract</AIBalloonMessage>
       </AIBalloon>
@@ -114,10 +114,9 @@ Kind regards,
                 {languageTones.map((tone) => <option value={tone.value}>{tone.label}</option>)}
               </mds-input-select>
             </mds-input-field>
-            <div class="h-full flex flex-col items-stretch justify-end gap-600">
-              <mds-text>This will affect only the current conversation</mds-text>
-              <mds-button variant="error" tone="weak" data-purge-context>Purge context</mds-button>
-            </div>
+            <mds-button class="mt-1200" variant="error" tone="weak" data-purge-context
+              >Purge context</mds-button
+            >
           </AIContext>
         </Highlight>
       </AIInputWrapper>
