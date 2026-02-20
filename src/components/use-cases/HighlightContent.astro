@@ -17,11 +17,11 @@ const { label, class: className = '' } = Astro.props;
 ---
 
 <div
-  class={`grid pointer-events-none z-20 absolute inset-0 -top-200 mobile:-left-200 mobile:-right-200 auto-rows-min gap-200 border-50 animate-alarm-border border-solid rounded-2xl p-400 pt-0 -m-400 mobile:mx-0 ${className}`}
+  class={`grid highlight-content pointer-events-none bg-blend-multiply mix-blend-multiply z-20 absolute inset-0 -top-200 mobile:-left-200 mobile:-right-200 auto-rows-min gap-200 border-50 animate-alarm-border border-solid rounded-2xl p-400 pt-0 -m-400 mobile:mx-0 ${className}`}
   data-highlight-content
 >
   <div
-    class="highlight-content-label text-info-option animate-alarm-element p-100 px-200 text-tone-neutral rounded-b-lg justify-self-start relative"
+    class="highlight-content-label text-info-option p-100 px-200 text-tone-neutral rounded-b-lg justify-self-start relative"
   >
     {label}
   </div>
