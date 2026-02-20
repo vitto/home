@@ -4,7 +4,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import Markdown from '../../../Markdown.astro';
-import Highlight from '../../Highlight.astro';
+import HighlightBox from '../../HighlightBox.astro';
 import AIBalloon from '../../AIBalloon.astro';
 import AIBalloonMessage from '../../AIBalloonMessage.astro';
 import AIResponseMessage from '../../AIResponseMessage.astro';
@@ -14,13 +14,13 @@ import AIResponseMessage from '../../AIResponseMessage.astro';
   title="Illusion of Agency or Responsibility"
   description="Avoid creating the impression that AI systems make independent decisions or have agency, when they actually follow programmed rules and user inputs."
 >
-  <UseCaseInteractive clsHeight={112} label="Agency and responsibility" multiple>
+  <UseCaseInteractive clsHeight={512} label="Agency and responsibility" toggle>
     <div class="grid gap-600 w-full max-w-9600">
       <AIBalloon>
         <AIBalloonMessage>Write an email to cancel an electricity supply contract</AIBalloonMessage>
       </AIBalloon>
       <AIResponseMessage>
-        <Highlight label="Clear system behavior" variant="success">
+        <HighlightBox label="Clear system behavior" variant="success">
           <Markdown
             typography="caption"
             content={`It will be used the following defaults:
@@ -30,7 +30,7 @@ import AIResponseMessage from '../../AIResponseMessage.astro';
 3. **Fields to be filled in:** Highlighted in [ ] for quick customization.
           `}
           />
-        </Highlight>
+        </HighlightBox>
         <Markdown
           typography="detail"
           content={`
@@ -51,13 +51,13 @@ Kind regards,
         <AIBalloonMessage>Write an email to cancel an electricity supply contract</AIBalloonMessage>
       </AIBalloon>
       <AIResponseMessage>
-        <Highlight label="False agency" variant="error">
+        <HighlightBox label="False agency" variant="error">
           <Markdown
             typography="caption"
             content={`I decided to write this email this way because I thought it would be helpful. I took the liberty of having a formal tone and a standard structure.
           `}
           />
-        </Highlight>
+        </HighlightBox>
         <Markdown
           typography="detail"
           content={`

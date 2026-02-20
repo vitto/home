@@ -3,6 +3,11 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import HighlightBox from '../../HighlightBox.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
 ---
 
 <UseCase
@@ -10,6 +15,24 @@ import UsageItem from '../../../UsageItem.astro';
   description="Avoid simulating emotional understanding or using emotional language to manipulate users into trusting or engaging with AI systems."
 >
   <UseCaseInteractive clsHeight={112} label="Emotional manipulation" toggle>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I'm looking for a mid-range active noise cancelling headset, please give me a list of some
+          available products.
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="Neutral language" class="grid gap-600" variant="success">
+          <Markdown
+            typography="detail"
+            content={`
+Based on your preferences, this product matches your criteria. The system found 3 similar items.
+        `}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
+    </div>
     <div class="grid gap-600 w-full">
       <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
         <div class="grid gap-200">

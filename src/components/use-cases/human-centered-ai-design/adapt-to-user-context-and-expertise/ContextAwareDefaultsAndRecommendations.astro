@@ -9,7 +9,7 @@ import AIBalloonMessage from '../../AIBalloonMessage.astro';
 import AIResponseFollowUp from '../../AIResponseFollowUp.astro';
 import AIResponseFollowUpAction from '../../AIResponseFollowUpAction.astro';
 import AIResponseMessage from '../../AIResponseMessage.astro';
-import Highlight from '../../Highlight.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
@@ -22,7 +22,7 @@ import Highlight from '../../Highlight.astro';
         <AIBalloonMessage>Write an email to cancel an electricity supply contract</AIBalloonMessage>
       </AIBalloon>
       <AIResponseMessage>
-        <Highlight label="context-aware detection" class="grid gap-600">
+        <HighlightBox label="context-aware detection" class="grid gap-600">
           <Markdown
             typography="caption"
             content={`It will be used the following defaults:
@@ -32,7 +32,7 @@ import Highlight from '../../Highlight.astro';
 3. **Fields to be filled in:** Highlighted in [ ] for quick customization.
           `}
           />
-        </Highlight>
+        </HighlightBox>
         <Markdown
           typography="detail"
           content={`

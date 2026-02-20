@@ -2,7 +2,7 @@
 import AIBalloon from '../../AIBalloon.astro';
 import AIBalloonMessage from '../../AIBalloonMessage.astro';
 import AIResponseMessage from '../../AIResponseMessage.astro';
-import Highlight from '../../Highlight.astro';
+import HighlightBox from '../../HighlightBox.astro';
 import Markdown from '../../../Markdown.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
@@ -23,14 +23,14 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
         </AIBalloonMessage>
       </AIBalloon>
       <AIResponseMessage>
-        <Highlight label="Neutral language" class="grid gap-600" variant="success">
+        <HighlightBox label="Neutral language" class="grid gap-600" variant="success">
           <Markdown
             typography="detail"
             content={`
 Based on your preferences, this product matches your criteria. The system found 3 similar items.
         `}
           />
-        </Highlight>
+        </HighlightBox>
       </AIResponseMessage>
     </div>
     <div class="grid gap-600 w-full max-w-9600">
@@ -41,14 +41,14 @@ Based on your preferences, this product matches your criteria. The system found 
         </AIBalloonMessage>
       </AIBalloon>
       <AIResponseMessage>
-        <Highlight label="Anthropomorphic language" class="grid gap-600" variant="error">
+        <HighlightBox label="Anthropomorphic language" class="grid gap-600" variant="error">
           <Markdown
             typography="detail"
             content={`
 I think you'll love this! I found it especially for you because I know you like quality products. I'm excited to show you these options!
         `}
           />
-        </Highlight>
+        </HighlightBox>
       </AIResponseMessage>
     </div>
   </UseCaseInteractive>

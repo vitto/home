@@ -9,7 +9,7 @@ import AIResponseMessage from '../../AIResponseMessage.astro';
 import AIResponseFollowUpAction from '../../AIResponseFollowUpAction.astro';
 import Markdown from '../../../Markdown.astro';
 import AIResponseFollowUp from '../../AIResponseFollowUp.astro';
-import Highlight from '../../Highlight.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
@@ -37,7 +37,7 @@ To start feeding your baby birds, just follow a few simple steps:
 3. **Clean regularly:** Remove old or wet seeds to prevent mold.
         `}
         />
-        <Highlight label="progressive disclosure" class="relative grid gap-600">
+        <HighlightBox label="progressive disclosure" class="relative grid gap-600">
           <mds-text
             >Want to know which birds you can attract or how to protect your food from rain?</mds-text
           >
@@ -50,7 +50,7 @@ To start feeding your baby birds, just follow a few simple steps:
             </AIResponseFollowUpAction>
             <AIResponseFollowUpAction>Buy recommended seeds</AIResponseFollowUpAction>
           </AIResponseFollowUp>
-        </Highlight>
+        </HighlightBox>
       </AIResponseMessage>
     </div>
     <div class="grid gap-600 w-full max-w-9600">

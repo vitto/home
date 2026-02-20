@@ -7,7 +7,7 @@ import Markdown from '../../../Markdown.astro';
 import AIBalloon from '../../AIBalloon.astro';
 import AIBalloonMessage from '../../AIBalloonMessage.astro';
 import AIResponseMessage from '../../AIResponseMessage.astro';
-import Highlight from '../../Highlight.astro';
+import HighlightBox from '../../HighlightBox.astro';
 import AIContext from '../../AIContext.astro';
 import AIInput from '../../AIInput.astro';
 import AIInputWrapper from '../../AIInputWrapper.astro';
@@ -93,7 +93,7 @@ Kind regards,
       </AIResponseMessage>
       <AIInputWrapper>
         <AIInput />
-        <Highlight label="Context management" class="relative grid gap-600">
+        <HighlightBox label="Context management" class="relative grid gap-600">
           <AIContext value={76}>
             <mds-separator></mds-separator>
             <mds-input-switch data-use-personal-data class="flex-row-reverse justify-between"
@@ -118,7 +118,7 @@ Kind regards,
               >Purge context</mds-button
             >
           </AIContext>
-        </Highlight>
+        </HighlightBox>
       </AIInputWrapper>
     </div>
     <div class="grid gap-600 w-full max-w-9600">
