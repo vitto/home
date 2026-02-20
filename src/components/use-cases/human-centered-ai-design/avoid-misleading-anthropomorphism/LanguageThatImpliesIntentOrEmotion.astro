@@ -8,6 +8,9 @@ import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
+import AILink from '../../AILink.astro';
+import AILinks from '../../AILinks.astro';
+import headphonesData from '../../../../data/use-cases/headphones.json';
 ---
 
 <UseCase
@@ -31,6 +34,20 @@ Based on your preferences, this product matches your criteria. The system found 
         `}
           />
         </HighlightBox>
+        <AILinks>
+          {
+            headphonesData.map(
+              (headphone: { model: string; title: string; description: string; image: string }) => (
+                <AILink
+                  href="https://vittoriovittori.com"
+                  picture={headphone.image}
+                  title={headphone.title}
+                  description={headphone.description}
+                />
+              )
+            )
+          }
+        </AILinks>
       </AIResponseMessage>
     </div>
     <div class="grid gap-600 w-full max-w-9600">
@@ -49,6 +66,20 @@ I think you'll love this! I found it especially for you because I know you like 
         `}
           />
         </HighlightBox>
+        <AILinks>
+          {
+            headphonesData.map(
+              (headphone: { model: string; title: string; description: string; image: string }) => (
+                <AILink
+                  href="https://vittoriovittori.com"
+                  picture={headphone.image}
+                  title={headphone.title}
+                  description={headphone.description}
+                />
+              )
+            )
+          }
+        </AILinks>
       </AIResponseMessage>
     </div>
   </UseCaseInteractive>

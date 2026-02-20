@@ -18,8 +18,9 @@ import AIResponseMessage from '../../AIResponseMessage.astro';
     <div class="grid gap-600 w-full max-w-9600">
       <AIBalloon>
         <AIBalloonMessage>
-          I'm looking for a mid-range active noise cancelling headset, please give me a list of some
-          available products.
+          I'm going crazy with growing moso bamboo. I tried growing it in a seedbed with a fixed
+          temperature of 24 degrees and 80% humidity, but nothing seems to grow. Can you tell me
+          which soil is best?
         </AIBalloonMessage>
       </AIBalloon>
       <AIResponseMessage>
@@ -27,68 +28,34 @@ import AIResponseMessage from '../../AIResponseMessage.astro';
           <Markdown
             typography="detail"
             content={`
-Based on your preferences, this product matches your criteria. The system found 3 similar items.
+The problem, in the case of moso bamboo, is often not the soil but the viability of the seeds: the seeds of this species lose germination very quickly (even after a few months). If they're not fresh, nothing may grow even in perfect conditions.
+
+Most suitable soil for germination...
         `}
           />
         </HighlightBox>
       </AIResponseMessage>
     </div>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Supportive but Factual (Appropriate)</b></mds-text>
-          <mds-text typography="body"
-            >I can help you resolve this issue. Here are some steps you can take: [list of actions]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Offers help without simulating emotional understanding. Focuses on actionable
-            solutions.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Simulated Empathy (Manipulative)</b></mds-text>
-          </div>
-          <mds-text typography="body"
-            >I understand how frustrating this must be for you. I can feel your pain, and I'm here
-            for you. Let's work through this together, okay?</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Simulates emotional understanding ("I understand", "I can feel your pain") and creates
-            false emotional connection to manipulate trust. AI systems cannot actually understand or
-            feel emotions.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>More Examples</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Avoid:</b> "I'm here for you" or "We're in this together"<br />
-                <b>Use:</b> "I can help you with this" or "Here's how to proceed"</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Avoid:</b> "I know this is hard" or "I understand your feelings"<br />
-                <b>Use:</b> "This situation can be challenging. Here are some options:"</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Avoid:</b> Using emotional language to encourage sharing personal information<br
-                />
-                <b>Use:</b> Clear, factual requests for information needed to help</mds-text
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I'm going crazy with growing moso bamboo. I tried growing it in a seedbed with a fixed
+          temperature of 24 degrees and 80% humidity, but nothing seems to grow. Can you tell me
+          which soil is best?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="Simulated Empathy" class="grid gap-600" variant="error">
+          <Markdown
+            typography="detail"
+            content={`
+I'm truly sorry for your situation, and I'm also saddened by the fact that the seeds aren't growing. I'm sure that with the right commitment, we can resolve the situation together.
+
+Most suitable soil for germination...
+        `}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>

@@ -1,0 +1,38 @@
+---
+/**
+ * AILink Component
+ *
+ * Individual link item for AI-related content.
+ *
+ * Props:
+ * @param {string} href - Link URL
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  href: string;
+  class?: string;
+  picture?: string;
+  title?: string;
+  description?: string;
+}
+
+const { href, class: className = '', picture, title, description } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`grid grid-cols-full snap-start scroll-mx-200 grid-rows-[1fr_auto] gap-200 p-200 min-w-2800 rounded-lg bg-tone-neutral shadow-sm-sharp-light text-tone-neutral-02 transition-shadow focus-bounce no-underline hover:shadow-outline-50 ${className}`}
+  data-ai-link
+>
+  {picture && <mds-img src={picture} alt={title} class="size-full" />}
+  <div class="grid gap-0 grid-cols-full">
+    <mds-text typography="caption" truncate="word"><b>{title}</b></mds-text>
+    {
+      description && (
+        <mds-text typography="tip" truncate="word">
+          {description}
+        </mds-text>
+      )
+    }
+  </div>
+</a>

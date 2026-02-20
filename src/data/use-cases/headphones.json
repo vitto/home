@@ -1,0 +1,32 @@
+[
+  {
+    "model": "Sony WH-1000XM5",
+    "title": "Sony WH-1000XM5",
+    "description": "Premium noise-cancelling headphones with industry-leading sound quality and 30-hour battery life.",
+    "image": "/assets/product-sony-wh-1000xm5.webp"
+  },
+  {
+    "model": "Bose QuietComfort 45",
+    "title": "Bose QuietComfort 45",
+    "description": "Comfortable over-ear headphones featuring excellent noise cancellation and balanced audio performance.",
+    "image": "/assets/product-bose-quietcomfort-5.webp"
+  },
+  {
+    "model": "Apple AirPods Max",
+    "title": "Apple AirPods Max",
+    "description": "Premium wireless headphones with spatial audio, active noise cancellation, and seamless Apple device integration.",
+    "image": "/assets/product-apple-airpods-max.webp"
+  },
+  {
+    "model": "Sennheiser Momentum 4",
+    "title": "Sennheiser Momentum 4",
+    "description": "High-fidelity wireless headphones with exceptional sound clarity and 60-hour battery life.",
+    "image": "/assets/product-sennheiser-momentum-4.webp"
+  },
+  {
+    "model": "Audio-Technica ATH-M50xBT2",
+    "title": "Audio-Technica ATH-M50xBT2",
+    "description": "Professional studio-quality headphones with accurate sound reproduction and reliable wireless connectivity.",
+    "image": "/assets/product-audio-technica-ath-m50xbt2.webp"
+  }
+]

@@ -1,0 +1,28 @@
+---
+/**
+ * AILinks Component
+ *
+ * Container for multiple AI link items.
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div
+  class={`flex relative w-full bg-tone-neutral-10 rounded-2xl box-border min-w-0 overflow-hidden ${className}`}
+  data-ai-links
+>
+  <div
+    class="rounded-2xl absolute inset-0 pointer-events-none border-solid border-tone-neutral-07/20 border-50 z-10"
+  >
+  </div>
+  <div class="flex w-full min-w-0 overflow-auto gap-200 p-200 box-border snap-x">
+    <slot />
+  </div>
+</div>
