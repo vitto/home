@@ -1,0 +1,48 @@
+---
+/**
+ * AIResponseFooterActions Component
+ *
+ * Container for action buttons or links in an AI response footer.
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div
+  class={`inline-gridflex flex-wrap gap-200 justify-self-start grow ${className}`}
+  data-ai-response-footer-actions
+>
+  <mds-button-group>
+    <mds-button
+      icon="mi/outline/content-copy"
+      title="Copy response"
+      tone="quiet"
+      variant="dark"
+      size="sm"></mds-button>
+    <mds-button
+      icon="mi/outline/replay"
+      title="Regenerate response"
+      tone="quiet"
+      variant="dark"
+      size="sm"></mds-button>
+    <mds-button
+      icon="mi/outline/thumb-up"
+      title="Like response"
+      tone="quiet"
+      variant="dark"
+      size="sm"></mds-button>
+    <mds-button
+      icon="mi/outline/thumb-down"
+      title="Dislike response"
+      tone="quiet"
+      variant="dark"
+      size="sm"></mds-button>
+  </mds-button-group>
+  <slot />
+</div>

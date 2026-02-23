@@ -1,0 +1,23 @@
+---
+/**
+ * AIResponseFooter Component
+ *
+ * Footer area below an AI response message (e.g. links, actions, disclaimers).
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div
+  class={`flex flex-wrap gap-400 justify-start items-center ${className}`}
+  data-ai-response-footer
+>
+  <mds-hr class="h-50 bg-tone-neutral-09"></mds-hr>
+  <slot />
+</div>

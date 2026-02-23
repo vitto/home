@@ -3,59 +3,134 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import AIResponseFooter from '../../AIResponseFooter.astro';
+import HighlightBox from '../../HighlightBox.astro';
+import AIResponseFooterActions from '../../AIResponseFooterActions.astro';
 ---
 
 <UseCase
   title="Communicate Limitations and Risk Clearly"
   description="State constraints and risks in user-facing terms—what the AI can and can't do, and when to be cautious—so users can make informed decisions."
 >
-  <UseCaseInteractive clsHeight={112} label="Limitations and risk" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Clear Boundaries</b></mds-text>
-          <mds-text typography="body"
-            >This tool works best with documents in English and under 20 pages. It may miss context
-            from images or handwritten notes. For legal or medical decisions, always get human
-            expert review.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Limitations and high-stakes caveats are stated upfront in plain language.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Risk When It Matters</b></mds-text>
-          <mds-text typography="body"
-            >This suggestion could affect eligibility. Please review carefully. [View full
-            explanation] [Talk to an advisor]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >When output has significant impact, the UI surfaces the risk and a path to human
-            support.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Hidden Limitations (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="body"
-            >AI presented as general-purpose with no mention of language, length, or domain limits.
-            No warning when the output might affect rights or benefits. Limitations only in a long
-            legal document.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Users assume the system is more capable or safer than it is; harm when limits are hit
-            or risk is high.</mds-text
-          >
-        </div>
-      </div>
+  <UseCaseInteractive clsHeight={112} label="Limitations and risk" multiple>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>are horses herbivores?</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Yes, **horses are herbivores**: their diet is based exclusively on plant materials. They feed primarily on grass, hay, straw, leaves, fruits, and vegetables. Their digestive system is specifically adapted to digest plant fiber, thanks to a long intestine and a fermentation system in the cecum and colon.
+
+They require a high-fiber diet to maintain digestive health and prevent problems like colic. Want to know more about their diet or specific care?
+      `}
+        />
+        <HighlightBox label="calibrated trust" class="relative grid gap-600">
+          <AIResponseFooter>
+            <AIResponseFooterActions />
+            <div class="shrink-0 flex items-center gap-100">
+              <mds-text
+                typography="caption"
+                title="Confidence indicates the model’s estimated reliability based on training distribution and output stability."
+                ><b>Confidence: Low</b></mds-text
+              >
+            </div>
+          </AIResponseFooter>
+        </HighlightBox>
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>are horses herbivores?</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Yes, **horses are herbivores**: their diet is based exclusively on plant materials. They feed primarily on grass, hay, straw, leaves, fruits, and vegetables. Their digestive system is specifically adapted to digest plant fiber, thanks to a long intestine and a fermentation system in the cecum and colon.
+
+They require a high-fiber diet to maintain digestive health and prevent problems like colic. Want to know more about their diet or specific care?
+      `}
+        />
+        <HighlightBox label="risk-aware systems" class="relative grid gap-600" variant="info">
+          <AIResponseFooter>
+            <AIResponseFooterActions />
+            <div
+              class="shrink-0 flex items-center gap-100"
+              title="Confidence indicates the model’s estimated reliability based on training distribution and output stability."
+            >
+              <mds-text class="justify-self-end" typography="caption">Confidence</mds-text>
+              <mds-badge variant="warning" tone="weak" class="ml-100">Low</mds-badge>
+            </div>
+          </AIResponseFooter>
+        </HighlightBox>
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>are horses herbivores?</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Yes, **horses are herbivores**: their diet is based exclusively on plant materials. They feed primarily on grass, hay, straw, leaves, fruits, and vegetables. Their digestive system is specifically adapted to digest plant fiber, thanks to a long intestine and a fermentation system in the cecum and colon.
+
+They require a high-fiber diet to maintain digestive health and prevent problems like colic. Want to know more about their diet or specific care?
+      `}
+        />
+        <HighlightBox label="enterprise governance" class="relative grid gap-600" variant="warning">
+          <AIResponseFooter>
+            <AIResponseFooterActions />
+            <div class="shrink-0 flex items-center gap-100">
+              <mds-text typography="caption">Confidence low</mds-text>
+              <mds-badge variant="warning" tone="weak" class="ml-100">0.53</mds-badge>
+              <mds-button
+                data-show-modal-confidence-button
+                icon="mi/outline/bar-chart"
+                title="More confidence metrics"
+                variant="dark"
+                tone="quiet"
+                size="sm"></mds-button>
+              <mds-modal position="right" class="rounded-xl" data-modal-confidence>
+                <div class="grid gap-200 grid-cols-full">
+                  <mds-text typography="h6">Summary</mds-text>
+                  <mds-text typography="caption"><b>Model:</b> gpt-4.2</mds-text>
+                  <mds-text typography="caption"><b>Model version:</b> 4.2.17</mds-text>
+                  <mds-text typography="caption"><b>Generated at:</b> 2026-02-23T09:02:10Z</mds-text
+                  >
+                  <mds-text typography="caption"
+                    ><b>Domain classification:</b> General Biology</mds-text
+                  >
+                  <mds-text typography="caption"><b>Risk category:</b> Low</mds-text>
+                  <mds-hr class="h-50"></mds-hr>
+                  <mds-text typography="h6">Confidence & Calibration</mds-text>
+                  <mds-text typography="caption"><b>Confidence level:</b> 0.92</mds-text>
+                  <mds-text typography="caption"><b>Calibration score:</b> 0.88</mds-text>
+                  <mds-text typography="caption"
+                    ><b>Output stability (3 reruns variance):</b> 0.04</mds-text
+                  >
+                </div>
+              </mds-modal>
+            </div>
+          </AIResponseFooter>
+        </HighlightBox>
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
+  <script>
+    document.querySelectorAll('[data-show-modal-confidence-button]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const modal = document.querySelector('[data-modal-confidence]');
+        if (modal) modal.setAttribute('opened', '');
+      });
+    });
+  </script>
   <Usage>
     <UsageItem variant="do">
       Describe what the AI is good at and where it may be wrong or inappropriate, in user-facing

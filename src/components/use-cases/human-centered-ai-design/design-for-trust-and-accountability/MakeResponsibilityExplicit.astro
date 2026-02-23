@@ -20,7 +20,10 @@ import ModalWindow from '../../ModalWindow.astro';
   title="Make Responsibility Explicit"
   description="Clearly state who is accountable for the AI's behavior and outcomes—the provider, the deployer, or the user—so users know whom to hold responsible and where to turn for support."
 >
-  <UseCaseInteractive clsHeight={112} label="Make responsibility explicit" toggle>
+  <UseCaseInteractive
+    clsHeight={112}
+    label="Footer with a disclaimer, more information and settings"
+  >
     <div class="grid gap-600 w-full max-w-9600 py-800">
       <AIBalloon>
         <AIBalloonMessage>Write an email to cancel an electricity supply contract</AIBalloonMessage>
@@ -105,29 +108,6 @@ This service may make errors, always check the generated output. <a href="#" dat
             </div>
           </ModalWindow>
         </mds-modal>
-      </AIInputWrapper>
-    </div>
-    <div class="grid gap-600 w-full max-w-9600 py-800">
-      <AIBalloon>
-        <AIBalloonMessage>Write an email to cancel an electricity supply contract</AIBalloonMessage>
-      </AIBalloon>
-      <AIResponseMessage>
-        <Markdown
-          typography="detail"
-          content={`
-Subject: Request to withdraw from the electricity supply contract (No. [XXX])
-
-Dear [Supplier Name],
-I hereby communicate my intention to withdraw from the electricity supply contract signed on [XX/XX/XXXX], pursuant to Article [Y] of the Consumer Code.
-Termination of the contract is requested effective from [date].
-Kind regards,
-
-[Name and user data]
-      `}
-        />
-      </AIResponseMessage>
-      <AIInputWrapper>
-        <AIInput />
       </AIInputWrapper>
     </div>
   </UseCaseInteractive>

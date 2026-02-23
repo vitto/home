@@ -3,55 +3,54 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
 ---
 
 <UseCase
   title="Ensure Traceability and Auditability"
   description="Enable decisions and outputs to be traced and reviewed when needed—for debugging, compliance, or dispute—without exposing unnecessary internal detail to every user."
 >
-  <UseCaseInteractive clsHeight={112} label="Traceability and auditability" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Provenance and References</b></mds-text>
-          <mds-text typography="body"
-            >Recommendation ID: rec-2024-02-07-a1b2. Based on policy version 2.1 and input received
-            on 6 Feb 2024. [View audit log] [Export for review]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Stable reference and key inputs; audit trail available for authorized users or
-            compliance.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Export and History</b></mds-text>
-          <mds-text typography="body"
-            >Conversation and suggestions from this session can be exported (PDF/JSON) for your
-            records or for escalation. [Export] [View session summary]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Users can retain evidence of what the system said and did; supports dispute and review.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>No Trail (Problematic)</b></mds-text>
+  <UseCaseInteractive clsHeight={112} label="Admin panel to trace and audit AI decisions">
+    <div class="grid gap-600 w-full max-w-9600 py-600 p-400 relative">
+      <div
+        class="fixed inset-0 bg-tone-neutral-01/40 rounded-3xl flex items-stretch justify-end p-400 pl-1200"
+      >
+        <div class="bg-tone-neutral rounded-xl shadow-lg">
+          <div class="p-600 grid gap-400 overflow-auto max-h-full">
+            <mds-text typography="h6">System transparency panel</mds-text>
+            <div class="grid gap-0 grid-cols-full">
+              <mds-text typography="caption"><b>Prompt ID:</b> 7f39a</mds-text>
+              <mds-text typography="caption"><b>User ID:</b> anonymous</mds-text>
+              <mds-text typography="caption"><b>Timestamp:</b> 2026-02-23T09:02:10Z</mds-text>
+              <mds-text typography="caption"><b>Model:</b> gpt-4.2</mds-text>
+              <mds-text typography="caption"><b>Temperature:</b> 0.3</mds-text>
+              <mds-text typography="caption"><b>Token count:</b> 412</mds-text>
+              <mds-text typography="caption"><b>Safety filters triggered:</b> No</mds-text>
+              <mds-text typography="caption"><b>RAG documents used:</b> None</mds-text>
+              <mds-text typography="caption"><b>Latency:</b> 1.4s</mds-text>
+            </div>
+            <mds-button variant="dark" tone="ghost" size="sm" class="justify-self-start"
+              >Playground mode</mds-button
+            >
           </div>
-          <mds-text typography="body"
-            >AI recommendations with no ID, no record of inputs or model version, and no way to
-            export or retrieve the decision later. "Session cleared" with no option to save.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >When something goes wrong, users and organizations cannot reconstruct what happened or
-            provide evidence.</mds-text
-          >
         </div>
       </div>
+      <AIBalloon>
+        <AIBalloonMessage>are horses herbivores?</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Yes, **horses are herbivores**: their diet is based exclusively on plant materials. They feed primarily on grass, hay, straw, leaves, fruits, and vegetables. Their digestive system is specifically adapted to digest plant fiber, thanks to a long intestine and a fermentation system in the cecum and colon.
+
+They require a high-fiber diet to maintain digestive health and prevent problems like colic. Want to know more about their diet or specific care?
+      `}
+        />
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>
