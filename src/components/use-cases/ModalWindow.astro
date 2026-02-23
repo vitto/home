@@ -1,0 +1,19 @@
+---
+/**
+ * ModalWindow Component
+ *
+ * Wrapper around mds-modal for use-case modals with consistent styling.
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`p-600 bg-tone-neutral grid gap-400 ${className}`}>
+  <slot />
+</div>

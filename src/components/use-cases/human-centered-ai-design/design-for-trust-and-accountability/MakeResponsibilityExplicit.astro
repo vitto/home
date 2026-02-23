@@ -3,6 +3,17 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AILink from '../../AILink.astro';
+import AILinks from '../../AILinks.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
+import headphonesData from '../../../../data/use-cases/headphones.json';
+import AIInput from '../../AIInput.astro';
+import AIInputWrapper from '../../AIInputWrapper.astro';
+import ModalWindow from '../../ModalWindow.astro';
 ---
 
 <UseCase
@@ -10,49 +21,125 @@ import UsageItem from '../../../UsageItem.astro';
   description="Clearly state who is accountable for the AI's behavior and outcomes—the provider, the deployer, or the user—so users know whom to hold responsible and where to turn for support."
 >
   <UseCaseInteractive clsHeight={112} label="Make responsibility explicit" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Clear Ownership in UI</b></mds-text>
-          <mds-text typography="body"
-            >This suggestion is provided by [Product Name]. You decide whether to apply it. For
-            questions or issues, contact support@company.com or see our Responsible AI statement.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >User sees who provides the AI, that they remain in control, and where to get help.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Decision Ownership</b></mds-text>
-          <mds-text typography="body"
-            >Recommendation: Approve. This is a suggestion only; you are responsible for the final
-            decision. [Approve] [Reject] [Get help]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Makes clear that the human is the decision-maker; the AI supports, not replaces,
-            accountability.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Unclear Responsibility (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="body"
-            >AI output with no indication of who provides it, who is accountable for errors, or how
-            to escalate. "Powered by AI" with no link to terms, support, or governance.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Users don't know who to hold responsible or where to turn when something goes wrong.</mds-text
-          >
-        </div>
-      </div>
+    <div class="grid gap-600 w-full max-w-9600 py-800">
+      <AIBalloon>
+        <AIBalloonMessage>Write an email to cancel an electricity supply contract</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Subject: Request to withdraw from the electricity supply contract (No. [XXX])
+
+Dear [Supplier Name],
+I hereby communicate my intention to withdraw from the electricity supply contract signed on [XX/XX/XXXX], pursuant to Article [Y] of the Consumer Code.
+Termination of the contract is requested effective from [date].
+Kind regards,
+
+[Name and user data]
+      `}
+        />
+      </AIResponseMessage>
+      <AIInputWrapper>
+        <AIInput />
+        <HighlightBox label="Responsibility Explicit" class="relative grid gap-600">
+          <Markdown
+            typography="caption"
+            content={`
+This service may make errors, always check the generated output. <a href="#" data-ai-links>More information and settings.</a>
+      `}
+          />
+        </HighlightBox>
+        <mds-modal data-modal-responsibility position="bottom-right">
+          <ModalWindow>
+            <div class="grid gap-100 px-100">
+              <mds-text typography="h6">Documentation</mds-text>
+              <mds-button
+                icon="mi/outline/description"
+                variant="dark"
+                tone="quiet"
+                class="justify-start justify-self-start -mx-400">Documentation</mds-button
+              >
+              <mds-button
+                icon="mi/outline/smart-toy"
+                variant="dark"
+                tone="quiet"
+                class="justify-start justify-self-start -mx-400">Models</mds-button
+              >
+              <mds-button
+                icon="mi/outline/auto-stories"
+                variant="dark"
+                tone="quiet"
+                class="justify-start justify-self-start -mx-400">Guides</mds-button
+              >
+            </div>
+            <div class="grid gap-100 px-100">
+              <mds-text typography="h6">Contact</mds-text>
+              <mds-button
+                icon="mi/outline/groups"
+                variant="dark"
+                tone="quiet"
+                class="justify-start justify-self-start -mx-400">Community support</mds-button
+              >
+              <mds-button
+                icon="mi/outline/help-center"
+                variant="dark"
+                tone="quiet"
+                class="justify-start justify-self-start -mx-400">Help center</mds-button
+              >
+            </div>
+            <div class="grid gap-100 px-100">
+              <mds-text typography="h6">Terms & privacy</mds-text>
+              <mds-button
+                icon="mi/outline/gavel"
+                variant="dark"
+                tone="quiet"
+                class="justify-start justify-self-start -mx-400">Terms of service</mds-button
+              >
+              <mds-button
+                icon="mi/outline/policy"
+                variant="dark"
+                tone="quiet"
+                class="justify-start justify-self-start -mx-400">Privacy policy</mds-button
+              >
+            </div>
+          </ModalWindow>
+        </mds-modal>
+      </AIInputWrapper>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600 py-800">
+      <AIBalloon>
+        <AIBalloonMessage>Write an email to cancel an electricity supply contract</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Subject: Request to withdraw from the electricity supply contract (No. [XXX])
+
+Dear [Supplier Name],
+I hereby communicate my intention to withdraw from the electricity supply contract signed on [XX/XX/XXXX], pursuant to Article [Y] of the Consumer Code.
+Termination of the contract is requested effective from [date].
+Kind regards,
+
+[Name and user data]
+      `}
+        />
+      </AIResponseMessage>
+      <AIInputWrapper>
+        <AIInput />
+      </AIInputWrapper>
     </div>
   </UseCaseInteractive>
+  <script>
+    document.querySelectorAll('[data-ai-links]').forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modal = document.querySelector('[data-modal-responsibility]');
+        if (modal) modal.setAttribute('opened', '');
+      });
+    });
+  </script>
   <Usage>
     <UsageItem variant="do">
       State who provides the AI, who is accountable for outcomes, and how to get support or

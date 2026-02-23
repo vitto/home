@@ -1,6 +1,6 @@
 .highlight {
-  --highlight-color: var(--status-info-04);
-  --highlight-background-color: var(--status-info-10);
+  --highlight-color: var(--tone-neutral-04);
+  --highlight-background-color: var(--tone-neutral-10);
 }
 .highlight--error {
   --highlight-color: var(--status-error-04);
