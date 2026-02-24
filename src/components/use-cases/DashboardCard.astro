@@ -1,0 +1,26 @@
+---
+/**
+ * DashboardCard Component
+ *
+ * Card for dashboard use-cases. Shows an optional label and value, or custom slot content.
+ *
+ * Props:
+ * @param {string} label - Label text (e.g. "Model Version")
+ * @param {string} value - Value text (e.g. "4.2"). Omit if using slot.
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  label?: string;
+  value?: string;
+  class?: string;
+}
+
+const { label = '', value = '', class: className = '' } = Astro.props;
+---
+
+<div class={`p-500 bg-tone-neutral rounded-lg grid gap-200 ${className}`} data-dashboard-card>
+  <mds-text typography="caption" class="text-tone-neutral-04">
+    {label}
+  </mds-text>
+  {value ? <mds-text typography="h6">{value}</mds-text> : <slot />}
+</div>

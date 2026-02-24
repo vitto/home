@@ -83,3 +83,16 @@
 .use-case mds-modal > * {
   @apply p-600 box-border;
 }
+
+@media (max-width: 768px) {
+  .use-case mds-modal {
+    --mds-modal-window-max-width: calc(90% - 96px);
+    --mds-modal-window-min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .use-case mds-modal {
+    --mds-modal-window-max-width: calc(100% - 96px);
+  }
+}

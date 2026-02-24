@@ -14,6 +14,6 @@ interface Props {
 const { class: className = '' } = Astro.props;
 ---
 
-<div class={`grid gap-600 ${className}`} data-ai-response-infos>
+<div class={`grid max-w-9600 w-full gap-600 ${className}`} data-ai-response-infos>
   <slot />
 </div>
