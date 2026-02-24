@@ -3,45 +3,35 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import AIFilePreview from '../../AIFilePreview.astro';
 ---
 
 <UseCase
   title="Make Uncertainty Visible"
   description="Show confidence levels, probability scores, or uncertainty indicators so users understand how certain the AI is about its outputs."
 >
-  <UseCaseInteractive clsHeight={112} label="Confidence indicators" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <div class="flex items-center justify-between">
-            <mds-text typography="label"><b>Document Classification</b></mds-text>
-            <mds-badge variant="success" tone="weak">High confidence (92%)</mds-badge>
-          </div>
-          <mds-text typography="body"
-            >This document appears to be a <b>contract</b> based on language patterns and structure.</mds-text
-          >
-          <mds-progress-bar value={92} class="w-full"></mds-progress-bar>
-        </div>
-      </div>
-      <div
-        class="grid gap-400 p-600 rounded-lg bg-status-warning-10 border border-status-warning-03"
-      >
-        <div class="grid gap-200">
-          <div class="flex items-center justify-between">
-            <mds-text typography="label"><b>Document Classification</b></mds-text>
-            <mds-badge variant="warning" tone="weak">Low confidence (45%)</mds-badge>
-          </div>
-          <mds-text typography="body"
-            >This document might be a <b>contract</b> or <b>legal brief</b>. Please review
-            carefully.</mds-text
-          >
-          <mds-progress-bar value={45} class="w-full"></mds-progress-bar>
-          <mds-text typography="caption" class="text-status-warning-06"
-            >Low confidence - human review recommended</mds-text
-          >
-        </div>
-      </div>
-    </div>
+  <UseCaseInteractive clsHeight={276} label="Confidence indicators" multiple>
+    <AIFilePreview
+      filename="strategic-plan.rtf"
+      filesize="947823"
+      confidence="high"
+      classification="This document appears to be a strategic plan based on language patterns and structure."
+      extract="Q3-Q4 roadmap focuses on API stability and accessibility. We will ship the new design system in September and deprecate legacy components by year-end."
+    />
+    <AIFilePreview
+      filename="draft-policy.rtf"
+      filesize="523410"
+      confidence="medium"
+      classification="This document might be a policy or guidelines draft. Structure suggests mixed content—please review."
+      extract="Compliance review scheduled for next quarter. Stakeholder feedback will be collected before finalizing the decision framework."
+    />
+    <AIFilePreview
+      filename="scan-notes.pdf"
+      filesize="128400"
+      confidence="low"
+      classification="Low confidence: document type unclear. Handwritten or scanned content may affect accuracy."
+      extract="Meeting notes and action items… [text partially illegible]. Follow up with legal on the revised terms."
+    />
   </UseCaseInteractive>
   <Usage>
     <UsageItem variant="do">

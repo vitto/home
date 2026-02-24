@@ -1,0 +1,72 @@
+---
+/**
+ * AIFilePreview Component
+ *
+ * File preview with AI confidence level, classification summary, and document extract.
+ * Variants: high, medium, low confidence.
+ *
+ * Props:
+ * @param {string} filename - File name
+ * @param {string} filesize - File size (display string or number)
+ * @param {'high' | 'medium' | 'low'} confidence - Confidence level
+ * @param {string} classification - Short classification summary (e.g. "This document appears to be a contract...")
+ * @param {string} extract - Extract from the document
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  filename: string;
+  filesize: string;
+  confidence: 'high' | 'medium' | 'low';
+  classification: string;
+  extract: string;
+  class?: string;
+}
+
+const {
+  filename,
+  filesize,
+  confidence,
+  classification,
+  extract,
+  class: className = '',
+} = Astro.props;
+
+const confidenceConfig = {
+  high: {
+    variant: 'success' as const,
+    icon: 'mi/baseline/check-circle',
+    message: 'High confidence (92%)',
+  },
+  medium: {
+    variant: 'warning' as const,
+    icon: 'mi/outline/help',
+    message: 'Medium confidence (65%)',
+  },
+  low: {
+    variant: 'error' as const,
+    icon: 'mi/outline/error',
+    message: 'Low confidence (45%)',
+  },
+};
+
+const config = confidenceConfig[confidence];
+---
+
+<div class={`grid grid-cols-[1fr_2fr] gap-600 ${className}`} data-ai-file-preview>
+  <mds-file-preview
+    filename={filename}
+    filesize={filesize}
+    icon={config.icon}
+    variant={config.variant}
+    message={config.message}></mds-file-preview>
+  <div class="grid grid-cols-full grid-rows-[auto_auto_1fr] gap-400 py-400 auto-rows-min">
+    <mds-text typography="detail">{classification}</mds-text>
+    <mds-text typography="detail">
+      <b>Extract from the document</b><br />
+      {extract}
+    </mds-text>
+    <div class="flex items-end justify-self-start">
+      <mds-button variant="dark" tone="ghost" size="sm">View document</mds-button>
+    </div>
+  </div>
+</div>
