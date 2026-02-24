@@ -28,7 +28,7 @@
 
 .highlight-content {
   /* @apply ease-out-expo duration-500; */
-  --duration: 3s;
+  --duration: 5s;
   --ease: cubic-bezier(0.19, 1, 0.22, 1); /* ease-out-expo */
   animation: alarmElement var(--duration) var(--ease) infinite;
   border-color: rgb(var(--highlight-color) / 1);

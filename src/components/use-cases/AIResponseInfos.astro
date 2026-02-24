@@ -1,0 +1,19 @@
+---
+/**
+ * AIResponseInfos Component
+ *
+ * Container for multiple info sections in an AI response (e.g. sources, confidence, metadata).
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`grid gap-600 ${className}`} data-ai-response-infos>
+  <slot />
+</div>

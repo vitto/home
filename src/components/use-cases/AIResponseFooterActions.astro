@@ -1,4 +1,6 @@
 ---
+import HighlightBox from './HighlightBox.astro';
+
 /**
  * AIResponseFooterActions Component
  *
@@ -9,13 +11,14 @@
  */
 interface Props {
   class?: string;
+  highlight?: boolean;
 }
 
-const { class: className = '' } = Astro.props;
+const { class: className = 'grow', highlight = false } = Astro.props;
 ---
 
 <div
-  class={`inline-gridflex flex-wrap gap-200 justify-self-start grow ${className}`}
+  class={`inline-gridflex flex-wrap gap-200 justify-self-start ${className}`}
   data-ai-response-footer-actions
 >
   <mds-button-group>
@@ -31,18 +34,69 @@ const { class: className = '' } = Astro.props;
       tone="quiet"
       variant="dark"
       size="sm"></mds-button>
-    <mds-button
-      icon="mi/outline/thumb-up"
-      title="Like response"
-      tone="quiet"
-      variant="dark"
-      size="sm"></mds-button>
-    <mds-button
-      icon="mi/outline/thumb-down"
-      title="Dislike response"
-      tone="quiet"
-      variant="dark"
-      size="sm"></mds-button>
+    {
+      highlight ? (
+        <HighlightBox label="fast feedback">
+          <mds-button
+            icon="mi/outline/thumb-up"
+            title="Like response"
+            tone="quiet"
+            variant="dark"
+            size="sm"
+            data-thumb-up
+          />
+          <mds-button
+            icon="mi/outline/thumb-down"
+            title="Dislike response"
+            tone="quiet"
+            variant="dark"
+            size="sm"
+            data-thumb-down
+          />
+        </HighlightBox>
+      ) : (
+        <>
+          <mds-button
+            icon="mi/outline/thumb-up"
+            title="Like response"
+            tone="quiet"
+            variant="dark"
+            size="sm"
+            data-thumb-up
+          />
+          <mds-button
+            icon="mi/outline/thumb-down"
+            title="Dislike response"
+            tone="quiet"
+            variant="dark"
+            size="sm"
+            data-thumb-down
+          />
+        </>
+      )
+    }
   </mds-button-group>
   <slot />
 </div>
+
+<script>
+  const OUTLINE_UP = 'mi/outline/thumb-up';
+  const BASELINE_UP = 'mi/baseline/thumb-up';
+  const OUTLINE_DOWN = 'mi/outline/thumb-down';
+  const BASELINE_DOWN = 'mi/baseline/thumb-down';
+
+  document.querySelectorAll('[data-ai-response-footer-actions]').forEach((container) => {
+    container.querySelectorAll('[data-thumb-up]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const icon = btn.getAttribute('icon') ?? OUTLINE_UP;
+        btn.setAttribute('icon', icon === OUTLINE_UP ? BASELINE_UP : OUTLINE_UP);
+      });
+    });
+    container.querySelectorAll('[data-thumb-down]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const icon = btn.getAttribute('icon') ?? OUTLINE_DOWN;
+        btn.setAttribute('icon', icon === OUTLINE_DOWN ? BASELINE_DOWN : OUTLINE_DOWN);
+      });
+    });
+  });
+</script>

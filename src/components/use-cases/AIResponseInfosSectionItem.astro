@@ -1,0 +1,43 @@
+---
+/**
+ * AIResponseInfosSectionItem Component
+ *
+ * Single item within an AI response infos section (title, value, description).
+ *
+ * Props:
+ * @param {string} title - Item title/label
+ * @param {string} value - Main value or content
+ * @param {string} description - Optional description or subtitle
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  title?: string;
+  value?: string;
+  description?: string;
+  variant?: 'default' | 'warning' | 'info' | 'success' | 'error';
+  class?: string;
+}
+
+const { title, value, description, variant = 'default', class: className = '' } = Astro.props;
+---
+
+<div class={`grid gap-0 grid-cols-full ${className}`} data-ai-response-infos-section-item>
+  <mds-text typography="caption">
+    {title && <b>{title}:</b>}
+    {
+      variant !== 'default' ? (
+        <mds-badge variant={variant} tone="weak">
+          {value}
+        </mds-badge>
+      ) : (
+        value
+      )
+    }
+  </mds-text>
+  {
+    description != null && description !== '' && (
+      <mds-text typography="caption">{description}</mds-text>
+    )
+  }
+  <slot />
+</div>

@@ -10,6 +10,9 @@ import AIResponseMessage from '../../AIResponseMessage.astro';
 import AIResponseFooter from '../../AIResponseFooter.astro';
 import HighlightBox from '../../HighlightBox.astro';
 import AIResponseFooterActions from '../../AIResponseFooterActions.astro';
+import AIResponseInfosSection from '../../AIResponseInfosSection.astro';
+import AIResponseInfos from '../../AIResponseInfos.astro';
+import AIResponseInfosSectionItem from '../../AIResponseInfosSectionItem.astro';
 ---
 
 <UseCase
@@ -30,15 +33,86 @@ Yes, **horses are herbivores**: their diet is based exclusively on plant materia
 They require a high-fiber diet to maintain digestive health and prevent problems like colic. Want to know more about their diet or specific care?
       `}
         />
-        <HighlightBox label="calibrated trust" class="relative grid gap-600">
+        <HighlightBox label="enterprise governance" class="relative grid gap-600" variant="warning">
           <AIResponseFooter>
             <AIResponseFooterActions />
             <div class="shrink-0 flex items-center gap-100">
-              <mds-text
-                typography="caption"
-                title="Confidence indicates the model’s estimated reliability based on training distribution and output stability."
-                ><b>Confidence: Low</b></mds-text
-              >
+              <mds-text typography="caption">Confidence high</mds-text>
+              <mds-badge variant="success" tone="weak" class="ml-100">0.92</mds-badge>
+              <mds-button
+                data-show-modal-confidence-button
+                icon="mi/outline/bar-chart"
+                title="More confidence metrics"
+                variant="dark"
+                tone="quiet"
+                size="sm"></mds-button>
+              <mds-modal position="right" class="rounded-xl" data-modal-confidence>
+                <AIResponseInfos>
+                  <AIResponseInfosSection label="Summary">
+                    <AIResponseInfosSectionItem title="Model" value="gpt-4.2" />
+                    <AIResponseInfosSectionItem title="Model version" value="4.2.17" />
+                    <AIResponseInfosSectionItem title="Generated at" value="2026-02-23T09:02:10Z" />
+                    <AIResponseInfosSectionItem
+                      title="Domain classification"
+                      value="General Biology"
+                    />
+                    <AIResponseInfosSectionItem
+                      title="Risk category"
+                      value="Low"
+                      variant="success"
+                    />
+                  </AIResponseInfosSection>
+                  <AIResponseInfosSection label="Confidence & Calibration">
+                    <AIResponseInfosSectionItem
+                      title="Confidence level"
+                      value="0.92"
+                      variant="success"
+                      description="The probability that the model's output is correct"
+                    />
+                    <AIResponseInfosSectionItem
+                      title="Calibration score"
+                      value="0.88"
+                      variant="success"
+                      description="How well the model's confidence aligns with actual correctness"
+                    />
+                    <AIResponseInfosSectionItem
+                      title="Output stability (3 reruns variance)"
+                      value="0.04"
+                      variant="success"
+                      description="Variation across repeated generations with same parameters."
+                    />
+                  </AIResponseInfosSection>
+                  <AIResponseInfosSection label="Knowledge & Coverage">
+                    <AIResponseInfosSectionItem
+                      title="Training domain match"
+                      value="High"
+                      variant="success"
+                    />
+                    <AIResponseInfosSectionItem
+                      title="External retrieval used"
+                      value="No"
+                      variant="success"
+                    />
+                    <AIResponseInfosSectionItem
+                      title="Knowledge cutoff relevance risk"
+                      value="Low"
+                      variant="success"
+                    />
+                    <AIResponseInfosSectionItem
+                      title="Distribution shift detected"
+                      value="No"
+                      variant="success"
+                    />
+                  </AIResponseInfosSection>
+                  <AIResponseInfosSection label="Performance & Metrics">
+                    <AIResponseInfosSectionItem title="Latency" value="1.4s" variant="warning" />
+                    <AIResponseInfosSectionItem title="Token usage" value="412" />
+                    <AIResponseInfosSectionItem title="Prompt tokens" value="98" />
+                    <AIResponseInfosSectionItem title="Completion tokens" value="314" />
+                    <AIResponseInfosSectionItem title="Cost estimate" value="$0.012" />
+                  </AIResponseInfosSection>
+                </AIResponseInfos>
+              </mds-modal>
             </div>
           </AIResponseFooter>
         </HighlightBox>
@@ -65,7 +139,7 @@ They require a high-fiber diet to maintain digestive health and prevent problems
               title="Confidence indicates the model’s estimated reliability based on training distribution and output stability."
             >
               <mds-text class="justify-self-end" typography="caption">Confidence</mds-text>
-              <mds-badge variant="warning" tone="weak" class="ml-100">Low</mds-badge>
+              <mds-badge variant="success" tone="weak" class="ml-100">High</mds-badge>
             </div>
           </AIResponseFooter>
         </HighlightBox>
@@ -84,39 +158,15 @@ Yes, **horses are herbivores**: their diet is based exclusively on plant materia
 They require a high-fiber diet to maintain digestive health and prevent problems like colic. Want to know more about their diet or specific care?
       `}
         />
-        <HighlightBox label="enterprise governance" class="relative grid gap-600" variant="warning">
+        <HighlightBox label="calibrated trust" class="relative grid gap-600">
           <AIResponseFooter>
             <AIResponseFooterActions />
             <div class="shrink-0 flex items-center gap-100">
-              <mds-text typography="caption">Confidence low</mds-text>
-              <mds-badge variant="warning" tone="weak" class="ml-100">0.53</mds-badge>
-              <mds-button
-                data-show-modal-confidence-button
-                icon="mi/outline/bar-chart"
-                title="More confidence metrics"
-                variant="dark"
-                tone="quiet"
-                size="sm"></mds-button>
-              <mds-modal position="right" class="rounded-xl" data-modal-confidence>
-                <div class="grid gap-200 grid-cols-full">
-                  <mds-text typography="h6">Summary</mds-text>
-                  <mds-text typography="caption"><b>Model:</b> gpt-4.2</mds-text>
-                  <mds-text typography="caption"><b>Model version:</b> 4.2.17</mds-text>
-                  <mds-text typography="caption"><b>Generated at:</b> 2026-02-23T09:02:10Z</mds-text
-                  >
-                  <mds-text typography="caption"
-                    ><b>Domain classification:</b> General Biology</mds-text
-                  >
-                  <mds-text typography="caption"><b>Risk category:</b> Low</mds-text>
-                  <mds-hr class="h-50"></mds-hr>
-                  <mds-text typography="h6">Confidence & Calibration</mds-text>
-                  <mds-text typography="caption"><b>Confidence level:</b> 0.92</mds-text>
-                  <mds-text typography="caption"><b>Calibration score:</b> 0.88</mds-text>
-                  <mds-text typography="caption"
-                    ><b>Output stability (3 reruns variance):</b> 0.04</mds-text
-                  >
-                </div>
-              </mds-modal>
+              <mds-text
+                typography="caption"
+                title="Confidence indicates the model’s estimated reliability based on training distribution and output stability."
+                ><b>Confidence: High</b></mds-text
+              >
             </div>
           </AIResponseFooter>
         </HighlightBox>

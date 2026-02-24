@@ -1,0 +1,27 @@
+---
+/**
+ * AIResponseInfosSection Component
+ *
+ * Single section within AI response infos (e.g. label + content).
+ *
+ * Props:
+ * @param {string} label - Optional section label
+ * @param {string} class - Additional CSS classes
+ */
+interface Props {
+  label?: string;
+  class?: string;
+}
+
+const { label, class: className = '' } = Astro.props;
+---
+
+<div
+  class={`grid gap-400 grid-cols-full ${className} border-b-2 border-tone-neutral-08 border-solid border-0 last:border-b-0 pb-600 last:pb-0`}
+  data-ai-response-infos-section
+>
+  {label && <mds-text typography="h6">{label}</mds-text>}
+  <div class="grid gap-200 grid-cols-full">
+    <slot />
+  </div>
+</div>

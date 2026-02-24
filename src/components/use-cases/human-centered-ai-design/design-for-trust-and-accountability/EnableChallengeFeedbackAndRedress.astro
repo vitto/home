@@ -3,57 +3,55 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseFooter from '../../AIResponseFooter.astro';
+import AIResponseFooterActions from '../../AIResponseFooterActions.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
+import AIHeader from '../../AIHeader.astro';
+import HighlightContent from '../../HighlightContent.astro';
 ---
 
 <UseCase
   title="Enable Challenge, Feedback, and Redress"
   description="Give users ways to report issues, correct errors, or escalate when the AI is wrong or harmful—and make it clear that feedback is used to improve the system and that redress is available where appropriate."
 >
-  <UseCaseInteractive clsHeight={112} label="Challenge, feedback, redress" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Visible Feedback Paths</b></mds-text>
-          <mds-text typography="body"
-            >Was this helpful? [Yes] [No]. If not, [Report a problem] or [Request human review]. We
-            use feedback to improve and will respond to review requests within 2 business days.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Simple feedback plus a clear path to report or request review; sets expectation for
-            response.</mds-text
-          >
-        </div>
+  <UseCaseInteractive clsHeight={112} label="Feeback levels">
+    <div class="grid gap-600 w-full max-w-9600 py-600">
+      <div class="relative z-50">
+        <HighlightBox label="Structured feedback">
+          <AIHeader title="Horse feeding" />
+        </HighlightBox>
       </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Correction and Dispute</b></mds-text>
-          <mds-text typography="body"
-            >Think this result is wrong? [Dispute this decision]. You can attach evidence and
-            request a human review. See our [Appeals process] for timelines and next steps.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >When the output has consequences (e.g. eligibility, scoring), dispute and appeal are
-            explicit and linked.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>No Way to Challenge (Problematic)</b></mds-text>
+      <AIBalloon>
+        <AIBalloonMessage>are horses herbivores?</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Yes, **horses are herbivores**: their diet is based exclusively on plant materials. They feed primarily on grass, hay, straw, leaves, fruits, and vegetables. Their digestive system is specifically adapted to digest plant fiber, thanks to a long intestine and a fermentation system in the cecum and colon.
+
+They require a high-fiber diet to maintain digestive health and prevent problems like colic. Want to know more about their diet or specific care?
+      `}
+        />
+        <AIResponseFooter>
+          <div class="grow">
+            <HighlightBox label="Fast feedback">
+              <AIResponseFooterActions />
+            </HighlightBox>
           </div>
-          <mds-text typography="body"
-            >AI decision with no "Report problem", no "Request review", and no link to appeal.
-            Contact info buried in footer. Users who are wronged have no clear path to correction or
-            redress.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Erodes trust and leaves users without recourse when the system makes a mistake or
-            causes harm.</mds-text
-          >
-        </div>
-      </div>
+          <div class="shrink-0 flex items-center gap-100">
+            <mds-text
+              typography="caption"
+              title="Confidence indicates the model’s estimated reliability based on training distribution and output stability."
+              ><b>Confidence: Low</b></mds-text
+            >
+          </div>
+        </AIResponseFooter>
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>

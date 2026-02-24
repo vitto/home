@@ -1,3 +1,8 @@
+.label-green {
+  --magma-selection-background: rgb(var(--label-green-09));
+  --magma-selection-color: rgb(var(--label-green-01));
+}
+
 .label-green *::selection {
   @apply text-label-green-04 dark:text-label-green-02 bg-label-green-10 dark:bg-label-green-09;
 }

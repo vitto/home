@@ -1,0 +1,56 @@
+---
+/**
+ * AIHeader Component
+ *
+ * Header for chatbot conversation in use cases (title, status, optional actions).
+ *
+ * Props:
+ * @param {string} title - Optional header title
+ * @param {string} class - Additional CSS classes
+ */
+import crypto from 'node:crypto';
+
+interface Props {
+  title?: string;
+  class?: string;
+}
+
+const { title, class: className = '' } = Astro.props;
+const dropdownId = `ai-header-more-${crypto.randomUUID().slice(0, 8)}`;
+---
+
+<div
+  class={`flex flex-wrap items-center justify-between gap-200 relative ${className}`}
+  data-ai-header
+>
+  {
+    title && (
+      <div class="flex items-center gap-200">
+        <mds-emoji class="size-800" />
+        <mds-text typography="h6" class="text-tone-neutral-02">
+          {title}
+        </mds-text>
+      </div>
+    )
+  }
+  <mds-button
+    variant="dark"
+    tone="quiet"
+    icon="mi/outline/more-vert"
+    title="More options"
+    id={dropdownId}
+    data-ai-header-button-more></mds-button>
+  <mds-dropdown
+    target={`#${dropdownId}`}
+    placement="bottom-end"
+    class="w-full max-w-6000 p-200 rounded-[24px]"
+    data-ai-header-modal-more
+  >
+    <div class="grid gap-100">
+      <mds-button variant="dark" tone="quiet" class="justify-self-start">Report issue</mds-button>
+      <mds-button variant="dark" tone="quiet" class="justify-self-start"
+        >Provide detailed feedback</mds-button
+      >
+    </div>
+  </mds-dropdown>
+</div>
