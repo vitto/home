@@ -4,14 +4,29 @@ import Icon from './Icon.astro';
 import categoriesData from '../data/categories.json';
 import HeaderLogo from './HeaderLogo.astro';
 import Nav from './Nav.astro';
+import PrincipleNavContent from './PrincipleNavContent.astro';
 
 interface Props {
   baseUrl: string;
   sectionPath: string;
   principles?: boolean;
+  currentPrincipleId?: string;
+  allPrinciples?: Array<{ id: string; title: string }>;
+  /** When true, show prev/next navigation arrows in principle nav. Default true. */
+  arrows?: boolean;
 }
 
-const { baseUrl, sectionPath, principles = true } = Astro.props;
+const {
+  baseUrl,
+  sectionPath,
+  principles = true,
+  currentPrincipleId,
+  allPrinciples,
+  arrows = false,
+} = Astro.props;
+
+const hasPrincipleNavData =
+  currentPrincipleId != null && allPrinciples != null && allPrinciples.length > 0;
 
 // Filter out draft categories in production (show them in development)
 const visibleCategories = categoriesData.filter(
@@ -28,6 +43,17 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
     class="pointer-events-auto w-full max-w-lg mobile:gap-0 inline-flex justify-between items-center bottom-0 gap-400 p-200 px-400 nav-outline bg-tone-neutral/80 backdrop-blur rounded-full"
   >
     <HeaderLogo />
+    {
+      hasPrincipleNavData && (
+        <PrincipleNavContent
+          baseUrl={baseUrl}
+          currentPrincipleId={currentPrincipleId!}
+          sectionPath={sectionPath}
+          allPrinciples={allPrinciples!}
+          arrows={arrows}
+        />
+      )
+    }
     <div class="inline-flex items-center gap-400">
       <Button data-scroll-to-top-button href="#" variant="icon" title="Back to top">
         <Icon name="mi/outline/arrow-upward" />

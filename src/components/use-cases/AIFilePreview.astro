@@ -35,38 +35,116 @@ const confidenceConfig = {
   high: {
     variant: 'success' as const,
     icon: 'mi/baseline/check-circle',
-    message: 'High confidence (92%)',
+    iconColor: 'fill-status-success-05',
+    bannerColor: 'bg-status-success-10',
+    value: 92,
+    alias: 'High',
+    message: 'High confidence',
   },
   medium: {
     variant: 'warning' as const,
-    icon: 'mi/outline/help',
-    message: 'Medium confidence (65%)',
+    icon: 'mi/outline/warning',
+    iconColor: 'fill-status-warning-05',
+    bannerColor: 'bg-status-warning-10',
+    value: 65,
+    alias: 'Medium',
+    message: 'Medium confidence',
   },
   low: {
     variant: 'error' as const,
     icon: 'mi/outline/error',
-    message: 'Low confidence (45%)',
+    iconColor: 'fill-status-error-05',
+    bannerColor: 'bg-status-error-10',
+    value: 45,
+    alias: 'Low',
+    message: 'Low confidence',
   },
 };
 
 const config = confidenceConfig[confidence];
 ---
 
-<div class={`grid grid-cols-[1fr_2fr] gap-600 ${className}`} data-ai-file-preview>
-  <mds-file-preview
-    filename={filename}
-    filesize={filesize}
-    icon={config.icon}
-    variant={config.variant}
-    message={config.message}></mds-file-preview>
-  <div class="grid grid-cols-full grid-rows-[auto_auto_1fr] gap-400 py-400 auto-rows-min">
-    <mds-text typography="detail">{classification}</mds-text>
+<div
+  class={`grid grid-cols-full auto-cols-min gap-600 m-auto max-w-6400 ${className}`}
+  data-ai-file-preview
+>
+  <mds-file-preview class="self-start" filename={filename} filesize={filesize}></mds-file-preview>
+  <div class="grid gap-400 grid-cols-full">
     <mds-text typography="detail">
-      <b>Extract from the document</b><br />
       {extract}
     </mds-text>
+    <div
+      class={`rounded-2xl p-400 ${config.bannerColor} grid cursor-pointer focus-bounce select-none`}
+      data-confidence-banner
+      role="button"
+      tabindex="0"
+      aria-expanded="true"
+      aria-label="Toggle confidence details"
+    >
+      <div class="confidence-banner__row" data-confidence-icon>
+        <div class="confidence-banner__row-inner flex">
+          <div class="flex pb-200">
+            <mds-icon
+              class={`size-600 shrink-0 transition-transform ${config.iconColor}`}
+              name={config.icon}></mds-icon>
+          </div>
+        </div>
+      </div>
+      <mds-benchmark-bar class="grow min-h-0 shrink-0" value={config.value} variant={config.variant}
+        >{config.message}</mds-benchmark-bar
+      >
+      <div class="confidence-banner__row" data-confidence-message>
+        <div class="confidence-banner__row-inner flex overflow-hidden">
+          <mds-text typography="caption" class="pt-200">{classification}</mds-text>
+        </div>
+      </div>
+    </div>
+
     <div class="flex items-end justify-self-start">
       <mds-button variant="dark" tone="ghost" size="sm">View document</mds-button>
     </div>
   </div>
+  <style>
+    .confidence-banner__row {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.25s ease;
+    }
+    [data-confidence-banner][data-opened] .confidence-banner__row {
+      grid-template-rows: 1fr;
+    }
+
+    [data-confidence-banner] mds-icon {
+      transform: scale(0);
+    }
+
+    [data-confidence-banner][data-opened] mds-icon {
+      transform: scale(1);
+    }
+
+    .confidence-banner__row-inner {
+      min-height: 0;
+    }
+  </style>
+  <script>
+    document.querySelectorAll('[data-confidence-banner]').forEach((banner) => {
+      banner.addEventListener('click', () => {
+        const opened = banner.hasAttribute('data-opened');
+        if (opened) {
+          banner.removeAttribute('data-opened');
+          banner.setAttribute('aria-expanded', 'false');
+        } else {
+          banner.setAttribute('data-opened', '');
+          banner.setAttribute('aria-expanded', 'true');
+        }
+      });
+      banner.addEventListener('keydown', (e: Event) => {
+        const ke = e as KeyboardEvent;
+        if (ke.key === 'Enter' || ke.key === ' ') {
+          e.preventDefault();
+          (banner as HTMLElement).click();
+        }
+      });
+    });
+  </script>
 </div>

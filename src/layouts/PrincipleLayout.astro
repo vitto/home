@@ -9,6 +9,7 @@ import SectionNav from '../components/SectionNav.astro';
 interface Props {
   title: string;
   principle: {
+    id?: string;
     icon: string;
     category: string;
     title: string;
@@ -17,13 +18,14 @@ interface Props {
   categoryColors: Record<string, string>;
   sectionName: string;
   sectionPath: string;
+  allPrinciples?: Array<{ id: string; title: string }>;
 }
 
 // Get base URL from Astro config and normalize it
 // Remove trailing slash if present (except for root)
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
-const { title, principle, categoryColors, sectionName, sectionPath } = Astro.props;
+const { title, principle, categoryColors, sectionName, sectionPath, allPrinciples } = Astro.props;
 ---
 
 <script>
@@ -412,6 +414,17 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
           showElement(index);
         }, 100);
       });
+      indicator.addEventListener('keydown', (e) => {
+        const ke = e;
+        if (ke.key === 'Enter' || ke.key === ' ') {
+          e.preventDefault();
+          multipleContainer.removeAttribute('style');
+          multipleContainer.style.height = multipleContainer.offsetHeight + 'px';
+          setTimeout(() => {
+            showElement(index);
+          }, 100);
+        }
+      });
       indicatorsContainer.appendChild(indicator);
     });
 
@@ -580,6 +593,8 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
   <a
     class="p-100 inline-flex justify-center items-center focus-bounce rounded-full relative focus-visible:z-10 cursor-pointer group/dot"
     tabindex="0"
+    role="button"
+    aria-label="Show example"
     data-multiple-index
   >
     <div
@@ -589,7 +604,12 @@ const { title, principle, categoryColors, sectionName, sectionPath } = Astro.pro
   </a>
 </template>
 <SectionLayout title={title}>
-  <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} />
+  <SectionNav
+    baseUrl={baseUrl}
+    sectionPath={sectionPath}
+    currentPrincipleId={principle.id}
+    allPrinciples={allPrinciples}
+  />
   <Section
     contentClass={`gap-2400 mobile:gap-1200 tablet:gap-1600 ${categoryColors[principle.category]}`}
   >
