@@ -73,8 +73,8 @@ const categories = visibleCategories.map((category) => ({
         <span>About</span>
       </Button> -->
     </div>
-    <div class="h-50 bg-tone-neutral-03 w-full flex tablet:hidden"></div>
-    <div class="grid gap-200 grid-cols-fit-lg mobile:grid-cols-full tablet:hidden" data-nav-buttons>
+    <div class="h-50 bg-tone-neutral-03 w-full flex"></div>
+    <div class="grid gap-200 grid-cols-fit-lg mobile:grid-cols-full" data-nav-buttons>
       {
         categories.map((category) => {
           const isSelected = currentSection?.id === category.id;
