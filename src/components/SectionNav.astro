@@ -40,27 +40,18 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
 
 <Nav position="top" data-top-nav>
   <div
-    class="pointer-events-auto w-full max-w-lg mobile:gap-0 inline-flex justify-between items-center bottom-0 gap-400 p-200 px-400 nav-outline bg-tone-neutral/80 backdrop-blur rounded-full"
+    class="pointer-events-auto w-full max-w-[calc(768px_-_1rem)] mobile:gap-0 inline-flex justify-between items-center bottom-0 gap-400 p-200 px-400 nav-outline bg-tone-neutral/80 backdrop-blur rounded-full"
   >
     <HeaderLogo />
-    {
-      hasPrincipleNavData && (
-        <PrincipleNavContent
-          baseUrl={baseUrl}
-          currentPrincipleId={currentPrincipleId!}
-          sectionPath={sectionPath}
-          allPrinciples={allPrinciples!}
-          arrows={arrows}
-        />
-      )
-    }
-    <div class="inline-flex items-center gap-400">
-      <Button data-scroll-to-top-button href="#" variant="icon" title="Back to top">
+    <div class="inline-flex items-center justify-end gap-400 mobile:gap-200 grow tablet:max-w-2/3">
+      <Button
+        data-scroll-to-top-button
+        href="#"
+        variant="icon"
+        title="Back to top"
+        class="transition-transform duration-200 origin-center scale-0"
+      >
         <Icon name="mi/outline/arrow-upward" />
-      </Button>
-      <Button href="#related-references-and-bibliography" variant="icon" title="Show bibliography">
-        <Icon name="mi/outline/auto-stories" />
-        <!-- <Icon name="mi/outline/arrow-downward" /> -->
       </Button>
       {
         principles && (
@@ -73,6 +64,23 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
           </Button>
         )
       }
+      {
+        hasPrincipleNavData && (
+          <PrincipleNavContent
+            baseUrl={baseUrl}
+            currentPrincipleId={currentPrincipleId!}
+            sectionPath={sectionPath}
+            allPrinciples={allPrinciples!}
+            arrows={arrows}
+          />
+        )
+      }
+
+      <Button href="#related-references-and-bibliography" variant="icon" title="Show bibliography">
+        <Icon name="mi/outline/auto-stories" />
+        <!-- <Icon name="mi/outline/arrow-downward" /> -->
+      </Button>
+
       <Button data-menu-toggle href="#" variant="icon" title="Show categories">
         <Icon name="mi/outline/menu" />
       </Button>
@@ -85,35 +93,16 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
     const targetElement = document.querySelector('.header') as HTMLElement | null;
     if (!sectionNav || !targetElement) return;
 
-    let lastScrollY = window.scrollY;
-    let lastShowScrollY = window.scrollY;
-    let isScrollingUp = false;
     let isTargetIntersecting = false;
-    const SCROLL_THRESHOLD = 400;
-    const SCROLL_TOP_THRESHOLD = SCROLL_THRESHOLD + 100;
+    const SCROLL_TOP_THRESHOLD = 500;
 
     function updateNavVisibility() {
       if (!sectionNav) return;
 
       const currentScrollY = window.scrollY;
-      const scrollDistance = currentScrollY - lastShowScrollY;
 
-      // Show nav when scrolling up AND targetElement is not intersecting
-      // Hide only when scrolling down AND scroll distance >= SCROLL_THRESHOLD AND targetElement is not intersecting
-      let shouldShow = false;
-
-      if (!isTargetIntersecting && currentScrollY > SCROLL_TOP_THRESHOLD) {
-        if (isScrollingUp) {
-          shouldShow = true;
-          lastShowScrollY = currentScrollY; // Reset threshold when showing
-        } else {
-          if (scrollDistance >= SCROLL_THRESHOLD) {
-            shouldShow = false; // Hide when scrolled down more than SCROLL_THRESHOLD
-          } else {
-            shouldShow = true; // Show if scroll distance < SCROLL_THRESHOLD
-          }
-        }
-      }
+      // Hide when scroll top is below threshold; show when past threshold and header is not in view
+      const shouldShow = currentScrollY >= SCROLL_TOP_THRESHOLD && !isTargetIntersecting;
 
       if (shouldShow) {
         sectionNav.classList.remove('-translate-y-full');
@@ -124,17 +113,7 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
       }
     }
 
-    // Track scroll direction
-    window.addEventListener(
-      'scroll',
-      () => {
-        const currentScrollY = window.scrollY;
-        isScrollingUp = currentScrollY < lastScrollY;
-        lastScrollY = currentScrollY;
-        updateNavVisibility();
-      },
-      { passive: true }
-    );
+    window.addEventListener('scroll', updateNavVisibility, { passive: true });
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -148,7 +127,9 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
   }
 
   function initScrollToTop() {
-    const scrollToTopButton = document.querySelector('[data-scroll-to-top-button]');
+    const scrollToTopButton = document.querySelector(
+      '[data-scroll-to-top-button]'
+    ) as HTMLElement | null;
     if (!scrollToTopButton) return;
 
     scrollToTopButton.addEventListener('click', (e) => {
@@ -166,13 +147,50 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
     });
   }
 
+  function initScrollToTopButtonScale() {
+    const article = document.querySelector('.page-article') as HTMLElement | null;
+    const button = document.querySelector('[data-scroll-to-top-button]') as HTMLElement | null;
+    if (!button) return;
+
+    function getReadingProgress(): number {
+      if (!article) return 0;
+      const rect = article.getBoundingClientRect();
+      const viewportH = window.innerHeight;
+      const articleH = article.offsetHeight;
+      const scrollable = articleH - viewportH;
+      if (scrollable <= 0) return 100;
+      const progress = -rect.top / scrollable;
+      return Math.round(Math.max(0, Math.min(1, progress)) * 100);
+    }
+
+    function updateButtonScale() {
+      const percent = getReadingProgress();
+      if (!button) return;
+      if (percent < 30) {
+        button.classList.remove('scale-100');
+        button.classList.add('scale-0');
+        button.setAttribute('tabindex', '-1');
+      } else {
+        button.classList.remove('scale-0');
+        button.classList.add('scale-100');
+        button.removeAttribute('tabindex');
+      }
+    }
+
+    updateButtonScale();
+    window.addEventListener('scroll', updateButtonScale, { passive: true });
+    window.addEventListener('resize', updateButtonScale);
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initSectionNavVisibility();
       initScrollToTop();
+      initScrollToTopButtonScale();
     });
   } else {
     initSectionNavVisibility();
     initScrollToTop();
+    initScrollToTopButtonScale();
   }
 </script>

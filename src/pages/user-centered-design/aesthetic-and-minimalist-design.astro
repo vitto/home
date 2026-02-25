@@ -13,6 +13,7 @@ import PrincipleNav from '../../components/PrincipleNav.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'aesthetic-and-minimalist-design')!;
 // Get base URL from Astro config and normalize it
@@ -61,13 +62,15 @@ const sectionName = 'User-Centered Design';
   sectionPath={sectionPath}
   allPrinciples={data.principles}
 >
-  <CognitiveLoadReduction />
-  <Consistency />
-  <EssentialContent />
-  <GoalFocus />
-  <SemanticClarity />
-  <VisualCleanliness />
-  <VisualHierarchy />
+  <Article>
+    <CognitiveLoadReduction />
+    <Consistency />
+    <EssentialContent />
+    <GoalFocus />
+    <SemanticClarity />
+    <VisualCleanliness />
+    <VisualHierarchy />
+  </Article>
   {
     bibliography && (
       <Bibliography>

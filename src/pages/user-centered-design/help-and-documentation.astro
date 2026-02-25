@@ -10,6 +10,7 @@ import PrincipleNav from '../../components/PrincipleNav.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'help-and-documentation')!;
 // Get base URL from Astro config and normalize it
@@ -58,10 +59,12 @@ const sectionName = 'User-Centered Design';
   sectionPath={sectionPath}
   allPrinciples={data.principles}
 >
-  <ConcreteActionableGuidance />
-  <EasyToSearch />
-  <FocusedOnUsersTask />
-  <NotTooLarge />
+  <Article>
+    <ConcreteActionableGuidance />
+    <EasyToSearch />
+    <FocusedOnUsersTask />
+    <NotTooLarge />
+  </Article>
   {
     bibliography && (
       <Bibliography>

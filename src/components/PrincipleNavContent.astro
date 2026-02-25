@@ -151,8 +151,8 @@ const nextIcon =
     )
   }
   <mds-benchmark-bar
-    class="w-full min-h-700"
-    alias={`${currentPage} / ${totalPages}`}
+    class="w-full min-h-700 mobile:hidden"
+    data-article-progress-bar
     value={percentage}
   >
     {currentPrinciple?.title || 'Page title'}
@@ -173,3 +173,37 @@ const nextIcon =
     )
   }
 </>
+<script>
+  function initArticleProgressBar() {
+    const article = document.querySelector('.page-article') as HTMLElement | null;
+    const bar = document.querySelector('[data-article-progress-bar]') as HTMLElement | null;
+    if (!article || !bar) return;
+
+    function getReadingProgress(): number {
+      const rect = article!.getBoundingClientRect();
+      const viewportH = window.innerHeight;
+      const articleH = article!.offsetHeight;
+      const scrollable = articleH - viewportH;
+      if (scrollable <= 0) return 100;
+      // rect.top is 0 when article top is at viewport top; -scrollable when article bottom at viewport bottom
+      const progress = -rect.top / scrollable;
+      return Math.round(Math.max(0, Math.min(1, progress)) * 100);
+    }
+
+    function update() {
+      const percent = getReadingProgress();
+      bar!.setAttribute('value', String(percent));
+      // bar!.setAttribute('alias', `${percent}% read`);
+    }
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initArticleProgressBar);
+  } else {
+    initArticleProgressBar();
+  }
+</script>

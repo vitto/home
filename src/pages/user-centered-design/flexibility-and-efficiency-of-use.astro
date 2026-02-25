@@ -12,6 +12,7 @@ import PrincipleNav from '../../components/PrincipleNav.astro';
 import Bibliography from '../../components/Bibliography.astro';
 import BibliographyItem from '../../components/BibliographyItem.astro';
 import BibliographySection from '../../components/BibliographySection.astro';
+import Article from '../../components/Article.astro';
 
 const principle = data.principles.find((p) => p.id === 'flexibility-and-efficiency-of-use')!;
 // Get base URL from Astro config and normalize it
@@ -60,12 +61,14 @@ const sectionName = 'User-Centered Design';
   sectionPath={sectionPath}
   allPrinciples={data.principles}
 >
-  <AcceleratorsAndShortcuts />
-  <CustomizationAndPersonalization />
-  <EfficientDefaults />
-  <ProgressiveDisclosure />
-  <ReuseOfPreviousInput />
-  <ScalabilityForExpertise />
+  <Article>
+    <AcceleratorsAndShortcuts />
+    <CustomizationAndPersonalization />
+    <EfficientDefaults />
+    <ProgressiveDisclosure />
+    <ReuseOfPreviousInput />
+    <ScalabilityForExpertise />
+  </Article>
   {
     bibliography && (
       <Bibliography>
