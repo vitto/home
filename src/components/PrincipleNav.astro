@@ -90,8 +90,16 @@ if (currentIndex === sortedPrinciples.length - 1) {
   }
 }
 
-const prevUrl = prevPrinciple ? `${baseUrl}${prevSectionPath}/${prevPrinciple.id}` : null;
-const nextUrl = nextPrinciple ? `${baseUrl}${nextSectionPath}/${nextPrinciple.id}` : null;
+const prevUrl = prevPrinciple
+  ? prevSectionPath !== sectionPath
+    ? `${baseUrl}${prevSectionPath}`
+    : `${baseUrl}${prevSectionPath}/${prevPrinciple.id}`
+  : null;
+const nextUrl = nextPrinciple
+  ? nextSectionPath !== sectionPath
+    ? `${baseUrl}${nextSectionPath}`
+    : `${baseUrl}${nextSectionPath}/${nextPrinciple.id}`
+  : null;
 
 const isPrevDifferentSection = prevSectionPath !== sectionPath;
 const isNextDifferentSection = nextSectionPath !== sectionPath;
@@ -104,17 +112,27 @@ const nextSection = isNextDifferentSection
   : null;
 
 const prevIcon =
-  isPrevDifferentSection && prevSection ? 'mi/outline/first-page' : 'mi/outline/arrow-back';
+  isPrevDifferentSection && prevSection
+    ? (prevSection as { icon?: string }).icon
+    : 'mi/outline/arrow-back';
 const nextIcon =
-  isNextDifferentSection && nextSection ? 'mi/outline/last-page' : 'mi/outline/arrow-forward';
+  isNextDifferentSection && nextSection
+    ? (nextSection as { icon?: string }).icon
+    : 'mi/outline/arrow-forward';
 ---
 
 <Nav position="bottom" data-bottom-nav>
   {
     prevUrl && (
       <PrincipleNavButton
-        title={prevPrinciple?.title || 'Previous principle'}
-        description={prevSection?.title || 'Previous principle'}
+        title={
+          isPrevDifferentSection && prevSection
+            ? prevSection.title
+            : prevPrinciple?.title || 'Previous principle'
+        }
+        description={
+          isPrevDifferentSection && prevSection ? prevSection.title : 'Previous principle'
+        }
         href={prevUrl}
         direction="previous"
         icon={prevIcon}
@@ -124,8 +142,12 @@ const nextIcon =
   {
     nextUrl && (
       <PrincipleNavButton
-        title={nextPrinciple?.title || 'Next principle'}
-        description={nextSection?.title || 'Next principle'}
+        title={
+          isNextDifferentSection && nextSection
+            ? nextSection.title
+            : nextPrinciple?.title || 'Next principle'
+        }
+        description={isNextDifferentSection && nextSection ? nextSection.title : 'Next principle'}
         href={nextUrl}
         direction="next"
         icon={nextIcon}
