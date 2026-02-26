@@ -8,12 +8,12 @@ const { position = 'bottom', ...rest } = Astro.props;
 
 const positionClass =
   position === 'bottom'
-    ? 'bottom-600 grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-[1fr_768px_1fr]'
+    ? 'bottom-0 grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-[1fr_768px_1fr]'
     : 'top-0 grid-cols-[1fr_calc(768px_-_1rem)_1fr] mobile:grid-cols-full';
 ---
 
 <div
-  class={`grid gap-600 items-center px-500 py-500 fixed left-0 right-0 pointer-events-none transition-transform duration-500 ease-out-expo z-20 ${positionClass}`}
+  class={`grid gap-600 items-center px-500 py-500 fixed left-0 right-0 pointer-events-none transition-cosmetic duration-500 ease-in-out-expo z-20 ${positionClass}`}
   {...rest}
 >
   <slot />

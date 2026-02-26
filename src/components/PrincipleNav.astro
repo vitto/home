@@ -133,3 +133,47 @@ const nextIcon =
     )
   }
 </Nav>
+
+<script>
+  function initPrincipleBottomNavVisibility() {
+    const bottomNav = document.querySelector('[data-bottom-nav]') as HTMLElement | null;
+    const article = document.querySelector('.page-article') as HTMLElement | null;
+    if (!bottomNav) return;
+
+    function getReadingProgress(): number {
+      if (!article) return 0;
+      const rect = article.getBoundingClientRect();
+      const viewportH = window.innerHeight;
+      const articleH = article.offsetHeight;
+      const scrollable = articleH - viewportH;
+      if (scrollable <= 0) return 100;
+      const progress = -rect.top / scrollable;
+      return Math.round(Math.max(0, Math.min(1, progress)) * 100);
+    }
+
+    function updateBottomNavOpacity() {
+      const percent = getReadingProgress();
+      if (!bottomNav) return;
+
+      if (percent > 0 && percent < 100) {
+        bottomNav.classList.remove('translate-y-full');
+        bottomNav.classList.add('translate-y-0');
+      } else {
+        bottomNav.classList.remove('translate-y-0');
+        bottomNav.classList.add('translate-y-full');
+      }
+    }
+
+    updateBottomNavOpacity();
+    window.addEventListener('scroll', updateBottomNavOpacity, { passive: true });
+    window.addEventListener('resize', updateBottomNavOpacity);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initPrincipleBottomNavVisibility();
+    });
+  } else {
+    initPrincipleBottomNavVisibility();
+  }
+</script>
