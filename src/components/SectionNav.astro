@@ -4,7 +4,7 @@ import Icon from './Icon.astro';
 import categoriesData from '../data/categories.json';
 import HeaderLogo from './HeaderLogo.astro';
 import Nav from './Nav.astro';
-import PrincipleNavContent from './PrincipleNavContent.astro';
+import PrincipleProgress from './PrincipleProgress.astro';
 
 interface Props {
   baseUrl: string;
@@ -66,12 +66,11 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
       }
       {
         hasPrincipleNavData && (
-          <PrincipleNavContent
+          <PrincipleProgress
             baseUrl={baseUrl}
             currentPrincipleId={currentPrincipleId!}
             sectionPath={sectionPath}
             allPrinciples={allPrinciples!}
-            arrows={arrows}
           />
         )
       }

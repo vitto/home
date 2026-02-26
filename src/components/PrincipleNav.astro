@@ -6,102 +6,141 @@ import designSystemsData from '../data/design-systems.json';
 import userCenteredDesignData from '../data/user-centered-design.json';
 import humanCenteredAiDesignData from '../data/human-centered-ai-design.json';
 import Nav from './Nav.astro';
-import PrincipleNavContent from './PrincipleNavContent.astro';
 
 interface Props {
   baseUrl: string;
   currentPrincipleId: string;
   sectionPath: string;
   allPrinciples: Array<{ id: string; title: string }>;
-  /** When true, show prev/next navigation arrows. Default true. */
-  arrows?: boolean;
 }
 
-const { baseUrl, currentPrincipleId, sectionPath, allPrinciples, arrows = true } = Astro.props;
+const { baseUrl, currentPrincipleId, sectionPath, allPrinciples } = Astro.props;
+
+// Map section paths to their data
+const sectionDataMap: Record<string, { principles: Array<{ id: string; title: string }> }> = {
+  '/design-systems': designSystemsData,
+  '/user-centered-design': userCenteredDesignData,
+  '/human-centered-ai-design': humanCenteredAiDesignData,
+};
+
+// Filter out draft categories in production (show them in development)
+const visibleCategories = categoriesData.filter(
+  (category) => !(category as any).draft || !import.meta.env.PROD
+);
+
+const allSections = visibleCategories.map((cat) => cat.path);
+const currentSectionIndex = allSections.findIndex((path) => path === sectionPath);
+
+const sortedPrinciples = [...allPrinciples].sort((a, b) => a.title.localeCompare(b.title));
+const currentIndex = sortedPrinciples.findIndex((p) => p.id === currentPrincipleId);
+const currentPrinciple = sortedPrinciples[currentIndex];
+
+let prevPrinciple = currentIndex > 0 ? sortedPrinciples[currentIndex - 1] : null;
+let prevSectionPath = sectionPath;
+let nextPrinciple =
+  currentIndex < sortedPrinciples.length - 1 ? sortedPrinciples[currentIndex + 1] : null;
+let nextSectionPath = sectionPath;
+
+if (currentIndex === 0) {
+  if (currentSectionIndex > 0) {
+    const targetSectionPath = allSections[currentSectionIndex - 1];
+    const targetSectionData = sectionDataMap[targetSectionPath];
+    if (targetSectionData && targetSectionData.principles.length > 0) {
+      const targetSectionSorted = [...targetSectionData.principles].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+      prevPrinciple = targetSectionSorted[targetSectionSorted.length - 1];
+      prevSectionPath = targetSectionPath;
+    }
+  } else {
+    const targetSectionPath = allSections[allSections.length - 1];
+    const targetSectionData = sectionDataMap[targetSectionPath];
+    if (targetSectionData && targetSectionData.principles.length > 0) {
+      const targetSectionSorted = [...targetSectionData.principles].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+      prevPrinciple = targetSectionSorted[targetSectionSorted.length - 1];
+      prevSectionPath = targetSectionPath;
+    }
+  }
+}
+
+if (currentIndex === sortedPrinciples.length - 1) {
+  if (currentSectionIndex < allSections.length - 1) {
+    const targetSectionPath = allSections[currentSectionIndex + 1];
+    const targetSectionData = sectionDataMap[targetSectionPath];
+    if (targetSectionData && targetSectionData.principles.length > 0) {
+      const targetSectionSorted = [...targetSectionData.principles].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+      nextPrinciple = targetSectionSorted[0];
+      nextSectionPath = targetSectionPath;
+    }
+  } else {
+    const targetSectionPath = allSections[0];
+    const targetSectionData = sectionDataMap[targetSectionPath];
+    if (targetSectionData && targetSectionData.principles.length > 0) {
+      const targetSectionSorted = [...targetSectionData.principles].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+      nextPrinciple = targetSectionSorted[0];
+      nextSectionPath = targetSectionPath;
+    }
+  }
+}
+
+const prevUrl = prevPrinciple ? `${baseUrl}${prevSectionPath}/${prevPrinciple.id}` : null;
+const nextUrl = nextPrinciple ? `${baseUrl}${nextSectionPath}/${nextPrinciple.id}` : null;
+
+const isPrevDifferentSection = prevSectionPath !== sectionPath;
+const isNextDifferentSection = nextSectionPath !== sectionPath;
+
+const prevSection = isPrevDifferentSection
+  ? visibleCategories.find((cat) => cat.path === prevSectionPath)
+  : null;
+const nextSection = isNextDifferentSection
+  ? visibleCategories.find((cat) => cat.path === nextSectionPath)
+  : null;
+
+const prevIcon =
+  isPrevDifferentSection && prevSection ? 'mi/outline/first-page' : 'mi/outline/arrow-back';
+const nextIcon =
+  isNextDifferentSection && nextSection ? 'mi/outline/last-page' : 'mi/outline/arrow-forward';
 ---
 
 <Nav position="bottom" data-bottom-nav>
   <div
     class="pointer-events-auto w-full max-w-lg inline-flex justify-center items-center bottom-0 gap-400 p-200 nav-outline bg-tone-neutral/80 backdrop-blur rounded-full"
   >
-    <PrincipleNavContent
-      baseUrl={baseUrl}
-      currentPrincipleId={currentPrincipleId}
-      sectionPath={sectionPath}
-      allPrinciples={allPrinciples}
-      arrows={arrows}
-    />
+    {
+      prevUrl && (
+        <Button
+          href={prevUrl}
+          variant="icon"
+          title={
+            isPrevDifferentSection
+              ? `Go to ${prevSection?.title || 'previous section'}`
+              : `Previous: ${prevPrinciple?.title}` || 'Go to previous principle'
+          }
+        >
+          <Icon name={prevIcon} />
+        </Button>
+      )
+    }
+    {
+      nextUrl && (
+        <Button
+          href={nextUrl}
+          variant="icon"
+          title={
+            isNextDifferentSection
+              ? `Go to ${nextSection?.title || 'next section'}`
+              : `Next: ${nextPrinciple?.title}` || 'Go to next principle'
+          }
+        >
+          <Icon name={nextIcon} />
+        </Button>
+      )
+    }
   </div>
 </Nav>
-<script>
-  function initBottomNavVisibility() {
-    const bottomNav = document.querySelector('[data-bottom-nav]') as HTMLElement | null;
-    const targetElement = document.querySelector('.header') as HTMLElement | null;
-    if (!bottomNav || !targetElement) return;
-
-    // Set initial hidden state
-    bottomNav.classList.add('translate-y-full');
-
-    let lastScrollY = window.scrollY;
-    let lastShowScrollY = window.scrollY;
-    let isScrollingUp = false;
-    let isHeaderIntersecting = false;
-    const SCROLL_THRESHOLD = 200;
-
-    function updateNavVisibility() {
-      if (!bottomNav) return;
-
-      const currentScrollY = window.scrollY;
-      const scrollDistance = currentScrollY - lastShowScrollY;
-
-      // Show nav when scrolling up OR when header is intersecting (prevent hiding when header is visible)
-      // Hide only when scrolling down AND scroll distance >= 300px
-      let shouldShow = false;
-
-      if (isScrollingUp || isHeaderIntersecting) {
-        shouldShow = true;
-        lastShowScrollY = currentScrollY; // Reset threshold when showing
-      } else if (!isScrollingUp && scrollDistance >= SCROLL_THRESHOLD) {
-        shouldShow = false; // Hide when scrolled down more than 300px
-      } else {
-        shouldShow = true; // Show if scroll distance < 300px
-      }
-
-      if (shouldShow) {
-        bottomNav.classList.remove('translate-y-full');
-        bottomNav.classList.add('translate-y-0');
-      } else {
-        bottomNav.classList.add('translate-y-full');
-        bottomNav.classList.remove('translate-y-0');
-      }
-    }
-
-    // Track scroll direction
-    window.addEventListener(
-      'scroll',
-      () => {
-        const currentScrollY = window.scrollY;
-        isScrollingUp = currentScrollY < lastScrollY;
-        lastScrollY = currentScrollY;
-        updateNavVisibility();
-      },
-      { passive: true }
-    );
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isHeaderIntersecting = entry.isIntersecting;
-        updateNavVisibility();
-      },
-      { threshold: 0 }
-    );
-
-    observer.observe(targetElement);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initBottomNavVisibility);
-  } else {
-    initBottomNavVisibility();
-  }
-</script>
