@@ -6,6 +6,7 @@ import designSystemsData from '../data/design-systems.json';
 import userCenteredDesignData from '../data/user-centered-design.json';
 import humanCenteredAiDesignData from '../data/human-centered-ai-design.json';
 import Nav from './Nav.astro';
+import PrincipleNavButton from './PrincipleNavButton.astro';
 
 interface Props {
   baseUrl: string;
@@ -109,38 +110,26 @@ const nextIcon =
 ---
 
 <Nav position="bottom" data-bottom-nav>
-  <div
-    class="pointer-events-auto w-full max-w-lg inline-flex justify-center items-center bottom-0 gap-400 p-200 nav-outline bg-tone-neutral/80 backdrop-blur rounded-full"
-  >
-    {
-      prevUrl && (
-        <Button
-          href={prevUrl}
-          variant="icon"
-          title={
-            isPrevDifferentSection
-              ? `Go to ${prevSection?.title || 'previous section'}`
-              : `Previous: ${prevPrinciple?.title}` || 'Go to previous principle'
-          }
-        >
-          <Icon name={prevIcon} />
-        </Button>
-      )
-    }
-    {
-      nextUrl && (
-        <Button
-          href={nextUrl}
-          variant="icon"
-          title={
-            isNextDifferentSection
-              ? `Go to ${nextSection?.title || 'next section'}`
-              : `Next: ${nextPrinciple?.title}` || 'Go to next principle'
-          }
-        >
-          <Icon name={nextIcon} />
-        </Button>
-      )
-    }
-  </div>
+  {
+    prevUrl && (
+      <PrincipleNavButton
+        title={prevPrinciple?.title || 'Previous principle'}
+        description={prevSection?.title || 'Previous principle'}
+        href={prevUrl}
+        direction="previous"
+        icon={prevIcon}
+      />
+    )
+  }
+  {
+    nextUrl && (
+      <PrincipleNavButton
+        title={nextPrinciple?.title || 'Next principle'}
+        description={nextSection?.title || 'Next principle'}
+        href={nextUrl}
+        direction="next"
+        icon={nextIcon}
+      />
+    )
+  }
 </Nav>

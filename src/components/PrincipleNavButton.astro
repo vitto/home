@@ -1,0 +1,48 @@
+---
+import Icon from './Icon.astro';
+
+/**
+ * PrincipleNavButton Component
+ *
+ * Renders a principle nav button with title and description (based on HeaderButton).
+ *
+ * Props:
+ * @param {string} title - Button title
+ * @param {string} description - Button description
+ * @param {string} class - Additional CSS classes
+ * @param {string} icon - Optional icon name
+ * @param {string} href - Link URL (defaults to "#")
+ */
+interface Props {
+  title: string;
+  description: string;
+  class?: string;
+  icon?: string;
+  href?: string;
+  direction?: 'next' | 'previous';
+}
+const {
+  title,
+  description,
+  class: className = '',
+  icon,
+  href = '#',
+  direction = 'next',
+} = Astro.props;
+
+const directionClass =
+  direction === 'next'
+    ? 'col-start-3 mobile:col-auto justify-self-start'
+    : 'col-start-1 mobile:col-auto justify-self-end';
+const iconDirectionClass = direction === 'next' ? 'order-1' : '-order-1';
+---
+
+<a
+  href={href}
+  title={`Go to ${description}`}
+  tabindex={0}
+  class={`bg-tone-neutral-03 h-1400 hover:bg-tone-neutral-01 pointer-events-auto w-full max-w-4800 text-tone-neutral self-center focus-bounce inline-flex justify-start items-center gap-400 mobile:gap-300 rounded-full px-600 p-300 no-underline ${directionClass} ${className}`}
+>
+  {icon && <Icon class={iconDirectionClass} name={icon} />}
+  <mds-text typography="option" truncate="all" class="text-box-trim">{title}</mds-text>
+</a>

@@ -173,6 +173,10 @@ mds-img::part(media) {
     underline-offset-2;
   }
 
+  .text-box-trim {
+    text-box: trim-both;
+  }
+
   .text-box-trim-both-cap-alphabetic {
     text-box: trim-both cap alphabetic;
     min-height: auto;

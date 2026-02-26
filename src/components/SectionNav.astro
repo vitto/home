@@ -12,18 +12,9 @@ interface Props {
   principles?: boolean;
   currentPrincipleId?: string;
   allPrinciples?: Array<{ id: string; title: string }>;
-  /** When true, show prev/next navigation arrows in principle nav. Default true. */
-  arrows?: boolean;
 }
 
-const {
-  baseUrl,
-  sectionPath,
-  principles = true,
-  currentPrincipleId,
-  allPrinciples,
-  arrows = false,
-} = Astro.props;
+const { baseUrl, sectionPath, principles = true, currentPrincipleId, allPrinciples } = Astro.props;
 
 const hasPrincipleNavData =
   currentPrincipleId != null && allPrinciples != null && allPrinciples.length > 0;
@@ -40,7 +31,7 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
 
 <Nav position="top" data-top-nav>
   <div
-    class="pointer-events-auto w-full max-w-[calc(768px_-_1rem)] mobile:gap-0 inline-flex justify-between items-center bottom-0 gap-400 p-200 px-400 nav-outline bg-tone-neutral/80 backdrop-blur rounded-full"
+    class="pointer-events-auto col-start-2 mobile:col-auto w-full mobile:gap-0 inline-flex justify-between items-center bottom-0 gap-400 p-200 px-400 nav-outline bg-tone-neutral/80 backdrop-blur rounded-full"
   >
     <HeaderLogo />
     <div class="inline-flex items-center justify-end gap-400 mobile:gap-200 grow tablet:max-w-2/3">
