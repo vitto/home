@@ -368,6 +368,7 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
           // Remove animation class after animation completes
           setTimeout(() => {
             child.classList.remove('use-case-from-right-animation', 'use-case-from-left-animation');
+            child.removeAttribute('style');
           }, HEIGHT_TRANSITION_DURATION);
         } else {
           child.classList.add('hidden');
