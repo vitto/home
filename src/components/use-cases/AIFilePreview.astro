@@ -65,10 +65,11 @@ const config = confidenceConfig[confidence];
 ---
 
 <div
-  class={`grid grid-cols-full auto-cols-min gap-600 m-auto max-w-6400 ${className}`}
+  class={`grid grid-cols-full auto-cols-min gap-600 m-auto max-w-8000 ${className}`}
   data-ai-file-preview
 >
-  <mds-file-preview class="self-start" filename={filename} filesize={filesize}></mds-file-preview>
+  <!-- <mds-file-preview class="self-start" filename={filename} filesize={filesize}></mds-file-preview> -->
+  <mds-file class="self-start" filename={filename} filesize={filesize}></mds-file>
   <div class="grid gap-400 grid-cols-full">
     <mds-text typography="detail">
       {extract}
