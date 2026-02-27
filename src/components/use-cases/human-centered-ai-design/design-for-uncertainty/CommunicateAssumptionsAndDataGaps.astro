@@ -3,6 +3,7 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
@@ -10,35 +11,40 @@ import UsageItem from '../../../UsageItem.astro';
   description="Explain what data the AI used, what assumptions it made, and what information might be missing that affects its outputs."
 >
   <UseCaseInteractive clsHeight={112} label="Data transparency" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Recommendation Details</b></mds-text>
-          <mds-text typography="body"
-            >Based on your purchase history and preferences, we recommend this product.</mds-text
-          >
-          <div class="flex flex-wrap gap-200 mt-200">
-            <mds-badge variant="info" tone="weak">Based on 12 past purchases</mds-badge>
-            <mds-badge variant="info" tone="weak">Similar user preferences</mds-badge>
-          </div>
+    <div class="grid gap-600 w-full max-w-8000">
+      <div class="flex justify-start items-center gap-400">
+        <mds-img class="size-1600" src="/assets/comune-di-nessuna-parte.webp"></mds-img>
+        <div class="grid">
+          <mds-text typography="h6">Municipality of Nowhere</mds-text>
+          <mds-text typography="caption">Dashboard</mds-text>
         </div>
       </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-info-10 border border-status-info-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/info" class="text-status-info-05"></mds-icon>
-            <mds-text typography="label"><b>Limited Data Available</b></mds-text>
-          </div>
-          <mds-text typography="body"
-            >This recommendation is based on limited information. We don't have enough data about
-            your preferences in this category.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-info-06"
-            ><b>What we know:</b> 2 purchases in this category<br />
-            <b>What we don't know:</b> Your preferences for price range, brand, or specific features</mds-text
-          >
+      <mds-text typography="body"
+        >System that calculates a default risk index for a procedure.</mds-text
+      >
+      <mds-benchmark-bar value={68}>Estimated delinquency</mds-benchmark-bar>
+      <mds-banner
+        tone="weak"
+        variant="warning"
+        icon="mi/outline/warning-amber"
+        headline="Limited data available"
+      >
+        <mds-text typography="caption">Missing recent payment history (last 90 days).</mds-text>
+        <mds-text typography="caption">Address inferred from registry.</mds-text>
+      </mds-banner>
+    </div>
+    <div class="grid gap-600 w-full max-w-8000">
+      <div class="flex justify-start items-center gap-400">
+        <mds-img class="size-1600" src="/assets/comune-di-nessuna-parte.webp"></mds-img>
+        <div class="grid">
+          <mds-text typography="h6">Municipality of Nowhere</mds-text>
+          <mds-text typography="caption">Dashboard</mds-text>
         </div>
       </div>
+      <mds-text typography="body"
+        >System that calculates a default risk index for a procedure.</mds-text
+      >
+      <mds-benchmark-bar value={68}>Estimated delinquency</mds-benchmark-bar>
     </div>
   </UseCaseInteractive>
   <Usage>
