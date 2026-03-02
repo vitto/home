@@ -11,3 +11,7 @@
     @apply shadow-[0_0_0_2px_rgb(var(--tone-neutral-01)_/_0.2)] dark:shadow-[0_0_0_2px_rgb(var(--tone-neutral-01)_/_0.6)];
   }
 }
+
+.principle-progress-bar::part(bar) {
+  --mds-progress-background: rgb(var(--tone-neutral-01) / 0.1);
+}
