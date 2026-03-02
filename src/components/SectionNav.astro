@@ -40,7 +40,7 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
         href="#"
         variant="icon"
         title="Back to top"
-        class="transition-transform duration-200 origin-center scale-0"
+        class="transition-transform duration-200 origin-bottom-scale-0"
       >
         <Icon name="mi/outline/arrow-upward" />
       </Button>
@@ -159,9 +159,13 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
       if (percent < 30) {
         button.classList.remove('scale-100');
         button.classList.add('scale-0');
+        button.classList.remove('origin-bottom');
+        button.classList.add('origin-top');
         button.setAttribute('tabindex', '-1');
       } else {
         button.classList.remove('scale-0');
+        button.classList.add('origin-bottom');
+        button.classList.remove('origin-top');
         button.classList.add('scale-100');
         button.removeAttribute('tabindex');
       }
