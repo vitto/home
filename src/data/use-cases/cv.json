@@ -1,0 +1,209 @@
+[
+  {
+    "id": 1,
+    "name": "Giulia Bianchi",
+    "role": "Product Designer",
+    "seniority": "Mid",
+    "location": "Milan, Italy",
+    "experienceYears": 5,
+    "skills": ["UX design", "User research", "Design systems", "Figma"],
+    "keywordsMatched": ["ux design", "design system", "figma"],
+    "education": "Master's Degree in Communication Design",
+    "jobMatchScore": 87,
+    "aiConfidence": 0.9,
+    "confidenceReasons": [
+      "Strong alignment between design systems experience and the job description requirements",
+      "Portfolio includes complete case studies on digital product redesigns"
+    ],
+    "riskFlags": ["Possible over-valuation due to affinity with the 'design system' keyword"]
+  },
+  {
+    "id": 2,
+    "name": "Marco Rossi",
+    "role": "Full-stack Developer",
+    "seniority": "Senior",
+    "location": "Rome, Italy",
+    "experienceYears": 9,
+    "skills": ["Node.js", "React", "TypeScript", "PostgreSQL"],
+    "keywordsMatched": ["node.js", "react", "typescript", "api"],
+    "education": "Bachelor's Degree in Computer Engineering",
+    "jobMatchScore": 92,
+    "aiConfidence": 0.94,
+    "confidenceReasons": [
+      "Direct experience with a technology stack very similar to the job description",
+      "Multiple projects with end-to-end responsibility across frontend and backend"
+    ],
+    "riskFlags": [
+      "The model may overlook soft skills that are not explicitly described (mentorship, team leadership)",
+      "Possible bias toward candidates with a traditional technical background"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Sara Conti",
+    "role": "HR Generalist",
+    "seniority": "Mid",
+    "location": "Turin, Italy",
+    "experienceYears": 4,
+    "skills": ["Recruiting", "Employer branding", "Onboarding", "People analytics"],
+    "keywordsMatched": ["recruiting", "onboarding"],
+    "education": "Master's Degree in Occupational Psychology",
+    "jobMatchScore": 68,
+    "aiConfidence": 0.72,
+    "confidenceReasons": [
+      "Experience partially aligned but previous role is more generalist than the job description",
+      "People analytics skills are consistent with secondary requirements"
+    ],
+    "riskFlags": [
+      "The model may penalize non-linear career paths or role changes",
+      "Risk of underestimating qualitative experience that is only described narratively"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Luca Marino",
+    "role": "Data Scientist",
+    "seniority": "Junior",
+    "location": "Bologna, Italy",
+    "experienceYears": 2,
+    "skills": ["Python", "Machine learning", "Pandas", "SQL"],
+    "keywordsMatched": ["machine learning", "python", "sql"],
+    "education": "Master's Degree in Data Science",
+    "jobMatchScore": 74,
+    "aiConfidence": 0.78,
+    "confidenceReasons": [
+      "Key technical skills are present but with limited experience in production environments",
+      "University projects and thesis are very close to the job description domain"
+    ],
+    "riskFlags": [
+      "Risk of favoring CVs with technical keywords over practical experience that is not clearly described",
+      "Possible bias toward more junior profiles with recent education"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Elena Ricci",
+    "role": "Customer Support Specialist",
+    "seniority": "Mid",
+    "location": "Remote, Italy",
+    "experienceYears": 6,
+    "skills": ["Customer support", "Help desk", "SaaS", "Zendesk"],
+    "keywordsMatched": ["customer support", "saas", "ticketing"],
+    "education": "High School Diploma",
+    "jobMatchScore": 71,
+    "aiConfidence": 0.69,
+    "confidenceReasons": [
+      "Strong experience in B2B SaaS environments similar to the company context",
+      "Excellent match between tools used (Zendesk) and the stack described in the job"
+    ],
+    "riskFlags": [
+      "The model may penalize the absence of a degree even if it is not an essential requirement",
+      "Risk of undervaluing transversal skills such as conflict management"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Ahmed Ali",
+    "role": "Backend Engineer",
+    "seniority": "Mid",
+    "location": "Lyon, France (willing to relocate)",
+    "experienceYears": 5,
+    "skills": ["Java", "Spring", "Microservices", "Kubernetes"],
+    "keywordsMatched": ["microservices", "java", "kubernetes"],
+    "education": "Master's Degree in Computer Science",
+    "jobMatchScore": 79,
+    "aiConfidence": 0.81,
+    "confidenceReasons": [
+      "Solid experience with microservices architectures, aligned with the role",
+      "International experience in distributed teams, valuable for the company context"
+    ],
+    "riskFlags": [
+      "The model may penalize geographic distance despite the candidate being open to relocation",
+      "Possible language bias if the CV is not in the same language as the job description"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Chiara De Angelis",
+    "role": "UX Researcher",
+    "seniority": "Senior",
+    "location": "Milan, Italy",
+    "experienceYears": 8,
+    "skills": ["UX research", "User interviews", "Usability testing", "Mixed methods"],
+    "keywordsMatched": ["ux research", "user interviews", "usability testing"],
+    "education": "PhD in Human-Computer Interaction",
+    "jobMatchScore": 89,
+    "aiConfidence": 0.93,
+    "confidenceReasons": [
+      "Strong alignment between research projects and the responsibilities required by the role",
+      "Experience coordinating complex studies in digital product contexts"
+    ],
+    "riskFlags": [
+      "Risk of excluding less academic profiles that are equally competent",
+      "Possible over-emphasis on formal education compared to practical skills"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Paolo Gentili",
+    "role": "Marketing Specialist",
+    "seniority": "Junior",
+    "location": "Naples, Italy",
+    "experienceYears": 1,
+    "skills": ["Content marketing", "Social media", "Copywriting"],
+    "keywordsMatched": ["content", "social media"],
+    "education": "Bachelor's Degree in Economics and Marketing",
+    "jobMatchScore": 55,
+    "aiConfidence": 0.6,
+    "confidenceReasons": [
+      "Foundational skills are present but experience is limited compared to role requirements",
+      "Good alignment with hands-on tasks, gaps in strategy and analytics"
+    ],
+    "riskFlags": [
+      "The model may automatically exclude junior profiles despite clear potential",
+      "Risk of reinforcing bias against candidates with fewer years of experience"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Francesca Neri",
+    "role": "Project Manager",
+    "seniority": "Senior",
+    "location": "Turin, Italy",
+    "experienceYears": 10,
+    "skills": ["Project management", "Agile", "Scrum", "Stakeholder management"],
+    "keywordsMatched": ["project management", "agile", "scrum"],
+    "education": "Master's Degree in Management Engineering",
+    "jobMatchScore": 83,
+    "aiConfidence": 0.86,
+    "confidenceReasons": [
+      "Extensive experience managing complex projects in technology companies",
+      "Agile/Scrum certifications aligned with the internal methodology"
+    ],
+    "riskFlags": [
+      "Possible penalization of career breaks if they are not clearly explained",
+      "The model may fail to capture the complexity of the contexts in which projects were executed"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Diego Ferri",
+    "role": "Support Engineer",
+    "seniority": "Mid",
+    "location": "Remote, Spain",
+    "experienceYears": 6,
+    "skills": ["Technical support", "APIs", "Scripting", "Incident management"],
+    "keywordsMatched": ["technical support", "apis", "incident"],
+    "education": "Technical High School Diploma in Computer Science",
+    "jobMatchScore": 61,
+    "aiConfidence": 0.67,
+    "confidenceReasons": [
+      "Strong experience with second-level technical support for complex SaaS products",
+      "Ability to work across multiple time zones, useful for global coverage"
+    ],
+    "riskFlags": [
+      "The model may penalize non-university educational backgrounds",
+      "Risk of favoring CVs with more 'standard' layout and formatting over substantive content"
+    ]
+  }
+]

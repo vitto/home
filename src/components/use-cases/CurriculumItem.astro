@@ -1,0 +1,119 @@
+---
+import HighlightBox from './HighlightBox.astro';
+
+interface Cv {
+  highlight?: boolean;
+  id: number;
+  name: string;
+  role: string;
+  seniority: string;
+  location: string;
+  image?: string;
+  jobMatchScore: number;
+  aiConfidence: number;
+  confidenceReasons: string[];
+  riskFlags: string[];
+}
+
+interface Props {
+  cv: Cv;
+  highlight?: boolean;
+}
+
+const { cv, highlight = false } = Astro.props as Props;
+
+function getConfidenceBadgeVariant(confidence: number): 'success' | 'info' | 'warning' | 'error' {
+  if (confidence >= 0.9) return 'success';
+  if (confidence >= 0.75) return 'warning';
+  if (confidence >= 0.6) return 'error';
+  return 'error';
+}
+
+function getConfidenceBox(confidence: number): string {
+  if (confidence >= 0.9) return 'bg-status-success-10 border-status-success-09';
+  if (confidence >= 0.75) return 'bg-status-warning-10 border-status-warning-09';
+  if (confidence >= 0.6) return 'bg-status-error-10 border-status-error-09';
+  return 'bg-status-error-10';
+}
+---
+
+<div class="flex flex-col rounded-2xl bg-tone-neutral auto-rows-min shadow-sm-sharp h-min">
+  <div class="grid gap-200 p-400">
+    <div class="flex items-center justify-between gap-400">
+      <mds-avatar src={cv.image} size="sm"></mds-avatar>
+      {
+        cv.aiConfidence < 0.9 && highlight && (
+          <div class="grow">
+            <HighlightBox label="Encourage verification">
+              <div class="flex justify-end">
+                <mds-button
+                  title="Double-check this CV before rejecting or shortlisting."
+                  variant="dark"
+                  tone="strong"
+                >
+                  Review
+                </mds-button>
+              </div>
+            </HighlightBox>
+          </div>
+        )
+      }
+      {
+        cv.aiConfidence < 0.9 && !highlight && (
+          <mds-button
+            title="Double-check this CV before rejecting or shortlisting."
+            variant="dark"
+            tone="strong"
+          >
+            Review
+          </mds-button>
+        )
+      }
+    </div>
+    <div class="grid gap-50">
+      <mds-text typography="h6">{cv.name}</mds-text>
+      <mds-text typography="caption" class="text-tone-neutral-03">
+        {cv.role} · {cv.seniority} · {cv.location}
+      </mds-text>
+      <mds-text typography="caption" class="text-tone-neutral-03">
+        Match score <b>{cv.jobMatchScore} / 100</b>
+      </mds-text>
+    </div>
+  </div>
+  <div
+    class={`grid gap-400 p-400 rounded-b-2xl border-solid border-0 border-t ${getConfidenceBox(cv.aiConfidence)}`}
+  >
+    <mds-badge
+      variant={getConfidenceBadgeVariant(cv.aiConfidence)}
+      tone="weak"
+      size="sm"
+      class="justify-self-start"
+    >
+      AI {Math.round(cv.aiConfidence * 100)}% confidence
+    </mds-badge>
+    <div class="grid gap-400">
+      <!-- <mds-text typography="label" class="text-tone-neutral-03">why this candidate</mds-text> -->
+      <mds-list class="pl-0 fill-status-success-05">
+        {
+          cv.confidenceReasons.map((reason) => (
+            <mds-list-item icon="mi/baseline/check" typography="caption">
+              {reason}
+            </mds-list-item>
+          ))
+        }
+      </mds-list>
+      <!-- </div>
+    <div class="grid gap-400"> -->
+      <!-- <mds-text typography="label" class="text-tone-neutral-03">risks to consider</mds-text> -->
+      <mds-list class="pl-0">
+        {
+          cv.riskFlags.map((flag) => (
+            <mds-list-item icon="mi/outline/warning-amber" typography="caption">
+              {flag}
+            </mds-list-item>
+          ))
+        }
+      </mds-list>
+    </div>
+  </div>
+</div>
