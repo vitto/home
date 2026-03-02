@@ -1,0 +1,90 @@
+---
+/**
+ * MovieCard Component
+ *
+ * Displays a movie card with poster, title, year, genre, rating and duration.
+ * Props match the shape of items in src/data/use-cases/movies.json.
+ */
+interface Props {
+  title: string;
+  year: number;
+  genre: string[];
+  duration: string;
+  rating: number;
+  image: string;
+  confidence?: number;
+  reasons?: string[];
+  class?: string;
+}
+
+const {
+  title,
+  year,
+  genre,
+  duration,
+  rating,
+  image,
+  confidence = 0,
+  reasons = [],
+  class: className = '',
+} = Astro.props as Props;
+
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const genreList = genre.join(', ');
+
+/** Badge variant from confidence level (0–100): high=success, medium=info, low=warning, very low=error */
+function getConfidenceBadgeVariant(confidence: number): 'success' | 'info' | 'warning' | 'error' {
+  if (confidence >= 85) return 'success';
+  if (confidence >= 70) return 'warning';
+  if (confidence >= 55) return 'error';
+  return 'error';
+}
+
+function getConfidenceLabel(confidence: number): string {
+  if (confidence >= 85) return 'For you';
+  if (confidence >= 70) return 'Maybe for you';
+  if (confidence >= 55) return 'Not for you';
+  return 'error';
+}
+const confidenceBadgeVariant = getConfidenceBadgeVariant(confidence);
+const confidenceBadgeLabel = getConfidenceLabel(confidence);
+---
+
+<article class={`movie-card grid gap-400 grid-cols-full auto-rows-min shrink-0 ${className}`}>
+  <div
+    class="shadow-md-sharp flex flex-col shrink-0 overflow-hidden rounded-2xl bg-tone-neutral-02 dark:bg-tone-neutral-08"
+  >
+    <div
+      class="relative w-full shrink-0 overflow-hidden bg-tone-neutral-09 dark:bg-tone-neutral-01"
+    >
+      <mds-img
+        src={`${baseUrl}${image}`}
+        alt={title}
+        class="w-full shrink-0 aspect-[2/3]"
+        loading="lazy"></mds-img>
+    </div>
+    <div class="flex flex-col px-400 py-200 text-tone-neutral dark:text-tone-neutral-01">
+      <mds-text typography="h6" truncate="word">{title}</mds-text>
+      <mds-text typography="caption">{genreList}</mds-text>
+      <mds-text typography="caption" class="">{duration}</mds-text>
+      <mds-text typography="caption">{year}</mds-text>
+    </div>
+  </div>
+  {
+    confidence > 0 && (
+      <div class="grid gap-200 px-400 text-tone-neutral-07 dark:text-tone-neutral-03">
+        <mds-badge
+          variant={confidenceBadgeVariant}
+          tone="strong"
+          class="shadow-outline-50 dark:shadow-none justify-self-start"
+        >
+          {confidenceBadgeLabel}
+        </mds-badge>
+        {reasons.map((reason) => (
+          <mds-text typography="caption">{reason}</mds-text>
+        ))}
+      </div>
+    )
+  }
+</article>

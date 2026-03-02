@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Starlight Drift",
+    "year": 2024,
+    "director": "Elena Voss",
+    "genre": ["Sci-Fi", "Drama"],
+    "duration": "2h 18m",
+    "description": "A lone astronaut must reconnect with her family on Earth before her mission permanently strands her in orbit.",
+    "rating": 8.2,
+    "image": "/assets/movie-cover-01.png",
+    "confidence": 92,
+    "reasons": [
+      "Matches your interest in space and emotional drama",
+      "Similar to titles you've watched recently"
+    ]
+  },
+  {
+    "title": "Midnight in the Quarter",
+    "year": 2023,
+    "director": "James Corbin",
+    "genre": ["Thriller", "Noir"],
+    "duration": "1h 52m",
+    "description": "A disgraced detective returns to the city that ruined him when a cold case heats up again.",
+    "rating": 7.8,
+    "image": "/assets/movie-cover-02.png",
+    "confidence": 78,
+    "reasons": [
+      "Fits your noir and thriller history",
+      "Tone aligns with your evening viewing preferences"
+    ]
+  },
+  {
+    "title": "Two Tickets to Tomorrow",
+    "year": 2024,
+    "director": "Sofia Chen",
+    "genre": ["Comedy", "Romance"],
+    "duration": "1h 48m",
+    "description": "Strangers who hate each other get stuck sharing a train compartment and discover they might be perfect for each other.",
+    "rating": 7.5,
+    "image": "/assets/movie-cover-03.png",
+    "confidence": 85,
+    "reasons": ["Light option for a weeknight", "Aligns with your comedy and romance picks"]
+  },
+  {
+    "title": "The Last Glacier",
+    "year": 2023,
+    "director": "Marcus Webb",
+    "genre": ["Documentary", "Nature"],
+    "duration": "1h 35m",
+    "description": "A breathtaking journey to the world's remaining ice sheets and the communities fighting to protect them.",
+    "rating": 8.6,
+    "image": "/assets/movie-cover-04.png",
+    "confidence": 88,
+    "reasons": [
+      "Strong match for your documentary and nature viewing",
+      "High rating from critics and viewers"
+    ]
+  },
+  {
+    "title": "The House on Blackbriar Lane",
+    "year": 2024,
+    "director": "Diana Shaw",
+    "genre": ["Horror", "Mystery"],
+    "duration": "1h 58m",
+    "description": "A family inherits an old mansion and uncovers the dark secret that has kept the previous owners silent for decades.",
+    "rating": 7.1,
+    "image": "/assets/movie-cover-05.png",
+    "confidence": 65,
+    "reasons": [
+      "Possible fit if you're in the mood for suspense",
+      "Less certain given your usual genre mix"
+    ]
+  }
+]

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" fill="none" aria-hidden="true">
+  <!-- Icon: rounded rectangle with play symbol (streaming vibe), Netflix-style red -->
+  <rect x="0" y="4" width="28" height="32" rx="4" fill="#E50914"/>
+  <path d="M10 12v16l12-8-12-8z" fill="#000"/>
+  <!-- Wordmark -->
+  <text x="36" y="28" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="700" font-size="22" letter-spacing="0.02em" fill="#E50914">STREAMIX</text>
+</svg>
