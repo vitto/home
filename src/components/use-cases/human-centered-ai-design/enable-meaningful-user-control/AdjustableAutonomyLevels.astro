@@ -3,6 +3,7 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import OptionCheckbox from '../../OptionCheckbox.astro';
 ---
 
 <UseCase
@@ -10,55 +11,42 @@ import UsageItem from '../../../UsageItem.astro';
   description="Allow users to configure how much autonomy the AI has, from fully manual control to various levels of automation."
 >
   <UseCaseInteractive clsHeight={112} label="Autonomy configuration" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Autonomy Settings</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Manual:</b> AI only suggests, I decide everything</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"><b>Assisted:</b> AI acts only after I approve</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Automated (low risk):</b> AI acts automatically for safe tasks</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Automated (full):</b> AI acts automatically for all configured tasks</mds-text
-              >
-            </div>
-            <mds-input-switch>
-              <mds-text slot="label">Enable automatic actions</mds-text>
-            </mds-input-switch>
-            <mds-text typography="caption" class="text-tone-neutral-05"
-              >Users can choose the autonomy level that matches their comfort and workflow needs.</mds-text
-            >
-          </div>
-        </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <div class="grid gap-100 grid-cols-full">
+        <mds-text typography="h6">Autonomy Settings</mds-text>
+        <mds-text typography="caption"
+          >Choose the autonomy level that matches your comfort and workflow needs.</mds-text
+        >
       </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Fixed Autonomy (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="body"
-            >The AI automatically performs all actions. No settings available to change this
-            behavior.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Users cannot adjust autonomy levels, forcing them to accept whatever automation level
-            the system uses by default.</mds-text
-          >
-        </div>
+      <div class="grid gap-200 grid-cols-full" data-autonomy-settings>
+        <OptionCheckbox
+          label="Manual"
+          description="AI only suggests, I decide everything"
+          selected
+          name="autonomy-level"
+        />
+        <OptionCheckbox
+          label="Assisted"
+          description="AI acts only after I approve"
+          name="autonomy-level"
+        />
+        <OptionCheckbox
+          label="Semi-Automated (low risk)"
+          description="AI acts automatically for safe tasks"
+          name="autonomy-level"
+        />
+        <OptionCheckbox
+          label="Fully Automated (high risk)"
+          description="AI acts automatically for all tasks"
+          name="autonomy-level"
+        />
       </div>
+    </div>
+    <div class="grid gap-100 w-full max-w-9600">
+      <mds-text typography="h6">Autonomy Settings</mds-text>
+      <mds-text typography="caption"
+        >The AI automatically performs all actions. No settings available to change this behavior.</mds-text
+      >
     </div>
   </UseCaseInteractive>
   <Usage>
@@ -74,3 +62,49 @@ import UsageItem from '../../../UsageItem.astro';
     </UsageItem>
   </Usage>
 </UseCase>
+
+<script>
+  function initAutonomyRadioGroup() {
+    const container = document.querySelector('[data-autonomy-settings]');
+    if (!container) return;
+
+    const options = Array.from(
+      container.querySelectorAll<HTMLButtonElement>('[data-option-checkbox]')
+    );
+    if (!options.length) return;
+
+    function selectOption(target: HTMLButtonElement) {
+      const groupName = target.getAttribute('data-option-name');
+      options.forEach((btn) => {
+        if (groupName && btn.getAttribute('data-option-name') !== groupName) return;
+        const isSelected = btn === target;
+        btn.dataset.selected = isSelected ? 'true' : 'false';
+        btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+        if (groupName) {
+          btn.setAttribute('role', 'radio');
+          btn.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+        }
+        btn.classList.toggle('bg-tone-neutral', isSelected);
+        btn.classList.toggle('shadow-outline-50', isSelected);
+        btn.classList.toggle('fill-tone-neutral-04', isSelected);
+        btn.classList.toggle('bg-transparent', !isSelected);
+        btn.classList.toggle('hover:bg-tone-neutral-09', !isSelected);
+        btn.classList.toggle('fill-tone-neutral-06', !isSelected);
+        const icon = btn.querySelector('mds-icon');
+        if (icon) {
+          icon.setAttribute('name', isSelected ? 'mi/baseline/check-circle' : 'mi/outline/circle');
+        }
+      });
+    }
+
+    options.forEach((btn) => {
+      btn.addEventListener('click', () => selectOption(btn));
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAutonomyRadioGroup);
+  } else {
+    initAutonomyRadioGroup();
+  }
+</script>

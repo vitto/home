@@ -1,0 +1,40 @@
+---
+interface Props {
+  label: string;
+  description: string;
+  selected?: boolean;
+  name?: string;
+  class?: string;
+}
+
+const {
+  label,
+  description,
+  selected = false,
+  name = '',
+  class: className = '',
+} = Astro.props as Props;
+
+const baseClasses =
+  'flex gap-400 items-center p-400 px-600 border-0 focus-bounce rounded-xl transition-cosmetic duration-200 cursor-pointer';
+const selectedClasses = 'bg-tone-neutral shadow-outline-50 fill-tone-neutral-04';
+const unselectedClasses = 'bg-transparent hover:bg-tone-neutral-09 fill-tone-neutral-06';
+const selectedIcon = selected ? 'mi/baseline/check-circle' : 'mi/outline/circle';
+---
+
+<button
+  type="button"
+  role={name ? 'radio' : 'button'}
+  aria-pressed={selected ? 'true' : 'false'}
+  aria-checked={name ? (selected ? 'true' : 'false') : undefined}
+  data-option-checkbox
+  data-option-name={name}
+  data-selected={selected ? 'true' : 'false'}
+  class={`${baseClasses} ${selected ? selectedClasses : unselectedClasses} ${className}`}
+>
+  <mds-icon name={selectedIcon}></mds-icon>
+  <div class="grid grid-cols-full text-left text-tone-neutral-03">
+    <mds-text typography="h6">{label}</mds-text>
+    <mds-text typography="caption">{description}</mds-text>
+  </div>
+</button>
