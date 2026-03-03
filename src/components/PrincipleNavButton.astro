@@ -32,8 +32,8 @@ const {
 
 const directionClass =
   direction === 'next'
-    ? 'col-start-3 mobile:col-auto justify-self-start'
-    : 'col-start-1 mobile:col-auto justify-self-end';
+    ? 'desktop:col-start-3 col-auto justify-self-start tablet:justify-self-end'
+    : 'desktop:col-start-1 col-auto justify-self-end tablet:justify-self-start';
 const iconDirectionClass = direction === 'next' ? 'order-1' : '-order-1';
 ---
 
