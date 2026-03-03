@@ -3,13 +3,22 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
-import HighlightBox from '../../HighlightBox.astro';
+import Markdown from '../../../Markdown.astro';
 ---
 
 <UseCase
   title="Communicate Assumptions and Data Gaps"
   description="Explain what data the AI used, what assumptions it made, and what information might be missing that affects its outputs."
 >
+  <Markdown
+    content={`
+Usage scenarios:
+
+- When the outcome influences operational decisions
+- When uncertainty is significant
+- When the output is not exploratory
+`}
+  />
   <UseCaseInteractive clsHeight={384} label="Data transparency" toggle>
     <div class="grid gap-600 w-full max-w-8000">
       <div class="flex justify-start items-center gap-400">

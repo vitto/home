@@ -5,6 +5,7 @@ import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import CurriculumItem from '../../CurriculumItem.astro';
 import cvData from '../../../../data/use-cases/cv.json';
+import Markdown from '../../../Markdown.astro';
 
 const cvs = (
   cvData as Array<{
@@ -25,6 +26,19 @@ const cvs = (
   title="Encourage Verification and Human Judgment"
   description="When uncertainty is high, explicitly prompt users to verify outputs and use their judgment rather than blindly accepting AI recommendations."
 >
+  <Markdown
+    content={`
+Usage scenarios:
+
+- Hiring or firing
+- Granting credit
+- Access to public services
+- Diagnosis or healthcare priorities
+- Sanctions or controls
+
+Here, human verification cannot be optional; it is a governance measure.
+`}
+  />
   <UseCaseInteractive clsHeight={471} label="Verification prompts" multiple>
     <div class="grid gap-600 w-full max-w-8000">
       {cvs.slice(3, 4).map((cv) => <CurriculumItem highlight cv={cv} />)}

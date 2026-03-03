@@ -5,12 +5,23 @@ import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import MovieCard from '../../../MovieCard.astro';
 import movies from '../../../../data/use-cases/movies.json';
+import Markdown from '../../../Markdown.astro';
 ---
 
 <UseCase
   title="Design for Ambiguous or Multiple Outcomes"
   description="When the AI is uncertain or multiple interpretations are possible, present all reasonable options rather than forcing a single answer."
 >
+  <Markdown
+    content={`
+Usage scenarios:
+
+- Recommendations (movies, music, products)
+- Weather forecasts with scenarios
+- Recipe suggestions based on ingredients
+- Traffic estimation with alternative routes
+`}
+  />
   <UseCaseInteractive clsHeight={778} label="Multiple outcomes" toggle>
     <div
       class="grid gap-600 w-full bg-tone-neutral-01 dark:bg-tone-neutral-09 text-tone-neutral dark:text-tone-neutral-01 rounded-lg grid-cols-full"

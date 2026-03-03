@@ -4,12 +4,23 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import AIFilePreview from '../../AIFilePreview.astro';
+import Markdown from '../../../Markdown.astro';
 ---
 
 <UseCase
   title="Make Uncertainty Visible"
   description="Show confidence levels, probability scores, or uncertainty indicators so users understand how certain the AI is about its outputs."
 >
+  <Markdown
+    content={`
+Usage scenarios:
+
+- When the output is probabilistic
+- When the error has significant consequences
+- When the model works on noisy data
+- When the system is perceived as reliable
+`}
+  />
   <UseCaseInteractive clsHeight={300} label="Confidence indicators" multiple>
     <AIFilePreview
       filename="strategic-plan.rtf"
