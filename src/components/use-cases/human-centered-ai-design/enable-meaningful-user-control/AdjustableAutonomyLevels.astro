@@ -10,7 +10,7 @@ import OptionCheckbox from '../../OptionCheckbox.astro';
   title="Adjustable Autonomy Levels"
   description="Allow users to configure how much autonomy the AI has, from fully manual control to various levels of automation."
 >
-  <UseCaseInteractive clsHeight={112} label="Autonomy configuration" toggle>
+  <UseCaseInteractive clsHeight={420} label="Autonomy configuration" toggle>
     <div class="grid gap-600 w-full max-w-9600">
       <div class="grid gap-100 grid-cols-full">
         <mds-text typography="h6">Autonomy Settings</mds-text>
@@ -22,7 +22,6 @@ import OptionCheckbox from '../../OptionCheckbox.astro';
         <OptionCheckbox
           label="Manual"
           description="AI only suggests, I decide everything"
-          selected
           name="autonomy-level"
         />
         <OptionCheckbox
@@ -34,6 +33,7 @@ import OptionCheckbox from '../../OptionCheckbox.astro';
           label="Semi-Automated (low risk)"
           description="AI acts automatically for safe tasks"
           name="autonomy-level"
+          selected
         />
         <OptionCheckbox
           label="Fully Automated (high risk)"
