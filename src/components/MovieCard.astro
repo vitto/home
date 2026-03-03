@@ -43,7 +43,7 @@ function getConfidenceBadgeVariant(confidence: number): 'success' | 'info' | 'wa
 
 function getConfidenceLabel(confidence: number): string {
   if (confidence >= 85) return 'For you';
-  if (confidence >= 70) return 'Maybe for you';
+  if (confidence >= 70) return 'You might like';
   if (confidence >= 55) return 'Not for you';
   return 'error';
 }
@@ -67,7 +67,7 @@ const confidenceBadgeLabel = getConfidenceLabel(confidence);
     <div class="flex flex-col px-400 py-200 text-tone-neutral dark:text-tone-neutral-01">
       <mds-text typography="h6" truncate="word">{title}</mds-text>
       <mds-text typography="caption">{genreList}</mds-text>
-      <mds-text typography="caption" class="">{duration}</mds-text>
+      <mds-text typography="caption">{duration}</mds-text>
       <mds-text typography="caption">{year}</mds-text>
     </div>
   </div>

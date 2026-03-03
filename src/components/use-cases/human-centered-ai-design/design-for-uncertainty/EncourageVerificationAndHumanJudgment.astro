@@ -43,7 +43,7 @@ const cvs = (
         <mds-tab-item>Needs review</mds-tab-item>
       </mds-tab>
 
-      <div class="grid gap-600 tablet:grid-cols-2 auto-rows-min auto-cols-min" data-cv-list>
+      <div class="grid gap-600 grid-cols-full tablet:grid-cols-2 auto-rows-min" data-cv-list>
         {
           cvs.map((cv) => (
             <div data-cv-item data-needs-review={cv.aiConfidence < 0.9 ? 'true' : 'false'}>
@@ -56,7 +56,7 @@ const cvs = (
   </UseCaseInteractive>
   <Usage>
     <UsageItem variant="do">
-      Prompt users to verify outputs when confidence is low or moderate.
+      Prompt users to verify outputs when low or moderate confidence directly impacts people.
     </UsageItem>
     <UsageItem variant="dont">
       Present uncertain outputs as if they're definitive and don't need verification.
