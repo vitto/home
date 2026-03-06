@@ -385,10 +385,12 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
         if (i === index) {
           indicator.classList.add('pointer-events-none');
           indicatorDiv.classList.add('bg-tone-neutral-01');
+          indicatorDiv.classList.add('mobile:bg-tone-neutral-10');
           indicatorDiv.classList.remove('bg-tone-neutral-07');
         } else {
           indicator.classList.remove('pointer-events-none');
           indicatorDiv.classList.remove('bg-tone-neutral-01');
+          indicatorDiv.classList.remove('mobile:bg-tone-neutral-10');
           indicatorDiv.classList.add('bg-tone-neutral-07');
         }
       });
@@ -403,7 +405,9 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
       if (!indicator) return;
 
       indicatorDiv.classList.add(
-        index === 0 ? ('bg-tone-neutral-01', 'pointer-events-none') : 'bg-tone-neutral-07'
+        index === 0
+          ? ('bg-tone-neutral-01', 'mobile:bg-tone-neutral-10', 'pointer-events-none')
+          : 'bg-tone-neutral-07'
       );
       indicator.setAttribute('title', `Show example ${index + 1}`);
       indicator.setAttribute('data-multiple-index', index.toString());
@@ -599,7 +603,7 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
     data-multiple-index
   >
     <div
-      class="size-200 rounded-full transition-colors bg-tone-neutral-07 group-hover/dot:bg-tone-neutral-06"
+      class="size-200 rounded-full transition-colors bg-tone-neutral-07 mobile:bg-tone-neutral-04 group-hover/dot:bg-tone-neutral-06"
     >
     </div>
   </a>
