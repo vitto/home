@@ -9,64 +9,85 @@ import UsageItem from '../../../UsageItem.astro';
   title="Explicit Overrides and Manual Corrections"
   description="Make it easy for users to override AI suggestions and make manual corrections at any point."
 >
-  <UseCaseInteractive clsHeight={112} label="Override and corrections" toggle>
+  <UseCaseInteractive clsHeight={950} label="Override and corrections" toggle>
     <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>AI Suggestion with Override</b></mds-text>
-          <mds-text typography="body"
-            >Suggested email subject: "Follow-up: Project Discussion"</mds-text
-          >
-          <div class="grid gap-300">
-            <mds-input-text value="Follow-up: Project Discussion" placeholder="Email subject"
-            ></mds-input-text>
-            <div class="flex gap-200">
-              <mds-button variant="outline" size="sm">Use suggestion</mds-button>
-              <mds-button variant="outline" size="sm">Edit manually</mds-button>
-              <mds-button variant="outline" size="sm">Ignore</mds-button>
+      <div class="grid gap-200">
+        <mds-text typography="h6">Mortgage credit scoring</mds-text>
+        <mds-text typography="caption">
+          AI-based credit scoring system to assess mortgage applications, as advisor you can
+          override the AI decision by adding additional reasons.
+        </mds-text>
+      </div>
+
+      <div class="grid gap-200 p-600 rounded-lg bg-tone-neutral shadow-sm-sharp">
+        <div class="grid gap-400 tablet:grid-cols-2">
+          <div class="grid gap-400 grid-cols-full auto-rows-min">
+            <mds-text typography="label">Applicant data</mds-text>
+            <div class="flex items-center gap-400">
+              <mds-avatar class="size-1200"></mds-avatar>
+              <div class="grid grid-cols-full">
+                <mds-text typography="caption">Jhon Doe</mds-text>
+                <mds-text typography="caption">Client id: A4RD79003</mds-text>
+              </div>
             </div>
-            <mds-text typography="caption" class="text-tone-neutral-05"
-              >Users can accept, edit, or completely ignore the AI suggestion. Manual editing is
-              always available.</mds-text
+            <div class="grid grid-cols-full">
+              <mds-text typography="caption">Contract: permanent</mds-text>
+              <mds-text typography="caption">Annual income: €38,000</mds-text>
+              <mds-text typography="caption">Amount requested: €140,000</mds-text>
+              <mds-text typography="caption">Credit history: one late payment 4 years ago</mds-text>
+            </div>
+          </div>
+
+          <div class="grid gap-400 p-400 rounded-lg bg-status-error-10 auto-rows-min">
+            <mds-text typography="label">AI output</mds-text>
+            <mds-badge variant="error" tone="strong" class="justify-self-start">Rejected</mds-badge>
+            <div class="grid grid-cols-full">
+              <mds-text typography="caption"><b>Estimated risk 18%.</b></mds-text>
+              <mds-text typography="caption">Exceeds internal approval by 4%.</mds-text>
+            </div>
+            <div class="grid grid-cols-full">
+              <mds-text typography="caption"><b>Reasons detected:</b></mds-text>
+              <mds-text typography="caption">One late payment 4 years ago</mds-text>
+            </div>
+            <mds-button variant="error" tone="strong" class="justify-self-start"
+              >Confirm rejection</mds-button
             >
           </div>
         </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>No Override Option (Problematic)</b></mds-text>
+
+        <div class="grid gap-400 auto-rows-min">
+          <div class="grid gap-0 grid-cols-full">
+            <mds-text typography="h6">Advisor panel</mds-text>
+            <mds-text typography="caption"
+              >Advisor has the ability to add additional reasons and conditions to change the AI
+              decision.</mds-text
+            >
           </div>
-          <mds-text typography="body"
-            >Subject: "Follow-up: Project Discussion" (AI-generated, cannot be edited)</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >The AI suggestion is locked and cannot be modified, removing user control over their
-            own content.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Best Practices</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Make all AI outputs editable or overrideable</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Provide clear "Edit manually" or "Override" buttons</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Don't:</b> Lock AI outputs or make manual editing difficult</mds-text
-              >
+          <div class="grid gap-400 p-400 rounded-lg bg-tone-neutral-10 grid-cols-full">
+            <mds-text typography="caption"><b>Additional notes</b></mds-text>
+            <mds-input type="text" placeholder="Es: The client has unencumbered property assets."
+            ></mds-input>
+            <div class="grid gap-200">
+              <mds-chip
+                class="min-w-0"
+                deletable
+                label="The late payment was linked to a banking dispute that was resolved in the client’s favour."
+              ></mds-chip>
+              <mds-chip
+                class="min-w-0"
+                deletable
+                label="The client has unencumbered property assets."></mds-chip>
+              <mds-chip class="min-w-0" deletable label="No defaults in the last 36 months."
+              ></mds-chip>
             </div>
           </div>
+          <div class="grid gap-400 p-400 rounded-lg bg-tone-neutral-10 grid-cols-full">
+            <mds-text typography="caption"><b>Add conditions</b></mds-text>
+            <mds-input type="text" placeholder="Es: Additional guarantee required"></mds-input>
+            <mds-chip class="min-w-0" deletable label="Additional guarantee required"></mds-chip>
+          </div>
+          <mds-button variant="success" tone="strong" class="justify-self-start">Approve</mds-button
+          >
         </div>
       </div>
     </div>

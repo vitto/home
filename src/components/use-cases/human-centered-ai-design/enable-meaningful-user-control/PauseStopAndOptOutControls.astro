@@ -9,69 +9,150 @@ import UsageItem from '../../../UsageItem.astro';
   title="Pause, Stop, and Opt-Out Controls"
   description="Users should be able to pause, stop, or completely opt out of AI features at any time."
 >
-  <UseCaseInteractive clsHeight={112} label="Pause and stop controls" toggle>
+  <UseCaseInteractive label="Pause and stop controls" toggle>
     <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>AI Processing with Controls</b></mds-text>
-          <mds-text typography="body">Analyzing your document... (45% complete)</mds-text>
-          <div class="grid gap-300">
-            <mds-progress-bar value={45} class="w-full"></mds-progress-bar>
-            <div class="flex gap-200">
-              <mds-button variant="outline" size="sm">
-                <mds-icon name="mi/outline/pause" slot="icon-start"></mds-icon>
-                Pause
-              </mds-button>
-              <mds-button variant="outline" size="sm">
-                <mds-icon name="mi/outline/stop" slot="icon-start"></mds-icon>
-                Stop
-              </mds-button>
-            </div>
-            <mds-text typography="caption" class="text-tone-neutral-05"
-              >Users can pause or stop AI processing at any time, maintaining control over when AI
-              runs.</mds-text
-            >
-          </div>
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>No Stop Option (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="body"
-            >Analyzing your document... Please wait. This process cannot be interrupted.</mds-text
+      <mds-banner headline="Analyzing book" icon="mgg/google-book-large-outline" variant="primary">
+        <div class="grid gap-600 grid-cols-full pt-600">
+          <mds-benchmark-bar
+            class="min-h-[28px] w-full"
+            value="0"
+            max="100"
+            variant="primary"
+            data-progress
           >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Users cannot pause or stop the AI process, forcing them to wait for completion even if
-            they change their mind.</mds-text
-          >
+            <span data-progress-text>Analyzing book</span>
+          </mds-benchmark-bar>
+          <mds-entity await data-entity icon="mgg/google-book-large-outline" tone="weak">
+            <mds-text typography="h6">Haruki Murakami - Dance, Dance, Dance</mds-text>
+            <mds-badge variant="amaranth" tone="weak" slot="detail" class="mr-150">epub</mds-badge>
+            <mds-text typography="caption" slot="detail">EPUB ebook</mds-text>
+          </mds-entity>
         </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Opt-Out Options</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Provide "Disable AI features" option in settings</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Allow users to pause or stop AI processes at any time</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Don't:</b> Force users to use AI features or make opt-out difficult</mds-text
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+        <mds-button slot="action" variant="dark" tone="strong" data-cancel-button>Cancel</mds-button
+        >
+      </mds-banner>
     </div>
+    <script>
+      function initBookAnalysisDemo() {
+        const scope = (window as any).getUseCaseScope?.('pause-stop-and-opt-out-controls');
+        if (!scope) return;
+
+        const { container } = scope;
+        const progressBar = container.querySelector('[data-progress]');
+        const progressText = container.querySelector('[data-progress-text]');
+        const entity = container.querySelector('[data-entity]');
+        const cancelBtn = container.querySelector('[data-cancel-button]');
+        const contentWrapper =
+          container.querySelector('[data-toggle-container]')?.firstElementChild;
+
+        if (!progressBar || !progressText || !entity || !cancelBtn) return;
+
+        const TOTAL_CHAPTERS = 44;
+        const chapterLabels = Array.from({ length: TOTAL_CHAPTERS }, (_, i) => `Chapter ${i + 1}`);
+        const CHAPTER_DELAY_MIN_MS = 10;
+        const CHAPTER_DELAY_MAX_MS = 2000;
+
+        let isRunning = false;
+        let cancelled = false;
+        let chapterIndex = 0;
+        let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+        function setProgress(value: number, label: string) {
+          progressBar.setAttribute('value', String(value));
+          progressBar.setAttribute('alias', `${value}%`);
+          progressText.textContent = label;
+        }
+
+        function setFinishedState(
+          label: 'Task stopped' | 'Task complete',
+          variant: 'warning' | 'success',
+          icon: string
+        ) {
+          entity.removeAttribute('await');
+          entity.setAttribute('variant', variant);
+          entity.setAttribute('icon', icon);
+          cancelBtn.setAttribute('disabled', 'true');
+          cancelBtn.textContent = label;
+        }
+
+        function resetToStart() {
+          cancelled = false;
+          chapterIndex = 0;
+          entity.setAttribute('await', '');
+          entity.setAttribute('icon', 'mgg/google-book-large-outline');
+          // entity.removeAttribute('variant');
+          cancelBtn.removeAttribute('disabled');
+          cancelBtn.textContent = 'Cancel';
+          setProgress(0, 'Analyzing book');
+        }
+
+        function advance() {
+          if (!isRunning || cancelled) return;
+
+          if (chapterIndex >= TOTAL_CHAPTERS) {
+            setFinishedState('Task complete', 'success', 'mi/outline/done');
+            isRunning = false;
+            timeoutId = setTimeout(() => {
+              resetToStart();
+              tryStart();
+            }, 2000);
+            return;
+          }
+
+          const pct = Math.round(((chapterIndex + 1) / TOTAL_CHAPTERS) * 100);
+          setProgress(pct, chapterLabels[chapterIndex]);
+          chapterIndex++;
+          const delay =
+            Math.floor(Math.random() * (CHAPTER_DELAY_MAX_MS - CHAPTER_DELAY_MIN_MS + 1)) +
+            CHAPTER_DELAY_MIN_MS;
+          timeoutId = setTimeout(advance, delay);
+        }
+
+        function tryStart() {
+          if (!contentWrapper || contentWrapper.classList.contains('hidden')) return;
+          if (isRunning) return;
+          isRunning = true;
+          advance();
+        }
+
+        function stop() {
+          cancelled = true;
+          if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+          }
+          setFinishedState('Task stopped', 'warning', 'mi/outline/block');
+          isRunning = false;
+          timeoutId = setTimeout(() => {
+            resetToStart();
+            tryStart();
+          }, 2000);
+        }
+
+        cancelBtn.addEventListener('click', () => {
+          if (!isRunning || cancelBtn.hasAttribute('disabled')) return;
+          stop();
+        });
+
+        const observer = new MutationObserver(() => tryStart());
+        if (contentWrapper) {
+          observer.observe(contentWrapper, { attributes: true, attributeFilter: ['class'] });
+          tryStart();
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => tryStart());
+        } else {
+          tryStart();
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initBookAnalysisDemo);
+      } else {
+        initBookAnalysisDemo();
+      }
+    </script>
   </UseCaseInteractive>
   <Usage>
     <UsageItem variant="do">
