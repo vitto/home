@@ -3,6 +3,19 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AILink from '../../AILink.astro';
+import AILinks from '../../AILinks.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
+import headphonesData from '../../../../data/use-cases/headphones.json';
+import AIContext from '../../AIContext.astro';
+import languageTonesData from '../../../../data/use-cases/ai-language-tones.json';
+const defaultLanguageTone = '3';
+const defaultLanguageToneMessage =
+  languageTonesData.find((tone) => tone.value === defaultLanguageTone)?.message ?? '';
 ---
 
 <UseCase
@@ -10,72 +23,255 @@ import UsageItem from '../../../UsageItem.astro';
   description="Users should understand what data the AI uses and be able to control or modify those inputs."
 >
   <UseCaseInteractive clsHeight={112} label="Data control" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Data Sources and Control</b></mds-text>
-          <mds-text typography="body"><b>Recommendation based on:</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <div class="flex items-center justify-between">
-                <mds-text typography="caption">Your purchase history (12 items)</mds-text>
-                <mds-input-switch checked></mds-input-switch>
-              </div>
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <div class="flex items-center justify-between">
-                <mds-text typography="caption">Similar user preferences</mds-text>
-                <mds-input-switch checked></mds-input-switch>
-              </div>
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <div class="flex items-center justify-between">
-                <mds-text typography="caption">Current trends</mds-text>
-                <mds-input-switch></mds-input-switch>
-              </div>
-            </div>
-            <mds-text typography="caption" class="text-tone-neutral-05"
-              >Users can see what data is used and toggle data sources on or off to control
-              recommendations.</mds-text
-            >
-          </div>
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Hidden Data Sources (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="body">Based on our analysis, we recommend this product.</mds-text>
-          <mds-text typography="caption" class="text-status-error-06"
-            >Users cannot see what data was used or control which data sources influence
-            recommendations, removing transparency and control.</mds-text
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I'm looking for a mid-range active noise cancelling headset, please give me a list of some
+          available products.
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Based on your preferences, this product matches your criteria. The system found 3 similar items.
+        `}
+        />
+        <AILinks>
+          {
+            headphonesData.map(
+              (headphone: { model: string; title: string; description: string; image: string }) => (
+                <AILink
+                  href="https://vittoriovittori.com"
+                  picture={headphone.image}
+                  title={headphone.title}
+                  description={headphone.description}
+                />
+              )
+            )
+          }
+        </AILinks>
+        <AIContext value={76}>
+          <mds-separator></mds-separator>
+          <mds-input-switch data-use-personal-data class="flex-row-reverse justify-between"
+            >Use personal data</mds-input-switch
           >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Data Control Best Practices</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Show users what data sources are used for AI outputs</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Allow users to exclude specific data sources or inputs</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Don't:</b> Hide data sources or make them difficult to understand or control</mds-text
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+          <mds-separator></mds-separator>
+          <mds-input-switch
+            checked
+            data-consider-previous-messages
+            class="flex-row-reverse justify-between"
+            >Consider previous messages <mds-badge class="ml-100" variant="dark" tone="ghost"
+              >14</mds-badge
+            ></mds-input-switch
+          >
+          <mds-separator></mds-separator>
+          <mds-input-switch
+            checked
+            data-consider-previous-purchases
+            class="flex-row-reverse justify-between"
+            >Consider previous purchases <mds-badge class="ml-100" variant="dark" tone="ghost"
+              >6</mds-badge
+            ></mds-input-switch
+          >
+          <mds-separator></mds-separator>
+          <mds-input-field label="tone" message={defaultLanguageToneMessage} data-tone-select>
+            <mds-input-select data-select-list value={defaultLanguageTone}>
+              {languageTonesData.map((tone) => <option value={tone.value}>{tone.label}</option>)}
+            </mds-input-select>
+          </mds-input-field>
+          <mds-button class="mt-1200" variant="error" tone="weak" data-purge-context
+            >Purge context</mds-button
+          >
+        </AIContext>
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I'm looking for a mid-range active noise cancelling headset, please give me a list of some
+          available products.
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="Anthropomorphic language" class="grid gap-600" variant="error">
+          <Markdown
+            typography="detail"
+            content={`
+I think you'll love this! I found it especially for you because I know you like quality products. I'm excited to show you these options!
+        `}
+          />
+        </HighlightBox>
+        <AILinks>
+          {
+            headphonesData.map(
+              (headphone: { model: string; title: string; description: string; image: string }) => (
+                <AILink
+                  href="https://vittoriovittori.com"
+                  picture={headphone.image}
+                  title={headphone.title}
+                  description={headphone.description}
+                />
+              )
+            )
+          }
+        </AILinks>
+      </AIResponseMessage>
+      <script define:vars={{ languageTonesData, defaultLanguageTone, defaultLanguageToneMessage }}>
+        function setToneSelectValue(toneSelect, value) {
+          console.log('setToneSelectValue', value);
+          const selectEl = toneSelect?.querySelector('[data-select-list]');
+          if (!selectEl) return;
+          selectEl.setValue(value);
+          // selectEl.value = value;
+          console.log('selectEl', selectEl);
+          const message = languageTonesData.find((tone) => tone.value === value)?.message ?? '';
+          toneSelect.setAttribute('message', message);
+        }
+
+        function initLearningFromTheUserWithoutLockIn() {
+          const toneSelect = document.querySelector('[data-tone-select]');
+          if (toneSelect) {
+            toneSelect.addEventListener('mdsInputSelectChange', (event) => {
+              const message =
+                languageTonesData.find((tone) => tone.value === event.detail?.value)?.message ?? '';
+              toneSelect.setAttribute('message', message);
+            });
+          }
+
+          const purgeButton = document.querySelector('[data-purge-context]');
+          if (purgeButton) {
+            const originalButtonText = purgeButton.textContent || 'Purge context';
+            const originalContextBarValue = '76';
+            const originalContextBarAlias = 'very high';
+
+            purgeButton.addEventListener('click', () => {
+              // Store current state for rollback
+              const currentToneValue =
+                toneSelect?.querySelector('[data-select-list]')?.value || defaultLanguageTone;
+              const usePersonalDataChecked =
+                document.querySelector('[data-use-personal-data]')?.hasAttribute('checked') ||
+                false;
+              const considerPreviousMessagesChecked =
+                document
+                  .querySelector('[data-consider-previous-messages]')
+                  ?.hasAttribute('checked') || true;
+
+              const considerPreviousPurchasesChecked =
+                document
+                  .querySelector('[data-consider-previous-purchases]')
+                  ?.hasAttribute('checked') || true;
+
+              // Set loading state
+              purgeButton.setAttribute('await', '');
+              purgeButton.textContent = 'Purging...';
+
+              // Reset tone select to 0 (purge value)
+              if (toneSelect) {
+                setToneSelectValue(toneSelect, '0');
+              }
+
+              // Uncheck switches
+              const usePersonalDataSwitch = document.querySelector('[data-use-personal-data]');
+              if (usePersonalDataSwitch) {
+                usePersonalDataSwitch.removeAttribute('checked');
+                usePersonalDataSwitch.checked = false;
+              }
+
+              const considerPreviousMessagesSwitch = document.querySelector(
+                '[data-consider-previous-messages]'
+              );
+              if (considerPreviousMessagesSwitch) {
+                considerPreviousMessagesSwitch.removeAttribute('checked');
+                considerPreviousMessagesSwitch.checked = false;
+              }
+
+              const considerPreviousPurchasesSwitch = document.querySelector(
+                '[data-consider-previous-purchases]'
+              );
+              if (considerPreviousPurchasesSwitch) {
+                considerPreviousPurchasesSwitch.removeAttribute('checked');
+                considerPreviousPurchasesSwitch.checked = false;
+              }
+
+              // Reset context bar to 0 (none)
+              const contextBar = document.querySelector('[data-context-bar]');
+              if (contextBar) {
+                contextBar.setAttribute('value', '0');
+                contextBar.setAttribute('alias', 'none');
+              }
+
+              const modal = document.querySelector('[data-modal]');
+
+              const doRollback = () => {
+                purgeButton.removeAttribute('await');
+                purgeButton.textContent = originalButtonText;
+
+                if (toneSelect) {
+                  setToneSelectValue(toneSelect, defaultLanguageTone);
+                }
+
+                if (usePersonalDataSwitch) {
+                  if (usePersonalDataChecked) {
+                    usePersonalDataSwitch.setAttribute('checked', '');
+                    usePersonalDataSwitch.checked = true;
+                  } else {
+                    usePersonalDataSwitch.removeAttribute('checked');
+                    usePersonalDataSwitch.checked = false;
+                  }
+                }
+
+                if (considerPreviousMessagesSwitch) {
+                  if (considerPreviousMessagesChecked) {
+                    considerPreviousMessagesSwitch.setAttribute('checked', '');
+                    considerPreviousMessagesSwitch.checked = true;
+                  } else {
+                    considerPreviousMessagesSwitch.removeAttribute('checked');
+                    considerPreviousMessagesSwitch.checked = false;
+                  }
+                }
+
+                if (considerPreviousPurchasesSwitch) {
+                  if (considerPreviousPurchasesChecked) {
+                    considerPreviousPurchasesSwitch.setAttribute('checked', '');
+                    considerPreviousPurchasesSwitch.checked = true;
+                  } else {
+                    considerPreviousPurchasesSwitch.removeAttribute('checked');
+                    considerPreviousPurchasesSwitch.checked = false;
+                  }
+                }
+
+                if (contextBar) {
+                  contextBar.setAttribute('value', originalContextBarValue);
+                  contextBar.setAttribute('alias', originalContextBarAlias);
+                }
+              };
+
+              const onModalHide = () => {
+                modal.removeEventListener('mdsModalHide', onModalHide);
+                doRollback();
+              };
+
+              if (modal) {
+                modal.addEventListener('mdsModalHide', onModalHide);
+              }
+
+              // After 2000ms, close modal (rollback runs on mdsModalHide)
+              setTimeout(() => {
+                if (modal) {
+                  modal.removeAttribute('opened');
+                }
+              }, 500);
+            });
+          }
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initLearningFromTheUserWithoutLockIn);
+        } else {
+          initLearningFromTheUserWithoutLockIn();
+        }
+      </script>
     </div>
   </UseCaseInteractive>
   <Usage>

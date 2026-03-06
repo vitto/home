@@ -1,0 +1,49 @@
+[
+  { "value": "0", "label": "Automatic", "message": "The tone is automatically detected" },
+  {
+    "value": "1",
+    "label": "Technical",
+    "message": "The TCP/IP protocol ensures reliable data packet transmission."
+  },
+  { "value": "2", "label": "Friendly", "message": "Hi there! How can I brighten your day? 😊" },
+  {
+    "value": "3",
+    "label": "Formal",
+    "message": "Please submit the required documentation by February 20, 2026."
+  },
+  {
+    "value": "4",
+    "label": "Casual",
+    "message": "Hey, what's up? Let me know if you need anything!"
+  },
+  {
+    "value": "5",
+    "label": "Humorous",
+    "message": "If Wi-Fi were a superhero, today it would've lost its cape... 😅"
+  },
+  {
+    "value": "6",
+    "label": "Educational",
+    "message": "Photosynthesis occurs in leaves using sunlight to produce energy."
+  },
+  {
+    "value": "7",
+    "label": "Informative",
+    "message": "The event will take place on February 25 at 3:00 PM in the Green Hall."
+  },
+  {
+    "value": "8",
+    "label": "Persuasive",
+    "message": "Discover how to save 30% on your bill—click here to learn more!"
+  },
+  {
+    "value": "9",
+    "label": "Engaging",
+    "message": "Imagine a world without plastic—what would change for you? Share your thoughts!"
+  },
+  {
+    "value": "10",
+    "label": "Inspiring",
+    "message": "Every small step counts: today is the perfect day to start believing in yourself."
+  }
+]
