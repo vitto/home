@@ -50,7 +50,8 @@ import UsageItem from '../../../UsageItem.astro';
         const TOTAL_CHAPTERS = 44;
         const chapterLabels = Array.from({ length: TOTAL_CHAPTERS }, (_, i) => `Chapter ${i + 1}`);
         const CHAPTER_DELAY_MIN_MS = 10;
-        const CHAPTER_DELAY_MAX_MS = 2000;
+        const CHAPTER_DELAY_MAX_MS = 500;
+        const STOP_DELAY_MS = 3000;
 
         let isRunning = false;
         let cancelled = false;
@@ -95,7 +96,7 @@ import UsageItem from '../../../UsageItem.astro';
             timeoutId = setTimeout(() => {
               resetToStart();
               tryStart();
-            }, 2000);
+            }, STOP_DELAY_MS);
             return;
           }
 
@@ -122,11 +123,12 @@ import UsageItem from '../../../UsageItem.astro';
             timeoutId = null;
           }
           setFinishedState('Task stopped', 'warning', 'mi/outline/block');
+          setProgress(0, 'operation cancelled');
           isRunning = false;
           timeoutId = setTimeout(() => {
             resetToStart();
             tryStart();
-          }, 2000);
+          }, STOP_DELAY_MS);
         }
 
         cancelBtn.addEventListener('click', () => {
