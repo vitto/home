@@ -1,0 +1,32 @@
+[
+  {
+    "source": "https://www.imf.org/en/Topics/imf-and-the-global-economy",
+    "title": "IMF: The Global Economy and Financial Stability",
+    "description": "Official IMF overview of the global macroeconomic outlook, key risks, and policy responses to recurring world economic crises.",
+    "image": "/assets/source-article-01.png"
+  },
+  {
+    "source": "https://www.worldbank.org/en/topic/macroeconomics/overview",
+    "title": "World Bank: Macroeconomics, Trade, and Investment Overview",
+    "description": "World Bank analysis of global growth slowdowns, debt vulnerabilities, and structural factors behind economic downturns.",
+    "image": "/assets/source-article-02.png"
+  },
+  {
+    "source": "https://www.oecd.org/economic-outlook/",
+    "title": "OECD Economic Outlook",
+    "description": "Regular OECD report that examines economic prospects, inflation, employment, and systemic risks across advanced and emerging economies.",
+    "image": "/assets/source-article-03.png"
+  },
+  {
+    "source": "https://www.weforum.org/agenda/archive/global-economy/",
+    "title": "World Economic Forum: Global Economy Insights",
+    "description": "Curated articles from the World Economic Forum on financial instability, supply chain disruptions, and long-term impacts of global crises.",
+    "image": "/assets/source-article-04.png"
+  },
+  {
+    "source": "https://www.ft.com/global-economy",
+    "title": "Financial Times: Global Economy Coverage",
+    "description": "News and in-depth reporting on recessions, monetary policy shifts, and market stress across major regions.",
+    "image": "/assets/source-article-01.png"
+  }
+]

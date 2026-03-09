@@ -3,6 +3,9 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import AILink from '../../AILink.astro';
+import AILinks from '../../AILinks.astro';
+import articleSourcesData from '../../../../data/use-cases/article-sources.json';
 ---
 
 <UseCase
@@ -10,63 +13,95 @@ import UsageItem from '../../../UsageItem.astro';
   description="Users should understand that they own final decisions, not the AI, especially for important choices."
 >
   <UseCaseInteractive clsHeight={112} label="Decision ownership" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Clear Decision Ownership</b></mds-text>
-          <mds-text typography="detail"
-            ><b>AI Recommendation:</b> Based on your criteria, this investment option matches your risk
-            profile.</mds-text
-          >
-          <div class="p-400 rounded bg-status-info-10 border border-status-info-03">
-            <mds-text typography="caption"
-              ><b>Your decision:</b> This is a recommendation only. You are responsible for reviewing
-              all details, understanding risks, and making the final investment decision. The AI does
-              not provide financial advice.</mds-text
+    <div class="grid gap-600 w-full max-w-9600">
+      <div class="grid gap-200">
+        <mds-text typography="label">Sources</mds-text>
+        <AILinks>
+          {
+            articleSourcesData.map(
+              (articleSource: {
+                source: string;
+                title: string;
+                description: string;
+                image: string;
+              }) => (
+                <AILink
+                  href="https://vittoriovittori.com"
+                  picture={articleSource.image}
+                  title={articleSource.title}
+                  description={articleSource.description}
+                />
+              )
+            )
+          }
+        </AILinks>
+      </div>
+      <div class="grid gap-200">
+        <mds-text typography="label">generated article summary</mds-text>
+        <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-10">
+          <mds-text typography="h4">When global crises shape local decisions</mds-text>
+          <mds-text typography="detail">
+            Drawing on IMF, World Bank, OECD, WEF and Financial Times analyses of the world economic
+            crisis, this AI-generated brief highlights how macroeconomic shocks, inflation and
+            financial instability can influence everyday choices — while stressing that the final
+            responsibility for decisions remains with the human.
+          </mds-text>
+        </div>
+        <div class="flex gap-200 justify-between flex-wrap">
+          <div class="flex gap-200 flex-wrap">
+            <mds-button variant="error" tone="weak" icon="mi/outline/delete" title="Delete"
+            ></mds-button>
+            <mds-button variant="dark" tone="weak" icon="mi/outline/replay" title="Regenerate"
+            ></mds-button>
+          </div>
+          <div class="flex gap-200 flex-wrap">
+            <mds-button variant="primary" tone="weak" icon="mi/outline/edit" title="Edit"
+            ></mds-button>
+            <mds-button variant="success" icon="mi/outline/publish" icon-position="right"
+              >Publish</mds-button
             >
           </div>
-          <div class="flex gap-200">
-            <mds-button variant="primary">Review details</mds-button>
-            <mds-button variant="outline">Get human advisor</mds-button>
-          </div>
         </div>
       </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Unclear Ownership (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="detail"
-            ><b>AI Recommendation:</b> This is the best investment option for you. I've analyzed everything
-            and this is what you should choose.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >The language suggests the AI is making the decision ("this is what you should choose")
-            and doesn't clarify that the user is responsible for the final decision.</mds-text
-          >
-        </div>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <div class="grid gap-200">
+        <mds-text typography="label">Sources</mds-text>
+        <AILinks>
+          {
+            articleSourcesData.map(
+              (articleSource: {
+                source: string;
+                title: string;
+                description: string;
+                image: string;
+              }) => (
+                <AILink
+                  href="https://vittoriovittori.com"
+                  picture={articleSource.image}
+                  title={articleSource.title}
+                  description={articleSource.description}
+                />
+              )
+            )
+          }
+        </AILinks>
       </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Ownership Best Practices</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Explicitly state that users own final decisions</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Clarify the AI's role (support, suggestion) versus user's role (decision-making)</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Don't:</b> Use language that suggests the AI is making decisions or taking responsibility</mds-text
-              >
-            </div>
-          </div>
+      <div class="grid gap-200">
+        <mds-text typography="label">generated article summary</mds-text>
+        <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-10">
+          <mds-text typography="h4">When global crises shape local decisions</mds-text>
+          <mds-text typography="detail">
+            Drawing on IMF, World Bank, OECD, WEF and Financial Times analyses of the world economic
+            crisis, this AI-generated brief highlights how macroeconomic shocks, inflation and
+            financial instability can influence everyday choices — while stressing that the final
+            responsibility for decisions remains with the human.
+          </mds-text>
+        </div>
+        <div class="flex gap-200 justify-end flex-wrap">
+          <mds-text typography="caption">
+            <b>Published:</b> 2026-03-09
+          </mds-text>
         </div>
       </div>
     </div>
