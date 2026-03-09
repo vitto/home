@@ -14,7 +14,7 @@ import UsageItem from '../../../UsageItem.astro';
       <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
         <div class="grid gap-200">
           <mds-text typography="label"><b>Recommendation Explanation</b></mds-text>
-          <mds-text typography="body"
+          <mds-text typography="detail"
             ><b>Why this product:</b> It matches your preferences for price range ($50-100) and has high
             ratings (4.8/5) from users with similar needs. It's also currently on sale.</mds-text
           >
@@ -29,7 +29,7 @@ import UsageItem from '../../../UsageItem.astro';
             <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
             <mds-text typography="label"><b>Technical Explanation (Unhelpful)</b></mds-text>
           </div>
-          <mds-text typography="body"
+          <mds-text typography="detail"
             >This recommendation was generated using a collaborative filtering algorithm with cosine
             similarity on a 128-dimensional embedding space. The model was trained on 10M user
             interactions using stochastic gradient descent with a learning rate of 0.001.</mds-text

@@ -14,7 +14,7 @@ import UsageItem from '../../../UsageItem.astro';
       <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
         <div class="grid gap-200">
           <mds-text typography="label"><b>Review Before Proceeding</b></mds-text>
-          <mds-text typography="body"
+          <mds-text typography="detail"
             >AI has completed step 1. [Review before continuing] [Skip review] (not recommended)</mds-text
           >
           <mds-text typography="caption" class="text-tone-neutral-05"
@@ -25,7 +25,7 @@ import UsageItem from '../../../UsageItem.astro';
       <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
         <div class="grid gap-200">
           <mds-text typography="label"><b>Pause for Human Input</b></mds-text>
-          <mds-text typography="body"
+          <mds-text typography="detail"
             >AI is waiting for your input on these items before proceeding: [3 items need review]
             [Continue when ready]</mds-text
           >
@@ -40,7 +40,7 @@ import UsageItem from '../../../UsageItem.astro';
             <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
             <mds-text typography="label"><b>Auto-Proceed by Default (Problematic)</b></mds-text>
           </div>
-          <mds-text typography="body"
+          <mds-text typography="detail"
             >AI completes all steps automatically; review is hidden behind "Advanced options" or
             only available if users explicitly enable it. Most users never see review opportunities.</mds-text
           >

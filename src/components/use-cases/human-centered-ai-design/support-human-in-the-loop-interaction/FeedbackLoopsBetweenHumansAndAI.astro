@@ -14,7 +14,7 @@ import UsageItem from '../../../UsageItem.astro';
       <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
         <div class="grid gap-200">
           <mds-text typography="label"><b>Learning from Edits</b></mds-text>
-          <mds-text typography="body"
+          <mds-text typography="detail"
             >You edited "Monday" to "Tuesday" in this context. We'll remember this preference for
             similar meetings. [Learn more about how we use feedback]</mds-text
           >
@@ -26,7 +26,7 @@ import UsageItem from '../../../UsageItem.astro';
       <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
         <div class="grid gap-200">
           <mds-text typography="label"><b>Visible Improvement</b></mds-text>
-          <mds-text typography="body"
+          <mds-text typography="detail"
             >Based on your previous edits, we've adjusted our suggestions. [See what changed] [Reset
             preferences]</mds-text
           >
@@ -41,7 +41,7 @@ import UsageItem from '../../../UsageItem.astro';
             <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
             <mds-text typography="label"><b>No Feedback Loop (Problematic)</b></mds-text>
           </div>
-          <mds-text typography="body"
+          <mds-text typography="detail"
             >Users repeatedly edit the same things (e.g. always changing "Monday" to "Tuesday"), but
             the AI keeps suggesting "Monday" every time. No indication that edits are used to
             improve suggestions.</mds-text

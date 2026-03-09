@@ -13,6 +13,8 @@ import HighlightBox from '../../HighlightBox.astro';
 import headphonesData from '../../../../data/use-cases/headphones.json';
 import AIContext from '../../AIContext.astro';
 import languageTonesData from '../../../../data/use-cases/ai-language-tones.json';
+import AIResponseFooterActions from '../../AIResponseFooterActions.astro';
+import AIResponseFooter from '../../AIResponseFooter.astro';
 const defaultLanguageTone = '3';
 const defaultLanguageToneMessage =
   languageTonesData.find((tone) => tone.value === defaultLanguageTone)?.message ?? '';
@@ -51,39 +53,42 @@ Based on your preferences, this product matches your criteria. The system found 
             )
           }
         </AILinks>
-        <AIContext value={76}>
-          <mds-separator></mds-separator>
-          <mds-input-switch data-use-personal-data class="flex-row-reverse justify-between"
-            >Use personal data</mds-input-switch
-          >
-          <mds-separator></mds-separator>
-          <mds-input-switch
-            checked
-            data-consider-previous-messages
-            class="flex-row-reverse justify-between"
-            >Consider previous messages <mds-badge class="ml-100" variant="dark" tone="ghost"
-              >14</mds-badge
-            ></mds-input-switch
-          >
-          <mds-separator></mds-separator>
-          <mds-input-switch
-            checked
-            data-consider-previous-purchases
-            class="flex-row-reverse justify-between"
-            >Consider previous purchases <mds-badge class="ml-100" variant="dark" tone="ghost"
-              >6</mds-badge
-            ></mds-input-switch
-          >
-          <mds-separator></mds-separator>
-          <mds-input-field label="tone" message={defaultLanguageToneMessage} data-tone-select>
-            <mds-input-select data-select-list value={defaultLanguageTone}>
-              {languageTonesData.map((tone) => <option value={tone.value}>{tone.label}</option>)}
-            </mds-input-select>
-          </mds-input-field>
-          <mds-button class="mt-1200" variant="error" tone="weak" data-purge-context
-            >Purge context</mds-button
-          >
-        </AIContext>
+        <AIResponseFooter>
+          <AIResponseFooterActions />
+          <AIContext value={76} class="shrink-0">
+            <mds-separator></mds-separator>
+            <mds-input-switch data-use-personal-data class="flex-row-reverse justify-between"
+              >Use personal data</mds-input-switch
+            >
+            <mds-separator></mds-separator>
+            <mds-input-switch
+              checked
+              data-consider-previous-messages
+              class="flex-row-reverse justify-between"
+              >Consider previous messages <mds-badge class="ml-100" variant="dark" tone="ghost"
+                >14</mds-badge
+              ></mds-input-switch
+            >
+            <mds-separator></mds-separator>
+            <mds-input-switch
+              checked
+              data-consider-previous-purchases
+              class="flex-row-reverse justify-between"
+              >Consider previous purchases <mds-badge class="ml-100" variant="dark" tone="ghost"
+                >6</mds-badge
+              ></mds-input-switch
+            >
+            <mds-separator></mds-separator>
+            <mds-input-field label="tone" message={defaultLanguageToneMessage} data-tone-select>
+              <mds-input-select data-select-list value={defaultLanguageTone}>
+                {languageTonesData.map((tone) => <option value={tone.value}>{tone.label}</option>)}
+              </mds-input-select>
+            </mds-input-field>
+            <mds-button class="mt-1200" variant="error" tone="weak" data-purge-context
+              >Purge context</mds-button
+            >
+          </AIContext>
+        </AIResponseFooter>
       </AIResponseMessage>
     </div>
     <div class="grid gap-600 w-full max-w-9600">
@@ -94,14 +99,12 @@ Based on your preferences, this product matches your criteria. The system found 
         </AIBalloonMessage>
       </AIBalloon>
       <AIResponseMessage>
-        <HighlightBox label="Anthropomorphic language" class="grid gap-600" variant="error">
-          <Markdown
-            typography="detail"
-            content={`
-I think you'll love this! I found it especially for you because I know you like quality products. I'm excited to show you these options!
+        <Markdown
+          typography="detail"
+          content={`
+Based on your preferences, this product matches your criteria. The system found 3 similar items.
         `}
-          />
-        </HighlightBox>
+        />
         <AILinks>
           {
             headphonesData.map(
@@ -116,164 +119,163 @@ I think you'll love this! I found it especially for you because I know you like 
             )
           }
         </AILinks>
+        <AIResponseFooter>
+          <AIResponseFooterActions />
+        </AIResponseFooter>
       </AIResponseMessage>
-      <script define:vars={{ languageTonesData, defaultLanguageTone, defaultLanguageToneMessage }}>
-        function setToneSelectValue(toneSelect, value) {
-          console.log('setToneSelectValue', value);
-          const selectEl = toneSelect?.querySelector('[data-select-list]');
-          if (!selectEl) return;
-          selectEl.setValue(value);
-          // selectEl.value = value;
-          console.log('selectEl', selectEl);
-          const message = languageTonesData.find((tone) => tone.value === value)?.message ?? '';
-          toneSelect.setAttribute('message', message);
-        }
+    </div>
+  </UseCaseInteractive>
+  <script define:vars={{ languageTonesData, defaultLanguageTone, defaultLanguageToneMessage }}>
+    function setToneSelectValue(toneSelect, value) {
+      const selectEl = toneSelect?.querySelector('[data-select-list]');
+      if (!selectEl) return;
+      selectEl.setValue(value);
+      // selectEl.value = value;
+      console.log('selectEl', selectEl);
+      const message = languageTonesData.find((tone) => tone.value === value)?.message ?? '';
+      toneSelect.setAttribute('message', message);
+    }
 
-        function initLearningFromTheUserWithoutLockIn() {
-          const toneSelect = document.querySelector('[data-tone-select]');
+    function initLearningFromTheUserWithoutLockIn() {
+      const toneSelect = document.querySelector('[data-tone-select]');
+      if (toneSelect) {
+        toneSelect.addEventListener('mdsInputSelectChange', (event) => {
+          const message =
+            languageTonesData.find((tone) => tone.value === event.detail?.value)?.message ?? '';
+          toneSelect.setAttribute('message', message);
+        });
+      }
+
+      const purgeButton = document.querySelector('[data-purge-context]');
+      if (purgeButton) {
+        const originalButtonText = purgeButton.textContent || 'Purge context';
+        const originalContextBarValue = '76';
+        const originalContextBarAlias = 'very high';
+
+        purgeButton.addEventListener('click', () => {
+          // Store current state for rollback
+          const currentToneValue =
+            toneSelect?.querySelector('[data-select-list]')?.value || defaultLanguageTone;
+          const usePersonalDataChecked =
+            document.querySelector('[data-use-personal-data]')?.hasAttribute('checked') || false;
+          const considerPreviousMessagesChecked =
+            document.querySelector('[data-consider-previous-messages]')?.hasAttribute('checked') ||
+            true;
+
+          const considerPreviousPurchasesChecked =
+            document.querySelector('[data-consider-previous-purchases]')?.hasAttribute('checked') ||
+            true;
+
+          // Set loading state
+          purgeButton.setAttribute('await', '');
+          purgeButton.textContent = 'Purging...';
+
+          // Reset tone select to 0 (purge value)
           if (toneSelect) {
-            toneSelect.addEventListener('mdsInputSelectChange', (event) => {
-              const message =
-                languageTonesData.find((tone) => tone.value === event.detail?.value)?.message ?? '';
-              toneSelect.setAttribute('message', message);
-            });
+            setToneSelectValue(toneSelect, '0');
           }
 
-          const purgeButton = document.querySelector('[data-purge-context]');
-          if (purgeButton) {
-            const originalButtonText = purgeButton.textContent || 'Purge context';
-            const originalContextBarValue = '76';
-            const originalContextBarAlias = 'very high';
+          // Uncheck switches
+          const usePersonalDataSwitch = document.querySelector('[data-use-personal-data]');
+          if (usePersonalDataSwitch) {
+            usePersonalDataSwitch.removeAttribute('checked');
+            usePersonalDataSwitch.checked = false;
+          }
 
-            purgeButton.addEventListener('click', () => {
-              // Store current state for rollback
-              const currentToneValue =
-                toneSelect?.querySelector('[data-select-list]')?.value || defaultLanguageTone;
-              const usePersonalDataChecked =
-                document.querySelector('[data-use-personal-data]')?.hasAttribute('checked') ||
-                false;
-              const considerPreviousMessagesChecked =
-                document
-                  .querySelector('[data-consider-previous-messages]')
-                  ?.hasAttribute('checked') || true;
+          const considerPreviousMessagesSwitch = document.querySelector(
+            '[data-consider-previous-messages]'
+          );
+          if (considerPreviousMessagesSwitch) {
+            considerPreviousMessagesSwitch.removeAttribute('checked');
+            considerPreviousMessagesSwitch.checked = false;
+          }
 
-              const considerPreviousPurchasesChecked =
-                document
-                  .querySelector('[data-consider-previous-purchases]')
-                  ?.hasAttribute('checked') || true;
+          const considerPreviousPurchasesSwitch = document.querySelector(
+            '[data-consider-previous-purchases]'
+          );
+          if (considerPreviousPurchasesSwitch) {
+            considerPreviousPurchasesSwitch.removeAttribute('checked');
+            considerPreviousPurchasesSwitch.checked = false;
+          }
 
-              // Set loading state
-              purgeButton.setAttribute('await', '');
-              purgeButton.textContent = 'Purging...';
+          // Reset context bar to 0 (none)
+          const contextBar = document.querySelector('[data-context-bar]');
+          if (contextBar) {
+            contextBar.setAttribute('value', '0');
+            contextBar.setAttribute('alias', 'none');
+          }
 
-              // Reset tone select to 0 (purge value)
-              if (toneSelect) {
-                setToneSelectValue(toneSelect, '0');
-              }
+          const modal = document.querySelector('[data-modal]');
 
-              // Uncheck switches
-              const usePersonalDataSwitch = document.querySelector('[data-use-personal-data]');
-              if (usePersonalDataSwitch) {
+          const doRollback = () => {
+            purgeButton.removeAttribute('await');
+            purgeButton.textContent = originalButtonText;
+
+            if (toneSelect) {
+              setToneSelectValue(toneSelect, defaultLanguageTone);
+            }
+
+            if (usePersonalDataSwitch) {
+              if (usePersonalDataChecked) {
+                usePersonalDataSwitch.setAttribute('checked', '');
+                usePersonalDataSwitch.checked = true;
+              } else {
                 usePersonalDataSwitch.removeAttribute('checked');
                 usePersonalDataSwitch.checked = false;
               }
+            }
 
-              const considerPreviousMessagesSwitch = document.querySelector(
-                '[data-consider-previous-messages]'
-              );
-              if (considerPreviousMessagesSwitch) {
+            if (considerPreviousMessagesSwitch) {
+              if (considerPreviousMessagesChecked) {
+                considerPreviousMessagesSwitch.setAttribute('checked', '');
+                considerPreviousMessagesSwitch.checked = true;
+              } else {
                 considerPreviousMessagesSwitch.removeAttribute('checked');
                 considerPreviousMessagesSwitch.checked = false;
               }
+            }
 
-              const considerPreviousPurchasesSwitch = document.querySelector(
-                '[data-consider-previous-purchases]'
-              );
-              if (considerPreviousPurchasesSwitch) {
+            if (considerPreviousPurchasesSwitch) {
+              if (considerPreviousPurchasesChecked) {
+                considerPreviousPurchasesSwitch.setAttribute('checked', '');
+                considerPreviousPurchasesSwitch.checked = true;
+              } else {
                 considerPreviousPurchasesSwitch.removeAttribute('checked');
                 considerPreviousPurchasesSwitch.checked = false;
               }
+            }
 
-              // Reset context bar to 0 (none)
-              const contextBar = document.querySelector('[data-context-bar]');
-              if (contextBar) {
-                contextBar.setAttribute('value', '0');
-                contextBar.setAttribute('alias', 'none');
-              }
+            if (contextBar) {
+              contextBar.setAttribute('value', originalContextBarValue);
+              contextBar.setAttribute('alias', originalContextBarAlias);
+            }
+          };
 
-              const modal = document.querySelector('[data-modal]');
+          const onModalHide = () => {
+            modal.removeEventListener('mdsModalHide', onModalHide);
+            doRollback();
+          };
 
-              const doRollback = () => {
-                purgeButton.removeAttribute('await');
-                purgeButton.textContent = originalButtonText;
-
-                if (toneSelect) {
-                  setToneSelectValue(toneSelect, defaultLanguageTone);
-                }
-
-                if (usePersonalDataSwitch) {
-                  if (usePersonalDataChecked) {
-                    usePersonalDataSwitch.setAttribute('checked', '');
-                    usePersonalDataSwitch.checked = true;
-                  } else {
-                    usePersonalDataSwitch.removeAttribute('checked');
-                    usePersonalDataSwitch.checked = false;
-                  }
-                }
-
-                if (considerPreviousMessagesSwitch) {
-                  if (considerPreviousMessagesChecked) {
-                    considerPreviousMessagesSwitch.setAttribute('checked', '');
-                    considerPreviousMessagesSwitch.checked = true;
-                  } else {
-                    considerPreviousMessagesSwitch.removeAttribute('checked');
-                    considerPreviousMessagesSwitch.checked = false;
-                  }
-                }
-
-                if (considerPreviousPurchasesSwitch) {
-                  if (considerPreviousPurchasesChecked) {
-                    considerPreviousPurchasesSwitch.setAttribute('checked', '');
-                    considerPreviousPurchasesSwitch.checked = true;
-                  } else {
-                    considerPreviousPurchasesSwitch.removeAttribute('checked');
-                    considerPreviousPurchasesSwitch.checked = false;
-                  }
-                }
-
-                if (contextBar) {
-                  contextBar.setAttribute('value', originalContextBarValue);
-                  contextBar.setAttribute('alias', originalContextBarAlias);
-                }
-              };
-
-              const onModalHide = () => {
-                modal.removeEventListener('mdsModalHide', onModalHide);
-                doRollback();
-              };
-
-              if (modal) {
-                modal.addEventListener('mdsModalHide', onModalHide);
-              }
-
-              // After 2000ms, close modal (rollback runs on mdsModalHide)
-              setTimeout(() => {
-                if (modal) {
-                  modal.removeAttribute('opened');
-                }
-              }, 500);
-            });
+          if (modal) {
+            modal.addEventListener('mdsModalHide', onModalHide);
           }
-        }
 
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', initLearningFromTheUserWithoutLockIn);
-        } else {
-          initLearningFromTheUserWithoutLockIn();
-        }
-      </script>
-    </div>
-  </UseCaseInteractive>
+          // After 2000ms, close modal (rollback runs on mdsModalHide)
+          setTimeout(() => {
+            if (modal) {
+              modal.removeAttribute('opened');
+            }
+          }, 500);
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLearningFromTheUserWithoutLockIn);
+    } else {
+      initLearningFromTheUserWithoutLockIn();
+    }
+  </script>
   <Usage>
     <UsageItem variant="do">
       Show users what data sources and inputs the AI uses to generate outputs.
