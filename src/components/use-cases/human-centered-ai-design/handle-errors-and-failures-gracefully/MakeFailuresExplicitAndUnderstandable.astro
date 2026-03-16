@@ -3,53 +3,67 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import PatientCard from '../../PatientCard.astro';
 ---
 
 <UseCase
   title="Make Failures Explicit and Understandable"
   description="When the AI fails or produces wrong output, make it clear that something went wrong and explain what happened in user-facing terms."
 >
-  <UseCaseInteractive clsHeight={112} label="Explicit failure messaging" toggle>
+  <UseCaseInteractive clsHeight={420} label="Explicit failure messaging" toggle>
     <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Clear Error Message</b></mds-text>
+      <PatientCard />
+      <div class="grid gap-200 p-600 rounded-2xl bg-tone-neutral shadow-sm-sharp">
+        <mds-text typography="label">prescription</mds-text>
+        <div class="grid grid-cols-2 mobile:grid-cols-full gap-400 items-center">
+          <mds-benchmark-bar value="25" alias="2 capsules per day">Warfarin</mds-benchmark-bar>
+          <div class="flex items-center gap-200 p-200 rounded-lg bg-status-warning-10">
+            <mds-icon name="mi/baseline/warning" class="fill-status-warning-05"></mds-icon>
+            <mds-text typography="caption"><b>INR</b> value is missing</mds-text>
           </div>
-          <mds-text typography="detail"
-            >The AI couldn't complete the analysis. The service is temporarily unavailable. Your
-            data was not sent.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Users know: something failed, why (service unavailable), and that their data is safe.</mds-text
-          >
-          <mds-button variant="outline" size="sm">Try again</mds-button>
         </div>
       </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Vague or Hidden Failure (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="detail">Something went wrong. Error code: 0x7F3A</mds-text>
-          <mds-text typography="caption" class="text-status-error-06"
-            >Technical codes and vague wording don't help users understand what failed or what to
-            do.</mds-text
-          >
+      <mds-banner
+        variant="warning"
+        icon="mi/outline/warning-amber"
+        headline="Warfarin prescription failed"
+      >
+        <div class="py-600 grid gap-400">
+          <mds-text typography="detail">
+            Prescription for <b>Warfarin</b> for the patient diagnosed with <b
+              >atrial fibrillation</b
+            > failed due to these reasons:
+          </mds-text>
+          <mds-list class="gap-200">
+            <mds-list-item icon="mdi/needle" class="text-status-warning-03"
+              >The patient's latest INR value is missing.</mds-list-item
+            >
+            <mds-list-item icon="mdi/pill" class="text-status-warning-03"
+              >Warfarin dosage recommendations require a recent INR measurement</mds-list-item
+            >
+          </mds-list>
         </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>When AI Output Is Wrong</b></mds-text>
-          <mds-text typography="detail"
-            >This translation may be inaccurate. The source text contains uncommon terms I'm not
-            confident about. Please verify before using.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Explicitly signal uncertainty or possible error so users don't trust wrong output.</mds-text
-          >
+        <mds-button slot="action" class="mobile:w-full" variant="warning" tone="weak"
+          >View patient lab results</mds-button
+        >
+        <mds-button slot="action" class="mobile:w-full" variant="warning" tone="weak"
+          >Enter INR value manually</mds-button
+        >
+        <mds-button slot="action" class="mobile:w-full" variant="dark" tone="strong"
+          >Proceed without AI assistance</mds-button
+        >
+      </mds-banner>
+    </div>
+    <div class="grid gap-600 w-full">
+      <PatientCard />
+      <div class="grid gap-200 p-600 rounded-2xl bg-tone-neutral shadow-sm-sharp">
+        <mds-text typography="label">prescription</mds-text>
+        <div class="grid grid-cols-2 mobile:grid-cols-full gap-400 items-center">
+          <mds-benchmark-bar value="25" alias="2 capsules per day">Warfarin</mds-benchmark-bar>
+          <div class="flex items-center gap-200 p-200 rounded-lg bg-status-error-10">
+            <mds-icon name="mi/baseline/error" class="fill-status-error-05"></mds-icon>
+            <mds-text typography="caption">Prescription error occurred</mds-text>
+          </div>
         </div>
       </div>
     </div>
