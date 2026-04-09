@@ -13,10 +13,19 @@ interface Props {
   class?: string;
   picture?: string;
   title?: string;
+  ratio?: 'panoramic' | 'tv' | 'square' | 'landscape' | 'portrait';
   description?: string;
 }
 
-const { href, class: className = '', picture, title, description } = Astro.props;
+const { href, class: className = '', picture, title, ratio = 'square', description } = Astro.props;
+
+const ratioClasses: Record<string, string> = {
+  panoramic: 'aspect-[16/9]',
+  tv: 'aspect-[4/3]',
+  square: 'aspect-square',
+  landscape: 'aspect-[9/16]',
+  portrait: 'aspect-[3/4]',
+};
 ---
 
 <a
@@ -24,7 +33,11 @@ const { href, class: className = '', picture, title, description } = Astro.props
   class={`grid grid-cols-full snap-start scroll-mx-200 grid-rows-[1fr_auto] gap-200 p-200 min-w-2800 rounded-lg bg-tone-neutral shadow-sm-sharp-light text-tone-neutral-02 transition-shadow focus-bounce no-underline hover:shadow-outline-50 ${className}`}
   data-ai-link
 >
-  {picture && <mds-img src={picture} alt={title} class="size-full rounded" />}
+  {
+    picture && (
+      <mds-img src={picture} alt={title} class={`size-full rounded ${ratioClasses[ratio]}`} />
+    )
+  }
   <div class="grid gap-0 grid-cols-full">
     <mds-text typography="caption" truncate="word"><b>{title}</b></mds-text>
     {
