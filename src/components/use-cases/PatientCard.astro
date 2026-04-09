@@ -4,60 +4,26 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 ---
 
 <div class="grid grid-cols-full gap-400 p-600 rounded-2xl bg-tone-neutral shadow-sm-sharp">
-  <mds-text typography="label">patient data</mds-text>
-  <div class="flex mobile:grid mobile:grid-cols-full gap-400 justify-between">
-    <div class="grid grid-cols-full gap-400 auto-rows-min">
-      <div
-        class="flex mobile:grid mobile:grid-cols-2 auto-rows-min items-start gap-600 mobile:gap-200"
-      >
-        <mds-avatar class="mobile:hidden" alt="Maria Rossi"></mds-avatar>
-        <div class="grid grid-cols-full auto-rows-min">
-          <mds-text typography="detail"><b>Full name</b></mds-text>
-          <mds-text typography="detail">Maria Rossi</mds-text>
-        </div>
-        <div class="grid grid-cols-full auto-rows-min">
-          <mds-text typography="detail"><b>ID</b></mds-text>
-          <mds-text typography="detail">00859234</mds-text>
+  <div class="grid gap-400 grid-cols-[1fr_auto]">
+    <div class="grid gap-400">
+      <mds-text typography="label">patient data</mds-text>
+      <div class="flex mobile:grid mobile:grid-cols-full gap-400 justify-between">
+        <div class="grid grid-cols-full gap-400 auto-rows-min">
+          <div
+            class="flex mobile:grid mobile:grid-cols-2 auto-rows-min items-start gap-600 mobile:gap-200"
+          >
+            <mds-avatar class="mobile:hidden" alt="Maria Rossi"></mds-avatar>
+            <div class="grid grid-cols-full auto-rows-min">
+              <mds-text typography="detail"><b>Full name</b></mds-text>
+              <mds-text typography="detail">Maria Rossi</mds-text>
+            </div>
+            <div class="grid grid-cols-full auto-rows-min">
+              <mds-text typography="detail"><b>ID</b></mds-text>
+              <mds-text typography="detail">00859234</mds-text>
+            </div>
+          </div>
         </div>
       </div>
-      <mds-hr class="h-50 bg-tone-neutral-09"></mds-hr>
-      <mds-details class="-ml-200">
-        <mds-text slot="title" typography="h6">More patient data</mds-text>
-        <div class="grid grid-cols-2 mobile:grid-cols-full gap-400">
-          <div class="grid grid-cols-full auto-rows-min">
-            <mds-text typography="detail"><b>DOB</b></mds-text>
-            <mds-text typography="detail">1990-03-12</mds-text>
-          </div>
-          <div class="grid grid-cols-full auto-rows-min">
-            <mds-text typography="detail"><b>Blood type</b></mds-text>
-            <mds-text typography="detail">O+</mds-text>
-          </div>
-          <div class="grid grid-cols-full auto-rows-min">
-            <mds-text typography="detail"><b>Allergies</b></mds-text>
-            <mds-text typography="detail">Penicillin, Latex</mds-text>
-          </div>
-          <div class="grid grid-cols-full auto-rows-min">
-            <mds-text typography="detail"><b>MRN</b></mds-text>
-            <mds-text typography="detail">MRN-00859234</mds-text>
-          </div>
-          <div class="grid grid-cols-full auto-rows-min">
-            <mds-text typography="detail"><b>Primary physician</b></mds-text>
-            <mds-text typography="detail">Dr. Luca Bianchi</mds-text>
-          </div>
-          <div class="grid grid-cols-full auto-rows-min">
-            <mds-text typography="detail"><b>Department</b></mds-text>
-            <mds-text typography="detail">Internal Medicine</mds-text>
-          </div>
-          <div class="grid grid-cols-full auto-rows-min">
-            <mds-text typography="detail"><b>Emergency contact</b></mds-text>
-            <mds-text typography="detail">Giovanni Rossi — +39 320 555 1234</mds-text>
-          </div>
-          <div class="grid grid-cols-full auto-rows-min">
-            <mds-text typography="detail"><b>Insurance</b></mds-text>
-            <mds-text typography="detail">HealthCare Plus — Policy #HP-394-220-18</mds-text>
-          </div>
-        </div>
-      </mds-details>
     </div>
     <div
       class="grid shrink-0 mobile:-order-1 grid-cols-full mobile:p-200 mobile:pb-400 mobile:rounded-2xl mobile:bg-tone-neutral-10 gap-200 auto-rows-min items-center justify-center text-center"
@@ -69,4 +35,44 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
         alt="Patient QR code"></mds-img>
     </div>
   </div>
+  <mds-hr class="h-50 bg-tone-neutral-09"></mds-hr>
+  <slot />
+  <mds-hr class="h-50 bg-tone-neutral-09"></mds-hr>
+  <mds-details class="-ml-200">
+    <mds-text slot="title" typography="h6">More patient data</mds-text>
+    <div class="grid grid-cols-2 mobile:grid-cols-full gap-400">
+      <div class="grid grid-cols-full auto-rows-min">
+        <mds-text typography="detail"><b>DOB</b></mds-text>
+        <mds-text typography="detail">1990-03-12</mds-text>
+      </div>
+      <div class="grid grid-cols-full auto-rows-min">
+        <mds-text typography="detail"><b>Blood type</b></mds-text>
+        <mds-text typography="detail">O+</mds-text>
+      </div>
+      <div class="grid grid-cols-full auto-rows-min">
+        <mds-text typography="detail"><b>Allergies</b></mds-text>
+        <mds-text typography="detail">Penicillin, Latex</mds-text>
+      </div>
+      <div class="grid grid-cols-full auto-rows-min">
+        <mds-text typography="detail"><b>MRN</b></mds-text>
+        <mds-text typography="detail">MRN-00859234</mds-text>
+      </div>
+      <div class="grid grid-cols-full auto-rows-min">
+        <mds-text typography="detail"><b>Primary physician</b></mds-text>
+        <mds-text typography="detail">Dr. Luca Bianchi</mds-text>
+      </div>
+      <div class="grid grid-cols-full auto-rows-min">
+        <mds-text typography="detail"><b>Department</b></mds-text>
+        <mds-text typography="detail">Internal Medicine</mds-text>
+      </div>
+      <div class="grid grid-cols-full auto-rows-min">
+        <mds-text typography="detail"><b>Emergency contact</b></mds-text>
+        <mds-text typography="detail">Giovanni Rossi — +39 320 555 1234</mds-text>
+      </div>
+      <div class="grid grid-cols-full auto-rows-min">
+        <mds-text typography="detail"><b>Insurance</b></mds-text>
+        <mds-text typography="detail">HealthCare Plus — Policy #HP-394-220-18</mds-text>
+      </div>
+    </div>
+  </mds-details>
 </div>

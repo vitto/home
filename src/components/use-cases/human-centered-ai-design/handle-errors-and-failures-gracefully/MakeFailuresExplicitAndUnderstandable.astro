@@ -12,60 +12,46 @@ import PatientCard from '../../PatientCard.astro';
 >
   <UseCaseInteractive clsHeight={420} label="Explicit failure messaging" toggle>
     <div class="grid gap-600 w-full">
-      <PatientCard />
-      <div class="grid gap-200 p-600 rounded-2xl bg-tone-neutral shadow-sm-sharp">
-        <mds-text typography="label">prescription</mds-text>
-        <div class="grid grid-cols-2 mobile:grid-cols-full gap-400 items-center">
-          <mds-benchmark-bar value="25" alias="2 capsules per day">Warfarin</mds-benchmark-bar>
-          <div class="flex items-center gap-200 p-200 rounded-lg bg-status-warning-10">
-            <mds-icon name="mi/baseline/warning" class="fill-status-warning-05"></mds-icon>
-            <mds-text typography="caption"><b>INR</b> value is missing</mds-text>
+      <PatientCard>
+        <mds-banner
+          variant="warning"
+          icon="mi/outline/warning-amber"
+          headline="Warfarin prescription failed"
+        >
+          <div class="py-600 grid gap-400">
+            <mds-text typography="detail">
+              Prescription for <b>Warfarin</b> for the patient diagnosed with <b
+                >atrial fibrillation</b
+              > failed due to these reasons:
+            </mds-text>
+            <mds-list class="gap-200">
+              <mds-list-item icon="mdi/needle" class="text-status-warning-03"
+                >The patient's latest INR value is missing.</mds-list-item
+              >
+              <mds-list-item icon="mdi/pill" class="text-status-warning-03"
+                >Warfarin dosage recommendations require a recent INR measurement</mds-list-item
+              >
+            </mds-list>
           </div>
-        </div>
-      </div>
-      <mds-banner
-        variant="warning"
-        icon="mi/outline/warning-amber"
-        headline="Warfarin prescription failed"
-      >
-        <div class="py-600 grid gap-400">
-          <mds-text typography="detail">
-            Prescription for <b>Warfarin</b> for the patient diagnosed with <b
-              >atrial fibrillation</b
-            > failed due to these reasons:
-          </mds-text>
-          <mds-list class="gap-200">
-            <mds-list-item icon="mdi/needle" class="text-status-warning-03"
-              >The patient's latest INR value is missing.</mds-list-item
-            >
-            <mds-list-item icon="mdi/pill" class="text-status-warning-03"
-              >Warfarin dosage recommendations require a recent INR measurement</mds-list-item
-            >
-          </mds-list>
-        </div>
-        <mds-button slot="action" class="mobile:w-full" variant="warning" tone="weak"
-          >View patient lab results</mds-button
-        >
-        <mds-button slot="action" class="mobile:w-full" variant="warning" tone="weak"
-          >Enter INR value manually</mds-button
-        >
-        <mds-button slot="action" class="mobile:w-full" variant="dark" tone="strong"
-          >Proceed without AI assistance</mds-button
-        >
-      </mds-banner>
+          <mds-button slot="action" class="mobile:w-full" variant="warning" tone="weak"
+            >View lab results</mds-button
+          >
+          <mds-button slot="action" class="mobile:w-full" variant="warning" tone="weak"
+            >Enter INR manually</mds-button
+          >
+          <mds-button slot="action" class="mobile:w-full" variant="dark" tone="strong"
+            >Proceed without AI assistance</mds-button
+          >
+        </mds-banner>
+      </PatientCard>
     </div>
     <div class="grid gap-600 w-full">
-      <PatientCard />
-      <div class="grid gap-200 p-600 rounded-2xl bg-tone-neutral shadow-sm-sharp">
-        <mds-text typography="label">prescription</mds-text>
-        <div class="grid grid-cols-2 mobile:grid-cols-full gap-400 items-center">
-          <mds-benchmark-bar value="25" alias="2 capsules per day">Warfarin</mds-benchmark-bar>
-          <div class="flex items-center gap-200 p-200 rounded-lg bg-status-error-10">
-            <mds-icon name="mi/baseline/error" class="fill-status-error-05"></mds-icon>
-            <mds-text typography="caption">Prescription error occurred</mds-text>
-          </div>
+      <PatientCard>
+        <div class="flex items-center gap-200 p-200 rounded-lg bg-status-error-10">
+          <mds-icon name="mi/baseline/error" class="fill-status-error-05"></mds-icon>
+          <mds-text typography="caption">Prescription error occurred</mds-text>
         </div>
-      </div>
+      </PatientCard>
     </div>
   </UseCaseInteractive>
   <Usage>
