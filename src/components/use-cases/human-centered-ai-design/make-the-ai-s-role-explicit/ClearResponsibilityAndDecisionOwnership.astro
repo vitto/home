@@ -13,36 +13,44 @@ import Products from '../../../Products.astro';
   description="Users should know who is responsible for decisions: the AI makes suggestions, but the user retains final control."
 >
   <UseCaseInteractive clsHeight={112} label="Decision ownership" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>AI Suggestion</b></mds-text>
-          <mds-text typography="detail"
-            >Based on your preferences, I recommend scheduling the meeting for Tuesday at 2 PM.</mds-text
-          >
-        </div>
-        <div class="flex gap-200">
-          <mds-button variant="primary">Accept suggestion</mds-button>
-          <mds-button variant="outline">Choose different time</mds-button>
-        </div>
-        <mds-text typography="caption" class="text-tone-neutral-05"
-          >You have full control over the final decision.</mds-text
-        >
-      </div>
-      <div
-        class="grid gap-400 p-600 rounded-lg bg-status-warning-10 border border-status-warning-03"
+    <div class="grid gap-600 w-full max-w-9600">
+      <mds-banner
+        icon="mgg/ai-chatbot-outline"
+        headline="AI schedule suggestion"
+        variant="ai"
+        tone="weak"
       >
-        <div class="flex items-center gap-200">
-          <mds-icon name="mi/outline/warning-amber" class="text-status-warning-05"></mds-icon>
-          <mds-text typography="label"><b>Automated Action</b></mds-text>
-        </div>
-        <mds-text typography="detail"
-          >The AI will automatically send a follow-up email in 24 hours if no response is received.</mds-text
+        <mds-text typography="caption"
+          >Based on your preferences, the system would recommend you to schedule the meeting for
+          Tuesday at 2 PM.</mds-text
         >
-        <mds-text typography="caption" class="text-status-warning-06"
-          >This action is automated. You can disable it in settings.</mds-text
+        <mds-hr class="h-50 my-400"></mds-hr>
+        <mds-input-switch size="sm" explicit>
+          <mds-text typography="caption"
+            >Automatically send a follow-up email in 24 hours if no response is received.</mds-text
+          >
+        </mds-input-switch>
+        <mds-hr class="h-50 mt-400 mb-200"></mds-hr>
+        <mds-button slot="action" variant="ai" tone="weak">Change time</mds-button>
+        <mds-button slot="action" variant="ai">Confirm</mds-button>
+      </mds-banner>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <mds-banner
+        icon="mgg/ai-chatbot-outline"
+        headline="AI schedule suggestion"
+        variant="ai"
+        tone="weak"
+      >
+        <mds-text typography="caption"
+          >Based on your preferences, the system would recommend you to schedule the meeting for
+          Tuesday at 2 PM. The system will send a follow-up email in 24 hours if no response is
+          received.</mds-text
         >
-      </div>
+        <mds-button slot="action" variant="ai" tone="weak">Preferences</mds-button>
+        <mds-button slot="action" variant="ai" tone="weak">Change time</mds-button>
+        <mds-button slot="action" variant="ai">Confirm</mds-button>
+      </mds-banner>
     </div>
   </UseCaseInteractive>
   <Usage>
