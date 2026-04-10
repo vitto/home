@@ -3,6 +3,9 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
@@ -10,33 +13,82 @@ import UsageItem from '../../../UsageItem.astro';
   description="Users should immediately recognize when they're interacting with an AI system, not a human agent."
 >
   <UseCaseInteractive clsHeight={112} label="AI identity indicators" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-200 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="flex items-center gap-200">
-          <mds-icon name="mgg/ai-chatbot" class="text-label-orange-05"></mds-icon>
-          <mds-text typography="label"><b>AI Assistant</b></mds-text>
-          <mds-badge variant="orange" tone="weak" class="text-label-orange-06"
-            >Powered by AI</mds-badge
-          >
-        </div>
-        <mds-text typography="detail"
-          >I'm an AI assistant. I can help you with questions and tasks, but I may make mistakes.</mds-text
+    <div class="grid gap-600 w-full max-w-9600">
+      <mds-emoji class="size-2400 m-auto" data-ai-chatbot></mds-emoji>
+      <HighlightBox label="Clear AI presence" variant="success">
+        <mds-text typography="caption"
+          >Hello, I'm Hexago, the <b>AI assistant</b> of Beauty Center I Rituali di Fiore. I can help
+          you make an appointment for a treatment. How can I help you?</mds-text
         >
-      </div>
-      <div class="grid gap-200 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="flex items-center gap-200">
-          <mds-icon name="mi/baseline/person" class="text-tone-neutral-05"></mds-icon>
-          <mds-text typography="label"><b>Human Agent</b></mds-text>
-          <mds-badge variant="neutral" tone="weak" class="text-tone-neutral-06"
-            >Available now</mds-badge
-          >
-        </div>
-        <mds-text typography="detail"
-          >Hi! I'm Sarah, a customer support specialist. How can I help you today?</mds-text
+      </HighlightBox>
+      <AIBalloon>
+        <AIBalloonMessage>
+          I'd like to make an appointment for a facial massage. What dates are available?
+        </AIBalloonMessage>
+      </AIBalloon>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <video
+        class="size-2400 m-auto rounded-xl object-cover object-top"
+        autoplay
+        loop
+        muted
+        src="/assets/ai-antropomorphic-assistant.mp4"></video>
+      <HighlightBox label="Unclear AI presence" variant="error">
+        <mds-text typography="caption"
+          >Hello, I'm Vera, the assistant of Beauty Center I Rituali di Fiore. I can help you make
+          an appointment for a treatment. How can I help you?</mds-text
         >
-      </div>
+      </HighlightBox>
+      <AIBalloon>
+        <AIBalloonMessage>
+          Hello Vera, nice to meet you. Are you available for a facial massage tomorrow?
+        </AIBalloonMessage>
+      </AIBalloon>
     </div>
   </UseCaseInteractive>
+  <script>
+    function initAiChatbotBlinking() {
+      const emojiEl = document.querySelector('[data-ai-chatbot]');
+      if (!emojiEl) return;
+
+      const api = emojiEl as unknown as {
+        startBlinking?: () => void;
+        startFollowMouse?: () => void;
+        stopFollowMouse?: () => void;
+      };
+
+      const runBlinking = () => {
+        if (typeof api.startBlinking === 'function') api.startBlinking.call(emojiEl);
+      };
+
+      const runFollowMouse = () => {
+        if (typeof api.startFollowMouse === 'function') api.startFollowMouse.call(emojiEl);
+      };
+
+      const runStopFollowMouse = () => {
+        if (typeof api.stopFollowMouse === 'function') api.stopFollowMouse.call(emojiEl);
+      };
+
+      if (customElements.get('mds-emoji')) {
+        runBlinking();
+      } else {
+        customElements.whenDefined('mds-emoji').then(runBlinking);
+      }
+
+      const interactiveContainer = emojiEl.closest('.use-case-interactive-content')?.parentElement;
+      if (interactiveContainer) {
+        interactiveContainer.addEventListener('mouseenter', runFollowMouse);
+        interactiveContainer.addEventListener('mouseleave', runStopFollowMouse);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAiChatbotBlinking);
+    } else {
+      initAiChatbotBlinking();
+    }
+  </script>
   <Usage>
     <UsageItem variant="do">
       Use clear visual indicators (icons, badges) to distinguish AI from human agents.
