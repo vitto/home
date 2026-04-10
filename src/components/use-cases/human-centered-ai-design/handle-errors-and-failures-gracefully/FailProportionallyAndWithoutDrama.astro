@@ -3,83 +3,61 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import AIResponseFollowUpAction from '../../AIResponseFollowUpAction.astro';
+import Markdown from '../../../Markdown.astro';
+import AIResponseFollowUp from '../../AIResponseFollowUp.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
   title="Fail Proportionally and Without Drama"
   description="Match the tone and prominence of error messaging to the severity of the failure. Avoid overdramatic or alarming language for minor issues."
 >
-  <UseCaseInteractive clsHeight={112} label="Proportional failure messaging" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Minor Issue (Low Prominence)</b></mds-text>
-          <mds-text typography="detail"
-            >Suggestion unavailable for this sentence. You can keep typing or edit manually.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Small, inline notice for a minor failure—no modal, no alarm.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/warning-amber" class="text-status-warning-05"></mds-icon>
-            <mds-text typography="label"><b>Moderate Issue (Appropriate)</b></mds-text>
-          </div>
-          <mds-text typography="detail"
-            >The AI couldn't verify this claim. Consider checking another source before sharing.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Clear but calm; matches the moderate impact of unverified content.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Overdramatic (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="detail"
-            >⚠️ CRITICAL ERROR! Something has gone terribly wrong! The system has failed! Please
-            contact support immediately!</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Same failure (e.g. suggestion unavailable) presented as a catastrophe. Causes
-            unnecessary alarm and erodes trust when users see it's not that serious.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Proportional Messaging</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Minor:</b> Inline or subtle notice, calm tone</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Moderate:</b> Clear message, optional action</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Serious:</b> Prominent message, clear impact, recovery path</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Don't:</b> Use "critical", "terrible", or full-screen alerts for minor or recoverable
-                issues</mds-text
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+  <UseCaseInteractive clsHeight={160} label="Proportional failure messaging" toggle>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I would like something for skin blemishes after the summer
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="progressive failure" variant="success" class="relative grid gap-600">
+          <Markdown
+            typography="detail"
+            content={`
+  I may need a little more detail to recommend the best treatment. Could you tell me your skin type or any sensitivities?
+          `}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I would like something for skin blemishes after the summer
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="disproportionate error" variant="error" class="relative grid gap-600">
+          <Markdown
+            typography="detail"
+            content={`
+I couldn't determine an appropriate treatment for your request.
+
+Skin blemishes can be caused by multiple factors (hormonal, UV exposure, skin conditions) and require a thorough evaluation.
+
+Try to:
+
+- Consult a dermatologist before proceeding
+- Avoid any unsupervised treatment
+- Provide detailed information (skin type, age, medical history, medications currently being used)
+          `}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>

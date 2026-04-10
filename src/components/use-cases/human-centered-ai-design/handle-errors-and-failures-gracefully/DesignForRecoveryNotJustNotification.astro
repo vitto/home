@@ -11,7 +11,7 @@ import AILink from '../../AILink.astro';
   title="Design for Recovery, Not Just Notification"
   description="Every error state should offer a path to recover—retry, alternative action, or safe fallback—not just inform the user that something failed."
 >
-  <UseCaseInteractive clsHeight={112} label="Recovery options" toggle>
+  <UseCaseInteractive clsHeight={304} label="Recovery options" toggle>
     <div class="grid gap-600 w-full max-w-9600">
       <div class="grid gap-200 grid-cols-full">
         <mds-text typography="label">Source</mds-text>
@@ -165,8 +165,8 @@ import AILink from '../../AILink.astro';
 
           rollbackTimer = setTimeout(() => {
             rollback();
-          }, 5000);
-        }, 3000);
+          }, 3000);
+        }, 2000);
       });
     }
 
