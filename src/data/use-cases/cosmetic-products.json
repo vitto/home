@@ -1,0 +1,38 @@
+[
+  {
+    "model": "Radiance Serum",
+    "title": "Radiance Vitamin C Serum",
+    "description": "Brightening face serum with stabilized vitamin C and hyaluronic acid for a more even, luminous complexion.",
+    "image": "/assets/cosmetic-product-01.webp"
+  },
+  {
+    "model": "Hydra Cream",
+    "title": "Hydra Repair Moisturizing Cream",
+    "description": "Rich daily moisturizer with ceramides and glycerin to strengthen the skin barrier and lock in hydration.",
+    "image": "/assets/cosmetic-product-02.webp"
+  },
+  {
+    "model": "Gentle Cleanser",
+    "title": "Gentle Foaming Cleanser",
+    "description": "pH-balanced cleanser that removes makeup and impurities without stripping or drying sensitive skin.",
+    "image": "/assets/cosmetic-product-03.webp"
+  },
+  {
+    "model": "SPF 50 Fluid",
+    "title": "Invisible SPF 50 Sun Fluid",
+    "description": "Lightweight broad-spectrum sunscreen with a non-greasy finish, suitable under makeup.",
+    "image": "/assets/cosmetic-product-04.webp"
+  },
+  {
+    "model": "Night Oil",
+    "title": "Restorative Night Facial Oil",
+    "description": "Plant-based night oil with squalane and antioxidants to nourish skin overnight and soften fine lines.",
+    "image": "/assets/cosmetic-product-05.webp"
+  },
+  {
+    "model": "Eye Contour",
+    "title": "Firming Eye Contour Gel",
+    "description": "Cooling eye gel with caffeine and peptides to reduce the look of puffiness and dark circles.",
+    "image": "/assets/cosmetic-product-06.webp"
+  }
+]

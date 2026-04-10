@@ -3,9 +3,13 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
-import Brand from '../../../Brand.astro';
-import ProductCategory from '../../../ProductCategory.astro';
-import Products from '../../../Products.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import AILink from '../../AILink.astro';
+import AILinks from '../../AILinks.astro';
+import cosmeticProductsData from '../../../../data/use-cases/cosmetic-products.json';
 ---
 
 <UseCase
@@ -13,30 +17,88 @@ import Products from '../../../Products.astro';
   description="Users should understand what the AI can and cannot do, its limitations, and when it might need human assistance."
 >
   <UseCaseInteractive clsHeight={112} label="Capability boundaries" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>What I can help with:</b></mds-text>
-          <ul class="list-disc list-inside grid gap-100 text-info-detail">
-            <li>Answer questions about product features</li>
-            <li>Help troubleshoot common issues</li>
-            <li>Provide documentation and guides</li>
-            <li>Generate code examples</li>
-          </ul>
+    <div class="grid gap-600 w-full max-w-9600">
+      <div
+        class="rounded-xl overflow-hidden p-600 pt-0 shadow-sharp grid gap-600 relative translate-x-0"
+      >
+        <div
+          class="flex bg-tone-neutral gap-200 justify-start items-center shadow px-600 py-200 fixed top-0 left-0 right-0 z-10"
+        >
+          <mds-emoji class="size-1200 shrink-0"></mds-emoji>
+          <div class="grid grid-cols-full grow">
+            <mds-text typography="h6">Skin Care Online Store</mds-text>
+            <mds-text typography="option">AI assistant</mds-text>
+          </div>
         </div>
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>What I cannot do:</b></mds-text>
-          <ul class="list-disc list-inside grid gap-100 text-info-detail">
-            <li>Access your account or personal data</li>
-            <li>Make purchases or process refunds</li>
-            <li>Handle billing or payment issues</li>
-            <li>Provide real-time system status</li>
-          </ul>
+        <div class="grid gap-600 pt-2000">
+          <AIBalloon>
+            <AIBalloonMessage>
+              I would like something for skin blemishes after the summer
+            </AIBalloonMessage>
+          </AIBalloon>
+          <AIResponseMessage>
+            <Markdown
+              typography="caption"
+              content={`
+  I can help you choose cosmetic products that can even out your complexion, such as brightening serums or treatments with vitamin C, niacinamide, or light exfoliating acids.
+
+However, I cannot diagnose your skin or assess the specific nature of the spots (for example, whether they are melasma, solar lentigines, or other).
+
+If the spots are persistent, very dark, or change over time, it's important to consult a dermatologist for a thorough assessment.
+
+If you'd like, I can recommend products suited to your skin type.
+          `}
+            />
+          </AIResponseMessage>
         </div>
-        <div class="pt-200 border-t border-tone-neutral-03">
-          <mds-text typography="caption"
-            >For account-specific help, I can connect you with a human agent.</mds-text
-          >
+      </div>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <div
+        class="rounded-xl overflow-hidden p-600 pt-0 shadow-sharp grid gap-600 relative translate-x-0"
+      >
+        <div
+          class="flex bg-tone-neutral gap-200 justify-start items-center shadow px-600 py-200 fixed top-0 left-0 right-0 z-10"
+        >
+          <mds-emoji class="size-1200 shrink-0"></mds-emoji>
+          <div class="grid grid-cols-full grow">
+            <mds-text typography="h6">Skin Care Online Store</mds-text>
+            <mds-text typography="option">AI assistant</mds-text>
+          </div>
+        </div>
+        <div class="grid gap-600 pt-2000">
+          <AIBalloon>
+            <AIBalloonMessage>
+              I would like something for skin blemishes after the summer
+            </AIBalloonMessage>
+          </AIBalloon>
+          <AIResponseMessage>
+            <Markdown
+              typography="caption"
+              content={`
+  You definitely need a 20% vitamin C serum; your dark spots are self-explanatory. Use it every night.
+          `}
+            />
+            <AILinks>
+              {
+                cosmeticProductsData.map(
+                  (product: {
+                    model: string;
+                    title: string;
+                    description: string;
+                    image: string;
+                  }) => (
+                    <AILink
+                      href="https://vittoriovittori.com"
+                      picture={product.image}
+                      title={product.title}
+                      description={product.description}
+                    />
+                  )
+                )
+              }
+            </AILinks>
+          </AIResponseMessage>
         </div>
       </div>
     </div>
