@@ -1,3 +1,26 @@
+@property --opacity {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --z-index {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+@keyframes alarmElementItem {
+  0%,
+  50%,
+  100% {
+    --opacity: 0;
+  }
+  25% {
+    --opacity: 1;
+  }
+}
+
 .highlight {
   --highlight-color: var(--tone-neutral-04);
   --highlight-background-color: var(--tone-neutral-10);
@@ -33,6 +56,39 @@
   animation: alarmElement var(--duration) var(--ease) infinite;
   border-color: rgb(var(--highlight-color) / 1);
   background-color: rgb(var(--highlight-background-color));
+}
+
+.highlight-inline {
+  --item-duration: 6s;
+  --item-count: 0;
+
+  .highlight-inline-item {
+    position: relative;
+    z-index: var(--z-index, 0);
+
+    &.highlight-inline-item--current {
+      --z-index: 1;
+      --opacity: 1;
+    }
+  }
+
+  .highlight-content-label {
+    opacity: var(--opacity);
+  }
+
+  .highlight-inline-item-content {
+    --offset: 18px;
+    --opacity-multiplier: 0.75;
+    --color: rgb(var(--highlight-background-color) / var(--opacity));
+    box-shadow: 0 0 0 var(--offset) var(--color);
+    box-decoration-break: clone;
+    outline: 2px solid rgb(var(--highlight-color) / var(--opacity));
+    outline-offset: var(--offset);
+    background-color: var(--color);
+    transition-property: outline, background-color;
+    transition-duration: 0.75s;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); /* ease-out-expo */
+  }
 }
 
 @keyframes alarmElement {

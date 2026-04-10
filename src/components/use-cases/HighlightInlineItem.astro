@@ -1,0 +1,44 @@
+---
+import HighlightContent from './HighlightContent.astro';
+
+/**
+ * HighlightBox Component
+ *
+ * Wrapper container for highlighted content, providing relative positioning context.
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ * @param {string} label - Label for the highlight
+ * @param {string} variant - Variant for the highlight
+ */
+interface Props {
+  class?: string;
+  label?: string;
+  variant?: 'neutral' | 'success' | 'error' | 'warning' | 'info';
+}
+
+const { class: className = '', label = '', variant = 'neutral' } = Astro.props;
+
+const variantClass = {
+  error: 'highlight--error',
+  info: 'highlight--info',
+  neutral: 'highlight--neutral',
+  success: 'highlight--success',
+  warning: 'highlight--warning',
+};
+---
+
+<span
+  class={`relative highlight-inline-item pointer-events-none ${className} ${variantClass[variant]}`}
+  data-highlight-wrapper
+>
+  <div
+    class="highlight-content-label select-none text-info-option p-100 px-200 text-tone-neutral
+    justify-self-start absolute whitespace-nowrap pointer-events-none -top-500 left-0"
+  >
+    {label}
+  </div>
+  <span class="highlight-inline-item-content pointer-events-auto">
+    <span class="z-10 relative"><slot /></span>
+  </span>
+</span>

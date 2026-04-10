@@ -1,0 +1,85 @@
+---
+import HighlightContent from './HighlightContent.astro';
+
+/**
+ * HighlightBox Component
+ *
+ * Wrapper container for highlighted content, providing relative positioning context.
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes
+ * @param {string} label - Label for the highlight
+ * @param {string} variant - Variant for the highlight
+ */
+interface Props {
+  class?: string;
+  label?: string;
+  variant?: 'neutral' | 'success' | 'error' | 'warning' | 'info';
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<span
+  class={`relative z-10 highlight-inline ${className}`}
+  data-highlight-wrapper
+  data-highlight-inline
+>
+  <slot />
+</span>
+
+<script>
+  const HIGHLIGHT_INTERVAL_MS = 5000;
+
+  function getInlineItems(wrapper: Element): HTMLElement[] {
+    return Array.from(wrapper.querySelectorAll('.highlight-inline-item')) as HTMLElement[];
+  }
+
+  function setCurrentItem(wrapper: Element, currentIndex: number) {
+    const items = getInlineItems(wrapper);
+    items.forEach((item, index) => {
+      item.classList.toggle('highlight-inline-item--current', index === currentIndex);
+    });
+  }
+
+  function initHighlightInlineCycle() {
+    const wrappers = document.querySelectorAll('[data-highlight-inline]');
+
+    wrappers.forEach((wrapper) => {
+      if (wrapper.getAttribute('data-inline-cycle-init') === 'true') return;
+      wrapper.setAttribute('data-inline-cycle-init', 'true');
+
+      let currentIndex = 0;
+      const slot = wrapper.querySelector('slot');
+
+      const refreshItems = () => {
+        const items = getInlineItems(wrapper);
+        if (items.length === 0) return;
+        currentIndex = currentIndex % items.length;
+        setCurrentItem(wrapper, currentIndex);
+      };
+
+      refreshItems();
+
+      if (slot) {
+        slot.addEventListener('slotchange', () => {
+          refreshItems();
+        });
+      }
+
+      setInterval(() => {
+        const items = getInlineItems(wrapper);
+        if (items.length <= 1) return;
+
+        currentIndex = (currentIndex + 1) % items.length;
+        setCurrentItem(wrapper, currentIndex);
+      }, HIGHLIGHT_INTERVAL_MS);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHighlightInlineCycle);
+  } else {
+    initHighlightInlineCycle();
+  }
+</script>
