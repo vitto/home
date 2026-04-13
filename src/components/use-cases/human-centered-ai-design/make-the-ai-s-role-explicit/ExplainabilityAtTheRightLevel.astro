@@ -6,36 +6,84 @@ import UsageItem from '../../../UsageItem.astro';
 import Brand from '../../../Brand.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseFollowUp from '../../AIResponseFollowUp.astro';
+import AIResponseFollowUpAction from '../../AIResponseFollowUpAction.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
   title="Explainability at the Right Level"
   description="Provide explanations that match the user's needs: high-level reasoning for most users, technical details for experts."
 >
-  <UseCaseInteractive clsHeight={112} label="Explanation levels" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="flex items-center justify-between">
-          <mds-text typography="label"><b>Simple Explanation</b></mds-text>
-          <mds-badge variant="neutral" tone="weak">Default</mds-badge>
-        </div>
-        <mds-text typography="detail"
-          >I recommended this product because it matches your previous purchases and has high
-          ratings from similar customers.</mds-text
-        >
-        <mds-button variant="ghost" class="justify-self-start">Show technical details</mds-button>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="flex items-center justify-between">
-          <mds-text typography="label"><b>Technical Explanation</b></mds-text>
-          <mds-badge variant="neutral" tone="weak">Advanced</mds-badge>
-        </div>
-        <mds-text typography="detail"
-          >Recommendation based on collaborative filtering: cosine similarity (0.87) with users in
-          your segment, weighted by recency (30-day window) and rating confidence (n=1,247 reviews).</mds-text
-        >
-        <mds-button variant="ghost" class="justify-self-start">Show simple view</mds-button>
-      </div>
+  <UseCaseInteractive clsHeight={400} label="Explanation levels" toggle>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Wellcome back! How can I help you today?
+        `}
+        />
+      </AIResponseMessage>
+      <AIBalloon>
+        <AIBalloonMessage>
+          I just came back from the beach after the summer and I have blemishes on my skin. Do you
+          have any advice on how to fix them?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="balanced response" variant="success" class="relative grid gap-600">
+          <Markdown
+            typography="detail"
+            content={`
+Post-summer dark spots are often caused by sun exposure, which stimulates melanin production.
+To treat them, skin lightening products (such as vitamin C or mild exfoliating acids) and constant sunscreen are usually used to prevent further darkening.
+        `}
+          />
+        </HighlightBox>
+        <Markdown
+          typography="detail"
+          content={`
+If you'd like, I can recommend some more specific options or help you determine which treatment is best for you.
+        `}
+        />
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Wellcome back! How can I help you today?
+        `}
+        />
+      </AIResponseMessage>
+      <AIBalloon>
+        <AIBalloonMessage>
+          I just came back from the beach after the summer and I have blemishes on my skin. Do you
+          have any advice on how to fix them?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="too technical response" variant="error" class="relative grid gap-600">
+          <Markdown
+            typography="detail"
+            content={`
+Post-inflammatory dyschromia and solar lentigo result from hyperactivity of melanocytes stimulated by UVB rays, with irregular accumulation of eumelanin in the epidermis.
+        `}
+          />
+        </HighlightBox>
+        <Markdown
+          typography="detail"
+          content={`
+If you'd like, I can recommend some more specific options or help you determine which treatment is best for you.
+        `}
+        />
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>

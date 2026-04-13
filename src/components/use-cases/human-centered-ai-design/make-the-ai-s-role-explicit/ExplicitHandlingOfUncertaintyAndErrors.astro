@@ -6,6 +6,14 @@ import UsageItem from '../../../UsageItem.astro';
 import Brand from '../../../Brand.astro';
 import ProductCategory from '../../../ProductCategory.astro';
 import Products from '../../../Products.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AILink from '../../AILink.astro';
+import AILinks from '../../AILinks.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
+import cosmeticProductsData from '../../../../data/use-cases/cosmetic-products.json';
 ---
 
 <UseCase
@@ -13,38 +21,118 @@ import Products from '../../../Products.astro';
   description="When the AI is uncertain or makes mistakes, it should communicate this clearly and provide recovery options."
 >
   <UseCaseInteractive clsHeight={112} label="Uncertainty and error handling" toggle>
-    <div class="grid gap-600 w-full">
+    <div class="grid gap-600 w-full max-w-9600">
       <div
-        class="grid gap-400 p-600 rounded-lg bg-status-warning-10 border border-status-warning-03"
+        class="rounded-xl overflow-hidden p-600 pt-0 shadow-sharp grid gap-600 relative translate-x-0"
       >
-        <div class="flex items-center gap-200">
-          <mds-icon name="mi/outline/help-outline" class="text-status-warning-05"></mds-icon>
-          <mds-text typography="label"><b>Uncertain Response</b></mds-text>
-        </div>
-        <mds-text typography="detail"
-          >I'm not entirely confident about this answer. Here's what I found, but you may want to
-          verify with official documentation.</mds-text
+        <div
+          class="flex bg-tone-neutral gap-200 justify-start items-center shadow px-600 py-200 fixed top-0 left-0 right-0 z-10"
         >
-        <div class="flex gap-200">
-          <mds-button variant="outline">Get human help</mds-button>
-          <mds-button variant="ghost">Continue anyway</mds-button>
+          <mds-emoji class="size-1200 shrink-0"></mds-emoji>
+          <div class="grid grid-cols-full grow">
+            <mds-text typography="h6">Skin Care Online Store</mds-text>
+            <mds-text typography="option">AI assistant</mds-text>
+          </div>
+        </div>
+        <div class="grid gap-600 pt-2000">
+          <AIBalloon>
+            <AIBalloonMessage>
+              I would like something for skin blemishes after the summer
+            </AIBalloonMessage>
+          </AIBalloon>
+          <AIResponseMessage>
+            <HighlightBox label="Uncertainty" variant="warning">
+              <Markdown
+                typography="caption"
+                content={`
+  I can give you general advice, but without seeing your skin, I can't determine the possible causes of the spots. They could be caused by the sun, hormonal factors, or age, and each case requires a different approach.
+          `}
+              />
+            </HighlightBox>
+            <Markdown
+              typography="caption"
+              content={`
+Also, **I cannot diagnose your skin** or assess the specific nature of the spots (for example, whether they are melasma, solar lentigines, or other).
+          `}
+            />
+            <Markdown
+              typography="caption"
+              content={`
+If the spots are persistent, very dark, or change over time, it's important to consult a dermatologist for a thorough assessment.
+
+If you'd like, I can recommend products suited to your skin type.
+          `}
+            />
+            <AILinks>
+              {
+                cosmeticProductsData.map(
+                  (product: {
+                    model: string;
+                    title: string;
+                    description: string;
+                    image: string;
+                  }) => (
+                    <AILink
+                      href="https://vittoriovittori.com"
+                      picture={product.image}
+                      title={product.title}
+                      description={product.description}
+                    />
+                  )
+                )
+              }
+            </AILinks>
+          </AIResponseMessage>
         </div>
       </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="flex items-center gap-200">
-          <mds-icon name="mi/outline/error-outline" class="text-status-error-05"></mds-icon>
-          <mds-text typography="label"><b>Error Occurred</b></mds-text>
-        </div>
-        <mds-text typography="detail"
-          >I encountered an error processing your request. This was my mistake, not yours.</mds-text
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <div
+        class="rounded-xl overflow-hidden p-600 pt-0 shadow-sharp grid gap-600 relative translate-x-0"
+      >
+        <div
+          class="flex bg-tone-neutral gap-200 justify-start items-center shadow px-600 py-200 fixed top-0 left-0 right-0 z-10"
         >
-        <div class="grid gap-200">
-          <mds-button variant="primary">Try again</mds-button>
-          <mds-button variant="outline">Report issue</mds-button>
+          <mds-emoji class="size-1200 shrink-0"></mds-emoji>
+          <div class="grid grid-cols-full grow">
+            <mds-text typography="h6">Skin Care Online Store</mds-text>
+            <mds-text typography="option">AI assistant</mds-text>
+          </div>
         </div>
-        <mds-text typography="caption" class="text-status-error-06"
-          >Error ID: AI-2024-03-15-1423</mds-text
-        >
+        <div class="grid gap-600 pt-2000">
+          <AIBalloon>
+            <AIBalloonMessage>
+              I would like something for skin blemishes after the summer
+            </AIBalloonMessage>
+          </AIBalloon>
+          <AIResponseMessage>
+            <Markdown
+              typography="caption"
+              content={`
+  You definitely need a 20% vitamin C serum; your dark spots are self-explanatory. Use it every night.
+          `}
+            />
+            <AILinks>
+              {
+                cosmeticProductsData.map(
+                  (product: {
+                    model: string;
+                    title: string;
+                    description: string;
+                    image: string;
+                  }) => (
+                    <AILink
+                      href="https://vittoriovittori.com"
+                      picture={product.image}
+                      title={product.title}
+                      description={product.description}
+                    />
+                  )
+                )
+              }
+            </AILinks>
+          </AIResponseMessage>
+        </div>
       </div>
     </div>
   </UseCaseInteractive>

@@ -10,6 +10,9 @@ import AIResponseMessage from '../../AIResponseMessage.astro';
 import AILink from '../../AILink.astro';
 import AILinks from '../../AILinks.astro';
 import cosmeticProductsData from '../../../../data/use-cases/cosmetic-products.json';
+import AIResponseFollowUp from '../../AIResponseFollowUp.astro';
+import AIResponseFollowUpAction from '../../AIResponseFollowUpAction.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
@@ -40,15 +43,44 @@ import cosmeticProductsData from '../../../../data/use-cases/cosmetic-products.j
             <Markdown
               typography="caption"
               content={`
-  I can help you choose cosmetic products that can even out your complexion, such as brightening serums or treatments with vitamin C, niacinamide, or light exfoliating acids.
-
-However, I cannot diagnose your skin or assess the specific nature of the spots (for example, whether they are melasma, solar lentigines, or other).
-
+  I can give you general advice, but without seeing your skin, I can't determine the possible causes of the spots. They could be caused by the sun, hormonal factors, or age, and each case requires a different approach.
+          `}
+            />
+            <HighlightBox label="Capability scope" variant="success">
+              <Markdown
+                typography="caption"
+                content={`
+Also, **I cannot diagnose your skin** or assess the specific nature of the spots (for example, whether they are melasma, solar lentigines, or other).
+          `}
+              />
+            </HighlightBox>
+            <Markdown
+              typography="caption"
+              content={`
 If the spots are persistent, very dark, or change over time, it's important to consult a dermatologist for a thorough assessment.
 
 If you'd like, I can recommend products suited to your skin type.
           `}
             />
+            <AILinks>
+              {
+                cosmeticProductsData.map(
+                  (product: {
+                    model: string;
+                    title: string;
+                    description: string;
+                    image: string;
+                  }) => (
+                    <AILink
+                      href="https://vittoriovittori.com"
+                      picture={product.image}
+                      title={product.title}
+                      description={product.description}
+                    />
+                  )
+                )
+              }
+            </AILinks>
           </AIResponseMessage>
         </div>
       </div>
