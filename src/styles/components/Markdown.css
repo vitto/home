@@ -14,3 +14,8 @@
 .markdown p strong {
   @apply text-tone-neutral-01;
 }
+
+.markdown ul,
+.markdown ol {
+  @apply pl-600;
+}

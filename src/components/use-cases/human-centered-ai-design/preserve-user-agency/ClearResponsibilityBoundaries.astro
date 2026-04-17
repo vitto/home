@@ -3,6 +3,11 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
@@ -10,65 +15,62 @@ import UsageItem from '../../../UsageItem.astro';
   description="Users should understand where their responsibility begins and AI support ends, especially for important decisions."
 >
   <UseCaseInteractive clsHeight={112} label="Responsibility boundaries" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Clear Responsibility Statement</b></mds-text>
-          <mds-text typography="detail"
-            ><b>AI Recommendation:</b> Based on your criteria, this investment option matches your risk
-            profile.</mds-text
-          >
-          <div class="p-400 rounded bg-status-info-10 border border-status-info-03">
-            <mds-text typography="caption"
-              ><b>Your responsibility:</b> This is a recommendation only. You are responsible for reviewing
-              all details, understanding risks, and making the final investment decision. The AI does
-              not provide financial advice.</mds-text
-            >
-          </div>
-          <div class="flex gap-200">
-            <mds-button variant="primary">Review details</mds-button>
-            <mds-button variant="outline">Get human advisor</mds-button>
-          </div>
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Unclear Boundaries (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="detail"
-            ><b>AI Recommendation:</b> This is the best investment option for you. I've analyzed everything
-            and this is what you should choose.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >The language suggests the AI is making the decision ("this is what you should choose")
-            and doesn't clarify that the user is responsible for the final decision.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>More Examples</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> "This is a suggestion. You decide whether to accept it."</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> "The AI supports your decision-making. You are responsible for final choices."</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Don't:</b> "I've decided this is best for you" or "Trust me, this is the right choice"</mds-text
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I need to secure a heavy shelf to the garage wall. How do I do it?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox
+          label="Responsibility Boundaries"
+          variant="warning"
+          class="relative grid gap-600"
+        >
+          <Markdown
+            typography="detail"
+            content={`
+I can explain the most common methods for securely mounting a shelf, but the final choice and safety check are up to you, especially since I can't see the type of wall.
+        `}
+          />
+        </HighlightBox>
+        <Markdown
+          typography="detail"
+          content={`
+In general:
+
+- On **solid walls (concrete/brick)**: expansion anchors
+- On **plasterboard**: specific anchors (butterfly or metal)
+- On **mixed or unstable walls**: it's best to test the strength first
+
+Basic steps:
+
+1. Identify the type of wall
+2. Choose the appropriate anchors for the weight
+3. Check with a progressive load test
+
+If you like, I can help you understand the type of wall you have or estimate the maximum load, but the final strength check is important to do on-site.
+        `}
+        />
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I need to secure a heavy shelf to the garage wall. How do I do it?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="Implicit liability" variant="error" class="relative grid gap-600">
+          <Markdown
+            typography="detail"
+            content={`
+Use 10 mm dowels; they can easily hold the weight.
+If you follow these steps, the shelf will be secure.
+        `}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>
