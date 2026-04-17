@@ -204,141 +204,143 @@ Vittorio`}
       </div>
     </div>
   </UseCaseInteractive>
-</UseCase>
-<script define:vars={{ messageText }}>
-  function initUserOverrideAndManualControl() {
-    const scope = window.getUseCaseScope?.('user-override-and-manual-control');
-    if (!scope) return;
+  <script define:vars={{ messageText }}>
+    function initUserOverrideAndManualControl() {
+      const scope = window.getUseCaseScope?.('user-override-and-manual-control');
+      if (!scope) return;
 
-    const { container } = scope;
-    const messageDuration = 1500;
-    const thinkingMessages = [
-      'Analyzing your request for a professional email template...',
-      'Structuring subject, agenda, and collaborative tone...',
-      'Generating the final message draft for the new message panel...',
-    ];
-    const instances = container.querySelectorAll('[data-override-instance]');
-    instances.forEach((instance) => {
-      const sendButton = instance.querySelector('[data-send-message]');
-      const inputMessage = instance.querySelector('[data-input-message]');
-      const pendingResponse = instance.querySelector('[data-ai-pending-response]');
-      const sentMessageBalloon = instance.querySelector('[data-ai-balloon-sent-message]');
-      const pendingSpinner = instance.querySelector('[data-ai-pending-response-spinner]');
-      const pendingText = instance.querySelector('[data-ai-pending-response-text]');
-      const newMessagePanel = instance.querySelector('[data-new-message-panel]');
-      const restartButton = instance.querySelector('[data-restart-button]');
+      const { container } = scope;
+      const messageDuration = 1500;
+      const thinkingMessages = [
+        'Analyzing your request for a professional email template...',
+        'Structuring subject, agenda, and collaborative tone...',
+        'Generating the final message draft for the new message panel...',
+      ];
+      const instances = container.querySelectorAll('[data-override-instance]');
+      instances.forEach((instance) => {
+        const sendButton = instance.querySelector('[data-send-message]');
+        const inputMessage = instance.querySelector('[data-input-message]');
+        const pendingResponse = instance.querySelector('[data-ai-pending-response]');
+        const sentMessageBalloon = instance.querySelector('[data-ai-balloon-sent-message]');
+        const pendingSpinner = instance.querySelector('[data-ai-pending-response-spinner]');
+        const pendingText = instance.querySelector('[data-ai-pending-response-text]');
+        const newMessagePanel = instance.querySelector('[data-new-message-panel]');
+        const restartButton = instance.querySelector('[data-restart-button]');
 
-      if (
-        !sendButton ||
-        !inputMessage ||
-        !pendingResponse ||
-        !sentMessageBalloon ||
-        !pendingSpinner ||
-        !pendingText ||
-        !newMessagePanel ||
-        !restartButton
-      ) {
-        return;
-      }
-
-      let thinkingIntervalId = null;
-      let showPanelTimeoutId = null;
-
-      const clearTimers = () => {
-        if (thinkingIntervalId) {
-          clearInterval(thinkingIntervalId);
-          thinkingIntervalId = null;
+        if (
+          !sendButton ||
+          !inputMessage ||
+          !pendingResponse ||
+          !sentMessageBalloon ||
+          !pendingSpinner ||
+          !pendingText ||
+          !newMessagePanel ||
+          !restartButton
+        ) {
+          return;
         }
-        if (showPanelTimeoutId) {
-          clearTimeout(showPanelTimeoutId);
-          showPanelTimeoutId = null;
-        }
-      };
 
-      const setInputValue = (value) => {
-        if ('value' in inputMessage) {
-          inputMessage.value = value;
-        }
-        inputMessage.setAttribute('value', value);
-      };
+        let thinkingIntervalId = null;
+        let showPanelTimeoutId = null;
 
-      const rollback = () => {
-        clearTimers();
-        setInputValue(messageText);
-
-        pendingSpinner.removeAttribute('running');
-        pendingText.textContent = 'Thinking...';
-        pendingResponse.classList.remove('flex');
-        pendingResponse.classList.add('hidden');
-
-        sentMessageBalloon.classList.remove('opacity-1');
-        sentMessageBalloon.classList.add('opacity-0');
-        sentMessageBalloon.classList.add('translate-y-100');
-
-        newMessagePanel.classList.remove('opacity-1');
-        newMessagePanel.classList.add('pointer-events-none');
-        newMessagePanel.classList.add('opacity-0');
-      };
-
-      sendButton.addEventListener('click', () => {
-        clearTimers();
-        setInputValue('');
-
-        sentMessageBalloon.classList.remove('opacity-0');
-        sentMessageBalloon.classList.remove('translate-y-100');
-        sentMessageBalloon.classList.add('opacity-1');
-
-        pendingResponse.classList.remove('hidden');
-        pendingResponse.classList.add('flex');
-        pendingSpinner.setAttribute('running', '');
-
-        let currentMessageIndex = 0;
-        pendingText.textContent = thinkingMessages[currentMessageIndex];
-
-        thinkingIntervalId = setInterval(() => {
-          currentMessageIndex += 1;
-          if (currentMessageIndex < thinkingMessages.length) {
-            pendingText.textContent = thinkingMessages[currentMessageIndex];
-          } else if (thinkingIntervalId) {
+        const clearTimers = () => {
+          if (thinkingIntervalId) {
             clearInterval(thinkingIntervalId);
             thinkingIntervalId = null;
           }
-        }, messageDuration);
+          if (showPanelTimeoutId) {
+            clearTimeout(showPanelTimeoutId);
+            showPanelTimeoutId = null;
+          }
+        };
 
-        showPanelTimeoutId = setTimeout(() => {
+        const setInputValue = (value) => {
+          if ('value' in inputMessage) {
+            inputMessage.value = value;
+          }
+          inputMessage.setAttribute('value', value);
+        };
+
+        const rollback = () => {
+          clearTimers();
+          setInputValue(messageText);
+
+          pendingSpinner.removeAttribute('running');
+          pendingText.textContent = 'Thinking...';
           pendingResponse.classList.remove('flex');
           pendingResponse.classList.add('hidden');
-          pendingSpinner.removeAttribute('running');
 
-          newMessagePanel.classList.remove('opacity-0');
-          newMessagePanel.classList.remove('pointer-events-none');
-          newMessagePanel.classList.add('opacity-1');
-        }, thinkingMessages.length * messageDuration);
-      });
+          sentMessageBalloon.classList.remove('opacity-1');
+          sentMessageBalloon.classList.add('opacity-0');
+          sentMessageBalloon.classList.add('translate-y-100');
 
-      restartButton.addEventListener('click', () => {
+          newMessagePanel.classList.remove('opacity-1');
+          newMessagePanel.classList.add('pointer-events-none');
+          newMessagePanel.classList.add('opacity-0');
+        };
+
+        sendButton.addEventListener('click', () => {
+          clearTimers();
+          setInputValue('');
+
+          sentMessageBalloon.classList.remove('opacity-0');
+          sentMessageBalloon.classList.remove('translate-y-100');
+          sentMessageBalloon.classList.add('opacity-1');
+
+          pendingResponse.classList.remove('hidden');
+          pendingResponse.classList.add('flex');
+          pendingSpinner.setAttribute('running', '');
+
+          let currentMessageIndex = 0;
+          pendingText.textContent = thinkingMessages[currentMessageIndex];
+
+          thinkingIntervalId = setInterval(() => {
+            currentMessageIndex += 1;
+            if (currentMessageIndex < thinkingMessages.length) {
+              pendingText.textContent = thinkingMessages[currentMessageIndex];
+            } else if (thinkingIntervalId) {
+              clearInterval(thinkingIntervalId);
+              thinkingIntervalId = null;
+            }
+          }, messageDuration);
+
+          showPanelTimeoutId = setTimeout(() => {
+            pendingResponse.classList.remove('flex');
+            pendingResponse.classList.add('hidden');
+            pendingSpinner.removeAttribute('running');
+
+            newMessagePanel.classList.remove('opacity-0');
+            newMessagePanel.classList.remove('pointer-events-none');
+            newMessagePanel.classList.add('opacity-1');
+          }, thinkingMessages.length * messageDuration);
+        });
+
+        restartButton.addEventListener('click', () => {
+          rollback();
+        });
+
         rollback();
       });
+    }
 
-      rollback();
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initUserOverrideAndManualControl);
-  } else {
-    initUserOverrideAndManualControl();
-  }
-</script>
-<Usage>
-  <UsageItem variant="do">
-    Always provide options to override, modify, or ignore AI suggestions.
-  </UsageItem>
-  <UsageItem variant="dont">Lock AI outputs or make them difficult to edit or override.</UsageItem>
-  <UsageItem variant="do">
-    Allow users to disable AI features and work entirely manually if they prefer.
-  </UsageItem>
-  <UsageItem variant="dont">
-    Force users to accept AI outputs or make manual control secondary or hidden.
-  </UsageItem>
-</Usage>
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initUserOverrideAndManualControl);
+    } else {
+      initUserOverrideAndManualControl();
+    }
+  </script>
+  <Usage>
+    <UsageItem variant="do">
+      Always provide options to override, modify, or ignore AI suggestions.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Lock AI outputs or make them difficult to edit or override.
+    </UsageItem>
+    <UsageItem variant="do">
+      Allow users to disable AI features and work entirely manually if they prefer.
+    </UsageItem>
+    <UsageItem variant="dont">
+      Force users to accept AI outputs or make manual control secondary or hidden.
+    </UsageItem>
+  </Usage>
+</UseCase>
