@@ -9,14 +9,19 @@
  */
 interface Props {
   class?: string;
+  value?: string;
+  type?: 'text' | 'textarea';
+  [key: string]: unknown;
 }
 
-const { class: className = '' } = Astro.props;
+const { class: className = '', value = '', type = 'text', ...attrs } = Astro.props;
 ---
 
 <mds-input
   class={`rounded-full ${className}`}
-  type="text"
+  type={type}
   variant="ai"
   placeholder="Ask something"
-  data-ai-input></mds-input>
+  value={value}
+  data-ai-input
+  {...attrs}></mds-input>

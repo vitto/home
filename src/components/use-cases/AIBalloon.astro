@@ -9,11 +9,12 @@
  */
 interface Props {
   class?: string;
+  [key: string]: unknown;
 }
 
-const { class: className = '' } = Astro.props;
+const { class: className = '', ...attrs } = Astro.props;
 ---
 
-<div class={`grid gap-400 ${className}`} data-ai-balloon>
+<div class={`grid gap-400 ${className}`} data-ai-balloon {...attrs}>
   <slot />
 </div>

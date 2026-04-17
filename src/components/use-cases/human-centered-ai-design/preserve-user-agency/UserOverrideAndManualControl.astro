@@ -3,64 +3,200 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
+import AIContext from '../../AIContext.astro';
+import AIInput from '../../AIInput.astro';
+import AIInputWrapper from '../../AIInputWrapper.astro';
+
+const messageText = `Write a professional but concise email to three colleagues to organize a meeting about the Magma Design System. The goal of the meeting is to define a roadmap for upcoming work and priorities. Suggest a couple of possible time slots and ask for availability. Keep the tone collaborative and clear, and include a brief agenda.`;
 ---
 
 <UseCase
   title="User Override and Manual Control"
   description="Users should always be able to override AI suggestions, modify outputs, or perform actions manually."
 >
-  <UseCaseInteractive clsHeight={112} label="Override and manual control" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>AI Suggestion with Override</b></mds-text>
-          <mds-text typography="detail">Suggested subject: "Follow-up: Project Discussion"</mds-text
+  <UseCaseInteractive clsHeight={612} label="Override and manual control" toggle>
+    <div class="grid gap-600 w-full min-h-[500px] auto-rows-min" data-override-instance>
+      <div
+        class="py-600 relative pb-[164px] grid gap-600 grid-cols-full w-full max-w-9600 justify-self-center"
+      >
+        <AIBalloon
+          class="pointer-events-none opacity-0 transition-cosmetic duration-300 ease-out-quad translate-y-100"
+          data-ai-balloon-sent-message
+        >
+          <AIBalloonMessage>
+            {messageText}
+          </AIBalloonMessage>
+        </AIBalloon>
+        <div
+          data-ai-pending-response
+          class="hidden gap-300 justify-start items-center auto-rows-min"
+        >
+          <mds-spinner class="w-600 h-600 shrink-0" data-ai-pending-response-spinner></mds-spinner>
+          <mds-text
+            typography="caption"
+            data-ai-pending-response-text
+            class="grow min-w-0 whitespace-nowrap"
+            truncate="all">Thinking...</mds-text
           >
-          <div class="grid gap-300">
-            <mds-input-text value="Follow-up: Project Discussion" placeholder="Email subject"
-            ></mds-input-text>
-            <div class="flex gap-200">
-              <mds-button variant="outline" size="sm">Use suggestion</mds-button>
-              <mds-button variant="outline" size="sm">Edit manually</mds-button>
+        </div>
+        <AIInputWrapper class="auto-rows-min absolute bottom-0 left-0 right-0">
+          <AIInput
+            value={messageText}
+            type="textarea"
+            class="pointer-events-none"
+            data-input-message
+          />
+          <mds-button variant="dark" tone="strong" class="justify-self-end" data-send-message
+            >Send</mds-button
+          >
+        </AIInputWrapper>
+      </div>
+      <div
+        data-new-message-panel
+        class="fixed flex opacity-0 pointer-events-none z-10 transition-cosmetic duration-300 ease-out-quad inset-0 bg-tone-neutral-01/40 rounded-3xl items-stretch justify-end p-400"
+      >
+        <div class="bg-tone-neutral rounded-xl shadow-lg w-2/3">
+          <div class="p-600 grid gap-400 overflow-auto max-h-full">
+            <div class="flex gap-200 items-center">
+              <mds-icon name="mi/outline/mail" class="fill-tone-neutral-03 size-600"></mds-icon>
+              <mds-text typography="h6">New message</mds-text>
             </div>
-            <mds-text typography="caption" class="text-tone-neutral-05"
-              >Users can accept the suggestion, edit it, or ignore it completely.</mds-text
-            >
+            <div class="grid gap-400 grid-cols-full">
+              <mds-input-field label="Subject">
+                <mds-input
+                  type="text"
+                  placeholder="Es: Roadmap Planning Meeting"
+                  value="Magma Design System - Roadmap Planning Meeting"></mds-input>
+              </mds-input-field>
+              <mds-input-field label="Content">
+                <mds-input
+                  type="textarea"
+                  class="max-h-5600"
+                  placeholder="Es: Roadmap Planning Meeting"
+                  value={`Hi everyone,
+
+I’d like to organize a meeting to align on the Magma Design System and define a roadmap for the upcoming work and priorities.
+
+Here’s a proposed agenda:
+
+- Current status overview
+- Key priorities and upcoming initiatives
+- Roadmap definition and next steps
+
+I’m available at the following times:
+
+- [Option 1]
+- [Option 2]
+
+Let me know what works best for you, or feel free to suggest alternatives.
+
+Thanks,
+Vittorio`}></mds-input>
+              </mds-input-field>
+            </div>
+            <div class="flex gap-300 justify-end items-center">
+              <mds-button variant="dark" tone="weak" data-restart-button class="justify-self-end"
+                >Restart</mds-button
+              >
+              <mds-button variant="dark" tone="strong" class="justify-self-end"
+                >Send message</mds-button
+              >
+            </div>
           </div>
         </div>
       </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>No Override Option (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="detail"
-            >Subject: "Follow-up: Project Discussion" (AI-generated, cannot be edited)</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >The AI suggestion is locked and cannot be modified, removing user control over their
-            own content.</mds-text
+    </div>
+    <div class="grid gap-600 w-full min-h-[500px] auto-rows-min" data-override-instance>
+      <div
+        class="py-600 relative pb-[164px] grid gap-600 grid-cols-full w-full max-w-9600 justify-self-center"
+      >
+        <AIBalloon
+          class="pointer-events-none opacity-0 transition-cosmetic duration-300 ease-out-quad translate-y-100"
+          data-ai-balloon-sent-message
+        >
+          <AIBalloonMessage>
+            {messageText}
+          </AIBalloonMessage>
+        </AIBalloon>
+        <div
+          data-ai-pending-response
+          class="hidden gap-300 justify-start items-center auto-rows-min"
+        >
+          <mds-spinner class="w-600 h-600 shrink-0" data-ai-pending-response-spinner></mds-spinner>
+          <mds-text
+            typography="caption"
+            data-ai-pending-response-text
+            class="grow min-w-0 whitespace-nowrap"
+            truncate="all">Thinking...</mds-text
           >
         </div>
+        <AIInputWrapper class="auto-rows-min absolute bottom-0 left-0 right-0">
+          <AIInput
+            value={messageText}
+            type="textarea"
+            class="pointer-events-none"
+            data-input-message
+          />
+          <mds-button variant="dark" tone="strong" class="justify-self-end" data-send-message
+            >Send</mds-button
+          >
+        </AIInputWrapper>
       </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Manual Control Always Available</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Provide "Edit manually" or "Override" options for all AI suggestions</mds-text
-              >
+      <div
+        data-new-message-panel
+        class="fixed flex opacity-0 pointer-events-none z-10 transition-cosmetic duration-300 ease-out-quad inset-0 bg-tone-neutral-01/40 rounded-3xl items-stretch justify-end p-400"
+      >
+        <div class="bg-tone-neutral rounded-xl shadow-lg w-2/3">
+          <div class="p-600 grid gap-400 overflow-auto max-h-full">
+            <div class="flex gap-200 items-center">
+              <mds-icon name="mi/outline/mail" class="fill-tone-neutral-03 size-600"></mds-icon>
+              <mds-text typography="h6">New message</mds-text>
             </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Allow users to disable AI features and work entirely manually</mds-text
-              >
+            <div class="grid gap-400 grid-cols-full">
+              <div class="grid gap-200">
+                <mds-text typography="label">Subject</mds-text>
+                <mds-text class="p-200 rounded-lg bg-tone-neutral-10"
+                  >Magma Design System - Roadmap Planning Meeting</mds-text
+                >
+              </div>
             </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Don't:</b> Force users to accept AI outputs or make manual editing difficult</mds-text
+            <div class="grid gap-200">
+              <mds-text typography="label">Content</mds-text>
+              <Markdown
+                typography="detail"
+                class="p-200 rounded-lg bg-tone-neutral-10 grid gap-300"
+                content={`Hi everyone,
+
+I’d like to organize a meeting to align on the Magma Design System and define a roadmap for the upcoming work and priorities.
+
+Here’s a proposed agenda:
+
+- Current status overview
+- Key priorities and upcoming initiatives
+- Roadmap definition and next steps
+
+I’m available at the following times:
+
+- Monday, April 20th, 2026 at 10:00 AM
+- Tuesday, April 21st, 2026 at 2:00 PM
+
+Let me know what works best for you, or feel free to suggest alternatives.
+
+Thanks,
+Vittorio`}
+              />
+            </div>
+            <div class="flex gap-300 justify-end items-center">
+              <mds-button variant="dark" tone="weak" data-restart-button class="justify-self-end"
+                >Restart</mds-button
+              >
+              <mds-button variant="dark" tone="strong" class="justify-self-end"
+                >Send message</mds-button
               >
             </div>
           </div>
@@ -68,18 +204,141 @@ import UsageItem from '../../../UsageItem.astro';
       </div>
     </div>
   </UseCaseInteractive>
-  <Usage>
-    <UsageItem variant="do">
-      Always provide options to override, modify, or ignore AI suggestions.
-    </UsageItem>
-    <UsageItem variant="dont">
-      Lock AI outputs or make them difficult to edit or override.
-    </UsageItem>
-    <UsageItem variant="do">
-      Allow users to disable AI features and work entirely manually if they prefer.
-    </UsageItem>
-    <UsageItem variant="dont">
-      Force users to accept AI outputs or make manual control secondary or hidden.
-    </UsageItem>
-  </Usage>
 </UseCase>
+<script define:vars={{ messageText }}>
+  function initUserOverrideAndManualControl() {
+    const scope = window.getUseCaseScope?.('user-override-and-manual-control');
+    if (!scope) return;
+
+    const { container } = scope;
+    const messageDuration = 1500;
+    const thinkingMessages = [
+      'Analyzing your request for a professional email template...',
+      'Structuring subject, agenda, and collaborative tone...',
+      'Generating the final message draft for the new message panel...',
+    ];
+    const instances = container.querySelectorAll('[data-override-instance]');
+    instances.forEach((instance) => {
+      const sendButton = instance.querySelector('[data-send-message]');
+      const inputMessage = instance.querySelector('[data-input-message]');
+      const pendingResponse = instance.querySelector('[data-ai-pending-response]');
+      const sentMessageBalloon = instance.querySelector('[data-ai-balloon-sent-message]');
+      const pendingSpinner = instance.querySelector('[data-ai-pending-response-spinner]');
+      const pendingText = instance.querySelector('[data-ai-pending-response-text]');
+      const newMessagePanel = instance.querySelector('[data-new-message-panel]');
+      const restartButton = instance.querySelector('[data-restart-button]');
+
+      if (
+        !sendButton ||
+        !inputMessage ||
+        !pendingResponse ||
+        !sentMessageBalloon ||
+        !pendingSpinner ||
+        !pendingText ||
+        !newMessagePanel ||
+        !restartButton
+      ) {
+        return;
+      }
+
+      let thinkingIntervalId = null;
+      let showPanelTimeoutId = null;
+
+      const clearTimers = () => {
+        if (thinkingIntervalId) {
+          clearInterval(thinkingIntervalId);
+          thinkingIntervalId = null;
+        }
+        if (showPanelTimeoutId) {
+          clearTimeout(showPanelTimeoutId);
+          showPanelTimeoutId = null;
+        }
+      };
+
+      const setInputValue = (value) => {
+        if ('value' in inputMessage) {
+          inputMessage.value = value;
+        }
+        inputMessage.setAttribute('value', value);
+      };
+
+      const rollback = () => {
+        clearTimers();
+        setInputValue(messageText);
+
+        pendingSpinner.removeAttribute('running');
+        pendingText.textContent = 'Thinking...';
+        pendingResponse.classList.remove('flex');
+        pendingResponse.classList.add('hidden');
+
+        sentMessageBalloon.classList.remove('opacity-1');
+        sentMessageBalloon.classList.add('opacity-0');
+        sentMessageBalloon.classList.add('translate-y-100');
+
+        newMessagePanel.classList.remove('opacity-1');
+        newMessagePanel.classList.add('pointer-events-none');
+        newMessagePanel.classList.add('opacity-0');
+      };
+
+      sendButton.addEventListener('click', () => {
+        clearTimers();
+        setInputValue('');
+
+        sentMessageBalloon.classList.remove('opacity-0');
+        sentMessageBalloon.classList.remove('translate-y-100');
+        sentMessageBalloon.classList.add('opacity-1');
+
+        pendingResponse.classList.remove('hidden');
+        pendingResponse.classList.add('flex');
+        pendingSpinner.setAttribute('running', '');
+
+        let currentMessageIndex = 0;
+        pendingText.textContent = thinkingMessages[currentMessageIndex];
+
+        thinkingIntervalId = setInterval(() => {
+          currentMessageIndex += 1;
+          if (currentMessageIndex < thinkingMessages.length) {
+            pendingText.textContent = thinkingMessages[currentMessageIndex];
+          } else if (thinkingIntervalId) {
+            clearInterval(thinkingIntervalId);
+            thinkingIntervalId = null;
+          }
+        }, messageDuration);
+
+        showPanelTimeoutId = setTimeout(() => {
+          pendingResponse.classList.remove('flex');
+          pendingResponse.classList.add('hidden');
+          pendingSpinner.removeAttribute('running');
+
+          newMessagePanel.classList.remove('opacity-0');
+          newMessagePanel.classList.remove('pointer-events-none');
+          newMessagePanel.classList.add('opacity-1');
+        }, thinkingMessages.length * messageDuration);
+      });
+
+      restartButton.addEventListener('click', () => {
+        rollback();
+      });
+
+      rollback();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initUserOverrideAndManualControl);
+  } else {
+    initUserOverrideAndManualControl();
+  }
+</script>
+<Usage>
+  <UsageItem variant="do">
+    Always provide options to override, modify, or ignore AI suggestions.
+  </UsageItem>
+  <UsageItem variant="dont">Lock AI outputs or make them difficult to edit or override.</UsageItem>
+  <UsageItem variant="do">
+    Allow users to disable AI features and work entirely manually if they prefer.
+  </UsageItem>
+  <UsageItem variant="dont">
+    Force users to accept AI outputs or make manual control secondary or hidden.
+  </UsageItem>
+</Usage>
