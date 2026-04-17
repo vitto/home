@@ -3,6 +3,10 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 ---
 
 <UseCase
@@ -10,51 +14,229 @@ import UsageItem from '../../../UsageItem.astro';
   description="Adjust the level of detail in explanations based on the user's expertise, the decision's importance, and their current needs."
 >
   <UseCaseInteractive clsHeight={112} label="Context-appropriate explanations" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Quick Summary (Casual User)</b></mds-text>
-          <mds-text typography="detail"
-            >This route avoids traffic and saves about 10 minutes compared to the fastest route.</mds-text
+    <div
+      class="grid gap-600 w-full relative min-h-[600px] bg-cover bg-center rounded-xl"
+      style={{ backgroundImage: `url(${baseUrl}/assets/app-navigation-online.webp)` }}
+    >
+      <div class="absolute bottom-0 left-600 right-600 grid gap-600">
+        <div
+          data-overlay
+          class="grid bg-tone-neutral-01/70 backdrop-blur-sm rounded-3xl rounded-b-none grid-cols-full tablet:grid-cols-[auto_1fr] max-w-[500px] p-200 pb-400"
+        >
+          <div
+            class="grid items-center gap-200 w-full bg-tone-neutral shadow-md-sharp p-600 rounded-2xl justify-self-start self-start"
           >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Simple, actionable explanation for everyday use.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Detailed Explanation (Power User)</b></mds-text>
-          <mds-text typography="detail"
-            >This route avoids traffic and saves about 10 minutes compared to the fastest route.</mds-text
-          >
-          <mds-text typography="caption"
-            ><b>Details:</b> Based on current traffic data (updated 2 min ago), historical patterns for
-            this time/day, and real-time incident reports. Estimated time: 18 min vs 28 min. Fuel savings:
-            ~15%. Alternative routes available.</mds-text
-          >
-          <mds-button variant="outline" size="sm">Show route options</mds-button>
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>One-Size-Fits-All (Problematic)</b></mds-text>
+            <div class="grid">
+              <mds-text typography="label" class="text-tone-neutral-06">Distance</mds-text>
+              <mds-text typography="h2"
+                >38<mds-text typography="detail" class="font-normal text-tone-neutral-04 inline">
+                  km</mds-text
+                ></mds-text
+              >
+            </div>
+            <div class="grid grid-cols-2 gap-300">
+              <div class="inline-flex items-center gap-100">
+                <mds-icon
+                  name="mi/baseline/time-to-leave"
+                  slot="icon"
+                  class="fill-tone-neutral-04 justify-self-center"></mds-icon>
+                <mds-text typography="caption" class="text-status-success-06">18 min</mds-text>
+              </div>
+              <div class="inline-flex items-center gap-100">
+                <mds-icon
+                  name="mi/baseline/local-gas-station"
+                  slot="icon"
+                  class="fill-tone-neutral-04 justify-self-center"></mds-icon>
+                <mds-text typography="caption" class="text-status-success-06">-15%</mds-text>
+              </div>
+            </div>
           </div>
-          <mds-text typography="detail"
-            >Route calculated using Dijkstra's algorithm on a weighted graph with real-time traffic
-            data integration via REST API, considering 47 variables including road type, speed
-            limits, historical congestion patterns...</mds-text
+          <div
+            class="tablet:px-600 px-200 pt-400 text-tone-neutral grid gap-200"
+            data-details-container
           >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Too technical for casual users, but also not detailed enough for power users who want
-            specific data points.</mds-text
+            <div class="flex flex-col gap-200">
+              <div class="flex gap-200 flex-col grow" data-less-details>
+                <mds-text class="grow" typography="detail"
+                  >This route avoids traffic and saves about 10 minutes compared to the fastest
+                  route.</mds-text
+                >
+                <div class="flex gap-200 justify-between shrink-0">
+                  <mds-button
+                    variant="light"
+                    data-more-details-action
+                    tone="strong"
+                    class="self-start shrink-0">More details</mds-button
+                  >
+                  <mds-button
+                    data-dismiss-details-action
+                    variant="light"
+                    tone="ghost"
+                    icon="mi/outline/close"
+                    class="self-start shrink-0"></mds-button>
+                </div>
+              </div>
+              <div class="hidden gap-200 flex-col grow" data-more-details>
+                <mds-button variant="light" icon="mi/outline/alt-route"
+                  >Alternative routes</mds-button
+                >
+                <mds-text typography="detail">
+                  Based on current traffic data (updated 2 min ago), historical patterns for this
+                  time/day, and real-time incident reports.<br />
+                  <b>Estimated time:</b> 18 min vs 28 min. <br />
+                  <b>Fuel savings:</b> ~15%.
+                </mds-text>
+                <div class="flex gap-200 justify-between shrink-0">
+                  <mds-button
+                    data-less-details-action
+                    variant="light"
+                    tone="strong"
+                    class="self-start shrink-0">More details</mds-button
+                  >
+                  <mds-button
+                    data-dismiss-details-action
+                    variant="light"
+                    tone="ghost"
+                    icon="mi/outline/close"
+                    class="self-start shrink-0"></mds-button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid gap-600 w-full relative min-h-[600px] bg-cover bg-center rounded-xl"
+      style={{ backgroundImage: `url(${baseUrl}/assets/app-navigation-online.webp)` }}
+    >
+      <div class="absolute bottom-0 left-600 right-600 grid gap-600">
+        <div
+          data-overlay
+          class="grid bg-tone-neutral-01/70 backdrop-blur-sm rounded-3xl rounded-b-none grid-cols-full tablet:grid-cols-[auto_1fr] max-w-[500px] p-200 pb-400"
+        >
+          <div
+            class="grid items-center gap-200 w-full bg-tone-neutral shadow-md-sharp p-600 rounded-2xl justify-self-start self-start"
           >
+            <div class="grid">
+              <mds-text typography="label" class="text-tone-neutral-06">Distance</mds-text>
+              <mds-text typography="h2"
+                >38<mds-text typography="detail" class="font-normal text-tone-neutral-04 inline">
+                  km</mds-text
+                ></mds-text
+              >
+            </div>
+            <div class="grid grid-cols-2 gap-300">
+              <div class="inline-flex items-center gap-100">
+                <mds-icon
+                  name="mi/baseline/time-to-leave"
+                  slot="icon"
+                  class="fill-tone-neutral-04 justify-self-center"></mds-icon>
+                <mds-text typography="caption" class="text-status-success-06">18 min</mds-text>
+              </div>
+              <div class="inline-flex items-center gap-100">
+                <mds-icon
+                  name="mi/baseline/local-gas-station"
+                  slot="icon"
+                  class="fill-tone-neutral-04 justify-self-center"></mds-icon>
+                <mds-text typography="caption" class="text-status-success-06">-15%</mds-text>
+              </div>
+            </div>
+          </div>
+          <div
+            class="tablet:px-600 px-200 pt-400 text-tone-neutral grid gap-200"
+            data-details-container
+          >
+            <div class="flex flex-col gap-200">
+              <div class="flex gap-200 flex-col grow" data-less-details>
+                <mds-text class="grow" typography="detail"
+                  >This route avoids traffic and saves about 10 minutes.</mds-text
+                >
+                <mds-button
+                  data-dismiss-details-action
+                  variant="light"
+                  tone="ghost"
+                  icon="mi/outline/close"
+                  class="self-start shrink-0"></mds-button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </UseCaseInteractive>
+  <script>
+    function initMatchExplanationDepthToUserContext() {
+      const scope = (window as any).getUseCaseScope?.('match-explanation-depth-to-user-context');
+      if (!scope) return;
+
+      const { container } = scope;
+      const overlay = container.querySelector('[data-overlay]');
+      const detailsContainer = container.querySelector('[data-details-container]');
+      const lessDetails = container.querySelector('[data-less-details]');
+      const moreDetails = container.querySelector('[data-more-details]');
+      const moreDetailsAction = container.querySelector('[data-more-details-action]');
+      const lessDetailsAction = container.querySelector('[data-less-details-action]');
+      const dismissDetailsActions = container.querySelectorAll('[data-dismiss-details-action]');
+      let dismissTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
+      if (!overlay || !lessDetails || !moreDetails || !moreDetailsAction || !lessDetailsAction)
+        return;
+
+      const rollback = () => {
+        if (dismissTimeoutId) {
+          clearTimeout(dismissTimeoutId);
+          dismissTimeoutId = null;
+        }
+        overlay.classList.add('max-w-[500px]');
+        overlay.classList.remove('w-max');
+        if (detailsContainer) {
+          detailsContainer.classList.remove('hidden');
+          detailsContainer.classList.add('grid');
+        }
+        lessDetails.classList.remove('hidden');
+        lessDetails.classList.add('grid');
+        moreDetails.classList.remove('grid');
+        moreDetails.classList.add('hidden');
+      };
+
+      moreDetailsAction.addEventListener('click', () => {
+        overlay.classList.remove('max-w-[500px]');
+        lessDetails.classList.add('hidden');
+        lessDetails.classList.remove('grid');
+        moreDetails.classList.add('grid');
+        moreDetails.classList.remove('hidden');
+      });
+
+      lessDetailsAction.addEventListener('click', () => {
+        rollback();
+      });
+
+      dismissDetailsActions.forEach((dismissAction: Element) => {
+        dismissAction.addEventListener('click', () => {
+          if (dismissTimeoutId) {
+            clearTimeout(dismissTimeoutId);
+          }
+          if (detailsContainer) {
+            detailsContainer.classList.remove('grid');
+            detailsContainer.classList.add('hidden');
+          }
+          overlay.classList.add('w-max');
+          dismissTimeoutId = setTimeout(() => {
+            rollback();
+          }, 3000);
+        });
+      });
+
+      rollback();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMatchExplanationDepthToUserContext);
+    } else {
+      initMatchExplanationDepthToUserContext();
+    }
+  </script>
   <Usage>
     <UsageItem variant="do">
       Provide simple summaries for quick decisions and detailed explanations when users need more
