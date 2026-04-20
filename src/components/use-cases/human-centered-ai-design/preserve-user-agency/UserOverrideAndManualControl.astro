@@ -21,9 +21,7 @@ const messageText = `Write a professional but concise email to three colleagues 
 >
   <UseCaseInteractive clsHeight={612} label="Override and manual control" toggle>
     <div class="grid gap-600 w-full min-h-[500px] auto-rows-min" data-override-instance>
-      <div
-        class="py-600 relative pb-[164px] grid gap-600 grid-cols-full w-full max-w-9600 justify-self-center"
-      >
+      <div class="py-600 grid gap-600 grid-cols-full w-full max-w-9600 justify-self-center">
         <AIBalloon
           class="pointer-events-none opacity-0 transition-cosmetic duration-300 ease-out-quad translate-y-100"
           data-ai-balloon-sent-message
@@ -44,7 +42,7 @@ const messageText = `Write a professional but concise email to three colleagues 
             truncate="all">Thinking...</mds-text
           >
         </div>
-        <AIInputWrapper class="auto-rows-min absolute bottom-0 left-0 right-0">
+        <AIInputWrapper class="auto-rows-min">
           <AIInput
             value={messageText}
             type="textarea"
@@ -112,9 +110,7 @@ Vittorio`}></mds-input>
       </div>
     </div>
     <div class="grid gap-600 w-full min-h-[500px] auto-rows-min" data-override-instance>
-      <div
-        class="py-600 relative pb-[164px] grid gap-600 grid-cols-full w-full max-w-9600 justify-self-center"
-      >
+      <div class="py-600 grid gap-600 grid-cols-full w-full max-w-9600 justify-self-center">
         <AIBalloon
           class="pointer-events-none opacity-0 transition-cosmetic duration-300 ease-out-quad translate-y-100"
           data-ai-balloon-sent-message
@@ -135,7 +131,7 @@ Vittorio`}></mds-input>
             truncate="all">Thinking...</mds-text
           >
         </div>
-        <AIInputWrapper class="auto-rows-min absolute bottom-0 left-0 right-0">
+        <AIInputWrapper class="auto-rows-min">
           <AIInput
             value={messageText}
             type="textarea"
