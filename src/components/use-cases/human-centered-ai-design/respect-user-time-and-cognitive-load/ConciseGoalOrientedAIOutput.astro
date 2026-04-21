@@ -3,6 +3,11 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
@@ -10,49 +15,55 @@ import UsageItem from '../../../UsageItem.astro';
   description="Keep AI responses focused on the user's question or task—concise and actionable, without unnecessary preamble, repetition, or tangents."
 >
   <UseCaseInteractive clsHeight={112} label="Concise, goal-oriented output" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Direct Answer</b></mds-text>
-          <mds-text typography="detail"
-            >Yes. Your refund will be processed in 3–5 business days. Track it in Orders → [Order
-            #123].</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Answers the question first; one line of next step. No filler.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Task-Focused Summary</b></mds-text>
-          <mds-text typography="detail"
-            >Here are the 3 changes suggested for your draft: (1) Fix typo in §2. (2) Shorten the
-            intro. (3) Add a citation for the claim in §4. [Apply all] [Review one by one]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Numbered, scannable list tied to actions; user can apply or drill in.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Verbose, Unfocused (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="detail"
-            >"Thank you for asking! Refunds are an important part of our policy. Generally speaking,
-            we aim to process refunds as quickly as possible. In your case, after reviewing your
-            request, I can confirm that yes, your refund will be processed. Typically this takes 3–5
-            business days, though it can vary. You can track your order in the Orders section. Is
-            there anything else I can help with?"</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Preamble, repetition, and polite filler obscure the answer and next step; wastes time.</mds-text
-          >
-        </div>
-      </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I received an order with two products, one of which is defective. How do I get a refund?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="resolution actions" variant="success">
+          <Markdown
+            typography="detail"
+            content={`
+You can request a refund only for the defective item:
+
+1. Go to My Orders
+2. Select the order
+3. Click Request Refund next to the defective product
+4. Choose damaged product as the reason
+5. Follow the return instructions (if requested)
+
+Refunds are processed **within 5-7 days of confirmation.**
+        `}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I received an order with two products, one of which is defective. How do I get a refund?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="unnecessarily detailed" variant="error">
+          <Markdown
+            typography="detail"
+            content={`
+When it comes to refunds, it's important to consider several aspects related to company policies, which can vary depending on the seller, the type of product, and the general terms and conditions of sale.
+
+In many cases, defective products can be returned within a certain period of time, often 14 or 30 days, but this depends on various factors.
+
+Furthermore, some companies require photographic evidence of the defect, while others may proceed directly with a replacement rather than a refund.
+
+In your specific case, having purchased two items, you may need to distinguish between the defective product and the functioning one, checking whether a partial refund is possible or whether the order should be processed as a whole.
+
+I would therefore recommend accessing the orders section, reviewing the details, carefully reading the terms and conditions, and, if necessary, contacting customer support for additional clarification, to determine which procedure is best for your situation.
+        `}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>

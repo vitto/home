@@ -3,77 +3,72 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
+import AIResponseFollowUp from '../../AIResponseFollowUp.astro';
+import AIResponseFollowUpAction from '../../AIResponseFollowUpAction.astro';
 ---
 
 <UseCase
   title="Respecting User Time in Interaction Flow"
   description="Minimize unnecessary steps, interruptions, and wait states; keep the flow aligned with the user's goal and avoid repetitive or redundant prompts."
 >
-  <UseCaseInteractive clsHeight={112} label="Respecting time in flow" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Inline, Non-Blocking</b></mds-text>
-          <mds-text typography="detail"
-            >Suggestions appear as you type. No "Submit" required for quick fixes; apply with one
-            click. Background sync—no full-page reload.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >AI supports the flow instead of inserting extra steps or blocking the UI.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Clear Wait States</b></mds-text>
-          <mds-text typography="detail"
-            >Analyzing document… About 10 seconds. You can keep editing; we'll update when ready.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >User knows how long to expect and that they can do something else; no mysterious
-            spinner.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Flow Friction (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="detail"
-            >User must: confirm intent → choose model → confirm again → wait on full-page loader →
-            then see result. Same confirmation dialog every time. No estimate for wait.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Extra steps and repeated confirmations slow the user down; opaque wait increases
-            frustration.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Best Practices</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Remember recent choices and skip redundant confirmations when safe</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Do:</b> Show progress or time estimates for operations that take more than a couple
-                of seconds</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Don't:</b> Add steps or dialogs that don't clearly serve the user's goal</mds-text
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+  <UseCaseInteractive clsHeight={292} label="Respecting time in flow" toggle>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I received an order with two products, one of which is defective. How do I get a refund?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Defective item: Headphones
+
+Confirm the request and you’re done.
+Refund is processed in 5-7 days.
+
+You can request the refund directly here:
+`}
+        />
+        <HighlightBox label="Direct solution action" variant="success">
+          <AIResponseFollowUp>
+            <AIResponseFollowUpAction>Request refund</AIResponseFollowUpAction>
+          </AIResponseFollowUp>
+        </HighlightBox>
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I received an order with two products, one of which is defective. How do I get a refund?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="manual flow" variant="error">
+          <Markdown
+            typography="detail"
+            content={`
+To proceed with your request, please follow these steps:
+
+1. Go to your profile
+2. Access the “Orders” section
+3. Locate the relevant order
+4. Open the order details
+5. Identify the defective product
+6. Click on the refund option
+7. Select the reason
+8. Confirm your request
+
+If you don’t remember your order, please provide your order number.
+`}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>
