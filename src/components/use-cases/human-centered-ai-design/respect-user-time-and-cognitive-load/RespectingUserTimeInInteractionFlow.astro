@@ -49,12 +49,16 @@ You can request the refund directly here:
         </AIBalloonMessage>
       </AIBalloon>
       <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+To proceed with your request, please follow these steps:
+`}
+        />
         <HighlightBox label="manual flow" variant="error">
           <Markdown
             typography="detail"
             content={`
-To proceed with your request, please follow these steps:
-
 1. Go to your profile
 2. Access the “Orders” section
 3. Locate the relevant order
@@ -63,11 +67,15 @@ To proceed with your request, please follow these steps:
 6. Click on the refund option
 7. Select the reason
 8. Confirm your request
-
-If you don’t remember your order, please provide your order number.
 `}
           />
         </HighlightBox>
+        <Markdown
+          typography="detail"
+          content={`
+If you don’t remember your order, please provide your order number.
+`}
+        />
       </AIResponseMessage>
     </div>
   </UseCaseInteractive>
