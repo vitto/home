@@ -3,6 +3,13 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
+import HighlightInline from '../../HighlightInline.astro';
+import HighlightInlineItem from '../../HighlightInlineItem.astro';
 ---
 
 <UseCase
@@ -10,48 +17,57 @@ import UsageItem from '../../../UsageItem.astro';
   description="Reinforce what the AI can do and what the user's role is at key moments—not only on first use. Remind when context changes or when the stakes are high."
 >
   <UseCaseInteractive clsHeight={112} label="Expectations over time" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Reinforce at Key Moments</b></mds-text>
-          <mds-text typography="detail"
-            >Before sending: This will go to 12 people. Review the suggested text—you're responsible
-            for what you send. [Edit] [Send]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Just-in-time reminder of scope and user responsibility when the action is
-            consequential.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>When Stakes or Context Change</b></mds-text>
-          <mds-text typography="detail"
-            >You're about to use this in a legal document. Our suggestions are drafts only; have a
-            qualified professional review before relying on them. [Continue] [Learn more]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >When the user enters a high-stakes context, expectations are restated.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Only on First Use (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="detail"
-            >One-time onboarding: "The AI suggests; you decide." Then no reminder when sending to
-            hundreds of people or when the user switches to a high-risk domain. Users forget or
-            never read the fine print.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Expectations fade; users slip into overtrust or forget their role when it matters most.</mds-text
-          >
-        </div>
-      </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I’d like to create a lawn using Phyla nodiflora. How can I do it?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+You can start by preparing the soil well (removing weeds, loosening the ground, and ensuring good drainage), then planting Phyla plugs or cuttings spaced about 20-30 cm apart.
+`}
+        />
+        <mds-text typography="detail">
+          <HighlightInline>
+            <HighlightInlineItem label="expectations over time" variant="info">
+              Regular watering in the first weeks is important to help them establish. In the first
+              1-2 months, you’ll mainly see the plants taking root, with limited horizontal growth.
+              Between 3-6 months, they should begin spreading and covering the soil more
+              consistently, depending on temperature and care.<br />
+            </HighlightInlineItem>
+            <HighlightInlineItem label="warns that will takes time" variant="warning">
+              Keep in mind that full coverage can take a full growing season or more.
+            </HighlightInlineItem>
+            <HighlightInlineItem label="Prepare for possible failures" variant="warning">
+              You may need to manage weeds and fill any gaps where plants don’t establish properly.<br
+              />
+            </HighlightInlineItem>
+            <HighlightInlineItem label="Aligns to expectations" variant="success">
+              Once established, maintenance is much lower compared to traditional grass.
+            </HighlightInlineItem>
+          </HighlightInline>
+        </mds-text>
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I’d like to create a lawn using Phyla nodiflora. How can I do it?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="vague and elusive effort" variant="error">
+          <Markdown
+            typography="detail"
+            content={`
+Plant Phyla nodiflora evenly across your garden and water it regularly. It will quickly form a dense, uniform lawn with minimal effort.
+`}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>

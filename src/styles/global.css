@@ -195,6 +195,26 @@ mds-img::part(media) {
   }
 }
 
+:root {
+  --animation-delay: -2500ms;
+}
+
+.animation-delay-1 {
+  animation-delay: calc(var(--animation-delay) * 1) !important;
+}
+.animation-delay-2 {
+  animation-delay: calc(var(--animation-delay) * 2) !important;
+}
+.animation-delay-3 {
+  animation-delay: calc(var(--animation-delay) * 3) !important;
+}
+.animation-delay-4 {
+  animation-delay: calc(var(--animation-delay) * 4) !important;
+}
+.animation-delay-5 {
+  animation-delay: calc(var(--animation-delay) * 5) !important;
+}
+
 mds-table-cell {
   vertical-align: middle;
 }

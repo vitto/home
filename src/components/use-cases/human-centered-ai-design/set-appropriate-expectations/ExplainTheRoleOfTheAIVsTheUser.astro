@@ -3,6 +3,11 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
@@ -10,48 +15,51 @@ import UsageItem from '../../../UsageItem.astro';
   description="Make clear who does what—suggestion vs decision, draft vs final—so users understand they are in control and where their responsibility lies."
 >
   <UseCaseInteractive clsHeight={112} label="AI vs user role" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Suggest, Don't Decide</b></mds-text>
-          <mds-text typography="detail"
-            >Suggested reply (you can edit or send as is): "Thanks for your message. I'll review and
-            get back by Friday." You decide whether to send. [Edit] [Send] [Discard]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >AI proposes; user approves or changes. Role is explicit in the UI.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Draft vs Final</b></mds-text>
-          <mds-text typography="detail"
-            >This is a draft summary for your review. It has not been approved for publication. You
-            are responsible for accuracy and compliance before sharing.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Draft status and user responsibility are stated clearly.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Blurred Roles (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="detail"
-            >AI sends replies or publishes content without a clear "you approve" step. "Automated
-            response" with no indication that the user is still responsible. Users assume the system
-            has decided or that they're off the hook.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Confusion about who decided what; users may not realize they're accountable or may
-            over-delegate.</mds-text
-          >
-        </div>
-      </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>I’d like to design my garden. Where should I start?</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="role clarification" variant="success">
+          <Markdown
+            typography="detail"
+            content={`
+I can help you structure the process—for example, by suggesting how to divide the space into zones (relaxation, pathways, planting areas), proposing suitable styles, and offering ideas for materials and plants.
+`}
+          />
+        </HighlightBox>
+        <HighlightBox label="responsibility for key choices" variant="success" delay="1">
+          <Markdown
+            typography="detail"
+            content={`
+The initial direction, though, comes from you: how you want to use the space, how much maintenance you’re willing to handle, and any constraints like sun exposure, soil, or budget.
+`}
+          />
+        </HighlightBox>
+        <HighlightBox label="collaboration, not delegation" variant="success" delay="2">
+          <Markdown
+            typography="detail"
+            content={`
+If you share a few details about your garden and your preferences, I can help you turn them into a first draft layout that you can refine.”
+`}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>How can I propagate creeping rosemary from cuttings?</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="Unrealistic autonomy promise" variant="error">
+          <Markdown
+            typography="detail"
+            content={`
+Just tell me the size of your garden and I’ll create a complete design with layout, plants, and materials. You won’t need to make any decisions—I’ll handle everything.
+`}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>

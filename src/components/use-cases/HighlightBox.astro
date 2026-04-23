@@ -10,14 +10,16 @@ import HighlightContent from './HighlightContent.astro';
  * @param {string} class - Additional CSS classes
  * @param {string} label - Label for the highlight
  * @param {string} variant - Variant for the highlight
+ * @param {keyof typeof delayClass} delay - Delay for the highlight
  */
 interface Props {
   class?: string;
   label?: string;
   variant?: 'neutral' | 'success' | 'error' | 'warning' | 'info';
+  delay?: keyof typeof delayClass;
 }
 
-const { class: className = '', label = '', variant = 'neutral' } = Astro.props;
+const { class: className = '', label = '', variant = 'neutral', delay } = Astro.props;
 
 const variantClass = {
   error: 'highlight--error',
@@ -26,9 +28,17 @@ const variantClass = {
   success: 'highlight--success',
   warning: 'highlight--warning',
 };
+
+const delayClass = {
+  '1': 'animation-delay-1',
+  '2': 'animation-delay-2',
+  '3': 'animation-delay-3',
+  '4': 'animation-delay-4',
+  '5': 'animation-delay-5',
+};
 ---
 
 <div class={`relative z-10 highlight ${className} ${variantClass[variant]}`} data-highlight-wrapper>
   <slot />
-  <HighlightContent label={label} />
+  <HighlightContent label={label} class={delay ? delayClass[delay] : ''} />
 </div>

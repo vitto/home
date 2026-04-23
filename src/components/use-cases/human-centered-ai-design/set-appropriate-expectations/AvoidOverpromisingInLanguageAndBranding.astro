@@ -3,72 +3,69 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIResponseFollowUp from '../../AIResponseFollowUp.astro';
+import AIResponseFollowUpAction from '../../AIResponseFollowUpAction.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
   title="Avoid Overpromising in Language and Branding"
   description="Use accurate, restrained language in product copy and branding—no 'always accurate', 'fully automated', or 'replaces human judgment' when the system has limits or requires human oversight."
 >
-  <UseCaseInteractive clsHeight={112} label="Language and branding" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Accurate Claims</b></mds-text>
-          <mds-text typography="detail"
-            >AI-assisted drafting: Get suggestions to speed up writing. Review and edit before you
-            send—you're in control.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Describes assistance and user control; doesn't promise perfection or full automation.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Restrained Taglines</b></mds-text>
-          <mds-text typography="detail"
-            >"Smarter drafts, faster" or "Suggestions that save time"—not "Perfect copy every time"
-            or "AI that writes for you."</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Benefits are real (speed, help) without implying infallibility or full replacement of
-            the user.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Overpromising (Problematic)</b></mds-text>
-          </div>
-          <mds-text typography="detail"
-            >"100% accurate", "Fully automated decisions", "AI that thinks like you", "No need to
-            review." Branding that suggests the AI replaces human judgment or never errs.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Users expect more than the system can deliver; trust is lost when reality doesn't match
-            the promise.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Language to Avoid vs Prefer</b></mds-text>
-          <div class="grid gap-300">
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Avoid:</b> "Always right", "Fully automated", "Replaces experts", "No review needed"</mds-text
-              >
-            </div>
-            <div class="p-400 rounded bg-tone-neutral-08">
-              <mds-text typography="caption"
-                ><b>Prefer:</b> "Assists", "Suggests", "Drafts for review", "Designed to help you"</mds-text
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+  <UseCaseInteractive clsHeight={548} label="Language and branding" toggle>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I want to plant 50 creeping rosemary plants along the edge of my garden, which borders a
+          slope. Can you give me a complete plan I can directly follow?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Our tool can help you plan the spacing, estimate how many plants you’ll need, and suggest general planting guidelines for creeping rosemary in a Mediterranean environment.
+`}
+        />
+        <HighlightBox label="Evidence of the challenge" variant="success">
+          <Markdown
+            typography="detail"
+            content={`
+However, a slope introduces variables like soil stability, drainage, and erosion risk that require on-site assessment.
+`}
+          />
+        </HighlightBox>
+        <HighlightBox label="suggesting a validation phase" variant="success" delay="1">
+          <Markdown
+            typography="detail"
+            content={`
+The plan we generate should be used as a guideline, and it’s recommended to validate it with a landscaper or agronomist before planting—especially to ensure the slope remains stable over time.
+`}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          I want to plant 50 creeping rosemary plants along the edge of my garden, which borders a
+          slope. Can you give me a complete plan I can directly follow?
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="False total reliability promise" variant="error">
+          <Markdown
+            typography="detail"
+            content={`
+Yes, our AI can generate a fully reliable, ready-to-execute planting plan for your slope. Just follow the spacing and instructions provided, and the rosemary will stabilize the edge without any additional work or expert input.
+`}
+          />
+        </HighlightBox>
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>
