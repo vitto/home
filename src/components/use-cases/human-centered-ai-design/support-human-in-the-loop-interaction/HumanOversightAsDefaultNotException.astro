@@ -3,6 +3,12 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIGeneratedArticleSummary from '../../AIGeneratedArticleSummary.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
@@ -10,46 +16,73 @@ import UsageItem from '../../../UsageItem.astro';
   description="Design workflows assuming humans will review and guide—make review the expected path, not an optional extra or exception."
 >
   <UseCaseInteractive clsHeight={112} label="Oversight as default" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Review Before Proceeding</b></mds-text>
-          <mds-text typography="detail"
-            >AI has completed step 1. [Review before continuing] [Skip review] (not recommended)</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Review is the primary action; skipping is secondary and marked as not recommended.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Pause for Human Input</b></mds-text>
-          <mds-text typography="detail"
-            >AI is waiting for your input on these items before proceeding: [3 items need review]
-            [Continue when ready]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >The workflow pauses naturally for human review; it doesn't proceed automatically.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Auto-Proceed by Default (Problematic)</b></mds-text>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+...
+`}
+        />
+      </AIResponseMessage>
+      <AIBalloon>
+        <AIBalloonMessage>Approved with current changes.</AIBalloonMessage>
+      </AIBalloon>
+      <AIGeneratedArticleSummary
+        title="When global crises shape China decisions"
+        summary="Drawing on IMF, World Bank, OECD, WEF and Financial Times analyses of the world economic crisis, this AI-generated brief highlights how macroeconomic shocks, inflation and financial instability can influence everyday choices — while stressing that the final responsibility for decisions remains with the human."
+      >
+        <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
+          <mds-text typography="h6">When global crises shape China decisions</mds-text>
+          <mds-badge variant="success" tone="weak" slot="detail" class="mr-150">approved</mds-badge>
+          <mds-text typography="caption" slot="detail">5 min read, reviewed once by you</mds-text>
+        </mds-entity>
+        <HighlightBox label="required decision points" variant="success" slot="actions">
+          <div class="flex gap-200 justify-between flex-wrap">
+            <div class="flex gap-200 flex-wrap">
+              <mds-button variant="error" tone="weak" icon="mi/outline/delete" title="Delete"
+              ></mds-button>
+              <mds-button variant="dark" tone="weak" icon="mi/outline/replay" title="Regenerate"
+              ></mds-button>
+            </div>
+            <div class="flex gap-200 flex-wrap">
+              <mds-button variant="primary" tone="weak" icon="mi/outline/edit" title="Edit"
+              ></mds-button>
+              <mds-button variant="success" icon="mi/outline/publish" icon-position="right">
+                Publish
+              </mds-button>
+            </div>
           </div>
-          <mds-text typography="detail"
-            >AI completes all steps automatically; review is hidden behind "Advanced options" or
-            only available if users explicitly enable it. Most users never see review opportunities.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Human oversight becomes the exception; users miss opportunities to catch errors or
-            guide the AI.</mds-text
-          >
-        </div>
-      </div>
+        </HighlightBox>
+      </AIGeneratedArticleSummary>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+...
+`}
+        />
+      </AIResponseMessage>
+      <AIBalloon>
+        <AIBalloonMessage>Approved with current changes.</AIBalloonMessage>
+      </AIBalloon>
+      <AIGeneratedArticleSummary
+        title="When global crises shape China decisions"
+        summary="Drawing on IMF, World Bank, OECD, WEF and Financial Times analyses of the world economic crisis, this AI-generated brief highlights how macroeconomic shocks, inflation and financial instability can influence everyday choices — while stressing that the final responsibility for decisions remains with the human."
+      >
+        <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
+          <mds-text typography="h6">When global crises shape China decisions</mds-text>
+          <mds-badge variant="success" tone="weak" slot="detail" class="mr-150">approved</mds-badge>
+          <mds-text typography="caption" slot="detail">5 min read, reviewed once by you</mds-text>
+        </mds-entity>
+        <HighlightBox label="Avoided human review" variant="error" slot="actions">
+          <div class="flex gap-200 justify-center flex-wrap text-center">
+            <mds-text>Article automatically published.</mds-text>
+          </div>
+        </HighlightBox>
+      </AIGeneratedArticleSummary>
     </div>
   </UseCaseInteractive>
   <Usage>
