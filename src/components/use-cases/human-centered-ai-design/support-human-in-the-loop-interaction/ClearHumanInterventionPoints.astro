@@ -3,55 +3,173 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import Markdown from '../../../Markdown.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import AIGeneratedArticleSummary from '../../AIGeneratedArticleSummary.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
   title="Clear Human Intervention Points"
   description="Make it obvious when and where users can step in, review, modify, or override AI behavior—so they know they can intervene at any point, not just approve final results."
 >
-  <UseCaseInteractive clsHeight={112} label="Clear intervention points" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Visible Review Steps</b></mds-text>
-          <mds-text typography="detail"
-            >Step 1: AI suggests draft → [Review & Edit] Step 2: AI refines → [Review & Edit] Step
-            3: Final → [Approve]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Each step shows a clear "Review & Edit" option; users can intervene at any point.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Inline Edit Controls</b></mds-text>
-          <mds-text typography="detail"
-            >AI-generated text appears with [Edit] buttons on each paragraph. Users can modify any
-            part without rejecting the whole.</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Intervention is granular and immediate; no need to wait until the end.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"
-              ><b>Hidden or End-Only Intervention (Problematic)</b></mds-text
-            >
+  <UseCaseInteractive clsHeight={1396} label="Clear intervention points" toggle>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          Write an article summary about rising tensions in the South China Sea and their economic
+          impact.
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+I can draft the article, but before I proceed I need you to confirm two things:
+`}
+        />
+        <div class="grid gap-600 grid-cols-2 pointer-events-none mobile:grid-cols-full">
+          <div class="grid gap-600 auto-rows-min">
+            <mds-text typography="caption"><b>Preferred sources</b></mds-text>
+            <div class="grid gap-400">
+              <mds-input-switch size="sm" disabled>IMF</mds-input-switch>
+              <mds-input-switch size="sm" disabled checked>World Bank</mds-input-switch>
+              <mds-input-switch size="sm" disabled>Reuters</mds-input-switch>
+            </div>
           </div>
-          <mds-text typography="detail"
-            >AI runs through all steps automatically; users only see "Approve" or "Reject" at the
-            very end. No way to intervene mid-process or edit specific parts.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Users can't catch errors early or guide the AI; they must accept or reject everything.</mds-text
-          >
+          <div class="grid gap-600 auto-rows-min">
+            <mds-text typography="caption"><b>Target audience</b></mds-text>
+            <div class="grid gap-400">
+              <mds-input-select disabled>
+                <option value="general-public" selected>General public</option>
+                <option value="expert-readers">Expert readers</option>
+              </mds-input-select>
+            </div>
+          </div>
         </div>
-      </div>
+        <Markdown
+          typography="detail"
+          content={`
+Draft ready.
+`}
+        />
+        <HighlightBox label="Human Intervention Required" variant="success">
+          <Markdown
+            typography="detail"
+            content={`
+I’ve marked three sections that require your review:
+
+- Data accuracy (trade volume figures)
+- Interpretation of China’s policy stance
+- Tone neutrality in the conclusion
+`}
+          />
+        </HighlightBox>
+        <Markdown
+          typography="detail"
+          content={`
+Do you want to make any changes?
+`}
+        />
+        <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
+          <mds-text typography="h6">When global crises shape China decisions</mds-text>
+          <mds-badge variant="yellow" tone="weak" slot="detail" class="mr-150">draft</mds-badge>
+          <mds-text typography="caption" slot="detail">5 min read</mds-text>
+          <mds-button
+            slot="action"
+            variant="dark"
+            tone="quiet"
+            icon="mi/outline/edit"
+            title="View draft"></mds-button>
+        </mds-entity>
+      </AIResponseMessage>
+      <AIBalloon>
+        <AIBalloonMessage>This part is too assertive. Make it more neutral.</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+I've made the changes you requested, but I'd like to review them again before proceeding.
+`}
+        />
+        <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
+          <mds-text typography="h6">When global crises shape China decisions</mds-text>
+          <mds-badge variant="yellow" tone="weak" slot="detail" class="mr-150">draft</mds-badge>
+          <mds-text typography="caption" slot="detail">5 min read, reviewed once by you</mds-text>
+          <mds-button
+            slot="action"
+            variant="dark"
+            tone="quiet"
+            icon="mi/outline/edit"
+            title="View draft"></mds-button>
+        </mds-entity>
+      </AIResponseMessage>
+      <!-- <AIBalloon>
+        <AIBalloonMessage>Approved with current changes.</AIBalloonMessage>
+      </AIBalloon>
+      <AIGeneratedArticleSummary
+        title="When global crises shape China decisions"
+        summary="Drawing on IMF, World Bank, OECD, WEF and Financial Times analyses of the world economic crisis, this AI-generated brief highlights how macroeconomic shocks, inflation and financial instability can influence everyday choices — while stressing that the final responsibility for decisions remains with the human."
+      >
+        <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
+          <mds-text typography="h6">When global crises shape China decisions</mds-text>
+          <mds-badge variant="success" tone="weak" slot="detail" class="mr-150">approved</mds-badge>
+          <mds-text typography="caption" slot="detail">5 min read, reviewed once by you</mds-text>
+        </mds-entity>
+      </AIGeneratedArticleSummary> -->
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIBalloon>
+        <AIBalloonMessage>
+          Write an article summary about rising tensions in the South China Sea and their economic
+          impact.
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <HighlightBox label="absence of risks or human intervention" variant="error">
+          <Markdown
+            typography="detail"
+            content={`
+Here is your article, ready to be published.
+`}
+          />
+        </HighlightBox>
+        <AIGeneratedArticleSummary
+          title="When global crises shape China decisions"
+          summary="Drawing on IMF, World Bank, OECD, WEF and Financial Times analyses of the world economic crisis, this AI-generated brief highlights how macroeconomic shocks, inflation and financial instability can influence everyday choices — while stressing that the final responsibility for decisions remains with the human."
+        >
+          <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
+            <mds-text typography="h6">When global crises shape China decisions</mds-text>
+            <mds-badge variant="info" tone="weak" slot="detail" class="mr-150">ready</mds-badge>
+            <mds-text typography="caption" slot="detail">5 min read</mds-text>
+          </mds-entity>
+        </AIGeneratedArticleSummary>
+      </AIResponseMessage>
+      <AIBalloon>
+        <AIBalloonMessage>Are the data accurate?</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Yes, they are based on reliable sources.
+`}
+        />
+      </AIResponseMessage>
+      <AIBalloon>
+        <AIBalloonMessage>Ok publish it.</AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+Article published.
+`}
+        />
+      </AIResponseMessage>
     </div>
   </UseCaseInteractive>
   <Usage>

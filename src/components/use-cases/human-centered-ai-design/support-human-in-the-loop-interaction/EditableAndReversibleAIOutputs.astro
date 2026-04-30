@@ -3,54 +3,88 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIGeneratedArticleSummary from '../../AIGeneratedArticleSummary.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
   title="Editable and Reversible AI Outputs"
   description="Let users modify, correct, or undo AI outputs without starting over—make AI suggestions editable, not fixed."
 >
-  <UseCaseInteractive clsHeight={112} label="Editable and reversible outputs" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Inline Editing</b></mds-text>
-          <mds-text typography="detail"
-            >AI suggestion: "The meeting will be on Monday." [Edit] → User edits to "Tuesday" →
-            [Save] [Undo]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Users can edit AI output directly; changes are saved and reversible.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Version History</b></mds-text>
-          <mds-text typography="detail"
-            >You've edited this AI suggestion. [View original] [Restore previous version] [See all
-            changes]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >Users can see what changed and revert to earlier versions if needed.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"><b>Fixed Outputs (Problematic)</b></mds-text>
+  <UseCaseInteractive clsHeight={568} label="Editable and reversible outputs" toggle>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+...
+`}
+        />
+      </AIResponseMessage>
+      <AIBalloon>
+        <AIBalloonMessage>Approved with current changes.</AIBalloonMessage>
+      </AIBalloon>
+      <AIGeneratedArticleSummary
+        title="When global crises shape China decisions"
+        summary="Drawing on IMF, World Bank, OECD, WEF and Financial Times analyses of the world economic crisis, this AI-generated brief highlights how macroeconomic shocks, inflation and financial instability can influence everyday choices — while stressing that the final responsibility for decisions remains with the human."
+      >
+        <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
+          <mds-text typography="h6">When global crises shape China decisions</mds-text>
+          <mds-badge variant="success" tone="weak" slot="detail" class="mr-150">approved</mds-badge>
+          <mds-text typography="caption" slot="detail">5 min read, reviewed once by you</mds-text>
+        </mds-entity>
+        <HighlightBox label="Editable and reversible outputs" variant="success" slot="actions">
+          <div class="flex gap-200 justify-between flex-wrap">
+            <div class="flex gap-200 flex-wrap">
+              <mds-button variant="error" tone="weak" icon="mi/outline/delete" title="Delete"
+              ></mds-button>
+              <mds-button variant="dark" tone="weak" icon="mi/outline/replay" title="Regenerate"
+              ></mds-button>
+            </div>
+            <div class="flex gap-200 flex-wrap">
+              <mds-button variant="primary" tone="weak" icon="mi/outline/edit" title="Edit"
+              ></mds-button>
+              <mds-button variant="success" icon="mi/outline/publish" icon-position="right">
+                Publish
+              </mds-button>
+            </div>
           </div>
-          <mds-text typography="detail"
-            >AI generates output that can only be "Accepted" or "Rejected"—no editing. If rejected,
-            users must start over from scratch. No undo or version history.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Users waste time rejecting and regenerating when small edits would suffice; no way to
-            refine AI output incrementally.</mds-text
-          >
-        </div>
-      </div>
+        </HighlightBox>
+      </AIGeneratedArticleSummary>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+...
+`}
+        />
+      </AIResponseMessage>
+      <AIBalloon>
+        <AIBalloonMessage>Approved with current changes.</AIBalloonMessage>
+      </AIBalloon>
+      <AIGeneratedArticleSummary
+        title="When global crises shape China decisions"
+        summary="Drawing on IMF, World Bank, OECD, WEF and Financial Times analyses of the world economic crisis, this AI-generated brief highlights how macroeconomic shocks, inflation and financial instability can influence everyday choices — while stressing that the final responsibility for decisions remains with the human."
+      >
+        <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
+          <mds-text typography="h6">When global crises shape China decisions</mds-text>
+          <mds-badge variant="success" tone="weak" slot="detail" class="mr-150">approved</mds-badge>
+          <mds-text typography="caption" slot="detail">5 min read, reviewed once by you</mds-text>
+        </mds-entity>
+        <HighlightBox label="Forced acceptance" variant="error" slot="actions">
+          <div class="flex gap-200 justify-end flex-wrap">
+            <mds-button variant="success" icon="mi/outline/publish" icon-position="right">
+              Publish
+            </mds-button>
+          </div>
+        </HighlightBox>
+      </AIGeneratedArticleSummary>
     </div>
   </UseCaseInteractive>
   <Usage>

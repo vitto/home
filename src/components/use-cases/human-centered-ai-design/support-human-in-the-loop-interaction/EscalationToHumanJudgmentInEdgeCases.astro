@@ -3,56 +3,112 @@ import UseCase from '../../../UseCase.astro';
 import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
+import Markdown from '../../../Markdown.astro';
+import AIBalloon from '../../AIBalloon.astro';
+import AIBalloonMessage from '../../AIBalloonMessage.astro';
+import AIGeneratedArticleSummary from '../../AIGeneratedArticleSummary.astro';
+import AIResponseMessage from '../../AIResponseMessage.astro';
+import HighlightBox from '../../HighlightBox.astro';
 ---
 
 <UseCase
   title="Escalation to Human Judgment in Edge Cases"
   description="When the AI is uncertain, encounters edge cases, or reaches its limits, escalate to human decision-makers rather than guessing or proceeding with low confidence."
 >
-  <UseCaseInteractive clsHeight={112} label="Escalation in edge cases" toggle>
-    <div class="grid gap-600 w-full">
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Uncertainty Escalation</b></mds-text>
-          <mds-text typography="detail"
-            >I'm not confident about this recommendation because the input is unusual. [Request
-            human review] [Proceed anyway]</mds-text
+  <UseCaseInteractive clsHeight={648} label="Escalation in edge cases" toggle>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+...
+`}
+        />
+        <HighlightBox label="recognition of a borderline case" variant="success">
+          <Markdown
+            typography="detail"
+            content={`
+⚠️ Edge case detected
+
+Conflicting data across sources (range: 10%-25%)
+High geopolitical sensitivity
+Potential market impact if misreported
+`}
+          />
+        </HighlightBox>
+        <Markdown
+          typography="detail"
+          content={`
+Please review and adjust the article before publishing.
+`}
+        />
+        <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
+          <mds-text typography="h6">When global crises shape China decisions</mds-text>
+          <mds-badge variant="yellow" tone="weak" slot="detail" class="mr-150">draft</mds-badge>
+          <mds-text typography="caption" slot="detail">5 min read, reviewed once by you</mds-text>
+          <mds-button
+            slot="action"
+            variant="dark"
+            tone="quiet"
+            icon="mi/outline/edit"
+            title="View draft"></mds-button>
+        </mds-entity>
+      </AIResponseMessage>
+      <AIBalloon>
+        <AIBalloonMessage>
+          Adjust range to “10%-25%”, add source attribution and soften causal claim (“could impact”
+          → “may contribute to”)
+        </AIBalloonMessage>
+      </AIBalloon>
+      <AIResponseMessage>
+        <Markdown
+          typography="detail"
+          content={`
+I've made the changes you requested:
+
+“Recent reports indicate that sanctions could reduce Russia’s oil exports by 10%–25%, which may contribute to fluctuations in European energy prices, according to multiple sources.”
+`}
+        />
+        <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
+          <mds-text typography="h6">When global crises shape China decisions</mds-text>
+          <mds-badge variant="yellow" tone="weak" slot="detail" class="mr-150">draft</mds-badge>
+          <mds-text typography="caption" slot="detail"
+            >5 min read, reviewed two times by you</mds-text
           >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >When confidence is low, the system escalates rather than proceeding with uncertainty.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-09 border border-tone-neutral-03">
-        <div class="grid gap-200">
-          <mds-text typography="label"><b>Edge Case Detection</b></mds-text>
-          <mds-text typography="detail"
-            >This case falls outside our standard scenarios. [Escalate to human expert] [See why
-            this needs review]</mds-text
-          >
-          <mds-text typography="caption" class="text-tone-neutral-05"
-            >The system recognizes when it's outside its designed scope and escalates appropriately.</mds-text
-          >
-        </div>
-      </div>
-      <div class="grid gap-400 p-600 rounded-lg bg-status-error-10 border border-status-error-03">
-        <div class="grid gap-200">
-          <div class="flex items-center gap-200">
-            <mds-icon name="mi/outline/error" class="text-status-error-05"></mds-icon>
-            <mds-text typography="label"
-              ><b>Proceeding Despite Uncertainty (Problematic)</b></mds-text
-            >
-          </div>
-          <mds-text typography="detail"
-            >AI proceeds with low-confidence recommendations or edge cases without escalating. Users
-            discover problems later when the output is wrong or inappropriate.</mds-text
-          >
-          <mds-text typography="caption" class="text-status-error-06"
-            >Errors propagate because the system doesn't recognize when to ask for help; users lose
-            trust when the AI guesses incorrectly.</mds-text
-          >
-        </div>
-      </div>
+          <mds-button
+            slot="action"
+            variant="dark"
+            tone="quiet"
+            icon="mi/outline/edit"
+            title="View draft"></mds-button>
+        </mds-entity>
+      </AIResponseMessage>
+    </div>
+    <div class="grid gap-600 w-full max-w-9600">
+      <AIResponseMessage>
+        <HighlightBox label="low-confidence output" variant="error">
+          <Markdown
+            typography="detail"
+            content={`
+Here is your article, ready to be published.
+`}
+          />
+        </HighlightBox>
+        <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
+          <mds-text typography="h6">When global crises shape China decisions</mds-text>
+          <mds-badge variant="yellow" tone="weak" slot="detail" class="mr-150">draft</mds-badge>
+          <mds-text typography="caption" slot="detail">5 min read, reviewed once by you</mds-text>
+          <mds-button
+            slot="action"
+            variant="dark"
+            tone="quiet"
+            icon="mi/outline/edit"
+            title="View draft"></mds-button>
+        </mds-entity>
+      </AIResponseMessage>
+      <AIBalloon>
+        <AIBalloonMessage>Ok publish it as is</AIBalloonMessage>
+      </AIBalloon>
     </div>
   </UseCaseInteractive>
   <Usage>
