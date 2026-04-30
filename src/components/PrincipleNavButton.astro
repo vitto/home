@@ -12,6 +12,7 @@ import Icon from './Icon.astro';
  * @param {string} class - Additional CSS classes
  * @param {string} icon - Optional icon name
  * @param {string} href - Link URL (defaults to "#")
+ * @param {string} direction - Direction of the button (next or previous)
  */
 interface Props {
   title: string;
@@ -32,8 +33,8 @@ const {
 
 const directionClass =
   direction === 'next'
-    ? 'desktop:col-start-3 col-auto justify-self-start tablet:justify-self-end'
-    : 'desktop:col-start-1 col-auto justify-self-end tablet:justify-self-start';
+    ? 'desktop:col-start-3 col-auto justify-self-start tablet:justify-self-end wide:justify-self-start'
+    : 'desktop:col-start-1 col-auto justify-self-end tablet:justify-self-start wide:justify-self-end';
 const iconDirectionClass = direction === 'next' ? 'order-1' : '-order-1';
 ---
 
