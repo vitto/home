@@ -1,0 +1,34 @@
+---
+interface Props {
+  label?: string;
+  title: string;
+  summary: string;
+}
+
+const { label = 'generated article summary', title, summary } = Astro.props;
+---
+
+<div class="grid gap-200">
+  <mds-text typography="label">{label}</mds-text>
+  <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-10">
+    <mds-text typography="h4">{title}</mds-text>
+    <mds-text typography="detail">{summary}</mds-text>
+  </div>
+  <slot />
+  <slot name="actions">
+    <div class="flex gap-200 justify-between flex-wrap">
+      <div class="flex gap-200 flex-wrap">
+        <mds-button variant="error" tone="weak" icon="mi/outline/delete" title="Delete"
+        ></mds-button>
+        <mds-button variant="dark" tone="weak" icon="mi/outline/replay" title="Regenerate"
+        ></mds-button>
+      </div>
+      <div class="flex gap-200 flex-wrap">
+        <mds-button variant="primary" tone="weak" icon="mi/outline/edit" title="Edit"></mds-button>
+        <mds-button variant="success" icon="mi/outline/publish" icon-position="right">
+          Publish
+        </mds-button>
+      </div>
+    </div>
+  </slot>
+</div>

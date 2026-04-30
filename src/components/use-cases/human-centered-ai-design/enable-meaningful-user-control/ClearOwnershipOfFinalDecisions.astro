@@ -5,6 +5,7 @@ import Usage from '../../../Usage.astro';
 import UsageItem from '../../../UsageItem.astro';
 import AILink from '../../AILink.astro';
 import AILinks from '../../AILinks.astro';
+import AIGeneratedArticleSummary from '../../AIGeneratedArticleSummary.astro';
 import articleSourcesData from '../../../../data/use-cases/article-sources.json';
 ---
 
@@ -36,33 +37,10 @@ import articleSourcesData from '../../../../data/use-cases/article-sources.json'
           }
         </AILinks>
       </div>
-      <div class="grid gap-200">
-        <mds-text typography="label">generated article summary</mds-text>
-        <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-10">
-          <mds-text typography="h4">When global crises shape local decisions</mds-text>
-          <mds-text typography="detail">
-            Drawing on IMF, World Bank, OECD, WEF and Financial Times analyses of the world economic
-            crisis, this AI-generated brief highlights how macroeconomic shocks, inflation and
-            financial instability can influence everyday choices — while stressing that the final
-            responsibility for decisions remains with the human.
-          </mds-text>
-        </div>
-        <div class="flex gap-200 justify-between flex-wrap">
-          <div class="flex gap-200 flex-wrap">
-            <mds-button variant="error" tone="weak" icon="mi/outline/delete" title="Delete"
-            ></mds-button>
-            <mds-button variant="dark" tone="weak" icon="mi/outline/replay" title="Regenerate"
-            ></mds-button>
-          </div>
-          <div class="flex gap-200 flex-wrap">
-            <mds-button variant="primary" tone="weak" icon="mi/outline/edit" title="Edit"
-            ></mds-button>
-            <mds-button variant="success" icon="mi/outline/publish" icon-position="right"
-              >Publish</mds-button
-            >
-          </div>
-        </div>
-      </div>
+      <AIGeneratedArticleSummary
+        title="When global crises shape local decisions"
+        summary="Drawing on IMF, World Bank, OECD, WEF and Financial Times analyses of the world economic crisis, this AI-generated brief highlights how macroeconomic shocks, inflation and financial instability can influence everyday choices — while stressing that the final responsibility for decisions remains with the human."
+      />
     </div>
     <div class="grid gap-600 w-full max-w-9600">
       <div class="grid gap-200">
