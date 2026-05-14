@@ -15,16 +15,17 @@ interface Props {
     headerSelected?: string;
   }>;
   menu?: boolean;
+  class?: string;
 }
 
 // Get base URL from Astro config and normalize it
 // Remove trailing slash if present (except for root)
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
-const { menu = true } = Astro.props;
+const { menu = true, class: className = '' } = Astro.props;
 ---
 
-<header class="header flex items-center gap-400 justify-between group/header">
+<header class={`header flex items-center gap-400 justify-between group/header ${className}`}>
   <div class="inline-flex items-center gap-400">
     <HeaderLogo />
     <div class="hidden desktop:grid grid-cols-full grow min-w-0">

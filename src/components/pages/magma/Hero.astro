@@ -1,0 +1,139 @@
+---
+import ProjectBlock from '../../ProjectBlock.astro';
+
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+
+type HeroImage = { src: string; alt: string };
+
+interface Props {
+  images: HeroImage[];
+}
+
+/** Colonne carosello: direzione scroll + immagini (duplicato nel markup per il loop infinito). */
+const TOTAL_COLUMNS = 4;
+const { images }: Props = Astro.props;
+
+function shuffle<T>(items: T[]): T[] {
+  const shuffled = [...items];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+const randomizedImages = shuffle(images);
+const distributedColumns = Array.from({ length: TOTAL_COLUMNS }, () => ({
+  images: [] as HeroImage[],
+}));
+
+randomizedImages.forEach((image, index) => {
+  distributedColumns[index % TOTAL_COLUMNS].images.push(image);
+});
+const scrollingColumns = distributedColumns;
+---
+
+<style>
+  :root {
+    --hero-column-duration-offset: 12s;
+    --hero-column-duration: 40s;
+    /* --hero-column-duration: 1s; */
+    --hero-column-duration-translate-limit: -30%;
+  }
+
+  @media (width < 768px) {
+    :root {
+      --hero-column-duration-translate-limit: -50%;
+    }
+  }
+
+  .hero-column {
+    animation-duration: var(--hero-column-duration);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-delay: calc(var(--hero-column-duration) / -2);
+  }
+
+  .hero-column {
+    animation-name: hero-column-animation-odd;
+
+    &:nth-child(1) {
+      animation-duration: calc(
+        var(--hero-column-duration) + var(--hero-column-duration-offset) * 1
+      );
+    }
+    &:nth-child(2) {
+      animation-duration: calc(
+        var(--hero-column-duration) + var(--hero-column-duration-offset) * 2
+      );
+    }
+    &:nth-child(3) {
+      animation-duration: calc(
+        var(--hero-column-duration) + var(--hero-column-duration-offset) * 3
+      );
+    }
+    &:nth-child(4) {
+      animation-duration: calc(
+        var(--hero-column-duration) + var(--hero-column-duration-offset) * 4
+      );
+    }
+  }
+
+  @keyframes hero-column-animation-even {
+    0% {
+      transform: translateY(var(--hero-column-duration-translate-limit));
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes hero-column-animation-odd {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(var(--hero-column-duration-translate-limit));
+    }
+  }
+</style>
+
+<ProjectBlock gradient class="mt-[400px]">
+  <slot />
+</ProjectBlock>
+
+<section
+  class="overflow-x-clip grid grid-cols-2 mobile:grid-cols-full gap-1200 absolute inset-0 bottom-[200px]"
+>
+  <div class="aspect-square">
+    <!-- <div
+      class="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b z-10 from-variant-primary-03/10 to-variant-primary-03/0"
+    >
+    </div> -->
+  </div>
+  <div class="aspect-square relative pointer-events-none user-select-none">
+    <div
+      class="absolute grid size-full origin-bottom-left- origin-center mobile:origin-top-left -rotate-45 grid-cols-4 scale-150 gap-200"
+    >
+      {
+        scrollingColumns.map((column, colIndex) => (
+          <div class="flex flex-col self-start gap-200 hero-column rounded-2xl overflow-hidden">
+            {column.images.map((img) => (
+              <div class="overflow-hidden">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  class="h-auto object-cover -my-[2px]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

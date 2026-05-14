@@ -1,0 +1,31 @@
+---
+/**
+ * ProjectBlock Component
+ *
+ * Wrapper for a discrete content block within a project page (copy, media shell, etc.).
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes to add to the root element
+ */
+interface Props {
+  class?: string;
+  columns?: string;
+  gradient?: boolean;
+}
+
+const { class: className = '', gradient = false, columns = 'grid-cols-2' } = Astro.props;
+
+const baseClasses = `relative z-10 flex justify-center p-1200`;
+const combinedClasses = `${baseClasses} ${className ? className : 'bg-tone-neutral'}`.trim();
+---
+
+<section class={combinedClasses}>
+  <div class={`grid gap-1200 ${columns} max-w-screen-desktop w-full mx-auto relative z-10`}>
+    <slot />
+  </div>
+  {
+    gradient && (
+      <div class="absolute inset-0 bg-gradient-to-t from-tone-neutral to-tone-neutral/0" />
+    )
+  }
+</section>

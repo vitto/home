@@ -1,0 +1,617 @@
+---
+import SectionLayout from './SectionLayout.astro';
+import ProjectSection from '../components/ProjectSection.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PrincipleHeader from '../components/PrincipleHeader.astro';
+import SectionFooter from '../components/SectionFooter.astro';
+import SectionNav from '../components/SectionNav.astro';
+import Section from '../components/Section.astro';
+interface Props {
+  title: string;
+  pagePath: string;
+}
+
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const { title, pagePath } = Astro.props;
+---
+
+<script>
+  function initCopyLink() {
+    const copyButtons = document.querySelectorAll('[data-copy-link]');
+
+    copyButtons.forEach((button) => {
+      button.addEventListener('click', async () => {
+        const articleId = button.getAttribute('data-article-id');
+        if (!articleId) return;
+
+        // Get current URL with hash
+        const url = new URL(window.location.href);
+        url.hash = articleId;
+        const urlWithHash = url.toString();
+        const linkCopiedDuration = 2000;
+
+        try {
+          // Copy to clipboard
+          await navigator.clipboard.writeText(urlWithHash);
+
+          // Update URL hash and scroll to anchor
+          window.location.hash = articleId;
+          const targetElement = document.getElementById(articleId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+
+          // Visual feedback: temporarily change icon
+          const icon = button.querySelector('.iconsauce-icon');
+          if (icon) {
+            icon.className = icon.className.replace(/mi\/baseline\/link/, 'mi/baseline/check');
+            button.setAttribute('aria-label', 'Link copied!');
+            button.setAttribute('title', 'Link copied!');
+
+            setTimeout(() => {
+              icon.className = icon.className.replace(/mi\/baseline\/check/, 'mi/baseline/link');
+              const article = button.closest('article');
+              const titleText = article?.querySelector('h3')?.textContent || '';
+              button.setAttribute('aria-label', `Copy link to ${titleText}`);
+              button.setAttribute('title', `Copy link to ${titleText}`);
+            }, linkCopiedDuration);
+            return;
+          }
+
+          if (button.classList.contains('mi/baseline/link')) {
+            button.classList.remove('mi/baseline/link');
+            button.classList.add('mi/baseline/check');
+
+            setTimeout(() => {
+              button.classList.remove('mi/baseline/check');
+              button.classList.add('mi/baseline/link');
+            }, linkCopiedDuration);
+          }
+        } catch (err) {
+          console.error('Failed to copy link:', err);
+        }
+      });
+    });
+  }
+
+  function scrollToHash() {
+    // Check if there's a hash in the URL
+    if (window.location.hash) {
+      const hash = window.location.hash.substring(1); // Remove the # symbol
+      const targetElement = document.getElementById(hash);
+      if (targetElement) {
+        // Small delay to ensure page is fully rendered
+        setTimeout(() => {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initCopyLink();
+      scrollToHash();
+    });
+  } else {
+    initCopyLink();
+    scrollToHash();
+  }
+</script>
+
+<script is:inline>
+  // Global utility function to find the UseCase article and container for the current script
+  // This function can be called with an id, or it will try to find the article containing the calling script
+  window.getUseCaseScope = function getUseCaseScope(id) {
+    let article = null;
+
+    if (id) {
+      // If id is provided, use it directly
+      article = document.getElementById(id);
+    } else {
+      // Otherwise, try to find the article containing the current script
+      const currentScript = document.currentScript;
+      if (currentScript) {
+        article = currentScript.closest('article');
+      }
+    }
+
+    if (!article) return null;
+
+    const articleId = article.getAttribute('id');
+    if (!articleId) return null;
+
+    const container = article.querySelector('.use-case-interactive');
+    if (!container) return null;
+
+    return {
+      article: article,
+      articleId: articleId,
+      container: container,
+    };
+  };
+
+  // Function to remove CLS prevent style for a specific use case container
+  window.removeCLSPreventStyle = function removeCLSPreventStyle(container) {
+    if (!container) return;
+
+    // Find element with data-cls-prevent attribute within this container
+    const element = container.querySelector('[data-cls-prevent]');
+    if (!element) return;
+
+    // Find all potential web components (tags with hyphens) inside this element
+    const allElements = element.querySelectorAll('*');
+    const webComponentTags = new Set();
+
+    allElements.forEach((el) => {
+      const tagName = el.tagName.toLowerCase();
+      // Web components have hyphens in their tag name
+      if (tagName.includes('-')) {
+        webComponentTags.add(tagName);
+      }
+    });
+
+    if (webComponentTags.size === 0) {
+      // No web components found, remove the style attribute immediately
+      requestAnimationFrame(() => {
+        element.removeAttribute('style');
+        element.removeAttribute('data-cls-prevent');
+      });
+    } else {
+      // Wait for all web components to be defined
+      const promises = Array.from(webComponentTags).map((tagName) => {
+        return customElements.whenDefined(tagName).catch(() => {
+          // If the element is not a custom element, resolve immediately
+          return Promise.resolve();
+        });
+      });
+
+      Promise.all(promises).then(() => {
+        // Small delay to ensure rendering is complete
+        requestAnimationFrame(() => {
+          element.removeAttribute('style');
+          element.removeAttribute('data-cls-prevent');
+        });
+      });
+    }
+  };
+
+  window.initUseCaseCLS = function initUseCaseCLS(articleId) {
+    // Get the scope for this use case using the article ID
+    const scope = window.getUseCaseScope?.(articleId);
+    if (!scope || !scope.container) return;
+
+    // Initialize CLS prevention and viewport opacity for this use case
+    if (window.removeCLSPreventStyle) {
+      setTimeout(() => {
+        window.removeCLSPreventStyle(scope.container);
+      }, 100);
+      // Also try after a longer delay as fallback
+      setTimeout(() => {
+        window.removeCLSPreventStyle(scope.container);
+      }, 1000);
+    }
+
+    if (window.initViewportOpacity) {
+      window.initViewportOpacity(scope.container);
+    }
+  };
+
+  // Function to initialize viewport opacity observer for a specific use case container
+  window.initViewportOpacity = function initViewportOpacity(container) {
+    if (!container) return;
+
+    // Find element with data-cls-prevent attribute within this container
+    const element = container.querySelector('[data-cls-prevent]');
+    if (!element) return;
+
+    // Create Intersection Observer to detect when element enters viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Element is in viewport, change opacity from 0 to 100
+            const targetElement = entry.target;
+            targetElement.removeAttribute('hidden');
+            targetElement.classList.remove('opacity-0', 'scale-90');
+            targetElement.classList.add('opacity-100', 'scale-100');
+            // Unobserve after first intersection to avoid repeated triggers
+            observer.unobserve(targetElement);
+          }
+        });
+      },
+      {
+        // Trigger when element is 10% visible
+        threshold: 0.1,
+        // Start observing slightly before element enters viewport
+        rootMargin: '0px 0px -10% 0px',
+      }
+    );
+
+    // Observe the element
+    observer.observe(element);
+  };
+
+  // Function to initialize toggle functionality for use cases
+  window.initToggle = function initToggle(articleId) {
+    // console.log('initToggle', articleId);
+    // Get articleId from parameter or find parent article
+    let id = articleId;
+    if (!id) {
+      const currentScript = document.currentScript;
+      if (currentScript) {
+        const article = currentScript.closest('article');
+        id = article?.getAttribute('id') || null;
+      }
+    }
+
+    if (!id) return;
+
+    const scope = window.getUseCaseScope?.(id);
+    if (!scope) return;
+
+    const { container } = scope;
+    const toggleContainer = container.querySelector('[data-toggle-container]');
+    const switchElement = container.querySelector('[data-toggle-switch]');
+
+    if (!toggleContainer || !switchElement) return;
+
+    // Get the first two direct children
+    const children = Array.from(toggleContainer.children);
+    if (children.length < 2) return;
+
+    const firstElement = children[0];
+    const secondElement = children[1];
+
+    // Initially show second element (switch is off by default)
+    firstElement.classList.remove('hidden');
+    secondElement.classList.add('hidden');
+
+    // Wait for web component to be defined
+    customElements.whenDefined('mds-input-switch').then(() => {
+      // Listen for change events
+      switchElement.addEventListener('mdsInputSwitchChange', (e) => {
+        const isChecked = e.detail?.checked ?? switchElement.checked ?? false;
+
+        if (isChecked) {
+          // Switch is on: show first element, hide second
+          firstElement.classList.remove('hidden');
+          secondElement.classList.add('hidden');
+        } else {
+          // Switch is off: show second element, hide first
+          firstElement.classList.add('hidden');
+          secondElement.classList.remove('hidden');
+        }
+      });
+    });
+  };
+
+  // Function to initialize multiple examples functionality for use cases
+  window.initMultiple = function initMultiple(articleId) {
+    // Get articleId from parameter or find parent article
+    const HEIGHT_TRANSITION_DURATION = 500; // ms, must match UseCaseInteractive.css
+    let id = articleId;
+    if (!id) {
+      const currentScript = document.currentScript;
+      if (currentScript) {
+        const article = currentScript.closest('article');
+        id = article?.getAttribute('id') || null;
+      }
+    }
+
+    if (!id) return;
+
+    const scope = window.getUseCaseScope?.(id);
+    if (!scope) return;
+
+    const { container } = scope;
+    const multipleContainer = container.querySelector('[data-multiple-container]');
+    const indicatorsContainer = container.querySelector('[data-multiple-indicators]');
+    const indicatorTemplate = document.querySelector('[data-multiple-indicator-template]');
+
+    if (!multipleContainer || !indicatorsContainer || !indicatorTemplate) return;
+
+    // Get all direct children (slotted elements)
+    const children = Array.from(multipleContainer.children);
+    if (children.length < 2) return;
+
+    let currentIndex = 0;
+    let lastSwipeDirection = null; // Track last swipe direction for wrapping
+
+    // Function to show a specific element and hide others
+    function showElement(index, swipeDirection = null) {
+      // Determine animation direction
+      let animationDirection = null;
+
+      if (swipeDirection) {
+        // Use swipe direction if provided (for wrapping cases)
+        lastSwipeDirection = swipeDirection;
+        animationDirection = swipeDirection === 'next' ? 'from-right' : 'from-left';
+      } else {
+        // Normal case: determine from index comparison
+        if (currentIndex < index) {
+          animationDirection = 'from-right';
+        } else if (currentIndex > index) {
+          animationDirection = 'from-left';
+        } else {
+          // Same index, no animation needed
+          animationDirection = null;
+        }
+      }
+
+      children.forEach((child, i) => {
+        if (i === index) {
+          child.classList.remove('hidden');
+          multipleContainer.style.height = `${child.offsetHeight}px`;
+
+          // Remove any existing animation classes
+          child.classList.remove('use-case-from-right-animation', 'use-case-from-left-animation');
+
+          if (animationDirection === 'from-right') {
+            child.classList.add('use-case-from-right-animation');
+          } else if (animationDirection === 'from-left') {
+            child.classList.add('use-case-from-left-animation');
+          }
+          // Remove animation class after animation completes
+          setTimeout(() => {
+            child.classList.remove('use-case-from-right-animation', 'use-case-from-left-animation');
+            multipleContainer.removeAttribute('style');
+          }, HEIGHT_TRANSITION_DURATION);
+        } else {
+          child.classList.add('hidden');
+          // Remove animation classes from hidden elements
+          child.classList.remove('use-case-from-right-animation', 'use-case-from-left-animation');
+        }
+      });
+
+      // Update indicator dots
+      const indicators = indicatorsContainer.querySelectorAll('a');
+
+      indicators.forEach((indicator, i) => {
+        const indicatorDiv = indicator.querySelector('div');
+        if (i === index) {
+          indicator.classList.add('pointer-events-none');
+          indicatorDiv.classList.add('bg-tone-neutral-01');
+          indicatorDiv.classList.add('mobile:bg-tone-neutral-10');
+          indicatorDiv.classList.remove('bg-tone-neutral-07');
+        } else {
+          indicator.classList.remove('pointer-events-none');
+          indicatorDiv.classList.remove('bg-tone-neutral-01');
+          indicatorDiv.classList.remove('mobile:bg-tone-neutral-10');
+          indicatorDiv.classList.add('bg-tone-neutral-07');
+        }
+      });
+
+      currentIndex = index;
+    }
+
+    // Create indicator dots dynamically using template
+    children.forEach((_, index) => {
+      const indicator = indicatorTemplate.content.cloneNode(true).querySelector('a');
+      const indicatorDiv = indicator.querySelector('div');
+      if (!indicator) return;
+
+      indicatorDiv.classList.add(
+        index === 0
+          ? ('bg-tone-neutral-01', 'mobile:bg-tone-neutral-10', 'pointer-events-none')
+          : 'bg-tone-neutral-07'
+      );
+      indicator.setAttribute('title', `Show example ${index + 1}`);
+      indicator.setAttribute('data-multiple-index', index.toString());
+      indicator.addEventListener('click', (e) => {
+        e.preventDefault();
+        multipleContainer.removeAttribute('style');
+        multipleContainer.style.height = multipleContainer.offsetHeight + 'px';
+        setTimeout(() => {
+          showElement(index);
+        }, 100);
+      });
+      indicator.addEventListener('keydown', (e) => {
+        const ke = e;
+        if (ke.key === 'Enter' || ke.key === ' ') {
+          e.preventDefault();
+          multipleContainer.removeAttribute('style');
+          multipleContainer.style.height = multipleContainer.offsetHeight + 'px';
+          setTimeout(() => {
+            showElement(index);
+          }, 100);
+        }
+      });
+      indicatorsContainer.appendChild(indicator);
+    });
+
+    // Initially show first element, hide others
+    showElement(0);
+
+    // On resize, clear inline height so container can reflow with new viewport
+    window.addEventListener('resize', () => {
+      if (multipleContainer.hasAttribute('style')) {
+        multipleContainer.removeAttribute('style');
+      }
+    });
+
+    // Add touch/swipe gesture support for mobile
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+    const swipeThreshold = 50; // Minimum distance for a swipe
+
+    function handleTouchStart(e) {
+      const touch = e.touches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+    }
+
+    function handleTouchMove(e) {
+      // Prevent default scrolling while swiping horizontally
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        const deltaX = Math.abs(touch.clientX - touchStartX);
+        const deltaY = Math.abs(touch.clientY - touchStartY);
+
+        // If horizontal movement is greater than vertical, prevent default scrolling
+        if (deltaX > deltaY && deltaX > 10) {
+          e.preventDefault();
+        }
+      }
+    }
+
+    function handleTouchEnd(e) {
+      const touch = e.changedTouches[0];
+      touchEndX = touch.clientX;
+      touchEndY = touch.clientY;
+      handleSwipe();
+    }
+
+    function handleSwipe() {
+      const swipeDistanceX = touchEndX - touchStartX;
+      const swipeDistanceY = Math.abs(touchEndY - touchStartY);
+
+      // Check if horizontal swipe is more significant than vertical
+      if (Math.abs(swipeDistanceX) < swipeThreshold || Math.abs(swipeDistanceX) < swipeDistanceY) {
+        return;
+      }
+
+      if (swipeDistanceX > 0) {
+        // Swipe right - go to previous
+        if (currentIndex > 0) {
+          showElement(currentIndex - 1, 'prev');
+        } else {
+          // Wrap to last element (swipe right means going backwards)
+          showElement(children.length - 1, 'prev');
+        }
+      } else {
+        // Swipe left - go to next
+        if (currentIndex < children.length - 1) {
+          showElement(currentIndex + 1, 'next');
+        } else {
+          // Wrap to first element (swipe left means going forwards)
+          showElement(0, 'next');
+        }
+      }
+    }
+
+    // Add touch event listeners only on mobile devices
+    if (window.innerWidth <= 768 || 'ontouchstart' in window) {
+      multipleContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+      multipleContainer.addEventListener('touchmove', handleTouchMove, { passive: false });
+      multipleContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
+    }
+  };
+
+  // Initialize all toggles on page load
+  function initAllToggles() {
+    // Find all articles with toggle containers
+    const articles = document.querySelectorAll('article[id]');
+    articles.forEach((article) => {
+      const articleId = article.getAttribute('id');
+      if (!articleId) return;
+
+      const container = article.querySelector('.use-case-interactive');
+      if (!container) return;
+
+      const toggleContainer = container.querySelector('[data-toggle-container]');
+      if (toggleContainer) {
+        // This article has a toggle, initialize it
+        window.initToggle(articleId);
+      }
+    });
+  }
+
+  // Initialize all multiple examples on page load
+  function initAllMultiples() {
+    // Find all articles with multiple containers
+    const articles = document.querySelectorAll('article[id]');
+    articles.forEach((article) => {
+      const articleId = article.getAttribute('id');
+      if (!articleId) return;
+
+      const container = article.querySelector('.use-case-interactive');
+      if (!container) return;
+
+      const multipleContainer = container.querySelector('[data-multiple-container]');
+      if (multipleContainer) {
+        // This article has multiple examples, initialize it
+        window.initMultiple(articleId);
+      }
+    });
+  }
+
+  // Function to initialize code snippet copy functionality
+  function initCodeSnippetCopy() {
+    const copyButtons = document.querySelectorAll('[data-code-id]');
+    copyButtons.forEach((button) => {
+      button.addEventListener('click', async () => {
+        const codeId = button.getAttribute('data-code-id');
+        const codeElement = document.getElementById(codeId);
+        if (!codeElement) return;
+
+        // Get the raw code text (without HTML tags)
+        const codeText = codeElement.textContent || codeElement.innerText;
+
+        try {
+          await navigator.clipboard.writeText(codeText);
+          // Visual feedback
+          const originalHTML = button.innerHTML;
+          button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          `;
+          setTimeout(() => {
+            button.innerHTML = originalHTML;
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy code:', err);
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initAllToggles();
+      initAllMultiples();
+      initCodeSnippetCopy();
+    });
+  } else {
+    initAllToggles();
+    initAllMultiples();
+    initCodeSnippetCopy();
+  }
+</script>
+<template data-multiple-indicator-template>
+  <a
+    class="p-100 inline-flex justify-center items-center focus-bounce rounded-full relative focus-visible:z-10 cursor-pointer group/dot"
+    tabindex="0"
+    role="button"
+    aria-label="Show example"
+    data-multiple-index
+  >
+    <div
+      class="size-200 rounded-full transition-colors bg-tone-neutral-07 mobile:bg-tone-neutral-04 group-hover/dot:bg-tone-neutral-06"
+    >
+    </div>
+  </a>
+</template>
+<SectionLayout title={title}>
+  <SectionNav baseUrl={baseUrl} sectionPath={pagePath} />
+  <div class="relative z-30 mt-600 w-full flex justify-center px-600">
+    <Header
+      class="max-w-screen-desktop mx-auto py-400 px-600 pr-400 rounded-full nav-outline bg-tone-neutral/95 w-full"
+    />
+  </div>
+  <div class="grid">
+    <slot />
+  </div>
+  <Section>
+    <div class="h-50 bg-tone-neutral-03"></div>
+    <SectionFooter />
+  </Section>
+</SectionLayout>
+<Footer />

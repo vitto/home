@@ -1,0 +1,22 @@
+---
+/**
+ * ProjectSection Component
+ *
+ * Wrapper component for page sections with consistent layout
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes to add to the section element
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const baseClasses = 'mobile:p-600 p-1200 grid';
+const combinedClasses = `${baseClasses} ${className}`.trim();
+---
+
+<section class={combinedClasses}>
+  <slot />
+</section>

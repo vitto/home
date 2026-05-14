@@ -1,0 +1,32 @@
+{
+  "components": [
+    "mds-accordion",
+    "mds-accordion-timer",
+    "mds-author",
+    "mds-avatar",
+    "mds-avatar-stack",
+    "mds-badge",
+    "mds-banner",
+    "mds-benchmark-bar",
+    "mds-bibliography",
+    "mds-breadcrumb",
+    "mds-button",
+    "mds-button-dropdown",
+    "mds-button-group",
+    "mds-calendar",
+    "mds-card",
+    "mds-chip",
+    "mds-details",
+    "mds-dropdown",
+    "mds-entity",
+    "mds-file",
+    "mds-file-preview",
+    "mds-header-bar",
+    "mds-keyboard",
+    "mds-label",
+    "mds-mention",
+    "mds-note",
+    "mds-paginator",
+    "mds-pref"
+  ]
+}

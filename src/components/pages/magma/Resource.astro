@@ -1,0 +1,47 @@
+---
+/** External link with logo image. */
+interface Props {
+  url: string;
+  logo: string;
+  name: string;
+  description?: string;
+  descriptionClass?: string;
+  className?: string;
+  supports?: string[];
+}
+
+const { url, logo, name, className, description, descriptionClass, supports } = Astro.props;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    'flex flex-col group gap-200 items-center justify-center no-underline focus-bounce rounded-2xl p-400 auto-rows-min',
+    className,
+  ]}
+>
+  <!-- {description && <mds-text typography="h6">{name}</mds-text>} -->
+  <div
+    class:list={[
+      'p-400 flex items-center justify-center w-full',
+      'group-hover:bg-tone-neutral group-hover:shadow-sm rounded-lg transition-cosmetic',
+      descriptionClass,
+    ]}
+  >
+    <img src={logo} alt={name} class={`object-contain max-h-600 w-full`} loading="lazy" />
+  </div>
+  {description && <mds-text typography="caption">{description}</mds-text>}
+  {
+    supports && (
+      <mds-list>
+        {supports.map((support) => (
+          <mds-list-item>
+            <mds-text typography="caption">{support}</mds-text>
+          </mds-list-item>
+        ))}
+      </mds-list>
+    )
+  }
+</a>
