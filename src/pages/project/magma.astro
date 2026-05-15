@@ -6,6 +6,7 @@ import data from '../../data/projects.json';
 import magmaData from '../../data/projects/magma.json';
 import ProjectBlock from '../../components/ProjectBlock.astro';
 import Resource from '../../components/pages/magma/Resource.astro';
+import BeforeAfterFlip from '../../components/pages/magma/BeforeAfterFlip.astro';
 
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
@@ -143,9 +144,14 @@ function stackSupports(stack: SupportedStack, capability: Supports): boolean {
   </Hero>
   <ProjectBlock columns="grid-cols-[2fr_1fr]">
     <div>
-      <div class="aspect-picture bg-tone-neutral-01 grid gap-200 p-200"></div>
+      <BeforeAfterFlip
+        beforeSrc={`${baseUrl}/assets/projects/example-before-01.svg`}
+        afterSrc={`${baseUrl}/assets/projects/example-after-01.svg`}
+        beforeAlt="Before example"
+        afterAlt="After example"
+      />
     </div>
-    <div class="grid gap-200 auto-rows-min">
+    <div class="grid gap-200 auto-rows-min sticky top-2800 self-start">
       <mds-text typography="h2">A product ecosystem</mds-text>
       <mds-text typography="paragraph">
         Magma was built to help Maggioli Spa bring consistency across its product suite. Not a style
@@ -155,7 +161,7 @@ function stackSupports(stack: SupportedStack, capability: Supports): boolean {
     </div>
   </ProjectBlock>
   <ProjectBlock>
-    <div class="grid gap-200 auto-rows-min">
+    <div class="grid gap-200 auto-rows-min sticky top-2800 self-start">
       <mds-text typography="h2">Agnostic, everywhere</mds-text>
       <mds-text typography="paragraph">
         Designed to adapt to different technologies — React, Angular, WordPress — through the
@@ -165,7 +171,10 @@ function stackSupports(stack: SupportedStack, capability: Supports): boolean {
       </mds-text>
     </div>
     <div>
-      <div class="aspect-picture bg-tone-neutral-01 grid gap-200 p-200"></div>
+      <mds-img
+        src={`${baseUrl}/assets/projects/adoption.svg`}
+        alt="Magma Design System Logo"
+        class="w-full object-contain"></mds-img>
     </div>
   </ProjectBlock>
   <ProjectBlock columns="grid-cols-3">
@@ -184,8 +193,17 @@ function stackSupports(stack: SupportedStack, capability: Supports): boolean {
   </ProjectBlock>
 
   <ProjectBlock columns="grid-cols-[2fr_1fr]">
-    <div class="aspect-picture bg-tone-neutral-01 grid gap-200 p-200"></div>
-    <div class="grid gap-200 auto-rows-min">
+    <div>
+      <BeforeAfterFlip
+        beforeSrc={`${baseUrl}/assets/projects/example-migration-structure.svg`}
+        afterSrc={`${baseUrl}/assets/projects/example-migration-frontend.svg`}
+        beforeAlt="Structure"
+        afterAlt="Frontend"
+        beforeLabel="Structure"
+        afterLabel="Frontend"
+      />
+    </div>
+    <div class="grid gap-200 auto-rows-min sticky top-2800 self-start">
       <mds-text typography="h2">An architecture designed for gradual adoption</mds-text>
       <mds-text typography="paragraph">
         The most important constraint in a company with legacy products is not technology — it's
@@ -194,7 +212,7 @@ function stackSupports(stack: SupportedStack, capability: Supports): boolean {
     </div>
   </ProjectBlock>
   <ProjectBlock columns="grid-cols-2">
-    <div class="grid gap-200 auto-rows-min">
+    <div class="grid gap-200 auto-rows-min sticky top-2800 self-start">
       <mds-text typography="h2">The right level of adoption</mds-text>
       <mds-text typography="paragraph">
         A team can start with Design Tokens alone as CSS custom properties, add one component at a
@@ -203,12 +221,24 @@ function stackSupports(stack: SupportedStack, capability: Supports): boolean {
         products — all consuming the same tokens and the same components.
       </mds-text>
     </div>
-    <div class="aspect-picture bg-tone-neutral-01 grid gap-200 p-200"></div>
+    <div>
+      <BeforeAfterFlip
+        beforeSrc={`${baseUrl}/assets/projects/example-migration-structure-magma-low.svg`}
+        afterSrc={`${baseUrl}/assets/projects/example-migration-structure-magma.svg`}
+        beforeAlt="Structure"
+        afterAlt="Frontend"
+        beforeLabel="Structure"
+        afterLabel="Frontend"
+      />
+    </div>
   </ProjectBlock>
   <ProjectBlock columns="grid-cols-3" class="bg-variant-primary-03 text-tone-neutral-10">
-    <mds-text typography="h1" tag="h2" class="col-span-3 text-center"
-      >A Design System that doesn't evolve, dies.</mds-text
-    >
+    <mds-text typography="h1" tag="h2" class="col-span-3 text-center">
+      A Design System that doesn't evolve,{' '}
+      <span data-scroll-shift class="inline-block origin-bottom-left will-change-transform"
+        >dies.</span
+      >
+    </mds-text>
   </ProjectBlock>
   <ProjectBlock columns="grid-cols-3">
     <div class="grid gap-200 auto-rows-min">
@@ -237,7 +267,7 @@ function stackSupports(stack: SupportedStack, capability: Supports): boolean {
     <div class="grid gap-600 auto-rows-min">
       <div class="grid gap-200 auto-rows-min">
         <mds-benchmark-bar value="65" alias="fino al 35%"
-          >Riduzione stimata di tempi e costi di sviluppo</mds-benchmark-bar
+          >Cost reduction estimated</mds-benchmark-bar
         >
       </div>
       <div class="grid gap-200 auto-rows-min">
@@ -315,3 +345,44 @@ function stackSupports(stack: SupportedStack, capability: Supports): boolean {
     </mds-table>
   </ProjectBlock>
 </ProjectLayout>
+
+<script>
+  function clamp(value: number, min: number, max: number) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function initScrollShiftSpans() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    document.querySelectorAll<HTMLElement>('[data-scroll-shift]').forEach((span) => {
+      const section = span.closest('section');
+      if (!section) return;
+
+      const maxDeg = Number.parseFloat(span.dataset.scrollShiftMax ?? '80');
+      let rafId: number | null = null;
+
+      const update = () => {
+        const rect = section.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const scrollRange = viewportHeight + rect.height;
+        const progress = clamp((viewportHeight - rect.top) / scrollRange, 0, 1);
+
+        span.style.transform = `rotate(${progress * maxDeg}deg)`;
+      };
+
+      const onScroll = () => {
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          rafId = null;
+          update();
+        });
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
+    });
+  }
+
+  initScrollShiftSpans();
+</script>

@@ -1,0 +1,170 @@
+---
+interface Props {
+  beforeSrc: string;
+  afterSrc: string;
+  beforeAlt?: string;
+  afterAlt?: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+  /** Viewport height fraction (0–1) where scroll flip starts (element center). */
+  flipStart?: number;
+  /** Viewport height fraction (0–1) where scroll flip completes. */
+  flipEnd?: number;
+}
+
+const {
+  beforeSrc,
+  afterSrc,
+  beforeAlt = 'Before',
+  beforeLabel = 'before',
+  afterLabel = 'after',
+  afterAlt = 'After',
+  flipStart = 0.85,
+  flipEnd = 0.45,
+} = Astro.props;
+---
+
+<div
+  class="before-after-flip flex flex-col gap-600 justify-center bg-tone-neutral-09 p-600 rounded-3xl"
+  data-before-after-flip
+  data-flip-start={flipStart}
+  data-flip-end={flipEnd}
+>
+  <div class="flex gap-200 items-center justify-center">
+    <mds-text typography="label">{beforeLabel}</mds-text>
+    <mds-input-switch explicit data-flip-switch disabled></mds-input-switch>
+    <mds-text typography="label">{afterLabel}</mds-text>
+  </div>
+
+  <div class="before-after-flip__scene aspect-picture w-full">
+    <div class="before-after-flip__card" data-flip-card>
+      <div class="before-after-flip__face before-after-flip__face--front">
+        <img
+          src={beforeSrc}
+          alt={beforeAlt}
+          class="w-full object-contain rounded-xl shadow-md-sharp"
+          loading="lazy"
+        />
+      </div>
+      <div class="before-after-flip__face before-after-flip__face--back">
+        <img
+          src={afterSrc}
+          alt={afterAlt}
+          class="w-full object-contain rounded-xl shadow-md-sharp"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .before-after-flip__scene {
+    perspective: 1400px;
+  }
+
+  .before-after-flip__card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    will-change: transform;
+  }
+
+  .before-after-flip__face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .before-after-flip__face--back {
+    transform: rotateY(180deg);
+  }
+
+  .before-after-flip[data-scroll-complete] [data-flip-switch] {
+    pointer-events: auto;
+  }
+</style>
+
+<script>
+  function clamp(value: number, min: number, max: number) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function initBeforeAfterFlip(root: HTMLElement) {
+    const card = root.querySelector<HTMLElement>('[data-flip-card]');
+    const switchEl = root.querySelector<HTMLElement & { checked?: boolean }>('[data-flip-switch]');
+    if (!card || !switchEl) return;
+
+    const flipStart = Number.parseFloat(root.dataset.flipStart ?? '0.85');
+    const flipEnd = Number.parseFloat(root.dataset.flipEnd ?? '0.45');
+    const flipRange = flipStart - flipEnd;
+
+    let scrollComplete = false;
+    let rafId: number | null = null;
+
+    const setRotation = (degrees: number, animate: boolean) => {
+      card.style.transition = animate ? 'transform 0.65s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
+      card.style.transform = `rotateY(${degrees}deg)`;
+    };
+
+    const scrollProgress = () => {
+      const rect = root.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const centerY = rect.top + rect.height / 2;
+      const startY = viewportHeight * flipStart;
+      const endY = viewportHeight * flipEnd;
+
+      if (flipRange <= 0) return rect.top < viewportHeight ? 1 : 0;
+
+      return clamp((startY - centerY) / (startY - endY), 0, 1);
+    };
+
+    const updateFromScroll = () => {
+      if (scrollComplete) return;
+
+      const progress = scrollProgress();
+      setRotation(progress * 180, false);
+
+      if (progress >= 1) {
+        scrollComplete = true;
+        root.dataset.scrollComplete = 'true';
+        switchEl.removeAttribute('disabled');
+        switchEl.checked = true;
+      }
+    };
+
+    const onScroll = () => {
+      if (scrollComplete) return;
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        updateFromScroll();
+      });
+    };
+
+    customElements.whenDefined('mds-input-switch').then(() => {
+      switchEl.addEventListener('mdsInputSwitchChange', (event: Event) => {
+        if (!scrollComplete) return;
+
+        const customEvent = event as CustomEvent<{ checked?: boolean }>;
+        const isAfter =
+          customEvent.detail?.checked ?? (switchEl as HTMLInputElement).checked ?? false;
+
+        setRotation(isAfter ? 180 : 0, true);
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    updateFromScroll();
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-before-after-flip]').forEach(initBeforeAfterFlip);
+</script>
