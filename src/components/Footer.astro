@@ -1,6 +1,7 @@
 ---
 import Button from './Button.astro';
 import Icon from './Icon.astro';
+import ProjectLink from './ProjectLink.astro';
 
 interface Props {
   class?: string;
@@ -36,6 +37,20 @@ const socialLinks = [
 
 <footer class={className}>
   <div class="max-w-screen-desktop w-full mx-auto text-center grid gap-1200 justify-center">
+    <div class="flex items-start justify-center gap-600">
+      <ProjectLink
+        href={`${baseUrl}/project/magma`}
+        logo=`${baseUrl}/assets/projects/magma-design-system-logo.svg`
+        alt="Magma Design System Logo"
+        label="Magma Design System"
+      />
+      <ProjectLink
+        href="https://iconsauce.github.io/docs/"
+        logo=`${baseUrl}/assets/projects/iconsauce-logo.svg`
+        alt="Iconsauce Logo"
+        label="Iconsauce"
+      />
+    </div>
     <div class="grid gap-200 justify-center">
       <h4 class="text-title-h2 text-tone-neutral-01">Let's Connect</h4>
       <p class="text-info-detail">

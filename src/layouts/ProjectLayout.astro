@@ -600,7 +600,7 @@ const { title, pagePath } = Astro.props;
   </a>
 </template>
 <SectionLayout title={title}>
-  <SectionNav baseUrl={baseUrl} sectionPath={pagePath} />
+  <SectionNav baseUrl={baseUrl} sectionPath={pagePath} hideBibliography={true} />
   <div class="relative z-30 mt-600 w-full flex justify-center px-600">
     <Header
       class="max-w-screen-desktop mx-auto py-400 px-600 pr-400 rounded-full nav-outline bg-tone-neutral/95 w-full"

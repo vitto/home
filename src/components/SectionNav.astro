@@ -10,11 +10,19 @@ interface Props {
   baseUrl: string;
   sectionPath: string;
   principles?: boolean;
+  hideBibliography?: boolean;
   currentPrincipleId?: string;
   allPrinciples?: Array<{ id: string; title: string }>;
 }
 
-const { baseUrl, sectionPath, principles = true, currentPrincipleId, allPrinciples } = Astro.props;
+const {
+  baseUrl,
+  sectionPath,
+  principles = true,
+  hideBibliography = false,
+  currentPrincipleId,
+  allPrinciples,
+} = Astro.props;
 
 const hasPrincipleNavData =
   currentPrincipleId != null && allPrinciples != null && allPrinciples.length > 0;
@@ -45,7 +53,7 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
         <Icon name="mi/outline/arrow-upward" />
       </Button>
       {
-        principles && (
+        principles && currentSection != null && (
           <Button
             href={categorySectionUrl}
             variant="icon"
@@ -66,10 +74,17 @@ const categorySectionUrl = `${baseUrl}${sectionPath}`;
         )
       }
 
-      <Button href="#related-references-and-bibliography" variant="icon" title="Show bibliography">
-        <Icon name="mi/outline/auto-stories" />
-        <!-- <Icon name="mi/outline/arrow-downward" /> -->
-      </Button>
+      {
+        !hideBibliography && (
+          <Button
+            href="#related-references-and-bibliography"
+            variant="icon"
+            title="Show bibliography"
+          >
+            <Icon name="mi/outline/auto-stories" />
+          </Button>
+        )
+      }
 
       <Button data-menu-toggle href="#" variant="icon" title="Show categories">
         <Icon name="mi/outline/menu" />
