@@ -5,7 +5,6 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
 import data from '../../data/projects.json';
 import magmaData from '../../data/projects/magma.json';
 import ProjectBlock from '../../components/ProjectBlock.astro';
-import ProjectRow from '../../components/ProjectRow.astro';
 import Resource from '../../components/pages/magma/Resource.astro';
 
 const rawBaseUrl = import.meta.env.BASE_URL;
@@ -28,7 +27,7 @@ const heroImages = randomizedComponentNames.map((componentName) => ({
 
 const componentCount = 90;
 
-type SupportedStack = {
+type GovernanceStack = {
   name: string;
   url: string;
   description?: string;
@@ -38,14 +37,14 @@ type SupportedStack = {
   className?: string;
 };
 
-const governanceStacks: SupportedStack[] = [
+const governanceStacks: GovernanceStack[] = [
   {
     name: 'StackOverflow teams',
     description: 'Questions and answers',
     descriptionClass: 'bg-label-orange-10 group-hover:shadow-label-orange-09',
     url: 'https://stackoverflowteams.com/c/magma-design-system/questions',
     className: 'hover:bg-label-orange-10',
-    logo: `${baseUrl}/assets/governance-stack-overflow-logo.svg`,
+    logo: `${baseUrl}/assets/projects/governance-stack-overflow-logo.svg`,
   },
   {
     name: 'GitLab Issues',
@@ -53,68 +52,73 @@ const governanceStacks: SupportedStack[] = [
     descriptionClass: 'bg-label-orange-10 group-hover:shadow-label-orange-09',
     url: 'https://gitlab.com/maggiolispa/ricerca-sviluppo-new-media/magma/design-system/-/work_items',
     className: 'hover:bg-label-orange-10',
-    logo: `${baseUrl}/assets/governance-gitlab-logo.svg`,
+    logo: `${baseUrl}/assets/projects/governance-gitlab-logo.svg`,
   },
   {
     name: 'Storybook',
-    description: 'Part of tle living documentation',
+    description: 'Test all the components here',
     descriptionClass: 'bg-label-amaranth-10 group-hover:shadow-label-amaranth-09',
     url: 'https://magma.maggiolicloud.it/storybook/',
     className: 'hover:bg-label-amaranth-10',
-    logo: `${baseUrl}/assets/governance-storybook-logo.svg`,
+    logo: `${baseUrl}/assets/projects/governance-storybook-logo.svg`,
   },
-  {
-    name: 'Magma Design System',
-    description: 'The living documentation under development',
-    descriptionClass: 'bg-variant-primary-10 group-hover:shadow-variant-primary-09',
-    url: 'https://magma.maggiolicloud.it/',
-    className: 'hover:bg-variant-primary-10',
-    logo: `${baseUrl}/assets/magma-design-system-logo.svg`,
-  },
+  // {
+  //   name: 'Magma Design System',
+  //   description: 'The living documentation under development',
+  //   descriptionClass: 'bg-variant-primary-10 group-hover:shadow-variant-primary-09',
+  //   url: 'https://magma.maggiolicloud.it/',
+  //   className: 'hover:bg-variant-primary-10',
+  //   logo: `${baseUrl}/assets/projects/magma-design-system-logo.svg`,
+  // },
 ];
+
+type Supports = 'web-components' | 'tokens' | 'wrapper' | 'css-tokens';
+
+type SupportedStack = {
+  name: string;
+  url: string;
+  supports?: Supports[];
+  logo: string;
+};
 
 const supportedStacks: SupportedStack[] = [
   {
     name: 'Angular',
     url: 'https://angular.dev/',
-    descriptionClass: 'bg-label-orchid-10 group-hover:shadow-label-orchid-09',
-    className: 'hover:bg-label-orchid-10',
-    logo: `${baseUrl}/assets/tech-angular-logo.svg`,
-    supports: ['Framework wrapper'],
+    logo: `${baseUrl}/assets/projects/tech-angular-logo.svg`,
+    supports: ['wrapper'],
   },
   {
     name: 'React',
     url: 'https://react.dev/',
-    descriptionClass: 'bg-label-blue-10 group-hover:shadow-label-blue-09',
-    className: 'hover:bg-label-blue-10',
-    logo: `${baseUrl}/assets/tech-react-logo.svg`,
-    supports: ['Framework wrapper'],
+    logo: `${baseUrl}/assets/projects/tech-react-logo.svg`,
+    supports: ['wrapper'],
   },
   {
     name: 'Flutter',
     url: 'https://flutter.dev/',
-    className: 'hover:bg-label-blue-10',
-    descriptionClass: 'bg-label-blue-10 group-hover:shadow-label-blue-09',
-    logo: `${baseUrl}/assets/tech-flutter-logo.svg`,
-    supports: ['Tokens'],
+    logo: `${baseUrl}/assets/projects/tech-flutter-logo.svg`,
+    supports: ['tokens'],
   },
   {
     name: 'WordPress',
     url: 'https://wordpress.org/',
-    className: 'hover:bg-tone-neutral-10',
-    descriptionClass: 'bg-tone-neutral-10 group-hover:shadow-tone-neutral-09',
-    logo: `${baseUrl}/assets/tech-wordpress-logo.svg`,
-    supports: ['Web Components'],
+    logo: `${baseUrl}/assets/projects/tech-wordpress-logo.svg`,
+    supports: ['web-components'],
   },
   {
     name: 'HTML',
     url: 'https://html.com/',
-    className: 'hover:bg-label-orange-10',
-    descriptionClass: 'bg-label-orange-10 group-hover:shadow-label-orange-09',
-    logo: `${baseUrl}/assets/tech-html-logo-alt.svg`,
-    supports: ['Web Components', 'CSS tokens'],
+    logo: `${baseUrl}/assets/projects/tech-html-logo-alt.svg`,
+    supports: ['web-components', 'tokens', 'css-tokens'],
   },
 ];
+
+const platformSupportColumns: Supports[] = ['wrapper', 'tokens', 'web-components', 'css-tokens'];
+
+function stackSupports(stack: SupportedStack, capability: Supports): boolean {
+  return stack.supports?.includes(capability) ?? false;
+}
 ---
 
 <ProjectLayout title={data.magma.title} pagePath="/project/magma">
@@ -122,18 +126,18 @@ const supportedStacks: SupportedStack[] = [
     <div class="grid gap-400">
       <div class="flex gap-600">
         <mds-img
-          src={`${baseUrl}/assets/logo-gruppo-maggioli.svg`}
+          src={`${baseUrl}/assets/projects/logo-gruppo-maggioli.svg`}
           alt="Magma Design System Logo"
           class="w-full max-w-1200 object-contain"></mds-img>
         <mds-img
-          src={`${baseUrl}/assets/magma-design-system-logo.svg`}
+          src={`${baseUrl}/assets/projects/magma-design-system-logo.svg`}
           alt="Magma Design System Logo"
           class="w-full max-w-1200 object-contain"></mds-img>
       </div>
       <mds-text typography="h1">Magma Design System</mds-text>
       <mds-text typography="paragraph">
-        Un ecosistema di componenti, linee guida e pattern per creare interfacce utente coerenti,
-        accessibili e di alta qualità.
+        A component ecosystem, guidelines and patterns to build consistent, accessible, high-quality
+        user interfaces.
       </mds-text>
     </div>
   </Hero>
@@ -142,22 +146,22 @@ const supportedStacks: SupportedStack[] = [
       <div class="aspect-picture bg-tone-neutral-01 grid gap-200 p-200"></div>
     </div>
     <div class="grid gap-200 auto-rows-min">
-      <mds-text typography="h2">Un ecosistema di prodotti</mds-text>
+      <mds-text typography="h2">A product ecosystem</mds-text>
       <mds-text typography="paragraph">
-        Magma nasce per aiutare Maggioli Spa a rendere il proprio insieme di prodotti più
-        consistenti. Non una libreria di stili, ma un sistema strutturato di decisioni: ogni
-        componente, ogni pattern, ogni token porta con sé una ragione e un vincolo esplicito.
+        Magma was built to help Maggioli Spa bring consistency across its product suite. Not a style
+        library, but a structured system of decisions: every component, every pattern, every token
+        carries an explicit reason and constraint.
       </mds-text>
     </div>
   </ProjectBlock>
   <ProjectBlock>
     <div class="grid gap-200 auto-rows-min">
-      <mds-text typography="h2">Agnostico, ovunque</mds-text>
+      <mds-text typography="h2">Agnostic, everywhere</mds-text>
       <mds-text typography="paragraph">
-        È concepito per adattarsi a tecnologie diverse come React, Angular e WordPress grazie alla
-        flessibilità e scalabilità dei Web Component. Ogni componente è consumabile da qualsiasi
-        stack senza dipendenze. I wrapper per Angular e React sono generati automaticamente, così
-        ogni team adotta Magma senza riscrivere il proprio prodotto.
+        Designed to adapt to different technologies — React, Angular, WordPress — through the
+        flexibility and scalability of Web Components. Every component is consumable from any stack
+        without dependencies. Angular and React wrappers are automatically generated, so every team
+        can adopt Magma without rewriting their product.
       </mds-text>
     </div>
     <div>
@@ -166,67 +170,66 @@ const supportedStacks: SupportedStack[] = [
   </ProjectBlock>
   <ProjectBlock columns="grid-cols-3">
     <mds-text typography="paragraph">
-      Maggioli sviluppa software per mercati diversi: editoria, pubblica amministrazione,
-      informatica gestionale. Team separati, stack separati, scelte visive separate.
+      Maggioli develops software for different markets: publishing, public administration,
+      enterprise software. Separate teams, separate stacks, separate visual choices.
     </mds-text>
     <mds-text typography="paragraph">
-      Il risultato era prodotti che non si riconoscevano tra loro, costi di sviluppo duplicati su
-      problemi già risolti, e una UX incoerente da progetto a progetto.
+      The result was products that felt unrelated to each other, development costs duplicated on
+      already-solved problems, and inconsistent UX from project to project.
     </mds-text>
     <mds-text typography="paragraph">
-      La risposta istintiva sarebbe stata una libreria esterna, quella giusta era qualcosa che
-      crescesse con i prodotti e adattarsi all'identità di brand di un gruppo.
+      The instinctive answer would have been an external library. The right answer was something
+      that could grow with the products and adapt to the brand identity of a complex group.
     </mds-text>
   </ProjectBlock>
 
   <ProjectBlock columns="grid-cols-[2fr_1fr]">
     <div class="aspect-picture bg-tone-neutral-01 grid gap-200 p-200"></div>
     <div class="grid gap-200 auto-rows-min">
-      <mds-text typography="h2">Un'architettura pensata per l'adozione graduale</mds-text>
+      <mds-text typography="h2">An architecture designed for gradual adoption</mds-text>
       <mds-text typography="paragraph">
-        Il vincolo più importante in un'azienda con prodotti legacy non è la tecnologia — è la
-        migrazione. Un monolite richiede un impegno totale che la maggior parte dei team non può
-        permettersi.
+        The most important constraint in a company with legacy products is not technology — it's
+        migration. A monolith demands total commitment that most teams simply cannot afford.
       </mds-text>
     </div>
   </ProjectBlock>
   <ProjectBlock columns="grid-cols-2">
     <div class="grid gap-200 auto-rows-min">
-      <mds-text typography="h2">Per il giusto livello di adozione</mds-text>
+      <mds-text typography="h2">The right level of adoption</mds-text>
       <mds-text typography="paragraph">
-        Un team può iniziare con i soli Design Token in CSS custom properties, aggiungere un
-        componente alla volta, senza toccare il resto del prodotto. Questo ha reso possibile
-        l'adozione anche su prodotti Angular con anni di codice alle spalle, su progetti WordPress,
-        e su nuovi prodotti React — Tutti consumano gli stessi token e gli stessi componenti.
+        A team can start with Design Tokens alone as CSS custom properties, add one component at a
+        time, without touching the rest of their product. This made adoption possible even on
+        Angular products with years of existing code, on WordPress projects, and on new React
+        products — all consuming the same tokens and the same components.
       </mds-text>
     </div>
     <div class="aspect-picture bg-tone-neutral-01 grid gap-200 p-200"></div>
   </ProjectBlock>
   <ProjectBlock columns="grid-cols-3" class="bg-variant-primary-03 text-tone-neutral-10">
     <mds-text typography="h1" tag="h2" class="col-span-3 text-center"
-      >Un Design System che non evolve, muore.</mds-text
+      >A Design System that doesn't evolve, dies.</mds-text
     >
   </ProjectBlock>
   <ProjectBlock columns="grid-cols-3">
     <div class="grid gap-200 auto-rows-min">
       <mds-text typography="h4" tag="h2">Monorepo based</mds-text>
       <mds-text typography="paragraph">
-        Magma è strutturato come un monorepo con Nx, è strutturato con una pipeline chiara per
-        proporre, revisionare e rilasciare modifiche.
+        Magma is structured as a monorepo with Nx, with a clear pipeline for proposing, reviewing
+        and releasing changes.
       </mds-text>
     </div>
     <div class="grid gap-200 auto-rows-min">
       <mds-text typography="h4" tag="h2">Accessibility obsessed</mds-text>
       <mds-text typography="paragraph">
-        Gli issue template includono i criteri di accessibilità WCAG come requisito esplicito — non
-        una checklist finale, ma una condizione d'ingresso.
+        Issue templates include WCAG accessibility criteria as an explicit requirement — not a final
+        checklist, but an entry condition.
       </mds-text>
     </div>
     <div class="grid gap-200 auto-rows-min">
       <mds-text typography="h4" tag="h2">Living documentation</mds-text>
       <mds-text typography="paragraph">
-        Ogni componente è documentato con le sue varianti, i suoi stati, i suoi token. Non un
-        documento separato che invecchia — il codice è la documentazione.
+        Every component is documented with its variants, states and tokens. Not a separate document
+        that goes stale — the code is the documentation.
       </mds-text>
     </div>
   </ProjectBlock>
@@ -272,42 +275,43 @@ const supportedStacks: SupportedStack[] = [
     </div>
     <mds-table>
       <mds-table-header>
-        <mds-table-header-cell label="Platform"></mds-table-header-cell>
+        <mds-table-header-cell label="Platform" sortable></mds-table-header-cell>
         <mds-table-header-cell label="Framework wrapper"></mds-table-header-cell>
         <mds-table-header-cell label="Tokens"></mds-table-header-cell>
         <mds-table-header-cell label="Web Components"></mds-table-header-cell>
         <mds-table-header-cell label="CSS tokens"></mds-table-header-cell>
       </mds-table-header>
       <mds-table-body>
-        <mds-table-row>
-          <mds-table-cell>Angular</mds-table-cell>
-          <mds-table-cell>Framework wrapper</mds-table-cell>
-          <mds-table-cell>Tokens</mds-table-cell>
-          <mds-table-cell>Web Components</mds-table-cell>
-          <mds-table-cell>CSS tokens</mds-table-cell>
-        </mds-table-row>
+        {
+          supportedStacks.map((stack) => (
+            <mds-table-row>
+              <mds-table-cell class="w-full" value={stack.name}>
+                <a href={stack.url} class="inline-flex focus-bounce rounded">
+                  <img
+                    title={`Go to ${stack.name} website`}
+                    src={stack.logo}
+                    alt={stack.name}
+                    class="max-h-500"
+                  />
+                </a>
+              </mds-table-cell>
+              {platformSupportColumns.map((capability) => (
+                <mds-table-cell>
+                  {stackSupports(stack, capability) ? (
+                    <div class="size-700 flex items-center justify-center bg-status-success-08 rounded-full">
+                      <mds-icon name="mi/baseline/check" class="fill-status-success-06" />
+                    </div>
+                  ) : (
+                    <div class="size-700 flex items-center justify-center bg-tone-neutral-09 rounded-full">
+                      <mds-icon name="mi/baseline/minus" class="fill-tone-neutral-06" />
+                    </div>
+                  )}
+                </mds-table-cell>
+              ))}
+            </mds-table-row>
+          ))
+        }
       </mds-table-body>
     </mds-table>
   </ProjectBlock>
-  <ProjectRow>
-    <div class="grid gap-1200 max-w-screen-desktop w-full mx-auto">
-      <mds-text typography="label">Supported stacks</mds-text>
-    </div>
-    <div class="grid grid-cols-5 gap-600 justify-center items-start">
-      {
-        supportedStacks.map((stack) => (
-          <div class="flex items-center justify-center">
-            <Resource
-              supports={stack.supports}
-              descriptionClass={stack.descriptionClass}
-              url={stack.url}
-              logo={stack.logo}
-              name={stack.name}
-              className={stack.className}
-            />
-          </div>
-        ))
-      }
-    </div>
-  </ProjectRow>
 </ProjectLayout>
