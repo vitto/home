@@ -20,7 +20,9 @@ const combinedClasses = `${baseClasses} ${className ? className : 'bg-tone-neutr
 ---
 
 <section class={combinedClasses}>
-  <div class={`grid gap-1200 ${columns} max-w-screen-desktop w-full mx-auto relative z-10`}>
+  <div
+    class={`grid gap-1200 ${columns} mobile:grid-cols-full max-w-screen-desktop w-full mx-auto relative z-10`}
+  >
     <slot />
   </div>
   {
