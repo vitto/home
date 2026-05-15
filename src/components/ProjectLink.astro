@@ -21,12 +21,12 @@ const {
   href={href}
   target="_blank"
   rel="noreferrer noopener"
-  class="group group/footer-link focus-bounce hover:-translate-y-200 focus:-translate-y-200 ease-out-expo duration-1000 bg-tone-neutral/10 backdrop-blur no-underline p-400 rounded-2xl grid grid-cols-full auto-rows-min gap-200 items-start justify-center max-w-3600 w-full transition-transform"
+  class="group group/footer-link focus-bounce hover:-translate-y-200 focus:-translate-y-200 ease-out-expo duration-1000 bg-tone-neutral/60 backdrop-blur no-underline p-400 rounded-2xl grid grid-cols-full auto-rows-min gap-200 items-start justify-center max-w-3600 w-full transition-transform"
 >
   <div
     class="group-hover:bg-tone-neutral group-hover:shadow-sm-sharp group-[&:is(:hover,:focus-visible)]/footer-link:bg-tone-neutral group-[&:is(:hover,:focus-visible)]/footer-link:shadow-sm-sharp ease-out-expo duration-1000 p-400 bg-tone-neutral-09 rounded-lg transition-colors"
   >
     <img src={logo} alt={alt} class="w-full object-contain" />
   </div>
-  <mds-text typography="label" class="text-tone-neutral-03">{label}</mds-text>
+  <mds-text typography="detail" class="text-tone-neutral-03"><b>{label}</b></mds-text>
 </a>
