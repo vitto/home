@@ -1,0 +1,26 @@
+---
+/**
+ * ParallaxColumn Component
+ *
+ * Column cell for ParallaxBlock — copy (sticky) or media.
+ *
+ * Props:
+ * @param {'text' | 'image'} type - Column content variant
+ * @param {string} class - Additional CSS classes on the root element
+ */
+interface Props {
+  type: 'text' | 'image';
+  class?: string;
+}
+
+const { type, class: className = '' } = Astro.props;
+
+const typeClasses: Record<Props['type'], string> = {
+  text: 'relative z-10 grid gap-200 auto-rows-min tablet:sticky top-2000 self-start first:col-start-2 first:col-end-2 last:col-start-3 last:col-end-3 py-1200',
+  image: 'first:col-start-1 last:col-start-3 col-span-2 relative',
+};
+---
+
+<div class:list={['parallax-column', `parallax-column--${type}`, typeClasses[type], className]}>
+  <slot />
+</div>

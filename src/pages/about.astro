@@ -1,100 +1,232 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import Button from '../components/Button.astro';
-import List from '../components/List.astro';
-import ListItem from '../components/ListItem.astro';
-import personalData from '../data/personal.json';
+import ProjectLayout from '../layouts/ProjectLayout.astro';
+import data from '../data/projects.json';
+import ParallaxBlock from '../components/ParallaxBlock.astro';
+import ParallaxColumn from '../components/ParallaxColumn.astro';
 
-const latestUpdate = new Date('2025-12-19').toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
-
-const privacySections = [
-  {
-    id: 'data-controller',
-    title: 'Data Controller',
-    description: `Personal website of <strong>Vittorio Vittori</strong>, ${personalData.role}. <br /> Resident in Italy.`,
-    button: {
-      href: 'https://linkedin.com/in/vittoriovittori',
-      label: 'LinkedIn',
-    },
-  },
-  {
-    id: 'cloudflare-hosting',
-    title: 'Cloudflare Pages Hosting',
-    description:
-      'This site is hosted on Cloudflare Pages. Cloudflare may collect access logs (including IP address) for security and reliability purposes.',
-    button: {
-      href: 'https://pages.cloudflare.com/',
-      label: 'Cloudflare Pages',
-    },
-  },
-  {
-    id: 'user-data',
-    title: 'User-Submitted Data',
-    description:
-      'If you contact me, your data will only be used to respond to your inquiry. I do not share, sell, or use your contact information for any other purpose.',
-    button: {
-      href: 'https://linkedin.com/in/vittoriovittori',
-      label: 'LinkedIn',
-    },
-  },
-  {
-    id: 'what-not-do',
-    title: 'What this site does not do',
-    list: [
-      {
-        icon: 'mi/baseline/bar-chart',
-        text: 'No tracking scripts or analytics',
-      },
-      {
-        icon: 'mi/outline/cookie',
-        text: 'No cookies (except those required by GitHub Pages for security)',
-      },
-      {
-        icon: 'mi/baseline/ads-click',
-        text: 'No third-party advertising',
-      },
-      {
-        icon: 'mi/outline/badge',
-        text: 'No data collection beyond what GitHub Pages requires for hosting',
-      },
-    ],
-  },
-  {
-    id: 'your-rights',
-    title: 'Your Rights',
-    description:
-      'Under GDPR, you have the right to access, rectify, or delete any personal data I may have collected through direct contact.<br />To exercise these rights, please contact me using the email address provided above.',
-    button: {
-      href: 'https://linkedin.com/in/vittoriovittori',
-      label: 'LinkedIn',
-    },
-  },
-];
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 ---
 
-<Layout
-  title="Aobut - Vittorio Vittori"
-  description="Privacy policy for Vittorio Vittori's portfolio website. This site respects your privacy by design."
->
-  <main class="px-400 desktop:px-1200 py-600">
-    <div class="max-w-screen-desktop w-full mx-auto grid gap-2400">
-      <Header menu={false} />
-      <div class="grid gap-400 auto-rows-min">
-        <h1 class="text-title-h1">About</h1>
-        <p class="text-info-detail">
-          About page of Vittorio Vittori.
-          <br />
-          {`Last updated: ${latestUpdate}`}
-        </p>
-      </div>
-      <div class="h-50 w-full bg-tone-neutral-08"></div>
-    </div>
-  </main>
-  <Footer />
-</Layout>
+<ProjectLayout title="About Vittorio Vittori" pagePath="/project/magma">
+  <ParallaxBlock>
+    <ParallaxColumn type="text">
+      <a
+        class="no-underline inline-flex justify-self-start focus-bounce rounded mb-600"
+        target="_blank"
+        rel="noreferrer noopener"
+        href="https://www.lego.com/"
+      >
+        <mds-img
+          src={`${baseUrl}/assets/about/lego-logo.svg`}
+          alt="LEGO logo"
+          class="w-1600 object-contain"></mds-img>
+      </a>
+      <mds-text typography="h3">LEGO addicted</mds-text>
+      <mds-text typography="paragraph">
+        C'era una stanza piena di mattoncini sparsi ovunque. Scatoloni interi di LEGO usati, portati
+        da mia nonna, che finivano per occupare ogni angolo. Passavo giornate intere a costruire,
+        smontare e ricostruire - volevo capire come renderle robuste ma flessibili.
+      </mds-text>
+    </ParallaxColumn>
+    <ParallaxColumn type="image">
+      <mds-img
+        src={`${baseUrl}/assets/about/lego-background.webp`}
+        alt="A room full of LEGO bricks"
+        class="w-full object-contain"></mds-img>
+      <mds-img
+        src={`${baseUrl}/assets/about/lego-front.webp`}
+        alt="Hands which are grabbing lego bricks"
+        class="w-full object-contain absolute right-0 top-[11rem]"></mds-img>
+    </ParallaxColumn>
+  </ParallaxBlock>
+  <ParallaxBlock>
+    <ParallaxColumn type="image">
+      <mds-img
+        src={`${baseUrl}/assets/about/wipeout-background.webp`}
+        alt="A room of a boy with video games and music posters"
+        class="w-full object-contain"></mds-img>
+      <mds-img
+        src={`${baseUrl}/assets/about/wipeout-front.webp`}
+        alt="A hand is grabbing a video game"
+        class="w-full object-contain absolute right-0 top-1/4"></mds-img>
+    </ParallaxColumn>
+    <ParallaxColumn type="text">
+      <a
+        class="no-underline inline-flex justify-self-start focus-bounce rounded mb-600"
+        target="_blank"
+        rel="noreferrer noopener"
+        href="https://www.thedesignersrepublic.com/"
+      >
+        <svg
+          class="w-1600 tdr-angry-man"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 2078.29 1906.52"
+          role="img"
+          aria-label="The Designers Republic inspired mark"
+        >
+          <path
+            class="tdr-body fill-tone-neutral-03"
+            d="M2078.29,1259.17H0v332.19H431.57L247,1906.52H583.67l184.55-315.15h552l184.53,315.15h336.66l-184.56-315.15h421.41V1259.17Zm-863.12-442.9V995.13H857.44V816.27H664.38v346.36h743.87V816.27Z"
+          ></path>
+          <path
+            class="tdr-body fill-tone-neutral-03"
+            d="M1413.91,0H664.38C436.23,0,248.44,184.95,248.44,413.1v749.54H565v-829h948.3v829h316.57V413.1c0-228.15-187.79-413.1-416-413.1Z"
+          ></path>
+          <path
+            class="tdr-eyes fill-label-orchid-06"
+            d="M1223.7,430.13,1039.15,739.6,854.6,430.13H565L789.3,816.27H1289L1513.3,430.13H1223.7Z"
+          ></path>
+        </svg>
+      </a>
+      <mds-text typography="h3">TDR Fanboy</mds-text>
+      <mds-text typography="paragraph">
+        Poi arrivò <a class="link" href="https://en.wikipedia.org/wiki/Wipeout_2097">Wipeout 2097</a
+        >. Non era solo un videogioco: era un sistema visivo coerente dalla copertina ai veicoli,
+        dal packaging alla UI. <a
+          target="_blank"
+          class="link"
+          rel="noreferrer noopener"
+          href="https://www.thedesignersrepublic.com/">The Designers Republic</a
+        > aveva costruito un mondo riconoscibile in ogni suo pezzo nonostante i limiti tecnologici del
+        tempo. Capii che quello era il tipo di designer che volevo diventare - qualcuno che non progetta
+        schermi, ma linguaggi.
+      </mds-text>
+    </ParallaxColumn>
+  </ParallaxBlock>
+  <ParallaxBlock>
+    <ParallaxColumn type="text">
+      <mds-text typography="h3">ART + DIGITAL</mds-text>
+      <mds-text typography="paragraph">
+        Dopo le superiori, mi spostai a Hypermédia, una scuola dove l'arte incontrava il digitale in
+        modo radicale. Non si imparava solo a usare gli strumenti - eravamo direttamente
+        responsabili della comunicazione della scuola stessa, progettando le campagne che avrebbero
+        attirato i nuovi studenti. La sopravvivenza della scuola dipendeva anche dal nostro lavoro.
+        Quella fiducia mi insegnò qualcosa che non ho più dimenticato: la responsabilità reale è il
+        miglior motore creativo.
+      </mds-text>
+    </ParallaxColumn>
+    <ParallaxColumn type="image">
+      <mds-img
+        src={`https://placehold.co/600x1200/f4673a/000`}
+        alt="Magma Design System Logo"
+        class="w-full object-contain"></mds-img>
+      <mds-img
+        src={`https://placehold.co/600x400/EEE/31343C`}
+        alt="Magma Design System Logo"
+        class="w-full object-contain absolute right-0 top-1/2"></mds-img>
+    </ParallaxColumn>
+  </ParallaxBlock>
+  <ParallaxBlock>
+    <ParallaxColumn type="image">
+      <mds-img
+        src={`https://placehold.co/600x900/f4673a/000`}
+        alt="Magma Design System Logo"
+        class="w-full object-contain"></mds-img>
+      <mds-img
+        src={`https://placehold.co/600x400/EEE/31343C`}
+        alt="Magma Design System Logo"
+        class="w-full object-contain absolute right-0 top-1/4"></mds-img>
+    </ParallaxColumn>
+    <ParallaxColumn type="text">
+      <mds-text typography="h3">Road to Design System</mds-text>
+      <mds-text typography="paragraph">
+        Anni dopo, scrivendo pattern libraries in CSS, mi ritrovai a combattere ogni giorno con la
+        stessa fragilità: bastava una riga di codice nel posto sbagliato per rompere tutto. Raffinai
+        il metodo con BEM, poi cominciai a sentir parlare di Design System lavorando con <a
+          class="link"
+          href="https://www.fullo.net/">Fullo</a
+        >
+        in Ideato. Fu lì che qualcosa si mise a fuoco.
+      </mds-text>
+    </ParallaxColumn>
+  </ParallaxBlock>
+  <ParallaxBlock>
+    <ParallaxColumn type="text">
+      <mds-text typography="paragraph">
+        Quando arrivai in Maggioli trovai decine di prodotti digitali che non si parlavano tra loro
+        - WordPress, Angular, React, legacy di ogni tipo. Nessuna coerenza visiva, nessun linguaggio
+        comune. Vidi lo stesso problema dei LEGO: pezzi che non si incastravano.
+      </mds-text>
+    </ParallaxColumn>
+    <ParallaxColumn type="image">
+      <mds-img
+        src={`https://placehold.co/600x900/f4673a/000`}
+        alt="Magma Design System Logo"
+        class="w-full object-contain"></mds-img>
+      <mds-img
+        src={`https://placehold.co/600x400/EEE/31343C`}
+        alt="Magma Design System Logo"
+        class="w-full object-contain absolute right-0 top-1/4"></mds-img>
+    </ParallaxColumn>
+  </ParallaxBlock>
+  <ParallaxBlock>
+    <ParallaxColumn type="image">
+      <mds-img
+        src={`https://placehold.co/600x900/f4673a/000`}
+        alt="Magma Design System Logo"
+        class="w-full object-contain"></mds-img>
+      <mds-img
+        src={`https://placehold.co/600x400/EEE/31343C`}
+        alt="Magma Design System Logo"
+        class="w-full object-contain absolute right-0 top-1/4"></mds-img>
+    </ParallaxColumn>
+    <ParallaxColumn type="text">
+      <mds-text typography="paragraph">
+        Ho proposto Magma. Prima in React, poi - capendo che il problema era la portabilità - l'ho
+        ridisegnato su web component, con un'architettura a strati che permette l'adozione graduale
+        senza sostituire tutto. Design token, libreria di icone, token CSS compatibili con Tailwind
+        4 e Flutter. Un sistema che oggi sta arrivando alla release 2.0 e che riduce tempi e costi
+        di sviluppo fino al 35%.
+      </mds-text>
+    </ParallaxColumn>
+  </ParallaxBlock>
+  <ParallaxBlock>
+    <ParallaxColumn type="text">
+      <mds-text typography="paragraph">
+        Non mi interessa progettare interfacce. Mi interessa costruire i sistemi che permettono ai
+        team di costruire interfacce migliori - in modo consistente, scalabile, e possibilmente più
+        divertente.
+      </mds-text>
+    </ParallaxColumn>
+    <ParallaxColumn type="image">
+      <mds-img
+        src={`https://placehold.co/600x900/f4673a/000`}
+        alt="Magma Design System Logo"
+        class="w-full object-contain"></mds-img>
+      <mds-img
+        src={`https://placehold.co/600x400/EEE/31343C`}
+        alt="Magma Design System Logo"
+        class="w-full object-contain absolute right-0 top-1/4"></mds-img>
+    </ParallaxColumn>
+  </ParallaxBlock>
+</ProjectLayout>
+
+<style>
+  .tdr-eyes {
+    animation-name: tdr-blink;
+    animation-duration: 0.35s;
+    animation-iteration-count: infinite;
+  }
+
+  .tdr-angry-man:hover .tdr-eyes {
+    animation-name: none;
+  }
+
+  @keyframes tdr-blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* @media (prefers-reduced-motion: reduce) {
+    .tdr-eyes {
+      animation: none;
+    }
+  } */
+</style>

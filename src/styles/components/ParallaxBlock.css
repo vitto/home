@@ -1,0 +1,18 @@
+.parallax-block mds-img:not(:first-child) {
+  /* https://youtu.be/Vcv01Czsq2Y?si=J-nDOowXQuULk92A&t=542 */
+  /* animation-timeline: scroll(root block); */
+  animation-timeline: view();
+  animation-name: parallax-animation;
+  animation-timing-function: linear;
+  animation-range: entry 0% cover 150%;
+  transform: translateY(-50%);
+}
+
+@keyframes parallax-animation {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(50%);
+  }
+}

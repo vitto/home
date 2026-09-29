@@ -18,11 +18,21 @@
 @import './components/HighlightBox.css';
 @import './components/Nav.css';
 @import './components/PageFader.css';
+@import './components/ParallaxBlock.css';
 @import './components/PrincipleHeader.css';
 @import './components/PrincipleNav.css';
 @import './components/Selection.css';
 @import './components/Usage.css';
 @import './components/UseCaseInteractive.css';
+
+/*
+CSS Can Now Animate Between Pages
+https://caniuse.com/?search=%40view-transition
+https://www.youtube.com/watch?v=XH1G58QqPIM
+@view-transition {
+  navigation: auto;
+}
+*/
 
 .text-title-h1,
 .text-title-h2,
@@ -192,6 +202,23 @@ mds-img::part(media) {
     background-position: 0 0;
     background-repeat: repeat;
     @apply h-300 bg-tone-neutral-10/20 dark:bg-tone-neutral-01/20;
+  }
+
+  .link {
+    @apply transition-cosmetic ease-out-circ duration-500 focus-bounce;
+
+    --shadow-color: var(--tone-neutral-08);
+
+    justify-self: start;
+    display: inline-flex;
+    box-shadow: inset 0 -2px 0 rgb(var(--shadow-color));
+    text-decoration: none;
+    line-height: 1.2;
+  }
+
+  .link:hover,
+  .link:focus-visible {
+    box-shadow: inset 0 -22px 0 rgb(var(--shadow-color));
   }
 }
 

@@ -1,0 +1,23 @@
+---
+/**
+ * ParallaxBlock Component
+ *
+ * Wrapper for a discrete content block within a project page (copy, media shell, etc.).
+ *
+ * Props:
+ * @param {string} class - Additional CSS classes to add to the root element
+ * @param {string} columns - Grid columns for the content
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const baseClasses = `parallax-block first:mt-[-107px] grid grid-cols-[1fr_500px_500px_1fr] gap-1200 relative z-10 flex justify-center`;
+const combinedClasses = `${baseClasses} ${className ? className : 'bg-tone-neutral'}`.trim();
+---
+
+<section class={combinedClasses}>
+  <slot />
+</section>
