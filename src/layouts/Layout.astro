@@ -4,15 +4,18 @@ import { getPreferences } from '../utils/preferences';
 import PreventAnimation from '../components/PreventAnimation.astro';
 import CSSCriticalPath from '../components/CSSCriticalPath.astro';
 import ChangePageClick from '../components/ChangePageClick.astro';
+import HeaderNav from '../components/HeaderNav.astro';
 
 interface Props {
   title?: string;
   description?: string;
+  menu?: boolean;
 }
 
 const {
   title = 'Vittorio - Design System Architect & Senior UX Designer',
   description = 'Crafting scalable human-centered experiences through systematic design thinking.',
+  menu = true,
 } = Astro.props;
 
 // Get base URL from Astro config and normalize it
@@ -62,6 +65,7 @@ const preferences = getPreferences(Astro.cookies);
   </head>
   <body class="bg-tone-neutral text-tone-neutral-02 antialiased" role="main">
     <slot />
+    {menu && <HeaderNav />}
     <ChangePageClick />
     <style is:global>
       html {
