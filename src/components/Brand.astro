@@ -36,6 +36,8 @@ if (!brand) {
 // Use override url if provided, otherwise use default from JSON
 const brandUrl = urlOverride || brand.url;
 const logoPath = brand.logo ? `${brandsPath}/${brand.logo}` : null;
+// Monochrome black logos get inverted in dark mode to stay visible
+const invertClass = 'invertOnDark' in brand && brand.invertOnDark ? 'brand-logo-invert' : '';
 
 const logoSizeClass = {
   sm: 'w-auto h-400',
@@ -67,7 +69,7 @@ const variantClass = {
       class={`inline-flex shrink-0 gap-200 items-center focus-bounce justify-start rounded-full no-underline ${variantClass} ${containerSizeClass} ${className}`}
     >
       {!icon ? (
-        <img src={logoPath} alt={`${brand.name} logo`} class={logoSizeClass} />
+        <img src={logoPath} alt={`${brand.name} logo`} class={`${logoSizeClass} ${invertClass}`} />
       ) : (
         <mds-icon name={icon} />
       )}
@@ -82,7 +84,7 @@ const variantClass = {
       class={`inline-flex shrink-0 gap-200 items-center focus-bounce justify-center rounded-full ${containerSizeClass} ${className}`}
     >
       {!icon ? (
-        <img src={logoPath} alt={`${brand.name} logo`} class={logoSizeClass} />
+        <img src={logoPath} alt={`${brand.name} logo`} class={`${logoSizeClass} ${invertClass}`} />
       ) : (
         <mds-icon name={icon} />
       )}
@@ -94,3 +96,15 @@ const variantClass = {
     </div>
   )
 }
+
+<style>
+  :global(:root.pref-theme-dark) .brand-logo-invert {
+    filter: invert(1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root.pref-theme-system) .brand-logo-invert {
+      filter: invert(1);
+    }
+  }
+</style>
