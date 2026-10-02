@@ -28,7 +28,7 @@
     "astro": "^5.17.1",
     "easing-utils": "^1.0.0",
     "marked": "^17.0.1",
-    "postcss-iconsauce": "^1.4.1",
+    "postcss-iconsauce": "^2.0.1",
     "react": "^19.2.3",
     "react-three-fiber": "^6.0.13",
     "shiki": "^3.20.0",
