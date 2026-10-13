@@ -23,7 +23,7 @@ const socialLinks = [
   {
     name: 'GitHub',
     icon: 'mdi/github',
-    iconHover: 'group-[&:is(:hover,:focus-visible)]/footer-link:text-tone-neutral-03 transition',
+    iconHover: 'group-[&:is(:hover,:focus-visible)]/footer-link:text-fg-muted transition',
     url: 'https://github.com/vitto',
   },
   {
@@ -52,7 +52,7 @@ const socialLinks = [
       />
     </div>
     <div class="grid gap-200 justify-center">
-      <h4 class="text-title-h2 text-tone-neutral-01">Let's Connect</h4>
+      <h4 class="text-title-h2 text-fg-default">Let's Connect</h4>
       <p class="text-info-detail">
         Interested in collaborating or learning more about my work in UX design and design systems?
       </p>
@@ -66,11 +66,11 @@ const socialLinks = [
             target="_blank"
             title={`Open ${link.name} in a new tab`}
             rel="noopener noreferrer"
-            class="relative group/footer-link no-underline inline-flex max-w-4000 basis-0 grow focus-bounce rounded-xs p-400 py-600 mobile:p-200 mobile:py-400 bg-tone-neutral/60 hover:bg-tone-neutral backdrop-blur"
+            class="relative group/footer-link no-underline inline-flex max-w-4000 basis-0 grow focus-bounce rounded-lg p-400 py-600 mobile:p-200 mobile:py-400 bg-surface-raised/60 hover:bg-surface-raised backdrop-blur"
           >
             <div class="text-center flex flex-col items-center gap-200 transition w-full group-[&:is(:hover,:focus-visible)]/footer-link:-translate-y-200 ease-out-expo duration-1000">
               <div
-                class={`p-200 bg-tone-neutral-09 rounded-lg inline-flex transition group-[&:is(:hover,:focus-visible)]/footer-link:bg-tone-neutral group-[&:is(:hover,:focus-visible)]/footer-link:shadow-sm-sharp ease-out-expo duration-1000 min-h-1000`}
+                class={`p-200 bg-wash-base rounded-lg inline-flex transition group-[&:is(:hover,:focus-visible)]/footer-link:bg-surface-raised group-[&:is(:hover,:focus-visible)]/footer-link:shadow-xs-sharp ease-out-expo duration-1000 min-h-1000`}
               >
                 <Icon class={link.iconHover} name={link.icon} />
               </div>

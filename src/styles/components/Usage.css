@@ -1,5 +1,5 @@
 .usage mds-usage {
-  background-color: rgb(var(--tone-neutral));
+  background-color: rgb(var(--magma-surface-raised));
 }
 
 .usage mds-usage[variant='do'] {
@@ -11,7 +11,7 @@
 }
 
 .usage-content {
-  @apply transition-cosmetic ease-out-expo duration-500 p-600 bg-tone-neutral-10;
+  @apply transition-cosmetic ease-out-expo duration-500 p-600 bg-wash-soft;
 }
 
 .usage mds-accordion-item:not([selected]) .usage-content {
@@ -20,6 +20,6 @@
 }
 
 .usage mds-accordion-item[selected] .usage-content {
-  /* @apply p-600 bg-tone-neutral-10 delay-75; */
+  /* @apply p-600 bg-wash-soft delay-75; */
   @apply scale-100 delay-75 ease-out-expo;
 }

@@ -9,7 +9,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 import documentationData from '../../../../data/use-cases/documentation.json';
 import TextCode from '../../../TextCode.astro';
 
-// Extract mds-button component data
+// Magma 2.1.0 API of mds-modal, extracted from @maggioli-design-system/magma/dist/documentation.json
 const componentName = 'mds-modal';
 const documentationComponent = documentationData.components.find(
   (comp) => comp.tag === componentName
@@ -94,7 +94,7 @@ const cssCustomProperties = documentationComponent?.styles || [];
                         {isEnum ? 'enum' : typeDisplay}
                       </mds-badge>
                       {isEnum && (
-                        <span class="text-tone-neutral-04 text-info-caption">
+                        <span class="text-fg-subtle text-info-caption">
                           ({enumValues.join(', ')})
                         </span>
                       )}
@@ -106,7 +106,7 @@ const cssCustomProperties = documentationComponent?.styles || [];
                         {defaultValueClean}
                       </mds-badge>
                     ) : (
-                      <code class="text-tone-neutral-04">-</code>
+                      <code class="text-fg-subtle">-</code>
                     )}
                   </mds-table-cell>
                   <mds-table-cell>
@@ -171,7 +171,7 @@ const cssCustomProperties = documentationComponent?.styles || [];
             ) : (
               <mds-table-row>
                 <mds-table-cell colspan="5">
-                  <mds-text class="text-tone-neutral-04 text-center">No events available</mds-text>
+                  <mds-text class="text-fg-subtle text-center">No events available</mds-text>
                 </mds-table-cell>
               </mds-table-row>
             )
@@ -205,7 +205,7 @@ const cssCustomProperties = documentationComponent?.styles || [];
             ) : (
               <mds-table-row>
                 <mds-table-cell colspan="3">
-                  <mds-text class="text-tone-neutral-04 text-center">
+                  <mds-text class="text-fg-subtle text-center">
                     No CSS custom properties available
                   </mds-text>
                 </mds-table-cell>

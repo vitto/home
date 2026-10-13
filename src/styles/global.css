@@ -1,13 +1,23 @@
 @charset "UTF-8";
 
-@import '@maggioli-design-system/styles/dist/css/hydrated.css';
-@import '@maggioli-design-system/styles/dist/css/reset.css';
-@import '@maggioli-design-system/styles/dist/css/globals.css';
-@import '@maggioli-design-system/styles/dist/css/animations.css';
-@import '@maggioli-design-system/styles/dist/tailwind/components.css';
-@import '@maggioli-design-system/styles/dist/tailwind/typography.css';
+/*
+  Magma styles in the order of magma/agents/assets.md. They stay unlayered: Tailwind 3
+  owns the `base`, `components` and `utilities` layer names, so the Tailwind 3 entries
+  of the styles package (dist/tailwind3) are imported instead of the layered ones.
+  Fonts are not loaded: the site sets its own system font stack below.
+*/
 @import '@maggioli-design-system/styles/dist/css/colors-rgb.css';
-@import '@maggioli-design-system/styles/dist/css/base.css';
+@import '@maggioli-design-system/styles/dist/css/typography.css';
+@import '@maggioli-design-system/styles/dist/tailwind3/reset.css';
+@import '@maggioli-design-system/styles/dist/css/hydrated.css';
+@import '@maggioli-design-system/styles/dist/css/transitions.css';
+@import '@maggioli-design-system/styles/dist/css/animations.css';
+@import '@maggioli-design-system/styles/dist/css/globals.css';
+@import '@maggioli-design-system/styles/dist/css/semantic.css';
+@import '@maggioli-design-system/styles/dist/css/themes.css';
+@import '@maggioli-design-system/styles/dist/tailwind3/base.css';
+@import '@maggioli-design-system/styles/dist/tailwind3/components.css';
+@import '@maggioli-design-system/styles/dist/tailwind3/typography.css';
 @import './iconsauce.css';
 
 @import './components/Bibliography.css';
@@ -84,73 +94,24 @@ mds-dropdown mds-button::part(label) {
   flex-grow: 1;
 }
 
-mds-badge[tone='ghost'][variant='dark'] {
-  background-color: rgb(var(--tone-neutral));
-  border-color: rgb(var(--tone-neutral-07));
+mds-badge[tone='outline'][variant='dark'] {
+  --mds-badge-background: rgb(var(--magma-surface-raised));
+  --mds-badge-border-color: rgb(var(--magma-border-default));
 }
 
 mds-input-switch[data-toggle-switch] {
-  --mds-input-switch-box-color-enabled-checked: rgb(var(--tone-neutral-04));
-  --mds-input-switch-icon-color-checked: rgb(var(--status-success-05));
-  --mds-input-switch-icon-color-unchecked: rgb(var(--status-error-05));
-}
-
-mds-button,
-mds-push-notification-item[data-avatar]::part(picture) {
-  border-radius: 1000px;
-}
-
-mds-button[variant='dark'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--tone-neutral-09));
-  }
-}
-
-mds-button[variant='primary'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--variant-primary-09));
-  }
-}
-
-mds-button[variant='ai'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--variant-ai-09));
-  }
-}
-
-mds-button[variant='error'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--status-error-09));
-  }
+  --mds-input-switch-box-color-enabled-checked: rgb(var(--magma-surface-inverse-muted));
+  --mds-input-switch-icon-color-checked: rgb(var(--magma-success-emphasis));
+  --mds-input-switch-icon-color-unchecked: rgb(var(--magma-danger-emphasis));
 }
 
 mds-button {
+  --mds-button-radius: var(--magma-radius-full);
   --mds-button-border-default-opacity: 0.2;
 }
 
-mds-button[variant='success'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--status-success-09));
-  }
-}
-
-mds-button[variant='info'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--status-info-09));
-  }
-}
-
-mds-button[variant='warning'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--status-warning-09));
-  }
+mds-push-notification-item[data-avatar]::part(picture) {
+  border-radius: var(--magma-radius-full);
 }
 
 mds-usage {
@@ -172,12 +133,12 @@ mds-img::part(media) {
 
 @layer components {
   .markdown-link {
-    @apply decoration-tone-neutral-07
+    @apply decoration-border-default
     decoration-2
     focus-bounce
-    rounded-2xs
-    hover:decoration-tone-neutral-03
-    focus-visible:decoration-tone-neutral-03
+    rounded-md
+    hover:decoration-fg-muted
+    focus-visible:decoration-fg-muted
     transition-[text-decoration-color]
     duration-200
     underline-offset-2;
@@ -201,17 +162,17 @@ mds-img::part(media) {
     background-size: 16px 16px;
     background-position: 0 0;
     background-repeat: repeat;
-    @apply h-300 bg-tone-neutral-10/20 dark:bg-tone-neutral-01/20;
+    @apply h-300 bg-wash-soft/20 dark:bg-surface-inverse/20;
   }
 
   .link {
     @apply transition-cosmetic ease-out-circ duration-500 focus-bounce;
 
-    --shadow-color: var(--tone-neutral-08);
+    --shadow-color: var(--magma-wash-base);
 
     justify-self: start;
     display: inline-flex;
-    box-shadow: inset 0 -2px 0 rgb(var(--shadow-color));
+    box-shadow: inset 0 -2px 0 rgb(var(--magma-wash-strong));
     text-decoration: none;
     line-height: 1.2;
   }

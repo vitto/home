@@ -1,6 +1,6 @@
 [
   {
-    "button": "hover:bg-label-green-09 focus-visible:bg-label-green-09 hover:text-label-green-05 focus-visible:text-label-green-05 text-tone-neutral-02 border-transparent",
+    "button": "hover:bg-label-green-09 focus-visible:bg-label-green-09 hover:text-label-green-05 focus-visible:text-label-green-05 text-fg-default border-transparent",
     "description": "Applying NN/g usability heuristics to create intuitive, accessible interfaces",
     "icon": "mi/baseline/person",
     "id": "user-centered-design",
@@ -12,7 +12,7 @@
     "title": "User-Centered Design"
   },
   {
-    "button": "hover:bg-label-amaranth-09 focus-visible:bg-label-amaranth-09 hover:text-label-amaranth-05 focus-visible:text-label-amaranth-05 text-tone-neutral-02 border-transparent",
+    "button": "hover:bg-label-amaranth-09 focus-visible:bg-label-amaranth-09 hover:text-label-amaranth-05 focus-visible:text-label-amaranth-05 text-fg-default border-transparent",
     "description": "Building scalable, maintainable component libraries with clear documentation",
     "icon": "mi/baseline/palette",
     "id": "design-systems",
@@ -24,7 +24,7 @@
     "title": "Design Systems"
   },
   {
-    "button": "hover:bg-label-violet-09 focus-visible:bg-label-violet-09 hover:text-label-violet-05 focus-visible:text-label-violet-05 text-tone-neutral-02 border-transparent",
+    "button": "hover:bg-label-violet-09 focus-visible:bg-label-violet-09 hover:text-label-violet-05 focus-visible:text-label-violet-05 text-fg-default border-transparent",
     "description": "Designing transparent, predictable AI experiences following Microsoft HAX guidelines",
     "icon": "mgg/ai-chatbot",
     "id": "human-centered-ai-design",

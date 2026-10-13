@@ -44,10 +44,10 @@ const {
 
 // Map color names to CSS classes
 const iconColorClasses: Record<string, string> = {
-  'status-success': 'text-status-success-05 bg-status-success-10',
-  'status-info': 'text-status-info-05 bg-status-info-10',
-  'status-error': 'text-status-error-05 bg-status-error-10',
-  'status-warning': 'text-status-warning-05 bg-status-warning-10',
+  'status-success': 'text-success-fg-muted bg-success-wash-soft',
+  'status-info': 'text-info-fg-muted bg-info-wash-soft',
+  'status-error': 'text-danger-fg-muted bg-danger-wash-soft',
+  'status-warning': 'text-warning-fg-muted bg-warning-wash-soft',
   'label-amaranth': 'text-label-amaranth-05 bg-label-amaranth-10',
   'label-orchid': 'text-label-orchid-05 bg-label-orchid-10',
   'label-violet': 'text-label-violet-05 bg-label-violet-10',
@@ -62,37 +62,37 @@ const iconColorClasses: Record<string, string> = {
 
 const cardColorClasses: Record<string, string> = {
   'status-success':
-    'group-[&:is(:hover,:focus-visible)]:bg-status-success-05 data-[filtered=true]:bg-status-success-05 data-[filtered=true]:dark:bg-status-success-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-status-success-08 data-[filtered=true]:dark:text-status-success-10 text-status-success-01 bg-status-success-10 dark:bg-status-success-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-success-emphasis data-[filtered=true]:bg-success-emphasis group-[&:is(:hover,:focus-visible)]:text-success-on-emphasis data-[filtered=true]:text-success-on-emphasis text-success-fg-default bg-success-wash-soft',
   'status-info':
-    'group-[&:is(:hover,:focus-visible)]:bg-status-info-05 data-[filtered=true]:bg-status-info-05 data-[filtered=true]:dark:bg-status-info-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-status-info-08 data-[filtered=true]:dark:text-status-info-10 text-status-info-01 bg-status-info-10 dark:bg-status-info-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-info-emphasis data-[filtered=true]:bg-info-emphasis group-[&:is(:hover,:focus-visible)]:text-info-on-emphasis data-[filtered=true]:text-info-on-emphasis text-info-fg-default bg-info-wash-soft',
   'status-error':
-    'group-[&:is(:hover,:focus-visible)]:bg-status-error-05 data-[filtered=true]:bg-status-error-05 data-[filtered=true]:dark:bg-status-error-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-status-error-08 data-[filtered=true]:dark:text-status-error-10 text-status-error-01 bg-status-error-10 dark:bg-status-error-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-danger-emphasis data-[filtered=true]:bg-danger-emphasis group-[&:is(:hover,:focus-visible)]:text-danger-on-emphasis data-[filtered=true]:text-danger-on-emphasis text-danger-fg-default bg-danger-wash-soft',
   'status-warning':
-    'group-[&:is(:hover,:focus-visible)]:bg-status-warning-05 data-[filtered=true]:bg-status-warning-05 data-[filtered=true]:dark:bg-status-warning-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-status-warning-08 data-[filtered=true]:dark:text-status-warning-10 text-status-warning-01 bg-status-warning-10 dark:bg-status-warning-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-warning-emphasis data-[filtered=true]:bg-warning-emphasis group-[&:is(:hover,:focus-visible)]:text-warning-on-emphasis data-[filtered=true]:text-warning-on-emphasis text-warning-fg-default bg-warning-wash-soft',
   'label-amaranth':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-amaranth-05 data-[filtered=true]:bg-label-amaranth-05 data-[filtered=true]:dark:bg-label-amaranth-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-label-amaranth-08 data-[filtered=true]:dark:text-label-amaranth-10 text-label-amaranth-01 bg-label-amaranth-10 dark:bg-label-amaranth-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-amaranth-05 data-[filtered=true]:bg-label-amaranth-05 data-[filtered=true]:dark:bg-label-amaranth-05 group-[&:is(:hover,:focus-visible)]:text-fg-on-emphasis data-[filtered=true]:text-label-amaranth-08 data-[filtered=true]:dark:text-label-amaranth-10 text-label-amaranth-01 bg-label-amaranth-10 dark:bg-label-amaranth-09',
   'label-orchid':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-orchid-05 data-[filtered=true]:bg-label-orchid-05 data-[filtered=true]:dark:bg-label-orchid-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-label-orchid-08 data-[filtered=true]:dark:text-label-orchid-10 text-label-orchid-01 bg-label-orchid-10 dark:bg-label-orchid-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-orchid-05 data-[filtered=true]:bg-label-orchid-05 data-[filtered=true]:dark:bg-label-orchid-05 group-[&:is(:hover,:focus-visible)]:text-fg-on-emphasis data-[filtered=true]:text-label-orchid-08 data-[filtered=true]:dark:text-label-orchid-10 text-label-orchid-01 bg-label-orchid-10 dark:bg-label-orchid-09',
   'label-violet':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-violet-05 data-[filtered=true]:bg-label-violet-05 data-[filtered=true]:dark:bg-label-violet-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-label-violet-08 data-[filtered=true]:dark:text-label-violet-10 text-label-violet-01 bg-label-violet-10 dark:bg-label-violet-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-violet-05 data-[filtered=true]:bg-label-violet-05 data-[filtered=true]:dark:bg-label-violet-05 group-[&:is(:hover,:focus-visible)]:text-fg-on-emphasis data-[filtered=true]:text-label-violet-08 data-[filtered=true]:dark:text-label-violet-10 text-label-violet-01 bg-label-violet-10 dark:bg-label-violet-09',
   'label-blue':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-blue-05 data-[filtered=true]:bg-label-blue-05 data-[filtered=true]:dark:bg-label-blue-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-label-blue-08 data-[filtered=true]:dark:text-label-blue-10 text-label-blue-01 bg-label-blue-10 dark:bg-label-blue-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-blue-05 data-[filtered=true]:bg-label-blue-05 data-[filtered=true]:dark:bg-label-blue-05 group-[&:is(:hover,:focus-visible)]:text-fg-on-emphasis data-[filtered=true]:text-label-blue-08 data-[filtered=true]:dark:text-label-blue-10 text-label-blue-01 bg-label-blue-10 dark:bg-label-blue-09',
   'label-sky':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-sky-05 data-[filtered=true]:bg-label-sky-05 data-[filtered=true]:dark:bg-label-sky-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-label-sky-08 data-[filtered=true]:dark:text-label-sky-10 text-label-sky-01 bg-label-sky-10 dark:bg-label-sky-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-sky-05 data-[filtered=true]:bg-label-sky-05 data-[filtered=true]:dark:bg-label-sky-05 group-[&:is(:hover,:focus-visible)]:text-fg-on-emphasis data-[filtered=true]:text-label-sky-08 data-[filtered=true]:dark:text-label-sky-10 text-label-sky-01 bg-label-sky-10 dark:bg-label-sky-09',
   'label-aqua':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-aqua-05 data-[filtered=true]:bg-label-aqua-05 data-[filtered=true]:dark:bg-label-aqua-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-label-aqua-08 data-[filtered=true]:dark:text-label-aqua-10 text-label-aqua-01 bg-label-aqua-10 dark:bg-label-aqua-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-aqua-05 data-[filtered=true]:bg-label-aqua-05 data-[filtered=true]:dark:bg-label-aqua-05 group-[&:is(:hover,:focus-visible)]:text-fg-on-emphasis data-[filtered=true]:text-label-aqua-08 data-[filtered=true]:dark:text-label-aqua-10 text-label-aqua-01 bg-label-aqua-10 dark:bg-label-aqua-09',
   'label-green':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-green-05 data-[filtered=true]:bg-label-green-05 data-[filtered=true]:dark:bg-label-green-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-label-green-08 data-[filtered=true]:dark:text-label-green-10 text-label-green-01 bg-label-green-10 dark:bg-label-green-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-green-05 data-[filtered=true]:bg-label-green-05 data-[filtered=true]:dark:bg-label-green-05 group-[&:is(:hover,:focus-visible)]:text-fg-on-emphasis data-[filtered=true]:text-label-green-08 data-[filtered=true]:dark:text-label-green-10 text-label-green-01 bg-label-green-10 dark:bg-label-green-09',
   'label-lime':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-lime-05 data-[filtered=true]:bg-label-lime-05 data-[filtered=true]:dark:bg-label-lime-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-label-lime-08 data-[filtered=true]:dark:text-label-lime-10 text-label-lime-01 bg-label-lime-10 dark:bg-label-lime-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-lime-05 data-[filtered=true]:bg-label-lime-05 data-[filtered=true]:dark:bg-label-lime-05 group-[&:is(:hover,:focus-visible)]:text-fg-on-emphasis data-[filtered=true]:text-label-lime-08 data-[filtered=true]:dark:text-label-lime-10 text-label-lime-01 bg-label-lime-10 dark:bg-label-lime-09',
   'label-yellow':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-yellow-05 data-[filtered=true]:bg-label-yellow-05 data-[filtered=true]:dark:bg-label-yellow-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-label-yellow-08 data-[filtered=true]:dark:text-label-yellow-10 text-label-yellow-01 bg-label-yellow-10 dark:bg-label-yellow-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-yellow-05 data-[filtered=true]:bg-label-yellow-05 data-[filtered=true]:dark:bg-label-yellow-05 group-[&:is(:hover,:focus-visible)]:text-fg-on-emphasis data-[filtered=true]:text-label-yellow-08 data-[filtered=true]:dark:text-label-yellow-10 text-label-yellow-01 bg-label-yellow-10 dark:bg-label-yellow-09',
   'label-orange':
-    'group-[&:is(:hover,:focus-visible)]:bg-label-orange-05 data-[filtered=true]:bg-label-orange-05 data-[filtered=true]:dark:bg-label-orange-05 group-[&:is(:hover,:focus-visible)]:text-tone-neutral data-[filtered=true]:text-label-orange-08 data-[filtered=true]:dark:text-label-orange-10 text-label-orange-01 bg-label-orange-10 dark:bg-label-orange-09',
+    'group-[&:is(:hover,:focus-visible)]:bg-label-orange-05 data-[filtered=true]:bg-label-orange-05 data-[filtered=true]:dark:bg-label-orange-05 group-[&:is(:hover,:focus-visible)]:text-fg-on-emphasis data-[filtered=true]:text-label-orange-08 data-[filtered=true]:dark:text-label-orange-10 text-label-orange-01 bg-label-orange-10 dark:bg-label-orange-09',
 };
 
-const categoryColorClass = iconColorClasses[color] || 'bg-tone-neutral-09 text-tone-neutral-05';
-const cardColorClass = cardColorClasses[color] || 'bg-tone-neutral-09 text-tone-neutral-05';
+const categoryColorClass = iconColorClasses[color] || 'bg-wash-base text-fg-default';
+const cardColorClass = cardColorClasses[color] || 'bg-wash-base text-fg-default';
 const iconHoverClass =
   'group-hover:rounded-b-3xl group-hover:rounded-t-md group-hover:px-600 group-hover:-translate-y-250';
 const iconFocusClass =
@@ -106,7 +106,7 @@ const iconFocusClass =
   data-category={category}
 >
   <div
-    class={`principle-card grid gap-200 mobile:gap-400 tablet:aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_auto_1fr_auto] tablet:grid-rows-[auto_1fr_auto] p-600 desktop:p-400 group-hover:-translate-y-200 transition ease-out-expo duration-500 text-tone-neutral-03 ${cardColorClass}`}
+    class={`principle-card grid gap-200 mobile:gap-400 tablet:aspect-square rounded-3xl align-self-start auto-rows-min grid-rows-[auto_auto_1fr_auto] tablet:grid-rows-[auto_1fr_auto] p-600 desktop:p-400 group-hover:-translate-y-200 transition ease-out-expo duration-500 text-fg-muted ${cardColorClass}`}
   >
     <div
       class={`p-200 rounded-3xl inline-flex justify-self-start transition-cosmetic ease-out-expo duration-500 ${categoryColorClass} ${iconHoverClass} ${iconFocusClass}`}

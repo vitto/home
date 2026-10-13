@@ -42,7 +42,7 @@ const languageBadgeVariant: Record<string, string> = {
 
 const uniqueId = `code-${Math.random().toString(36).substring(2, 9)}`;
 const codeClass =
-  `code-snippet-code dark:text-tone-neutral-01 text-tone-neutral-10 language-${normalizedLanguage}`.trim();
+  `code-snippet-code text-on-inverse dark:text-fg-default language-${normalizedLanguage}`.trim();
 ---
 
 <div
@@ -72,7 +72,7 @@ const codeClass =
     }
     {
       title && (
-        <p class="justify-self-center text-info-option text-tone-neutral-09 dark:text-tone-neutral-01">
+        <p class="justify-self-center text-info-option text-on-inverse dark:text-fg-muted">
           {title}
         </p>
       )
@@ -82,7 +82,7 @@ const codeClass =
     <mds-badge
       variant={languageBadgeVariant[normalizedLanguage]}
       tone="strong"
-      class="absolute top-200 right-200 rounded-md">{normalizedLanguage}</mds-badge
+      class="absolute top-200 right-200 rounded-xl">{normalizedLanguage}</mds-badge
     >
     <div class="code-snippet-pre-wrap">
       <pre

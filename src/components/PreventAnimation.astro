@@ -4,7 +4,10 @@
 
 <script is:inline>
   (function () {
-    var KEY = 'mdsPrefTheme';
+    var KEY = 'mdsPrefMode';
+    // Magma 1 stored the mode as `mdsPrefTheme`; Magma 2 moves it to `mdsPrefMode` on load.
+    var LEGACY_KEY = 'mdsPrefTheme';
+    var MODES = ['light', 'dark', 'system'];
     var path = document.documentElement.getAttribute('data-cookie-path') || '/';
     var COOKIE_OPTS = 'path=' + path + '; SameSite=Lax; max-age=31536000';
 
@@ -12,27 +15,30 @@
       document.cookie = KEY + '=' + value + '; ' + COOKIE_OPTS;
     }
 
+    function storedMode() {
+      var value = localStorage.getItem(KEY);
+      if (MODES.indexOf(value) !== -1) return value;
+      var legacy = localStorage.getItem(LEGACY_KEY);
+      return MODES.indexOf(legacy) !== -1 ? legacy : null;
+    }
+
     var html = document.documentElement;
-    var localTheme = localStorage.getItem(KEY);
-    if (localTheme) {
+    var localMode = storedMode();
+    if (localMode) {
       var currentCookie = document.cookie.split('; ').find(function (row) {
         return row.startsWith(KEY + '=');
       });
       var cookieValue = currentCookie ? currentCookie.split('=')[1] : null;
-      if (cookieValue !== localTheme) setCookie(localTheme);
+      if (cookieValue !== localMode) setCookie(localMode);
     }
 
-    window.__syncMdsPrefTheme = function () {
-      var value = localStorage.getItem(KEY);
-      if (value) setCookie(value);
-    };
-
     function onMdsPrefChange(e) {
+      if (e.detail && e.detail.preference !== 'mode') return;
       setTimeout(function () {
         var value = e.target.getAttribute('mode');
-        if (value) {
+        if (MODES.indexOf(value) !== -1) {
           setCookie(value); // still set locally so next request has it
-          fetch('/api/sync-prefs?theme=' + encodeURIComponent(value), {
+          fetch('/api/sync-prefs?mode=' + encodeURIComponent(value), {
             credentials: 'same-origin',
           });
         }
@@ -40,7 +46,7 @@
     }
 
     function init() {
-      var el = document.querySelector('mds-pref-theme');
+      var el = document.querySelector('mds-pref-mode');
       if (el) el.addEventListener('mdsPrefChange', onMdsPrefChange);
       setTimeout(removePreventAnimation, 100);
     }

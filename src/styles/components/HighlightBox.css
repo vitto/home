@@ -22,27 +22,27 @@
 }
 
 .highlight {
-  --highlight-color: var(--tone-neutral-04);
-  --highlight-background-color: var(--tone-neutral-10);
+  --highlight-color: var(--magma-surface-inverse-muted);
+  --highlight-background-color: var(--magma-wash-soft);
 }
 .highlight--error {
-  --highlight-color: var(--status-error-04);
-  --highlight-background-color: var(--status-error-10);
+  --highlight-color: var(--magma-danger-emphasis);
+  --highlight-background-color: var(--magma-danger-wash-soft);
 }
 
 .highlight--info {
-  --highlight-color: var(--status-info-04);
-  --highlight-background-color: var(--status-info-10);
+  --highlight-color: var(--magma-info-emphasis);
+  --highlight-background-color: var(--magma-info-wash-soft);
 }
 
 .highlight--success {
-  --highlight-color: var(--status-success-04);
-  --highlight-background-color: var(--status-success-10);
+  --highlight-color: var(--magma-success-emphasis);
+  --highlight-background-color: var(--magma-success-wash-soft);
 }
 
 .highlight--warning {
-  --highlight-color: var(--status-warning-04);
-  --highlight-background-color: var(--status-warning-10);
+  --highlight-color: var(--magma-warning-emphasis);
+  --highlight-background-color: var(--magma-warning-wash-soft);
 }
 
 .highlight-content-label {

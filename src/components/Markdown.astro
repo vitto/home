@@ -35,7 +35,7 @@ function slugify(text: string) {
 //       class="shrink-0 py-300 -mb-400"
 //       title={`Copy link to ${text}`}
 //     >
-//       <Icon name="mi/baseline/link" class="text-tone-neutral-04" />
+//       <Icon name="mi/baseline/link" class="text-fg-subtle" />
 //     </Button>
 
 // Configura marked una sola volta (puoi anche spostarlo in un file separato)
@@ -46,7 +46,7 @@ if (!marked.defaults.extensions) {
         // @ts-ignore - marked v17 API
         const articleId = slugify(token.text);
         const text = this.parser.parseInline(token.tokens);
-        return `<div id="${articleId}" class="group flex items-start gap-200 justify-between scroll-mt-600 ${token.depth < 5 ? 'mt-600' : ''}"><h${token.depth} class="text-title-h${token.depth} max-w-full text-wrap">${text}</h${token.depth}><a href="#${articleId}" class="group-hover:opacity-100 group-hover:delay-0 delay-500 opacity-0 mi/baseline/link no-underline p-150 rounded-full hover:bg-tone-neutral-09 transition-cosmetic" title="Copy link to ${text}" data-copy-link data-article-id="${articleId}"></a></div>\n`;
+        return `<div id="${articleId}" class="group flex items-start gap-200 justify-between scroll-mt-600 ${token.depth < 5 ? 'mt-600' : ''}"><h${token.depth} class="text-title-h${token.depth} max-w-full text-wrap">${text}</h${token.depth}><a href="#${articleId}" class="group-hover:opacity-100 group-hover:delay-0 delay-500 opacity-0 mi/baseline/link no-underline p-150 rounded-full hover:bg-wash-base transition-cosmetic" title="Copy link to ${text}" data-copy-link data-article-id="${articleId}"></a></div>\n`;
       },
       paragraph(token) {
         // @ts-ignore - marked v17 API

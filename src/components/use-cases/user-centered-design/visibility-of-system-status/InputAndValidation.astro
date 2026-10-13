@@ -82,8 +82,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
         function initializeCheckElements() {
           passwordChecks.forEach((check) => {
             const checkElement = document.createElement('div');
-            checkElement.className =
-              'flex items-center gap-200 text-tone-neutral-03 fill-tone-neutral-03';
+            checkElement.className = 'flex items-center gap-200 text-fg-muted fill-fg-muted';
             checkElement.setAttribute('data-password-check', check.id);
             checkElement.innerHTML = `
               <mds-icon name="${check.iconUnchecked}"></mds-icon>
@@ -108,10 +107,9 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 
           if (isValid) {
             checkElement.className =
-              'flex items-center gap-200 text-status-success-05 fill-status-success-05';
+              'flex items-center gap-200 text-success-fg-muted fill-success-emphasis';
           } else {
-            checkElement.className =
-              'flex items-center gap-200 text-tone-neutral-03 fill-tone-neutral-03';
+            checkElement.className = 'flex items-center gap-200 text-fg-muted fill-fg-muted';
           }
         }
 

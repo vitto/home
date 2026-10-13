@@ -29,7 +29,7 @@ const users = usersData.map((user) => ({
     <mds-button class="transition" variant="dark" data-simulate-button label="Connection problem"
     ></mds-button>
     <div
-      class="inline-flex flex-col items-center gap-400 p-600 rounded-md bg-tone-neutral-09 relative w-full max-w-8000"
+      class="inline-flex flex-col items-center gap-400 p-600 rounded-xl bg-wash-base relative w-full max-w-8000"
     >
       <mds-push-notification-item
         deletable="false"
@@ -59,7 +59,7 @@ const users = usersData.map((user) => ({
             >
               <mds-avatar src={user.avatar} class="size-600" />
               <div
-                class={`size-300 rounded-full ${getStatusClass(user.status as 'online' | 'offline' | 'busy' | 'error')} absolute bottom-0 -right-100 border-solid border-2 border-tone-neutral-09 transition`}
+                class={`size-300 rounded-full ${getStatusClass(user.status as 'online' | 'offline' | 'busy' | 'error')} absolute bottom-0 -right-100 border-solid border-2 border-border-muted transition`}
                 data-status-indicator
               />
             </div>
@@ -74,12 +74,12 @@ const users = usersData.map((user) => ({
         <mds-text typography="h6">Mario Rossi</mds-text>
         <div
           slot="detail"
-          class="size-300 rounded-full bg-status-success-06 transition"
+          class="size-300 rounded-full bg-success-emphasis transition"
           data-status-indicator
         >
         </div>
         <mds-text typography="caption" slot="detail" data-status-text>Offline</mds-text>
-        <div slot="action" class="inline-flex items-center justify-center fill-tone-neutral-04">
+        <div slot="action" class="inline-flex items-center justify-center fill-fg-subtle">
           <mds-icon name="mi/outline/more-vert"></mds-icon>
         </div>
       </mds-entity>
@@ -118,10 +118,14 @@ const users = usersData.map((user) => ({
           const statusClass =
             classes.find(
               (cls) =>
-                cls.startsWith('bg-status-') ||
-                cls.startsWith('bg-label-') ||
-                cls.startsWith('bg-tone-')
-            ) || 'bg-status-success-06';
+                [
+                  'bg-success-emphasis',
+                  'bg-danger-emphasis',
+                  'bg-neutral-border',
+                  'bg-border-default',
+                  'bg-surface-inverse-muted',
+                ].includes(cls) || cls.startsWith('bg-label-')
+            ) || 'bg-success-emphasis';
           return statusClass;
         });
 
@@ -147,11 +151,11 @@ const users = usersData.map((user) => ({
           allStatusIndicators.forEach((indicator, index) => {
             // Restore original status class
             indicator.classList.remove(
-              'bg-status-success-06',
-              'bg-status-error-06',
+              'bg-success-emphasis',
+              'bg-danger-emphasis',
               'bg-label-orange-07',
-              'bg-tone-neutral-07',
-              'bg-tone-neutral-06'
+              'bg-border-default',
+              'bg-neutral-border'
             );
             indicator.classList.add(originalStatusClasses[index]);
           });
@@ -179,14 +183,14 @@ const users = usersData.map((user) => ({
           allStatusIndicators.forEach((indicator) => {
             // Remove all status classes
             indicator.classList.remove(
-              'bg-status-success-06',
-              'bg-status-error-06',
+              'bg-success-emphasis',
+              'bg-danger-emphasis',
               'bg-label-orange-07',
-              'bg-tone-neutral-06',
-              'bg-tone-neutral-07'
+              'bg-neutral-border',
+              'bg-border-default'
             );
             // Add error class
-            indicator.classList.add('bg-tone-neutral-07');
+            indicator.classList.add('bg-border-default');
           });
           // Change all user titles to "Connection error"
           allUserTitles.forEach((titleElement) => {

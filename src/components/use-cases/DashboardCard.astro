@@ -18,8 +18,8 @@ interface Props {
 const { label = '', value = '', class: className = '' } = Astro.props;
 ---
 
-<div class={`p-500 bg-tone-neutral rounded-lg grid gap-200 ${className}`} data-dashboard-card>
-  <mds-text typography="caption" class="text-tone-neutral-04">
+<div class={`p-500 bg-surface-raised rounded-lg grid gap-200 ${className}`} data-dashboard-card>
+  <mds-text typography="caption" class="text-fg-subtle">
     {label}
   </mds-text>
   {value ? <mds-text typography="h6">{value}</mds-text> : <slot />}

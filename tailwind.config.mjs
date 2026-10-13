@@ -1,5 +1,21 @@
+import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import magmaPreset from '@maggioli-design-system/styles';
 import containerQueries from '@tailwindcss/container-queries';
+
+// Magma 2 semantic color roles (bg-surface-raised, text-fg-muted, border-border-default, ...).
+// The styles package ships them only as a Tailwind 4 @theme bridge: read them from there and
+// expose them as Tailwind 3 colors, with alpha modifiers, so they follow every Magma release.
+const require = createRequire(import.meta.url);
+const semanticBridge = readFileSync(
+  require.resolve('@maggioli-design-system/styles/dist/tailwind/semantic.css'),
+  'utf8'
+);
+const semanticColors = Object.fromEntries(
+  [...semanticBridge.matchAll(/--color-([\w-]+):\s*rgb\(var\((--magma-[\w-]+)\)\);/g)].map(
+    ([, name, token]) => [name, `rgb(var(${token}) / <alpha-value>)`]
+  )
+);
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -7,10 +23,11 @@ export default {
   content: ['./src/**/*.{astro,html,js,json,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      colors: semanticColors,
       boxShadow: {
-        'inset-xs-sharp-light': '0 0 0 1px rgb(var(--tone-neutral-01) / 0.05) inset',
-        'inset-xs-sharp': '0 0 0 1px rgb(var(--tone-neutral-01) / 0.1) inset',
-        'inset-sm-sharp': '0 0 0 2px rgb(var(--tone-neutral-01) / 0.1) inset',
+        'inset-xs-sharp-light': '0 0 0 1px rgb(var(--magma-shadow-ink) / 0.05) inset',
+        'inset-xs-sharp': '0 0 0 1px rgb(var(--magma-shadow-ink) / 0.1) inset',
+        'inset-sm-sharp': '0 0 0 2px rgb(var(--magma-shadow-ink) / 0.1) inset',
       },
       containers: {
         '2xs': '6rem', // 96px
@@ -42,12 +59,12 @@ export default {
         },
         pulseGroup: {
           '0%, 100%': {
-            borderColor: 'rgb(var(--tone-neutral-04) / 1)',
-            fill: 'rgb(var(--tone-neutral-04) / 1)',
+            borderColor: 'rgb(var(--magma-text-subtle) / 1)',
+            fill: 'rgb(var(--magma-text-subtle) / 1)',
           },
           '50%': {
-            borderColor: 'rgb(var(--tone-neutral-04) / 0.05)',
-            fill: 'rgb(var(--tone-neutral-04) / 0.05)',
+            borderColor: 'rgb(var(--magma-text-subtle) / 0.05)',
+            fill: 'rgb(var(--magma-text-subtle) / 0.05)',
           },
         },
         blink: {

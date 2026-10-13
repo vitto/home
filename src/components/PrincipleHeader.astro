@@ -45,10 +45,10 @@ const categoryUrl = `${categorySectionUrl}?category=${encodeURIComponent(princip
 // Map color names to CSS classes for icon background
 
 const colorClasses: Record<string, string> = {
-  'status-success': 'bg-status-success-05',
-  'status-info': 'bg-status-info-05',
-  'status-error': 'bg-status-error-05',
-  'status-warning': 'bg-status-warning-05',
+  'status-success': 'bg-success-emphasis',
+  'status-info': 'bg-info-emphasis',
+  'status-error': 'bg-danger-emphasis',
+  'status-warning': 'bg-warning-emphasis',
   'label-amaranth': 'bg-label-amaranth-05',
   'label-orchid': 'bg-label-orchid-05',
   'label-violet': 'bg-label-violet-05',
@@ -62,10 +62,10 @@ const colorClasses: Record<string, string> = {
 };
 
 const colorIconClasses: Record<string, string> = {
-  'status-success': 'fill-status-success-05 text-status-success-01',
-  'status-info': 'fill-status-info-05 text-status-info-01',
-  'status-error': 'fill-status-error-05 text-status-error-01',
-  'status-warning': 'fill-status-warning-05 text-status-warning-01',
+  'status-success': 'fill-success-emphasis text-success-fg-default',
+  'status-info': 'fill-info-emphasis text-info-fg-default',
+  'status-error': 'fill-danger-emphasis text-danger-fg-default',
+  'status-warning': 'fill-warning-emphasis text-warning-fg-default',
   'label-amaranth': 'fill-label-amaranth-05 text-label-amaranth-01',
   'label-orchid': 'fill-label-orchid-05 text-label-orchid-01',
   'label-violet': 'fill-label-violet-05 text-label-violet-01',
@@ -79,10 +79,10 @@ const colorIconClasses: Record<string, string> = {
 };
 
 const colorBackgroundClasses: Record<string, string> = {
-  'status-success': 'bg-status-success-10 dark:bg-status-success-09', // mobile:shadow-none shadow-xl shadow-status-success-04/10
-  'status-info': 'bg-status-info-10 dark:bg-status-info-09', // mobile:shadow-none shadow-xl shadow-status-info-04/10
-  'status-error': 'bg-status-error-10 dark:bg-status-error-09', // mobile:shadow-none shadow-xl shadow-status-error-04/10
-  'status-warning': 'bg-status-warning-10 dark:bg-status-warning-09', // mobile:shadow-none shadow-xl shadow-status-warning-04/10
+  'status-success': 'bg-success-wash-soft', // mobile:shadow-none shadow-xl shadow-success-emphasis/10
+  'status-info': 'bg-info-wash-soft', // mobile:shadow-none shadow-xl shadow-info-emphasis/10
+  'status-error': 'bg-danger-wash-soft', // mobile:shadow-none shadow-xl shadow-danger-emphasis/10
+  'status-warning': 'bg-warning-wash-soft', // mobile:shadow-none shadow-xl shadow-warning-emphasis/10
   'label-amaranth': 'bg-label-amaranth-10 dark:bg-label-amaranth-09', // mobile:shadow-none shadow-xl shadow-label-amaranth-04/10
   'label-orchid': 'bg-label-orchid-10 dark:bg-label-orchid-09', // mobile:shadow-none shadow-xl shadow-label-orchid-04/10
   'label-violet': 'bg-label-violet-10 dark:bg-label-violet-09', // mobile:shadow-none shadow-xl shadow-label-violet-04/10
@@ -96,10 +96,10 @@ const colorBackgroundClasses: Record<string, string> = {
 };
 
 const colorButtonClasses: Record<string, string> = {
-  'status-success': 'bg-status-success-09 hover:bg-status-success-08 text-status-success-03',
-  'status-info': 'bg-status-info-09 hover:bg-status-info-08 text-status-info-03',
-  'status-error': 'bg-status-error-09 hover:bg-status-error-08 text-status-error-03',
-  'status-warning': 'bg-status-warning-09 hover:bg-status-warning-08 text-status-warning-03',
+  'status-success': 'bg-success-wash-base hover:bg-success-wash-strong text-success-fg-default',
+  'status-info': 'bg-info-wash-base hover:bg-info-wash-strong text-info-fg-default',
+  'status-error': 'bg-danger-wash-base hover:bg-danger-wash-strong text-danger-fg-default',
+  'status-warning': 'bg-warning-wash-base hover:bg-warning-wash-strong text-warning-fg-default',
   'label-amaranth': 'bg-label-amaranth-09 hover:bg-label-amaranth-08 text-label-amaranth-03',
   'label-orchid': 'bg-label-orchid-09 hover:bg-label-orchid-08 text-label-orchid-03',
   'label-violet': 'bg-label-violet-09 hover:bg-label-violet-08 text-label-violet-03',
@@ -134,7 +134,7 @@ const categoryColorIconClass = colorIconClasses[categoryColor] || '';
   </div>
   <div class="flex items-center justify-start mobile:justify-between gap-400 mobile:gap-200">
     <a
-      class={`inline-flex select-none no-underline focus-bounce items-center gap-400 rounded-full py-300 px-600 text-tone-neutral ${categoryColorClass}`}
+      class={`inline-flex select-none no-underline focus-bounce items-center gap-400 rounded-full py-300 px-600 ${categoryColorClass}`}
       href={categoryUrl}
       title={`Back to ${sectionName} and set category to ${principle.category}`}
     >

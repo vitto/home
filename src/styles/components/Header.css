@@ -25,8 +25,7 @@
     z-30;
 
   &.header-nav--opened {
-    @apply bg-tone-neutral-01/80
-    dark:bg-tone-neutral/80
+    @apply bg-[rgb(var(--magma-backdrop-color)/0.8)]
     pointer-events-auto;
   }
 }
@@ -34,7 +33,7 @@
 .header-nav-menu {
   @apply duration-500
   auto-rows-min
-  bg-tone-neutral
+  bg-surface-overlay
   col-start-2
   ease-in-out-quart
   gap-600
@@ -45,9 +44,9 @@
   origin-right
   dark:border-50
   dark:border-solid
-  dark:border-tone-neutral-08
+  dark:border-border-default
   p-600
-  rounded-lg
+  rounded-2xl
   mobile:rounded-none
   transition-cosmetic
   translate-x-full

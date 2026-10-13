@@ -65,9 +65,9 @@ const governanceStacks: GovernanceStack[] = [
   // {
   //   name: 'Magma Design System',
   //   description: 'The living documentation under development',
-  //   descriptionClass: 'bg-variant-primary-10 group-hover:shadow-variant-primary-09',
+  //   descriptionClass: 'bg-accent-surface-subtle group-hover:shadow-accent-surface',
   //   url: 'https://magma.maggiolicloud.it/',
-  //   className: 'hover:bg-variant-primary-10',
+  //   className: 'hover:bg-accent-surface-subtle',
   //   logo: `${baseUrl}/assets/projects/magma-design-system-logo.svg`,
   // },
 ];
@@ -231,7 +231,7 @@ function stackSupports(stack: SupportedStack, capability: Supports): boolean {
       />
     </div>
   </ProjectBlock>
-  <ProjectBlock columns="grid-cols-3" class="bg-variant-primary-03 text-tone-neutral-10">
+  <ProjectBlock columns="grid-cols-3" class="bg-accent-emphasis-hover text-accent-on-emphasis">
     <mds-text typography="h1" tag="h2" class="col-span-3 text-center">
       A Design System that doesn't evolve,{' '}
       <span data-scroll-shift class="inline-block origin-bottom-left will-change-transform"
@@ -272,7 +272,7 @@ function stackSupports(stack: SupportedStack, capability: Supports): boolean {
         <div class="flex flex-wrap gap-200">
           {
             Array.from({ length: componentCount }, () => (
-              <div class="size-500 bg-tone-neutral-01 rounded-full" />
+              <div class="size-500 bg-surface-inverse rounded-full" />
             ))
           }
         </div>
@@ -313,7 +313,7 @@ function stackSupports(stack: SupportedStack, capability: Supports): boolean {
           supportedStacks.map((stack) => (
             <mds-table-row>
               <mds-table-cell class="w-full" value={stack.name}>
-                <a href={stack.url} class="inline-flex focus-bounce rounded-3xs">
+                <a href={stack.url} class="inline-flex focus-bounce rounded">
                   <img
                     title={`Go to ${stack.name} website`}
                     src={stack.logo}
@@ -325,12 +325,12 @@ function stackSupports(stack: SupportedStack, capability: Supports): boolean {
               {platformSupportColumns.map((capability) => (
                 <mds-table-cell>
                   {stackSupports(stack, capability) ? (
-                    <div class="size-700 flex items-center justify-center bg-status-success-08 rounded-full">
-                      <mds-icon name="mi/baseline/check" class="fill-status-success-06" />
+                    <div class="size-700 flex items-center justify-center bg-success-wash-strong rounded-full">
+                      <mds-icon name="mi/baseline/check" class="fill-success-emphasis" />
                     </div>
                   ) : (
-                    <div class="size-700 flex items-center justify-center bg-tone-neutral-09 rounded-full">
-                      <mds-icon name="mi/baseline/minus" class="fill-tone-neutral-06" />
+                    <div class="size-700 flex items-center justify-center bg-wash-base rounded-full">
+                      <mds-icon name="mi/baseline/minus" class="fill-neutral-border" />
                     </div>
                   )}
                 </mds-table-cell>

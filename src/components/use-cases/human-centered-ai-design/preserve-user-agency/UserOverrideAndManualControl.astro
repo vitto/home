@@ -59,12 +59,12 @@ const messageText = `Write a professional but concise email to three colleagues 
       </div>
       <div
         data-new-message-panel
-        class="fixed flex opacity-0 pointer-events-none z-10 transition-cosmetic duration-300 ease-out-quad inset-0 bg-tone-neutral-01/40 rounded-2xl items-stretch justify-end p-400"
+        class="fixed flex opacity-0 pointer-events-none z-10 transition-cosmetic duration-300 ease-out-quad inset-0 bg-surface-inverse/40 rounded-3xl items-stretch justify-end p-400"
       >
-        <div class="bg-tone-neutral rounded-md shadow-lg w-2/3">
+        <div class="bg-surface-overlay rounded-xl shadow-lg w-2/3">
           <div class="p-600 grid gap-400 overflow-auto max-h-full">
             <div class="flex gap-200 items-center">
-              <mds-icon name="mi/outline/mail" class="fill-tone-neutral-03 size-600"></mds-icon>
+              <mds-icon name="mi/outline/mail" class="fill-fg-muted size-600"></mds-icon>
               <mds-text typography="h6">New message</mds-text>
             </div>
             <div class="grid gap-400 grid-cols-full">
@@ -153,18 +153,18 @@ Vittorio`}></mds-input>
       </div>
       <div
         data-new-message-panel
-        class="fixed flex opacity-0 pointer-events-none z-10 transition-cosmetic duration-300 ease-out-quad inset-0 bg-tone-neutral-01/40 rounded-2xl items-stretch justify-end p-400"
+        class="fixed flex opacity-0 pointer-events-none z-10 transition-cosmetic duration-300 ease-out-quad inset-0 bg-surface-inverse/40 rounded-3xl items-stretch justify-end p-400"
       >
-        <div class="bg-tone-neutral rounded-md shadow-lg w-2/3">
+        <div class="bg-surface-overlay rounded-xl shadow-lg w-2/3">
           <div class="p-600 grid gap-400 overflow-auto max-h-full">
             <div class="flex gap-200 items-center">
-              <mds-icon name="mi/outline/mail" class="fill-tone-neutral-03 size-600"></mds-icon>
+              <mds-icon name="mi/outline/mail" class="fill-fg-muted size-600"></mds-icon>
               <mds-text typography="h6">New message</mds-text>
             </div>
             <div class="grid gap-400 grid-cols-full">
               <div class="grid gap-200">
                 <mds-text typography="label">Subject</mds-text>
-                <mds-text class="p-200 rounded-xs bg-tone-neutral-10"
+                <mds-text class="p-200 rounded-lg bg-wash-soft"
                   >Magma Design System - Roadmap Planning Meeting</mds-text
                 >
               </div>
@@ -173,7 +173,7 @@ Vittorio`}></mds-input>
               <mds-text typography="label">Content</mds-text>
               <Markdown
                 typography="detail"
-                class="p-200 rounded-xs bg-tone-neutral-10 grid gap-300"
+                class="p-200 rounded-lg bg-wash-soft grid gap-300"
                 content={`Hi everyone,
 
 I’d like to organize a meeting to align on the Magma Design System and define a roadmap for the upcoming work and priorities.

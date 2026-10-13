@@ -52,9 +52,8 @@ const containerSizeClass = {
 }[size];
 
 const variantClass = {
-  shadow:
-    'bg-tone-neutral shadow-outline-light-50 hover:shadow-outline-50 focus-visible:shadow-outline-50',
-  light: 'bg-tone-neutral hover:bg-tone-neutral-09 focus-visible:bg-tone-neutral-09',
+  shadow: 'bg-surface-raised shadow-ring-weak-2 hover:shadow-ring-2 focus-visible:shadow-ring-2',
+  light: 'bg-surface-raised hover:bg-wash-base focus-visible:bg-wash-base',
 }[variant];
 ---
 
@@ -98,12 +97,12 @@ const variantClass = {
 }
 
 <style>
-  :global(:root.pref-theme-dark) .brand-logo-invert {
+  :global(:root.pref-mode-dark) .brand-logo-invert {
     filter: invert(1);
   }
 
   @media (prefers-color-scheme: dark) {
-    :global(:root.pref-theme-system) .brand-logo-invert {
+    :global(:root.pref-mode-system) .brand-logo-invert {
       filter: invert(1);
     }
   }

@@ -12,7 +12,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   <UseCaseInteractive clsHeight={320} toggle articleId="clear-exit-paths">
     <div class="h-8000 w-full flex items-center justify-center">
       <mds-button data-show-modal-button label="Show modal"></mds-button>
-      <mds-modal position="center" class="rounded-md" data-modal>
+      <mds-modal position="center" class="rounded-xl" data-modal>
         <mds-banner
           slot="window"
           headline="Are you sure you want to leave?"
@@ -36,7 +36,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <div class="h-8000 w-full flex items-center justify-center relative">
       <mds-button variant="error" data-show-overlay-button label="Show modal"></mds-button>
       <div
-        class="absolute inset-0 bg-tone-neutral-01/60 flex items-center justify-center rounded-md opacity-0 pointer-events-none transition-opacity"
+        class="absolute inset-0 bg-surface-inverse/60 flex items-center justify-center rounded-xl opacity-0 pointer-events-none transition-opacity"
         data-overlay
       >
         <mds-banner

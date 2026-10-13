@@ -22,13 +22,10 @@ const {
   class={`[&:not(:last-child)]:-mb-3200 [&:hover:not(:last-child)]:-translate-y-200 duration-300 transition-transform credit-card text-center flex flex-col gap-200 relative rounded-3xl ${backgroundColor} w-full p-600 pt-400 justify-between items-start min-w-0 ${className}`}
 >
   <div class="flex gap-400 items-center">
-    <mds-icon name={icon} class="w-800 h-800 fill-tone-neutral/60"></mds-icon>
-    <mds-text typography="h6" class="text-tone-neutral dark:text-tone-neutral-01">{name}</mds-text>
+    <mds-icon name={icon} class="w-800 h-800 fill-fg-on-emphasis/60"></mds-icon>
+    <mds-text typography="h6" class="text-fg-on-emphasis">{name}</mds-text>
   </div>
-  <mds-text
-    typography="snippet"
-    class="cc-number text-tone-neutral dark:text-tone-neutral-01 bg-transparent shadow-none"
-  >
+  <mds-text typography="snippet" class="cc-number text-fg-on-emphasis bg-transparent shadow-none">
     <b>{cardNumber}</b>
   </mds-text>
 </div>

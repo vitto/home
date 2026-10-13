@@ -7,16 +7,16 @@
   @apply text-label-green-04 dark:text-label-green-02 bg-label-green-10 dark:bg-label-green-09;
 }
 .status-success *::selection {
-  @apply text-status-success-04 dark:text-status-success-02 bg-status-success-10 dark:bg-status-success-09;
+  @apply text-success-fg-muted bg-success-wash-soft;
 }
 .status-info *::selection {
-  @apply text-status-info-04 dark:text-status-info-02 bg-status-info-10 dark:bg-status-info-09;
+  @apply text-info-fg-muted bg-info-wash-soft;
 }
 .status-error *::selection {
-  @apply text-status-error-04 dark:text-status-error-02 bg-status-error-10 dark:bg-status-error-09;
+  @apply text-danger-fg-muted bg-danger-wash-soft;
 }
 .status-warning *::selection {
-  @apply text-status-warning-04 dark:text-status-warning-02 bg-status-warning-10 dark:bg-status-warning-09;
+  @apply text-warning-fg-muted bg-warning-wash-soft;
 }
 .label-amaranth *::selection {
   @apply text-label-amaranth-04 dark:text-label-amaranth-02 bg-label-amaranth-10 dark:bg-label-amaranth-09;

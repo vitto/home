@@ -21,7 +21,7 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
   >
     <div
       data-grid-container
-      class="grid w-full grid-cols-[1fr_0px] ease-out-expo duration-500 transition-[grid-template-columns] overflow-hidden bg-tone-neutral-10 rounded-lg relative"
+      class="grid w-full grid-cols-[1fr_0px] ease-out-expo duration-500 transition-[grid-template-columns] overflow-hidden bg-wash-soft rounded-2xl relative"
     >
       <mds-table class="w-full" selectable>
         <mds-table-header>
@@ -73,10 +73,10 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
           }
         </mds-table-body>
       </mds-table>
-      <div class="flex flex-col h-full gap-200 rounded-r-lg bg-tone-neutral-10 p-400 mobile:hidden">
+      <div class="flex flex-col h-full gap-200 rounded-r-2xl bg-wash-soft p-400 mobile:hidden">
         <div class="sticky top-1200 self-start justify-self-start flex flex-col gap-200">
           <mds-text typography="label" class="px-200">Batch Actions</mds-text>
-          <div class="grid gap-200 bg-tone-neutral p-400 rounded-xs shadow-xs">
+          <div class="grid gap-200 bg-surface-overlay p-400 rounded-lg shadow-xs">
             <mds-button
               data-batch-edit-button
               class="justify-start"
@@ -167,9 +167,9 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
   </UseCaseInteractive>
   <div
     data-mobile-batch-menu
-    class="context-menu fixed z-30 grid gap-200 rounded-t-2xl bottom-0 right-0 left-0 tablet:hidden p-600 bg-tone-neutral-01/20 translate-y-full transition-transform ease-out-expo duration-500"
+    class="context-menu fixed z-30 grid gap-200 rounded-t-3xl bottom-0 right-0 left-0 tablet:hidden p-600 bg-surface-inverse/20 translate-y-full transition-transform ease-out-expo duration-500"
   >
-    <div class="grid gap-200 bg-tone-neutral p-400 rounded-xs shadow-xs">
+    <div class="grid gap-200 bg-surface-overlay p-400 rounded-lg shadow-xs">
       <mds-text typography="label" class="px-200 pb-100">Batch Actions</mds-text>
       <mds-hr class="h-50 -mx-400 w-auto"></mds-hr>
       <mds-button

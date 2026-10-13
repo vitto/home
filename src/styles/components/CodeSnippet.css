@@ -1,16 +1,16 @@
 .code-snippet-container {
-  @apply bg-[#000000] dark:bg-tone-neutral-09 p-600 pt-400 rounded-[28px] mobile:-mx-600;
+  @apply bg-[#000000] dark:bg-wash-base p-600 pt-400 rounded-[28px] mobile:-mx-600;
   /* Prevent grid from expanding past viewport on mobile (iOS Safari/Chrome) */
   min-width: 0;
   width: auto;
 }
 
 .code-snippet-header {
-  @apply flex items-center justify-between px-400 py-200 bg-tone-neutral-08 border-b border-tone-neutral-07;
+  @apply flex items-center justify-between px-400 py-200 bg-wash-strong border-b border-border-default;
 }
 
 .code-snippet-copy {
-  @apply inline-flex items-center justify-center p-100 rounded-3xs focus-bounce cursor-pointer text-tone-neutral-04 hover:text-tone-neutral-02 hover:bg-tone-neutral-07 transition-colors;
+  @apply inline-flex items-center justify-center p-100 rounded focus-bounce cursor-pointer text-fg-subtle hover:text-fg-default hover:bg-wash-strong transition-colors;
 }
 
 /* Wrapper constrains width so overflow-x works on mobile without breaking layout */
@@ -22,7 +22,7 @@
 
 /* Style Shiki’s pre/code (injected as full HTML to avoid set:html on <code> breaking mobile) */
 .code-snippet-pre-wrap pre {
-  @apply m-0 overflow-x-auto rounded-lg bg-tone-neutral-02 dark:bg-tone-neutral-08;
+  @apply m-0 overflow-x-auto rounded-2xl bg-surface-inverse dark:bg-wash-strong;
   min-width: 0;
   max-width: 100%;
   -webkit-overflow-scrolling: touch;

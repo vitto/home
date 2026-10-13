@@ -30,14 +30,14 @@ function getConfidenceBadgeVariant(confidence: number): 'success' | 'info' | 'wa
 }
 
 function getConfidenceBox(confidence: number): string {
-  if (confidence >= 0.9) return 'bg-status-success-10 border-status-success-09';
-  if (confidence >= 0.75) return 'bg-status-warning-10 border-status-warning-09';
-  if (confidence >= 0.6) return 'bg-status-error-10 border-status-error-09';
-  return 'bg-status-error-10';
+  if (confidence >= 0.9) return 'bg-success-wash-soft border-success-border-muted';
+  if (confidence >= 0.75) return 'bg-warning-wash-soft border-warning-border-muted';
+  if (confidence >= 0.6) return 'bg-danger-wash-soft border-danger-border-muted';
+  return 'bg-danger-wash-soft';
 }
 ---
 
-<div class="flex flex-col rounded-lg bg-tone-neutral auto-rows-min shadow-xs-sharp h-min">
+<div class="flex flex-col rounded-2xl bg-surface-raised auto-rows-min shadow-xs-sharp h-min">
   <div class="grid gap-200 p-400">
     <div class="flex items-center justify-between gap-400">
       <mds-avatar src={cv.image} size="sm"></mds-avatar>
@@ -70,10 +70,10 @@ function getConfidenceBox(confidence: number): string {
     </div>
     <div class="grid gap-50">
       <mds-text typography="h6">{cv.name}</mds-text>
-      <mds-text typography="caption" class="text-tone-neutral-03">
+      <mds-text typography="caption" class="text-fg-muted">
         {cv.role} · {cv.seniority} · {cv.location}
       </mds-text>
-      <mds-text typography="caption" class="text-tone-neutral-03">
+      <mds-text typography="caption" class="text-fg-muted">
         Match score <b>{cv.jobMatchScore} / 100</b>
       </mds-text>
     </div>
@@ -90,8 +90,8 @@ function getConfidenceBox(confidence: number): string {
       AI {Math.round(cv.aiConfidence * 100)}% confidence
     </mds-badge>
     <div class="grid gap-400">
-      <!-- <mds-text typography="label" class="text-tone-neutral-03">why this candidate</mds-text> -->
-      <mds-list class="pl-0 fill-status-success-05">
+      <!-- <mds-text typography="label" class="text-fg-muted">why this candidate</mds-text> -->
+      <mds-list class="pl-0 fill-success-emphasis">
         {
           cv.confidenceReasons.map((reason) => (
             <mds-list-item icon="mi/baseline/check" typography="caption">
@@ -102,7 +102,7 @@ function getConfidenceBox(confidence: number): string {
       </mds-list>
       <!-- </div>
     <div class="grid gap-400"> -->
-      <!-- <mds-text typography="label" class="text-tone-neutral-03">risks to consider</mds-text> -->
+      <!-- <mds-text typography="label" class="text-fg-muted">risks to consider</mds-text> -->
       <mds-list class="pl-0">
         {
           cv.riskFlags.map((flag) => (

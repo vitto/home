@@ -34,7 +34,7 @@ const {
     }
   </div>
   <div
-    class="hidden absolute top-1200 left-0 right-0 mt-200 bg-tone-neutral dark:bg-tone-neutral-09 rounded-xs shadow-xs-sharp border border-tone-neutral-03/20 z-10 max-h- overflow-y-auto"
+    class="hidden absolute top-1200 left-0 right-0 mt-200 bg-surface-overlay rounded-lg shadow-xs-sharp border border-border-muted z-10 max-h- overflow-y-auto"
     data-autocomplete-results
   >
     <!-- Autocomplete results will be inserted here -->
@@ -95,13 +95,13 @@ const {
       const resultsHTML = displayedResults
         .map(
           (item, index) =>
-            `<div class="px-400 py-200 hover:bg-tone-neutral-10 cursor-pointer border-b border-tone-neutral-03/10 border-b border-solid border-0" data-result-item data-result-index="${index}"><mds-text typography="caption" class="text-tone-neutral-03">${highlightText(item, query)}</mds-text></div>`
+            `<div class="px-400 py-200 hover:bg-wash-soft cursor-pointer border-b border-border-muted border-b border-solid border-0" data-result-item data-result-index="${index}"><mds-text typography="caption" class="text-fg-muted">${highlightText(item, query)}</mds-text></div>`
         )
         .join('');
       const tipHTML =
         totalResults > maxResults
-          ? `<div class="px-400 py-200 bg-tone-neutral-10 border-t border-tone-neutral-03/10"><mds-text typography="caption" class="text-tone-neutral-03">Showing ${maxResults} of ${totalResults} results</mds-text></div>`
-          : `<div class="px-400 py-200 bg-tone-neutral-10 border-t border-tone-neutral-03/10"><mds-text typography="caption" class="text-tone-neutral-03">${totalResults} result${totalResults !== 1 ? 's' : ''}</mds-text></div>`;
+          ? `<div class="px-400 py-200 bg-wash-soft border-t border-border-muted"><mds-text typography="caption" class="text-fg-muted">Showing ${maxResults} of ${totalResults} results</mds-text></div>`
+          : `<div class="px-400 py-200 bg-wash-soft border-t border-border-muted"><mds-text typography="caption" class="text-fg-muted">${totalResults} result${totalResults !== 1 ? 's' : ''}</mds-text></div>`;
       resultsContainer.innerHTML = resultsHTML + tipHTML;
     }
 

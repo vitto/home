@@ -18,7 +18,7 @@ const { showProps = true, highlightProps = false } = Astro.props;
   padding={false}
 >
   <div
-    class={`grid relative min-h-8000 mobile:grid-cols-full w-full grid-cols-[180px_1fr] bg-tone-neutral`}
+    class={`grid relative min-h-8000 mobile:grid-cols-full w-full grid-cols-[180px_1fr] bg-surface-raised`}
     data-feedback-container
   >
     <div
@@ -27,7 +27,7 @@ const { showProps = true, highlightProps = false } = Astro.props;
       <Brand name="storybook" label="Storybook" class="bg-transparent hover:bg-label-sky-09" />
       <div class="grid gap-100">
         <div class="px-400 py-100"><mds-text typography="caption"><b>Banner</b></mds-text></div>
-        <div class="px-400 py-100 rounded-2xs bg-label-sky-04 text-tone-neutral-10">
+        <div class="px-400 py-100 rounded-md bg-label-sky-04 text-fg-on-emphasis">
           <mds-text typography="caption"><b>Button</b></mds-text>
         </div>
         <div class="px-400 py-100"><mds-text typography="caption"><b>Modal</b></mds-text></div>
@@ -49,9 +49,9 @@ const { showProps = true, highlightProps = false } = Astro.props;
     {
       showProps && (
         <div
-          class={`tablet:absolute inset-0 flex justify-end pointer-events-none ${highlightProps ? 'bg-tone-neutral-01/40' : ''}`}
+          class={`tablet:absolute inset-0 flex justify-end pointer-events-none ${highlightProps ? 'bg-surface-inverse/40' : ''}`}
         >
-          <div class="mobile:w-full shadow-ring-weak-2 p-600 grid grid-cols-[auto_1fr] gap-600 auto-rows-min bg-tone-neutral">
+          <div class="mobile:w-full shadow-ring-weak-2 p-600 grid grid-cols-[auto_1fr] gap-600 auto-rows-min bg-surface-raised">
             <div class="col-span-2 flex tablet:hidden">
               <Brand
                 name="storybook"

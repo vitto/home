@@ -32,24 +32,24 @@ const categories = visibleCategories.map((category) => ({
     inside positioned overflow:hidden ancestors.
   */
 }
-<div class="header-nav text-tone-neutral-02 hidden" data-header-nav hidden>
+<div class="header-nav text-fg-default hidden" data-header-nav hidden>
   <nav class="header-nav-menu grid-cols-fill auto-rows-min" data-header-nav-menu>
     <div class="flex items-center gap-600 justify-between">
       <!-- <Icon name="vv/logo" class="text-[48px] justify-self-center" /> -->
       <Button href={baseUrl || '/'} variant="light" class="shrink-0 py-300" title="Back to Home">
-        <Icon name="mi/outline/home" class="text-tone-neutral-04" />
+        <Icon name="mi/outline/home" class="text-fg-subtle" />
       </Button>
       {
         /* About page is a draft: show the link only in development */
         !import.meta.env.PROD && (
           <Button href={`${baseUrl}/about`} variant="light" title="Read more about me">
-            <Icon name="mi/outline/person" class="text-tone-neutral-04" />
+            <Icon name="mi/outline/person" class="text-fg-subtle" />
             <span>About</span>
           </Button>
         )
       }
     </div>
-    <div class="h-50 bg-tone-neutral-03 w-full flex"></div>
+    <div class="h-50 bg-surface-inverse-muted w-full flex"></div>
     <div class="grid gap-200 grid-cols-fit-lg mobile:grid-cols-full" data-nav-buttons>
       {
         categories.map((category) => {
@@ -68,13 +68,13 @@ const categories = visibleCategories.map((category) => ({
         })
       }
     </div>
-    <div class="h-50 bg-tone-neutral-03 w-full"></div>
-    <mds-pref class="w-full text-tone-neutral-03">
+    <div class="h-50 bg-surface-inverse-muted w-full"></div>
+    <mds-pref class="w-full text-fg-muted">
       <mds-pref-mode></mds-pref-mode>
       {/* <mds-pref-contrast /> */}
       {/* <mds-pref-animation /> */}
     </mds-pref>
-    <div class="h-50 bg-tone-neutral-03 w-full"></div>
+    <div class="h-50 bg-surface-inverse-muted w-full"></div>
     <Footer class="py-600" />
   </nav>
 </div>

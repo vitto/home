@@ -22,7 +22,7 @@ const user = userData[0]; // Use first user from the data
       <div class="flex items-baseline justify-between">
         <mds-text typography="h5">Recently viewed</mds-text>
         <mds-button
-          class="hover:bg-tone-neutral-10 focus-visible:bg-tone-neutral-10"
+          class="hover:bg-wash-soft focus-visible:bg-wash-soft"
           size="sm"
           icon="mi/outline/arrow-forward"
           icon-position="right"
@@ -34,10 +34,10 @@ const user = userData[0]; // Use first user from the data
         {
           videosData.map((video) => (
             <div
-              class="grid gap-200 p-200 hover:bg-tone-neutral-09 cursor-pointer focus-bounce rounded-md auto-rows-min"
+              class="grid gap-200 p-200 hover:bg-wash-base cursor-pointer focus-bounce rounded-xl auto-rows-min"
               tabindex="0"
             >
-              <mds-img class="rounded-xs" src={`${baseUrl}${video.image}`} alt={video.title} />
+              <mds-img class="rounded-lg" src={`${baseUrl}${video.image}`} alt={video.title} />
               <div class="grid gap-200 grid-cols-[1fr_auto]">
                 <mds-text typography="h6" truncate="all">
                   {video.title}
