@@ -20,7 +20,7 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
       <mds-text slot="content" typography="detail">
         Organize your files and folders in a structured way.
       </mds-text>
-      <mds-button class="max-mobile:w-full" size="lg" slot="action">New folder</mds-button>
+      <mds-button class="max-mobile:w-full" size="lg" slot="action" label="New folder"></mds-button>
     </mds-zero>
     <mds-zero class="max-w-8000">
       <mds-img class="w-3200 h-3200" src={`${baseUrl}/assets/icon-3d-contact.png`}></mds-img>
@@ -28,7 +28,8 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
       <mds-text slot="content" typography="detail">
         Add your first contact to your address book.
       </mds-text>
-      <mds-button class="max-mobile:w-full" size="lg" slot="action">New contact</mds-button>
+      <mds-button class="max-mobile:w-full" size="lg" slot="action" label="New contact"
+      ></mds-button>
     </mds-zero>
   </UseCaseInteractive>
   <Usage>

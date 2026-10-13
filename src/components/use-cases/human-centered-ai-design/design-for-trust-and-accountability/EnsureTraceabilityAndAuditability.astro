@@ -16,9 +16,9 @@ import AIResponseMessage from '../../AIResponseMessage.astro';
   <UseCaseInteractive clsHeight={392} label="Admin panel to trace and audit AI decisions">
     <div class="grid gap-600 w-full max-w-9600 py-600 p-400 relative">
       <div
-        class="fixed inset-0 bg-tone-neutral-01/40 rounded-3xl flex items-stretch justify-end p-400 pl-1200"
+        class="fixed inset-0 bg-tone-neutral-01/40 rounded-2xl flex items-stretch justify-end p-400 pl-1200"
       >
-        <div class="bg-tone-neutral rounded-xl shadow-lg">
+        <div class="bg-tone-neutral rounded-md shadow-lg">
           <div class="p-600 grid gap-400 overflow-auto max-h-full">
             <mds-text typography="h6">System transparency panel</mds-text>
             <div class="grid gap-0 grid-cols-full">
@@ -32,9 +32,12 @@ import AIResponseMessage from '../../AIResponseMessage.astro';
               <mds-text typography="caption"><b>RAG documents used:</b> None</mds-text>
               <mds-text typography="caption"><b>Latency:</b> 1.4s</mds-text>
             </div>
-            <mds-button variant="dark" tone="ghost" size="sm" class="justify-self-start"
-              >Playground mode</mds-button
-            >
+            <mds-button
+              variant="dark"
+              tone="outline"
+              size="sm"
+              class="justify-self-start"
+              label="Playground mode"></mds-button>
           </div>
         </div>
       </div>

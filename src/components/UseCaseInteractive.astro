@@ -95,11 +95,15 @@ const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsH
           <mds-button
             icon="mi/outline/bug-report"
             variant="error"
-            tone="quiet"
+            tone="text"
             class="bug-report min-h-900"
             title="Show bug report details"
           />
-          <mds-dropdown class="max-w-8000" target={`#${articleId} .bug-report`}>
+          <mds-dropdown
+            class="max-w-8000"
+            target={`#${articleId} .bug-report`}
+            disable-auto-placement
+          >
             <div class="flex justify-between items-center gap-200">
               <mds-badge variant="error">Bug report</mds-badge>
             </div>
@@ -115,14 +119,14 @@ const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsH
                 <mds-text typography="caption">{bugExpected}</mds-text>
               </div>
             )}
-            <div class="px-600 py-400 -mx-600 -mb-600 bg-tone-neutral-10 rounded-b-lg">
+            <div class="px-600 py-400 -mx-600 -mb-600 bg-tone-neutral-10 rounded-b-xs">
               {bugComponent ? (
                 <div class="grid gap-200">
                   <mds-text typography="option">Component affected</mds-text>
                   <mds-badge
                     variant="light"
                     tone="strong"
-                    class="justify-self-start bg-tone-neutral shadow-outline-light"
+                    class="justify-self-start bg-tone-neutral shadow-ring-weak"
                   >
                     {bugComponent}
                   </mds-badge>

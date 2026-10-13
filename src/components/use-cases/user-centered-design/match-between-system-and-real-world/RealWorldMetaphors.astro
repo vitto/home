@@ -24,49 +24,45 @@ const cart = cartData.slice(0, 2).map((item) => ({
 >
   <UseCaseInteractive clsHeight={84} toggle articleId="real-world-metaphors" overflowHidden={false}>
     <div
-      class="flex items-center justify-between w-full rounded-2xl p-600 shadow-sm-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09"
+      class="flex items-center justify-between w-full rounded-lg p-600 shadow-xs-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09"
     >
       <mds-icon
         name="vv/logo"
-        class="size-900 cursor-pointer fill-tone-neutral-02 focus-bounce rounded-lg hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
+        class="size-900 cursor-pointer fill-tone-neutral-02 focus-bounce rounded-xs hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
         tabindex="0"></mds-icon>
       <nav class="flex items-center gap-400">
         <mds-button
           icon="mi/outline/shopping-cart"
           class="rounded-full shopping-cart-button hover:bg-tone-neutral-09"
           variant="dark"
-          tone="quiet"
-        >
-          Shopping cart
-        </mds-button>
+          tone="text"
+          label="Shopping cart"></mds-button>
       </nav>
-      <mds-dropdown target=".shopping-cart-button" class="w-7200 p-0 gap-0">
+      <mds-dropdown target=".shopping-cart-button" class="w-7200 p-0 gap-0" disable-auto-placement>
         <div class="flex justify-center items-center p-400">
-          <mds-button variant="dark">Checkout</mds-button>
+          <mds-button variant="dark" label="Checkout"></mds-button>
         </div>
         {cart.map((item) => <CartItem {...item} />)}
       </mds-dropdown>
     </div>
     <div
-      class="flex items-center justify-between w-full rounded-2xl p-600 shadow-sm-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09"
+      class="flex items-center justify-between w-full rounded-lg p-600 shadow-xs-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09"
     >
       <mds-icon
         name="vv/logo"
-        class="size-900 cursor-pointer fill-tone-neutral-02 focus-bounce rounded-lg hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
+        class="size-900 cursor-pointer fill-tone-neutral-02 focus-bounce rounded-xs hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
         tabindex="0"></mds-icon>
       <nav class="flex items-center gap-400">
         <mds-button
           icon="mi/outline/list"
           class="rounded-full items-cart-button hover:bg-tone-neutral-09"
           variant="dark"
-          tone="quiet"
-        >
-          Temporary items list
-        </mds-button>
+          tone="text"
+          label="Temporary items list"></mds-button>
       </nav>
-      <mds-dropdown target=".items-cart-button" class="w-7200 p-0 gap-0">
+      <mds-dropdown target=".items-cart-button" class="w-7200 p-0 gap-0" disable-auto-placement>
         <div class="flex justify-center items-center p-400">
-          <mds-button variant="dark">Buy items list</mds-button>
+          <mds-button variant="dark" label="Buy items list"></mds-button>
         </div>
         {cart.map((item) => <CartItem {...item} />)}
       </mds-dropdown>

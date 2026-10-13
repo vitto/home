@@ -26,9 +26,7 @@ const {
           <mds-text typography="label">latest searches</mds-text>
           <div class="flex gap-200 flex-wrap">
             {latestSearches.map((search) => (
-              <mds-button variant="dark" tone="weak" data-search-button>
-                {search}
-              </mds-button>
+              <mds-button variant="dark" tone="weak" data-search-button label={search} />
             ))}
           </div>
         </div>
@@ -36,7 +34,7 @@ const {
     }
   </div>
   <div
-    class="hidden absolute top-1200 left-0 right-0 mt-200 bg-tone-neutral dark:bg-tone-neutral-09 rounded-lg shadow-sm-sharp border border-tone-neutral-03/20 z-10 max-h- overflow-y-auto"
+    class="hidden absolute top-1200 left-0 right-0 mt-200 bg-tone-neutral dark:bg-tone-neutral-09 rounded-xs shadow-xs-sharp border border-tone-neutral-03/20 z-10 max-h- overflow-y-auto"
     data-autocomplete-results
   >
     <!-- Autocomplete results will be inserted here -->

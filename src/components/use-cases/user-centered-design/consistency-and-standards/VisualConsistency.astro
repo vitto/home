@@ -38,7 +38,7 @@ const datetimeThreeDaysAgo = threeDaysAgo.toISOString();
       datetime={datetimeThreeDaysAgo}
       variant="primary"
     >
-      <mds-button size="sm" slot="action" tone="weak" variant="dark">Read</mds-button>
+      <mds-button size="sm" slot="action" tone="weak" variant="dark" label="Read"></mds-button>
     </mds-push-notification-item>
     <mds-push-notification-item
       deletable="false"
@@ -49,7 +49,7 @@ const datetimeThreeDaysAgo = threeDaysAgo.toISOString();
       datetime={datetime}
       variant="primary"
     >
-      <mds-button size="sm" slot="action" tone="weak" variant="primary">Reply</mds-button>
+      <mds-button size="sm" slot="action" tone="weak" variant="primary" label="Reply"></mds-button>
     </mds-push-notification-item>
     <mds-push-notification-item
       deletable="false"
@@ -58,7 +58,7 @@ const datetimeThreeDaysAgo = threeDaysAgo.toISOString();
       subject="New attachment"
       variant="info"
     >
-      <mds-button size="sm" slot="action" tone="weak" variant="info">Download</mds-button>
+      <mds-button size="sm" slot="action" tone="weak" variant="info" label="Download"></mds-button>
     </mds-push-notification-item>
     <mds-push-notification-item
       deletable="false"
@@ -67,7 +67,7 @@ const datetimeThreeDaysAgo = threeDaysAgo.toISOString();
       subject="Connection lost"
       variant="error"
     >
-      <mds-button size="sm" slot="action" tone="weak" variant="error">Retry</mds-button>
+      <mds-button size="sm" slot="action" tone="weak" variant="error" label="Retry"></mds-button>
     </mds-push-notification-item>
   </UseCaseInteractive>
   <Usage>

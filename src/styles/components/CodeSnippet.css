@@ -10,7 +10,7 @@
 }
 
 .code-snippet-copy {
-  @apply inline-flex items-center justify-center p-100 rounded focus-bounce cursor-pointer text-tone-neutral-04 hover:text-tone-neutral-02 hover:bg-tone-neutral-07 transition-colors;
+  @apply inline-flex items-center justify-center p-100 rounded-3xs focus-bounce cursor-pointer text-tone-neutral-04 hover:text-tone-neutral-02 hover:bg-tone-neutral-07 transition-colors;
 }
 
 /* Wrapper constrains width so overflow-x works on mobile without breaking layout */
@@ -22,7 +22,7 @@
 
 /* Style Shiki’s pre/code (injected as full HTML to avoid set:html on <code> breaking mobile) */
 .code-snippet-pre-wrap pre {
-  @apply m-0 overflow-x-auto rounded-2xl bg-tone-neutral-02 dark:bg-tone-neutral-08;
+  @apply m-0 overflow-x-auto rounded-lg bg-tone-neutral-02 dark:bg-tone-neutral-08;
   min-width: 0;
   max-width: 100%;
   -webkit-overflow-scrolling: touch;

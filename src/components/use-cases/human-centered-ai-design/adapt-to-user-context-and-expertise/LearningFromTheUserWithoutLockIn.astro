@@ -60,7 +60,7 @@ Kind regards,
               checked
               data-consider-previous-messages
               class="flex-row-reverse justify-between"
-              >Consider previous messages <mds-badge class="ml-100" variant="dark" tone="ghost"
+              >Consider previous messages <mds-badge class="ml-100" variant="dark" tone="outline"
                 >14</mds-badge
               ></mds-input-switch
             >
@@ -70,9 +70,12 @@ Kind regards,
                 {languageTones.map((tone) => <option value={tone.value}>{tone.label}</option>)}
               </mds-input-select>
             </mds-input-field>
-            <mds-button class="mt-1200" variant="error" tone="weak" data-purge-context
-              >Purge context</mds-button
-            >
+            <mds-button
+              class="mt-1200"
+              variant="error"
+              tone="weak"
+              data-purge-context
+              label="Purge context"></mds-button>
           </AIContext>
         </HighlightBox>
       </AIInputWrapper>

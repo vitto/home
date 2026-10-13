@@ -77,7 +77,7 @@
 }
 
 .use-case mds-modal::part(window) {
-  @apply rounded-2xl p-0 box-border;
+  @apply rounded-lg p-0 box-border;
 }
 
 .use-case mds-modal > * {

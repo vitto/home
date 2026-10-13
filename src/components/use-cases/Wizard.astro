@@ -32,70 +32,95 @@ const { articleId } = Astro.props;
   <mds-stepper-bar-item badge icon="mi/outline/done" icon-checked="mi/outline/done" label="Done"
   ></mds-stepper-bar-item>
   <div
-    class="min-h-8000 flex rounded-lg items-center justify-center bg-label-amaranth-10 text-label-amaranth-04 relative"
+    class="min-h-8000 flex rounded-xs items-center justify-center bg-label-amaranth-10 text-label-amaranth-04 relative"
     slot="content"
   >
     <mds-text>New account</mds-text>
-    <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
-      Next step
-    </mds-button>
+    <mds-button
+      class="absolute bottom-600 right-600"
+      data-next-button
+      variant="dark"
+      label="Next step"></mds-button>
   </div>
   <div
-    class="min-h-8000 flex rounded-lg items-center justify-center bg-label-blue-10 text-label-blue-04 relative"
+    class="min-h-8000 flex rounded-xs items-center justify-center bg-label-blue-10 text-label-blue-04 relative"
     slot="content"
   >
     <mds-text>Personal data</mds-text>
-    <mds-button class="absolute bottom-600 left-600" data-prev-button tone="ghost" variant="dark">
-      Previous step
-    </mds-button>
-    <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
-      Next step
-    </mds-button>
+    <mds-button
+      class="absolute bottom-600 left-600"
+      data-prev-button
+      tone="outline"
+      variant="dark"
+      label="Previous step"></mds-button>
+    <mds-button
+      class="absolute bottom-600 right-600"
+      data-next-button
+      variant="dark"
+      label="Next step"></mds-button>
   </div>
   <div
-    class="min-h-8000 flex rounded-lg items-center justify-center bg-label-green-10 text-label-green-04 relative"
+    class="min-h-8000 flex rounded-xs items-center justify-center bg-label-green-10 text-label-green-04 relative"
     slot="content"
   >
     <mds-text>Newsletter settings</mds-text>
-    <mds-button class="absolute bottom-600 left-600" data-prev-button tone="ghost" variant="dark">
-      Previous step
-    </mds-button>
-    <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
-      Next step
-    </mds-button>
+    <mds-button
+      class="absolute bottom-600 left-600"
+      data-prev-button
+      tone="outline"
+      variant="dark"
+      label="Previous step"></mds-button>
+    <mds-button
+      class="absolute bottom-600 right-600"
+      data-next-button
+      variant="dark"
+      label="Next step"></mds-button>
   </div>
   <div
-    class="min-h-8000 flex rounded-lg items-center justify-center bg-label-orange-10 text-label-orange-04 relative"
+    class="min-h-8000 flex rounded-xs items-center justify-center bg-label-orange-10 text-label-orange-04 relative"
     slot="content"
   >
     <mds-text>Account activation</mds-text>
-    <mds-button class="absolute bottom-600 left-600" data-prev-button tone="ghost" variant="dark">
-      Previous step
-    </mds-button>
-    <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
-      Next step
-    </mds-button>
+    <mds-button
+      class="absolute bottom-600 left-600"
+      data-prev-button
+      tone="outline"
+      variant="dark"
+      label="Previous step"></mds-button>
+    <mds-button
+      class="absolute bottom-600 right-600"
+      data-next-button
+      variant="dark"
+      label="Next step"></mds-button>
   </div>
   <div
-    class="min-h-8000 flex rounded-lg items-center justify-center bg-label-violet-10 text-label-violet-04 relative"
+    class="min-h-8000 flex rounded-xs items-center justify-center bg-label-violet-10 text-label-violet-04 relative"
     slot="content"
   >
     <mds-text>Login</mds-text>
-    <mds-button class="absolute bottom-600 left-600" data-prev-button tone="ghost" variant="dark">
-      Previous step
-    </mds-button>
-    <mds-button class="absolute bottom-600 right-600" data-next-button variant="dark">
-      Next step
-    </mds-button>
+    <mds-button
+      class="absolute bottom-600 left-600"
+      data-prev-button
+      tone="outline"
+      variant="dark"
+      label="Previous step"></mds-button>
+    <mds-button
+      class="absolute bottom-600 right-600"
+      data-next-button
+      variant="dark"
+      label="Next step"></mds-button>
   </div>
   <div
-    class="min-h-8000 flex rounded-lg items-center justify-center bg-label-sky-10 text-label-sky-04 relative"
+    class="min-h-8000 flex rounded-xs items-center justify-center bg-label-sky-10 text-label-sky-04 relative"
     slot="content"
   >
     <mds-text>Done</mds-text>
-    <mds-button class="absolute bottom-600 left-600" data-prev-button tone="ghost" variant="dark">
-      Previous step
-    </mds-button>
+    <mds-button
+      class="absolute bottom-600 left-600"
+      data-prev-button
+      tone="outline"
+      variant="dark"
+      label="Previous step"></mds-button>
   </div>
 </mds-stepper-bar>
 <script define:vars={{ articleId }}>

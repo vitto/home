@@ -35,7 +35,7 @@ const dropdownId = `ai-header-more-${crypto.randomUUID().slice(0, 8)}`;
   }
   <mds-button
     variant="dark"
-    tone="quiet"
+    tone="text"
     icon="mi/outline/more-vert"
     title="More options"
     id={dropdownId}
@@ -45,12 +45,16 @@ const dropdownId = `ai-header-more-${crypto.randomUUID().slice(0, 8)}`;
     placement="bottom-end"
     class="w-full max-w-6000 p-200 rounded-[24px]"
     data-ai-header-modal-more
+    disable-auto-placement
   >
     <div class="grid gap-100">
-      <mds-button variant="dark" tone="quiet" class="justify-self-start">Report issue</mds-button>
-      <mds-button variant="dark" tone="quiet" class="justify-self-start"
-        >Provide detailed feedback</mds-button
-      >
+      <mds-button variant="dark" tone="text" class="justify-self-start" label="Report issue"
+      ></mds-button>
+      <mds-button
+        variant="dark"
+        tone="text"
+        class="justify-self-start"
+        label="Provide detailed feedback"></mds-button>
     </div>
   </mds-dropdown>
 </div>

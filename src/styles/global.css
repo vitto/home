@@ -175,7 +175,7 @@ mds-img::part(media) {
     @apply decoration-tone-neutral-07
     decoration-2
     focus-bounce
-    rounded-md
+    rounded-2xs
     hover:decoration-tone-neutral-03
     focus-visible:decoration-tone-neutral-03
     transition-[text-decoration-color]

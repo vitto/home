@@ -53,7 +53,7 @@ const confidenceBadgeLabel = getConfidenceLabel(confidence);
 
 <article class={`movie-card grid gap-400 grid-cols-full auto-rows-min shrink-0 ${className}`}>
   <div
-    class="shadow-md-sharp flex flex-col shrink-0 overflow-hidden rounded-2xl bg-tone-neutral-02 dark:bg-tone-neutral-08"
+    class="shadow-md-sharp flex flex-col shrink-0 overflow-hidden rounded-lg bg-tone-neutral-02 dark:bg-tone-neutral-08"
   >
     <div
       class="relative w-full shrink-0 overflow-hidden bg-tone-neutral-09 dark:bg-tone-neutral-01"
@@ -77,7 +77,7 @@ const confidenceBadgeLabel = getConfidenceLabel(confidence);
         <mds-badge
           variant={confidenceBadgeVariant}
           tone="strong"
-          class="shadow-outline-50 dark:shadow-none justify-self-start"
+          class="shadow-ring-2 dark:shadow-none justify-self-start"
         >
           {confidenceBadgeLabel}
         </mds-badge>

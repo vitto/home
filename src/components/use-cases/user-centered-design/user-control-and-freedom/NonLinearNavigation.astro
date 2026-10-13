@@ -23,11 +23,11 @@ const user = userData[4]; // Use first user from the data
   >
     <div class="w-full h-8000" data-section-non-linear>
       <div
-        class="flex items-center justify-between rounded-2xl p-600 shadow-sm-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09 m-600 mb-0"
+        class="flex items-center justify-between rounded-lg p-600 shadow-xs-sharp dark:shadow-tone-neutral-01/20 bg-tone-neutral dark:bg-tone-neutral-09 m-600 mb-0"
       >
         <mds-icon
           name="vv/logo"
-          class="size-900 cursor-pointer fill-tone-neutral-02 focus-bounce rounded-lg hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
+          class="size-900 cursor-pointer fill-tone-neutral-02 focus-bounce rounded-xs hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
           tabindex="0"
           title="Reset to initial state"
           data-logo-icon
@@ -38,19 +38,17 @@ const user = userData[4]; // Use first user from the data
             class="rounded-full hover:bg-tone-neutral-10 focus-visible:bg-tone-neutral-10"
             icon="mi/baseline/menu"
             variant="dark"
-            tone="quiet"
+            tone="text"
             data-menu-button
-          >
-            Menu
-          </mds-button>
+            label="Menu"></mds-button>
         </nav>
       </div>
       <div
-        class="[.menu-active_&]:opacity-100 opacity-0 [.menu-active_&]:pointer-events-auto pointer-events-none transition-opacity bg-tone-neutral-01/40 fixed inset-0 z-10 rounded-3xl p-400 flex items-stretch justify-end"
+        class="[.menu-active_&]:opacity-100 opacity-0 [.menu-active_&]:pointer-events-auto pointer-events-none transition-opacity bg-tone-neutral-01/40 fixed inset-0 z-10 rounded-2xl p-400 flex items-stretch justify-end"
         data-modal-menu
       >
         <div
-          class="[.menu-active_&]:translate-x-0 translate-x-300 grid auto-rows-min gap-400 bg-tone-neutral rounded-xl p-600 shadow-md-sharp w-full max-w-[300px] transition-transform"
+          class="[.menu-active_&]:translate-x-0 translate-x-300 grid auto-rows-min gap-400 bg-tone-neutral rounded-md p-600 shadow-md-sharp w-full max-w-[300px] transition-transform"
         >
           <mds-author>
             <mds-avatar
@@ -66,17 +64,17 @@ const user = userData[4]; // Use first user from the data
             <mds-button
               icon="mi/outline/dashboard"
               variant="dark"
-              tone="quiet"
+              tone="text"
               class="justify-start hover:bg-tone-neutral-10"
-              data-menu-item-button>Dashboard</mds-button
-            >
+              data-menu-item-button
+              label="Dashboard"></mds-button>
             <mds-button
               icon="mi/outline/settings"
               variant="dark"
-              tone="quiet"
+              tone="text"
               class="justify-start hover:bg-tone-neutral-10"
-              data-menu-item-button>Settings</mds-button
-            >
+              data-menu-item-button
+              label="Settings"></mds-button>
           </div>
         </div>
       </div>
@@ -86,9 +84,9 @@ const user = userData[4]; // Use first user from the data
       >
         <mds-text typography="h6" tag="span" data-section-title>Section name</mds-text>
         <mds-tab>
-          <mds-tab-item selected>Sub section 1</mds-tab-item>
-          <mds-tab-item>Sub section 2</mds-tab-item>
-          <mds-tab-item>Sub section 3</mds-tab-item>
+          <mds-tab-item selected label="Sub section 1"></mds-tab-item>
+          <mds-tab-item label="Sub section 2"></mds-tab-item>
+          <mds-tab-item label="Sub section 3"></mds-tab-item>
           <div slot="content" class="py-600 grid gap-400">
             <mds-text typography="caption" tag="span"
               >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor

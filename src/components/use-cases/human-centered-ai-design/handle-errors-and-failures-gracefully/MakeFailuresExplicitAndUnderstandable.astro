@@ -33,21 +33,30 @@ import PatientCard from '../../PatientCard.astro';
               >
             </mds-list>
           </div>
-          <mds-button slot="action" class="mobile:w-full" variant="warning" tone="weak"
-            >View lab results</mds-button
-          >
-          <mds-button slot="action" class="mobile:w-full" variant="warning" tone="weak"
-            >Enter INR manually</mds-button
-          >
-          <mds-button slot="action" class="mobile:w-full" variant="dark" tone="strong"
-            >Proceed without AI assistance</mds-button
-          >
+          <mds-button
+            slot="action"
+            class="mobile:w-full"
+            variant="warning"
+            tone="weak"
+            label="View lab results"></mds-button>
+          <mds-button
+            slot="action"
+            class="mobile:w-full"
+            variant="warning"
+            tone="weak"
+            label="Enter INR manually"></mds-button>
+          <mds-button
+            slot="action"
+            class="mobile:w-full"
+            variant="dark"
+            tone="strong"
+            label="Proceed without AI assistance"></mds-button>
         </mds-banner>
       </PatientCard>
     </div>
     <div class="grid gap-600 w-full">
       <PatientCard>
-        <div class="flex items-center gap-200 p-200 rounded-lg bg-status-error-10">
+        <div class="flex items-center gap-200 p-200 rounded-xs bg-status-error-10">
           <mds-icon name="mi/baseline/error" class="fill-status-error-05"></mds-icon>
           <mds-text typography="caption">Prescription error occurred</mds-text>
         </div>

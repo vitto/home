@@ -38,37 +38,38 @@ const firstUser = users[0];
           slot="action"
           icon="mi/baseline/more-vert"
           variant="dark"
-          tone="quiet"></mds-button>
+          tone="text"></mds-button>
       </mds-entity>
       <mds-dropdown
         target="#consistency-entity-button"
         offset={8}
-        class="gap-200 p-200 min-w-6000 rounded-3xl"
+        class="gap-200 p-200 min-w-6000 rounded-2xl"
+        disable-auto-placement
       >
         <mds-button
           icon="mi/outline/edit"
           variant="dark"
-          tone="quiet"
-          class="grow justify-start hover:bg-tone-neutral-09">Edit</mds-button
-        >
+          tone="text"
+          class="grow justify-start hover:bg-tone-neutral-09"
+          label="Edit"></mds-button>
         <mds-button
           icon="mi/outline/bar-chart"
           variant="dark"
-          tone="quiet"
+          tone="text"
           class="grow justify-start hover:bg-tone-neutral-09"
         >
           <span class="flex grow justify-between items-center">
             Show stats
-            <mds-badge class="justify-self-end" tone="ghost" variant="dark">pro</mds-badge>
+            <mds-badge class="justify-self-end" tone="outline" variant="dark">pro</mds-badge>
           </span>
         </mds-button>
         <mds-hr class="bg-tone-neutral-09 h-50 -mx-200 w-auto"></mds-hr>
         <mds-button
           icon="mi/outline/delete"
           variant="error"
-          tone="quiet"
-          class="grow justify-start hover:bg-status-error-10">Delete</mds-button
-        >
+          tone="text"
+          class="grow justify-start hover:bg-status-error-10"
+          label="Delete"></mds-button>
       </mds-dropdown>
     </div>
     <div class="flex items-center justify-center w-full max-w-8000">
@@ -86,40 +87,38 @@ const firstUser = users[0];
                   id="consistency-author-button"
                   icon="mi/baseline/more-vert"
                   variant="dark"
-                  tone="quiet"
+                  tone="text"
                 />
               </div>
             </mds-author>
             <mds-dropdown
               target="#consistency-author-button"
               offset={6}
-              class="gap-200 p-200 min-w-6000 rounded-3xl"
+              class="gap-200 p-200 min-w-6000 rounded-2xl"
+              disable-auto-placement
             >
               <mds-button
                 icon="mi/outline/edit"
                 variant="dark"
-                tone="quiet"
+                tone="text"
                 class="grow justify-start hover:bg-tone-neutral-09"
-              >
-                Edit
-              </mds-button>
+                label="Edit"
+              />
               <mds-button
                 icon="mi/outline/pageview"
                 variant="dark"
-                tone="quiet"
+                tone="text"
                 class="grow justify-start hover:bg-tone-neutral-09"
-              >
-                Show profile page
-              </mds-button>
+                label="Show profile page"
+              />
               <mds-hr class="bg-tone-neutral-09 h-50 -mx-200 w-auto" />
               <mds-button
                 icon="mi/outline/logout"
                 variant="dark"
-                tone="quiet"
+                tone="text"
                 class="grow justify-start hover:bg-tone-neutral-09"
-              >
-                Logout
-              </mds-button>
+                label="Logout"
+              />
             </mds-dropdown>
           </>
         )

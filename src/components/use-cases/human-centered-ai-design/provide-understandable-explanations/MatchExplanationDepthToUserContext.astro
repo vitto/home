@@ -15,16 +15,16 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 >
   <UseCaseInteractive clsHeight={600} label="Context-appropriate explanations" toggle>
     <div
-      class="grid gap-600 w-full relative min-h-[600px] bg-cover bg-center rounded-xl"
+      class="grid gap-600 w-full relative min-h-[600px] bg-cover bg-center rounded-md"
       style={{ backgroundImage: `url(${baseUrl}/assets/app-navigation-online.webp)` }}
     >
       <div class="absolute bottom-0 left-600 right-600 grid gap-600">
         <div
           data-overlay
-          class="grid bg-tone-neutral-01/70 backdrop-blur-sm rounded-3xl rounded-b-none grid-cols-full tablet:grid-cols-[auto_1fr] max-w-[500px] p-200 pb-400"
+          class="grid bg-tone-neutral-01/70 backdrop-blur-sm rounded-2xl rounded-b-none grid-cols-full tablet:grid-cols-[auto_1fr] max-w-[500px] p-200 pb-400"
         >
           <div
-            class="grid items-center gap-200 w-full bg-tone-neutral shadow-md-sharp p-600 rounded-2xl justify-self-start self-start"
+            class="grid items-center gap-200 w-full bg-tone-neutral shadow-md-sharp p-600 rounded-lg justify-self-start self-start"
           >
             <div class="grid">
               <mds-text typography="label" class="text-tone-neutral-06">Distance</mds-text>
@@ -66,20 +66,19 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
                     variant="light"
                     data-more-details-action
                     tone="strong"
-                    class="self-start shrink-0">More details</mds-button
-                  >
+                    class="self-start shrink-0"
+                    label="More details"></mds-button>
                   <mds-button
                     data-dismiss-details-action
                     variant="light"
-                    tone="ghost"
+                    tone="outline"
                     icon="mi/outline/close"
                     class="self-start shrink-0"></mds-button>
                 </div>
               </div>
               <div class="hidden gap-200 flex-col grow" data-more-details>
-                <mds-button variant="light" icon="mi/outline/alt-route"
-                  >Alternative routes</mds-button
-                >
+                <mds-button variant="light" icon="mi/outline/alt-route" label="Alternative routes"
+                ></mds-button>
                 <mds-text typography="detail">
                   Based on current traffic data (updated 2 min ago), historical patterns for this
                   time/day, and real-time incident reports.<br />
@@ -91,12 +90,12 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
                     data-less-details-action
                     variant="light"
                     tone="strong"
-                    class="self-start shrink-0">More details</mds-button
-                  >
+                    class="self-start shrink-0"
+                    label="More details"></mds-button>
                   <mds-button
                     data-dismiss-details-action
                     variant="light"
-                    tone="ghost"
+                    tone="outline"
                     icon="mi/outline/close"
                     class="self-start shrink-0"></mds-button>
                 </div>
@@ -107,16 +106,16 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
       </div>
     </div>
     <div
-      class="grid gap-600 w-full relative min-h-[600px] bg-cover bg-center rounded-xl"
+      class="grid gap-600 w-full relative min-h-[600px] bg-cover bg-center rounded-md"
       style={{ backgroundImage: `url(${baseUrl}/assets/app-navigation-online.webp)` }}
     >
       <div class="absolute bottom-0 left-600 right-600 grid gap-600">
         <div
           data-overlay
-          class="grid bg-tone-neutral-01/70 backdrop-blur-sm rounded-3xl rounded-b-none grid-cols-full tablet:grid-cols-[auto_1fr] max-w-[500px] p-200 pb-400"
+          class="grid bg-tone-neutral-01/70 backdrop-blur-sm rounded-2xl rounded-b-none grid-cols-full tablet:grid-cols-[auto_1fr] max-w-[500px] p-200 pb-400"
         >
           <div
-            class="grid items-center gap-200 w-full bg-tone-neutral shadow-md-sharp p-600 rounded-2xl justify-self-start self-start"
+            class="grid items-center gap-200 w-full bg-tone-neutral shadow-md-sharp p-600 rounded-lg justify-self-start self-start"
           >
             <div class="grid">
               <mds-text typography="label" class="text-tone-neutral-06">Distance</mds-text>
@@ -155,7 +154,7 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
                 <mds-button
                   data-dismiss-details-action
                   variant="light"
-                  tone="ghost"
+                  tone="outline"
                   icon="mi/outline/close"
                   class="self-start shrink-0"></mds-button>
               </div>

@@ -12,6 +12,6 @@
   }
 }
 
-.principle-progress-bar::part(bar) {
+.principle-progress-bar::part(progress-bar) {
   --mds-progress-background: rgb(var(--tone-neutral-01) / 0.1);
 }

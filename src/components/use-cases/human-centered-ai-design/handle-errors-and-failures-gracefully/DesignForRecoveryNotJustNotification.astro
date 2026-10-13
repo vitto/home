@@ -54,11 +54,11 @@ import AILink from '../../AILink.astro';
             variant="error"
             tone="weak"
             icon="mi/outline/replay"
-            title="Retry">Retry</mds-button
-          >
+            title="Retry"
+            label="Retry"></mds-button>
         </mds-banner>
         <div data-summary-container class="hidden gap-200">
-          <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-10">
+          <div class="grid gap-400 p-600 rounded-xs bg-tone-neutral-10">
             <mds-text typography="h4">When global crises shape local decisions</mds-text>
             <mds-text typography="detail">
               Drawing on IMF, World Bank, OECD, WEF and Financial Times analyses of the world
@@ -73,13 +73,15 @@ import AILink from '../../AILink.astro';
               ></mds-button>
             </div>
             <div class="flex gap-200 flex-wrap">
-              <mds-button variant="dark" tone="quiet" icon="mi/outline/replay" title="Regenerate"
+              <mds-button variant="dark" tone="text" icon="mi/outline/replay" title="Regenerate"
               ></mds-button>
-              <mds-button variant="dark" tone="quiet" icon="mi/outline/edit" title="Edit"
+              <mds-button variant="dark" tone="text" icon="mi/outline/edit" title="Edit"
               ></mds-button>
-              <mds-button variant="success" icon="mi/outline/publish" icon-position="right"
-                >Publish</mds-button
-              >
+              <mds-button
+                variant="success"
+                icon="mi/outline/publish"
+                icon-position="right"
+                label="Publish"></mds-button>
             </div>
           </div>
         </div>

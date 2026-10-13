@@ -37,7 +37,7 @@ function getConfidenceBox(confidence: number): string {
 }
 ---
 
-<div class="flex flex-col rounded-2xl bg-tone-neutral auto-rows-min shadow-sm-sharp h-min">
+<div class="flex flex-col rounded-lg bg-tone-neutral auto-rows-min shadow-xs-sharp h-min">
   <div class="grid gap-200 p-400">
     <div class="flex items-center justify-between gap-400">
       <mds-avatar src={cv.image} size="sm"></mds-avatar>
@@ -50,9 +50,8 @@ function getConfidenceBox(confidence: number): string {
                   title="Double-check this CV before rejecting or shortlisting."
                   variant="dark"
                   tone="strong"
-                >
-                  Review
-                </mds-button>
+                  label="Review"
+                />
               </div>
             </HighlightBox>
           </div>
@@ -64,9 +63,8 @@ function getConfidenceBox(confidence: number): string {
             title="Double-check this CV before rejecting or shortlisting."
             variant="dark"
             tone="strong"
-          >
-            Review
-          </mds-button>
+            label="Review"
+          />
         )
       }
     </div>
