@@ -42,7 +42,7 @@ const categories = visibleCategories.map((category) => ({
         return (
           <HeaderButton
             href={category.link}
-            class="mobile:hidden"
+            class="max-tablet:hidden"
             title={category.shortTitle}
             description={category.title}
             selected={isSelected}
@@ -54,8 +54,8 @@ const categories = visibleCategories.map((category) => ({
     data-menu-toggle
     title="Toggle menu"
     variant="light"
-    class="inline-flex group focus-bounce rounded-2xl shrink-0 no-underline bg-transparent border-none cursor-pointer size-1200"
+    class="inline-flex group focus-bounce shrink-0 no-underline bg-transparent border-none cursor-pointer size-1200"
   >
-    <Icon class={`mobile:text-[32px] transition-colors ${iconColor}`} name="mi/outline/menu" />
+    <Icon class={`max-tablet:text-[32px] transition-colors ${iconColor}`} name="mi/outline/menu" />
   </Button>
 </div>

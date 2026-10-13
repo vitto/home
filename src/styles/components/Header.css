@@ -11,8 +11,8 @@
     items-start
     justify-start
     left-0
-    mobile:pr-0
-    mobile:py-0
+    max-tablet:pr-0
+    max-tablet:py-0
     overflow-y-auto
     p-600
     pointer-events-none
@@ -42,12 +42,12 @@
   justify-self-end
   opacity-0
   origin-right
-  dark:border-50
+  dark:border-2
   dark:border-solid
   dark:border-border-default
   p-600
-  rounded-2xl
-  mobile:rounded-none
+  rounded-lg
+  max-tablet:rounded-none
   transition-cosmetic
   translate-x-full
   w-full;

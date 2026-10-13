@@ -15,16 +15,16 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 >
   <UseCaseInteractive clsHeight={600} label="Context-appropriate explanations" toggle>
     <div
-      class="grid gap-600 w-full relative min-h-[600px] bg-cover bg-center rounded-xl"
+      class="grid gap-600 w-full relative min-h-[600px] bg-cover bg-center rounded-md"
       style={{ backgroundImage: `url(${baseUrl}/assets/app-navigation-online.webp)` }}
     >
       <div class="absolute bottom-0 left-600 right-600 grid gap-600">
         <div
           data-overlay
-          class="grid bg-surface-inverse/70 backdrop-blur-sm rounded-3xl rounded-b-none grid-cols-full tablet:grid-cols-[auto_1fr] max-w-[500px] p-200 pb-400"
+          class="grid bg-surface-inverse/70 backdrop-blur-xs rounded-2xl rounded-b-none grid-cols-full tablet:grid-cols-[auto_1fr] max-w-[500px] p-200 pb-400"
         >
           <div
-            class="grid items-center gap-200 w-full bg-surface-raised shadow-md-sharp p-600 rounded-2xl justify-self-start self-start"
+            class="grid items-center gap-200 w-full bg-surface-raised shadow-md-sharp p-600 rounded-lg justify-self-start self-start"
           >
             <div class="grid">
               <mds-text typography="label" class="text-fg-subtle">Distance</mds-text>
@@ -106,16 +106,16 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
       </div>
     </div>
     <div
-      class="grid gap-600 w-full relative min-h-[600px] bg-cover bg-center rounded-xl"
+      class="grid gap-600 w-full relative min-h-[600px] bg-cover bg-center rounded-md"
       style={{ backgroundImage: `url(${baseUrl}/assets/app-navigation-online.webp)` }}
     >
       <div class="absolute bottom-0 left-600 right-600 grid gap-600">
         <div
           data-overlay
-          class="grid bg-surface-inverse/70 backdrop-blur-sm rounded-3xl rounded-b-none grid-cols-full tablet:grid-cols-[auto_1fr] max-w-[500px] p-200 pb-400"
+          class="grid bg-surface-inverse/70 backdrop-blur-xs rounded-2xl rounded-b-none grid-cols-full tablet:grid-cols-[auto_1fr] max-w-[500px] p-200 pb-400"
         >
           <div
-            class="grid items-center gap-200 w-full bg-surface-raised shadow-md-sharp p-600 rounded-2xl justify-self-start self-start"
+            class="grid items-center gap-200 w-full bg-surface-raised shadow-md-sharp p-600 rounded-lg justify-self-start self-start"
           >
             <div class="grid">
               <mds-text typography="label" class="text-fg-subtle">Distance</mds-text>

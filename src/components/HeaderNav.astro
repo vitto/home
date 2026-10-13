@@ -50,7 +50,7 @@ const categories = visibleCategories.map((category) => ({
       }
     </div>
     <div class="h-50 bg-surface-inverse-muted w-full flex"></div>
-    <div class="grid gap-200 grid-cols-fit-lg mobile:grid-cols-full" data-nav-buttons>
+    <div class="grid gap-200 grid-cols-fit-lg max-tablet:grid-cols-full" data-nav-buttons>
       {
         categories.map((category) => {
           const isSelected = currentSection?.id === category.id;

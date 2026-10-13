@@ -376,12 +376,12 @@ const { title, pagePath } = Astro.props;
         if (i === index) {
           indicator.classList.add('pointer-events-none');
           indicatorDiv.classList.add('bg-surface-inverse');
-          indicatorDiv.classList.add('mobile:bg-wash-soft');
+          indicatorDiv.classList.add('max-tablet:bg-wash-soft');
           indicatorDiv.classList.remove('bg-border-default');
         } else {
           indicator.classList.remove('pointer-events-none');
           indicatorDiv.classList.remove('bg-surface-inverse');
-          indicatorDiv.classList.remove('mobile:bg-wash-soft');
+          indicatorDiv.classList.remove('max-tablet:bg-wash-soft');
           indicatorDiv.classList.add('bg-border-default');
         }
       });
@@ -397,7 +397,7 @@ const { title, pagePath } = Astro.props;
 
       indicatorDiv.classList.add(
         index === 0
-          ? ('bg-surface-inverse', 'mobile:bg-wash-soft', 'pointer-events-none')
+          ? ('bg-surface-inverse', 'max-tablet:bg-wash-soft', 'pointer-events-none')
           : 'bg-border-default'
       );
       indicator.setAttribute('title', `Show example ${index + 1}`);
@@ -594,7 +594,7 @@ const { title, pagePath } = Astro.props;
     data-multiple-index
   >
     <div
-      class="size-200 rounded-full transition-colors bg-border-default mobile:bg-fg-subtle group-hover/dot:bg-neutral-border"
+      class="size-200 rounded-full transition-colors bg-border-default max-tablet:bg-fg-subtle group-hover/dot:bg-neutral-border"
     >
     </div>
   </a>

@@ -12,14 +12,14 @@ const { image, title, price, quantity, description, class: className = '' } = As
 ---
 
 <div
-  class={`cart-item first:border-t-0 border-t-25 border-border-muted border-0 border-solid flex gap-400 items-center p-400 ${className}`}
+  class={`cart-item first:border-t-0 border-t border-border-muted border-0 border-solid flex gap-400 items-center p-400 ${className}`}
 >
   {
     image && (
       <img
         src={image}
         alt={title}
-        class="w-1600 h-auto object-cover shrink-0 aspect-square rounded-lg"
+        class="w-1600 h-auto object-cover shrink-0 aspect-square rounded-xs"
       />
     )
   }

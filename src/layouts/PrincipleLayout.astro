@@ -385,12 +385,12 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
         if (i === index) {
           indicator.classList.add('pointer-events-none');
           indicatorDiv.classList.add('bg-surface-inverse');
-          indicatorDiv.classList.add('mobile:bg-wash-soft');
+          indicatorDiv.classList.add('max-tablet:bg-wash-soft');
           indicatorDiv.classList.remove('bg-border-default');
         } else {
           indicator.classList.remove('pointer-events-none');
           indicatorDiv.classList.remove('bg-surface-inverse');
-          indicatorDiv.classList.remove('mobile:bg-wash-soft');
+          indicatorDiv.classList.remove('max-tablet:bg-wash-soft');
           indicatorDiv.classList.add('bg-border-default');
         }
       });
@@ -406,7 +406,7 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
 
       indicatorDiv.classList.add(
         index === 0
-          ? ('bg-surface-inverse', 'mobile:bg-wash-soft', 'pointer-events-none')
+          ? ('bg-surface-inverse', 'max-tablet:bg-wash-soft', 'pointer-events-none')
           : 'bg-border-default'
       );
       indicator.setAttribute('title', `Show example ${index + 1}`);
@@ -603,7 +603,7 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
     data-multiple-index
   >
     <div
-      class="size-200 rounded-full transition-colors bg-border-default mobile:bg-fg-subtle group-hover/dot:bg-neutral-border"
+      class="size-200 rounded-full transition-colors bg-border-default max-tablet:bg-fg-subtle group-hover/dot:bg-neutral-border"
     >
     </div>
   </a>
@@ -616,7 +616,7 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
     allPrinciples={allPrinciples}
   />
   <Section
-    contentClass={`gap-2400 mobile:gap-1200 tablet:gap-1600 ${categoryColors[principle.category]}`}
+    contentClass={`gap-2400 max-tablet:gap-1200 tablet:gap-1600 ${categoryColors[principle.category]}`}
   >
     <Header />
     <PrincipleHeader

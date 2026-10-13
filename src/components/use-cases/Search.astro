@@ -34,7 +34,7 @@ const {
     }
   </div>
   <div
-    class="hidden absolute top-1200 left-0 right-0 mt-200 bg-surface-overlay rounded-lg shadow-xs-sharp border border-border-muted z-10 max-h- overflow-y-auto"
+    class="hidden absolute top-1200 left-0 right-0 mt-200 bg-surface-overlay rounded-xs shadow-xs-sharp border border-border-muted z-10 max-h- overflow-y-auto"
     data-autocomplete-results
   >
     <!-- Autocomplete results will be inserted here -->
@@ -57,7 +57,7 @@ const {
       const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
       return text.replace(
         regex,
-        '<mark class="bg-label-blue-08 text-label-blue-04 px-50 rounded-md">$1</mark>'
+        '<mark class="bg-label-blue-08 text-label-blue-04 px-50 rounded-2xs">$1</mark>'
       );
     }
     function filterResults(query) {

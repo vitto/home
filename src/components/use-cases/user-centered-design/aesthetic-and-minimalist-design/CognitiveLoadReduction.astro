@@ -12,11 +12,11 @@ import UsageItem from '../../../UsageItem.astro';
 >
   <UseCaseInteractive clsHeight={84} toggle articleId="cognitive-load-reduction">
     <div
-      class="flex items-center justify-between w-full rounded-2xl p-600 shadow-xs-sharp dark:shadow-shadow-ink/20 bg-surface-raised"
+      class="flex items-center justify-between w-full rounded-lg p-600 shadow-xs-sharp dark:shadow-shadow-ink/20 bg-surface-raised"
     >
       <mds-icon
         name="vv/logo"
-        class="size-900 cursor-pointer fill-fg-default focus-bounce rounded-lg hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
+        class="size-900 cursor-pointer fill-fg-default focus-bounce rounded-xs hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
         tabindex="0"></mds-icon>
       <nav class="flex items-center gap-400">
         <mds-button class="rounded-full" variant="dark" tone="weak" label="Login"></mds-button>
@@ -25,11 +25,11 @@ import UsageItem from '../../../UsageItem.astro';
       </nav>
     </div>
     <div
-      class="flex items-center justify-between w-full rounded-2xl p-600 shadow-lg-sharp dark:shadow-xs-sharp dark:shadow-shadow-ink/20 bg-surface-raised"
+      class="flex items-center justify-between w-full rounded-lg p-600 shadow-lg-sharp dark:shadow-xs-sharp dark:shadow-shadow-ink/20 bg-surface-raised"
     >
       <div class="flex gap-400">
         <mds-icon name="vv/logo" class="size-900 fill-fg-default"></mds-icon>
-        <div class="flex flex-col mobile:hidden">
+        <div class="flex flex-col max-tablet:hidden">
           <mds-text typography="h6">Vittorio Vittori</mds-text>
           <mds-text typography="option" class="text-fg-subtle">{personalData.role}</mds-text>
         </div>

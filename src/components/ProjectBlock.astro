@@ -21,13 +21,13 @@ const combinedClasses = `${baseClasses} ${className ? className : 'bg-surface-de
 
 <section class={combinedClasses}>
   <div
-    class={`grid gap-1200 ${columns} mobile:grid-cols-full max-w-screen-desktop w-full mx-auto relative z-10`}
+    class={`grid gap-1200 ${columns} max-tablet:grid-cols-full max-w-screen-desktop w-full mx-auto relative z-10`}
   >
     <slot />
   </div>
   {
     gradient && (
-      <div class="absolute inset-0 bg-gradient-to-t from-surface-default to-surface-default/0" />
+      <div class="absolute inset-0 bg-linear-to-t from-surface-default to-surface-default/0" />
     )
   }
 </section>

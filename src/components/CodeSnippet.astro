@@ -46,7 +46,7 @@ const codeClass =
 ---
 
 <div
-  class={`code-snippet-container grid gap-400 grid-cols-full select-none mobile:rounded-none ${className}`}
+  class={`code-snippet-container grid gap-400 grid-cols-full select-none max-tablet:rounded-none ${className}`}
 >
   <div class="flex items-center justify-center gap-200">
     {
@@ -82,7 +82,7 @@ const codeClass =
     <mds-badge
       variant={languageBadgeVariant[normalizedLanguage]}
       tone="strong"
-      class="absolute top-200 right-200 rounded-xl">{normalizedLanguage}</mds-badge
+      class="absolute top-200 right-200 rounded-md">{normalizedLanguage}</mds-badge
     >
     <div class="code-snippet-pre-wrap">
       <pre

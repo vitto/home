@@ -105,21 +105,21 @@ const scrollingColumns = distributedColumns;
 </ProjectBlock>
 
 <section
-  class="overflow-x-clip grid grid-cols-2 mobile:grid-cols-full gap-1200 absolute inset-0 bottom-[200px]"
+  class="overflow-x-clip grid grid-cols-2 max-tablet:grid-cols-full gap-1200 absolute inset-0 bottom-[200px]"
 >
   <div class="aspect-square">
     <!-- <div
-      class="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b z-10 from-accent-emphasis/10 to-accent-emphasis/0"
+      class="absolute top-0 left-0 right-0 h-1/2 bg-linear-to-b z-10 from-accent-emphasis/10 to-accent-emphasis/0"
     >
     </div> -->
   </div>
   <div class="aspect-square relative pointer-events-none user-select-none">
     <div
-      class="absolute grid size-full origin-bottom-left- origin-center mobile:origin-top-left -rotate-45 grid-cols-4 scale-150 gap-200"
+      class="absolute grid size-full origin-bottom-left- origin-center max-tablet:origin-top-left -rotate-45 grid-cols-4 scale-150 gap-200"
     >
       {
         scrollingColumns.map((column, colIndex) => (
-          <div class="flex flex-col self-start gap-200 hero-column rounded-2xl overflow-hidden">
+          <div class="flex flex-col self-start gap-200 hero-column rounded-lg overflow-hidden">
             {column.images.map((img) => (
               <div class="overflow-hidden">
                 <img

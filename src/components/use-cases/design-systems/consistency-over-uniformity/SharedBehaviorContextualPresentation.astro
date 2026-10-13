@@ -18,13 +18,13 @@ import artistsData from '../../../../data/use-cases/artists.json';
 >
   <UseCaseInteractive clsHeight={350} label="Consistent behavior, different contexts" multiple>
     <BrowserWindow title="Button component - Same behavior, different presentation">
-      <div class="flex flex-col gap-400 min-h-lg p-400 bg-surface-raised">
+      <div class="flex flex-col gap-400 min-h-[32rem] p-400 bg-surface-raised">
         <div
-          class="flex items-center justify-between w-full rounded-2xl p-600 shadow-xs-sharp dark:shadow-shadow-ink/20 bg-surface-raised"
+          class="flex items-center justify-between w-full rounded-lg p-600 shadow-xs-sharp dark:shadow-shadow-ink/20 bg-surface-raised"
         >
           <mds-icon
             name="vv/logo"
-            class="size-900 cursor-pointer fill-fg-default focus-bounce rounded-lg hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
+            class="size-900 cursor-pointer fill-fg-default focus-bounce rounded-xs hover:rotate-[60deg] transition-cosmetic ease-out-expo duration-300"
             tabindex="0"></mds-icon>
           <nav class="flex items-center gap-400">
             <mds-button class="rounded-full" variant="dark" tone="strong" label="Add music"
@@ -33,7 +33,7 @@ import artistsData from '../../../../data/use-cases/artists.json';
             ></mds-button>
           </nav>
         </div>
-        <div class="grid grid-cols-2 mobile:grid-cols-1 gap-400">
+        <div class="grid grid-cols-2 max-tablet:grid-cols-1 gap-400">
           {
             artistsData
               .slice(0, 2)
@@ -56,7 +56,7 @@ import artistsData from '../../../../data/use-cases/artists.json';
         <div class="flex items-center justify-between w-full px-400 py-300">
           <mds-icon
             name="vv/logo"
-            class="size-900 cursor-pointer fill-fg-default focus-bounce rounded-lg"
+            class="size-900 cursor-pointer fill-fg-default focus-bounce rounded-xs"
             tabindex="0"></mds-icon>
           <nav class="flex items-center gap-200 shrink-0">
             <mds-button class="rounded-full" icon="mi/baseline/menu" variant="dark" tone="text"

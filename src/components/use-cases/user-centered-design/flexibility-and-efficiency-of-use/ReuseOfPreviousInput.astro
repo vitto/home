@@ -30,14 +30,16 @@ const user = userData[0]; // Use first user from the data
           tone="text"
           label="View all"></mds-button>
       </div>
-      <div class="grid gap-y-400 gap-x-100 grid-cols-1 @lg:grid-cols-2 @2xl:grid-cols-3">
+      <div
+        class="grid gap-y-400 gap-x-100 grid-cols-1 @min-[25rem]:grid-cols-2 @min-[35rem]:grid-cols-3"
+      >
         {
           videosData.map((video) => (
             <div
-              class="grid gap-200 p-200 hover:bg-wash-base cursor-pointer focus-bounce rounded-xl auto-rows-min"
+              class="grid gap-200 p-200 hover:bg-wash-base cursor-pointer focus-bounce rounded-md auto-rows-min"
               tabindex="0"
             >
-              <mds-img class="rounded-lg" src={`${baseUrl}${video.image}`} alt={video.title} />
+              <mds-img class="rounded-xs" src={`${baseUrl}${video.image}`} alt={video.title} />
               <div class="grid gap-200 grid-cols-[1fr_auto]">
                 <mds-text typography="h6" truncate="all">
                   {video.title}

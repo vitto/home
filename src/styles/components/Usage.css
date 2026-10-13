@@ -3,11 +3,11 @@
 }
 
 .usage mds-usage[variant='do'] {
-  @apply mobile:order-first;
+  @apply max-tablet:order-first;
 }
 
 .usage mds-usage[variant='dont'] {
-  @apply mobile:order-last;
+  @apply max-tablet:order-last;
 }
 
 .usage-content {

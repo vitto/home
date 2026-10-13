@@ -42,7 +42,7 @@ const iconDirectionClass = direction === 'next' ? 'order-1' : '-order-1';
   href={href}
   title={`Go to ${description}`}
   tabindex={0}
-  class={`bg-surface-inverse-muted h-1400 hover:bg-surface-inverse pointer-events-auto w-full max-w-4800 text-on-inverse self-center focus-bounce inline-flex justify-start items-center gap-400 mobile:gap-300 rounded-full px-600 p-300 no-underline ${directionClass} ${className}`}
+  class={`bg-surface-inverse-muted h-1400 hover:bg-surface-inverse pointer-events-auto w-full max-w-4800 text-on-inverse self-center focus-bounce inline-flex justify-start items-center gap-400 max-tablet:gap-300 rounded-full px-600 p-300 no-underline ${directionClass} ${className}`}
 >
   {icon && <Icon class={iconDirectionClass} name={icon} />}
   <mds-text typography="option" truncate="all" class="text-box-trim">{title}</mds-text>

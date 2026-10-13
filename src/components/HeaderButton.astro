@@ -42,7 +42,7 @@ const {
 <a
   href={href}
   title={`Go to ${description}`}
-  class={`header-button self-center focus-bounce inline-flex justify-start items-center gap-400 mobile:gap-300 rounded-full tablet:px-600 p-300 no-underline ${className} ${selected ? (selectedClass ?? defaultSelectedClass) : defaultClass + ' z-10'}`}
+  class={`header-button self-center focus-bounce inline-flex justify-start items-center gap-400 max-tablet:gap-300 rounded-full tablet:px-600 p-300 no-underline ${className} ${selected ? (selectedClass ?? defaultSelectedClass) : defaultClass + ' z-10'}`}
 >
   {icon && <Icon name={icon} />}
   <div class="grid gap-200 auto-rows-min">

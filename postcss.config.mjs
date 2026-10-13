@@ -14,7 +14,5 @@ export default {
         require('@iconsauce/mgg-icons'),
       ],
     },
-    tailwindcss: {},
-    autoprefixer: {},
   },
 };

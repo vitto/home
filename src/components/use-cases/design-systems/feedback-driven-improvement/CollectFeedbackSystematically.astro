@@ -24,16 +24,16 @@ import Products from '../../../Products.astro';
     bugExpected="When the viewport is mobile, the component should go to full width."
   >
     <div
-      class="grid min-h-8000 grid-cols-[180px_1fr] mobile:grid-cols-full w-full"
+      class="grid min-h-8000 grid-cols-[180px_1fr] max-tablet:grid-cols-full w-full"
       data-feedback-container
     >
       <div
-        class="bg-label-sky-10 border-r border-label-sky-09 border-0 border-solid p-600 gap-600 grid auto-rows-min mobile:hidden"
+        class="bg-label-sky-10 border-r border-label-sky-09 border-0 border-solid p-600 gap-600 grid auto-rows-min max-tablet:hidden"
       >
         <Brand name="storybook" />
         <div class="grid gap-100">
           <div class="px-400 py-100"><mds-text typography="caption"><b>Banner</b></mds-text></div>
-          <div class="px-400 py-100 rounded-md bg-label-sky-04 text-fg-on-emphasis">
+          <div class="px-400 py-100 rounded-2xs bg-label-sky-04 text-fg-on-emphasis">
             <mds-text typography="caption"><b>Button</b></mds-text>
           </div>
           <div class="px-400 py-100"><mds-text typography="caption"><b>Modal</b></mds-text></div>
@@ -41,7 +41,7 @@ import Products from '../../../Products.astro';
         </div>
       </div>
       <div
-        class="p-600 flex items-start justify-start mobile:justify-center mobile:col-span-2 w-full"
+        class="p-600 flex items-start justify-start max-tablet:justify-center max-tablet:col-span-2 w-full"
       >
         <mds-button
           class="shrink-0"
@@ -51,7 +51,7 @@ import Products from '../../../Products.astro';
           label="Button component"></mds-button>
       </div>
     </div>
-    <mds-status-bar class="mobile:w-full" data-status-bar>
+    <mds-status-bar class="max-tablet:w-full" data-status-bar>
       <div class="grid gap-300 min-w-5600">
         <mds-input-field label="can we improve it?">
           <mds-input type="textarea" placeholder="Write your feedback for this component"
