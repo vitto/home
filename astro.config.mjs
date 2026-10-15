@@ -16,8 +16,12 @@ export default defineConfig({
   site: 'https://vittoriovittori.com',
   // Base path set to root for custom domain
   base: '/',
-  // The Magma project page gave way to the Magma docs
+  // Moved paths, kept alive for the links already out
   redirects: {
+    // The Magma project page gave way to the Magma docs
     '/project/magma': 'https://magma-design-system.github.io/docs/',
+    // The resume took the product designer role in its name
+    '/assets/vittorio-vittori-ds-architect-ux-designer-resume.pdf':
+      '/assets/vittorio-vittori-ds-architect-prd-designer-resume.pdf',
   },
 });
