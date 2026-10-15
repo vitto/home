@@ -16,4 +16,8 @@ export default defineConfig({
   site: 'https://vittoriovittori.com',
   // Base path set to root for custom domain
   base: '/',
+  // The Magma project page gave way to the Magma docs
+  redirects: {
+    '/project/magma': 'https://magma-design-system.github.io/docs/',
+  },
 });
