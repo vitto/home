@@ -24,15 +24,7 @@ const { title, value, description, variant = 'default', class: className = '' } 
 <div class={`grid gap-0 grid-cols-full ${className}`} data-ai-response-infos-section-item>
   <mds-text typography="caption">
     {title && <b>{title}:</b>}
-    {
-      variant !== 'default' ? (
-        <mds-badge variant={variant} tone="weak">
-          {value}
-        </mds-badge>
-      ) : (
-        value
-      )
-    }
+    {variant !== 'default' ? <mds-badge variant={variant} tone="weak" label={value} /> : value}
   </mds-text>
   {
     description != null && description !== '' && (

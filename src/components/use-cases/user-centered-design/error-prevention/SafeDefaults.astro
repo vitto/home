@@ -18,15 +18,19 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       data-archive-entity
     >
       <mds-text typography="h6">Medical Certificate</mds-text>
-      <mds-badge slot="detail" variant="dark" tone="ghost" class="hidden" data-archive-badge
-        >Archived</mds-badge
-      >
+      <mds-badge
+        slot="detail"
+        variant="dark"
+        tone="outline"
+        class="hidden"
+        data-archive-badge
+        label="Archived"></mds-badge>
       <mds-text slot="detail" typography="caption">3918VW88DX7</mds-text>
       <mds-button
         title="Archive certificate"
         icon="mi/outline/inventory-2"
         variant="dark"
-        tone="quiet"
+        tone="text"
         slot="action"
         data-archive-button></mds-button>
     </mds-entity>
@@ -42,12 +46,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
           title="Delete certificate"
           icon="mi/outline/delete"
           variant="error"
-          tone="quiet"
+          tone="text"
           slot="action"
           data-delete-button></mds-button>
       </mds-entity>
       <div
-        class="hidden bg-tone-neutral-09 p-600 py-400 h-1500 rounded-lg text-center"
+        class="hidden bg-wash-base p-600 py-400 h-1500 rounded-xs text-center"
         data-delete-success
       >
         <mds-text typography="caption">Medical Certificate successfully deleted.</mds-text>

@@ -23,7 +23,7 @@ const { title, sectionTitle, sectionDescription, categories } = Astro.props;
 
 <SectionLayout title={title}>
   <SectionNav baseUrl={baseUrl} sectionPath={sectionPath} principles={false} />
-  <Section contentClass="gap-1200 mobile:gap-600">
+  <Section contentClass="gap-1200 max-tablet:gap-600">
     <Header />
     <SectionHeader title={sectionTitle} description={sectionDescription} />
     <CategoryFilter categories={categories} />

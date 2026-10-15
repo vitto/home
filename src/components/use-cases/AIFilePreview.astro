@@ -35,8 +35,8 @@ const confidenceConfig = {
   high: {
     variant: 'success' as const,
     icon: 'mi/baseline/check-circle',
-    iconColor: 'fill-status-success-05',
-    bannerColor: 'bg-status-success-10',
+    iconColor: 'fill-success-emphasis',
+    bannerColor: 'bg-success-wash-soft',
     value: 92,
     alias: 'High',
     message: 'High confidence',
@@ -44,8 +44,8 @@ const confidenceConfig = {
   medium: {
     variant: 'warning' as const,
     icon: 'mi/outline/warning',
-    iconColor: 'fill-status-warning-05',
-    bannerColor: 'bg-status-warning-10',
+    iconColor: 'fill-warning-emphasis',
+    bannerColor: 'bg-warning-wash-soft',
     value: 65,
     alias: 'Medium',
     message: 'Medium confidence',
@@ -53,8 +53,8 @@ const confidenceConfig = {
   low: {
     variant: 'error' as const,
     icon: 'mi/outline/error',
-    iconColor: 'fill-status-error-05',
-    bannerColor: 'bg-status-error-10',
+    iconColor: 'fill-danger-emphasis',
+    bannerColor: 'bg-danger-wash-soft',
     value: 45,
     alias: 'Low',
     message: 'Low confidence',
@@ -75,7 +75,7 @@ const config = confidenceConfig[confidence];
       {extract}
     </mds-text>
     <div
-      class={`rounded-2xl p-400 ${config.bannerColor} grid cursor-pointer focus-bounce select-none`}
+      class={`rounded-lg p-400 ${config.bannerColor} grid cursor-pointer focus-bounce select-none`}
       data-confidence-banner
       role="button"
       tabindex="0"
@@ -91,9 +91,11 @@ const config = confidenceConfig[confidence];
           </div>
         </div>
       </div>
-      <mds-benchmark-bar class="grow min-h-0 shrink-0" value={config.value} variant={config.variant}
-        >{config.message}</mds-benchmark-bar
-      >
+      <mds-benchmark-bar
+        class="grow min-h-0 shrink-0"
+        value={config.value}
+        variant={config.variant}
+        label={config.message}></mds-benchmark-bar>
       <div class="confidence-banner__row" data-confidence-message>
         <div class="confidence-banner__row-inner flex overflow-hidden">
           <mds-text typography="caption" class="pt-200">{classification}</mds-text>
@@ -102,7 +104,7 @@ const config = confidenceConfig[confidence];
     </div>
 
     <div class="flex items-end justify-self-start">
-      <mds-button variant="dark" tone="ghost" size="sm">View document</mds-button>
+      <mds-button variant="dark" tone="outline" size="sm" label="View document"></mds-button>
     </div>
   </div>
   <style>

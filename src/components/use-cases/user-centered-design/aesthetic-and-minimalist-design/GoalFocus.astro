@@ -14,22 +14,31 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       <mds-text typography="detail"
         >Are you sure you want to delete this project?<br /> This action cannot be undone.</mds-text
       >
-      <mds-button slot="action" variant="dark" tone="quiet">Cancel</mds-button>
-      <mds-button slot="action" icon="mi/outline/delete" variant="error" tone="strong">
-        Delete
-      </mds-button>
+      <mds-button slot="action" variant="dark" tone="text" label="Cancel"></mds-button>
+      <mds-button
+        slot="action"
+        icon="mi/outline/delete"
+        variant="error"
+        tone="strong"
+        label="Delete"></mds-button>
     </mds-banner>
     <mds-banner icon="mi/outline/assignment" headline="Delete project" variant="error" tone="weak">
       <mds-text typography="detail"
         >Are you sure you want to delete this project?<br /> This action cannot be undone.</mds-text
       >
-      <mds-button slot="action" variant="dark" tone="strong">Cancel</mds-button>
-      <mds-button slot="action" icon="mi/outline/list" variant="dark" tone="strong">
-        Projects List
-      </mds-button>
-      <mds-button slot="action" icon="mi/outline/delete" variant="error" tone="strong">
-        Delete
-      </mds-button>
+      <mds-button slot="action" variant="dark" tone="strong" label="Cancel"></mds-button>
+      <mds-button
+        slot="action"
+        icon="mi/outline/list"
+        variant="dark"
+        tone="strong"
+        label="Projects List"></mds-button>
+      <mds-button
+        slot="action"
+        icon="mi/outline/delete"
+        variant="error"
+        tone="strong"
+        label="Delete"></mds-button>
     </mds-banner>
   </UseCaseInteractive>
   <Usage>

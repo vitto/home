@@ -20,7 +20,7 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
           class="object-cover w-full h-full absolute inset-0"
           src={`${baseUrl}/assets/mozart-portrait.jpg`}></mds-img>
         <div
-          class="absolute text-tone-neutral rounded-b-2xl bottom-0 left-0 right-0 p-400 bg-gradient-to-b from-tone-neutral-01/0 to-tone-neutral-01/100"
+          class="absolute text-on-inverse rounded-b-lg bottom-0 left-0 right-0 p-400 bg-linear-to-b from-surface-inverse/0 to-surface-inverse"
         >
           <div class="grid gap-600">
             <div class="grid gap-100">
@@ -28,25 +28,27 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
               <mds-text typography="caption">Austrian composer and pianist (1756-1791)</mds-text>
             </div>
             <div class="grid grid-cols-3">
-              <div class="flex flex-col gap-0 text-tone-neutral items-center justify-center">
+              <div class="flex flex-col gap-0 text-on-inverse items-center justify-center">
                 <mds-text typography="h6">124M</mds-text>
                 <mds-text typography="caption"><b>Followers</b></mds-text>
               </div>
               <div
-                class="flex flex-col gap-0 text-tone-neutral items-center justify-center border-x border-solid border-tone-neutral/30 border-y-0"
+                class="flex flex-col gap-0 text-on-inverse items-center justify-center border-x border-solid border-on-inverse/30 border-y-0"
               >
                 <mds-text typography="h6">67</mds-text>
                 <mds-text typography="caption"><b>Works</b></mds-text>
               </div>
-              <div class="flex flex-col gap-0 text-tone-neutral items-center justify-center">
+              <div class="flex flex-col gap-0 text-on-inverse items-center justify-center">
                 <mds-text typography="h6">95</mds-text>
                 <mds-text typography="caption"><b>Operas</b></mds-text>
               </div>
             </div>
             <div class="grid grid-cols-[1fr_auto] gap-200">
-              <mds-button variant="light" icon="mi/outline/favorite-border" data-follow-button
-                >Follow</mds-button
-              >
+              <mds-button
+                variant="light"
+                icon="mi/outline/favorite-border"
+                data-follow-button
+                label="Follow"></mds-button>
               <mds-button
                 icon="mi/outline/visibility-off"
                 variant="error"
@@ -63,7 +65,7 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
           class="object-cover w-full h-full absolute inset-0"
           src={`${baseUrl}/assets/portrait-01.png`}></mds-img>
         <div
-          class="absolute text-tone-neutral rounded-b-2xl bottom-0 left-0 right-0 p-400 bg-gradient-to-bl gradie from-tone-neutral-01/0 to-tone-neutral-01/100"
+          class="absolute text-on-inverse rounded-b-lg bottom-0 left-0 right-0 p-400 bg-linear-to-bl gradie from-surface-inverse/0 to-surface-inverse"
         >
           <div class="grid gap-600">
             <div class="grid gap-100">
@@ -73,25 +75,27 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
               </mds-text>
             </div>
             <div class="grid grid-cols-3">
-              <div class="flex flex-col gap-0 text-tone-neutral items-center justify-center">
+              <div class="flex flex-col gap-0 text-on-inverse items-center justify-center">
                 <mds-text typography="h6">72M</mds-text>
                 <mds-text typography="caption"><b>Followers</b></mds-text>
               </div>
               <div
-                class="flex flex-col gap-0 text-tone-neutral items-center justify-center border-x border-solid border-tone-neutral/30 border-y-0"
+                class="flex flex-col gap-0 text-on-inverse items-center justify-center border-x border-solid border-on-inverse/30 border-y-0"
               >
                 <mds-text typography="h6">6</mds-text>
                 <mds-text typography="caption"><b>Albums</b></mds-text>
               </div>
-              <div class="flex flex-col gap-0 text-tone-neutral items-center justify-center">
+              <div class="flex flex-col gap-0 text-on-inverse items-center justify-center">
                 <mds-text typography="h6">15</mds-text>
                 <mds-text typography="caption"><b>Singles</b></mds-text>
               </div>
             </div>
             <div class="grid grid-cols-[1fr_auto] gap-200">
-              <mds-button variant="light" icon="mi/outline/favorite-border" data-follow-button
-                >Follow</mds-button
-              >
+              <mds-button
+                variant="light"
+                icon="mi/outline/favorite-border"
+                data-follow-button
+                label="Follow"></mds-button>
               <mds-button
                 icon="mi/outline/delete"
                 variant="error"
@@ -102,7 +106,7 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
         </div>
       </div>
       <div
-        class="fake-card rounded-[32px] bg-tone-neutral-09 items-center justify-center text-center p-600 hidden"
+        class="fake-card rounded-[32px] bg-wash-base items-center justify-center text-center p-600 hidden"
         data-fake-card
       >
         <mds-text typography="detail">You will never see this Artist again.</mds-text>
@@ -148,10 +152,10 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 
         if (isFollowing) {
           button.setAttribute('icon', 'mi/outline/favorite');
-          button.textContent = 'Following';
+          button.setAttribute('label', 'Following');
         } else {
           button.setAttribute('icon', 'mi/outline/favorite-border');
-          button.textContent = 'Follow';
+          button.setAttribute('label', 'Follow');
         }
       });
     });

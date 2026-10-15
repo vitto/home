@@ -26,9 +26,10 @@ const preferences = getPreferences(Astro.cookies);
 <!doctype html>
 <html
   lang="en"
-  class={`${preferences.theme.selector} prevent-animation`}
-  style={preferences.theme.style}
-  data-pref-theme={preferences.theme.value}
+  class={`${preferences.mode.selector} prevent-animation`}
+  style={preferences.mode.style}
+  data-pref-mode={preferences.mode.value}
+  data-magma-pref
 >
   <head>
     <meta charset="UTF-8" />
@@ -55,7 +56,7 @@ const preferences = getPreferences(Astro.cookies);
       })();
     </script>
   </head>
-  <body class="bg-tone-neutral text-tone-neutral-02 antialiased" role="main">
+  <body class="bg-surface-default text-fg-default antialiased" role="main">
     <slot />
     <HeaderNav />
     <ChangePageClick />

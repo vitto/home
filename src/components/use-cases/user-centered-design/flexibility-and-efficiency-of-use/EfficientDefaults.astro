@@ -13,8 +13,8 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <div class="w-full">
       <div class="grid gap-600" data-configuration-panel>
         <mds-text typography="h5">Configuration</mds-text>
-        <div class="grid grid-cols-2 mobile:grid-cols-1 gap-600">
-          <div class="p-600 bg-tone-neutral-10 rounded-xl">
+        <div class="grid grid-cols-2 max-tablet:grid-cols-1 gap-600">
+          <div class="p-600 bg-wash-soft rounded-md">
             <mds-text
               class="preview-title block min-h-auto leading-[1.35]"
               typography="h3"
@@ -27,7 +27,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
               >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</mds-text
             >
           </div>
-          <div class="grid gap-600 mobile:-order-1">
+          <div class="grid gap-600 max-tablet:-order-1">
             <mds-text typography="h6">Typography</mds-text>
             <mds-input-range value={28} min={20} max={36} step={4} data-headings-range>
               Headings
@@ -38,9 +38,9 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
             <mds-button
               class="justify-self-start justify-start w-fit"
               variant="dark"
-              tone="ghost"
-              data-restart-button>Reset</mds-button
-            >
+              tone="outline"
+              data-restart-button
+              label="Reset"></mds-button>
           </div>
         </div>
       </div>
@@ -48,8 +48,8 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     <div class="w-full">
       <div class="grid gap-600" data-configuration-panel>
         <mds-text typography="h5">Configuration</mds-text>
-        <div class="grid grid-cols-2 mobile:grid-cols-1 gap-600">
-          <div class="p-600 bg-tone-neutral-10 rounded-xl">
+        <div class="grid grid-cols-2 max-tablet:grid-cols-1 gap-600">
+          <div class="p-600 bg-wash-soft rounded-md">
             <mds-text
               class="preview-title block min-h-auto leading-[1.35]"
               typography="h3"
@@ -62,7 +62,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
               >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</mds-text
             >
           </div>
-          <div class="grid gap-600 mobile:-order-1">
+          <div class="grid gap-600 max-tablet:-order-1">
             <mds-text typography="h6">Typography</mds-text>
             <mds-input-range value={20} min={20} max={36} step={4} data-headings-range>
               Headings
@@ -73,9 +73,9 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
             <mds-button
               class="justify-self-start justify-start w-fit"
               variant="dark"
-              tone="ghost"
-              data-restart-button>Reset</mds-button
-            >
+              tone="outline"
+              data-restart-button
+              label="Reset"></mds-button>
           </div>
         </div>
       </div>

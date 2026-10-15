@@ -7,7 +7,7 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-color: rgb(var(--tone-neutral));
+  background-color: rgb(var(--magma-surface-default));
   z-index: 1000;
   pointer-events: none;
   animation: fadeIn var(--fader-duration) ease-out forwards var(--fader-delay);

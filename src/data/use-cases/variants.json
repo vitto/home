@@ -15,17 +15,17 @@
   },
   {
     "variant": "primary",
-    "tone": "ghost",
+    "tone": "outline",
     "intent": "Primary action (minimal)",
     "usage": "Primary action in dense layouts or secondary contexts, preserves primary semantics with minimal visual footprint",
-    "comment": "Ghost variant will be renamed to outline in the future"
+    "comment": ""
   },
   {
     "variant": "primary",
-    "tone": "quiet",
+    "tone": "text",
     "intent": "Primary action (quiet)",
     "usage": "Primary action in low-emphasis contexts or sidebars, subtle primary action for non-critical paths",
-    "comment": "Quiet variant will be renamed to text in the future"
+    "comment": ""
   },
   {
     "variant": "ai",
@@ -43,17 +43,17 @@
   },
   {
     "variant": "ai",
-    "tone": "ghost",
+    "tone": "outline",
     "intent": "AI-powered action (minimal)",
     "usage": "AI features in dense interfaces or secondary positions, minimal AI action indicator",
-    "comment": "Ghost variant will be renamed to outline in the future"
+    "comment": ""
   },
   {
     "variant": "ai",
-    "tone": "quiet",
+    "tone": "text",
     "intent": "AI-powered action (quiet)",
     "usage": "AI features in low-emphasis contexts, subtle AI action for background features",
-    "comment": "Quiet variant will be renamed to text in the future"
+    "comment": ""
   },
   {
     "variant": "error",
@@ -71,17 +71,17 @@
   },
   {
     "variant": "error",
-    "tone": "ghost",
+    "tone": "outline",
     "intent": "Destructive action (minimal)",
     "usage": "Destructive actions in dense layouts or secondary contexts, minimal destructive action indicator",
-    "comment": "Ghost variant will be renamed to outline in the future"
+    "comment": ""
   },
   {
     "variant": "error",
-    "tone": "quiet",
+    "tone": "text",
     "intent": "Destructive action (quiet)",
     "usage": "Destructive actions in low-emphasis contexts, subtle destructive action for less critical removals",
-    "comment": "Quiet variant will be renamed to text in the future"
+    "comment": ""
   },
   {
     "variant": "info",
@@ -99,17 +99,17 @@
   },
   {
     "variant": "info",
-    "tone": "ghost",
+    "tone": "outline",
     "intent": "Informational action (minimal)",
     "usage": "Informational actions in dense interfaces or secondary positions, minimal informational action indicator",
-    "comment": "Ghost variant will be renamed to outline in the future"
+    "comment": ""
   },
   {
     "variant": "info",
-    "tone": "quiet",
+    "tone": "text",
     "intent": "Informational action (quiet)",
     "usage": "Informational actions in low-emphasis contexts, subtle informational action for background features",
-    "comment": "Quiet variant will be renamed to text in the future"
+    "comment": ""
   },
   {
     "variant": "success",
@@ -127,17 +127,17 @@
   },
   {
     "variant": "success",
-    "tone": "ghost",
+    "tone": "outline",
     "intent": "Success action (minimal)",
     "usage": "Success actions in dense interfaces or secondary positions, minimal success action indicator",
-    "comment": "Ghost variant will be renamed to outline in the future"
+    "comment": ""
   },
   {
     "variant": "success",
-    "tone": "quiet",
+    "tone": "text",
     "intent": "Success action (quiet)",
     "usage": "Success actions in low-emphasis contexts, subtle success action for background confirmations",
-    "comment": "Quiet variant will be renamed to text in the future"
+    "comment": ""
   },
   {
     "variant": "warning",
@@ -155,16 +155,16 @@
   },
   {
     "variant": "warning",
-    "tone": "ghost",
+    "tone": "outline",
     "intent": "Warning action (minimal)",
     "usage": "Warning actions in dense interfaces or secondary positions, minimal warning action indicator",
-    "comment": "Ghost variant will be renamed to outline in the future"
+    "comment": ""
   },
   {
     "variant": "warning",
-    "tone": "quiet",
+    "tone": "text",
     "intent": "Warning action (quiet)",
     "usage": "Warning actions in low-emphasis contexts, subtle warning action for less critical alerts",
-    "comment": "Quiet variant will be renamed to text in the future"
+    "comment": ""
   }
 ]

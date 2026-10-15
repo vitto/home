@@ -34,7 +34,8 @@ import HighlightBox from '../../HighlightBox.astro';
       >
         <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
           <mds-text typography="h6">When global crises shape China decisions</mds-text>
-          <mds-badge variant="success" tone="weak" slot="detail" class="mr-150">approved</mds-badge>
+          <mds-badge variant="success" tone="weak" slot="detail" class="mr-150" label="approved"
+          ></mds-badge>
           <mds-text typography="caption" slot="detail">5 min read, reviewed once by you</mds-text>
         </mds-entity>
         <HighlightBox label="required decision points" variant="success" slot="actions">
@@ -48,9 +49,11 @@ import HighlightBox from '../../HighlightBox.astro';
             <div class="flex gap-200 flex-wrap">
               <mds-button variant="primary" tone="weak" icon="mi/outline/edit" title="Edit"
               ></mds-button>
-              <mds-button variant="success" icon="mi/outline/publish" icon-position="right">
-                Publish
-              </mds-button>
+              <mds-button
+                variant="success"
+                icon="mi/outline/publish"
+                icon-position="right"
+                label="Publish"></mds-button>
             </div>
           </div>
         </HighlightBox>
@@ -74,7 +77,8 @@ import HighlightBox from '../../HighlightBox.astro';
       >
         <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
           <mds-text typography="h6">When global crises shape China decisions</mds-text>
-          <mds-badge variant="success" tone="weak" slot="detail" class="mr-150">approved</mds-badge>
+          <mds-badge variant="success" tone="weak" slot="detail" class="mr-150" label="approved"
+          ></mds-badge>
           <mds-text typography="caption" slot="detail">5 min read, reviewed once by you</mds-text>
         </mds-entity>
         <HighlightBox label="Avoided human review" variant="error" slot="actions">

@@ -384,14 +384,14 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
         const indicatorDiv = indicator.querySelector('div');
         if (i === index) {
           indicator.classList.add('pointer-events-none');
-          indicatorDiv.classList.add('bg-tone-neutral-01');
-          indicatorDiv.classList.add('mobile:bg-tone-neutral-10');
-          indicatorDiv.classList.remove('bg-tone-neutral-07');
+          indicatorDiv.classList.add('bg-surface-inverse');
+          indicatorDiv.classList.add('max-tablet:bg-wash-soft');
+          indicatorDiv.classList.remove('bg-border-default');
         } else {
           indicator.classList.remove('pointer-events-none');
-          indicatorDiv.classList.remove('bg-tone-neutral-01');
-          indicatorDiv.classList.remove('mobile:bg-tone-neutral-10');
-          indicatorDiv.classList.add('bg-tone-neutral-07');
+          indicatorDiv.classList.remove('bg-surface-inverse');
+          indicatorDiv.classList.remove('max-tablet:bg-wash-soft');
+          indicatorDiv.classList.add('bg-border-default');
         }
       });
 
@@ -406,8 +406,8 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
 
       indicatorDiv.classList.add(
         index === 0
-          ? ('bg-tone-neutral-01', 'mobile:bg-tone-neutral-10', 'pointer-events-none')
-          : 'bg-tone-neutral-07'
+          ? ('bg-surface-inverse', 'max-tablet:bg-wash-soft', 'pointer-events-none')
+          : 'bg-border-default'
       );
       indicator.setAttribute('title', `Show example ${index + 1}`);
       indicator.setAttribute('data-multiple-index', index.toString());
@@ -603,7 +603,7 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
     data-multiple-index
   >
     <div
-      class="size-200 rounded-full transition-colors bg-tone-neutral-07 mobile:bg-tone-neutral-04 group-hover/dot:bg-tone-neutral-06"
+      class="size-200 rounded-full transition-colors bg-border-default max-tablet:bg-fg-subtle group-hover/dot:bg-neutral-border"
     >
     </div>
   </a>
@@ -616,7 +616,7 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
     allPrinciples={allPrinciples}
   />
   <Section
-    contentClass={`gap-2400 mobile:gap-1200 tablet:gap-1600 ${categoryColors[principle.category]}`}
+    contentClass={`gap-2400 max-tablet:gap-1200 tablet:gap-1600 ${categoryColors[principle.category]}`}
   >
     <Header />
     <PrincipleHeader
@@ -626,7 +626,7 @@ const { title, principle, categoryColors, sectionName, sectionPath, allPrinciple
       sectionPath={sectionPath}
     />
     <slot />
-    <div class="h-50 bg-tone-neutral-03"></div>
+    <div class="h-50 bg-surface-inverse-muted"></div>
   </Section>
   <SectionFooter />
 </SectionLayout>

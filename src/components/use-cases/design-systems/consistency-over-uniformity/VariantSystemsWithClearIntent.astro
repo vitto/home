@@ -56,9 +56,13 @@ const defaultVariant = uniqueVariants[0];
                 {items.map((item) => (
                   <mds-table-row>
                     <mds-table-cell class="min-w-2800">
-                      <mds-button class="w-full" variant={item.variant} tone={item.tone} size="sm">
-                        {capitalize(item.variant)}
-                      </mds-button>
+                      <mds-button
+                        class="w-full"
+                        variant={item.variant}
+                        tone={item.tone}
+                        size="sm"
+                        label={capitalize(item.variant)}
+                      />
                     </mds-table-cell>
                     <mds-table-cell class="min-w-2800">
                       <mds-text

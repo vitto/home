@@ -3,13 +3,13 @@
 
   justify-self: start;
   display: inline-flex;
-  box-shadow: inset 0 -2px 0 rgb(var(--tone-neutral-08));
+  box-shadow: inset 0 -2px 0 rgb(var(--magma-wash-strong));
   text-decoration: none;
   line-height: 1.2;
 }
 
 .bibliographies {
-  --shadow-color: var(--tone-neutral-09);
+  --shadow-color: var(--magma-wash-base);
 }
 
 .bibliographies a:hover,
@@ -22,16 +22,16 @@
 }
 
 .status-success .bibliographies {
-  --shadow-color: var(--status-success-09);
+  --shadow-color: var(--magma-success-wash-base);
 }
 .status-info .bibliographies {
-  --shadow-color: var(--status-info-09);
+  --shadow-color: var(--magma-info-wash-base);
 }
 .status-error .bibliographies {
-  --shadow-color: var(--status-error-09);
+  --shadow-color: var(--magma-danger-wash-base);
 }
 .status-warning .bibliographies {
-  --shadow-color: var(--status-warning-09);
+  --shadow-color: var(--magma-warning-wash-base);
 }
 .label-amaranth .bibliographies {
   --shadow-color: var(--label-amaranth-09);
@@ -65,5 +65,5 @@
 }
 
 .bibliography-section + .bibliography-section {
-  @apply border-t-2 border-tone-neutral-08 border-solid border-0 pt-1200;
+  @apply border-t-2 border-border-muted border-solid border-0 pt-1200;
 }

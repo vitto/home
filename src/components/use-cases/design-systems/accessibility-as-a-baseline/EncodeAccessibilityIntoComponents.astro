@@ -21,11 +21,13 @@ import Products from '../../../Products.astro';
     bugCurrent="If the keyboard is used to navigate and enter key is pressed, the try keyboard combination fails instantly."
     bugExpected="Once enter key is pressed, the try keyboard combination test should start listening."
   >
-    <mds-button data-use-keyboard-to-navigate>Use keyboard to navigate</mds-button>
+    <mds-button data-use-keyboard-to-navigate label="Use keyboard to navigate"></mds-button>
     <mds-keyboard try>
       <mds-keyboard-key name="tab"></mds-keyboard-key>
     </mds-keyboard>
-    <mds-dropdown target="[data-use-keyboard-to-navigate]">This is a dropdown menu.</mds-dropdown>
+    <mds-dropdown target="[data-use-keyboard-to-navigate]" disable-auto-placement
+      >This is a dropdown menu.</mds-dropdown
+    >
   </UseCaseInteractive>
 
   <Usage>

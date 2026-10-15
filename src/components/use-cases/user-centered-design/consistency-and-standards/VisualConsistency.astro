@@ -31,17 +31,15 @@ const datetimeThreeDaysAgo = threeDaysAgo.toISOString();
 >
   <UseCaseInteractive clsHeight={140} multiple>
     <mds-push-notification-item
-      deletable="false"
       src={`${baseUrl}/assets/tdr-book-cover-02.webp`}
       message="Finally the Book of The Designers Republic is here! Are you ready to read it?"
       subject="AZTDR"
       datetime={datetimeThreeDaysAgo}
       variant="primary"
     >
-      <mds-button size="sm" slot="action" tone="weak" variant="dark">Read</mds-button>
+      <mds-button size="sm" slot="action" tone="weak" variant="dark" label="Read"></mds-button>
     </mds-push-notification-item>
     <mds-push-notification-item
-      deletable="false"
       src={user.avatar}
       data-avatar
       message="Hey Vittorio, how's going? I hope you have a great day!"
@@ -49,25 +47,23 @@ const datetimeThreeDaysAgo = threeDaysAgo.toISOString();
       datetime={datetime}
       variant="primary"
     >
-      <mds-button size="sm" slot="action" tone="weak" variant="primary">Reply</mds-button>
+      <mds-button size="sm" slot="action" tone="weak" variant="primary" label="Reply"></mds-button>
     </mds-push-notification-item>
     <mds-push-notification-item
-      deletable="false"
       icon="mi/baseline/attach-file"
       message="You have a new attachment from John Doe."
       subject="New attachment"
       variant="info"
     >
-      <mds-button size="sm" slot="action" tone="weak" variant="info">Download</mds-button>
+      <mds-button size="sm" slot="action" tone="weak" variant="info" label="Download"></mds-button>
     </mds-push-notification-item>
     <mds-push-notification-item
-      deletable="false"
       icon="mi/baseline/wifi-tethering-error"
       message="Please check your internet connection and try again."
       subject="Connection lost"
       variant="error"
     >
-      <mds-button size="sm" slot="action" tone="weak" variant="error">Retry</mds-button>
+      <mds-button size="sm" slot="action" tone="weak" variant="error" label="Retry"></mds-button>
     </mds-push-notification-item>
   </UseCaseInteractive>
   <Usage>

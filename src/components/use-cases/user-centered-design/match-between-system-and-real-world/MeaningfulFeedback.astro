@@ -11,10 +11,10 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 >
   <UseCaseInteractive clsHeight={36} toggle>
     <div class="grid gap-600 w-full max-w-8000">
-      <mds-button class="w-full" data-example-1-button>Send Email</mds-button>
+      <mds-button class="w-full" data-example-1-button label="Send Email"></mds-button>
     </div>
     <div class="grid gap-600 w-full max-w-8000">
-      <mds-button class="w-full" data-example-2-button>Process Request</mds-button>
+      <mds-button class="w-full" data-example-2-button label="Process Request"></mds-button>
     </div>
     <script>
       function initMeaningfulFeedback() {
@@ -33,7 +33,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
             if (isProcessing1) return;
 
             isProcessing1 = true;
-            example1Button.textContent = 'Email sent successfully';
+            example1Button.setAttribute('label', 'Email sent successfully');
             example1Button.classList.add('pointer-events-none');
             example1Button.setAttribute('tabindex', '-1');
             example1Button.blur();
@@ -41,7 +41,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
             example1Button.setAttribute('variant', 'success');
 
             setTimeout(() => {
-              example1Button.textContent = 'Send Email';
+              example1Button.setAttribute('label', 'Send Email');
               example1Button.classList.remove('pointer-events-none');
               example1Button.removeAttribute('icon');
               example1Button.setAttribute('tabindex', '0');
@@ -60,7 +60,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
             if (isProcessing2) return;
 
             isProcessing2 = true;
-            example2Button.textContent = 'SMTP operation succeeded';
+            example2Button.setAttribute('label', 'SMTP operation succeeded');
             example2Button.classList.add('pointer-events-none');
             example2Button.setAttribute('tabindex', '-1');
             example2Button.blur();
@@ -68,7 +68,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
             example2Button.setAttribute('variant', 'success');
 
             setTimeout(() => {
-              example2Button.textContent = 'Process Request';
+              example2Button.setAttribute('label', 'Process Request');
               example2Button.classList.remove('pointer-events-none');
               example2Button.removeAttribute('icon');
               example2Button.setAttribute('tabindex', '0');

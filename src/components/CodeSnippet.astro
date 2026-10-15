@@ -42,37 +42,19 @@ const languageBadgeVariant: Record<string, string> = {
 
 const uniqueId = `code-${Math.random().toString(36).substring(2, 9)}`;
 const codeClass =
-  `code-snippet-code dark:text-tone-neutral-01 text-tone-neutral-10 language-${normalizedLanguage}`.trim();
+  `code-snippet-code text-on-inverse dark:text-fg-default language-${normalizedLanguage}`.trim();
 ---
 
 <div
-  class={`code-snippet-container grid gap-400 grid-cols-full select-none mobile:rounded-none ${className}`}
+  class={`code-snippet-container grid gap-400 grid-cols-full select-none max-tablet:rounded-none ${className}`}
 >
   <div class="flex items-center justify-center gap-200">
-    {
-      variant === 'do' && (
-        <mds-badge variant="success" tone="strong">
-          allowed
-        </mds-badge>
-      )
-    }
-    {
-      variant === 'dont' && (
-        <mds-badge variant="error" tone="strong">
-          not allowed
-        </mds-badge>
-      )
-    }
-    {
-      variant === 'warn' && (
-        <mds-badge variant="warning" tone="strong">
-          warning
-        </mds-badge>
-      )
-    }
+    {variant === 'do' && <mds-badge variant="success" tone="strong" label="allowed" />}
+    {variant === 'dont' && <mds-badge variant="error" tone="strong" label="not allowed" />}
+    {variant === 'warn' && <mds-badge variant="warning" tone="strong" label="warning" />}
     {
       title && (
-        <p class="justify-self-center text-info-option text-tone-neutral-09 dark:text-tone-neutral-01">
+        <p class="justify-self-center text-info-option text-on-inverse dark:text-fg-muted">
           {title}
         </p>
       )
@@ -82,8 +64,8 @@ const codeClass =
     <mds-badge
       variant={languageBadgeVariant[normalizedLanguage]}
       tone="strong"
-      class="absolute top-200 right-200 rounded-xl">{normalizedLanguage}</mds-badge
-    >
+      class="absolute top-200 right-200 rounded-md"
+      label={normalizedLanguage}></mds-badge>
     <div class="code-snippet-pre-wrap">
       <pre
         class="code-snippet-pre flex">

@@ -10,7 +10,7 @@ const { label = 'generated article summary', title, summary } = Astro.props;
 
 <div class="grid gap-200">
   <mds-text typography="label">{label}</mds-text>
-  <div class="grid gap-400 p-600 rounded-lg bg-tone-neutral-10">
+  <div class="grid gap-400 p-600 rounded-xs bg-wash-soft">
     <mds-text typography="h4">{title}</mds-text>
     <mds-text typography="detail">{summary}</mds-text>
   </div>
@@ -25,9 +25,11 @@ const { label = 'generated article summary', title, summary } = Astro.props;
       </div>
       <div class="flex gap-200 flex-wrap">
         <mds-button variant="primary" tone="weak" icon="mi/outline/edit" title="Edit"></mds-button>
-        <mds-button variant="success" icon="mi/outline/publish" icon-position="right">
-          Publish
-        </mds-button>
+        <mds-button
+          variant="success"
+          icon="mi/outline/publish"
+          icon-position="right"
+          label="Publish"></mds-button>
       </div>
     </div>
   </slot>

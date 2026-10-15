@@ -22,12 +22,13 @@ const firstUser = usersData[0];
     toggle
   >
     <div class="grid gap-1200 w-full max-w-8000">
-      <mds-button icon="mi/baseline/emoji-events">Button</mds-button>
+      <mds-button icon="mi/baseline/emoji-events" label="Button"></mds-button>
       <mds-push-notification-item
         icon="mi/outline/done"
         message="Button component is the most used component in Magma Design System."
         subject="Easy to draft"
         variant="success"
+        deletable
       >
       </mds-push-notification-item>
     </div>
@@ -44,6 +45,7 @@ const firstUser = usersData[0];
         message="I wrote mds-bibliography as the first component, but in reality no one uses it."
         subject="Unexpected use case"
         variant="error"
+        deletable
       >
       </mds-push-notification-item>
     </div>

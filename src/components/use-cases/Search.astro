@@ -26,9 +26,7 @@ const {
           <mds-text typography="label">latest searches</mds-text>
           <div class="flex gap-200 flex-wrap">
             {latestSearches.map((search) => (
-              <mds-button variant="dark" tone="weak" data-search-button>
-                {search}
-              </mds-button>
+              <mds-button variant="dark" tone="weak" data-search-button label={search} />
             ))}
           </div>
         </div>
@@ -36,7 +34,7 @@ const {
     }
   </div>
   <div
-    class="hidden absolute top-1200 left-0 right-0 mt-200 bg-tone-neutral dark:bg-tone-neutral-09 rounded-lg shadow-sm-sharp border border-tone-neutral-03/20 z-10 max-h- overflow-y-auto"
+    class="hidden absolute top-1200 left-0 right-0 mt-200 bg-surface-overlay rounded-xs shadow-xs-sharp border border-border-muted z-10 max-h- overflow-y-auto"
     data-autocomplete-results
   >
     <!-- Autocomplete results will be inserted here -->
@@ -59,7 +57,7 @@ const {
       const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
       return text.replace(
         regex,
-        '<mark class="bg-label-blue-08 text-label-blue-04 px-50 rounded-md">$1</mark>'
+        '<mark class="bg-label-blue-08 text-label-blue-04 px-50 rounded-2xs">$1</mark>'
       );
     }
     function filterResults(query) {
@@ -97,13 +95,13 @@ const {
       const resultsHTML = displayedResults
         .map(
           (item, index) =>
-            `<div class="px-400 py-200 hover:bg-tone-neutral-10 cursor-pointer border-b border-tone-neutral-03/10 border-b border-solid border-0" data-result-item data-result-index="${index}"><mds-text typography="caption" class="text-tone-neutral-03">${highlightText(item, query)}</mds-text></div>`
+            `<div class="px-400 py-200 hover:bg-wash-soft cursor-pointer border-b border-border-muted border-b border-solid border-0" data-result-item data-result-index="${index}"><mds-text typography="caption" class="text-fg-muted">${highlightText(item, query)}</mds-text></div>`
         )
         .join('');
       const tipHTML =
         totalResults > maxResults
-          ? `<div class="px-400 py-200 bg-tone-neutral-10 border-t border-tone-neutral-03/10"><mds-text typography="caption" class="text-tone-neutral-03">Showing ${maxResults} of ${totalResults} results</mds-text></div>`
-          : `<div class="px-400 py-200 bg-tone-neutral-10 border-t border-tone-neutral-03/10"><mds-text typography="caption" class="text-tone-neutral-03">${totalResults} result${totalResults !== 1 ? 's' : ''}</mds-text></div>`;
+          ? `<div class="px-400 py-200 bg-wash-soft border-t border-border-muted"><mds-text typography="caption" class="text-fg-muted">Showing ${maxResults} of ${totalResults} results</mds-text></div>`
+          : `<div class="px-400 py-200 bg-wash-soft border-t border-border-muted"><mds-text typography="caption" class="text-fg-muted">${totalResults} result${totalResults !== 1 ? 's' : ''}</mds-text></div>`;
       resultsContainer.innerHTML = resultsHTML + tipHTML;
     }
 
@@ -151,7 +149,7 @@ const {
     const searchButtons = container.querySelectorAll('[data-search-button]');
     searchButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        const buttonText = button.textContent?.trim() || '';
+        const buttonText = button.getAttribute('label')?.trim() || '';
         if (!buttonText) return;
 
         // Set the input value

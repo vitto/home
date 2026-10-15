@@ -65,18 +65,22 @@ Based on your preferences, this product matches your criteria. The system found 
               checked
               data-consider-previous-messages
               class="flex-row-reverse justify-between"
-              >Consider previous messages <mds-badge class="ml-100" variant="dark" tone="ghost"
-                >14</mds-badge
-              ></mds-input-switch
+              >Consider previous messages <mds-badge
+                class="ml-100"
+                variant="dark"
+                tone="outline"
+                label="14"></mds-badge></mds-input-switch
             >
             <mds-separator></mds-separator>
             <mds-input-switch
               checked
               data-consider-previous-purchases
               class="flex-row-reverse justify-between"
-              >Consider previous purchases <mds-badge class="ml-100" variant="dark" tone="ghost"
-                >6</mds-badge
-              ></mds-input-switch
+              >Consider previous purchases <mds-badge
+                class="ml-100"
+                variant="dark"
+                tone="outline"
+                label="6"></mds-badge></mds-input-switch
             >
             <mds-separator></mds-separator>
             <mds-input-field label="tone" message={defaultLanguageToneMessage} data-tone-select>
@@ -84,9 +88,12 @@ Based on your preferences, this product matches your criteria. The system found 
                 {languageTonesData.map((tone) => <option value={tone.value}>{tone.label}</option>)}
               </mds-input-select>
             </mds-input-field>
-            <mds-button class="mt-1200" variant="error" tone="weak" data-purge-context
-              >Purge context</mds-button
-            >
+            <mds-button
+              class="mt-1200"
+              variant="error"
+              tone="weak"
+              data-purge-context
+              label="Purge context"></mds-button>
           </AIContext>
         </AIResponseFooter>
       </AIResponseMessage>
@@ -148,7 +155,7 @@ Based on your preferences, this product matches your criteria. The system found 
 
       const purgeButton = document.querySelector('[data-purge-context]');
       if (purgeButton) {
-        const originalButtonText = purgeButton.textContent || 'Purge context';
+        const originalButtonText = purgeButton.getAttribute('label') || 'Purge context';
         const originalContextBarValue = '76';
         const originalContextBarAlias = 'very high';
 
@@ -168,7 +175,7 @@ Based on your preferences, this product matches your criteria. The system found 
 
           // Set loading state
           purgeButton.setAttribute('await', '');
-          purgeButton.textContent = 'Purging...';
+          purgeButton.setAttribute('label', 'Purging...');
 
           // Reset tone select to 0 (purge value)
           if (toneSelect) {
@@ -209,7 +216,7 @@ Based on your preferences, this product matches your criteria. The system found 
 
           const doRollback = () => {
             purgeButton.removeAttribute('await');
-            purgeButton.textContent = originalButtonText;
+            purgeButton.setAttribute('label', originalButtonText);
 
             if (toneSelect) {
               setToneSelectValue(toneSelect, defaultLanguageTone);

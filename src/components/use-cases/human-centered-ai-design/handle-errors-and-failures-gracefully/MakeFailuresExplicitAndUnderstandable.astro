@@ -25,30 +25,39 @@ import PatientCard from '../../PatientCard.astro';
               > failed due to these reasons:
             </mds-text>
             <mds-list class="gap-200">
-              <mds-list-item icon="mdi/needle" class="text-status-warning-03"
+              <mds-list-item icon="mdi/needle" class="text-warning-fg-subtle"
                 >The patient's latest INR value is missing.</mds-list-item
               >
-              <mds-list-item icon="mdi/pill" class="text-status-warning-03"
+              <mds-list-item icon="mdi/pill" class="text-warning-fg-subtle"
                 >Warfarin dosage recommendations require a recent INR measurement</mds-list-item
               >
             </mds-list>
           </div>
-          <mds-button slot="action" class="mobile:w-full" variant="warning" tone="weak"
-            >View lab results</mds-button
-          >
-          <mds-button slot="action" class="mobile:w-full" variant="warning" tone="weak"
-            >Enter INR manually</mds-button
-          >
-          <mds-button slot="action" class="mobile:w-full" variant="dark" tone="strong"
-            >Proceed without AI assistance</mds-button
-          >
+          <mds-button
+            slot="action"
+            class="max-tablet:w-full"
+            variant="warning"
+            tone="weak"
+            label="View lab results"></mds-button>
+          <mds-button
+            slot="action"
+            class="max-tablet:w-full"
+            variant="warning"
+            tone="weak"
+            label="Enter INR manually"></mds-button>
+          <mds-button
+            slot="action"
+            class="max-tablet:w-full"
+            variant="dark"
+            tone="strong"
+            label="Proceed without AI assistance"></mds-button>
         </mds-banner>
       </PatientCard>
     </div>
     <div class="grid gap-600 w-full">
       <PatientCard>
-        <div class="flex items-center gap-200 p-200 rounded-lg bg-status-error-10">
-          <mds-icon name="mi/baseline/error" class="fill-status-error-05"></mds-icon>
+        <div class="flex items-center gap-200 p-200 rounded-xs bg-danger-wash-soft">
+          <mds-icon name="mi/baseline/error" class="fill-danger-emphasis"></mds-icon>
           <mds-text typography="caption">Prescription error occurred</mds-text>
         </div>
       </PatientCard>

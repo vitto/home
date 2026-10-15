@@ -34,30 +34,30 @@ const user = users[0];
       <div class="hidden gap-600" data-certificate-found>
         <div class="grid gap-200">
           <mds-text typography="detail"
-            >Certificate <b class="text-status-success-05">found</b></mds-text
+            >Certificate <b class="text-success-fg-muted">found</b></mds-text
           >
-          <div class="grid p-200 bg-tone-neutral-09 rounded-xl">
+          <div class="grid p-200 bg-wash-base rounded-md">
             <mds-entity icon="mi/outline/medical-information" class="w-full">
               <mds-text typography="h6">{user.name}</mds-text>
               <mds-text slot="detail" typography="caption">{user.medicalCertificate}</mds-text>
             </mds-entity>
           </div>
         </div>
-        <mds-button variant="primary" tone="strong">Continue</mds-button>
+        <mds-button variant="primary" tone="strong" label="Continue"></mds-button>
       </div>
       <!-- Spain: Certificate not found -->
       <div class="hidden gap-600" data-certificate-not-found>
         <div class="grid gap-200">
           <mds-text typography="detail"
-            >Certificate <b class="text-status-error-05">not found</b></mds-text
+            >Certificate <b class="text-danger-fg-muted">not found</b></mds-text
           >
-          <div class="grid p-400 bg-tone-neutral-09 rounded-xl">
+          <div class="grid p-400 bg-wash-base rounded-md">
             <mds-text typography="caption"
               >Please create a new certificate first to continue.</mds-text
             >
           </div>
         </div>
-        <mds-button variant="primary" tone="weak">Create new certificate</mds-button>
+        <mds-button variant="primary" tone="weak" label="Create new certificate"></mds-button>
       </div>
     </div>
   </UseCaseInteractive>

@@ -12,7 +12,7 @@ const { title, class: className = '' } = Astro.props;
     <mds-text typography="h6" tag="div" class="whitespace-nowrap py-150">{title}</mds-text>
   </mds-table-cell>
   <mds-table-cell>
-    <div class="inline-flex mobile:flex-col mobile:items-start gap-400 min-w-max">
+    <div class="inline-flex max-tablet:flex-col max-tablet:items-start gap-400 min-w-max">
       <slot />
     </div>
   </mds-table-cell>

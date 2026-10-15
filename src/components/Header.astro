@@ -35,7 +35,7 @@ const { menu = true, class: className = '' } = Astro.props;
           class="inline-block animate-pulse-more group-hover/header:animate-none group-hover/header:opacity-100"
           tag="span"
           typography="h3"
-          animation="jugop"
+          animation="yugop"
           text="o"
           data-name></mds-text>
       </h1>
@@ -47,7 +47,7 @@ const { menu = true, class: className = '' } = Astro.props;
         data-claims={JSON.stringify(personalData.claims)}
         data-roles={personalData.role}
         text={personalData.role.split('/')[0]}
-        animation="jugop"></mds-text>
+        animation="yugop"></mds-text>
     </div>
   </div>
   {
@@ -55,7 +55,7 @@ const { menu = true, class: className = '' } = Astro.props;
       <HeaderMenu />
     ) : (
       <Button href={baseUrl || '/'} variant="light" class="shrink-0 py-300" title="Back to Home">
-        <Icon name="mi/outline/home" class="text-tone-neutral-04" />
+        <Icon name="mi/outline/home" class="text-fg-subtle" />
       </Button>
     )
   }

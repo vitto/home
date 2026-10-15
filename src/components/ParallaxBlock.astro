@@ -15,7 +15,7 @@ interface Props {
 const { class: className = '' } = Astro.props;
 
 const baseClasses = `parallax-block first:mt-[-107px] grid grid-cols-[1fr_500px_500px_1fr] gap-1200 relative z-10 flex justify-center`;
-const combinedClasses = `${baseClasses} ${className ? className : 'bg-tone-neutral'}`.trim();
+const combinedClasses = `${baseClasses} ${className ? className : 'bg-surface-default'}`.trim();
 ---
 
 <section class={combinedClasses}>

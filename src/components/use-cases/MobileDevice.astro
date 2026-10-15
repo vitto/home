@@ -21,18 +21,18 @@ const { class: className = '', overflow = false } = Astro.props;
 >
   <!-- Device frame -->
   <div
-    class="device-frame relative w-full rounded-[40px] overflow-hidden shadow-xl border-[8px] border-solid border-tone-neutral-02 bg-tone-neutral-02"
+    class="device-frame relative w-full rounded-[40px] overflow-hidden shadow-xl border-[8px] border-solid border-surface-inverse bg-surface-inverse"
   >
     <!-- Notch -->
     <div class="absolute top-0 left-0 right-0 flex items-center justify-center z-30 pt-200">
-      <div class="w-2400 bg-tone-neutral-02 rounded-full flex items-center justify-end p-100">
+      <div class="w-2400 bg-surface-inverse rounded-full flex items-center justify-end p-100">
         <div
-          class="relative size-300 box-border rounded-full bg-tone-neutral-08 bg-gradient-to-tl to-label-blue-05 from-label-orange-02"
+          class="relative size-300 box-border rounded-full bg-wash-strong bg-linear-to-tl to-label-blue-05 from-label-orange-02"
         >
           <div
-            class="absolute inset-0 rounded-full border-b border-r border-solid border-tone-neutral-10/20 border-0 flex items-center justify-center"
+            class="absolute inset-0 rounded-full border-b border-r border-solid border-border-muted/20 border-0 flex items-center justify-center"
           >
-            <div class="absolute left-50 top-50 rounded-full size-100 bg-tone-neutral-10/10"></div>
+            <div class="absolute left-50 top-50 rounded-full size-100 bg-wash-soft/10"></div>
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@ const { class: className = '', overflow = false } = Astro.props;
 
     <!-- Content area -->
     <div
-      class={`device-content flex flex-col bg-tone-neutral-01 w-full ${overflow ? 'overflow-scroll' : 'overflow-hidden'} translate-x-0 translate-y-0`}
+      class={`device-content flex flex-col bg-surface-inverse w-full ${overflow ? 'overflow-scroll' : 'overflow-hidden'} translate-x-0 translate-y-0`}
     >
       <slot />
     </div>

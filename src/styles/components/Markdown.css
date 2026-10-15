@@ -3,16 +3,16 @@
 }
 
 .markdown hr {
-  @apply border-0 w-full flex h-50 bg-tone-neutral-08;
+  @apply border-0 w-full flex h-50 bg-wash-strong;
 }
 
 .markdown p {
-  @apply text-tone-neutral-03;
+  @apply text-fg-muted;
 }
 
 .markdown p b,
 .markdown p strong {
-  @apply text-tone-neutral-01;
+  @apply text-fg-default;
 }
 
 .markdown ul,

@@ -17,9 +17,11 @@ const { opener, closer } = Astro.props;
   <Separator />
   <div class="grid grid-cols-full gap-100">
     <mds-text typography="h3">Related references and bibliography</mds-text>
-    <mds-badge class="justify-self-start select-none" variant="warning" tone="weak"
-      >potentially outdated</mds-badge
-    >
+    <mds-badge
+      class="justify-self-start select-none"
+      variant="warning"
+      tone="weak"
+      label="potentially outdated"></mds-badge>
   </div>
   {opener && <p class="text-info-paragraph">{opener}</p>}
   <div class="bibliographies grid gap-1200">

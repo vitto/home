@@ -18,12 +18,12 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
     toggle
   >
     <mds-tab fill animation="fade" class="w-full max-w-8000">
-      <mds-tab-item>Home</mds-tab-item>
-      <mds-tab-item selected>Account</mds-tab-item>
+      <mds-tab-item label="Home"></mds-tab-item>
+      <mds-tab-item selected label="Account"></mds-tab-item>
       <div slot="content" class="w-full grid gap-600 auto-rows-min px-200 py-600">
         <mds-text typography="h4" tag="span">Welcome back</mds-text>
         <mds-text>Would you like to know more about our new products?</mds-text>
-        <mds-button variant="dark">Learn more</mds-button>
+        <mds-button variant="dark" label="Learn more"></mds-button>
       </div>
       <div slot="content" class="w-full grid gap-600 auto-rows-min px-200 py-600">
         <mds-text typography="h4" tag="span">Account information</mds-text>
@@ -35,17 +35,17 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
               <option value="3">Spain</option>
             </mds-input-select>
           </mds-input-field>
-          <mds-button disabled data-save-button>Save preference</mds-button>
+          <mds-button disabled data-save-button label="Save preference"></mds-button>
         </div>
       </div>
     </mds-tab>
     <mds-tab fill animation="fade" class="w-full max-w-8000" data-second-tab>
-      <mds-tab-item data-home-tab>Home</mds-tab-item>
-      <mds-tab-item selected data-account-tab>Account</mds-tab-item>
+      <mds-tab-item data-home-tab label="Home"></mds-tab-item>
+      <mds-tab-item selected data-account-tab label="Account"></mds-tab-item>
       <div slot="content" class="w-full grid gap-600 auto-rows-min px-200 py-600">
         <mds-text typography="h4" tag="span">Welcome back</mds-text>
         <mds-text>Would you like to know more about our new products?</mds-text>
-        <mds-button variant="dark">Learn more</mds-button>
+        <mds-button variant="dark" label="Learn more"></mds-button>
       </div>
       <div slot="content" class="w-full grid gap-600 auto-rows-min px-200 py-600">
         <mds-text typography="h4" tag="span">Account information</mds-text>
@@ -57,7 +57,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
               <option value="3">Spain</option>
             </mds-input-select>
           </mds-input-field>
-          <mds-button disabled data-save-button-second>Save preference</mds-button>
+          <mds-button disabled data-save-button-second label="Save preference"></mds-button>
         </div>
       </div>
     </mds-tab>
@@ -83,14 +83,14 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 
       // @ts-ignore
       let rollbackTimeout = null;
-      const originalText = saveButton.textContent || 'Save preference';
+      const originalText = saveButton.getAttribute('label') || 'Save preference';
 
       // Helper function to reset to initial state
       const resetToInitialState = () => {
         saveButton.setAttribute('disabled', '');
         saveButton.setAttribute('variant', 'primary');
         saveButton.removeAttribute('icon');
-        saveButton.textContent = originalText;
+        saveButton.setAttribute('label', originalText);
         countrySelect.setAttribute('value', null);
         countrySelect.selectedIndex = -1;
         // @ts-ignore
@@ -120,7 +120,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
         saveButton.setAttribute('disabled', '');
         saveButton.setAttribute('variant', 'success');
         saveButton.setAttribute('icon', 'mi/outline/done');
-        saveButton.textContent = 'Saved successfully';
+        saveButton.setAttribute('label', 'Saved successfully');
 
         // Rollback after 2 seconds
         // @ts-ignore

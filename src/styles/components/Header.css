@@ -11,8 +11,8 @@
     items-start
     justify-start
     left-0
-    mobile:pr-0
-    mobile:py-0
+    max-tablet:pr-0
+    max-tablet:py-0
     overflow-y-auto
     p-600
     pointer-events-none
@@ -25,8 +25,7 @@
     z-30;
 
   &.header-nav--opened {
-    @apply bg-tone-neutral-01/80
-    dark:bg-tone-neutral/80
+    @apply bg-[rgb(var(--magma-backdrop-color)/0.8)]
     pointer-events-auto;
   }
 }
@@ -34,7 +33,7 @@
 .header-nav-menu {
   @apply duration-500
   auto-rows-min
-  bg-tone-neutral
+  bg-surface-overlay
   col-start-2
   ease-in-out-quart
   gap-600
@@ -43,12 +42,12 @@
   justify-self-end
   opacity-0
   origin-right
-  dark:border-50
+  dark:border-2
   dark:border-solid
-  dark:border-tone-neutral-08
+  dark:border-border-default
   p-600
-  rounded-2xl
-  mobile:rounded-none
+  rounded-lg
+  max-tablet:rounded-none
   transition-cosmetic
   translate-x-full
   w-full;

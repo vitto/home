@@ -30,7 +30,7 @@ import HighlightBox from '../../HighlightBox.astro';
 I can draft the article, but before I proceed I need you to confirm two things:
 `}
         />
-        <div class="grid gap-600 grid-cols-2 pointer-events-none mobile:grid-cols-full">
+        <div class="grid gap-600 grid-cols-2 pointer-events-none max-tablet:grid-cols-full">
           <div class="grid gap-600 auto-rows-min">
             <mds-text typography="caption"><b>Preferred sources</b></mds-text>
             <div class="grid gap-400">
@@ -75,12 +75,13 @@ Do you want to make any changes?
         />
         <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
           <mds-text typography="h6">When global crises shape China decisions</mds-text>
-          <mds-badge variant="yellow" tone="weak" slot="detail" class="mr-150">draft</mds-badge>
+          <mds-badge variant="yellow" tone="weak" slot="detail" class="mr-150" label="draft"
+          ></mds-badge>
           <mds-text typography="caption" slot="detail">5 min read</mds-text>
           <mds-button
             slot="action"
             variant="dark"
-            tone="quiet"
+            tone="text"
             icon="mi/outline/edit"
             title="View draft"></mds-button>
         </mds-entity>
@@ -97,12 +98,13 @@ I've made the changes you requested, but I'd like to review them again before pr
         />
         <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
           <mds-text typography="h6">When global crises shape China decisions</mds-text>
-          <mds-badge variant="yellow" tone="weak" slot="detail" class="mr-150">draft</mds-badge>
+          <mds-badge variant="yellow" tone="weak" slot="detail" class="mr-150" label="draft"
+          ></mds-badge>
           <mds-text typography="caption" slot="detail">5 min read, reviewed once by you</mds-text>
           <mds-button
             slot="action"
             variant="dark"
-            tone="quiet"
+            tone="text"
             icon="mi/outline/edit"
             title="View draft"></mds-button>
         </mds-entity>
@@ -116,7 +118,7 @@ I've made the changes you requested, but I'd like to review them again before pr
       >
         <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
           <mds-text typography="h6">When global crises shape China decisions</mds-text>
-          <mds-badge variant="success" tone="weak" slot="detail" class="mr-150">approved</mds-badge>
+          <mds-badge variant="success" tone="weak" slot="detail" class="mr-150" label="approved"></mds-badge>
           <mds-text typography="caption" slot="detail">5 min read, reviewed once by you</mds-text>
         </mds-entity>
       </AIGeneratedArticleSummary> -->
@@ -143,7 +145,8 @@ Here is your article, ready to be published.
         >
           <mds-entity data-entity icon="mi/outline/insert-drive-file" tone="weak">
             <mds-text typography="h6">When global crises shape China decisions</mds-text>
-            <mds-badge variant="info" tone="weak" slot="detail" class="mr-150">ready</mds-badge>
+            <mds-badge variant="info" tone="weak" slot="detail" class="mr-150" label="ready"
+            ></mds-badge>
             <mds-text typography="caption" slot="detail">5 min read</mds-text>
           </mds-entity>
         </AIGeneratedArticleSummary>

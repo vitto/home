@@ -375,14 +375,14 @@ const { title, pagePath } = Astro.props;
         const indicatorDiv = indicator.querySelector('div');
         if (i === index) {
           indicator.classList.add('pointer-events-none');
-          indicatorDiv.classList.add('bg-tone-neutral-01');
-          indicatorDiv.classList.add('mobile:bg-tone-neutral-10');
-          indicatorDiv.classList.remove('bg-tone-neutral-07');
+          indicatorDiv.classList.add('bg-surface-inverse');
+          indicatorDiv.classList.add('max-tablet:bg-wash-soft');
+          indicatorDiv.classList.remove('bg-border-default');
         } else {
           indicator.classList.remove('pointer-events-none');
-          indicatorDiv.classList.remove('bg-tone-neutral-01');
-          indicatorDiv.classList.remove('mobile:bg-tone-neutral-10');
-          indicatorDiv.classList.add('bg-tone-neutral-07');
+          indicatorDiv.classList.remove('bg-surface-inverse');
+          indicatorDiv.classList.remove('max-tablet:bg-wash-soft');
+          indicatorDiv.classList.add('bg-border-default');
         }
       });
 
@@ -397,8 +397,8 @@ const { title, pagePath } = Astro.props;
 
       indicatorDiv.classList.add(
         index === 0
-          ? ('bg-tone-neutral-01', 'mobile:bg-tone-neutral-10', 'pointer-events-none')
-          : 'bg-tone-neutral-07'
+          ? ('bg-surface-inverse', 'max-tablet:bg-wash-soft', 'pointer-events-none')
+          : 'bg-border-default'
       );
       indicator.setAttribute('title', `Show example ${index + 1}`);
       indicator.setAttribute('data-multiple-index', index.toString());
@@ -594,7 +594,7 @@ const { title, pagePath } = Astro.props;
     data-multiple-index
   >
     <div
-      class="size-200 rounded-full transition-colors bg-tone-neutral-07 mobile:bg-tone-neutral-04 group-hover/dot:bg-tone-neutral-06"
+      class="size-200 rounded-full transition-colors bg-border-default max-tablet:bg-fg-subtle group-hover/dot:bg-neutral-border"
     >
     </div>
   </a>
@@ -603,14 +603,14 @@ const { title, pagePath } = Astro.props;
   <SectionNav baseUrl={baseUrl} sectionPath={pagePath} hideBibliography={true} />
   <div class="relative z-30 mt-600 w-full flex justify-center px-600">
     <Header
-      class="max-w-screen-desktop mx-auto py-400 px-600 pr-400 rounded-full nav-outline bg-tone-neutral/95 w-full"
+      class="max-w-screen-desktop mx-auto py-400 px-600 pr-400 rounded-full nav-outline bg-surface-raised/95 w-full"
     />
   </div>
   <div class="grid">
     <slot />
   </div>
   <Section>
-    <div class="h-50 bg-tone-neutral-03"></div>
+    <div class="h-50 bg-surface-inverse-muted"></div>
     <SectionFooter />
   </Section>
 </SectionLayout>

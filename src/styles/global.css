@@ -1,13 +1,29 @@
 @charset "UTF-8";
 
-@import '@maggioli-design-system/styles/dist/css/hydrated.css';
-@import '@maggioli-design-system/styles/dist/css/reset.css';
-@import '@maggioli-design-system/styles/dist/css/globals.css';
-@import '@maggioli-design-system/styles/dist/css/animations.css';
-@import '@maggioli-design-system/styles/dist/tailwind/components.css';
+/*
+  Magma styles in the cascade-layer order of magma/agents/assets.md, with Tailwind 4.
+  Tailwind's preflight is left out: Magma's reset.css replaces it.
+  Fonts are not loaded: the site sets its own system font stack below.
+*/
+@layer reset, vendor, theme, base, components, utilities, overrides;
+
+@import '@maggioli-design-system/styles/dist/css/colors-rgb.css' layer(theme);
+@import '@maggioli-design-system/styles/dist/css/typography.css' layer(theme);
+@import '@maggioli-design-system/styles/dist/css/reset.css' layer(reset);
+@import '@maggioli-design-system/styles/dist/css/hydrated.css' layer(base);
+@import '@maggioli-design-system/styles/dist/css/transitions.css' layer(base);
+@import '@maggioli-design-system/styles/dist/css/animations.css' layer(base);
+@import '@maggioli-design-system/styles/dist/css/globals.css' layer(theme);
+@import '@maggioli-design-system/styles/dist/css/semantic.css' layer(theme);
+@import '@maggioli-design-system/styles/dist/css/themes.css' layer(theme);
+@import '@maggioli-design-system/styles/dist/css/base.css' layer(base);
+
+@import 'tailwindcss/theme.css' layer(theme);
+/* important, as the Magma 1 Tailwind preset: the site's own styles below are unlayered */
+@import 'tailwindcss/utilities.css' layer(utilities) important;
+@import '@maggioli-design-system/styles/dist/tailwind/theme.css';
 @import '@maggioli-design-system/styles/dist/tailwind/typography.css';
-@import '@maggioli-design-system/styles/dist/css/colors-rgb.css';
-@import '@maggioli-design-system/styles/dist/css/base.css';
+@import '@maggioli-design-system/styles/dist/tailwind/utilities.css';
 @import './iconsauce.css';
 
 @import './components/Bibliography.css';
@@ -26,6 +42,88 @@
 @import './components/UseCaseInteractive.css';
 
 /*
+  dark: follows the mode Magma writes on <html> (pref-mode-*), like the Magma 1 preset.
+  Prefer the semantic roles, which already flip: dark: is for the few fixed-scheme spots.
+*/
+@custom-variant dark {
+  &:where(.pref-mode-dark, .pref-mode-dark *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(.pref-mode-system, .pref-mode-system *, :root:not([data-magma-pref]) *) {
+      @slot;
+    }
+  }
+}
+
+@theme {
+  --shadow-inset-xs-sharp-light: 0 0 0 1px rgb(var(--magma-shadow-ink) / 0.05) inset;
+  --shadow-inset-xs-sharp: 0 0 0 1px rgb(var(--magma-shadow-ink) / 0.1) inset;
+  --shadow-inset-sm-sharp: 0 0 0 2px rgb(var(--magma-shadow-ink) / 0.1) inset;
+
+  --aspect-card: 2 / 3;
+
+  --animate-pulse-more: pulseMore 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-blink: blink 0.6s forwards;
+  --animate-pulse-group: pulseGroup 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-intro: intro 0.5s cubic-bezier(0.19, 1, 0.22, 1) backwards;
+
+  @keyframes pulseMore {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.05;
+    }
+  }
+
+  @keyframes pulseGroup {
+    0%,
+    100% {
+      border-color: rgb(var(--magma-text-subtle) / 1);
+      fill: rgb(var(--magma-text-subtle) / 1);
+    }
+    50% {
+      border-color: rgb(var(--magma-text-subtle) / 0.05);
+      fill: rgb(var(--magma-text-subtle) / 0.05);
+    }
+  }
+
+  @keyframes blink {
+    0%,
+    50% {
+      opacity: 0;
+    }
+    50%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes intro {
+    0% {
+      transform: translate(0, 150%);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+}
+
+/*
+  Magma's transition-cosmetic, plus border-radius, and translate / scale / rotate:
+  Tailwind 4 moves those utilities off `transform` onto their own properties.
+*/
+@utility transition-cosmetic {
+  transition-property:
+    background-color, border-color, border-radius, box-shadow, color, fill, height, margin, opacity,
+    padding, transform, translate, scale, rotate, width;
+  transition-timing-function: var(--default-transition-timing-function);
+  transition-duration: var(--default-transition-duration);
+}
+
+/*
 CSS Can Now Animate Between Pages
 https://caniuse.com/?search=%40view-transition
 https://www.youtube.com/watch?v=XH1G58QqPIM
@@ -34,42 +132,44 @@ https://www.youtube.com/watch?v=XH1G58QqPIM
 }
 */
 
-.text-title-h1,
-.text-title-h2,
-.text-title-h3,
-.text-title-h4,
-.text-title-h5,
-.text-title-h6,
-.text-info-paragraph,
-.text-info-detail,
-.text-info-caption,
-.text-info-label,
-.text-info-option,
-.text-info-tip,
+/*
+  The site sets type in the system font stack. Magma's typography utilities read the
+  family from --font-title / --font-info, so the stack is given to those tokens.
+*/
+@layer overrides {
+  :root {
+    --font-site:
+      system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+      'Open Sans', 'Helvetica Neue', sans-serif, Helvetica, sans-serif;
+    --font-title: var(--font-site);
+    --font-info: var(--font-site);
+  }
+
+  /*
+    styles 17.0.1: the Tailwind 4 base.css caps paragraphs at --spacing-title (30ch),
+    while reset.css and the Tailwind 3 base keep them at --spacing-text (75ch).
+  */
+  p {
+    max-width: var(--spacing-text, 75ch);
+  }
+
+  /* Magma 2 paints bare links with the accent; on this site links take their context's ink. */
+  a {
+    color: inherit;
+  }
+}
+
 body,
 html,
 mds-text {
   scroll-behavior: smooth;
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Open Sans',
-    'Helvetica Neue',
-    sans-serif,
-    Helvetica,
-    sans-serif;
+  font-family: var(--font-site);
 }
 
+/* Fluid size of the hero title, through the tokens text-title-h1 reads */
 .vittori-o {
-  font-size: clamp(4rem, 10vw, 6rem);
-  line-height: 1;
-  min-height: auto;
+  --text-size-title-h1: clamp(4rem, 10vw, 6rem);
+  --text-size-title-h1--line-height: 1;
 }
 
 .text-shadow {
@@ -84,73 +184,29 @@ mds-dropdown mds-button::part(label) {
   flex-grow: 1;
 }
 
-mds-badge[tone='ghost'][variant='dark'] {
-  background-color: rgb(var(--tone-neutral));
-  border-color: rgb(var(--tone-neutral-07));
+mds-badge[tone='outline'][variant='dark'] {
+  --mds-badge-background: rgb(var(--magma-surface-raised));
+  --mds-badge-border-color: rgb(var(--magma-border-default));
 }
 
 mds-input-switch[data-toggle-switch] {
-  --mds-input-switch-box-color-enabled-checked: rgb(var(--tone-neutral-04));
-  --mds-input-switch-icon-color-checked: rgb(var(--status-success-05));
-  --mds-input-switch-icon-color-unchecked: rgb(var(--status-error-05));
-}
-
-mds-button,
-mds-push-notification-item[data-avatar]::part(picture) {
-  border-radius: 1000px;
-}
-
-mds-button[variant='dark'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--tone-neutral-09));
-  }
-}
-
-mds-button[variant='primary'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--variant-primary-09));
-  }
-}
-
-mds-button[variant='ai'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--variant-ai-09));
-  }
-}
-
-mds-button[variant='error'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--status-error-09));
-  }
+  --mds-input-switch-box-color-enabled-checked: rgb(var(--magma-surface-inverse-muted));
+  --mds-input-switch-icon-color-checked: rgb(var(--magma-success-emphasis));
+  --mds-input-switch-icon-color-unchecked: rgb(var(--magma-danger-emphasis));
 }
 
 mds-button {
+  --mds-button-radius: var(--magma-radius-full);
   --mds-button-border-default-opacity: 0.2;
 }
 
-mds-button[variant='success'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--status-success-09));
-  }
+/* dark weak rings with --magma-border-strong, not with its own fill: faded, it reads lighter than the button */
+mds-button[variant='dark'][tone='weak'] {
+  --mds-button-border-default-opacity: 1;
 }
 
-mds-button[variant='info'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--status-info-09));
-  }
-}
-
-mds-button[variant='warning'][tone='quiet'] {
-  &:hover,
-  &:focus-visible {
-    background-color: rgb(var(--status-warning-09));
-  }
+mds-push-notification-item[data-avatar]::part(picture) {
+  border-radius: var(--magma-radius-full);
 }
 
 mds-usage {
@@ -170,28 +226,28 @@ mds-img::part(media) {
   height: 100%;
 }
 
+@utility markdown-link {
+  @apply decoration-border-default
+  decoration-2
+  focus-bounce
+  rounded-2xs
+  hover:decoration-fg-muted
+  focus-visible:decoration-fg-muted
+  transition-[text-decoration-color]
+  duration-200
+  underline-offset-2;
+}
+
+@utility text-box-trim {
+  text-box: trim-both;
+}
+
+@utility text-box-trim-both-cap-alphabetic {
+  text-box: trim-both cap alphabetic;
+  min-height: auto;
+}
+
 @layer components {
-  .markdown-link {
-    @apply decoration-tone-neutral-07
-    decoration-2
-    focus-bounce
-    rounded-md
-    hover:decoration-tone-neutral-03
-    focus-visible:decoration-tone-neutral-03
-    transition-[text-decoration-color]
-    duration-200
-    underline-offset-2;
-  }
-
-  .text-box-trim {
-    text-box: trim-both;
-  }
-
-  .text-box-trim-both-cap-alphabetic {
-    text-box: trim-both cap alphabetic;
-    min-height: auto;
-  }
-
   .read-size {
     @apply max-w-screen-tablet mx-auto w-full;
   }
@@ -201,17 +257,17 @@ mds-img::part(media) {
     background-size: 16px 16px;
     background-position: 0 0;
     background-repeat: repeat;
-    @apply h-300 bg-tone-neutral-10/20 dark:bg-tone-neutral-01/20;
+    @apply h-300 bg-wash-soft/20 dark:bg-surface-inverse/20;
   }
 
   .link {
     @apply transition-cosmetic ease-out-circ duration-500 focus-bounce;
 
-    --shadow-color: var(--tone-neutral-08);
+    --shadow-color: var(--magma-wash-base);
 
     justify-self: start;
     display: inline-flex;
-    box-shadow: inset 0 -2px 0 rgb(var(--shadow-color));
+    box-shadow: inset 0 -2px 0 rgb(var(--magma-wash-strong));
     text-decoration: none;
     line-height: 1.2;
   }

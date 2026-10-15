@@ -84,12 +84,12 @@ import OptionCheckbox from '../../OptionCheckbox.astro';
           btn.setAttribute('role', 'radio');
           btn.setAttribute('aria-checked', isSelected ? 'true' : 'false');
         }
-        btn.classList.toggle('bg-tone-neutral', isSelected);
-        btn.classList.toggle('shadow-outline-50', isSelected);
-        btn.classList.toggle('fill-tone-neutral-04', isSelected);
+        btn.classList.toggle('bg-surface-raised', isSelected);
+        btn.classList.toggle('shadow-ring-2', isSelected);
+        btn.classList.toggle('fill-fg-subtle', isSelected);
         btn.classList.toggle('bg-transparent', !isSelected);
-        btn.classList.toggle('hover:bg-tone-neutral-09', !isSelected);
-        btn.classList.toggle('fill-tone-neutral-06', !isSelected);
+        btn.classList.toggle('hover:bg-wash-base', !isSelected);
+        btn.classList.toggle('fill-neutral-border', !isSelected);
         const icon = btn.querySelector('mds-icon');
         if (icon) {
           icon.setAttribute('name', isSelected ? 'mi/baseline/check-circle' : 'mi/outline/circle');

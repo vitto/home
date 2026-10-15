@@ -19,32 +19,32 @@ const { url = 'example.com', title, class: className = '' } = Astro.props;
 ---
 
 <div
-  class={`flex flex-col w-full rounded-lg overflow-hidden shadow-lg border border-solid border-tone-neutral-08 bg-tone-neutral ${className}`}
+  class={`flex flex-col w-full rounded-xs overflow-hidden shadow-lg border border-solid border-border-muted bg-surface-raised ${className}`}
 >
   <!-- Title bar with window controls -->
   <div
-    class="user-select-none flex items-center gap-400 px-400 py-200 bg-tone-neutral-09 border-b border-tone-neutral-07"
+    class="user-select-none flex items-center gap-400 px-400 py-200 bg-wash-base border-b border-border-default"
   >
     <!-- macOS-style window controls -->
     <div class="flex items-center gap-200 shrink-0">
-      <div class="size-300 rounded-full bg-status-error-06" title="Close"></div>
-      <div class="size-300 rounded-full bg-tone-neutral-06" title="Minimize"></div>
-      <div class="size-300 rounded-full bg-status-success-06" title="Maximize"></div>
+      <div class="size-300 rounded-full bg-danger-emphasis" title="Close"></div>
+      <div class="size-300 rounded-full bg-neutral-border" title="Minimize"></div>
+      <div class="size-300 rounded-full bg-success-emphasis" title="Maximize"></div>
     </div>
 
     <!-- Address bar -->
     <div
-      class="mobile:hidden flex-1 flex items-center gap-200 px-400 py-100 bg-tone-neutral rounded-md border border-tone-neutral-06 min-w-0"
+      class="max-tablet:hidden flex-1 flex items-center gap-200 px-400 py-100 bg-surface-raised rounded-2xs border border-neutral-border min-w-0"
     >
-      <mds-icon name="mi/outline/lock" class="w-400 h-400 text-tone-neutral-04 shrink-0"></mds-icon>
-      <mds-text typography="caption" class="text-tone-neutral-05 truncate">
+      <mds-icon name="mi/outline/lock" class="w-400 h-400 text-fg-subtle shrink-0"></mds-icon>
+      <mds-text typography="caption" class="text-fg-subtle truncate">
         {url}
       </mds-text>
     </div>
 
     {
       title && (
-        <mds-text typography="caption" class="text-tone-neutral-04 px-200" truncate="word">
+        <mds-text typography="caption" class="text-fg-subtle px-200" truncate="word">
           {title}
         </mds-text>
       )
@@ -52,7 +52,7 @@ const { url = 'example.com', title, class: className = '' } = Astro.props;
   </div>
 
   <!-- Content area -->
-  <div class="flex flex-col bg-tone-neutral">
+  <div class="flex flex-col bg-surface-raised">
     <slot />
   </div>
 </div>

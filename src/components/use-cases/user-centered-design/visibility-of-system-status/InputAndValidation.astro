@@ -19,9 +19,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       alias=""
       class="w-full max-w-8000"
       data-password-strength-bar
-    >
-      <span data-password-strength-text>Strength</span>
-    </mds-benchmark-bar>
+      label="Strength"></mds-benchmark-bar>
     <div class="grid gap-200 w-full max-w-8000" data-password-checks></div>
     <script>
       function initPasswordStrengthChecker() {
@@ -34,10 +32,9 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
         // Scope all queries to the container
         const passwordInput = container.querySelector('[data-password-input]');
         const strengthBar = container.querySelector('[data-password-strength-bar]');
-        const strengthText = container.querySelector('[data-password-strength-text]');
         const checksContainer = container.querySelector('[data-password-checks]');
 
-        if (!passwordInput || !strengthBar || !strengthText || !checksContainer) return;
+        if (!passwordInput || !strengthBar || !checksContainer) return;
 
         // Define password check criteria with labels and icons
         const passwordChecks = [
@@ -82,8 +79,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
         function initializeCheckElements() {
           passwordChecks.forEach((check) => {
             const checkElement = document.createElement('div');
-            checkElement.className =
-              'flex items-center gap-200 text-tone-neutral-03 fill-tone-neutral-03';
+            checkElement.className = 'flex items-center gap-200 text-fg-muted fill-fg-muted';
             checkElement.setAttribute('data-password-check', check.id);
             checkElement.innerHTML = `
               <mds-icon name="${check.iconUnchecked}"></mds-icon>
@@ -108,10 +104,9 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 
           if (isValid) {
             checkElement.className =
-              'flex items-center gap-200 text-status-success-05 fill-status-success-05';
+              'flex items-center gap-200 text-success-fg-muted fill-success-emphasis';
           } else {
-            checkElement.className =
-              'flex items-center gap-200 text-tone-neutral-03 fill-tone-neutral-03';
+            checkElement.className = 'flex items-center gap-200 text-fg-muted fill-fg-muted';
           }
         }
 
@@ -144,23 +139,23 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 
           if (strength <= 20) {
             variant = 'error';
-            text = 'Password strengh';
+            text = 'Password strength';
             alias = 'Very weak';
           } else if (strength <= 40) {
             variant = 'error';
-            text = 'Password strengh';
+            text = 'Password strength';
             alias = 'Weak';
           } else if (strength <= 60) {
             variant = 'warning';
-            text = 'Password strengh';
+            text = 'Password strength';
             alias = 'Fair';
           } else if (strength <= 80) {
             variant = 'success';
-            text = 'Password strengh';
+            text = 'Password strength';
             alias = 'Good';
           } else {
             variant = 'info';
-            text = 'Password strengh';
+            text = 'Password strength';
             alias = 'Strong';
           }
 
@@ -189,7 +184,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
           strengthBar.setAttribute('value', String(strength.value));
           strengthBar.setAttribute('variant', strength.variant);
           strengthBar.setAttribute('alias', strength.alias);
-          strengthText.textContent = strength.text;
+          strengthBar.setAttribute('label', strength.text);
 
           // Update individual check elements
           strength.checks.forEach((checkResult) => {

@@ -1,14 +1,14 @@
 export function getStatusClass(status: 'online' | 'offline' | 'busy' | 'error'): string {
   switch (status) {
     case 'online':
-      return 'bg-status-success-06';
+      return 'bg-success-emphasis';
     case 'offline':
-      return 'bg-tone-neutral-06';
+      return 'bg-neutral-border';
     case 'busy':
-      return 'bg-status-error-06';
+      return 'bg-danger-emphasis';
     case 'error':
-      return 'bg-tone-neutral-07';
+      return 'bg-border-default';
     default:
-      return 'bg-tone-neutral-03';
+      return 'bg-surface-inverse-muted';
   }
 }
