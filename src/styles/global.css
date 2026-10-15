@@ -200,6 +200,11 @@ mds-button {
   --mds-button-border-default-opacity: 0.2;
 }
 
+/* dark weak rings with --magma-border-strong, not with its own fill: faded, it reads lighter than the button */
+mds-button[variant='dark'][tone='weak'] {
+  --mds-button-border-default-opacity: 1;
+}
+
 mds-push-notification-item[data-avatar]::part(picture) {
   border-radius: var(--magma-radius-full);
 }
