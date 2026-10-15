@@ -91,9 +91,11 @@ const config = confidenceConfig[confidence];
           </div>
         </div>
       </div>
-      <mds-benchmark-bar class="grow min-h-0 shrink-0" value={config.value} variant={config.variant}
-        >{config.message}</mds-benchmark-bar
-      >
+      <mds-benchmark-bar
+        class="grow min-h-0 shrink-0"
+        value={config.value}
+        variant={config.variant}
+        label={config.message}></mds-benchmark-bar>
       <div class="confidence-banner__row" data-confidence-message>
         <div class="confidence-banner__row-inner flex overflow-hidden">
           <mds-text typography="caption" class="pt-200">{classification}</mds-text>

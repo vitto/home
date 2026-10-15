@@ -53,9 +53,12 @@ const limitedTokens = Object.entries(sizeTokens)
             limitedTokens.map((token) => (
               <mds-table-row>
                 <mds-table-cell>
-                  <mds-badge variant="dark" tone="outline" class="whitespace-nowrap">
-                    {token.key}
-                  </mds-badge>
+                  <mds-badge
+                    variant="dark"
+                    tone="outline"
+                    class="whitespace-nowrap"
+                    label={token.key}
+                  />
                 </mds-table-cell>
                 <mds-table-cell>
                   <div class="size-spacer" style={`width: ${token.valueInRem};`} />

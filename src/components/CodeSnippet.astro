@@ -49,27 +49,9 @@ const codeClass =
   class={`code-snippet-container grid gap-400 grid-cols-full select-none max-tablet:rounded-none ${className}`}
 >
   <div class="flex items-center justify-center gap-200">
-    {
-      variant === 'do' && (
-        <mds-badge variant="success" tone="strong">
-          allowed
-        </mds-badge>
-      )
-    }
-    {
-      variant === 'dont' && (
-        <mds-badge variant="error" tone="strong">
-          not allowed
-        </mds-badge>
-      )
-    }
-    {
-      variant === 'warn' && (
-        <mds-badge variant="warning" tone="strong">
-          warning
-        </mds-badge>
-      )
-    }
+    {variant === 'do' && <mds-badge variant="success" tone="strong" label="allowed" />}
+    {variant === 'dont' && <mds-badge variant="error" tone="strong" label="not allowed" />}
+    {variant === 'warn' && <mds-badge variant="warning" tone="strong" label="warning" />}
     {
       title && (
         <p class="justify-self-center text-info-option text-on-inverse dark:text-fg-muted">
@@ -82,8 +64,8 @@ const codeClass =
     <mds-badge
       variant={languageBadgeVariant[normalizedLanguage]}
       tone="strong"
-      class="absolute top-200 right-200 rounded-md">{normalizedLanguage}</mds-badge
-    >
+      class="absolute top-200 right-200 rounded-md"
+      label={normalizedLanguage}></mds-badge>
     <div class="code-snippet-pre-wrap">
       <pre
         class="code-snippet-pre flex">

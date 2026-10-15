@@ -30,7 +30,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
           if (isProcessing) return;
 
           isProcessing = true;
-          saveButton.textContent = 'Element saved successfully';
+          saveButton.setAttribute('label', 'Element saved successfully');
           saveButton.classList.add('pointer-events-none');
           saveButton.setAttribute('tabindex', '-1');
           saveButton.blur();
@@ -38,7 +38,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
           saveButton.setAttribute('variant', 'success');
 
           setTimeout(() => {
-            saveButton.textContent = 'Save';
+            saveButton.setAttribute('label', 'Save');
             saveButton.classList.remove('pointer-events-none');
             saveButton.removeAttribute('icon');
             saveButton.setAttribute('tabindex', '0');

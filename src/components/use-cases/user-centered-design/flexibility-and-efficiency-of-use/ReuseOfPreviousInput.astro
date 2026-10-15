@@ -45,13 +45,11 @@ const user = userData[0]; // Use first user from the data
                   {video.title}
                 </mds-text>
                 <mds-badge
-                  size="sm"
                   variant="dark"
                   tone="outline"
                   class="self-start justify-self-end"
-                >
-                  {video.duration}
-                </mds-badge>
+                  label={video.duration}
+                />
               </div>
             </div>
           ))

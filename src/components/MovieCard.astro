@@ -74,9 +74,8 @@ const confidenceBadgeLabel = getConfidenceLabel(confidence);
           variant={confidenceBadgeVariant}
           tone="strong"
           class="shadow-ring-2 dark:shadow-none justify-self-start"
-        >
-          {confidenceBadgeLabel}
-        </mds-badge>
+          label={confidenceBadgeLabel}
+        />
         {reasons.map((reason) => (
           <mds-text typography="caption">{reason}</mds-text>
         ))}

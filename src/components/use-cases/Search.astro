@@ -149,7 +149,7 @@ const {
     const searchButtons = container.querySelectorAll('[data-search-button]');
     searchButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        const buttonText = button.textContent?.trim() || '';
+        const buttonText = button.getAttribute('label')?.trim() || '';
         if (!buttonText) return;
 
         // Set the input value

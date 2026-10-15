@@ -30,7 +30,7 @@ const user = users[1];
         class="grid gap-400 grid-cols-full p-600 border-solid rounded-2xl border-2 relative animate-pulse-group"
       >
         <mds-icon name="mi/baseline/group" class="justify-self-start fill-fg-muted"></mds-icon>
-        <mds-badge class="justify-self-start">{user.status}</mds-badge>
+        <mds-badge class="justify-self-start" label={user.status}></mds-badge>
         <mds-avatar class="justify-self-start" src={user.avatar}></mds-avatar>
         <mds-text typography="h6">{user.name}</mds-text>
         <mds-text typography="caption">{user.role}</mds-text>
@@ -41,7 +41,7 @@ const user = users[1];
       </div>
       <mds-entity icon="mi/baseline/group" initials={user.initials}>
         <mds-text typography="h6">{user.name}</mds-text>
-        <mds-badge slot="detail" variant="dark" tone="outline">{user.status}</mds-badge>
+        <mds-badge slot="detail" variant="dark" tone="outline" label={user.status}></mds-badge>
         <mds-text typography="caption" slot="detail">{user.role}</mds-text>
         <mds-button
           id="system-integrity-button"

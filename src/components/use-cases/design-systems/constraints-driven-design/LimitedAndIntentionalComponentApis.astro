@@ -89,10 +89,8 @@ const cssCustomProperties = documentationComponent?.styles || [];
                         class="whitespace-nowrap"
                         variant={badgeVariant}
                         tone="weak"
-                        size="sm"
-                      >
-                        {isEnum ? 'enum' : typeDisplay}
-                      </mds-badge>
+                        label={isEnum ? 'enum' : typeDisplay}
+                      />
                       {isEnum && (
                         <span class="text-fg-subtle text-info-caption">
                           ({enumValues.join(', ')})
@@ -102,9 +100,12 @@ const cssCustomProperties = documentationComponent?.styles || [];
                   </mds-table-cell>
                   <mds-table-cell>
                     {hasDefault ? (
-                      <mds-badge variant="light" tone="weak" size="sm" class="whitespace-nowrap">
-                        {defaultValueClean}
-                      </mds-badge>
+                      <mds-badge
+                        variant="light"
+                        tone="weak"
+                        class="whitespace-nowrap"
+                        label={defaultValueClean}
+                      />
                     ) : (
                       <code class="text-fg-subtle">-</code>
                     )}
@@ -147,21 +148,17 @@ const cssCustomProperties = documentationComponent?.styles || [];
                     <mds-badge
                       variant={event.bubbles ? 'green' : 'light'}
                       tone="weak"
-                      size="sm"
                       class="whitespace-nowrap"
-                    >
-                      {String(event.bubbles)}
-                    </mds-badge>
+                      label={String(event.bubbles)}
+                    />
                   </mds-table-cell>
                   <mds-table-cell>
                     <mds-badge
                       variant={event.cancelable ? 'green' : 'light'}
                       tone="weak"
-                      size="sm"
                       class="whitespace-nowrap"
-                    >
-                      {String(event.cancelable)}
-                    </mds-badge>
+                      label={String(event.cancelable)}
+                    />
                   </mds-table-cell>
                   <mds-table-cell>
                     <mds-text class="min-w-8000">{event.docs || '-'}</mds-text>

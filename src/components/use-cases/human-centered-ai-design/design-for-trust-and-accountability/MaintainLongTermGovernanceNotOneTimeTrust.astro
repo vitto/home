@@ -39,12 +39,15 @@ const dashboardData = {
         </DashboardCard>
         <DashboardCard label="Last Reviewed" value="15 days ago" />
         <DashboardCard label="Product Satisfaction">
-          <mds-benchmark-bar value={93} variant="success">Users are satisfied</mds-benchmark-bar>
+          <mds-benchmark-bar value={93} variant="success" label="Users are satisfied"
+          ></mds-benchmark-bar>
         </DashboardCard>
         <DashboardCard label="Flagged Responses">
-          <mds-benchmark-bar value={(5 / 7) * 100} alias="5 of 7" variant="warning"
-            >Under review</mds-benchmark-bar
-          >
+          <mds-benchmark-bar
+            value={(5 / 7) * 100}
+            alias="5 of 7"
+            variant="warning"
+            label="Under review"></mds-benchmark-bar>
         </DashboardCard>
         <DashboardCard label="System Status">
           <div class="flex items-center gap-200">
@@ -53,7 +56,7 @@ const dashboardData = {
           </div>
         </DashboardCard>
         <DashboardCard label="Service Availability">
-          <mds-benchmark-bar value={99} variant="info">Uptime</mds-benchmark-bar>
+          <mds-benchmark-bar value={99} variant="info" label="Uptime"></mds-benchmark-bar>
         </DashboardCard>
       </div>
     </div>

@@ -103,7 +103,7 @@ const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsH
             disable-auto-placement
           >
             <div class="flex justify-between items-center gap-200">
-              <mds-badge variant="error">Bug report</mds-badge>
+              <mds-badge variant="error" label="Bug report" />
             </div>
             {bugCurrent && (
               <div class="grid gap-100">
@@ -125,9 +125,8 @@ const initialStyle = clsHeight ? `max-height: ${clsHeight}px; min-height: ${clsH
                     variant="light"
                     tone="strong"
                     class="justify-self-start bg-surface-raised shadow-ring-weak"
-                  >
-                    {bugComponent}
-                  </mds-badge>
+                    label={bugComponent}
+                  />
                 </div>
               ) : (
                 <mds-text typography="caption">I'll fix this issue as soon as possible</mds-text>

@@ -152,10 +152,10 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 
         if (isFollowing) {
           button.setAttribute('icon', 'mi/outline/favorite');
-          button.textContent = 'Following';
+          button.setAttribute('label', 'Following');
         } else {
           button.setAttribute('icon', 'mi/outline/favorite-border');
-          button.textContent = 'Follow';
+          button.setAttribute('label', 'Follow');
         }
       });
     });

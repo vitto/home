@@ -83,14 +83,14 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
 
       // @ts-ignore
       let rollbackTimeout = null;
-      const originalText = saveButton.textContent || 'Save preference';
+      const originalText = saveButton.getAttribute('label') || 'Save preference';
 
       // Helper function to reset to initial state
       const resetToInitialState = () => {
         saveButton.setAttribute('disabled', '');
         saveButton.setAttribute('variant', 'primary');
         saveButton.removeAttribute('icon');
-        saveButton.textContent = originalText;
+        saveButton.setAttribute('label', originalText);
         countrySelect.setAttribute('value', null);
         countrySelect.selectedIndex = -1;
         // @ts-ignore
@@ -120,7 +120,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
         saveButton.setAttribute('disabled', '');
         saveButton.setAttribute('variant', 'success');
         saveButton.setAttribute('icon', 'mi/outline/done');
-        saveButton.textContent = 'Saved successfully';
+        saveButton.setAttribute('label', 'Saved successfully');
 
         // Rollback after 2 seconds
         // @ts-ignore

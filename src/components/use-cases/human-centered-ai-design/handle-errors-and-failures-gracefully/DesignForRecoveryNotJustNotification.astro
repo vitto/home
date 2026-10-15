@@ -27,9 +27,13 @@ import AILink from '../../AILink.astro';
               }) => (
                 <mds-entity class="w-full" src={articleSource.image} variant="blue" tone="weak">
                   <mds-text typography="h6">{articleSource.title}</mds-text>
-                  <mds-badge variant="blue" tone="weak" slot="detail" class="mr-150">
-                    article
-                  </mds-badge>
+                  <mds-badge
+                    variant="blue"
+                    tone="weak"
+                    slot="detail"
+                    class="mr-150"
+                    label="article"
+                  />
                   <mds-text typography="caption" slot="detail">
                     {articleSource.description}
                   </mds-text>
@@ -102,9 +106,13 @@ import AILink from '../../AILink.astro';
               }) => (
                 <mds-entity class="w-full" src={articleSource.image} variant="blue" tone="weak">
                   <mds-text typography="h6">{articleSource.title}</mds-text>
-                  <mds-badge variant="blue" tone="weak" slot="detail" class="mr-150">
-                    article
-                  </mds-badge>
+                  <mds-badge
+                    variant="blue"
+                    tone="weak"
+                    slot="detail"
+                    class="mr-150"
+                    label="article"
+                  />
                   <mds-text typography="caption" slot="detail">
                     {articleSource.description}
                   </mds-text>
@@ -145,7 +153,7 @@ import AILink from '../../AILink.astro';
       const rollback = () => {
         retryButton.removeAttribute('await');
         retryButton.setAttribute('icon', 'mi/outline/replay');
-        retryButton.textContent = 'Retry';
+        retryButton.setAttribute('label', 'Retry');
 
         errorBanner.classList.remove('hidden');
         summaryContainer.classList.remove('grid');
@@ -158,7 +166,7 @@ import AILink from '../../AILink.astro';
 
         retryButton.setAttribute('await', '');
         retryButton.removeAttribute('icon');
-        retryButton.textContent = 'Regenerating...';
+        retryButton.setAttribute('label', 'Regenerating...');
 
         showSummaryTimer = setTimeout(() => {
           errorBanner.classList.add('hidden');

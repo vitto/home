@@ -39,9 +39,7 @@ const percentage = Math.round((currentPage / totalPages) * 100);
   class="principle-progress-bar w-full min-h-700 max-tablet:hidden"
   data-article-progress-bar
   value={percentage}
->
-  {currentPrinciple?.title || 'Page title'}
-</mds-benchmark-bar>
+  label={currentPrinciple?.title || 'Page title'}></mds-benchmark-bar>
 <script>
   function initArticleProgressBar() {
     const article = document.querySelector('.page-article') as HTMLElement | null;

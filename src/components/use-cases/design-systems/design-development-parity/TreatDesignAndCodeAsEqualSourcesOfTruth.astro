@@ -50,9 +50,12 @@ bg-variant-primary-10
                     <div class={`w-full h-600 rounded-2xs ${tailwindName}`} />
                   </mds-table-cell>
                   <mds-table-cell class="align-middle">
-                    <mds-badge variant="dark" tone="outline" class="whitespace-nowrap">
-                      {tokenName}
-                    </mds-badge>
+                    <mds-badge
+                      variant="dark"
+                      tone="outline"
+                      class="whitespace-nowrap"
+                      label={tokenName}
+                    />
                   </mds-table-cell>
                   <mds-table-cell class="align-middle">
                     <TextCode text={figmaName} />

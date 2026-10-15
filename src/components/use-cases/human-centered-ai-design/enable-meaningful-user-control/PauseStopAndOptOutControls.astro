@@ -16,15 +16,13 @@ import UsageItem from '../../../UsageItem.astro';
           <mds-benchmark-bar
             class="min-h-[28px] w-full"
             value="0"
-            max="100"
             variant="primary"
             data-progress
-          >
-            <span data-progress-text>Analyzing book</span>
-          </mds-benchmark-bar>
+            label="Analyzing book"></mds-benchmark-bar>
           <mds-entity await data-entity icon="mgg/google-book-large-outline" tone="weak">
             <mds-text typography="h6">Haruki Murakami - Dance, Dance, Dance</mds-text>
-            <mds-badge variant="amaranth" tone="weak" slot="detail" class="mr-150">epub</mds-badge>
+            <mds-badge variant="amaranth" tone="weak" slot="detail" class="mr-150" label="epub"
+            ></mds-badge>
             <mds-text typography="caption" slot="detail">EPUB ebook</mds-text>
           </mds-entity>
         </div>
@@ -40,14 +38,13 @@ import UsageItem from '../../../UsageItem.astro';
 
       const { container } = scope;
       const progressBar = container.querySelector('[data-progress]');
-      const progressText = container.querySelector('[data-progress-text]');
       const entity = container.querySelector('[data-entity]');
       const cancelBtn = container.querySelector('[data-cancel-button]');
       const contentWrapper = container.querySelector(
         '.use-case-interactive-content'
       )?.firstElementChild;
 
-      if (!progressBar || !progressText || !entity || !cancelBtn) return;
+      if (!progressBar || !entity || !cancelBtn) return;
 
       const TOTAL_CHAPTERS = 44;
       const chapterLabels = Array.from({ length: TOTAL_CHAPTERS }, (_, i) => `Chapter ${i + 1}`);
@@ -64,7 +61,7 @@ import UsageItem from '../../../UsageItem.astro';
       function setProgress(value: number, label: string) {
         progressBar.setAttribute('value', String(value));
         progressBar.setAttribute('alias', `${value}%`);
-        progressText.textContent = label;
+        progressBar.setAttribute('label', label);
       }
 
       function setFinishedState(
@@ -76,7 +73,7 @@ import UsageItem from '../../../UsageItem.astro';
         entity.setAttribute('variant', variant);
         entity.setAttribute('icon', icon);
         cancelBtn.setAttribute('disabled', 'true');
-        cancelBtn.textContent = label;
+        cancelBtn.setAttribute('label', label);
       }
 
       function resetToStart() {
@@ -85,7 +82,7 @@ import UsageItem from '../../../UsageItem.astro';
         entity.setAttribute('await', '');
         entity.setAttribute('icon', 'mgg/google-book-large-outline');
         cancelBtn.removeAttribute('disabled');
-        cancelBtn.textContent = 'Stop';
+        cancelBtn.setAttribute('label', 'Stop');
         setProgress(0, 'Analyzing book');
       }
 

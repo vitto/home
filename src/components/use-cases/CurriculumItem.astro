@@ -40,7 +40,7 @@ function getConfidenceBox(confidence: number): string {
 <div class="flex flex-col rounded-lg bg-surface-raised auto-rows-min shadow-xs-sharp h-min">
   <div class="grid gap-200 p-400">
     <div class="flex items-center justify-between gap-400">
-      <mds-avatar src={cv.image} size="sm"></mds-avatar>
+      <mds-avatar src={cv.image}></mds-avatar>
       {
         cv.aiConfidence < 0.9 && highlight && (
           <div class="grow">
@@ -84,11 +84,8 @@ function getConfidenceBox(confidence: number): string {
     <mds-badge
       variant={getConfidenceBadgeVariant(cv.aiConfidence)}
       tone="weak"
-      size="sm"
       class="justify-self-start"
-    >
-      AI {Math.round(cv.aiConfidence * 100)}% confidence
-    </mds-badge>
+      label={`AI ${Math.round(cv.aiConfidence * 100)}% confidence`}></mds-badge>
     <div class="grid gap-400">
       <!-- <mds-text typography="label" class="text-fg-muted">why this candidate</mds-text> -->
       <mds-list class="pl-0 fill-success-emphasis">

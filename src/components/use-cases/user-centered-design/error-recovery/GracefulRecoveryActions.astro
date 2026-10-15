@@ -73,26 +73,26 @@ const workspace = workspacesData[0];
           // When clicking "Try again": hide banner and show await
           errorBanner.classList.add('hidden');
           saveButton.setAttribute('await', '');
-          saveButton.textContent = 'Saving data...';
+          saveButton.setAttribute('label', 'Saving data...');
           saveButton.setAttribute('variant', 'primary');
 
           // After 1 second, show error again (retry cycle)
           setTimeout(() => {
             saveButton.removeAttribute('await');
             saveButton.setAttribute('variant', 'error');
-            saveButton.textContent = 'Try again';
+            saveButton.setAttribute('label', 'Try again');
             errorBanner.classList.remove('hidden');
           }, 1000);
         } else {
           // Initial click: show await and "Saving data..."
           saveButton.setAttribute('await', '');
-          saveButton.textContent = 'Saving data...';
+          saveButton.setAttribute('label', 'Saving data...');
 
           // After 1 second, show error state
           setTimeout(() => {
             saveButton.removeAttribute('await');
             saveButton.setAttribute('variant', 'error');
-            saveButton.textContent = 'Try again';
+            saveButton.setAttribute('label', 'Try again');
             errorBanner.classList.remove('hidden');
           }, 1000);
         }
@@ -106,7 +106,7 @@ const workspace = workspacesData[0];
       const handleSaveClick2 = () => {
         // First, show await state and "Saving data..."
         saveButton2.setAttribute('await', '');
-        saveButton2.textContent = 'Saving data...';
+        saveButton2.setAttribute('label', 'Saving data...');
 
         // After 1 second, hide button and show banner
         setTimeout(() => {
@@ -117,7 +117,7 @@ const workspace = workspacesData[0];
           // After 3 seconds, roll back
           setTimeout(() => {
             saveButton2.classList.remove('hidden');
-            saveButton2.textContent = 'Save changes';
+            saveButton2.setAttribute('label', 'Save changes');
             errorBanner2.classList.add('hidden');
           }, 5000);
         }, 1000);

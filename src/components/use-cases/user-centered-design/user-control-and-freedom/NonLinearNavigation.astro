@@ -147,7 +147,8 @@ const user = userData[4]; // Use first user from the data
         const button = menuItemButtons[i];
         button.addEventListener('click', () => {
           section.classList.add('section-active');
-          fakeSection.querySelector('[data-section-title]').textContent = button.textContent;
+          fakeSection.querySelector('[data-section-title]').textContent =
+            button.getAttribute('label');
         });
       }
 

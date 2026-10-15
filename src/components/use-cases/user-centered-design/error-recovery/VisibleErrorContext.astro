@@ -66,9 +66,7 @@ const invoices = [...invoicesData].sort((a, b) => {
                     {invoice.price}
                   </mds-table-cell>
                   <mds-table-cell>
-                    <mds-badge variant={statusVariant} tone="weak">
-                      {statusLabel}
-                    </mds-badge>
+                    <mds-badge variant={statusVariant} tone="weak" label={statusLabel} />
                   </mds-table-cell>
                   <div slot="action" class="flex">
                     {invoice.status !== 'scheduled' && (
@@ -92,9 +90,8 @@ const invoices = [...invoicesData].sort((a, b) => {
         <mds-text typography="h5">Data consumption</mds-text>
         <mds-text>Every month you consume 64GB of data averaging 2.1GB per day.</mds-text>
       </div>
-      <mds-benchmark-bar value={73} alias="73GB / 100GB">
-        Monthly data consumption
-      </mds-benchmark-bar>
+      <mds-benchmark-bar value={73} alias="73GB / 100GB" label="Monthly data consumption"
+      ></mds-benchmark-bar>
     </div>
     <div class="grid gap-600 grid-cols-full w-full">
       <div class="grid gap-100 grid-cols-full w-full">
@@ -135,9 +132,7 @@ const invoices = [...invoicesData].sort((a, b) => {
                     {invoice.price}
                   </mds-table-cell>
                   <mds-table-cell>
-                    <mds-badge variant={statusVariant} tone="weak">
-                      {statusLabel}
-                    </mds-badge>
+                    <mds-badge variant={statusVariant} tone="weak" label={statusLabel} />
                   </mds-table-cell>
                   <div slot="action">
                     {invoice.status !== 'scheduled' && (
@@ -161,9 +156,8 @@ const invoices = [...invoicesData].sort((a, b) => {
         <mds-text typography="h5">Data consumption</mds-text>
         <mds-text>Every month you consume 64GB of data averaging 2.1GB per day.</mds-text>
       </div>
-      <mds-benchmark-bar value={73} alias="73GB / 100GB">
-        Monthly data consumption
-      </mds-benchmark-bar>
+      <mds-benchmark-bar value={73} alias="73GB / 100GB" label="Monthly data consumption"
+      ></mds-benchmark-bar>
       <mds-banner
         icon="mi/outline/warning-amber"
         variant="error"
