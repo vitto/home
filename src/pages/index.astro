@@ -21,6 +21,10 @@ const blobmixerPreset =
   requestedPreset in blobmixerPresets
     ? (requestedPreset as keyof typeof blobmixerPresets)
     : defaultBlobmixerPreset;
+
+// The cards tint the page with the accent recommended with their blob, ?tint=dominant with the label closest to it
+const blobmixerTintColor =
+  Astro.url.searchParams.get('tint') === 'dominant' ? 'dominant' : 'accent';
 ---
 
 <Layout>
@@ -33,6 +37,7 @@ const blobmixerPreset =
     background === 'blobmixer' && (
       <Blobmixer
         preset={blobmixerPreset}
+        tintColor={blobmixerTintColor}
         positionY={0.75}
         positionYMobile={0.5}
         scale={0.875}

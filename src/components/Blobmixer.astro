@@ -14,7 +14,11 @@
  *
  * Props:
  * @param {string} preset - Blob shown at rest, a key of blobmixer-presets.json (default: 't-1000')
- * @param {number} tint - Share of the preset background color painted behind the blob, 0 leaves the page as it is (default: 0)
+ * @param {number} tint - Share of the tint color painted over the page behind the blob, 0 leaves the page as it is;
+ *                        a card config can set its own (default: 0)
+ * @param {string} tintColor - Which color of a card config tints the page: 'accent', the one recommended with its
+ *                             blob, or 'dominant', the label closest to the dominant color of the blob; without one,
+ *                             the background color of the preset (default: 'accent')
  * @param {number} cameraFov - Camera field of view (default: 15)
  * @param {number} cameraDistance - Camera distance (default: 4)
  * @param {number} positionY - Y position offset for desktop (viewport width > 480px, default: -0.2)
@@ -27,6 +31,7 @@ import presets from '../data/blobmixer-presets.json';
 interface Props {
   preset?: keyof typeof presets;
   tint?: number;
+  tintColor?: 'accent' | 'dominant';
   cameraFov?: number;
   cameraDistance?: number;
   positionY?: number;
@@ -38,6 +43,7 @@ interface Props {
 const {
   preset = 't-1000',
   tint = 0,
+  tintColor = 'accent',
   cameraFov = 15,
   cameraDistance = 4,
   positionY = -0.2,
@@ -52,6 +58,7 @@ const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 ---
 
+<div id="blobmixer-tint"></div>
 <div id="blobmixer-container">
   <canvas id="blobmixer-canvas" aria-hidden="true"></canvas>
 </div>
@@ -63,6 +70,7 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
     presets,
     preset,
     tint,
+    tintColor,
     cameraFov,
     cameraDistance,
     positionY,
@@ -295,7 +303,8 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 
     const canvas = document.getElementById('blobmixer-canvas');
     const container = document.getElementById('blobmixer-container');
-    if (!canvas || !container) return;
+    const tintLayer = document.getElementById('blobmixer-tint');
+    if (!canvas || !container || !tintLayer) return;
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -329,18 +338,18 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 
     const initialConfig = { preset, tint };
 
-    // A preset as the numbers to tween, colors in linear RGB and lights padded to the same count
+    // A preset as the numbers to tween, colors in linear RGB and lights padded to the same count,
+    // with the tint the page takes behind it
     const resolveConfig = (config) => {
       const blob = presets[config.preset] ?? presets[preset];
       const { title, gradient, background, color, fixNormals, lights, ...numbers } = blob;
       const darkLight = { ...lights[0], intensity: 0 };
       return {
         gradient,
+        tint: { color: config[tintColor] ?? background, share: config.tint ?? tint },
         values: {
           ...numbers,
           color: new THREE.Color(color).toArray(),
-          background: new THREE.Color(background).toArray(),
-          tint: config.tint ?? tint,
           fixNormals: fixNormals ? 1 : 0,
           lights: Array.from({ length: LIGHT_COUNT }, (_, i) => lights[i] ?? darkLight).map(
             (light) => ({ ...light, color: new THREE.Color(light.color).toArray() })
@@ -438,7 +447,16 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
     group.position.set(0, getCurrentPositionY(), 0);
     group.scale.setScalar(scale);
 
-    const clearColor = new THREE.Color();
+    // The page takes a share of the tint color, through CSS so theme tokens follow the mode;
+    // at no share it fades out keeping the last color
+    let lastTintColor = null;
+    const paintTint = ({ color, share }) => {
+      if (share > 0) lastTintColor = color;
+      tintLayer.style.backgroundColor = lastTintColor
+        ? `color-mix(in srgb, ${lastTintColor} ${share * 100}%, transparent)`
+        : '';
+    };
+    paintTint(initial.tint);
 
     // Lights shine Math.PI times stronger than in three r143, which spread them over a hemisphere
     const apply = () => {
@@ -474,9 +492,6 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
         spotLight.decay = light.decay;
         spotLight.position.fromArray(light.position).multiplyScalar(LIGHT_UNIT);
       });
-
-      // The tint is the background color's opacity over the page, transparent at 0
-      renderer.setClearColor(clearColor.fromArray(values.background), values.tint);
     };
 
     // Easing function for smooth transitions (easeOutExpo)
@@ -503,6 +518,8 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
       const gradient = await loadGradient(to.gradient).catch(() => material.map);
       // A later call took over while the gradient loaded
       if (request !== latestRequest) return;
+
+      paintTint(to.tint);
 
       // Blend from the gradient that shows the most, unless it's the one coming
       let fromGradientMix = uniforms.gradientMix.value;
@@ -592,6 +609,24 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 
 <style>
   @reference "../styles/global.css";
+  #blobmixer-tint {
+    @apply ease-out-expo;
+    pointer-events: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    /* The large viewport, so no gap shows when mobile toolbars slide away */
+    height: 100lvh;
+    /* As long as the blob takes to change */
+    transition-duration: 2s;
+    transition-property: background-color;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
   #blobmixer-container {
     --scroll-translate-y: 0px;
 

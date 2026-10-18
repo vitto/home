@@ -1,14 +1,23 @@
 {
   "user-centered-design": {
     "preset": "metagum",
-    "logo": ""
+    "logo": "",
+    "tint": 0.1,
+    "dominant": "rgb(var(--label-violet-05))",
+    "accent": "rgb(var(--label-blue-05))"
   },
   "design-systems": {
     "preset": "fungible",
-    "logo": ""
+    "logo": "",
+    "tint": 0.1,
+    "dominant": "rgb(var(--label-purple-05))",
+    "accent": "rgb(var(--label-green-05))"
   },
   "human-centered-ai-design": {
     "preset": "fomosphere",
-    "logo": ""
+    "logo": "",
+    "tint": 0.1,
+    "dominant": "rgb(var(--label-violet-05))",
+    "accent": "rgb(var(--label-aqua-05))"
   }
 }

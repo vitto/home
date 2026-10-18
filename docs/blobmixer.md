@@ -14,6 +14,7 @@ The Blobmixer background rebuilds [blobmixer.14islands.com](https://blobmixer.14
 
 - `/?background=blobmixer`: the homepage as it is set up now.
 - `/?background=blobmixer&preset=genesys`: another blob at rest, any key of the [presets](#the-14-presets).
+- `/?background=blobmixer&tint=dominant`: the cards tint the page with the [dominant color](#page-tint-on-hover) of their blob instead of the accent one.
 - In the browser console, `window.updateBlobConfig({ preset: 'lipsync' })` turns the blob into a preset and `window.resetBlobConfig()` brings back the rest one.
 
 ## The chosen setup
@@ -29,6 +30,19 @@ Two more choices go with it:
 
 - **The logo keeps its color** on hover: the `logo` of each card config is empty. The other backgrounds tint it with the card color instead.
 - **The hero inverts its texts in light mode only**: `<Hero inverse="light" />`, so in dark mode everything from the logo down to the Maggioli Spa link keeps the default colors, and the link uses the `hero-light` button variant.
+
+### Page tint on hover
+
+On hover the page takes a light tint, 10% of a Magma label color at step 05, on a layer of its own behind the blob, so theme tokens switch with the mode. It fades in and out with the blob change. Each card config holds two colors, and `tintColor` on the component picks one:
+
+| Card                     | Preset     | `accent`, chosen | `dominant`, `?tint=dominant` |
+| ------------------------ | ---------- | ---------------- | ---------------------------- |
+| User-Centered Design     | Metagum    | blue             | violet                       |
+| Design Systems           | Fungible   | green            | purple                       |
+| Human-Centered AI Design | Fomosphere | aqua             | violet                       |
+
+- **Accent**, the chosen one, is the label closest to the background 14islands chose for each blob on the Blobmixer: periwinkle for Metagum, mint for Fungible, teal for Fomosphere. It keeps their art direction in the Magma palette: a complementary green behind the magenta of Fungible, cooler neighbours behind the violet of the other two, and a different color for each card.
+- **Dominant** is the label closest to the dominant hue of the blob as the homepage shows it, its lower part: canvas pixels weighed by saturation, binned by hue, and matched to the labels in OKLab. All three blobs come out violet to magenta there, so this version stays close to monochrome.
 
 ## Combinations tried
 
