@@ -4,7 +4,15 @@
  * This is for libraries that need to be loaded as static files
  */
 
-import { copyFileSync, mkdirSync, existsSync, readdirSync, statSync } from 'fs';
+import {
+  copyFileSync,
+  mkdirSync,
+  existsSync,
+  readdirSync,
+  readFileSync,
+  statSync,
+  writeFileSync,
+} from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -42,6 +50,23 @@ threeFiles.forEach(({ src, dest }) => {
 
   if (existsSync(srcPath)) {
     copyFileSync(srcPath, destPath);
+    log(`✓ Copied ${src} to public/vendor/${dest}`);
+  } else {
+    console.warn(`⚠ File not found: ${srcPath}`);
+  }
+});
+
+// Copy the Three.js addons the backgrounds load, pointing their 'three' import at the vendor copy
+const threeAddonsDir = join(rootDir, 'node_modules', 'three', 'examples', 'jsm');
+const threeAddonFiles = [{ src: 'loaders/HDRLoader.js', dest: 'HDRLoader.js' }];
+
+threeAddonFiles.forEach(({ src, dest }) => {
+  const srcPath = join(threeAddonsDir, src);
+  const destPath = join(vendorDir, dest);
+
+  if (existsSync(srcPath)) {
+    const source = readFileSync(srcPath, 'utf8');
+    writeFileSync(destPath, source.replace(/from 'three';/g, "from './three.module.min.js';"));
     log(`✓ Copied ${src} to public/vendor/${dest}`);
   } else {
     console.warn(`⚠ File not found: ${srcPath}`);

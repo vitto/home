@@ -3,16 +3,20 @@ import CategoryCardItem from './CategoryCardItem.astro';
 import CardTextAnimation from './CardTextAnimation.astro';
 import blobConfigs from '../data/blob-configs.json';
 import trunkConfigs from '../data/trunk-configs.json';
+import blobmixerConfigs from '../data/blobmixer-configs.json';
 import categoriesData from '../data/categories.json';
 
 interface Props {
   // The homepage background the cards recolor on hover
-  background?: 'blob' | 'trunk';
+  background?: 'blob' | 'trunk' | 'blobmixer';
 }
 
 const { background = 'blob' } = Astro.props;
-const backgroundConfigs: Record<string, { logo?: string }> =
-  background === 'trunk' ? trunkConfigs : blobConfigs;
+const backgroundConfigs: Record<string, { logo?: string }> = {
+  blob: blobConfigs,
+  trunk: trunkConfigs,
+  blobmixer: blobmixerConfigs,
+}[background];
 
 // Get base URL from Astro config and normalize it
 // Remove trailing slash if present (except for root)
