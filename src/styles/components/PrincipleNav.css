@@ -11,5 +11,5 @@
 }
 
 .principle-progress-bar::part(progress-bar) {
-  --mds-progress-background: rgb(var(--magma-surface-sunken));
+  --mds-progress-background: rgb(var(--tone-neutral-03) / 0.1);
 }
