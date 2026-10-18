@@ -33,7 +33,7 @@ const {
   aria-current={selected ? 'page' : undefined}
 >
   <div
-    class={`grid auto-rows-min rounded-2xl align-self-start p-600 group-hover:-translate-y-200 transition ease-out-expo duration-1000 ${selected ? `${selectedClass}` : 'bg-surface-raised/80 backdrop-blur group-[&:is(:hover,:focus-visible)]:bg-surface-raised shadow-2xl text-fg-muted'}`}
+    class={`grid auto-rows-min rounded-2xl align-self-start p-600 group-hover:-translate-y-200 transition ease-out-expo duration-1000 ${selected ? `${selectedClass}` : 'bg-surface-overlay/20 backdrop-blur backdrop-blur-[2px] group-[&:is(:hover,:focus-visible)]:bg-surface-overlay shadow-2xl text-fg-muted'}`}
   >
     <div
       class={`p-200 -translate-x-200 rounded-full inline-flex justify-self-start bg-transparent transition group-[&:is(:hover,:focus-visible)]:-translate-y-200 group-[&:is(:hover,:focus-visible)]:pt-200 ease-out-expo duration-1000 ${iconHover} ${selected ? headerIconSelected : 'color-tone-neutral-03'}`}

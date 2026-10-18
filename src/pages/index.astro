@@ -4,11 +4,23 @@ import Hero from '../components/Hero.astro';
 import CategoryCards from '../components/CategoryCards.astro';
 import Footer from '../components/Footer.astro';
 import Blob from '../components/Blob.astro';
+import Trunk from '../components/Trunk.astro';
+
+// The homepage background, blob or trunk: ?background= picks the other one, to compare them
+const backgrounds = ['blob', 'trunk'] as const;
+const defaultBackground: (typeof backgrounds)[number] = 'trunk';
+const requestedBackground = Astro.url.searchParams.get('background');
+const background = backgrounds.find((name) => name === requestedBackground) ?? defaultBackground;
 ---
 
 <Layout>
-  <Blob positionY={0.75} positionYMobile={0.5} scale={0.875} maxScrollTranslate={200} />
-  <Hero />
-  <CategoryCards />
+  {
+    background === 'blob' && (
+      <Blob positionY={0.75} positionYMobile={0.5} scale={0.875} maxScrollTranslate={200} />
+    )
+  }
+  {background === 'trunk' && <Trunk shape="logo" anchor=".vv-logo" />}
+  <Hero inverse={background === 'blob'} />
+  <CategoryCards background={background} />
   <Footer />
 </Layout>

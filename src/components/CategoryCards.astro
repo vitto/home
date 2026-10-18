@@ -2,7 +2,17 @@
 import CategoryCardItem from './CategoryCardItem.astro';
 import CardTextAnimation from './CardTextAnimation.astro';
 import blobConfigs from '../data/blob-configs.json';
+import trunkConfigs from '../data/trunk-configs.json';
 import categoriesData from '../data/categories.json';
+
+interface Props {
+  // The homepage background the cards recolor on hover
+  background?: 'blob' | 'trunk';
+}
+
+const { background = 'blob' } = Astro.props;
+const backgroundConfigs: Record<string, { logo?: string }> =
+  background === 'trunk' ? trunkConfigs : blobConfigs;
 
 // Get base URL from Astro config and normalize it
 // Remove trailing slash if present (except for root)
@@ -15,9 +25,11 @@ const visibleCategories = categoriesData.filter(
 );
 
 // Map categories data and add full link URLs
+// The logo takes the colors of the background when it has its own
 const categories = visibleCategories.map((category) => ({
   ...category,
   link: `${baseUrl}${category.path}`,
+  logo: backgroundConfigs[category.id]?.logo ?? category.logo,
 }));
 
 // Determine grid columns based on number of visible categories
@@ -58,7 +70,10 @@ const gridColsClass =
 <CardTextAnimation />
 
 <script
-  define:vars={{ blobConfigs: JSON.stringify(blobConfigs), categories: JSON.stringify(categories) }}
+  define:vars={{
+    blobConfigs: JSON.stringify(backgroundConfigs),
+    categories: JSON.stringify(categories),
+  }}
 >
   // Handle blob configuration changes and logo color on category card hover
   function initBlobConfigHover() {

@@ -7,7 +7,7 @@ interface Props {
   class?: string;
 }
 
-const { class: className = 'px-600 desktop:px-1200 pb-3200' } = Astro.props;
+const { class: className = 'px-600 desktop:px-1200 pb-3200 relative' } = Astro.props;
 // Get base URL from Astro config and normalize it
 // Remove trailing slash if present (except for root)
 const rawBaseUrl = import.meta.env.BASE_URL;
@@ -66,7 +66,7 @@ const socialLinks = [
             target="_blank"
             title={`Open ${link.name} in a new tab`}
             rel="noopener noreferrer"
-            class="relative group/footer-link no-underline inline-flex max-w-4000 basis-0 grow focus-bounce rounded-xs p-400 py-600 max-tablet:p-200 max-tablet:py-400 bg-surface-raised/60 hover:bg-surface-raised backdrop-blur"
+            class="relative group/footer-link no-underline inline-flex max-w-4000 basis-0 grow focus-bounce rounded-xs p-400 py-600 max-tablet:p-200 max-tablet:py-400"
           >
             <div class="text-center flex flex-col items-center gap-200 transition w-full group-[&:is(:hover,:focus-visible)]/footer-link:-translate-y-200 ease-out-expo duration-1000">
               <div

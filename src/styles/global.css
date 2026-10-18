@@ -226,6 +226,11 @@ mds-img::part(media) {
   height: 100%;
 }
 
+mds-benchmark-bar::part(progress-bar),
+mds-progress-bar {
+  --magma-corner-shape: radius;
+}
+
 @utility markdown-link {
   @apply decoration-border-default
   decoration-2
