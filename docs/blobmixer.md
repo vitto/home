@@ -1,20 +1,20 @@
 # Blobmixer background
 
-The homepage has three backgrounds to compare, picked with `?background=`:
+The homepage opens on the Blobmixer, and `?background=` brings back the backgrounds before it, to compare them; `defaultBackground` in [index.astro](../src/pages/index.astro) picks the default:
 
-| Value       | Component                                            | Notes                                                  |
-| ----------- | ---------------------------------------------------- | ------------------------------------------------------ |
-| `trunk`     | [Trunk.astro](../src/components/Trunk.astro)         | The default: rings around the logo                     |
-| `blob`      | [Blob.astro](../src/components/Blob.astro)           | The cosine palette blob                                |
-| `blobmixer` | [Blobmixer.astro](../src/components/Blobmixer.astro) | The blobs of the Blobmixer by 14islands, this document |
+| Value       | Component                                            | Notes                                                               |
+| ----------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
+| `blobmixer` | [Blobmixer.astro](../src/components/Blobmixer.astro) | The default: the blobs of the Blobmixer by 14islands, this document |
+| `trunk`     | [Trunk.astro](../src/components/Trunk.astro)         | Rings around the logo                                               |
+| `blob`      | [Blob.astro](../src/components/Blob.astro)           | The cosine palette blob                                             |
 
 The Blobmixer background rebuilds [blobmixer.14islands.com](https://blobmixer.14islands.com) with plain Three.js: its material, its noise, its lights, its gradients and the 14 blobs of its gallery. Each category card turns the blob into another preset on hover, and the blob goes back to the rest preset when the pointer leaves.
 
 ## Try it
 
-- `/?background=blobmixer`: the homepage as it is set up now.
-- `/?background=blobmixer&preset=genesys`: another blob at rest, any key of the [presets](#the-14-presets).
-- `/?background=blobmixer&tint=dominant`: the cards tint the page with the [dominant color](#page-tint-on-hover) of their blob instead of the accent one.
+- `/`: the homepage as it is set up now.
+- `/?preset=genesys`: another blob at rest, any key of the [presets](#the-14-presets).
+- `/?tint=dominant`: the cards tint the page with the [dominant color](#page-tint-on-hover) of their blob instead of the accent one.
 - In the browser console, `window.updateBlobConfig({ preset: 'lipsync' })` turns the blob into a preset and `window.resetBlobConfig()` brings back the rest one.
 
 ## The chosen setup

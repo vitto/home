@@ -10,7 +10,7 @@ import blobmixerPresets from '../data/blobmixer-presets.json';
 
 // The homepage background, blob, trunk or blobmixer: ?background= picks another one, to compare them
 const backgrounds = ['blob', 'trunk', 'blobmixer'] as const;
-const defaultBackground: (typeof backgrounds)[number] = 'trunk';
+const defaultBackground: (typeof backgrounds)[number] = 'blobmixer';
 const requestedBackground = Astro.url.searchParams.get('background');
 const background = backgrounds.find((name) => name === requestedBackground) ?? defaultBackground;
 

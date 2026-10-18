@@ -58,7 +58,7 @@ npm run format
 
 ## Homepage backgrounds
 
-The homepage compares three backgrounds with `?background=`: `trunk` (the default), `blob` and `blobmixer`. The Blobmixer one, its 14 presets and the combinations tried are documented in [docs/blobmixer.md](docs/blobmixer.md).
+The homepage opens on the Blobmixer background, and `?background=trunk` or `?background=blob` brings back the ones before it, to compare them. The Blobmixer, its 14 presets and the combinations tried are documented in [docs/blobmixer.md](docs/blobmixer.md).
 
 ## Deployment
 
