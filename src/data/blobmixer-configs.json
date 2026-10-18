@@ -1,14 +1,14 @@
 {
   "user-centered-design": {
-    "preset": "fungible",
-    "logo": "text-label-green-05"
+    "preset": "metagum",
+    "logo": ""
   },
   "design-systems": {
-    "preset": "slinky",
-    "logo": "text-label-amaranth-05"
+    "preset": "fungible",
+    "logo": ""
   },
   "human-centered-ai-design": {
-    "preset": "discobrain",
-    "logo": "text-label-violet-05"
+    "preset": "fomosphere",
+    "logo": ""
   }
 }

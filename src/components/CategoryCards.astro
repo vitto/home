@@ -29,7 +29,7 @@ const visibleCategories = categoriesData.filter(
 );
 
 // Map categories data and add full link URLs
-// The logo takes the colors of the background when it has its own
+// The logo takes the colors of the background when it has its own, and keeps its own when they're empty
 const categories = visibleCategories.map((category) => ({
   ...category,
   link: `${baseUrl}${category.path}`,

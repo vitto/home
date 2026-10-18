@@ -14,12 +14,13 @@ const defaultBackground: (typeof backgrounds)[number] = 'trunk';
 const requestedBackground = Astro.url.searchParams.get('background');
 const background = backgrounds.find((name) => name === requestedBackground) ?? defaultBackground;
 
-// With the blobmixer, ?preset= picks the blob shown at rest, to try them all
+// With the blobmixer, the blob shown at rest is Slinky: ?preset= picks another one, to try them all
+const defaultBlobmixerPreset: keyof typeof blobmixerPresets = 'slinky';
 const requestedPreset = Astro.url.searchParams.get('preset') ?? '';
 const blobmixerPreset =
   requestedPreset in blobmixerPresets
     ? (requestedPreset as keyof typeof blobmixerPresets)
-    : undefined;
+    : defaultBlobmixerPreset;
 ---
 
 <Layout>
@@ -40,7 +41,7 @@ const blobmixerPreset =
     )
   }
   {background === 'trunk' && <Trunk shape="logo" anchor=".vv-logo" />}
-  <Hero inverse={background !== 'trunk'} />
+  <Hero inverse={background === 'blobmixer' ? 'light' : background === 'blob'} />
   <CategoryCards background={background} />
   <Footer background={background} />
 </Layout>
