@@ -1,0 +1,24 @@
+{
+  "user-centered-design": {
+    "color": "rgb(var(--label-green-05))",
+    "tint": 0.1,
+    "chaos": 2.2,
+    "frequency": 0.4,
+    "speed": 0.35,
+    "logo": "text-label-green-05"
+  },
+  "design-systems": {
+    "color": "rgb(var(--label-amaranth-05))",
+    "tint": 0.1,
+    "chaos": 0.4,
+    "logo": "text-label-amaranth-05"
+  },
+  "human-centered-ai-design": {
+    "color": "rgb(var(--label-violet-05))",
+    "tint": 0.1,
+    "chaos": 1.2,
+    "frequency": 2.5,
+    "speed": 3,
+    "logo": "text-label-violet-05"
+  }
+}

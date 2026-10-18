@@ -1,0 +1,669 @@
+---
+/**
+ * Trunk Component
+ *
+ * Concentric rings bent by noise, like the growth rings of a trunk, drawn with Three.js shaders.
+ * They are circles, or grow out of the logo triangle and round off moving outward.
+ * The rings follow the "trunk" sketch by Kjetil Midtgarden Golid (MIT,
+ * https://github.com/kgolid/p5ycho/tree/master/trunk), as Vanta.js (MIT, https://www.vantajs.com)
+ * ships it: the same ring sizes and noise, here bent on the GPU instead of in p5.js.
+ * It answers the same window.updateBlobConfig / resetBlobConfig calls as the Blob,
+ * so the category cards drive either background.
+ *
+ * Props:
+ * @param {string} color - Line color, any CSS color, theme tokens included (default: '#98465f')
+ * @param {number} tint - Share of the color the background behind the rings takes, 0 leaves the page as it is (default: 0)
+ * @param {number} chaos - How much the noise bends the rings (default: 1)
+ * @param {number} frequency - How many bends along a ring, higher vibrates finer (default: 1)
+ * @param {number} spacing - Extra gap added per ring, in pixels (default: 10)
+ * @param {number} speed - Animation speed multiplier (default: 1)
+ * @param {number|string} rings - Number of rings, or 'cover' to draw those that fill the viewport (default: 'cover')
+ * @param {number} lineWidth - Line width in CSS pixels (default: 1)
+ * @param {number} fill - Share of the room to the next ring the line takes, 0.5 matches line and gap;
+ *                        the line is never thinner than lineWidth (default: 0)
+ * @param {string} shape - 'circle' as the sketch, or 'logo' to grow the rings out of the logo triangle (default: 'circle')
+ * @param {number} sharpness - With the logo shape, 0 rounds the rings off moving outward, 1 keeps them triangles (default: 0.6)
+ * @param {string} anchor - Selector of the element the rings center on and scroll with, the viewport center when empty;
+ *                          with the logo shape, its width is the side of the first triangle (default: '')
+ */
+interface Props {
+  color?: string;
+  tint?: number;
+  chaos?: number;
+  frequency?: number;
+  spacing?: number;
+  speed?: number;
+  rings?: number | 'cover';
+  lineWidth?: number;
+  fill?: number;
+  shape?: 'circle' | 'logo';
+  sharpness?: number;
+  anchor?: string;
+}
+
+const {
+  color = '#98465f',
+  tint = 0,
+  chaos = 1,
+  frequency = 1,
+  spacing = 10,
+  speed = 1,
+  rings = 'cover',
+  lineWidth = 1,
+  fill = 0,
+  shape = 'circle',
+  sharpness = 0.6,
+  anchor = '',
+} = Astro.props;
+
+// Get base URL from Astro config and normalize it
+// Remove trailing slash if present (except for root)
+const rawBaseUrl = import.meta.env.BASE_URL;
+const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+---
+
+<div id="trunk-container">
+  <canvas id="trunk-canvas" aria-hidden="true"></canvas>
+</div>
+
+<script
+  type="module"
+  defer
+  define:vars={{
+    color,
+    tint,
+    chaos,
+    frequency,
+    spacing,
+    speed,
+    rings,
+    lineWidth,
+    fill,
+    shape,
+    sharpness,
+    anchor,
+    baseUrl,
+  }}
+>
+  // Points per ring, one per degree as in the sketch
+  const STEPS = 360;
+
+  // A bound on the ring search, far past any page
+  const MAX_RINGS = 2000;
+
+  // Rings of the sketch, its last one sets how fine the bends get
+  const SKETCH_RINGS = 55;
+
+  // Noise-space drift per second: the sketch moved 0.02 in y and 0.0001 in z every frame, at 60fps
+  const DRIFT = [0, -1.2, 0.006];
+
+  const TWEEN_DURATION = 2000;
+
+  // Smooth value noise with the cosine easing and the four halving octaves of p5.js noise().
+  // It takes an integer cell and a small fraction apart, so the drifting offset keeps its precision.
+  const noiseShader = `
+    const float PI = 3.141592653589793;
+
+    float hash(ivec3 cell) {
+      uvec3 v = uvec3(cell) * 1664525u + 1013904223u;
+      v.x += v.y * v.z;
+      v.y += v.z * v.x;
+      v.z += v.x * v.y;
+      v ^= v >> 16u;
+      v.x += v.y * v.z;
+      v.y += v.z * v.x;
+      v.z += v.x * v.y;
+      return float(v.x) / 4294967295.0;
+    }
+
+    float valueNoise(ivec3 cell, vec3 p) {
+      vec3 i = floor(p);
+      vec3 f = p - i;
+      ivec3 c = cell + ivec3(i);
+      vec3 u = 0.5 - 0.5 * cos(f * PI);
+
+      float n000 = hash(c);
+      float n100 = hash(c + ivec3(1, 0, 0));
+      float n010 = hash(c + ivec3(0, 1, 0));
+      float n110 = hash(c + ivec3(1, 1, 0));
+      float n001 = hash(c + ivec3(0, 0, 1));
+      float n101 = hash(c + ivec3(1, 0, 1));
+      float n011 = hash(c + ivec3(0, 1, 1));
+      float n111 = hash(c + ivec3(1, 1, 1));
+
+      return mix(
+        mix(mix(n000, n100, u.x), mix(n010, n110, u.x), u.y),
+        mix(mix(n001, n101, u.x), mix(n011, n111, u.x), u.y),
+        u.z
+      );
+    }
+
+    float fbm(ivec3 cell, vec3 p) {
+      float sum = 0.0;
+      float amplitude = 0.5;
+      for (int octave = 0; octave < 4; octave++) {
+        sum += amplitude * valueNoise(cell, p);
+        cell *= 2;
+        p *= 2.0;
+        amplitude *= 0.5;
+      }
+      return sum;
+    }
+  `;
+
+  // Each vertex carries (ring, step, side) in position: the shader places it on its ring,
+  // then pushes it to one side of the line, so lines keep their width on any screen.
+  // A ring is the logo triangle, grown and rounded off: with no triangle, the circle of the sketch.
+  const vertexShader = `
+    varying float vDistance;
+    varying float vHalfWidth;
+
+    uniform vec2 uResolution;
+    uniform vec2 uCenter;
+    uniform vec3 uCell;
+    uniform vec3 uFraction;
+    uniform float uChaos;
+    uniform float uFrequency;
+    uniform float uSpacing;
+    uniform float uCore;
+    uniform float uSharpness;
+    uniform float uLineWidth;
+    uniform float uFill;
+    uniform float uPixelRatio;
+    uniform float uSteps;
+    uniform float uRingOffset;
+
+    ${noiseShader}
+
+    const float THIRD = 2.0 * PI / 3.0;
+
+    // Corner of the logo triangle, pointing down, with an inradius of 1
+    vec2 logoCorner(float corner) {
+      float angle = PI / 2.0 + THIRD * corner;
+      return 2.0 * vec2(cos(angle), sin(angle));
+    }
+
+    // Point of a ring at a share of its length, in CSS pixels from the center.
+    // The ring sits as far from the center as in the sketch, along the edges of the triangle,
+    // and walks its three corner arcs and three edges at an even pace.
+    vec2 ringPoint(float ring, float share) {
+      float reach = max(50.0 + 4.0 * ring + ring * uSpacing - uCore, 0.0);
+      float inradius = uCore + uSharpness * reach;
+      float rounding = (1.0 - uSharpness) * reach;
+
+      float arc = THIRD * rounding;
+      float edge = 2.0 * sqrt(3.0) * inradius;
+      float side = arc + edge;
+      float walk = fract(share) * 3.0 * side;
+      float corner = min(floor(walk / side), 2.0);
+      float along = walk - corner * side;
+
+      vec2 outward;
+      vec2 base;
+      if (along < arc) {
+        float angle = PI / 2.0 + THIRD * corner - PI / 3.0 + along / arc * THIRD;
+        outward = vec2(cos(angle), sin(angle));
+        base = inradius * logoCorner(corner) + rounding * outward;
+      } else {
+        float angle = PI / 2.0 + THIRD * corner + PI / 3.0;
+        outward = vec2(cos(angle), sin(angle));
+        float progress = (along - arc) / edge;
+        base = inradius * mix(logoCorner(corner), logoCorner(corner + 1.0), progress) + rounding * outward;
+      }
+
+      // Past the last ring of the sketch the bends stop getting finer and drift in depth instead,
+      // so the far rings met while scrolling keep its texture
+      float loop = 2.0 * PI * share;
+      float sketchRing = min(ring, ${SKETCH_RINGS - 1}.0);
+      float dim = (0.12 * sketchRing + 0.2) * uFrequency;
+      vec3 spot = vec3(vec2(cos(loop), sin(loop)) * dim, 0.12 * (ring - sketchRing));
+      float noise = fbm(ivec3(uCell), uFraction + spot);
+      return base + outward * uChaos * 20.0 * noise;
+    }
+
+    void main() {
+      float ring = position.x + uRingOffset;
+      float shareStep = 1.0 / uSteps;
+      float share = position.y * shareStep;
+
+      vec2 point = ringPoint(ring, share);
+      vec2 tangent = ringPoint(ring, share + shareStep) - ringPoint(ring, share - shareStep);
+      vec2 across = normalize(vec2(-tangent.y, tangent.x));
+
+      // The room to the next ring, across the line, so a filled line keeps an equal gap
+      float room = abs(dot(ringPoint(ring + 1.0, share) - point, across));
+      vHalfWidth = 0.5 * max(uLineWidth, uFill * room);
+
+      // Half the line plus a device pixel to fade the edge out
+      float extent = vHalfWidth + 1.0 / uPixelRatio;
+      vDistance = position.z * extent;
+
+      vec2 pixel = uCenter + point + across * vDistance;
+      vec2 clip = pixel / uResolution * 2.0 - 1.0;
+      gl_Position = vec4(clip.x, -clip.y, 0.0, 1.0);
+    }
+  `;
+
+  const fragmentShader = `
+    varying float vDistance;
+    varying float vHalfWidth;
+
+    uniform vec3 uColor;
+    uniform float uPixelRatio;
+
+    void main() {
+      float feather = 0.5 / uPixelRatio;
+      float alpha = 1.0 - smoothstep(vHalfWidth - feather, vHalfWidth + feather, abs(vDistance));
+      gl_FragColor = vec4(uColor, alpha);
+    }
+  `;
+
+  // Store reference to updateTrunkConfig function (will be set when Three.js initializes)
+  let updateTrunkConfigRef = null;
+  let pendingConfigs = [];
+
+  // Expose the Blob calls immediately, queuing them until the rings are ready
+  window.updateBlobConfig = (config, animate) => {
+    if (updateTrunkConfigRef) {
+      updateTrunkConfigRef(config, animate);
+    } else {
+      pendingConfigs.push({ config, animate });
+    }
+  };
+  window.resetBlobConfig = (animate) => window.updateBlobConfig(null, animate);
+
+  const initTrunk = async () => {
+    // Wait for idle time or use setTimeout as fallback
+    if ('requestIdleCallback' in window) {
+      await new Promise((resolve) => {
+        requestIdleCallback(resolve, { timeout: 2000 });
+      });
+    } else {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+
+    // Import Three.js from vendor directory (lazy load)
+    const THREE = await import(`${baseUrl}/vendor/three.module.min.js`);
+
+    const canvas = document.getElementById('trunk-canvas');
+    const container = document.getElementById('trunk-container');
+    if (!canvas || !container) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      antialias: false,
+      alpha: true,
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Colors go through the computed style, so theme tokens resolve to the current mode.
+    // They stay sRGB, as the shader writes them without color management.
+    const resolveColor = (value) => {
+      container.style.color = value;
+      const computed = getComputedStyle(container).color;
+      const channels = (computed.match(/[\d.]+/g) || [0, 0, 0]).slice(0, 3).map(Number);
+      // color-mix() computes to color(srgb …) in 0–1, plain colors to rgb() in 0–255
+      return computed.startsWith('color(') ? channels : channels.map((channel) => channel / 255);
+    };
+
+    const initialConfig = {
+      color,
+      tint,
+      chaos,
+      frequency,
+      spacing,
+      speed,
+      lineWidth,
+      fill,
+      sharpness,
+    };
+    let targetConfig = { ...initialConfig };
+
+    // The background takes a tint of the color over the page, and the lines stand out of it
+    // only by --trunk-contrast, so the rings stay in the back
+    const resolveConfig = (config) => {
+      const background = `color-mix(in srgb, ${config.color} ${config.tint * 100}%, var(--trunk-background))`;
+      return {
+        color: resolveColor(
+          `color-mix(in srgb, ${config.color} var(--trunk-contrast), ${background})`
+        ),
+        background: resolveColor(config.color),
+        tint: config.tint,
+        chaos: config.chaos,
+        frequency: config.frequency,
+        spacing: config.spacing,
+        speed: config.speed,
+        lineWidth: config.lineWidth,
+        fill: config.fill,
+        sharpness: shape === 'logo' ? config.sharpness : 0,
+      };
+    };
+
+    const state = resolveConfig(initialConfig);
+
+    const uniforms = {
+      uResolution: { value: new THREE.Vector2(1, 1) },
+      uCenter: { value: new THREE.Vector2(0, 0) },
+      uCell: { value: new THREE.Vector3() },
+      uFraction: { value: new THREE.Vector3() },
+      uChaos: { value: state.chaos },
+      uFrequency: { value: state.frequency },
+      uSpacing: { value: state.spacing },
+      uCore: { value: 0 },
+      uSharpness: { value: state.sharpness },
+      uLineWidth: { value: state.lineWidth },
+      uFill: { value: state.fill },
+      uPixelRatio: { value: renderer.getPixelRatio() },
+      uSteps: { value: STEPS },
+      uRingOffset: { value: 0 },
+      uColor: { value: new THREE.Vector3(...state.color) },
+    };
+
+    // Two vertices per point, one for each side of the line, closed in a loop on every ring
+    const buildGeometry = (count) => {
+      const positions = new Float32Array(count * STEPS * 2 * 3);
+      const indices = new Uint32Array(count * STEPS * 6);
+      for (let ring = 0; ring < count; ring++) {
+        for (let step = 0; step < STEPS; step++) {
+          const vertex = (ring * STEPS + step) * 2;
+          const next = (ring * STEPS + ((step + 1) % STEPS)) * 2;
+          positions.set([ring, step, -1, ring, step, 1], vertex * 3);
+          indices.set(
+            [vertex, vertex + 1, next, next, vertex + 1, next + 1],
+            (ring * STEPS + step) * 6
+          );
+        }
+      }
+
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geometry.setIndex(new THREE.BufferAttribute(indices, 1));
+      return geometry;
+    };
+
+    const material = new THREE.ShaderMaterial({
+      vertexShader,
+      fragmentShader,
+      uniforms,
+      transparent: true,
+      depthTest: false,
+    });
+
+    // The geometry comes with the first draw, sized to the rings it needs
+    const mesh = new THREE.Mesh(new THREE.BufferGeometry(), material);
+    // The shader places every vertex, the geometry bounds mean nothing
+    mesh.frustumCulled = false;
+    let ringCapacity = 0;
+
+    // Draw the rings from first to last, growing the geometry with some room when it has too few:
+    // the geometry holds their count, the shader adds the first ring to each
+    const setRingRange = (first, last) => {
+      const count = last - first;
+      if (count > ringCapacity) {
+        ringCapacity = count + 10;
+        mesh.geometry.dispose();
+        mesh.geometry = buildGeometry(ringCapacity);
+      }
+      mesh.geometry.setDrawRange(0, count * STEPS * 6);
+      uniforms.uRingOffset.value = first;
+    };
+
+    // The corners of the logo triangle, pointing down, with an inradius of 1, as in the shader
+    const TRIANGLE = [90, 210, 330].map((degrees) => {
+      const angle = (degrees * Math.PI) / 180;
+      return [2 * Math.cos(angle), 2 * Math.sin(angle)];
+    });
+
+    // Distance from a point to the logo triangle with an inradius, 0 inside it
+    const triangleDistance = ([x, y], inradius) => {
+      let inside = true;
+      let distance = Infinity;
+      TRIANGLE.forEach(([cornerX, cornerY], i) => {
+        const [nextX, nextY] = TRIANGLE[(i + 1) % 3];
+        const startX = cornerX * inradius;
+        const startY = cornerY * inradius;
+        const edgeX = (nextX - cornerX) * inradius;
+        const edgeY = (nextY - cornerY) * inradius;
+        const along =
+          ((x - startX) * edgeX + (y - startY) * edgeY) / (edgeX ** 2 + edgeY ** 2 || 1);
+        const t = Math.min(Math.max(along, 0), 1);
+        distance = Math.min(distance, Math.hypot(x - startX - t * edgeX, y - startY - t * edgeY));
+        // The middle of an edge of the unit triangle is its outward normal
+        const normalX = (cornerX + nextX) / 2;
+        const normalY = (cornerY + nextY) / 2;
+        if (x * normalX + y * normalY > inradius) inside = false;
+      });
+      return inside ? 0 : distance;
+    };
+
+    // Whether a ring, as the shader sizes it, reaches out to a point, given a margin
+    const ringReaches = (ring, point, margin = 0) => {
+      const core = uniforms.uCore.value;
+      const reach = Math.max(50 + 4 * ring + ring * state.spacing - core, 0);
+      const inradius = core + state.sharpness * reach;
+      const rounding = (1 - state.sharpness) * reach;
+      return triangleDistance(point, inradius) <= rounding + margin;
+    };
+
+    // The rings that show in the container: from the first one reaching into it, with room for
+    // the noise to push it out and for a line width, to the first one wrapping all of its corners
+    const visibleRings = () => {
+      const { x: centerX, y: centerY } = uniforms.uCenter.value;
+      const { x: width, y: height } = uniforms.uResolution.value;
+      const nearest = [
+        Math.min(Math.max(centerX, 0), width) - centerX,
+        Math.min(Math.max(centerY, 0), height) - centerY,
+      ];
+      const corners = [
+        [0, 0],
+        [width, 0],
+        [0, height],
+        [width, height],
+      ].map(([x, y]) => [x - centerX, y - centerY]);
+      const margin = 20 * state.chaos + 4 + state.spacing;
+
+      let first = 0;
+      while (first < MAX_RINGS && !ringReaches(first, nearest, margin)) first++;
+      let last = first;
+      while (last < MAX_RINGS && !corners.every((corner) => ringReaches(last, corner))) last++;
+      return [first, last + 1];
+    };
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.OrthographicCamera();
+    scene.add(mesh);
+
+    // A random spot in noise space, drifting with time like the sketch
+    const seed = [Math.random() * 1000, Math.random() * 1000, Math.random() * 1000];
+    let travel = 0;
+
+    // Easing function for smooth transitions (easeOutExpo)
+    const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+    const lerp = (start, end, progress) => start + (end - start) * progress;
+
+    let tween = null;
+    const clearColor = new THREE.Color();
+
+    const draw = (now) => {
+      if (tween) {
+        const progress = Math.min((now - tween.start) / TWEEN_DURATION, 1);
+        const eased = easeOutExpo(progress);
+        state.color = tween.from.color.map((channel, i) => lerp(channel, tween.to.color[i], eased));
+        state.background = tween.from.background.map((channel, i) =>
+          lerp(channel, tween.to.background[i], eased)
+        );
+        state.tint = lerp(tween.from.tint, tween.to.tint, eased);
+        state.chaos = lerp(tween.from.chaos, tween.to.chaos, eased);
+        state.frequency = lerp(tween.from.frequency, tween.to.frequency, eased);
+        state.spacing = lerp(tween.from.spacing, tween.to.spacing, eased);
+        state.speed = lerp(tween.from.speed, tween.to.speed, eased);
+        state.lineWidth = lerp(tween.from.lineWidth, tween.to.lineWidth, eased);
+        state.fill = lerp(tween.from.fill, tween.to.fill, eased);
+        state.sharpness = lerp(tween.from.sharpness, tween.to.sharpness, eased);
+        if (progress === 1) tween = null;
+      }
+
+      const offset = seed.map((start, i) => start + DRIFT[i] * travel);
+      uniforms.uCell.value.set(...offset.map(Math.floor));
+      uniforms.uFraction.value.set(...offset.map((value) => value - Math.floor(value)));
+      uniforms.uChaos.value = state.chaos;
+      uniforms.uFrequency.value = state.frequency;
+      uniforms.uSpacing.value = state.spacing;
+      uniforms.uLineWidth.value = state.lineWidth;
+      uniforms.uFill.value = state.fill;
+      uniforms.uSharpness.value = state.sharpness;
+      uniforms.uColor.value.set(...state.color);
+      // The tint is the background color's opacity over the page, transparent at 0
+      renderer.setClearColor(
+        clearColor.setRGB(...state.background, THREE.SRGBColorSpace),
+        state.tint
+      );
+
+      // Centered on the anchor where the page has scrolled it, or on the container
+      const { x: width, y: height } = uniforms.uResolution.value;
+      uniforms.uCenter.value.set(
+        ...(anchorPosition
+          ? [anchorPosition[0], anchorPosition[1] - window.scrollY]
+          : [width / 2, height / 2])
+      );
+
+      setRingRange(...(rings === 'cover' ? visibleRings() : [0, rings]));
+      renderer.render(scene, camera);
+    };
+
+    // Page position of the anchor without its transforms, so intro animations don't move the center
+    let anchorPosition = null;
+    const getAnchorPosition = () => {
+      const anchorElement = anchor ? document.querySelector(anchor) : null;
+      if (!anchorElement) return null;
+
+      let x = anchorElement.offsetWidth / 2;
+      let y = anchorElement.offsetHeight / 2;
+      for (let element = anchorElement; element; element = element.offsetParent) {
+        x += element.offsetLeft;
+        y += element.offsetTop;
+      }
+      return [x, y];
+    };
+
+    // The logo triangle is as wide as the anchor: its inradius is where the rings start from
+    const getCore = () => {
+      const anchorElement = anchor ? document.querySelector(anchor) : null;
+      if (shape !== 'logo' || !anchorElement) return 0;
+      return anchorElement.offsetWidth / (2 * Math.sqrt(3));
+    };
+
+    const onResize = () => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      renderer.setSize(width, height);
+      uniforms.uResolution.value.set(width, height);
+      anchorPosition = getAnchorPosition();
+      uniforms.uCore.value = getCore();
+      if (reducedMotion) draw(performance.now());
+    };
+
+    function updateTrunkConfig(config, animate = true) {
+      targetConfig = config ? { ...targetConfig, ...config } : { ...initialConfig };
+      const to = resolveConfig(targetConfig);
+
+      if (!animate || reducedMotion) {
+        Object.assign(state, to);
+        tween = null;
+        if (reducedMotion) draw(performance.now());
+        return;
+      }
+
+      tween = { from: { ...state }, to, start: performance.now() };
+    }
+
+    // A theme switch changes what the color tokens resolve to
+    const onThemeChange = () => {
+      const { color, background } = resolveConfig(targetConfig);
+      Object.assign(state, { color, background });
+      if (tween) {
+        Object.assign(tween.from, { color, background });
+        Object.assign(tween.to, { color, background });
+      }
+      if (reducedMotion) draw(performance.now());
+    };
+    new MutationObserver(onThemeChange).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', onThemeChange);
+
+    onResize();
+    window.addEventListener('resize', onResize);
+
+    // Replace the queue with the actual function and apply what arrived before
+    updateTrunkConfigRef = updateTrunkConfig;
+    pendingConfigs.forEach(({ config, animate }) => updateTrunkConfig(config, animate));
+    pendingConfigs = [];
+
+    if (reducedMotion) {
+      draw(performance.now());
+      // Still follow the anchor while the page scrolls
+      let scrollFrame = null;
+      window.addEventListener(
+        'scroll',
+        () => {
+          scrollFrame ??= requestAnimationFrame((now) => {
+            scrollFrame = null;
+            draw(now);
+          });
+        },
+        { passive: true }
+      );
+    } else {
+      let lastFrameTime = performance.now();
+      const animate = (now) => {
+        requestAnimationFrame(animate);
+        const deltaTime = Math.min((now - lastFrameTime) / 1000, 0.1);
+        lastFrameTime = now;
+        travel += deltaTime * state.speed;
+        draw(now);
+      };
+      requestAnimationFrame(animate);
+    }
+
+    canvas.classList.add('is-ready');
+  };
+
+  // Start initialization
+  initTrunk();
+</script>
+
+<!-- Preload Three.js core module to reduce dependency chain -->
+<link rel="modulepreload" href={`${baseUrl}/vendor/three.core.min.js`} />
+
+<style>
+  @reference "../styles/global.css";
+  #trunk-container {
+    /* How much of every line color shows over the background behind it, the rest is background */
+    --trunk-contrast: 25%;
+    --trunk-background: rgb(var(--magma-surface-default));
+
+    pointer-events: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    /* The large viewport, so no gap shows when mobile toolbars slide away */
+    height: 100lvh;
+  }
+
+  #trunk-canvas {
+    @apply ease-out-expo;
+    display: block;
+    opacity: 0;
+    transition-duration: 1.5s;
+    transition-property: opacity;
+  }
+
+  #trunk-canvas.is-ready {
+    opacity: 1;
+  }
+</style>
