@@ -56,6 +56,10 @@ npm run preview
 npm run format
 ```
 
+## Homepage backgrounds
+
+The homepage compares three backgrounds with `?background=`: `trunk` (the default), `blob` and `blobmixer`. The Blobmixer one, its 14 presets and the combinations tried are documented in [docs/blobmixer.md](docs/blobmixer.md).
+
 ## Deployment
 
 The site is automatically deployed to GitHub Pages via GitHub Actions when changes are pushed to the `main` branch.
