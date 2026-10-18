@@ -11,18 +11,20 @@ const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 
 interface Props {
-  // Inverse text for a background that fills the hero, like the Blob
-  inverse?: boolean;
+  // Inverse text for a background that fills the hero, like the Blob:
+  // 'light' inverts it in light mode only, and the dark mode keeps the default text
+  inverse?: boolean | 'light';
 }
 
 const { inverse = true } = Astro.props;
+const lightOnly = inverse === 'light';
 ---
 
 <section class="flex items-start justify-center px-400 relative overflow-hidden z-20">
   <div
     class:list={[
       'max-w-screen-desktop w-full mx-auto p-600 py-1200 relative z-10 text-center grid gap-400',
-      inverse ? 'text-on-inverse' : 'text-fg-default',
+      inverse ? ['text-on-inverse', { 'dark:text-fg-default': lightOnly }] : 'text-fg-default',
     ]}
   >
     <div class="absolute top-600 right-0">
@@ -30,7 +32,7 @@ const { inverse = true } = Astro.props;
         inverse ? (
           <HeaderMenu
             size="sm"
-            iconColor="text-on-inverse group-hover:text-fg-default group-focus-visible:text-fg-default"
+            iconColor={`text-on-inverse group-hover:text-fg-default group-focus-visible:text-fg-default ${lightOnly ? 'dark:text-fg-muted' : ''}`}
           />
         ) : (
           <HeaderMenu size="sm" />
@@ -53,7 +55,7 @@ const { inverse = true } = Astro.props;
     <Button
       href="https://maggioli.com"
       class="justify-self-center"
-      variant={inverse ? 'hero' : 'ghost'}
+      variant={lightOnly ? 'hero-light' : inverse ? 'hero' : 'ghost'}
     >
       <Icon name="mi/baseline/alternate-email" />
       Maggioli Spa

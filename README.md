@@ -56,6 +56,10 @@ npm run preview
 npm run format
 ```
 
+## Homepage backgrounds
+
+The homepage opens on the Blobmixer background, and `?background=trunk` or `?background=blob` brings back the ones before it, to compare them. The Blobmixer, its 14 presets and the combinations tried are documented in [docs/blobmixer.md](docs/blobmixer.md).
+
 ## Deployment
 
 The site is automatically deployed to GitHub Pages via GitHub Actions when changes are pushed to the `main` branch.

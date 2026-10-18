@@ -5,9 +5,11 @@ import ProjectLink from './ProjectLink.astro';
 
 interface Props {
   class?: string;
+  // The homepage background, credited when it comes from someone else's work
+  background?: 'blob' | 'trunk' | 'blobmixer';
 }
 
-const { class: className = 'px-600 desktop:px-1200 pb-3200 relative' } = Astro.props;
+const { class: className = 'px-600 desktop:px-1200 pb-3200 relative', background } = Astro.props;
 // Get base URL from Astro config and normalize it
 // Remove trailing slash if present (except for root)
 const rawBaseUrl = import.meta.env.BASE_URL;
@@ -94,6 +96,38 @@ const socialLinks = [
         rel="noopener noreferrer">Moving Alien Blob</a
       > article by Kay.
     </p> -->
+
+    {
+      background === 'blobmixer' && (
+        <p class="text-info-detail">
+          The blobs are remixed with{' '}
+          <a href="https://threejs.org/" target="_blank" rel="noopener noreferrer">
+            Three.js
+          </a>{' '}
+          from the{' '}
+          <a href="https://blobmixer.14islands.com/" target="_blank" rel="noopener noreferrer">
+            Blobmixer
+          </a>{' '}
+          by 14islands, licensed{' '}
+          <a
+            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+            target="_blank"
+            rel="license noopener noreferrer"
+          >
+            CC BY-NC-SA 4.0
+          </a>
+          , in the light of the{' '}
+          <a
+            href="https://polyhaven.com/a/peppermint_powerplant"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Peppermint Powerplant
+          </a>{' '}
+          by Andreas Mischok.
+        </p>
+      )
+    }
 
     <p class="text-info-detail">
       The texts in this portfolio were written with the support of language models—Claude

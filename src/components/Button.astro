@@ -11,7 +11,7 @@ import Icon from './Icon.astro';
  * @param {string} class - Additional CSS classes to add (base "button" class is always included)
  * @param {string} icon - Custom icon
  * @param {number} tabIndex - Tab index for the button
- * @param {string} variant - Button variant (e.g., "outline", "light", "hero", "ghost", or color variants)
+ * @param {string} variant - Button variant (e.g., "outline", "light", "hero", "hero-light", "ghost", or color variants)
  */
 interface Props {
   href?: string;
@@ -65,6 +65,9 @@ const variants: Record<string, string> = {
   light:
     'text-fg-default bg-surface-raised border-transparent hover:bg-wash-soft focus-visible:bg-wash-soft',
   hero: 'text-on-inverse bg-transparent border-transparent hover:bg-surface-inverse/30 focus-visible:bg-surface-inverse/30',
+  // The hero in light mode, the ghost in dark mode
+  'hero-light':
+    'text-on-inverse bg-transparent border-transparent hover:bg-surface-inverse/30 focus-visible:bg-surface-inverse/30 dark:text-fg-default dark:hover:bg-wash-soft dark:focus-visible:bg-wash-soft',
   ghost:
     'text-fg-default bg-transparent border-transparent hover:bg-wash-soft focus-visible:bg-wash-soft',
 };
