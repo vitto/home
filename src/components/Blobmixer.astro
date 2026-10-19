@@ -25,9 +25,11 @@
  * @param {number} positionYMobile - Y position offset for mobile (viewport width <= 480px, default: same as positionY)
  * @param {number} scale - Radius of the blob (default: 1)
  * @param {number} maxScrollTranslate - Maximum translateY value in pixels when page is fully scrolled (default: 0, disabled)
- * @param {string} anchor - Selector of the element the blob rests on: its lower edge sits on the top of the element
- *                          and scrolls with it, in place of positionY and maxScrollTranslate (default: '')
- * @param {number} anchorOverlap - How far the lower edge of the blob goes under the anchor's top, in CSS pixels (default: 0)
+ * @param {string} anchor - Selector of the elements the blob rests on, like cards: its lower edge sits on the top
+ *                          of their first row and scrolls with it, in place of positionY and maxScrollTranslate (default: '')
+ * @param {number} anchorOverlap - How far the lower edge of the blob goes past the top of the row, in CSS pixels (default: 0)
+ * @param {number} hoverReach - Where a pointer can hover the row, how far down it the lower edge reaches instead,
+ *                              as a share of its height, so the blob shows around the elements that change it (default: none)
  */
 import presets from '../data/blobmixer-presets.json';
 
@@ -43,6 +45,7 @@ interface Props {
   maxScrollTranslate?: number;
   anchor?: string;
   anchorOverlap?: number;
+  hoverReach?: number;
 }
 
 const {
@@ -57,6 +60,7 @@ const {
   maxScrollTranslate = 0,
   anchor = '',
   anchorOverlap = 0,
+  hoverReach,
 } = Astro.props;
 
 // Get base URL from Astro config and normalize it
@@ -86,6 +90,7 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
     maxScrollTranslate,
     anchor,
     anchorOverlap,
+    hoverReach: hoverReach ?? null,
     baseUrl,
   }}
 >
@@ -456,16 +461,33 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
     group.position.set(0, getCurrentPositionY(), 0);
     group.scale.setScalar(scale);
 
-    // With an anchor, the blob rests its lower edge on the anchor's top and scrolls with it
-    const anchorElement = anchor ? document.querySelector(anchor) : null;
+    // With an anchor, the blob rests its lower edge on the first row of the anchor elements
+    // and scrolls with it: past its top, or where a pointer can hover, past its bottom
+    const anchorElements = anchor ? [...document.querySelectorAll(anchor)] : [];
+    const anchored = anchorElements.length > 0;
+    const pointerHovers = window.matchMedia('(hover: hover)');
 
-    // Page top of the anchor without its transforms, so intro and hover lifts don't move the blob
-    const getAnchorTop = () => {
+    // Page top of an element without its transforms, so intro and hover lifts don't move the blob
+    const getPageTop = (element) => {
       let top = 0;
-      for (let element = anchorElement; element; element = element.offsetParent) {
-        top += element.offsetTop;
+      for (let parent = element; parent; parent = parent.offsetParent) {
+        top += parent.offsetTop;
       }
       return top;
+    };
+
+    // The page y the lower edge rests on: the elements on top make the first row,
+    // whatever order the layout puts them in
+    const getAnchorEdge = () => {
+      const boxes = anchorElements.map((element) => {
+        const top = getPageTop(element);
+        return { top, bottom: top + element.offsetHeight };
+      });
+      const rowTop = Math.min(...boxes.map((box) => box.top));
+      if (hoverReach === null || !pointerHovers.matches) return rowTop + anchorOverlap;
+      const row = boxes.filter((box) => box.top < rowTop + 1);
+      const rowBottom = Math.max(...row.map((box) => box.bottom));
+      return rowTop + hoverReach * (rowBottom - rowTop);
     };
 
     // Height of the blob's center that puts its lower edge at a y of the canvas, in CSS pixels:
@@ -542,8 +564,8 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
         uniforms.gradientMix.value = mix(tween.fromGradientMix, 1, eased);
         if (progress === 1) tween = null;
       }
-      if (anchorElement) {
-        const edgeY = getAnchorTop() - window.scrollY + anchorOverlap;
+      if (anchored) {
+        const edgeY = getAnchorEdge() - window.scrollY;
         group.position.y = centerForEdge(edgeY);
         const wasInSight = inSight;
         inSight = edgeY > 0;
@@ -588,7 +610,7 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
-      if (!anchorElement) group.position.y = getCurrentPositionY();
+      if (!anchored) group.position.y = getCurrentPositionY();
       if (reducedMotion) draw(performance.now());
     };
 
@@ -626,7 +648,7 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
     if (reducedMotion) {
       draw(performance.now());
       // Still follow the anchor while the page scrolls
-      if (anchorElement) {
+      if (anchored) {
         let scrollFrame = null;
         window.addEventListener(
           'scroll',
