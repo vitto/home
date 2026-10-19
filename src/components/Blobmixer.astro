@@ -25,6 +25,11 @@
  * @param {number} positionYMobile - Y position offset for mobile (viewport width <= 480px, default: same as positionY)
  * @param {number} scale - Radius of the blob (default: 1)
  * @param {number} maxScrollTranslate - Maximum translateY value in pixels when page is fully scrolled (default: 0, disabled)
+ * @param {string} anchor - Selector of the elements the blob rests on, like cards: its lower edge sits on the top
+ *                          of their first row and scrolls with it, in place of positionY and maxScrollTranslate (default: '')
+ * @param {number} anchorOverlap - How far the lower edge of the blob goes past the top of the row, in CSS pixels (default: 0)
+ * @param {number} hoverReach - Where a pointer can hover the row, how far down it the lower edge reaches instead,
+ *                              as a share of its height, so the blob shows around the elements that change it (default: none)
  */
 import presets from '../data/blobmixer-presets.json';
 
@@ -38,6 +43,9 @@ interface Props {
   positionYMobile?: number;
   scale?: number;
   maxScrollTranslate?: number;
+  anchor?: string;
+  anchorOverlap?: number;
+  hoverReach?: number;
 }
 
 const {
@@ -50,6 +58,9 @@ const {
   positionYMobile,
   scale = 1,
   maxScrollTranslate = 0,
+  anchor = '',
+  anchorOverlap = 0,
+  hoverReach,
 } = Astro.props;
 
 // Get base URL from Astro config and normalize it
@@ -77,6 +88,9 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
     positionYMobile: positionYMobile !== undefined ? positionYMobile : positionY,
     scale,
     maxScrollTranslate,
+    anchor,
+    anchorOverlap,
+    hoverReach: hoverReach ?? null,
     baseUrl,
   }}
 >
@@ -447,6 +461,44 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
     group.position.set(0, getCurrentPositionY(), 0);
     group.scale.setScalar(scale);
 
+    // With an anchor, the blob rests its lower edge on the first row of the anchor elements
+    // and scrolls with it: past its top, or where a pointer can hover, past its bottom
+    const anchorElements = anchor ? [...document.querySelectorAll(anchor)] : [];
+    const anchored = anchorElements.length > 0;
+    const pointerHovers = window.matchMedia('(hover: hover)');
+
+    // Page top of an element without its transforms, so intro and hover lifts don't move the blob
+    const getPageTop = (element) => {
+      let top = 0;
+      for (let parent = element; parent; parent = parent.offsetParent) {
+        top += parent.offsetTop;
+      }
+      return top;
+    };
+
+    // The page y the lower edge rests on: the elements on top make the first row,
+    // whatever order the layout puts them in
+    const getAnchorEdge = () => {
+      const boxes = anchorElements.map((element) => {
+        const top = getPageTop(element);
+        return { top, bottom: top + element.offsetHeight };
+      });
+      const rowTop = Math.min(...boxes.map((box) => box.top));
+      if (hoverReach === null || !pointerHovers.matches) return rowTop + anchorOverlap;
+      const row = boxes.filter((box) => box.top < rowTop + 1);
+      const rowBottom = Math.max(...row.map((box) => box.bottom));
+      return rowTop + hoverReach * (rowBottom - rowTop);
+    };
+
+    // Height of the blob's center that puts its lower edge at a y of the canvas, in CSS pixels:
+    // the edge is where a ray from the camera grazes the sphere
+    const centerForEdge = (edgeY) => {
+      const halfFov = THREE.MathUtils.degToRad(cameraFov / 2);
+      const tangent = (1 - (2 * edgeY) / container.clientHeight) * Math.tan(halfFov);
+      const radius = scale * values.scale;
+      return radius / Math.cos(Math.atan(tangent)) + cameraDistance * tangent;
+    };
+
     // The page takes a share of the tint color, through CSS so theme tokens follow the mode;
     // at no share it fades out keeping the last color
     let lastTintColor = null;
@@ -500,6 +552,10 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
     let tween = null;
     let latestRequest = 0;
 
+    // Scrolled above the viewport, an anchored blob is out of sight: its empty frame is drawn once,
+    // then it rests until it comes back
+    let inSight = true;
+
     const draw = (now) => {
       if (tween) {
         const progress = Math.min((now - tween.start) / TWEEN_DURATION, 1);
@@ -507,6 +563,13 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
         values = mix(tween.from, tween.to, eased);
         uniforms.gradientMix.value = mix(tween.fromGradientMix, 1, eased);
         if (progress === 1) tween = null;
+      }
+      if (anchored) {
+        const edgeY = getAnchorEdge() - window.scrollY;
+        group.position.y = centerForEdge(edgeY);
+        const wasInSight = inSight;
+        inSight = edgeY > 0;
+        if (!inSight && !wasInSight) return;
       }
       apply();
       renderer.render(scene, camera);
@@ -547,7 +610,7 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
-      group.position.y = getCurrentPositionY();
+      if (!anchored) group.position.y = getCurrentPositionY();
       if (reducedMotion) draw(performance.now());
     };
 
@@ -584,6 +647,20 @@ const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
 
     if (reducedMotion) {
       draw(performance.now());
+      // Still follow the anchor while the page scrolls
+      if (anchored) {
+        let scrollFrame = null;
+        window.addEventListener(
+          'scroll',
+          () => {
+            scrollFrame ??= requestAnimationFrame((now) => {
+              scrollFrame = null;
+              draw(now);
+            });
+          },
+          { passive: true }
+        );
+      }
     } else {
       let lastFrameTime = performance.now();
       const animate = (now) => {
