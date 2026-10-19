@@ -21,13 +21,15 @@ The Blobmixer background rebuilds [blobmixer.14islands.com](https://blobmixer.14
 
 | Where                    | Preset     | Set in                                                              |
 | ------------------------ | ---------- | ------------------------------------------------------------------- |
-| At rest                  | Slinky     | `defaultBlobmixerPreset` in [index.astro](../src/pages/index.astro) |
+| At rest                  | Liquidity  | `defaultBlobmixerPreset` in [index.astro](../src/pages/index.astro) |
 | User-Centered Design     | Metagum    | [blobmixer-configs.json](../src/data/blobmixer-configs.json)        |
 | Design Systems           | Fungible   | [blobmixer-configs.json](../src/data/blobmixer-configs.json)        |
 | Human-Centered AI Design | Fomosphere | [blobmixer-configs.json](../src/data/blobmixer-configs.json)        |
 
-Two more choices go with it:
+More choices go with it:
 
+- **The blob rests on the cards**: `anchor=".category-cards"` puts its lower edge 32px under the top of the card grid (`anchorOverlap`), and it scrolls with them, in place of a fixed `positionY` and a parallax. The edge is where a ray from the camera grazes the sphere, so the component finds the height of the blob's center for it at every frame, at any viewport size. The hero texts stay on the blob above the cards, and the dark card texts stay off it below; on mobile the blob no longer sits behind the stacked cards while they scroll, and once it leaves the viewport it stops drawing. Measured at 1280×800, 864×815, 1440×900 and 375×812: Liquidity's edge holds within 3px of its place and covers every hero text, and no card text falls on it; on hover Fomosphere, the one that heaves most, reaches 6% to 15% of the other cards' texts.
+- **The rest blob carries the white hero texts**: it must be dark enough behind them and keep its edge under them. Liquidity does both, see [the blob at rest](#the-blob-at-rest).
 - **The logo keeps its color** on hover: the `logo` of each card config is empty. The other backgrounds tint it with the card color instead.
 - **The hero inverts its texts in light mode only**: `<Hero inverse="light" />`, so in dark mode everything from the logo down to the Maggioli Spa link keeps the default colors, and the link uses the `hero-light` button variant.
 
@@ -44,14 +46,40 @@ On hover the page takes a light tint, 10% of a Magma label color at step 05, on 
 - **Accent**, the chosen one, is the label closest to the background 14islands chose for each blob on the Blobmixer: periwinkle for Metagum, mint for Fungible, teal for Fomosphere. It keeps their art direction in the Magma palette: a complementary green behind the magenta of Fungible, cooler neighbours behind the violet of the other two, and a different color for each card.
 - **Dominant** is the label closest to the dominant hue of the blob as the homepage shows it, its lower part: canvas pixels weighed by saturation, binned by hue, and matched to the labels in OKLab. All three blobs come out violet to magenta there, so this version stays close to monochrome.
 
+### The blob at rest
+
+The hero texts sit on the blob at rest, white in light mode and near white in dark mode, so it has to be dark behind them and keep its edge under them while it moves. Every preset was measured at rest on the homepage at 1280×800: the contrast of white over the pixels behind each text, at 8 moments of its noise loop, and how many of them leave a text off the blob. WCAG asks 3:1 for the title and 4.5:1 for the smaller tagline and link.
+
+| Preset     | Title | Tagline | Link | Brightest tenth | Texts on the blob |
+| ---------- | ----- | ------- | ---- | --------------- | ----------------- |
+| Liquidity  | 13.2  | 15.2    | 15.6 | 7.0             | 8/8               |
+| Lipsync    | 11.2  | 13.1    | 14.1 | 2.2             | 8/8               |
+| Metalness  | 7.1   | 8.5     | 9.3  | 2.0             | 8/8               |
+| Protocool  | 6.5   | 5.3     | 5.1  | 4.4             | 8/8               |
+| T-1000     | 4.9   | 5.5     | 5.7  | 2.5             | 7/8               |
+| Twistertoy | 5.0   | 4.4     | 3.6  | 1.6             | 8/8               |
+| Discobrain | 3.7   | 6.0     | 6.6  | 1.9             | 8/8               |
+| Fungible   | 4.5   | 3.9     | 3.9  | 1.9             | 8/8               |
+| Firefly    | 2.5   | 3.7     | 4.1  | 2.1             | 8/8               |
+| Metagum    | 2.8   | 2.6     | 2.6  | 1.8             | 8/8               |
+| Fomosphere | 2.3   | 2.4     | 3.7  | 1.2             | 8/8               |
+| Genesys    | 1.4   | 1.9     | 2.5  | 1.2             | 8/8               |
+| Slinky     | 1.5   | 1.5     | 1.7  | 1.3             | 8/8               |
+| Cyberfly   | 2.8   | 1.1     | 1.1  | 1.1             | 0/8               |
+
+The text columns are the median contrast; the brightest tenth is where reflections fall. Liquidity leads with room to spare, and it keeps a still outline: its `distort` is 0, so only its surface ripples.
+
+Slinky, the rest blob of round 4, failed both ways. Its `distort` of 0.84 heaved its lower edge up past the texts in 2 to 3 moments out of 32; a calmer `distort` of 0.55 at half the speed kept it under them, but its light rainbow left the white texts at 1.5:1. Darkening it, `ambient` 0.2 instead of 2 on a base color of #404040, reached 7.6:1 and more, but it no longer looked like Slinky.
+
 ## Combinations tried
 
-| Round | At rest | User-Centered Design | Design Systems | Human-Centered AI Design | Outcome                           |
-| ----- | ------- | -------------------- | -------------- | ------------------------ | --------------------------------- |
-| 1     | T-1000  | Fungible             | Slinky         | Discobrain               | First proposal, commit 9cd4d45    |
-| 2     | T-1000  | Cyberfly             | Slinky         | Fomosphere               | Cyberfly didn't fit               |
-| 3     | T-1000  | Metagum              | Slinky         | Fomosphere               | Logo color and dark mode reworked |
-| 4     | Slinky  | Metagum              | Fungible       | Fomosphere               | Kept                              |
+| Round | At rest   | User-Centered Design | Design Systems | Human-Centered AI Design | Outcome                           |
+| ----- | --------- | -------------------- | -------------- | ------------------------ | --------------------------------- |
+| 1     | T-1000    | Fungible             | Slinky         | Discobrain               | First proposal, commit 9cd4d45    |
+| 2     | T-1000    | Cyberfly             | Slinky         | Fomosphere               | Cyberfly didn't fit               |
+| 3     | T-1000    | Metagum              | Slinky         | Fomosphere               | Logo color and dark mode reworked |
+| 4     | Slinky    | Metagum              | Fungible       | Fomosphere               | Too light behind the hero texts   |
+| 5     | Liquidity | Metagum              | Fungible       | Fomosphere               | Kept                              |
 
 In round 1 the logo took the card colors, and the hero texts were inverted in dark mode too. To go back to it, set `defaultBlobmixerPreset` to `'t-1000'`, pass `inverse` as `true` to the Hero for the blobmixer in [index.astro](../src/pages/index.astro), and use these configs:
 

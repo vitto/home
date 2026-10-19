@@ -14,8 +14,9 @@ const defaultBackground: (typeof backgrounds)[number] = 'blobmixer';
 const requestedBackground = Astro.url.searchParams.get('background');
 const background = backgrounds.find((name) => name === requestedBackground) ?? defaultBackground;
 
-// With the blobmixer, the blob shown at rest is Slinky: ?preset= picks another one, to try them all
-const defaultBlobmixerPreset: keyof typeof blobmixerPresets = 'slinky';
+// With the blobmixer, the blob shown at rest is Liquidity, dark enough for the white hero texts
+// and still under them: ?preset= picks another one, to try them all
+const defaultBlobmixerPreset: keyof typeof blobmixerPresets = 'liquidity';
 const requestedPreset = Astro.url.searchParams.get('preset') ?? '';
 const blobmixerPreset =
   requestedPreset in blobmixerPresets
@@ -38,10 +39,9 @@ const blobmixerTintColor =
       <Blobmixer
         preset={blobmixerPreset}
         tintColor={blobmixerTintColor}
-        positionY={0.75}
-        positionYMobile={0.5}
         scale={0.875}
-        maxScrollTranslate={200}
+        anchor=".category-cards"
+        anchorOverlap={32}
       />
     )
   }
