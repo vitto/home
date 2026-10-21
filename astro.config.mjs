@@ -1,11 +1,23 @@
+import { readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import cloudflare from '@astrojs/cloudflare';
+
+// The Magma loader is served from a folder named after its version, see scripts/copy-vendor-assets.js
+const magmaVersion = JSON.parse(
+  readFileSync(
+    new URL('./node_modules/@maggioli-design-system/magma/package.json', import.meta.url),
+    'utf8'
+  )
+).version;
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
+    define: {
+      __MAGMA_VERSION__: JSON.stringify(magmaVersion),
+    },
   },
   // SSR settings to enable Cloudflare Pages
   // and avoid theming flash issues

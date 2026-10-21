@@ -20,6 +20,7 @@ const {
 // Remove trailing slash if present (except for root)
 const rawBaseUrl = import.meta.env.BASE_URL;
 const baseUrl = rawBaseUrl === '/' ? '' : rawBaseUrl.replace(/\/$/, '');
+const magmaLoaderUrl = `${baseUrl}/vendor/maggioli-loader/${__MAGMA_VERSION__}`;
 const preferences = getPreferences(Astro.cookies);
 ---
 
@@ -40,17 +41,13 @@ const preferences = getPreferences(Astro.cookies);
     <link rel="icon" type="image/svg+xml" href={`${baseUrl}/assets/favicon.svg`} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <script type="module" define:vars={{ baseUrl }}>
+    <script type="module" define:vars={{ baseUrl, magmaLoaderUrl }}>
       (async () => {
         // Import Maggioli loader from vendor directory
         // First apply polyfills, then load components
-        const { applyPolyfills } = await import(
-          `${baseUrl}/vendor/maggioli-loader/dist/esm/polyfills/index.js`
-        );
+        const { applyPolyfills } = await import(`${magmaLoaderUrl}/dist/esm/polyfills/index.js`);
         await applyPolyfills();
-        const { defineCustomElements } = await import(
-          `${baseUrl}/vendor/maggioli-loader/dist/esm/loader.js`
-        );
+        const { defineCustomElements } = await import(`${magmaLoaderUrl}/dist/esm/loader.js`);
         defineCustomElements();
         window.sessionStorage.setItem('mdsIconSvgPath', `${baseUrl}/icons/`);
       })();
