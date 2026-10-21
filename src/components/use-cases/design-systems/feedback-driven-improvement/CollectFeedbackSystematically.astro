@@ -20,8 +20,8 @@ import Products from '../../../Products.astro';
     contentClass="justify-center items-center"
     padding={false}
     bugComponent="mds-status-bar"
-    bugCurrent="When the viewport is mobile, the component now going to full width."
-    bugExpected="When the viewport is mobile, the component should go to full width."
+    bugCurrent="When the viewport is mobile, the status bar is wider than its area by its padding and is cut on the right."
+    bugExpected="When the viewport is mobile, the status bar should fill the width of its area."
   >
     <div
       class="grid min-h-8000 grid-cols-[180px_1fr] max-tablet:grid-cols-full w-full"

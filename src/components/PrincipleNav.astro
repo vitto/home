@@ -191,11 +191,68 @@ const nextIcon =
     window.addEventListener('resize', updateBottomNavOpacity);
   }
 
+  // Roles whose widgets move with the arrow keys, which stay theirs
+  const ARROW_KEY_ROLES = new Set([
+    'combobox',
+    'grid',
+    'listbox',
+    'menu',
+    'menubar',
+    'radiogroup',
+    'scrollbar',
+    'slider',
+    'spinbutton',
+    'tablist',
+    'textbox',
+    'tree',
+    'treegrid',
+  ]);
+
+  // Whether the arrow key belongs to what has the focus: a field, a widget, a dialog or a box that
+  // scrolls sideways. The path goes through the shadow roots, where Magma keeps its inputs
+  function isArrowKeyTaken(event: KeyboardEvent): boolean {
+    return event.composedPath().some((node) => {
+      if (!(node instanceof HTMLElement)) return false;
+      if (node === document.body || node === document.documentElement) return false;
+      if (node.isContentEditable) return true;
+      if (node.matches('input, textarea, select, dialog, video, audio')) return true;
+      const role = node.getAttribute('role');
+      if (role && ARROW_KEY_ROLES.has(role)) return true;
+      if (node.scrollWidth > node.clientWidth) {
+        const { overflowX } = getComputedStyle(node);
+        return overflowX === 'auto' || overflowX === 'scroll';
+      }
+      return false;
+    });
+  }
+
+  function initPrincipleKeyboardNav() {
+    document.addEventListener('keydown', (event) => {
+      if (event.defaultPrevented || event.repeat) return;
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+
+      const direction =
+        event.key === 'ArrowLeft' ? 'previous' : event.key === 'ArrowRight' ? 'next' : null;
+      if (!direction || isArrowKeyTaken(event)) return;
+
+      const link = document.querySelector(
+        `[data-principle-nav="${direction}"]`
+      ) as HTMLAnchorElement | null;
+      if (!link) return;
+
+      event.preventDefault();
+      // A click, so that ChangePageClick fades the page out as for the pointer
+      link.click();
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initPrincipleBottomNavVisibility();
+      initPrincipleKeyboardNav();
     });
   } else {
     initPrincipleBottomNavVisibility();
+    initPrincipleKeyboardNav();
   }
 </script>

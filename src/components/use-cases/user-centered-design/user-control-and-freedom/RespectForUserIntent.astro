@@ -9,14 +9,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
   title="Respect for User Intent"
   description="The system responds to user actions without imposing unexpected behavior."
 >
-  <UseCaseInteractive
-    clsHeight={0}
-    articleId="respect-for-user-intent"
-    bugComponent="mds-input-select"
-    bugCurrent="There is no way to reset the input select to the initial state"
-    bugExpected="The input select should be reset to its initial state by an API method"
-    toggle
-  >
+  <UseCaseInteractive clsHeight={0} articleId="respect-for-user-intent" toggle>
     <mds-tab fill animation="fade" class="w-full max-w-8000">
       <mds-tab-item label="Home"></mds-tab-item>
       <mds-tab-item selected label="Account"></mds-tab-item>
@@ -91,8 +84,8 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
         saveButton.setAttribute('variant', 'primary');
         saveButton.removeAttribute('icon');
         saveButton.setAttribute('label', originalText);
-        countrySelect.setAttribute('value', null);
-        countrySelect.selectedIndex = -1;
+        // Back to the placeholder, the change it emits keeps the button disabled
+        countrySelect.setValue(null);
         // @ts-ignore
         if (rollbackTimeout) {
           // @ts-ignore
@@ -101,9 +94,9 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
         }
       };
 
-      // Enable button when country is selected
-      countrySelect.addEventListener('mdsInputSelectChange', () => {
-        saveButton.removeAttribute('disabled');
+      // Enable button when country is selected: the select also emits its empty value on load
+      countrySelect.addEventListener('mdsInputSelectChange', (event) => {
+        saveButton.toggleAttribute('disabled', !event.detail?.value);
       });
 
       // Change variant to success and rollback after 2 seconds when button is clicked
@@ -133,8 +126,8 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
       // Handle second tab block - switch to Home tab when save button is clicked
       if (countrySelectSecond && saveButtonSecond && homeTab && accountTab) {
         // Enable button when country is selected in second tab
-        countrySelectSecond.addEventListener('mdsInputSelectChange', () => {
-          saveButtonSecond.removeAttribute('disabled');
+        countrySelectSecond.addEventListener('mdsInputSelectChange', (event) => {
+          saveButtonSecond.toggleAttribute('disabled', !event.detail?.value);
         });
 
         // Switch to Home tab when save button is clicked in second tab
