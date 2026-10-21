@@ -28,7 +28,8 @@
   }
 }
 
-.use-case-interactive mds-table-cell > * {
+/* mds-keyboard keeps its keys on one line by itself, and nowrap would reach the tooltip in its shadow */
+.use-case-interactive mds-table-cell > :not(mds-keyboard) {
   white-space: nowrap;
 }
 
