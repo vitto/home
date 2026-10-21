@@ -36,12 +36,17 @@ const directionClass =
     ? 'desktop:col-start-3 col-auto justify-self-start tablet:justify-self-end wide:justify-self-start'
     : 'desktop:col-start-1 col-auto justify-self-end tablet:justify-self-start wide:justify-self-end';
 const iconDirectionClass = direction === 'next' ? 'order-1' : '-order-1';
+// The arrow key that follows the button, see PrincipleNav
+const keyShortcut = direction === 'next' ? 'ArrowRight' : 'ArrowLeft';
+const keyHint = direction === 'next' ? '→' : '←';
 ---
 
 <a
   href={href}
-  title={`Go to ${description}`}
+  title={`Go to ${description} (${keyHint})`}
   tabindex={0}
+  data-principle-nav={direction}
+  aria-keyshortcuts={keyShortcut}
   class={`bg-surface-inverse-muted h-1400 hover:bg-surface-inverse pointer-events-auto w-full max-w-4800 text-on-inverse self-center focus-bounce inline-flex justify-start items-center gap-400 max-tablet:gap-300 rounded-full px-600 p-300 no-underline ${directionClass} ${className}`}
 >
   {icon && <Icon class={iconDirectionClass} name={icon} />}
