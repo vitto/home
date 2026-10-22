@@ -94,7 +94,7 @@ import UseCaseInteractive from '../../../UseCaseInteractive.astro';
         }
       };
 
-      // Enable button when country is selected: the select also emits its empty value on load
+      // Enable button when country is selected, disable it when the select goes back to empty
       countrySelect.addEventListener('mdsInputSelectChange', (event) => {
         saveButton.toggleAttribute('disabled', !event.detail?.value);
       });
