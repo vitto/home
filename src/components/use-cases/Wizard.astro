@@ -157,6 +157,11 @@ const { articleId } = Astro.props;
     prevButtons.forEach((button) => {
       button.addEventListener('click', goToPrev);
     });
+    // A step done is a button that asks to go back to it: the page moves there through items-done
+    stepperBar.addEventListener('mdsStepperBarItemDone', (event) => {
+      const items = Array.from(stepperBar.querySelectorAll('mds-stepper-bar-item'));
+      updateStep(items.indexOf(event.target) + 1);
+    });
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initStepperNavigation);
