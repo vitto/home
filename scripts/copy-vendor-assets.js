@@ -10,6 +10,7 @@ import {
   existsSync,
   readdirSync,
   readFileSync,
+  rmSync,
   statSync,
   writeFileSync,
 } from 'fs';
@@ -76,8 +77,15 @@ threeAddonFiles.forEach(({ src, dest }) => {
 // Copy Maggioli Design System loader and dependencies
 const magmaDir = join(rootDir, 'node_modules', '@maggioli-design-system', 'magma');
 const magmaLoaderDir = join(magmaDir, 'loader');
-const magmaLoaderDestDir = join(vendorDir, 'maggioli-loader');
-const magmaDistDestDir = join(vendorDir, 'maggioli-loader', 'dist');
+// One folder per Magma version: the component files keep their names across versions, so a
+// browser that cached them for an older one would mix the two runtimes and hydrate nothing
+const magmaVersion = JSON.parse(readFileSync(join(magmaDir, 'package.json'), 'utf8')).version;
+const magmaVendorPath = `maggioli-loader/${magmaVersion}`;
+const magmaLoaderDestDir = join(vendorDir, magmaVendorPath);
+const magmaDistDestDir = join(vendorDir, magmaVendorPath, 'dist');
+
+// Drop the versions copied before, and the files of a version left behind by an older build
+rmSync(join(vendorDir, 'maggioli-loader'), { recursive: true, force: true });
 
 if (existsSync(magmaLoaderDir)) {
   // Create destination directories
@@ -96,7 +104,7 @@ if (existsSync(magmaLoaderDir)) {
 
     if (statSync(srcPath).isFile()) {
       copyFileSync(srcPath, destPath);
-      log(`✓ Copied ${file} to public/vendor/maggioli-loader/${file}`);
+      log(`✓ Copied ${file} to public/vendor/${magmaVendorPath}/${file}`);
     }
   });
 
@@ -123,7 +131,7 @@ if (existsSync(magmaLoaderDir)) {
         if (statSync(srcPath).isFile()) {
           copyFileSync(srcPath, destPath);
           log(
-            `✓ Copied polyfills/${file} to public/vendor/maggioli-loader/dist/esm/polyfills/${file}`
+            `✓ Copied polyfills/${file} to public/vendor/${magmaVendorPath}/dist/esm/polyfills/${file}`
           );
         }
       });
@@ -134,7 +142,7 @@ if (existsSync(magmaLoaderDir)) {
     const loaderJsPath = join(distEsmDir, 'loader.js');
     if (existsSync(loaderJsPath)) {
       copyFileSync(loaderJsPath, join(distEsmDestDir, 'loader.js'));
-      log(`✓ Copied loader.js to public/vendor/maggioli-loader/dist/esm/loader.js`);
+      log(`✓ Copied loader.js to public/vendor/${magmaVendorPath}/dist/esm/loader.js`);
 
       // Copy ALL .js files from dist/esm (dependencies, chunks, entry files, etc.)
       const distEsmFiles = readdirSync(distEsmDir);
@@ -144,7 +152,7 @@ if (existsSync(magmaLoaderDir)) {
           const destPath = join(distEsmDestDir, file);
           if (statSync(srcPath).isFile()) {
             copyFileSync(srcPath, destPath);
-            log(`✓ Copied ${file} to public/vendor/maggioli-loader/dist/esm/${file}`);
+            log(`✓ Copied ${file} to public/vendor/${magmaVendorPath}/dist/esm/${file}`);
           }
         }
       });
